@@ -1,0 +1,53 @@
+= Soirée JHipster - 2017/05/09
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+:icons: font
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+
+toc::[]
+
+== Overview
+
+https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20170509[Descriptif de la soirée sur le site du ParisJUG.]
+
+*JHipster* est le plus connu et le plus utilisé des générateurs d’applications dans le monde Java, avec plus de 150 entreprises officiellement utilisatrices et près de 500,000 installations. +
+Cette soirée est l’occasion d’avoir une introduction au projet, par 4 de ses principaux contributeurs (dont le créateur du projet), qui interviendront chacun sur une partie qu’ils ont eux-mêmes développé.
+
+== 19h30 - Présentation JHipster 4
+
+Par Julien DUBOIS (créateur de JHipster)
+
+Présentation de JHipster 4 par Julien Dubois, avec le développement et le déploiement d’une application Spring Boot + Angular 2 en moins d’une heure.
+
+== 20h25 - JHipster Domain Language
+
+par Mathieu Abou Aichi
+
+Générer visuellement son application avec le JHipster Domain Language.
+
+== 21h15 - Docker et JHipster
+
+par Pascal Grimaud
+
+Devops facile avec Docker et JHipster.
+
+== 21h35 - Angular 2 et JHipster
+
+par William Marques
+
+Utilisation d’Angular 2 avec JHipster: risques, difficultés et bénéfices.
+
+== 21h45 - Docker et JHipster
+
+par Julien Dubois
+
+Une architecture microservices "out of the box" avec JHipster.
+
+== Ressources
+
+
