@@ -1,0 +1,97 @@
+= Spark Meetup à la SG avec un Retour d'experience et Warp 10 - 2017/05/15
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+:icons: font
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+
+toc::[]
+
+Meetup donné par le Spark User Group Paris dans les locaux de la SGCIB.
+
+== 18h30-19h15 : Analyse d'un an de sons diffusés par les radios en France avec SQL, Spark, Spotify et Databricks
+
+Par Paul Leclercq 
+
+Databricks, société derrière Spark, propose des notebooks collaboratifs.
+
+Paul insiste sur le côté très scallable de Spark (en plus de ses bonnes performances, dont tout le monde a entendu parler).
+
+Voir les articles du blog Databricks sur le structured Streaming.
+
+SparkQL uses *Catalyst* queries Optimizer.
+
+*Parquet* le format le plus utilisé pour stocker les data. +
+Très simple à utiliser avec Spark.
+
+Databricks est une solution managée (ce que Paul aime beaucoup). +
+Possibilité de créer un serveur avec 6 Go de RAM pour ses propres projets (https://community.cloud.databricks.com/).
+
+API Dataframe un peu compliquée d'utilisation (d'autant plus vrai que la requête est grosse)
+
+Plusieurs exemples de requêtes SparkQL complexes de manipulation des data issues de plusieurs radios (Nova, Energy, Skyrock, etc.)
+
+Windowing SQL réalisé à l'aide des mots clés `OVER PARTITION`
+
+Conseil de Paul, aller voir l'exposition "Terra Data" à la Cité des Science à Paris.
+
+== 19h15-20h00 : Warp 10, simplifying analysis of time series data on top of Hadoop (en Francais)
+
+Par Mathias @Herberts 
+
+Le CV de Mathias est impressionnant : a travaillé chez Google sur la mise en place de Big Table pour les "petits" projets (Google Docs, réseau social), puis a fondé la société Citizen Data.
+
+Geo Time Series : fusion de la série temporelle et la position du capteur au moment de la mesure (série "spatio-temporelle")
+
+Remarque importante : toujours essayer d'avoir à disposition un environnements d'analytics *sandboxé* (pour éviter de se faire pirater les data)
+
+L'utilisation de certains 3rd party tools est inévitable : Google *TensorFlow*
+
+Grafana pour la Dataviz, où l'on peut définir Warp 10 comme source.
+
+*Gérer des séries temporelles en Hadoop n'est PAS évident* :
+
+	* tout particulièrement la recomposition des "morceaux" de séries issus de la distribution des traitements.
+	* on est la plupart du temps limité à un outil
+
+RDD : Resilient Distributed Dataset
+
+Grosse présentation de leur langage *WarpScript*, permettant de programmer les séries temporelles.
+
+Cassandra n'est absolument pas fait pour des stocker des séries temporelles (cf Mathias : les gens qui vous disent le contraire vous mentent). +
+Apparemment, la seule (?) possibilité est *HBase*.
+
+*Tout est Open Source* (une grosse exigence des clients).
+
+Gérer à grande échelle des séries temporelles est réellement *très compliqué*. +
+A l'aide de Warp 10, Mathias propose une solution "roue sur étagère" (suffit de la prendre plutôt que de chercher à la réinventer), résultat de 4 ans de travail de toute une équipe.
+
+=== Ressources
+
+* http://www.warp10.io/
+* http://groups.google.com/forum/#!forum/warp10-users
+* https://github.com/citizendata
+
+== 20h00-20h45 : Monitoring at OVH - from OpenTSDB to Warp 10
+
+Par Steven Le Roux
+
+*actionable metric* vs *vanity metric* ("tu as 1000 visiteurs, mais aucun ne revient", ça fait plaisir mais c'est tout)
+
+Pour faire court, disons qu'en termes de metric, la solution d'OVH est très évoluée, avec de nombreux outils internes mis à disposition de la communauté sur GitHub.
+
+Gros utilisateurs de *WarpScript*.
+
+*Apache Beam* : pour unifier batch, query et streaming.
+
+La plateforme, *Metrics Data Platform* (@OvhMetrics) est à disposition sur OVH.
+
+image::20170516_OVH-Metrics-Data-Platform.jpg[]
+
+== Ressources
+
+Normalement, les slides seront mis à disposition via la page de l'évènement sur Meetup.com.
