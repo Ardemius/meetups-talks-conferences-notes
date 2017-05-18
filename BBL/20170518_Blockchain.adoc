@@ -1,0 +1,134 @@
+= Spark Meetup à la SG avec un Retour d'experience et Warp 10 - 2017/05/15
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+:icons: font
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+
+toc::[]
+
+BBL donné par Marc DURAND, Blockchain leader IBM Cloud France, dans les locaux de http://www.softeam.fr/[Softeam].
+
+image::20170518_blockchain-1.jpg[]
+
+== Abstract
+
+*La blockchain* : réelle révolution s’inscrivant dans la durée ou bien engouement temporaire pour la dernière technologie à la mode ?
+
+Depuis l’apparition de bitcoin en 2009, un nombre impressionnant de PoC, en particulier dans le secteur de la finance, ont été lancés afin de mesurer les capacités de la blockchain à transformer les transactions dans un réseau business. Aujourd’hui il est désormais possible de tirer un premier bilan des expériences menées, de mieux comprendre les attentes réelles du monde de l’entreprise et d’identifier les cas d’usage les plus prometteurs.
+
+== Présentation
+
+[NOTE]
+.Rappel
+====
+*Blockchain* : base de données distribuée, cryptée, avec les caractéristiques suivantes :
+
+	* validée par l'ensemble du réseau
+	* plus d'intermédiaire de contrôle (la blockchain, elle-même, servant d'*instrument de confiance*) +
+	la *réconciliation* est *automatique* (plus de notification comme quoi la réconciliation a eu lieu par la 2nd partie, cela est directement géré par le système de blockchain)
+====
+
+*Bitcoin* : non régulé, *crypto-monnaie* résistance à la censure grâce à l'anonymat des acteurs.
+
+Du fait de sa taille, *la blockchain est inadaptée pour une recherche d'historique* loin dans le passé. +
+Pour rappel, depuis 2009 que Bitcoin existe, la blockchain a atteint ~80 Go. +
+Sauter de pointeurs en pointeurs pour revenir 5 ans dans le passé serait atroce en termes de performance. +
+-> La blockchain n'est tout simplement pas faite pour cela.
+
+Blockchain 2nd génération -> apparition de la notion de *Smart Contract*
+
+== Réalité du monde des entreprises
+
+* *Identité non corrélable* : il doit être impossible de faire un lien entre identité et transactions.
+* *Confidentialité* : quels acteurs peuvent voir les caractéristiques ?
+
+80% d'utilisation de Bitcoin est en Chine (là où les gens n'ont *PAS* confiance dans le système bancaire / monétaire)
+
+Du fait du consensus (approbation par l'ensemble du réseau), *la blockchain n'est pas du tout performante en termes de transactions*. +
+-> entre 3 et 10 transactions par seconde
+
+	* l'algorithme d'approbation est le *_Proof of Work_*
+
+Les blockchain de 2e génération (autre que Bitcoin) ne sont plus _permissionless_ mais *_permissioned_* :
+
+	* réseau privé / semi-privé
+	* acteurs connus 
+	* ...
+
+Le système monétaire est tout *sauf* le domaine que les blockchains de 2nd génération va gérer.
+
+== Cas pratiques
+
+=== IBM *Arkéa* (blockchain posée par IBM chez Crédit Mutuel)
+
+image::20170518_blockchain-2.jpg[]
+
+Actuellement, un projet Blockchain, en termes de charges en régime de croisière :
+
+	* 20% blockchain
+	* 80% problèmes d'intégration
+
+L'intérêt de la Blockchain : *ouvert* et *distribué*
+
+=== IBM Global Financing
+
+La banque de financement d'IBM (pour les achats de gros matériel, ex: serveurs IBM, etc.)
+
+Intérêt pour IBM : réduire le coût de la gestion des *litiges*
+
+	* coût de résolution : 100 M -> 90 M actuellement avec objectif 60 M€
+	* durée de résolution du litige en nette diminution
+
+Pour les customers, on gagne de la *visibilité* et des *informations de suivi*.
+
+=== Trade Finance chez la SocGen
+
+image::20170518_blockchain-3.jpg[]
+
+Gain : fluidification du processus, plus de tonnes de papier à remplir et échanger : +
+Le gain ne vient pas de la *désintermédiation* mais de la *fluidification* du processus.
+____
+"mes barils sont-ils bien sur le bateau ?" -> courrier "Oui, c'est bon !" -> justificatif "OK, on vous paye..."
+____
+
+image::20170518_blockchain-4.jpg[]
+
+image::20170518_blockchain-5.jpg[]
+
+=== Supply chain
+
+Imaginez Airbus, avec une *chaîne de production* et des dizaines de milliers de pièces à gérer de fournisseurs différents. +
+La blockchain est particulièrement adaptée à ce type de use case.
+
+== Blockchain et IBM
+
+IBM utilise *Hyperledger*, un projet de la Linux Foundation (non piloté par IBM). +
+C'est donc un projet Open Source, choisit par IBM pour les raisons suivantes :
+
+	* *Open Gouvernance* : steering commitee (tournant)
+	* *Scalability*
+	* *Security* : un des points essentiel suivi par IBM
+
+image::20170518_blockchain-6.jpg[]
+
+=== Légalement
+
+Très très très compliqué : le code étant la loi, si le code est "mauvais", la loi peut dès lors permettre des excès qui deviennent de ce fait *légaux*.
+
+C'est un point critique, raison pour laquelle on reste principalement sur du *BtoB* actuellement sur la Blockchain.
+
+== Ressources
+
+== Avis
+
+Marc a de la bouteille, et maîtrise vraiment son sujet.
+
+== Questions & TODOs
+
+* TODO : récupérer les slides (et plus particulièrement celui sur la comparaison permissionless / permissioned)
+
