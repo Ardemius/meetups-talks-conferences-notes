@@ -1,4 +1,4 @@
-= Spark Meetup à la SG avec un Retour d'experience et Warp 10 - 2017/05/15
+= BBL Blockchain chez Softeam - 2017/05/18
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 :icons: font
 :imagesdir: images
