@@ -1,0 +1,109 @@
+= To be or not to be Serverless
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+//ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté chez Ippon Technologies, par *Steve HOUEL*, Solution Architect.
+
+== Abstract
+
+Nous le savons tous, le monde informatique est en constant changement. Que ce soit les évolutions matérielles, l’avènement de l’IoT dans les objets de tous les jours ou encore les services proposés par les Cloud Providers. Le monde du développement logiciel n’échappe pas à cette tendance. 
+
+Outre les nouveaux frameworks Web qui sortent plus vite que notre courbe d’apprentissage, les architectures elles aussi se voient repensées, remaniées. C'est pourquoi aujourd'hui, alors que les entreprises commencent juste à faire et penser Microservices, une nouvelle architecture rentre sur le devant de la scène et c'est le Serverless. De nombreuses personnes comparent cette technologie au monde des licornes mais est-ce vraiment le cas ? 
+
+Je vous propose de découvrir ensemble ce qu'est ou non *Serverless* et voir comment à ce jour nous pouvons utiliser cette technologie au travers d'exemples en live. Ainsi arriverons nous peut-être à résoudre ensemble le dilemme d'Hamlet *To be or not to be Serverless* 
+
+[NOTE]
+====
+*Steve Houel* est Solution Architect chez Ippon Technologies. Il intervient sur de nombreux domaines techniques chez nos clients (conseil, conception, formation,..). Ses domaines de prédilection sont les architectures microservices et le DevOps. Steve est certifié AWS Solution Architect. 
+====
+
+== Overview
+
+[quote, Adrian COCKCROFT]
+____
+If your PaaS can efficiently start instances in 20ms that run for half a second, then call it serverless.
+____
+
+Notion de :
+
+* BaaS : Backend as a Service
+* Faas : Function as a Service
+
+Caractéristiques de l'architecture serverless :
+
+* On va pouvoir scaler au niveau de la fonction
+* Architecture event sourcée : toute action va générer des éléments.
+
+image::20170914_serverless_photo-1.png[]
+
+=== Intérêts
+
+* on ne paye vraiment que ce que l'on consomme (une fois que les traitements réalisés par AWS Lambda sont terminés, on ne paye plus rien sur ces éléments)
+* coût opérationnel réduit
+* BaaS : coût de dev réduit
+* FaaS : scaling cost
+* "greener" computing
+
+La phrase "Optimization is the root of some cost savings" me fait hausser un sourcil, qu'en est-il de l'adage : "l'optimisation prématurée est à la base de tous les maux".
+
+=== Inconvénients
+
+* vous êtes chez Amazon, et allez probablement y rester un moment...
+* sécurité : plus vous avez une grosse empreinte sur le web, plus vous êtes la cible d'attaque
+* peu de possibilité de personnalisation du serveur.
+* la durée d'exécution de traitements des providers est plafonnée (5 min habituellement)
+* encore du travail sur la partie deployment / packaging / versioning (vos Lambda doivent être envoyées sous la forme d'un gros zip)
+* de manière générale, technologie très jeune, en plein développemnt, dont certains éléments sont encore en développement.
+
+== Live Demo : Hello World !
+
+=== Framework de développement : Serverless Framework
+
+Utilisation du *Serverless Framework* (https://serverless.com/) +
+Framework très orienté *gestion de ressources* (YAML en force)
+
+Lancement d'une émulation en local disponible.
+
+=== Framework de développement : Chalice
+
+Directement poussé par AWS. +
+Framework très léger et rapide.
+
+TIP: Bonne pratique de développement en Python : lister ses dépendances dans un fichier `requirements.txt`
+
+Lancement en local également disponible.
+
+En 10 minutes : on a pu créer une appli scalable, haute dispo, permettant de stocker n'importe quel type de fichier sur S3.
+
+== Conclusion
+
+Techno très prometteuse, mais encore en développement :
+
+* nécessité de bien analyser son Use Case en amont : actuellement, ce n'est pas une solution pour un service métier hyper compliqué
+* manque encore certains outils (pas d'IDE)
+
+== Ressources
+
+* *Slides de la présentation* : https://www.slideshare.net/SteveHouel/to-be-or-not-to-be-serverless
+* https://blog.ippon.fr/2017/06/09/les-architectures-serverless/ : article complet de Steve dans le blog Ippon.
+
