@@ -104,6 +104,6 @@ Techno très prometteuse, mais encore en développement :
 
 == Ressources
 
-* *Slides de la présentation* : https://www.slideshare.net/SteveHouel/to-be-or-not-to-be-serverless
+* *Slides de la présentation* : https://www.slideshare.net/SteveHouel/to-be-or-not-to-be-serverless-79881767
 * https://blog.ippon.fr/2017/06/09/les-architectures-serverless/ : article complet de Steve dans le blog Ippon.
 
