@@ -1,0 +1,102 @@
+= Meta-MeetUp Software Craftsmanship & DevOps
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à la SGCIB, par *Nicolas Helleringer*, Head of SRE at *Criteo*. +
+Egalement présents : Azure User Group France, Docker Paris, Git Paris, Google Developers Group Paris, Paris Serverless Architecture, Kubernetes meetup, etc.
+
+== Keynote d'introduction
+
+Introduction de Nicolas.
+
+image::20170921_software-crafts-devops-1.jpg[] 
+
+Problématique soulevée par Nicolas : comment sont perçues nos technos en interne, par l'IT ?
+
+NOTE: De nouveau un *retour négatif sur Storm* ! (Nicolas explique qu'à Criteo, il l'avait choisi très tôt, mais ce sont vite retrouvés seul dessus...)
+
+Ne pas se tromper lorsqu'on choisit une techno ! +
+Ce n'est pas parce qu'un "gros" (Google & Co) utilise une techno, que cette dernière est forcément bonne pour vous. +
+-> Il faut être clair sur ses besoin, *et* ses moyens.
+
+Retour d'XP CI : Criteo fin 2012 -> 1 trimestre sans 1 seul livraison ! +
+-> Conclusion : la façon dont nous buildons n'est pas bonne, on résout les problèmes trop tard...
+
+Bonnes pratiques :
+
+* *augmenter la convergence* : limiter les écarts entre ce qui est livré et ce qui est utilisé
+* chez les devs, le context switch est hyper cher ! +
+"Coucou, je peux t'interrompre 2 min...", cela coûte *bien* plus de 2 min...
+
+Mot de la fin de l'intro : *bien choisir ses outils en fonction de ses besoins !*
+
+Après, on va passer sur différents MeetUps en parallèle.
+
+== Sessions de MeetUps
+
+image::20170921_software-crafts-devops-2.jpg[] 
+
+ShortList :
+
+* Ludovic PIOT (Oxalide): montage d'une stack complète Kubernetes à l'aide des outils Helm et Kops
+* Laurent DOGUIN (CleverCloud) : Infrastructure immutable à la sauce CleverCloud
+* Catherine EZVAN (IBM) : architecture serverless avec Apache Openwhisk
+* Erwan MARECHAL (IBM) : Amalgam8 pour éviter les anti-patterns spaghetti en archi microservices
+
+-> Je pars chez Ludovic !
+
+== Skynet vs Planet of Apes
+
+Talk apparemment déjà présenté à Devoxx France.
+
+On va déployer une appli PHP / Symfony sur un cluster Kubernetes de containers Docker.
+
+*Helm* est un équivalent de Docker Compose. +
+Décrit un stack verticale sous forme de package. +
+On installe un *client* Helm sur sa machine.
+
+Helm sait piloter le cluster Kubernetes on s'appuyant sur *Kubectl*. +
+Helm utilisera le compte user de *Kubectl*.
+
+WARNING: il faut que Helm est accès à un compte avec suffisamment de droits pour pouvoir déployer un pod.
+
+Helm a également son repo (comme Docker) : *Kubeapps* +
+Ce dernier est déjà bien rempli, et comprend *Spinnaker*, le fameux Chaos Monkey de Netflix.
+
+*KOPS* : outil qui va interagir avec l'API AWS, afin de monter une infrastructure.
+
+NOTE: Kubernetes marche assez mal du VMWare aujourd'hui.
+
+NOTE: KOPS plus intéressant que Terraform, car intègre l'ordonnancement des éléments (et pas Terraform)
+
+Tiller maintient un état des différents packages déployés dans Kubernetes.
+
+`kops validate cluster` pour voir l'état du cluster.
+
+On va chercher à faire tomber la session du blog PHP : lors de la montée en charge, on va finir par basculer sur un autre pod, et, à ce moment, perdre la session. +
+Pour palier à ce problème, on va monter un base Redis afin de persister la session.
+
+
+
+
+
