@@ -104,7 +104,7 @@ A partir de là, tout le monde coupe portable et PC, afin de pouvoir discuter tr
 Les questions du public ont tourné autour des raisons d'Oracle de donner JEE à la fondation Eclipse. +
 Le contenu de JEE 8 était bien moins fourni que pour les précédentes versions, et nombreux étaient ceux qui pensaient qu'Oracle faisait cela pour se "débarasser" du produit qui ne leur rapportait pas assez par rapport aux ressources consommées.
 
-David a répondu avec sa vision, qui devrait être celle d'Oracle, à savoir ne plus être seuls à maintenant le projet, et a confirmé *une réduction du nombre de ressources affectées au projet*. +
+David a répondu avec sa vision, qui devrait être celle d'Oracle, à savoir ne plus être seuls à maintenir le projet, et a confirmé *une réduction du nombre de ressources affectées au projet*. +
 Oracle continuera à participer au développement, mais dans une moindre mesure par rapport aux années passées (ce qui personnellement ne me rassure pas vu le peu d'activité constatée durant les derniers mois...)
 
 Par contre, il a confirmé que plusieurs autres acteurs de la spécification avait accepté de participer davantage : IBM et RedHat pour les principaux.
