@@ -1,0 +1,131 @@
+= Soirée Java EE 8? Ah ben non peut-être! - 2017/10/10
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+:icons: font
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+
+toc::[]
+
+== Overview
+
+https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20171010[Descriptif de la soirée sur le site du ParisJUG.]
+
+Speaker : *David Delabassee*, Software Evangelist working in the GlassFish and Java EE Team at Oracle
+
+image::20171010_soiree-JEE.jpg[]
+
+Abstract :
+
+____
+Java EE 8 vient juste d’être finalisé! Cette session se propose de faire le point sur cette mise à niveau de la plateforme. +
+Durant cette soirée, nous allons aborder les principales nouvelles fonctionnalités de Java EE 8 tels que JAX-RS et sa nouvelle API client ‘Reactive’, l’API Servlet 4 et son support http/2, la nouvelle API JSON-B, les différentes améliorations liées à la sécurité. Nous allons aussi voir ce qu’apporte Bean Validation 2.0, CDI 2.0, JSON-P 1.1, etc.
+
+En conclusion, nous allons faire le point sur les annonces faites à JavaOne comme par exemple EE4J, le projet au sein de la Fondation Eclipse qui va accueillir le développement de la plateforme Java EE. +
+Répondre à des questions telles que la convergence (ou pas) de MicroProfile.IO et de Java EE, etc... 
+____
+
+Etaient présents pour Softeam :
+
+* *Guillaume LEMONT*
+* *Thomas SCHWENDER*
+
+== Présentation JEE 8
+
+* Sortie officielle de JEE 8 le 21 septembre 2017
+	** confirmation que JEE 8 tourne avec Java 8 (et ce sera également valable pour Java 9)
+* Glassfish 5 *implémentation de référence*
+
+=== JAX-RS 2.1
+
+* voir https://www.jcp.org/en/jsr/detail?id=370
+* *Jersey* est l'implémentation de référence
+* Possibilité de composer / combiner des appels de services via la *Reactive Client API* et la l'interface https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletionStage.html[`CompletionStage`] (voir thenCompose et thenCombine). +
+Ce RX Invoker est l'un des principaux ajouts de JAX-RS 2.1
+* Server-Sent Events (qui sont maintenant supportés par la plupart des navigateurs)
+
+=== JSON-P 1.1
+
+L'actuelle JSON Parser.
+Pour de spec pour cette version (idem pour la version 1.0), tout est déjà contenu dans la Javadoc
+
+=== JSON-B
+
+* Nouvelle API pour le *binding* de formats JSON en objets Java. +
+* Est à JSON ce que JAX-B est pour XML
+* "convention over configuration"
+* n'est pas là pour réinventer la roue, car de nombreuses API similaires existent sur le marché.
+* l'objet `Jsonb jsonb = JsonbBuilder.create()` permet de tout gérer.
+
+=== Servlet 4.0
+
+* Principal fact : apporte *HTTP/2*
+	** conserve la sémantique HTTP/1 (on récupére la même chose) +
+	** le principal intérêt de HTTP/2 est d'*améliorer les perf côté réseau* (*single TCP connection*, 1 seul socket ouvert).
+
+=== JSF 2.3
+
+* HTTP/2 Server Push
+* better CDI Integration
+
+=== CDI 2.0
+
+* Define behavior of CDI outside of a Java EE container
+* spec split into 3 parts :
+	** CDI core
+	** CDI for Java SE
+	** CDI for Java EE
+
+=== Bean Validation 2.0
+
+=== Security API 1.0 for Java EE
+
+* Nouvelle API pour JEE 8
+* introduit la notion d'*Identity Store*
+* et la notion d'*Authentication Mechanism*
+* et finalement celle de *Security Context*
+
+=== Synthèse
+
+image::20171010_soiree-JEE_synthesis.jpg[]
+
+JEE est passée sur GitHub
+
+== JEE passe à la fondation Eclipse : des news David !!!!
+
+Le nouveau nom du projet au sein de la fondation Eclipse (principalement pour des raisons légales) : [red]*EE4J* (Eclipse Enterprise for Java)
+
+A partir de là, tout le monde coupe portable et PC, afin de pouvoir discuter tranquillement de ce "sujet sensible". 
+
+Les questions du public ont tourné autour des raisons d'Oracle de donner JEE à la fondation Eclipse. +
+Le contenu de JEE 8 était bien moins fourni que pour les précédentes versions, et nombreux étaient ceux qui pensaient qu'Oracle faisait cela pour se "débarasser" du produit qui ne leur rapportait pas assez par rapport aux ressources consommées.
+
+David a répondu avec sa vision, qui devrait être celle d'Oracle, à savoir ne plus être seuls à maintenant le projet, et a confirmé *une réduction du nombre de ressources affectées au projet*. +
+Oracle continuera à participer au développement, mais dans une moindre mesure par rapport aux années passées (ce qui personnellement ne me rassure pas vu le peu d'activité constatée durant les derniers mois...)
+
+Par contre, il a confirmé que plusieurs autres acteurs de la spécification avait accepté de participer davantage : IBM et RedHat pour les principaux.
+
+Une fois de plus nous pouvons nous demander si cela va relancer la spécification, ou sceller son sort.
+
+[NOTE]
+====
+Actuellement, *3 briques de JEE ne sont pas la propriété d'Oracle* (et ne pourrons donc pas être données à la fondation Eclipse) :
+
+* Batch : IBM
+* CDI : RedHat
+* Bean Validation : ReHat
+====
+
+Parmi les composants de JEE donnés à la fondation Eclipse, on aurait :
+
+* le https://en.wikipedia.org/wiki/Technology_Compatibility_Kit[TCK]
+* l'implémentation de référence de la JSR
+
+La spécification JSR ne sera *PAS* donnée. +
+*Le JCP serait remplacé par une autre structure* (et donc ne serait pas donné). David a parlé de "construction intellectuelle", et de nouvelles spécifications basées sur celles du JCP (ce qui semble... compliqué)
+
+NOTE: Autre info en passant, David espère voir un rapprochement de EE4J avec Eclipse MicroProfile
