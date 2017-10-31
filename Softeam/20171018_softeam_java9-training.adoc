@@ -1,0 +1,46 @@
+= Meta-MeetUp Software Craftsmanship & DevOps
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+:icons: font
+// Handling GitHub admonition blocks icons
+//ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté chez Softeam, par *Darren BOUTROS* et *Romain BEGHI* du StarTECH Java. +
+En 2 parties, les 18 et 25/10 sur 2 heures.
+
+== Overview
+
+Depuis le 21 Septembre, *Java 9 est enfin officiellement lancé*, nous apportant son lot d'innovations ! Si *Jigsaw* est la plus attendue, les *Collections* de sont pas en reste dans cette nouvelle version.
+
+Mais avant tout, maîtrisez-vous les changements majeurs apportés par Java 8 ? Si les Lambdas ne font pas encore partie de vos outils favoris, que vous vouliez muscler vos Streams, enrichir vos interfaces fonctionnelles, ou simplement découvrir le remplaçant de Joda Time, cette formation est pour vous !
+
+== Part I
+
+image::20171018_image1.jpg[] 
+
+== Resources
+
+
+
+
+
+
+
