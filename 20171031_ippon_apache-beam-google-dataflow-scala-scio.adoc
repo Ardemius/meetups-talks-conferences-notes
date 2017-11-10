@@ -1,0 +1,80 @@
+= Apache Beam et Google DataFlow IRL avec Scala Scio
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté chez Ippon Technologies, par *Alick PAUL*.
+
+== Abstract
+
+*Apache Beam* est un modèle de programmation unifié pour la création de pipeline de traitement de données de type batch et de type streaming. +
+Je vous propose une présentation de *Scio*, une API Scala de haut niveau développée par Spotify. Nous verrons des cas d'utilisation réels de votre machine vers *Google Cloud Platform*.
+
+
+[NOTE]
+====
+*Alick PAUL* : Ippon Tech, développeur Full-Stack, Data Engineer...passionné par les languages alternatifs et globalement par tout ce qui peut avoir un compilateur ou un interpréteur,Runner et Jardinier hors-sol à mes heures perdues,j'aime développer de nouvelles idées et tenter de nouvelles choses. 
+====
+
+== Overview
+
+Scio est basé sur Apache Beam.
+Commence par le landscape Big Data 2016 : 
+
+image::http://mattturck.com/wp-content/uploads/2017/05/Matt-Turck-FirstMark-2017-Big-Data-Landscape.png[]
+
+== Apache Beam
+
+* API extensible
+* modèle unifié : 1 seule écriture pour le traitement par lot ou au fil de l'eau
+* batch et streaming
+* exécution sur des envs différents
+
+Les runners Beam s'exécute sur :
+
+* Google Cloud Dataflow
+* Apache Flink (concurrent de Spark, plutôt dédié au streaming)
+* Apache Spark
+* ...
+
+En I/O :
+
+* Toutes les I/O de Google Cloud DataFlow
+* HDFS, Mongo, ES (mais en "expérimental")
+* ...
+
+== Google Cloud Dataflow
+
+Full managé : pas d'OPS
+
+== Scio
+
+Est un DSL Scala pour Apache Beam développé par Spotify, et utilisé massivement en production.
+
+== Divers
+
+Amazon travaille actuellement sur un projet similaire à Google Cloud Dataflow.
+
+Release de Scio presque toutes les 2 semaines.
+
+
+

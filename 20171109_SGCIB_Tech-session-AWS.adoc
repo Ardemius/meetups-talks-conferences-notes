@@ -1,0 +1,124 @@
+= Tech Session AWS
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+//ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à la SGCIB, par *Adrian COCKCROFT* (@adrianco), VP Cloud Architecture Strategy chez AWS. 
+
+image::20171109_SGCIB_AWS-Netflix-go-to-microservices.jpg[]
+
+== Abstract
+
+Chez Netflix, Adrian était Lead Architecte en charge de 4 transformations majeures :
+
+* transition d'un modèle d'envoi de DVD par voie postale vers une plateforme de streaming globale
+* migration d'une infra traditionnelle vers Amazon Web Services
+* transformation d'une architecture monolithique vers une architecture microservices complète, dont il a contribué à mettre à disposition en Open Source de nombreux composants au travers de Netflix OSS
+* création de standards de qualité, de disponibilité et de sécurité inconnus jusqu'alors grâce à la mise en place du Chaos Engineering
+
+Egalement passionné par l'intrication entre culture d'entreprise et technologie, et la manière dont ces 2 éléments peuvent permettre à une organisation de se développer très rapidement.
+
+Au cours de la keynote et de la session de questions-réponses, il partagera sa vision de le l'évolution du cloud et son impact global sur la technologie et la culture d'entreprise.
+
+Adrian : 
+
+Chez Netflix, importance de la feedback loop pour améliorer en continue le stream de data fourni au client.
+
+== Digital disruption and culture
+
+==== Netflix
+
+Culture de Netflix pour l'extrem Agility : moving much faster than any other competitors -> think and develop very fast.
+
+Some financing companies try to go as fast as them right now.
+
+*Purpose* driven architecture: the purpose is the most important, not the technical part.
+
+* Freedom & responsibility 
+
+2 personnes à l'architecture pour la partie Cloud chez Nefflix!
+
+==== Amazon
+
+== Evolution of Architecture
+
+migration sequence for Netflix from monolithic to microservices :
+
+* start with the simplest possible API service
+* next to the simplest Web page
+* then web pages one by one
+
+big challenge: to learn developpers that they do not have one relational DB, but data spread between several different independant DBs.
+
+1 single function by service BUT guarantying reasonable response time.
+
+Evolution des archi microservices -> *serverless* !!!! FaaS +
+"microservices to Ephemeral Functions": when the system is idle, it shuts down and cost nothing to run.
+
+Adrian: you have to move to serverless NOW ! It is disrupting our behaviors, the market, the speed with which we can now build a PROD efficient application.
+
+Evolution of Business Logic : Monolithic -> Microservices -> Functions (Serverless)
+
+== Cloud native principles
+
+Opposition: Pay up front and depreciate over 3 years AGAINST Pay a month later for the number of seconds used.
+
+* Pay for what you used last month. +
+Not for what you guess you will need next year.
+
+* serverless very good if workload goes sometimes to 0 (cost nothing)
+* turn off the system when it's idle (huge savings)
+* garbage collection of "old" applications having no more traffic
+
+== Highly available - Chaos architecture
+
+Never kill a whole datacenter.
+
+You need to automate this kind of tests.
+
+Doing so make everybody knows that it can happen.
+
+The more frequently you test this failover, the less painful it becomes. 
+
+question: who runs the fire drill for IT ? Because never ever EVERYBODY will be trained. +
+-> a team must be created: Chaos Engineering team
+
+Lire Chaos Engineering (free) chez O'Reilly
+
+Gremlin is a company specialized in this business (former employees from Netflix and Amazon)
+
+image::20171109_SGCIB_AWS-Netflix-go-to-microservices-2.jpg[]
+
+image::20171109_SGCIB_AWS-Netflix-go-to-microservices-3.jpg[]
+
+== Q & A
+
+* Adrian: "a lot of clients coming back from Azure to Amazon because Azure doesn't scale well yet..."
+* Amazon is very resilient, but the faster way to break something is to break the DNS...
+* Amazon ECS scales better than Kubernetes (???), because bigger (???). Amazon architecture is multi-tenant, whereas Kubernetes is not. You can use Kubernetes if you want to own your own server, BUT for online services, Amazon is better fitted.
+
+== Resources
+
+* Chaos Engineering (free) chez O'Reilly
+
+
+
