@@ -1,0 +1,85 @@
+= Node.js and the Web Platform
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à la SGCIB, dans le cadre des BBLs, par Dan Shaw (@dshaw) et David Mark Clements (@davidmarkclem).
+
+== Overview
+
+David wrote the "Node.js cookbook", and Dan is part of the board of NodeJS.
+
+NOTE: Node.js is currently being studied as a possible technology at SGCIB.
+
+== Dan presentation
+
+Dan explained that *Javascript won the war between web languages*, and that he think that neither Rust nor Dart will be able to compete, or will be largely adopted. +
+Javascript is the language of the Web.
+
+*Server-side* Javascript and the Web platform:
+
+* Late 90s: Netscape Enterprise Server
+* Early 2000's: Rhino
+* *2009 -> present: Node.js*
+
+*Chakra* (Microsoft) was the only VM *not* OpenSource (whereas Google was by example) +
+Today's Node.js is a platform for V8 Javascript.
+
+There is an *increasing collaboration between Google and Microsoft* so as not to break Node.js with their new VMs.
+
+Today's Javascript new features hit Node.js *first*.
+
+There are a lot of standards with which Node.js must deal with :
+
+* ECMAScript
+* XML
+* W3C
+* etc.
+
+Targeted platform for Node.js is *AGAIN* [red]*Kubernetes*. +
+A big work is made with Google to *make Node go well with Go (which is more a system language, where Node.js is an application language)
+
+Standard journey with Node.js:
+
+* *ES Modules*
+* *Async / Await*: to avoid any try / catch and throw mechanism and workflow, which is (Dan speaking) a big gain in terms of performances
+* *WHATWG Streams*: are promise based, too slow for Node.js (?) +
+Node.js is starting a collaboration with WHATWG Streams to *create a Web Platform*.
+
+-> We are entering an [red]*area of standardization for Node.js*
+
+For containerization, Node is embracing Kubernetes, AND a lot of work is done so as to add monitoring capabilities to Kubernetes environment *for Node.js*. +
+That's very important because monitoring features should be implemented at the orchestration level, and *not* at the applicative one (which is Node.js one's)
+
+Cloud Native platform / Cloud Native Computing Foundation / Cloud Native Standards : Dan is even thinking that Node was too late involved (but now fully integrated in the standardization reflections and studies)
+
+== David presentation
+
+David works at *nearForm* (founded in 2011), recognized as the leader in Node.js development and architecture. +
+5 nearFormers are Node.js Core maintainers. +
+-> Both Dan and David work for NearForm.
+
+*Constraints on server are stronger than on browser*. +
+The throughput (behind a route) can be way bigger on a server (on a browser, the speed at which a user clicks is limited...)
+
+Node scales *horizontally*: 1 CPU for 1 event loop (no multi-threading with the event loop), so very adapted to a containerized environment (Kubernetes once more...)
+

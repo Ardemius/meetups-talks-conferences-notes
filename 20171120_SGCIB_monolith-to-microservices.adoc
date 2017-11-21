@@ -1,0 +1,131 @@
+= Du monolithe aux microservices
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à la SGCIB, dans le cadre des BBLs, par Yannick GRENZINGER (CarbonIT) et David PANZA (Arolla).
+
+== Overview
+
+Il s'agira surtout d'un retour sur leur expérience à la SGCIB, avec les difficultés rencontrées lors de la mise en place des microservices (car il y en a !)
+
+On cite Adrian (Cockcroft) qui était passé la semaine dernière :
+
+[quote, Adrian Cockcroft]
+____
+Loosely coupled service oriented architecture with bounded contexts
+____
+
+Pourquoi les microservices :
+
+* *pouvoir refondre un legacy de façon incrémentale*
+* capacité à livrer plus vite
+* réduire la taille de la code base
+
+== 4 axes de maturité pour les microservices
+
+=== Système distribué
+
+* importance de la réunion d'Event storming (inventé par Alberto Brandolini)
+* Importance des bounded contexts
+* communication synchrone ou asynchrone (via un bus, RabbitMQ, Kafka, etc.)
+* permet d'adapter les technos au besoin
+
+=== Continuous Delivery
+
+* *Importance des tests* (voir https://martinfowler.com/articles/microservice-testing[l'excellent article de Martin Fowler sur le sujet])
+* problématique du déploiement : ces derniers sont compliqués, et nécessiteraient des tests dédiés (*tests de déploiement*)
+
+A la SG : 
+
+* *Trunk based dev + Feature Toggle* (via FF4J, pour savoir quand activer ce qui est livré)
+* Docker et Infra as a Code : il faut insister sur l'industrialisation de l'infra, pour que son utilisation soit la plus rapide possible (ici, réalisé via une usine Docker, mais pourrait également être réalisé de façon plus "classique" avec Ansible)
+* *approche DevOps* obligatoire : il faut exploser le mur de la confusion (les devs veulent livrer, les ops veulent de la stabilité)
+
+=== Les joies de la collaboration
+
+Théorie : 1 FT par domaine, donc plusieurs Feature Team devant communiquer entre elles au final.
+
+* attention à la *loi de Conway* : notre architecture a vite tendance à ressembler à notre organisation interne. Comme nous sommes en microservices, chacun géré par un FT propre, on a tendance à travailler chaque équipe dans son coin... (en gros : il n'est pas naturel de collaborer...)
+* standardisation du format des events (sur le bus RabbitMQ)
+* augmenter le nombre de personnes dans les équipes complexifie la communication, et est très loin d'accélérer la vitesse de développement.
+* *importance de la communication* : faire des réunions d'échange (chapter tech, kata, etc.) afin de diffuser la connaissance, afin qu'elle ne reste pas cantonner dans les différentes FT.
+
+[quote, Alberto Brandolini, NCraft'17]
+____
+Software development is a learning process. +
+Working code is a side effect
+____
+
+Il ne faut pas chercher à copier l'organisation des géants du web : il faut trouver la sienne.
+
+=== Production
+
+Importance *CAPITALE* des logs :
+
+* le nombre de microservices impose un suivi beaucoup plus soigné des logs (3 logs par appli multiplié par 150 microservice, multiplié par le nombre de réplicats, cela commence à faire beaucoup.)
+* *maîtrise des healthchecks* : suivi de l'état "vivant ou pas" des microservices. Le but étant de tuer le microservice avant qu'il ne le fasse lui-même.
+
+== Conclusion
+
+Il est très difficile de faire un système distribué. +
+Faire des microservices n'est, au final (en prenant tout en compte), pas plus facile que faire du monolithe. +
+Il y a beaucoup de compétences techniques à avoir pour pouvoir (bien) faire du microservices.
+
+Importance du :
+
+* *tests*
+* *monitoring*
+* *déploiement*
+
+La mise en commun de ressources / du code est *très* compliquée. +
+A la SG, on fait de la duplication de code, avec très peu de partage de code (juste un peu via l'image Docker en commun)
+
+Estimation de Yannick et David : ~2 semaines pour une réécriture *purement technique* en microservice d'une fonctionnalité.
+
+[NOTE]
+====
+Chorégraphie vs orchestration. 
+
+* *Orchestration*: un chef d'orchestre donne les instructions à tout le monde
+* *Chorégraphie*: tout le monde réagit en même temps à un évènement (indépendance des composants)
+====
+
+Faire *très attention* aux transactions distribuées (très difficiles à gérer)
+
+En termes de performance pure et dure : un système monolithique bien écrit sera toujours plus rapide qu'un système microservices bien écrit. +
+Par contre, on gagne en résilience, en disponibilité, etc.
+
+Après, les grands du web, quand ils veulent de la perf. derrière leurs microservices, ils mettent en place un cache. +
+Par contre, l'invalidation de ce dernier est tout de suite *très compliquée*. 
+
+== Ressources
+
+* "Spring microservices in action" by John Carnell
+
+
+
+
+
+
+
+

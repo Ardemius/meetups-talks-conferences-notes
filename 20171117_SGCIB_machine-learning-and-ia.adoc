@@ -1,0 +1,54 @@
+= Machine learning & IA
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+//ifndef::env-github[:icons: font]
+//ifdef::env-github[]
+//:status:
+//:outfilesuffix: .adoc
+//:caution-caption: :fire:
+//:important-caption: :exclamation:
+//:note-caption: :paperclip:
+//:tip-caption: :bulb:
+//:warning-caption: :warning:
+//endif[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à la SGCIB, dans le cadre des *vendredis de l'architecture*, par Mathias KLUBA, Jean Christophe ROBERT et Pierre HOURY.
+
+== Overview
+
+https://mathiaskluba.blog.core.windows.net/hadoop/ : vidéo d'une IA jouant à Mario (et gagnant) +
+La vidéo est le résultat de l'apprentissage. +
+L'IA trouve un modèle (en surimpression dans la vidéo) permettant de gagner. Nous parlons bien ici d'un *modèle*, et non d'une stratégie.
+
+Blocs blancs = bloc statique du niveau
+Blocs noirs = ennemis dans le niveau
+Suite à *chaque échec* une nouvelle option est tentée (chacun des boutons dispo sur la manette).
+Le Machine Learning apprend de ses *erreurs*.
+
+Neuro Evolution of Adapting (???) Technologies
+
+____
+Machine Learning is the process of ajusting the parameters of an algo until it performs well on a particular task.
+____
+
+== Neural network
+
+Réseau de neurones : 
+
+. on somme les données en entrée, multipliées par un coef : s = teta * X
+. on creuse les écarts entre les 0 et les 1 (on *augmente le contrast* du résultat) à l'aide d'une fonction sigmoïd : o = sigmoïd(s)
+
+Pierre nous a montré un test en réel (sur son poste avec un PyCharm Community Edition) de reconnaissance d'un chiffre (0 à 9) à partir d'une image de chiffre créée à main levée.
+
+Au final, à l'aide des librairies Python existantes (et conséquentes), en *très peu de lignes de code*, on peut mettre en place un *use case de Machine Learning*.
+
