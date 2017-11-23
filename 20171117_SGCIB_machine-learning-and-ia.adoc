@@ -1,16 +1,16 @@
 = Machine learning & IA
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
-//ifndef::env-github[:icons: font]
-//ifdef::env-github[]
-//:status:
-//:outfilesuffix: .adoc
-//:caution-caption: :fire:
-//:important-caption: :exclamation:
-//:note-caption: :paperclip:
-//:tip-caption: :bulb:
-//:warning-caption: :warning:
-//endif[]
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif[]
 :imagesdir: images
 :source-highlighter: highlightjs
 // Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
