@@ -1,0 +1,103 @@
+= 12@13 Hibernate : astuces et anti-patterns
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à Softeam par Pierre LEPLAY.
+
+== Abstract
+
+Cela fait quelques années que j'utilise JPA et Hibernate pour développer la couche persistance de mes applications. J'ai rencontré de nombreux bugs et des problèmes de performance dûs à ma mauvaise utilisation d'Hibernate. Cette présentation tombe à point nommé pour vous donner quelques astuces !
+
+Dans cette présentation, j'expliquerai les bonnes pratiques qui m'ont permis d'accélérer les performances de mes requêtes, les principaux points à connaitre sur le fonctionnement d'Hibernate ainsi que quelques anti-patterns...et le tout illustré par des exemples pratiques !
+
+Au menu de la présentation: comment exploiter au mieux les logs d'Hibernate, comment mieux comprendre les différents caches d'Hibernate et les problématiques de sauvegarde d'Entity. Vous saurez tout !
+
+== Intro
+
+Hibernate :
+
+* ORM créé par Gavin King en 2001
+* version 3.5 en 2010 a été la 1ere à implémenter JPA 2.0
+
+Tous les tests à venir sont fait avec Spring Boot 1.4, Hibernate 5 et HSQLDB +
+Le schéma est :
+
+Eleve -> (1,n) -> Classe -> (1,n) -> Professeur
+
+== Astuces et anti-patterns
+
+=== Logss
+
+* activation des logs via `LoggerFactory.getLogger("org.hibernate.SQL")`
+* pour formatter (bien plus lisible) les requêtes SQL, bien penser à passer l'option (property) `spring.jpa.xxx.format_sql=true`
+* pour afficher la provenance de la requête : `use_sql_comments=true`
+* pour afficher tous les paramètres en entrée ET en sortie des requêtes : `LoggerFactory.getLogger("org.hibernate.type")`, avec un niveau de log en *TRACE*.
+
+WARNING: code page JSP *"log4Jadmin"* récupérable sur le net, et permet de modifier à chaud la configuration log4j d'une application. +
+Attention ! Potentiel gros trou de sécurité... (long trop verbeux qui font tomber le filesystem) 
+
+=== Paramètres de requêtes
+
+* Plutôt qu'une concaténation des paramètres de la requête SQL directement dans cette dernière, utiliser la méthode `setParameter`.
+Cela permet d'éviter les injections SQL, et est meilleur en termes de performance. +
+En effet, sans `setParameter`, chaque nouvelle clause donne lieu à 1 nouvelle requête (et à un nouveau calcul du plan d'exécution)
+
+* Pour la *gestion des listes* ("in(xxx)" en SQL), Hibernate propose une syntaxe raccourcie : on peut passer directement un objet étendant Iterator comme paramètre du HQL (comme une simple ArrayList) +
+Le `setParameter` est donc capable de gérer des `Iterator`.
+
+=== Chargement des Entity
+
+* `enable_lasy_load_no_trans=true` : si jamais on a fermé la transaction (`closeTransaction`) avant affichage, permet d'obtenir néanmoins le résultat. +
+Problème : va systématiquement générer une nouvelle session temporaire (pour chaque chargement "lasy"), ouverte puis fermée dès le résultat obtenu. +
+-> A éviter, c'est une mauvaise pratique.
+Autre solution, passage en *eager*, mais on ne bénéficie donc plus du mode *lasy*.
+
+.Rappel
+NOTE: les requêtes "n+1" : quand on est en *eager*, chaque demande de récupération sur des entities non encore récupérées donne lieu à une nouvelle requête (ce qui est par définition éviter en lazy) 
+
+[NOTE]
+====
+Le *passage eager vers lazy est très compliqué*. Possible presque uniquement via les *criteria* +
+*Préférer le lasy*, qu'on peut passer en eager en ajouter un simple `fetch` dans les requêtes HQL.
+====
+
+=== Cache
+
+Via le cache de 1er niveau, Hibernate garde en mémoire tous les objets d'une même transaction. +
+Evidemment, cela peut se terminer en Heap exception... +
+Dans ces cas, on peut forcer la vidange (totale) du cache de 1er niveau via un `clear`.
+
+[NOTE]
+====
+* cache de 1er niveau : implicite, toujours actif, scope transaction
+* cache de 2e niveau : utilisation optionnelle, scope application (SessionFactory)
+* cache de requête
+
+Les caches de niv 1 et 2 ne fonctionne QU'EN récupérant les entities via leur ID.
+====
+
+== Ressources
+
+* Slides de la présentation : https://github.com/Pierre76400/demohibernate
+
+
