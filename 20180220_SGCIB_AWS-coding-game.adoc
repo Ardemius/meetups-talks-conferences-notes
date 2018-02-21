@@ -1,0 +1,109 @@
+= AWS Serverless workshop - Wild Rydes Takes Off
+
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Workshop given by Amadou Merico & François Oblin (foblin@amazon.fr), of AWS. +
+François is also currently working at SGCIB.
+
+== Overview
+
+Global underlying theme: *Wild Rydes Serverless Workshops* - *promote the fly with unicorns!*
+
+This whole *serverless* workshop is described in GitHub, see: https://github.com/awslabs/aws-serverless-workshops/
+
+It is composed of 5 parts:
+
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/WebApplication[Web Application]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/DataProcessing[Data Processing]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/DevOps[DevOps]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/ImageProcessing[Image Processing]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/MultiRegion[Multi Region]
+
+During this 3 hours coding games, we will only have a look at the 1st part, the *Web Application*
+
+It is itself composed of 4 parts:
+
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/WebApplication/1_StaticWebHosting[Static Web hosting]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/WebApplication/2_UserManagement[User Management]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/WebApplication/3_ServerlessBackend[Serverless Backend]
+* https://github.com/awslabs/aws-serverless-workshops/blob/master/WebApplication/4_RESTfulAPIs[RESTful APIs]
+
+Those last imply the use of the following components:
+
+* *Amazon Lambda*
+* *Amazon DynamoDB*
+* *Amazon API Gateway*
+* *Amazon Cognito*: for user authentification
+* Amazon S3: to host the static resources of the site (everything that is not executed server side: HTML, CSS, Javascript, etc.) +
+S3 is somehow the "datalake" of Amazon
+* *Amazon IAM*: for autorisations
+
+== Workshop
+
+First, we lost time having issues with the temporary, pre-configured, AWS accounts for the workshop, but then, everything was fine.
+
+Temporary connection ID for AWS : 19
+
+Connection process:
+
+* AccountID: 001378298471
+* VDI_USER: 001378298471
+* VDI_PASS: SG@WS20180220
+* AWS_USER: aws_user
+
+-> Does *not* work
+
+For external desktop, the connection to our pre-configured AWS accounts has to be done through https://aws.amazon.com/fr/ ("classic" way)
+
+Test with 3rd ID given OK : 043876642695
+new MDP : TestAWS
+
+*CloudFormation* for *Infra As A Code* to win some time and automatically perform all steps actions.
+
+* Pool Id: us-east-2_29iesPhXa +
+App client ID: 4qr027om263r1pp99vmehd5bnc
+
+* fake@sgcib.com +
+Test123!
+
+* auth_token: +
+eyJraWQiOiI0bE5uZlhaUW95TitxeFRMSG5kRElSRm1uNWJXOTgxVWpGN0dyd2c4MjVNPSIsImFsZyI6IlJTMjU2In0.eyJzdWIiOiIzNDdjOWNhMC1lMTk1LTRiYzAtOTc3YS05MzEzYzEyZGU2MjAiLCJhdWQiOiI0cXIwMjdvbTI2M3IxcHA5OXZtZWhkNWJuYyIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZXZlbnRfaWQiOiIzZWFiZTRhYy0xNjRmLTExZTgtODE3ZS1kZmM3MjJmYWJiNTEiLCJ0b2tlbl91c2UiOiJpZCIsImF1dGhfdGltZSI6MTUxOTEzOTAyNCwiaXNzIjoiaHR0cHM6XC9cL2NvZ25pdG8taWRwLnVzLWVhc3QtMi5hbWF6b25hd3MuY29tXC91cy1lYXN0LTJfMjlpZXNQaFhhIiwiY29nbml0bzp1c2VybmFtZSI6ImZha2UtYXQtc2djaWIuY29tIiwiZXhwIjoxNTE5MTQyNjI0LCJpYXQiOjE1MTkxMzkwMjQsImVtYWlsIjoiZmFrZUBzZ2NpYi5jb20ifQ.MJNGfHMS59qBVS3zscA32VT1PuQJ-eep6QcgYdECI_7oSFtLuZDj397cGBioi9PxCQ5tvnCO7YXq72BQiOCRFjMBoKSZdN1IBYmQOQM5TGNmxRl7WspwC8nWBsfgIMym0ZEVgTUGUwrlZRq0pMZ4VLBC5D6la0g2Dh_sIP8XbeX0OVoAky83Zyqi7X3C6R4T5v68knazZUAEq_kMY_XhrmDjg6kBwfWIJEEmiqmSneWPtmCm9ND6bqdjYsOGHsKWjOcSGBMke6W1RzsGFKANpS89Wekbb0vGRaNZd182vCUpIKJA5QsHIFEBJfKj50Ntu1bRZZE8uJ4cPK8ecY8SGA
+
+Amazon Resource Name (ARN):	`arn:aws:dynamodb:us-east-2:043876642695:table/Rides`
+
+Site URL: http://wildrydes-ardemius.s3-website.eu-west-3.amazonaws.com/ride.html
+
+Invoke URL: https://t1j4bdc64l.execute-api.us-east-2.amazonaws.com/prod
+
+All tests OK up to part IV, RESTFul APIs. +
+-> *Web Application* module working!
+
+== Conclusion
+
+Except for the first technical issues with the AWS preconfigured accounts, it was a very good workshop, that could be also be done at home (using the https://github.com/awslabs/aws-serverless-workshops/[GitHub repo]).
+
+Several AWS components used, with a real, effective, application created at the end.
+
+
+
