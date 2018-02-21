@@ -68,8 +68,10 @@ Connection process:
 
 * AccountID: 001378298471
 * VDI_USER: 001378298471
-* VDI_PASS: xxx // VDI_PASS: SG@WS20180220
-* AWS_USER: yyy // AWS_USER: aws_user
+* VDI_PASS: xxx 
+// VDI_PASS: SG@WS20180220
+* AWS_USER: yyy 
+// AWS_USER: aws_user
 
 -> Does *not* work
 
