@@ -1,0 +1,108 @@
+= Architecture Serverless
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté à SGCIB.
+
+== Intro
+
+== Serverless
+
+Présenté par Adrien BLIND.
+
+* Serverless = BaaS + FaaS
+
+image::20180126_AWS-serverless-1.jpg[]
+
+* Se renseigner sur la solution OpenFaaS
+
+Existent des solutions *on Cloud*, ou *on Premise*
+
+Le serverless reste réservé à des traitements indépendants (stateless), et courts (300 ms max à 540 ms (Google dans ce dernier cas))
+
+Revoir la 12-factor app méthodologie : https://12factor.net/
+
+== Présentation des solutions du marché
+
+Présenté par Patrice LACHANCE
+
+== Cloud Functions: serverless compute avec Google Cloud Platform
+
+Presented by Guillaume LAFORGE, developer advocate chez Google
+
+Serverless building blocks on Google Cloud Platform
+
+image::20180126_AWS-serverless-2.jpg[]
+
+* Pas d'API Gateway chez Google Cloud Functions -> on peut appeler directement une function en HTTP
+
+NOTE: Généralement le coût de l'appel de la function coûte peu, mais celui de l'API Gateway coûte cher
+
+* Pour le développement, Google met à disposition un émulateur de functions (google-cloud/functions-emulator) pour réduire le temps de compilation.
+
+Cloud Functions use cases 
+
+image::20180126_AWS-serverless-3.jpg[]
+
+Firebase : solution de Google pour faire des appli mobiles, etc. +
+-> Cloud Functions est intégré à Firebase
+
+Dialogflow : outil pour faire des chatbots
+
+Pour résumé, avec les Cloud Functions :
+
+* No need to event think about servers
+* pay only for what you use
+* event-driven
+* deploy functions, *not* apps
+
+== OpenWhisk : le FaaS à la mode Open Source
+
+Présenté par Catherine Ezvan - Chairperson of IBM Technical Expert Council France
+
+IBM est un fort contributeur d'Apache OpenWhisk
+
+image::20180126_AWS-serverless-4.jpg[]
+
+Architecture d'Apache OpenWhisk
+
+image::20180126_AWS-serverless-5.jpg[]
+
+Adaptation pour IBM Cloud
+
+image::20180126_AWS-serverless-6.jpg[]
+
+Différents types de containers et sont gérés par la plateforme afin de minimiser leur temps de lancement.
+
+* Cold container
+* pre-warmed container
+* warm container
+
+== Conclusion
+
+Toutes les démos ont été faites en Node.js
+
+L'outil d'Instant Messaging utilisé par tous les speakers est Slack.
+
+
+
