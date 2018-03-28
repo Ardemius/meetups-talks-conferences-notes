@@ -1,0 +1,86 @@
+= Vendredi 12:55 / 13:40 - CQRS/EventSourcing par la pratique
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Clément Heliou. +
+https://cfp.devoxx.fr/2017/talk/HSF-1743/CQRS%2FEventSourcing_par_la_pratique[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Architecture, Performance and Security
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Event Sourcing
+
+NOTE: *Event Sourcing* : pattern d'architecture +
+Se concentrer non pas sur l'état courant, mais sur les changements d'état amenant à cet état final.
+
+A un instant "t", on a sauvegardé tout ce qui s'est passé dans le passé.
+
+C'est un vieux pattern, qui revient très à la mode actuellement.
+
+Forces de l'Event Sourcing :
+
+* audit : on a tous  les évènements pour analyse ultérieure
+* analyse / debug : on dispose de toute la séquence métier
+* reprise de données : en rejouant nos évènements
+* performance : les implémentations de l'Event Sourcing reposent _généralement_ sur ces composants qui scallent bien.
+* excellent moyen de synchroniser son application avec d'autres.
+
+Suivre Jérémy CHASSAING
+
+image::vendredi_1255_CQRS_01.jpg[width="800"]
+
+Importance des fonctions :
+
+* de décision : là on se trouve le métier
+* d'évolution : *PAS* de métier ici
+
+Il n'y a pas d'évènement qui n'ait pas de *cause unique* ! +
+Et cette cause, c'est une *commande*.
+
+Exemple concret avec le problème Sogé Multiplus sur lequel Clément travaille :
+
+image::vendredi_1255_CQRS_02.jpg[width="800"]
+
+Multiplus est un orchestrateur de prix.
+
+Pour raisonner : création d'une *machine à état*.
+
+Je reçois un prix -> je marque la réception -> j'appelle la machine à état
+
+image::vendredi_1255_CQRS_03.jpg[width="800"]
+
+Utilisation d'une Event Loop (= *1 seul thread*)
+
+image::vendredi_1255_CQRS_04.jpg[width="800"]
+
+L'Eevnt Sourcing, c'est sauvegarder les évènements.
+
+== CQRS
+
+NOTE: *CQRS* = Command Query Responsability Segregation.
+
+Pourquoi utiliser CQRS :
+
+* pour séparer les responsabilité
+
+Retour d'XP : être progressif +
+Lors du passage à CQRS, Clément a commencé par n'envoyer *QUE* les évènements intéressants.
+
+image::vendredi_1255_CQRS_05.jpg[width="800"]
+
+== Ressources
+
+Dénommer un évènementn n'est pas une chose aisée. +
+Voir le livre "_Anatomy of Domain Event_"
+

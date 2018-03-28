@@ -1,0 +1,78 @@
+= Déploiement continu de modèle de Machine Learning 
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Loïc Divad de Xebia (Data Engineer @Xebia @loicmdivad)
+
+== Abstract
+
+De plus en plus d’initiatives Data Science sont rendues possibles grâce à la mise en place de DataLakes. +
+Les *modèles de Machine Learning* inclus dans ces projets sont, comme toute application, sujets à évolutions. +
+*Le suivi de ces évolutions peut-il être automatisé ?* Les standards de déploiement pour ces applications sont-ils toujours de rigueur ?
+
+Lors de ce slot nous présenterons différentes pistes pour réconcilier Continuous Delivery et Machine Learning.
+
+== Introduction
+
+*Contexte* : prédiction du CA des équipements (ex: bornes de prise de paris)
+
+Malgré ces technos récentes, David a gardé un cadre de travail "classique" (une usine de dev basée sur GitHub / Jenkins pour ne pas la citer)
+
+Il faut après créer et entraîner un (son) modèle +
+Avec le temps et l'accumulation des data, il sera nécessaire de réentraîner le modèle.
+
+image::deploiement-continu-ML-1.jpg[]
+
+Il va donc falloir différencer *modèle de prod* et *modèle courant*. +
+Les évolutions entre ces modèles doivent être *traçables*, tout comme les data sets utilisés (une nouvelle fois le concept de *data lineage*)
+
+image::deploiement-continu-ML-2.jpg[]
+
+== Machine Learning Platform
+
+Si on regarde le schéma précédent, on voit qu'il y a des technos pour tout, *sauf pour la gestion des modèles*. +
+Plusieurs sociétés travaillent actuellement sur cela, à savoir créer une [red]*Machine Learning Platform*.
+
+image::deploiement-continu-ML-3.jpg[]
+
+image::deploiement-continu-ML-4.jpg[]
+
+Caractéristiques de cette Machine Learning Plateform :
+
+image::deploiement-continu-ML-5.jpg[]
+
+* évaluation automatisée des modèles
+
+=== En conclusion
+
+image::deploiement-continu-ML-6.jpg[]
+
+La *Machine Learning Platform* vient compléter la chaîne de CI / CD de nos architectures Big Data.
+
+Pour des outils déjà existants, voir https://www.h2o.ai/steam/[Steam de H2O].
+
+Côté *format PMML* (https://en.wikipedia.org/wiki/Predictive_Model_Markup_Language[Predictive Markup Model Langague]), l'avis de David est qu'il va (doit ?) encore évoluer. 
+
+== Ressources
+
+* https://www.youtube.com/watch?v=MXpjoCUtxGU[Vidéo de la présentation]

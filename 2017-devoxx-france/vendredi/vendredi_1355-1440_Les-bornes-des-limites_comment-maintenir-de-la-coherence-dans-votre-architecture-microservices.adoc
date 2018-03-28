@@ -1,0 +1,101 @@
+= Vendredi 13:55 / 14:40 - Les bornes des limites : comment maintenir de la cohérence dans votre architecture microservices
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Clément Delafargue. +
+https://cfp.devoxx.fr/2017/talk/PBE-1859/Les_bornes_des_limites_:_comment_maintenir_de_la_coherence_dans_votre_architecture_microservices[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Architecture, Performance and Security
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Avant on avait 1 monolithe et 1 base. +
+Avec les microservices, on a maintenant 17 stacks techniques, 17 persistances distinctes, etc. +
+Cela peut vite devenir le *bazar*.
+
+== Intérêts du passage aux microservices
+
+* *smaller teams*
+* *schéma BDD plus simple*
+* *cycles de vie indépendants*
+* *polyglot tech stacks* : Un intérêt des microservices est également d'utiliser la bonne techno pour répondre au besoin. On fait des microservices, il ne faut pas se limiter à 1 seule stack, on pourrait une partie de l'intérêt des microservices.
+* p*olyglot persistence* : plus besoin de conserver notre seule et unique base Oracle qui coûte une blinde et nécessite des optimisations tordues.
+
+== Mais, pourquoi rester sur un monolithe ?
+
+* *complexité de l'architecture microservices* (surtout appels réseau) face à la simplicité du monolithe (pas besoin de démarrer 150 services qui vont devoir parler ensemble.)
+
+== Donc, dans quel cas pouvez-vous passer aux microservices ?
+
+* si vous êtes capable de faire du rapid provisionning (si on doit signer 12 formulaires avant d'avoir le droit de démarrer un serveur, il va y avoir un problème...)
+* basic monitoring (de tous les noeuds)
+
+== A quoi faut-il bien penser lors du passage aux microservices ?
+
+* Automate builds
+* Automate config injection
+* Automate deployments : 150 services avec chacun la possibilité d'un crash, vous n'avez pas envie que ce soit un humain qui soit réveiller la nuit...
+* don't share state : 150 services qui partage un état, si partage de l'état et plantage du service, la récupération de l'état va être une galère sans nom.
+* Put sessions in a proper DB : on ne stocke pas les sessions en simple file system.
+* Use *S3* for files : pour le côté distribué
+* Use explicit synchronization : une base SQL n'est pas faite pour gérer un synchro. Use *zk*, *etcd*, *consul*, un vrai moteur de consensus.
+
+La complexité est sortie de la base de code (voir la keynote _"Complexity is outside the code"_).
+
+* 1990 : code spaghetti
+* 2000 : lasagne
+* 2010 : ravioli (microservice)
+
+Quand vous êtes un appel, *il est vital de savoir si vous êtes local ou distant*. +
+Il ne faut pas "planquer" l'appel réseau (maquiller le code), pour rendre l'appel réseau transparent. +
+Si vous devez planquer un code "moche", il y a peut-être un problème en amont...
+
+*Désastre actuel* : les ORMs +
+Clément est férocement opposé aux ORMs, avec l'argument que les BDD relationnelles sont mathématiquement très bien définies, alors que les ORMs sont définis très (trop) différemment. +
+A l'entendre, il donne l'impression que c'est faire dialoguer des choux avec des carottes.
+
+[red]*La complexité doit toujours être visible, il ne faut pas la planquer !* : +
+Hidden complexity -> technical debt
+
+*Hexagonal architecture* : permet de très bien définir les frontières, on passe obligatoirement à l'extérieur par des adaptateurs bien définis.
+
+*Make topology explicit* +
+Par contre, les microservices ne doivent connaître l'intégralité de votre topology
+
+*DNS + reverse proxy* : solide très solide, pas besoin de Kafka / zookeeper / etc. +
+C'est une très bonne solution dès lors que votre topology est claire.
+
+*Toute la difficulté est de savoir où sont les frontières.* +
+il est essentiel de documenter les interactions -> cela s'appelle un protocole.
+
+Si on utilise JSON, il est utile, si possible d'y ajouter JSON schema (c'est pas parfait, mais mieux que rien)
+
+*Swagger et RAML* sont de très bons outils pour définir les endpoints.
+
+Avro est un bon remplaçant de JSON selon Clément :
+
+* *compact serialization* (*VERY* compact)
+* cross-language
+* strong schema : si vous n'avez pas le schéma, vous ne pouvez *PAS* lire le message (la partie lourde du language)
+
+== Pour conclure
+
+* Automatiser
+* Partager *pas* l'état
+* *Connaissez vos les frontières de votre appli !*
+
+== Mon avis
+
+Je suis tellement d'accord avec le constat de ne pas planquer la complexité !

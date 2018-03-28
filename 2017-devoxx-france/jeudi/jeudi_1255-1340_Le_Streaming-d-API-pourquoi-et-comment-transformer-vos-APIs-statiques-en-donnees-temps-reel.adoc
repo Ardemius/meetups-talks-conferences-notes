@@ -1,0 +1,66 @@
+= Jeudi 12:55 / 13:40 - Le Streaming d'API : pourquoi et comment transformer vos APIs statiques en données temps réel ?
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Audrey Neveu. +
+https://cfp.devoxx.fr/2017/talk/IRE-9013/Le_Streaming_d'API_:_pourquoi_et_comment_transformer_vos_APIs_statiques_en_donnees_temps_reel_%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Web, JS, HTML5 & UX
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+L'animation est ce qui permet de fidéliser l'utilisateur !
+
+Quels sont les ennemis de l'animation ?
+
+* Refresh button is evil
+* The Loading screen of the death
+
+== On arrête le polling, et on passe au streaming !
+
+Polling (Madness) : 98,5% of polls are *wasted*
+
+=== Webhooks
+
+Est avant tout un concept, tout le monde fait ce qu'il veut pour l'implémentation :
+
+* AMQP Broker : la meilleure solution
+* batch
+* inline HTTP requests
+* SQL-based requests
+
+=== Server-Sent events vs Web-sockets
+
+* *Web-sockets* : protocol binaire
+** nécessite une reconfiguration du proxy (les OPS vont être heureux)
+** en cas de connexion perdu, rien n'est prévu
+** supporté par tous les navigateurs
+
+* *Server-Sent Events* : protocal texte
+** s'appuie sur HTTP : pas de grosse reconfiguuration requise (juste la durée des sessions)
+** en cas de perte de connexion, possibilité de configurer un reconnexion time-out
+** supporté par tous les navigateurs *modernes* (ni IE ni Edge)
+
+En termes de performance, SSE est de 1.3 à 2+ fois plus rapide que Web-Sockets.
+
+D'où la création par StreamData.io d'un Proxy (SSE) qui s'intercale avec toutes les API JSON :
+
+image::jeudi_1255_streaming-API_01.jpg[width="800"]
+
+Ce proxy utilise JSON-Patch (RFC-6902) pour les échanges en JSON.
+
+== Demo : faire danser des drônes
+
+Via le site https://portal.streamdata.io

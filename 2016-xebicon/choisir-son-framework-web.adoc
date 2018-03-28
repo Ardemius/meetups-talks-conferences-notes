@@ -1,0 +1,108 @@
+= Choisir son framework web (Angular2, React, Vue.js)
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+== philosophies différentes des 3 outils
+
+=== Angular
+
+* c'est un framework
+* JS associé à des templates HTML
+* tout est inclus (HTTP, Router, etc.)
+* on passe en Typescript (typage static et annotations)
+* grande communauté
+* Google derrière toutes les briques du framework
+
+On prend si :
+
+* compétences sur Typescript
+* backgroung Angular 1
+* framework tout en un
+
+
+=== React
+
+* librairie
+* JS + renderers
+* librairies tierces nécessaires
+* utilisation de js "pur" (plus surcouche légère "flow"). +
+Pas de template comme avec Angular
+* ecosystème très riche et grande communauté
+
+On prend si :
+
+* choix des implémentations
+* maturité
+* préférence pour une surcouche légère et *optionnelle* de javascript
+
+== Tooling
+
+* Webpack (module bundler)
+* BABEL
+* plugin react dans le browser
+
+== Exemple de code Angular2
+
+Angular2 est orienté composant +
+Tout est classe en Angular2 +
+On indique que c'est un "component" à l'aide des metadata
+
+== Exemple de code React
+
+* Redux / Flux : store unique pour gérer l'état de l'application
+* rendu côté serveur
+** possible aussi côté Angular avec Universal
+
+== chemin de migration
+
+Angular 1 à 2 : possible MAIS faut avoir déjà migré en 1.5, ET suivi quelques bonnes pratiques
+
+== développement mobile
+
+Angular2 : Ionic (composants hybrides uniquement) et Native script (composants natifs) 
+
+React / React Native
+
+Si on veut bénéficier de toutes les fonctionnalités du SDK : le mieux est de faire du natif +
+Par contre, pour Angular, Native Script est vraiment très jeune, déconseillé actuellement pour la PROD. +
+Ionic est très mature
+
+== testing
+
+* Angular2 : 
+** TU : Jasmine + Karma
+** tests end to end : Protractor
+
+* React :
+** JU : est
+** Enzime
+
+== Vue.js
+
+challenger des 2 autres références, monte en puissance. +
+Créé en 2014, version 2 vient de sortir.
+
+* Vue.js est plus proche en fonctionnalité de React.
+* Il s'agit d'une librairie
+* extrêmement léger : au minimum, l'application est 2 à 3 fois plus légère qu'en Angular
+* *simplicité* portée à l'extrême
+
+Même si tout en un, redux est de plus en plus conseillé / utilisé avec Angular2 (on ne va donc pas utiliser certaines parties d'Angular2)
+
+== Conclusion
+
+image::angular2-react-vuejs-choisir-son-frmk-web-1.jpg[title="""Principe de connexion du Beacon""", width="1000"]
+
+
+
+
+
+
+
+
+
+
+
+

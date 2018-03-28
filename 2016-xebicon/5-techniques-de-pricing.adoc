@@ -1,0 +1,55 @@
+= Thiga - Vendre un produit en mode Saas
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+"Le bon prix est celui payé par l'utilisateur avec un peu de douleur"
+
+Le pricing doit être en corrélation avec la vision du produit, et son positionnement (luxe)
+
+== 5 techniques
+
+=== customer interviews
+
+Combien seriez-vous prêt à payer ? +
+Seriez-vous prêt à payer 10€ ? +
+Par comparaison
+
+Van Westendorp's Price Sensitivity Meter:
+
+* Is it too expensive?
+* too cheap?
+* Not a bargain?
+
+=== Ordre de grandeurs de l'industrie
+
+Gross margin = (Revenue - Cost of Goods Sold) / Revenue
+
+COGS : frais d'hébergement, service tiers, support, on-boarding équipe. +
+Attention ! le développement, coût d'acquisition n'est pas inclus.
+
+==== rapport entre COCA et LTV
+
+COCA : coût d'acquisition (Cost of Customer Acquisition) +
+LTV : Life Time Value - prévision sur ce que va rapporter le produit sur sa vie
+
+La LTV doit être au moins 3x sup au COCA
+
+=== Equilibre financier
+
+Calculer le prix en fonction du nombre de clients projetés
+
+=== Benchmark
+
+Positionner le produit en comparaison d'autres produits (de même type ou de catégorie différente) +
+Prendre en considération le contexte (groose boîte peut vendre à presque perte...)
+
+=== Buy vs Build
+
+Comparer le prix de l'abonnement avec celui d'un développement maison.
+
+== Conclusion
+
+image::5-techniques-de-vente.jpg[title="", width="1000"]
+

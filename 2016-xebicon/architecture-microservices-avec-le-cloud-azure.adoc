@@ -1,0 +1,79 @@
+= Architecture micro-services avec le Cloud Azure
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+image::architecture-microservices-avec-cloud-azure-1.jpg[title="", width="1000"]
+
+le projet de test présenté ici utilise le framework .Net core (???) +
+Ce dernier peut tourner sur Windows, Linux ou Mac (parfaitement interopérable)
+
+Microsoft : très gros contributeur de Docker +
+Maintenant, le container Docker est *nativement* supporté dans Windows
+
+Le Cloud Azure peut maintenant héberger des containers Docker
+
+== Docker Datacenter
+
+Sur Azure : *Docker Datacenter*
+
+templates en JSON disponibles, et permettent d'automatiser la mise en place des outils sur Azure (plutôt que de tout faire en clics via la GUI)
+
+Docker Datacenter :
+
+* avantages
+** plateforme complète
+** mutualisation des ressources
+* inconvénients
+** ce sont des VMs à gérer (c'est du IaaS)
+** *coût* : 150€ par VM par mois + nombre de machine (min 6)
+
+== Azure Container Service
+
+Maintenant, à la place de Docker Datacenter : *Azure Container Service*
+
+* offre de cluster Docker, basée sur Swarm 1.11 (possible aussi avec DC/OS et Kubernetes)
+
+Azure Container Service :
+
+* avantages :
+** 
+* inconvénients :
+** besoin d'ajouter des solutions de monitoring tiers
+** pas de Swarm mode
+
+== Service Fabric
+
+== Azure AppService
+
+Autre choix pour héberger du micro-services dans Azure
+
+On délègue toute la gestion de l'infrastructure à MS.
+
+* Full PaaS, plus de VMs à gérer.
+* supporte de nombreux langages : Java, C#, Python, etc.
+
+== Conclusion
+
+Au final, la présentation ne me donne pas l'impression d'un produit sexy. +
+La faute à tout ce clic clic clic dans la GUI. Un mode configuration par fichier est possible, j'aurais préféré voir cette dernière (mais la préférence à la GUI, j'ai vraiment l'impression que c'est l'essence de Microsoft)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

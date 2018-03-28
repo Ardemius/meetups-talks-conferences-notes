@@ -1,0 +1,87 @@
+= Mercredi 17:10 / 17:40 - Pourquoi Kafka Streams change le Game !
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Fred CECILIA. +
+https://cfp.devoxx.fr/2017/talk/JZR-6594/Pourquoi_Kafka_Streams_change_le_Game_!_[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Pièce maîtresse du Big Data à l'heure actuelle.
+
+*Kafka streams* : spécialisé pour la *latence basse*.
+
+Confluent architecture : 
+
+image::mercredi_1710_kafka_01.jpg[width="800"]
+
+Processor topology = graphe d'exécution
+
+Kafka Streams DSL (pour simplifier une écriture plutôt "atroce" sinon)
+
+* KStream (stateless)
+* KTable (stateful)
+* GlobalKTable (stateful)
+
+NOTE: Rappel : +
+Kafka : fonctionnement basé sur le principe de *clé / valeur*
+
+== Stateless transformations
+
+* filter
+filterNot
+* foreach
+* map\*
+* mapValues
+* selectKey
+* flatMap
+* branch*
+
+== From Stream to table
+
+Kafka est un *commit log* distribué (commit log = descriptif de ce qui a été fait)
+
+Communication KStream <--> KTable
+
+image::mercredi_1710_kafka_02.jpg[width="800"]
+
+Jointures possibles entre KStream et KTable
+
+== Interactive Query
+
+image::mercredi_1710_kafka_03.jpg[width="800"]
+image::mercredi_1710_kafka_04.jpg[width="800"]
+
+On vient supprimer les intermédiaires. +
+On peut se limiter à une API REST très réduite pour obtenir nos résultats.
+
+Pas de discovery à gérer, Kafka Streams s'occupe de tout (une fois de plus, simplicité mise en avant)
+
+== Le futur
+
+* Exactly Once : la garantie que le message sera lu *une seule fois*
+* 
+
+== Ressources
+
+Fred Cecilia : @naikyworld
+
+* docs.confluent.io : doc très bien faite
+
+== Mon avis
+
+Trop rapide, je pense que le scope était trop vaste pour le temps imparti (30 min)

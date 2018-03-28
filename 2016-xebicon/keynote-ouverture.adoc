@@ -1,0 +1,43 @@
+= Keynote d'ouverture
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Présentée par Thibaud Cavin, directeur de Xebia Studio, et Pablo Lopez, CTO Xebia.
+
+Xebia regroupe actuellement (fin 2016) ~120 personnes.
+
+== Le train de l'innovation
+
+image::keynote-ouverture-1.jpg[title="", width="1000"]
+
+image::keynote-ouverture-2.jpg[title="", width="1000"]
+
+Extrêmement impressionnant, une véritable démonstration technogique.
+
+Les Xebians ont réalisé toute une *maquette* (~4 mètres sur 1) autour d'un *train "connecté"*. +
+Les participants à la Keynote peuvent télécharger une *application mobile* (dont l'URL leur est broadcastée par un Beacon en entrant dans la salle) leur permettant d'être notifiés de l'avancée du train au fur et à mesure de son parcours. +
+Nous sommes divisés en 2 groupes : ceux souhaitant aller à Lyon, et ceux plus intéressés par Bordeaux (et ses caves ! Gros succès de cette 2nd destination...) +
+*Le parcours est interrompu par plusieurs obstacles* :
+
+* problème de lampadaires en panne -> *redéploiement à chaud*, sans coupure de service de toute l'application
+* animal sur les voies ! -> *reconnaissance de forme* (cochon en l'occurence), et arrêt du train jusqu'à son évacuation.
+
+L'application a également permis, aux intéressés par Bordeaux, de simuler la commande de leur vin préféré...
+
+Quelques-unes des technologies mise en oeuvre :
+
+* puces RFID
+* IoT via Arduino
+* détection visuelle et reconnaissance d'obstacle via *OpenCV* (figurine de cochon détectée et reconnue)
+
+Toutes les sources sont sur GitHub : tout est OpenSource, voir le http://blog.xebia.fr[blog de Xebia]. 
+
+Le travail de *26 Xebians* sur un bon moment (*2640 heures de travail*, [red]*TOUT SUR LEUR TEMPS LIBRE*)
+
+== Ressources
+
+* http://blog.xebia.fr/2016/11/10/le-train-de-linnovation-est-arrive-a-la-xebicon/
+* http://blog.xebia.fr/2016/09/27/en-exclusivite-la-keynote-de-la-xebicon-se-devoile/
+* https://github.com/xebia-france/xebicon[Code source de tous les projets ayant été nécessaires à la réalisation du projet]

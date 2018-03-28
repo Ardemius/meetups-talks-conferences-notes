@@ -1,0 +1,112 @@
+= Jeudi 11:15 / 12:00 - Dual Universe: Challenges techniques de la création d'un monde virtuel "single-shard" entièrement éditable
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Jean-Christophe Baillie. +
+https://cfp.devoxx.fr/2017/talk/PRV-0895/Dual_Universe:_Challenges_techniques_de_la_creation_d'un_monde_virtuel_%22single-shard%22_entierement_editable[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Cloud & Scaling
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Vieux rêve de Jean-Christophe : création d'un jeu avec monde virtuel qui pourra être intégralement créé par les joueurs. (créneau des MMO)
+
+Conseille le livre _"Ready Player ONE"_
+
+VOir le site www.dualthegame.com : un single shard game, 1 seul serveur auquel tous les joueurs se connectent, 1 seule et même version du monde. +
+Tout est en temps réel, tout est éditable (très gros challenge technique).
+
+Jean-Christophe est fondateur de Novaquark, société derrière le jeu (Dual Universe). +
+3e plus gros KickStarter de l'année 2016 dans le domaine du jeu vidéo.
+
+Grosse communauté de gamers existe déjà (avec de nombreuses guildes déjà créées), alors que le jeu n'est pas encore sorti : community.dualthegame.com
+
+Objectif : sortie du jeu en 2018, avec alpha pour septembre 2017
+
+== Principaux problèmes techniques
+
+* *continuous single-shard cluster*
+* *planetary voxel engine* : transmission des modifications faites par le joueur d'une échelle à l'autre (ex : le joueur creuse un trou dans une planète, ce dernier doit être visible depuis l'espace)
+
+Si atroupement de joueurs au même endroit : division de la zone de jeu en différentes parties, de plus en plus nombreuses en fonction de la densité de joueurs, et assignation de chaque zone à un serveur dédié (le joueur est donc switché d'une machine à l'autre de manière transparente).
+
+=== Single-shard Cluster
+
+*Actor based programming*
+
+Stack technique :
+
+* Erlang
+* Scala / AKKA : abandonné car beaucoup de code commun client et serveur. +
+Faire des ponts entre Java et C++ n'est donc pas la meilleure des idées.
+* C++ LIBCAL +
+Ils font en fait du C++ MOINS C -> toutes les parties purement "C" n'est pas utilisée.
+
+C++ Actor Framework features (LIBCAL) :
+
+* Lightweight
+* Distributed
+* Simple
+* Adaptive
+* Lockfree
+
+NOTE: La grosse problématique : avoir un système qui *scale* bien.
+
+=== VOXEL
+
+L'autre grosse techno, essentielle pour un "fully editable world".
+
+Egalement très utilisée dans le monde de l'imagerie médicale.
+
+Techniques standards :
+
+* *Dual Contouring* (with Hermite Data Fields) : technique utilisée par Dual Universe
+* Marching Cubes
+* Extended Marching Cubes
+
+== Emergent Gameplay
+
+*Meta game design* : les joueurs vont se servir des règles du jeu pour créer les leurs. +
+Il n'y a donc pas de quêtes dans le jeu, mais, par exemple un marché du travail, poussé par certains joueurs, qui ont pour objectif de créer l'Etoile Noire. +
+Il suffit donc de s'appuyer sur la motivation d'un petit nombre de joueurs pour pousser la majorité des autres.
+
+C'est l'excellence du "travail" de certains joueurs (qui vont par exemple construire un vaisseau exceptionnel qui pourra ensuite être construit en série), qui poussera leur reconnaissance pour l'ensemble des autres.
+
+Exemple : un vaisseau est une infrastructure voxel +
+C'est physically based (il faut un moteur pour pouvoir avancer) +
+Tout ceci (workflow de création) est poussé par du *LUA*. +
+Ce n'est pas non plus "trop" réaliste (car sinon il faudrait travailler chez Dassault)
+
+Les vidéos d'exemple de construction de vaisseau de l'équipe Novaquark sont bluffantes (chercher sur YouTube)
+
+DPU : *Distributed Processing Units* (pour la création d'éléments du monde, comme les vaisseaux)
+
+image::jeudi_1115_dual-universe_01.jpg[width="800"]
+
+NOTE: Le script LUA s'exécute sur le client. +
+On ne veut que du code écrit par des tiers soit exécuté sur le serveur, ce que l'on comprend bien ;)
+
+* Existence d'un système de droits / interdiction des actions possibles par les joueurs.
+* Economie réaliste : sur le modèle de Eve Online 
+
+== Ressources
+
+L'équipe recrute ! www.dualthegame.com
+
+
+== Mon avis
+
+Conf impressionnante. +
+On rentre dans la conception technique du jeu, de son rendu graphique, et on se rend bien compte de la complexité de la tâche.

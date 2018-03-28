@@ -1,0 +1,61 @@
+= Vendredi 09:00 / 09:20 - Ethical AI
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Francesca Rossi. +
+https://cfp.devoxx.fr/2017/talk/OGJ-4797/Ethical_AI[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Contenu du talk
+
+Francesca travaille pour IBM, côté Watson.
+
+AI ethics is a big domain of research.
+
+image::vendredi_0900_ethical-AI_01.jpg[width="800"]
+
+*Augmented intelligence* = Human *PLUS* Machine
+
+Human are good at :
+
+* asking questions
+* common sense
+* value judgment
+
+Machine are good at :
+
+* large-scale math
+* ???
+
+Health care is a very big domain of application of AI.
+
+IBM Watson for Drug discovery.
+
+L'IA permet de très grosses avancées dans le domaine de la recherche génétique. +
+L'union du Deep Learning, d'un volume vertigineux de data, et de l'augmentée de la puissance de calcul ouvre des perspectives qui restaient encore récemment du domaine de la fiction.
+
+Challenge : *traduire l'éthique en termes de code*
+
+Les robots devront se comporter différemment suivant les normes culturelles des pays où ils seront utilisés.
+*Inverse Reinforcement Learning* : les robots vont apprendre en nous regardant
+
+There is a possibility for machines to help us better than humans.
+
+== Ressources
+
+Les slides sont à récupérer car contiennent de nombreux liens / ressources utiles dans le domaine de l'IA.
+
+

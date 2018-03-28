@@ -1,0 +1,72 @@
+= The Physical Web
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Qian Jin, Développeur Mobile chez Xebia
+
+== Description
+
+L'*iBeacon*, introduit lors de la WWDC en 2013 est en cours de standardisation, grâce au projet open-source Eddystone. Associé à cette technologie, le projet *"The physical Web"* lancé par Google, promet lui aussi de grandes innovations dans le monde de l'IoT. En effet, il a pour but de pouvoir relier un smartphone à un beacon sans passer par une application. Ceci offre un large panel d'utilisation, pour relier des lieux physiques avec le monde virtuel. Nous ferons le point sur le projet et les technologies sous-jacentes, avant de se plonger dans les cas d'utilisation concrets, existants ou à venir.
+
+== Mes notes
+
+Projet *Physical Web* poussé par Google : liaison *directe* entre un beacon et un smartphone :
+
+image::the-physical-web-3.jpg[title="Principe de connexion du Beacon", width="600"]
+
+"The most profound technologies are those that disappear. They weave themselves into the fabric of everyday life until they are indistinguishable from it."
+-- Mark Weiser
+
+Un petit rappel de l'explosion de l'IoT et du nombre d'objects connectés :
+
+image::the-physical-web-1.jpg[title="Explosion du nombre d'objets connectés", width="1000"]
+
+Une des technologies utilisée pour le *train de l'innovation*. +
+L'iBeacon permet d'être notifié en fonction de l'environnement : je rentre dans la pièce avec mon smartphone, je suis notifié de la présence d'une URL, broadcastée par l'iBeacon.
+
+*Le beacon ne sert finalement qu'à broadcaster une URL*.
+
+Exemple de kit de Beacon de la société Estimote :
+
+image::the-physical-web-2.jpg[title="Kit de Beacons", width="600"]
+
+Pour rappel : Beacon = *phare* ou *balise*
+
+Config d'un beacon : 
+
+* définir *l'URL de broadcast*
+* sélectionner une fréquence d'émission
+
+Accès à la configuration du web physique sur Chrome sous Androïd : *paramètres / confidentialité / web physique* +
+On y trouve une fonctionnalité permettant de trouver les URLs broadcastée à proximité.
+
+D'immenses possibilités d'utilisation au quotidien :
+
+* pub à proximité d'un stand
+* Le beacon sur le collier d'un chien
+
+Avantages par rapport à certaines autres technologies :
+
+* Utilisation plus simple et plus rapide qu'un QR code.
+* Portée plus grande que celle d'une puce RFID.
+
+Technologie de transmission de données associée : *Bluetooth low energy*
+
+Nous nous dirigeons vers des technologies dites "calmes", ce que Mark Weiser définit comme :
+____
+that which informs but doesn't demand our focus or attention.
+____
+L'info vient vers nous, nous n'avons pas à agir (taper sur un clavier) pour la récupérer.
+
+Plusieurs protocoles existent pour le physical web. +
+Par défaut, sur Chrome sous Androïd, c'est le protocole Google qui est utilisé, raison pour laquelle je ne vois que peu d'URL en broadcast dans la salle, les beacons de Quian Jin utilisant un protocole OpenSource. +
+Pour info, il est possible de télécharger une application Androïd permettant d'utiliser d'autres protocoles.
+
+*Possibilité de transformer un Raspberry Pi en beacon via un script Python.*
+
+== Mon avis
+
+Super conférence, je nous permets de découvrir les usages possibles du Beacon, et comment ce type de technologie "calme" pourrait transformer notre quotidien.
+

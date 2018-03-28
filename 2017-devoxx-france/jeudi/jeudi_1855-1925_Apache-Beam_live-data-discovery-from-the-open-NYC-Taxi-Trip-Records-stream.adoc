@@ -1,0 +1,57 @@
+= Jeudi 18:55 / 19:25 - Apache Beam, live data discovery from the open NYC Taxi Trip Records stream
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Robert Kubis. +
+https://cfp.devoxx.fr/2017/talk/SCA-4407/Apache_Beam,_live_data_discovery_from_the_open_NYC_Taxi_Trip_Records_stream[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Robert travaille pour Google, et est Developer Advocate. +
+Ils sont là pour aider les devs à utiliser les produits Google
+
+NOTE: Apache Beam : portable parallel data processing 
+
+image::jeudi_1855_apache-beam_01.jpg[width="800"]
+
+== Get Started
+
+* https://beam.apache.org
+* easy to run your pipelines on Google Cloud Platform
+
+A Maven archetype is available for this kind of project
+
+== The project
+
+Open data for all New Yorkers : a lot of data available
+
+* *Streaming patterns*: Aggregating Time based Windows
+* *Streaming patterns*: *Session Windows*
+
+Sample of the main method :
+
+image::jeudi_1855_apache-beam_02.jpg[width="800"]
+
+Apache Beam : interface between the runner and how you write your processing pipeline
+
+== Ressources
+
+* @hostirosti
+* github.com/hostiroti
+* https://bigquery.cloud.google.com/table/nyc-tlc:yellow.trips
+* un repo GitHub existe pour le projet
+* https://googlecodelabs.github.io/cloudl-dataflow-nyx-taxi-tycoon/

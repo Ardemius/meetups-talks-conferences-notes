@@ -1,0 +1,102 @@
+= Ce que la GDPR va changer dans le monde Big Data
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée Par Matthieu Blanc de Zeenea (@MatthieuBlanc)
+
+== Abstract
+
+À quelques mois de l’entrée en vigueur de la GDPR, les entreprises essaient encore de comprendre les mesures organisationnelles et techniques à mettre en place autour de leurs Big Data.
+
+Venez trouver les réponses à vos questions et balayons ensemble les actions à mener pour une mise en conformité du règlement.
+
+== Introduction
+
+image::GDPR.jpg[]
+
+On va tous devoir y passer, il s'agit réellement d'un nouveau "contrat social". +
+Touche *toutes* les entreprises manipulant des données de citoyens européens, y compris celles dont le siège n'est *PAS* en France.
+
+La *GDPR* est applicable dès le *25 mai 2018* (mais, soyons clairs, personne ou presque ne sera prêt pour cette date...)
+
+NOTE: GDPR = *General Data Protection Regulation*
+
+== 6 fondements à la GDPR
+
+image::GDPR-2.jpg[]
+
+Parmi les fondements les plus importants :
+
+* *Consentement de la personne* : et pas seulement en décochant une petite case en bas d'une page...
+* *Intérêts _légitimes_ du Data Controler* : ce n'est *PAS* un passe-droit pour le Data Controler, il devra justifier de ces intérêts.
+
+== Principes de traitement des données personnelles
+
+image::GDPR-3.jpg[]
+
+* *principe de responsabilité* : c'est au *gestionnaire des data* de prouver qu'il respecte bien toutes les règles de la GDPR (véritable *inversion de responsabilité*)
+
+== Garantir leurs droits aux personnes concernées
+
+image::GDPR-4.jpg[]
+
+NOTE: L'entreprise à *72 heures* pour prévenir l'autorité de régulation (en France, la *CNIL*) en cas de *piratage des data / intrusion*.
+
+== Actions à mettre en place suite à la GDPR
+
+image::GDPR-5.jpg[]
+
+Mise en place d'un véritable *Data Catalog* :
+
+* *Registre des traitements* : qui ? pourquoi ? quoi ? où ? jusqu'à quand ? comment ?
+* *Traçabilité des données* / *Data lineage*
+* *anonymisation des données* : chiffrement, tokenization, masque, obfuscation, K-anonymity, FPE (Format-Preserving Encryption) & DTP (Datatype-Preserving Encryption), *differential privacy*.
++
+NOTE: *differential privacy* : injecter du bruit dans les data, afin de "masquer" les données personnelles, tout en permettant toujours le traitement des data (déjà utilisé par Google, Apple et Microsoft)
+* *Big Data* : 
+	** Vision 360 des data users
+	** détection des données personnelles
+	** score de duplication des données
+	** inférence de qualité des données
+
+image::GDPR-6.jpg[]
+
+image::GDPR-7.jpg[]
+
+Cette solution de *Data Catalog* est, entre autres, la solution poussée par *Zeenea* (la société pour laquelle travaille Matthieu)
+
+== Conclusion
+
+Une très bonne macro vision du sujet, avec un bon listing des points à adresser.
+
+Certaines entreprises font une grosse veille sur le sujet (avec, par exemple, des algorithmes de machine learning *auditables*)
+
+== Ressources
+
+* https://fr.slideshare.net/XebiaFrance/xebicon17-ce-que-la-gdpr-va-changer-dans-le-monde-big-data-matthieu-blanc[Slides de la présentation]
+* https://www.youtube.com/watch?v=7a2g0h1E8IQ[Vidéo de la présentation]
+* Pour contacter Zeenea : info@zeenea.com
+
+
+
+

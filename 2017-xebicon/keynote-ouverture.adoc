@@ -1,0 +1,34 @@
+= Keynote d'ouverture Xebicon'17
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Pablo LOPEZ, directeur technique chez Xebia
+
+== Notes
+
+Xebia : groupe de *350 passionnés* en 2017, en comptant les nombreuses "spin-off" (dont XebiaLabs et Zeenea pour la petite dernière) +
+Xebia même compte *150 collaborateurs*.
+
+Contrairement à l'année dernière, pas d'Innovation Train en Keynote (était vraiment fantastique !), mais juste une présentation des sessions à venir et des sponsors.
+
+Au final, cette keynote n'a duré qu'une dizaine de minutes.

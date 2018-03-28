@@ -1,0 +1,42 @@
+= eXtrem Architecture
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+== Desing sprint
+
+Méthodologie issue de chez Google. +
+Evite les boucles d'investissement trop grandes
+
+* car dans l'innovation, on restait assez "long / lent"
+
+méthodologie en 5 jours :
+
+image::extreme-architecture-sprint-design.jpg[title="", width="1000"]
+
+comment adapter l'architecture à cette méthodologie :
+
+* Unité de lieu, de temps, de personne
+** War room !!!! 3 jours pendant lesquels je sors les personnes de leur OpenSpace, on arrêt de répondre au mails, etc. +
+On rassemble une équipe variée (dev, ops, po, etc.)
+** sprinter et agile
+** on crée un prototype sur la partie la plus difficile
+
+On adapte les ateliers :
+
+* des personas adaptées (les différents profils de l'équipe)
+* on dessine tout le temps ! Schéma, tableau, on gribouille, etc.
+* thinking hat : on distribue des rôles aux participants (optimiste, pessimiste, créatiste, etc.), sous la forme de chapeau +
+atelier assez long ~ 1/2 journée
+* polish
+
+livrables obtenus :
+
+* architecture technique
+* release map d'architecture
+
+Au final, test du prototype par l'utilisateur +
+On cherche le consensus : tout le monde est-il d'accord pour dire que le prototype répond au besoin
+
+différence prototype / POC : le prototype est à jeter !

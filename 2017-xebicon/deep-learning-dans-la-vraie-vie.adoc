@@ -1,0 +1,150 @@
+= Deep Learning dans la vraie vie 
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Yoann Benoit et Sandra Pietrowska de Xebia (tous les deux Data Scientist)
+
+== Abstract
+
+Le *Deep Learning* est la nouvelle révolution dans le monde de l’*Intelligence Artificielle*. Les systèmes de reconnaissance vocale et d’image fleurissent de toutes parts.
+
+Le Deep Learning est-il aussi utile pour votre entreprise ? +
+Si vous ne traitez pas que des images, quels Use Cases vous reste-t-il ? +
+Quelles sont les solutions à votre disposition si vous ne possédez pas une grande quantité de données ? +
+En quoi cette approche est-elle différente du Machine Learning classique ? +
+Peut-on facilement interpréter les résultats fournis par ces “black-boxes” ? +
+Est-il d’ores et déjà possible d’aller au-delà du POC ? Est-ce que votre SI va être impacté ? +
+Comment confronter vos résultats à la réalité ?
+
+Au cours de cette présentation, nous passerons en revue ces différentes questions et apporterons des solutions exploitables afin de mettre en application le Deep Learning en entreprise.
+
+Même si tout le monde ne s’appelle pas Google ou Facebook, ou que vous n’avez pas des To de données à analyser, nous verrons qu’il est possible d’exploiter au mieux la puissance de ces algorithmes et d’en tirer bénéfice rapidement.
+
+== Introduction
+
+IMPORTANT: Le Deep Learning est une branche du Machine Learning, qui fait lui-même partie de l'IA.
+
+image::deep-learning-1.jpg[]
+
+On va *enchaîner les couches (cachées) de réseau de neurones* : plusieurs couches, d'où le *"Deep"*.
+
+== Différences entre algo de Deep learning et de Machine Learning
+
+=== Feature Engineering
+
+*Preprocessing (ML traditionnel) vs données brutes (Deep Learning)*
+
+image::deep-learning-2.jpg[]
+
+Le *preprocessing* peut prendre jusqu'à *70% du temps*.
+
+On va utiliser la DL là où le Feature Engineering est complexe.
+
+image::deep-learning-3.jpg[]
+
+== Exemples d'application du DL
+
+* analyse d'images
+* assistant vocal : DL pour reconnaître la voix du conducteur
+* maintenance prédictive sur les données de time series : capteurs en provenance de l'industrie automobile
+
+== Pourquoi ne pas avoir utiliser le DL avant ?
+
+image::deep-learning-4.jpg[]
+
+* *puissance de calcul du matériel* : CPU et GPU (pour les calculs matriciels surtout)
+* *quantité de données* : plus j'en ai, plus mon algo est performant. Le problème, *avant*, était justement de disposer de suffisamment de data.
+
+Comparaison des performances :
+
+* en *ML*, les performances finissent par être *capées à partir d'une certaine quantité de data*.
+* en *Medium Neural Network*, et encore plus en *Deep Neural Network*, cette limite n'existe pas (ou est beaucoup plus haute)
+
+-> En *volumétrie moyenne*, c'est le *Feature Engineering* qui compte. +
+Avec un *très grande volumétrie* de data, c'est l'*apprentissage automatique* qui donne les meilleurs résultats (*Deep Learning*)
+
+== Stratégie de Deep Learning
+
+image::deep-learning-5.jpg[]
+
+* Pour du *ML traditionnel* :
+	** optim des hyperparamètres
+	** changement de modèle
+	** nouvelles features
+	** régularisation
+
+* Pour du *DL* : des *stratégies différentes en fonction de l'emplacement des erreurs*.
+
+image::deep-learning-6.jpg[]
+
+Pour *améliorer les perfs* :
+
+* du *Train set* :
+	** modèle plus profond
+	** plus d'itération
+* du *Test set* :
+	** plus de data
+	** distribution des data
+
+Plusieurs architectures existent, s'en inspirer :
+
+image::deep-learning-7.jpg[]
+
+=== Solutions d'optimisation / amélioration pour une faible volumétrie de data
+
+* augmenter artificiellement la taille du data set
+* prendre des data provenant d'autres distributions
+* *Transfer Learning* : transférer les connaissances d'un sujet similaire à notre sujet spécifique
+
+=== Conclusion
+
+les *modèles de DL* (et de ML, une fois passé le cap d'une dizaine de variables) ne sont *pas interprétables directement du fait du grand nombre de couches* (niveaux) de l'arbre de décision. +
+Plus on va avoir besoin de nuances, plus on va avoir besoin de variables / couches supplémentaires dans le modèle.
+
+== Mesurer l'incertitude
+
+*Bayesian Deep Learning* : permet de mesurer *l'incertitude* au sein même du modèle. +
+On va appliquer une prédiction, mais avec une incertitude. +
+Il faut beaucoup de puissance pour appliquer un réseau de neurones bayésiens (on va *appliquer une distribution de probabilité aux différents points du réseau*)
+
+On peut également *mesurer l'incertitude à posteriori*. +
+-> Utilisation du *dropout* : supprimer aléatoirement des neurones pendant l'inférence (mais garder tous les neurones pour la prédiction finale)
+
+== Conclusion
+
+image::deep-learning-8.jpg[]
+
+Plusieurs frameworks disponibles :
+
+image::deep-learning-9.jpg[]
+
+== Ressources
+
+* https://www.youtube.com/watch?time_continue=3&v=m4UOEOkdigg[Vidéo de la présentation]
+* https://fr.slideshare.net/XebiaFrance/xebicon17-le-deep-learning-dans-la-vraie-vie-sandra-pietrowska-et-yoann-benoit[Slides de la présentation]
+
+
+
+
+
+

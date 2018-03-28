@@ -1,0 +1,60 @@
+= Vendredi 16:10 / 16:55 - Le changement c'est maintenant!
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Alain Hélaïli. +
+https://cfp.devoxx.fr/2017/talk/TDH-1697/Le_changement_c'est_maintenant![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, Agile, Methodology & Tests
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+"Notre dernier test c'est la PROD" +
+Il mette une feature branch en PROD, si ça marche en PROD, ils mergent sur master, sinon, ils repassent sur master.
+
+[quote, Antoine de Saint Exupéry]
+____
+La perfection est atteinte non pas lorsqu'il n'y a plus rien à ajouter, mais lorsqu'il n'y a plus rien à retirer.
+____
+
+Dans le métier  du Dev (DevOps), la perfection est atteinte suite au refactoring, quand le code ne contient plus rien de superflu.
+
+Pour Alain, le *GitFlow* est trop compliqué :
+
+* on précise, *pour les app mobiles ou Web*, il y a quasi-toujours 1 seule version en PROD, et si on doit corriger une précédente version, cela donnera lieu à une nouvelle version (et non à une "ancienne corrigée")
+
+== Comment permettre une correction d'erreur + rebuild + redeploy très rapide ?
+
+Chez GitHub :
+
+* *Haystack* pour le monitoring -> *Continuous Information* : info en continue sur l'état de l'application
+* Se servir de la CI pour donner au développeur du feedback sur son code *à lui* (on veut aller plus loin que le simple "ça plante pour tout le monde, à tel et tel endroits") +
+On veut savoir ce qui se passe dans le build, même lorsque ce dernier n'est pas encore fini. +
+Une façon de faire : mettre à jour le Jenkins file (appel de la méthode `setBuildStatus` ? A vérifier)
+* `jnunemaker/flipper` : permet le *feature flipping* (feature toggling) +
+Va me permettre de définir qui pourra accéder à mon évolution en prod. (ne va s'afficher *que* pour un sous-ensemble d'utilisateurs)
+* `github/scientist` : framework en rails, permet d'exécuter dans votre code 2 versions de la même fonctionnalité. +
+Permet donc de comparer l'ancienne version à la nouvelle (limite même en prod)
+* `github/gh-ost` : spécifique à MySQL, permet de migrer en temps réel sur un autre schéma de BDD. +
+image::vendredi_1610_changement_01.jpg[width="800"]
+
+== Ressources
+
+* Twitter : @alainHelaili
+* helaili@github.com
+
+== Mon avis
+
+Donne des idées pour une boîte à outils permettant d'être agile (avec un petit "a") avec le changement / l'évolution de son application (passage rapide en prod, test facilité de l'évolution, feedback personnalisé, etc.)

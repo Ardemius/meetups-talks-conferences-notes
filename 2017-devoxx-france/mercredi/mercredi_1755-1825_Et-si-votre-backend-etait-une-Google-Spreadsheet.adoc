@@ -1,0 +1,75 @@
+= Mercredi 17:55 / 18:25 - Et si votre backend était une Google Spreadsheet ?
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Frédéric Camblor. +
+https://cfp.devoxx.fr/2017/talk/UHJ-0617/Et_si_votre_backend_etait_une_Google_Spreadsheet_%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Web, JS, HTML5 & UX
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Contenu de la présentation
+
+Frédéric est organisateur de BDX.io. +
+Cette conf est un retour d'expérience sur leur organisation de cette autre conf.
+
+C'est un 100% live coding sans slides.
+
+Voir le site de BDX.io, qui contient pas mal de données, toutes backées par *1 seule Google Spreadsheet*.
+
+Google Spreadsheet est exportable en JSON à l'aide d'une URL particulière. +
+Cela nécessite au préalable d'avoir publié la spreadsheet.
+
+NOTE: l'export JSON contient le *résultat* des formules, et non la formule elle-même.
+
+Les spreadsheet disposent d'un historique des révisions. +
+Chaque rollback générant une nouvelle version.
+
+Possibilité d'exporter des ranges de cellules d'une spreadsheet à une autre. +
+Pratique pour utiliser un contenu "sensible" dans une *AUTRE* spreadsheet (cette dernière que vous pourrez exporter en JSON)
+
+il est possible de donner des droits d'accès aux colonnes d'une spreadsheet.
+
+Il est possible de feeder une spreadsheet avec un Google Form.
+
+Les Google Spreadsheet possède un éditeur de script, un "équivalent de VB", mais en mieux (dixit Frédéric, le "VB" de 2010).
+Les calculs / traitements sont effectués *côté serveur*.
+
+L'API de manipulation de la Spreadsheet est extrêmement riche.
+
+PHOTO 15
+
+Possibilité d'ajouter des triggers sur les fonctions créées avec l'éditeur de scripts.
+
+Un débugger est également disponible, *MAIS* il n'y a pas de console permettant de voir l'état des variables là où l'on est.
+
+Il est possible d'importer des librairies. +
+Voir l'URL sur les _Google Apps Script_ +
+Il faut *absolument* la clé (ID) de la librairie pour pouvoir l'ajouter à la bibliothèque de notre spreadsheet.
+
+On peut également créer des *services REST* au sein des spreadsheets. +
+On peut donc déployer la spreadsheet en tant qu'application Web. +
+Mais ne sert à rien, car besoin de générer une URL par endpoint... (mais c'est possible !)
+
+Il existe des CSS guidelines mises à disposition par Google (un mini Bootstrap pour les spreadsheet !)
+
+== Ressources
+
+* @fcamblor
+* http://bit.ly/dvx17-gs : ensemble de tous les liens utiles de la présentation
+
+== Mon avis
+
+Présentation très sympa, des retours d'XP vraiment utiles et nombreux sur les Google Spreadsheet. +
+Découverte de nombreuses fonctionnalités méconnues de ces dernières.

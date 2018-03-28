@@ -1,0 +1,171 @@
+= FLUO, les choix déterminants pour une startup innovante et productive 
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Arthur Sudre de Xebia, Florent Le Gall et Thierry Abaléa de Fluo
+
+== Abstract
+
+Nous vous proposons un retour d’expérience sur nos *choix d’organisation axés autour de la productivité*. +
+Notre challenge : rendre une start-up adaptable au changement. +
+Nos objectifs : être efficace pour développer des services, les mettre en production, les faire évoluer et recommencer.
+
+Cette présentation illustrera les moyens organisationnels et techniques qui permettent à chaque membre du projet d’être capable d’intervenir sur l’ensemble des services développés. +
+Nous aborderons entre autres l’agilité, l’Infra-as-a-Code (Terraform, AWS), le JavaScript moderne (ES2017, typage statique avec Flow, React native), l’approche mono-repository et la sécurité. +
+Nous expliquerons pourquoi nous avons fait ces choix et les difficultés que nous avons rencontrées.
+
+== FLUO
+
+FLUO : une nouvelle startup avec les objectifs suivants :
+
+* vaincre la spécialisation
+* Accroître la vélocité
+* etc.
+
+== Approche mono-repository
+
+Mutualiser le code :
+
+* via les bibliothèques de code ?
+* via les micro-services ?
+
+Par moment, pour les *services off-line*, on ne peut pas se reposer sur les microservices -> on aura *toujours besoin des bibliothèques de code*.
+
+-> Solution : *versionner toutes les bibliothèques et services dans 1 seul repository !*
+
+=== Pas d'Intégration Continue possible avec un workflow à base de branches
+
+*Contraire au concept d'IC !*
+
+[quote, Martin Fowler, 'https://martinfowler.com/bliki/ContinuousIntegrationCertification.html[Continuous Integration Certification]' ]
+The whole idea is that nobody is working on a code base that deviates significantly from anyone else’s
+
+De plus, cela rend les refactoring complexes très compliqués. +
+-> Solution : *Trunk based development*
+
+Comment s'assurer qu'on peut releaser à tout moment ? +
+-> *Feature Toogling !*
+
+=== Difficultés de l'approche
+
+* Upgrade global et atomique des versions des dépendances extérieures
+* Exige une équipe polyvalente et un travail d'équipe
+* Code Reviews plus difficiles avec les outils standards
+
+=== Conclusion
+
+NOTE: Un monorepo n'implique *pas* une application monolithique. +
+Google, Facebook, et quasi tous les grands du web, utilisent tous le monorepo.
+
+== Javascript moderne chez Fluo
+
+_"One language to rule them all"_ -> *Javascript choisit plutôt que Java*
+
+* typé dynamiquement par défaut (plutôt que statiquement pour Java)
+* approprié pour les backends
+* *très* approprié pour les frontends 
+
+Sur ces 2 derniers points, c'est *la force de Javascript sur le Front* qui a forcé le choix de Javascript à la place de Java (plus fort sur le back, mais bien moins adapté sur le Front)
+
+=== Nouvelles fonctionnalités fournies par ES2015, 2016 et 2017
+
+* `async` / `await`
+
+* le *typage statique* de Java :
+	** est un filet de sécurité appréciable
+	** aide au développement (doc automatique)
+
+En Javascript, on peut utiliser *Typescript* (Microsoft) ou https://flow.org/[*Flow*] (Facebook) pour ajouter le *support du typage statique* :
+
+* *Typescript* est un langage, et en 2016, on était pas sûr qu'il dure... (cf http://coffeescript.org/[CoffeeScript]) +
+* *Flow* est une info qui est supprimé au run, et qui permet de rester sur du Javascript "Vanilla" +
+-> *Flow a été choisi*
+
+=== Node.js pour le back
+
+=== React Native pour le mobile
+
+Framework créé par Facebook, voir https://facebook.github.io/react-native/
+
+=== Les limites du tout Javascript
+
+* *Langage pauvre nativement* : il faut des librairies pour tout ! Faible maturité des APIs.
+* *Investissement en tooling nécessaire* : pas forcément très difficile, mais un poste de dépense de temps (il faut rentrer dans les SDK)
+
+== Infrastructure as a Code
+
+Historique, avant l'Infra as a Code, hébergé chez OVH VPS (Virtual Private Server) : tout à la main en bash... 
+
+* déploiements fastidieux et sujets aux erreurs
+* état d'un serveur peu prédictible
+* peur de mettre à jour les packages (Tomcat, etc.)
+
+La transition : Infra as a Code -> *passage à Docker* pour commencer :
+
+* léger (RAM)
+* facilité de déploiement
+* portabilité
+* orientation microservices
+
+*Avantages de Docker vs Puppet / Chef / Ansible* :
+
+* même livrable partout
+* testé et validé une fois pour toute depuis la CI (avec un Puppet & Co, il faudrait dans l'absolu vérifier que tout s'est bien installé sur *chaque* machine)
+* *déploiement atomique* : pas de dérive de la configuration
+* les *images Docker* sont *immutables*. Besoin de changement ? Nouvelle image !
+
+=== Outils pour le provisioning et la configuration des ressources AWS
+
+* *Terraform* : description d'une infra au travers du code (les différents services, l'état souhaité, etc.) 
+	** particulièrement adapté à Docker
+	** déclaratif : on décrit l'état attendu
+	** multicloud : disponible chez AWS, Google Cloud
+
+Comme l'Infra as a Code, reste compliquée malgré les précédents outils : 
+
+* *Gruntwork* : https://gruntwork.io : petite société américaine spécialisée dans les outils précédents (fournissent du code, des exemples, etc.) +
+Permet également de disposer du *support* d'experts en cas de besoin. 
++
+NOTE: les retours de l'équipe sur cette société étaient vraiment excellents. Une référence à conserver.
+
+=== Conclusion
+
+* Intérêt de l'*approche immutable* (très convaincante, *vive Docker !*)
+* *Courbe d'apprentissage assez élevée* pour les devs
+
+NOTE: Thierry confirme qu'*ils n'utilisent pas de service discovery*, mais les fonctionnalités de load balancing des autres outils (probablement de l'orchestrateur Docker) +
+C'est AWS ECS qui est utilisé pour les fonctionnalités de load balancing (et configuré via Terraform).
+
+NOTE: Webpack est utilisé pour transpiler le code Node.js
+
+11 personnes à travailler en râteau sur l'unique master.
+
+== Ressources
+
+* https://fr.slideshare.net/XebiaFrance/xebicon17-fluo-les-choix-dterminants-pour-une-startup-innovante-et-productive-arthur-sudre-florent-le-gall-et-thierry-abalea[Slides de la présentation]
+* https://www.youtube.com/watch?v=Fo-OBmaNXZU[vidéo de la présentation]
+
+
+
+
+

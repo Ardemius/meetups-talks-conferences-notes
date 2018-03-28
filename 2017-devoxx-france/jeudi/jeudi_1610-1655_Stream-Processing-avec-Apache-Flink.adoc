@@ -1,0 +1,107 @@
+= Jeudi 16:10 / 16:55 - Stream Processing avec Apache Flink
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Tugdual Grall. +
+https://cfp.devoxx.fr/2017/talk/KEP-1372/Stream_Processing_avec_Apache_Flink[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+"Tug" est technical evangelist chez MapR
+
+image::jeudi_1610_stream-processing_01.jpg[width="800"]
+
+== Streaming
+
+NOTE: *Streaming*: continuous processing on data that is continuously produced +
+Un stream est un flux continu de data arrivant dans l'appli
+
+Un gros challenge est de *découpler* les data des services qui les traitent.
+
+*data pipelines = event stream*
+
+Comparaison Streaming et batch :
+
+image::jeudi_1610_stream-processing_02.jpg[width="800"]
+
+Un batch est finalement également un stream, mais high latency (à horaire fixe)
+
+La tendance dans les projets Big Data est de plus en plus de passer en streaming, ou en temps réel.
+
+== Apache Flink
+
+*Apache Flink* : faciliter le déploiement d'appli de streaming sur des systèmes distribués avec un gros volume d'informations
+
+FLink architecture :
+
+image::jeudi_1610_stream-processing_03.jpg[width="800"]
+
+Dans ce schéma, on va se concentrer sur la partie *Data Stream*.
+
+Flink est développé en *Scala*.
+
+Stream processing : *source -> filter / transform -> sink*
+
+Flink Ecosystem :
+
+image::jeudi_1610_stream-processing_04.jpg[width="800"]
+
+La particularité de Flink : *une gestion d'état* : +
+*source -> filter / transfom -> state read / write -> sink*
+
+Moins populaire que Spark actuellement, MAIS pour faire du *streaming temps réel*, c'est extrêmement intéressant.
+
+Bouygues est un très gros consommateur de Flink à l'heure actuelle. +
+Ils monitorent l'état des appels avec :
+
+* 10 milliards d'évts par jour
+
+On vient traiter des evts de *mêmes clés* (nous manipulons des tuples clé / valeur)
+
+NOTE: *Complex event processing* (CEP) : Etre capable de prendre une décision quand 2 evts arrivent, ou n'arrivent pas.
+
+Très bonne (facile à mettre en place) gestion du temps dans Flink (notion de *time window*) : +
+"en groupant par commande (notre tuple), *si sous 1 heure*..."
+
+image::jeudi_1610_stream-processing_05.jpg[width="800"]
+image::jeudi_1610_stream-processing_06.jpg[width="800"]
+image::jeudi_1610_stream-processing_07.jpg[width="800"]
+
+== Quelles (bonnes) raisons de passer de Spark et Spark Streaming à Flink ?
+
+* Bouygues : trop de micro-opérations, problème avec l'event time -> passage à Flink
+* Mais la communauté Spark est plus grosse
+* si pas de problème sur Spark, pas de raison de passer à Flink
+
+== Pour conclure
+
+* Process events in real time and / or batch
+* CEP
+* deployment
+* High availability
+* table / relational API
+* et bien d'autres features
+
+== Ressources
+
+* @tgrall
+* http://tgrall.github.io
+* PDF : https://mapr.com/ebooks/ petit livre très pédagogique sur Flink
+
+== Mon avis
+
+Présentation bien faite, très pédagogique, à garder sous le coude.

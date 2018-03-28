@@ -1,0 +1,60 @@
+= Retours sur Devoxx France 2017
+
+* link:Devoxx-France-2017-buzz-words.adoc[Buzz words du salon]
+
+== Mercredi
+
+[cols="1,1,1,4", options="header"] 
+|===
+|Date				|Salle				|Type				|Description
+|09:30 / 12:30		|Neuilly 253		|University			|link:mercredi/mercredi_0930-1230_Spark-adabra_Comment-construire-un-datalake.adoc[Spark-adabra : Comment construire un datalake !]
+|13:30 / 16:30		|Paris 242-AB		|University			|link:mercredi/mercredi_1330-1630_JavaEE-Micro-Profile-TypeScript-et-Angular-2.adoc[Enterprise Java MicroProfile TypeScript and Angular 2]
+|17:10 / 17:40		|Paris 242-AB		|Tools-in-Action	|link:mercredi/mercredi_1710-1740_Pourquoi-Kafka-Streams-change-le-Game.adoc[Pourquoi Kafka Streams change le Game !]
+|17:55 / 18:25		|Neuilly 251		|Tools-in-Action	|link:mercredi/mercredi_1755-1825_Et-si-votre-backend-etait-une-Google-Spreadsheet.adoc[Et si votre backend était une Google Spreadsheet ?]
+|18:40 / 19:10		|Maillot			|Tools-in-Action	|link:mercredi/mercredi_1840-1910_JUnit-docker.adoc[JUnit-docker]
+|===
+
+== Jeudi
+
+[cols="1,1,1,4", options="header"] 
+|===
+|Date				|Salle				|Type				|Description
+|09:00 / 09:15		|Amphi Bleu			|Keynote			|link:jeudi/jeudi_0900-0915_La-Keynote-ouverture-de-Devoxx-France.adoc[La Keynote d'ouverture de Devoxx France]
+|09:20 / 09:40		|Amphi Bleu			|Keynote			|link:jeudi/jeudi_0920-0940_De-la-responsabilite-des-ingenieurs.adoc[De la responsabilité des ingénieurs]
+|09:45 / 10:05		|Amphi Bleu			|Keynote			|link:jeudi/jeudi_0945-1005_Video-games_The-quest-for-smart-dumbness.adoc[Video games: The quest for smart dumbness.]
+|10:10 / 10:30		|Amphi Bleu			|Keynote			|link:jeudi/jeudi_1010-1030_La-disruption-des-langues-a-commence.adoc[La disruption des langues a commencé.]
+|11:15 / 12:00		|Paris 243			|Conference			|link:jeudi/jeudi_1115-1200_Dual-Universe_Challenges-techniques-de-la-creation-d-un-monde-virtuel-single-shard-entierement-editable.adoc[Dual Universe: Challenges techniques de la création d'un monde virtuel "single-shard" entièrement éditable]
+|12:05 / 12:20		|					|					|PAUSE
+|12:25 / 12:40		|					|					|PAUSE
+|12:55 / 13:40		|Amphi Bleu			|Conference			|link:jeudi/jeudi_1255-1340_Le_Streaming-d-API-pourquoi-et-comment-transformer-vos-APIs-statiques-en-donnees-temps-reel.adoc[Le Streaming d'API : pourquoi et comment transformer vos APIs statiques en données temps réel ?]
+|13:55 / 14:40		|Paris 242-AB		|Conference			|link:jeudi/jeudi_1355-1440_Un-bot-pour-gerer-l-agenda-de-ta-conference.adoc[Un bot pour gérer l'agenda de ta conférence]
+|14:55 / 15:40		|Amphi Bleu			|Conference			|link:jeudi/jeudi_1455-1540_10-methodes-pour-rendre-heureux-les-developpeurs_-la-7e-va-vous-etonner.adoc[10 méthodes pour rendre heureux les développeurs, la 7e va vous étonner !]
+|16:10 / 16:55		|Paris 242-AB		|Conference			|link:jeudi/jeudi_1610-1655_Stream-Processing-avec-Apache-Flink.adoc[Stream Processing avec Apache Flink]
+|17:10 / 17:55		|Paris 242-AB		|Conference			|link:jeudi/jeudi_1710-1755_Cloudifie-ton-monolithe_les-microservices-pour-une-architecture-comme-les-grands-du-web.adoc[Cloudifie ton monolithe : les microservices pour une architecture comme les grands du web]
+|18:10 / 18:40		|Neuilly 252 AB		|Tools-in-Action	|link:jeudi/jeudi_1810-1840_Machine-learning-et-series-temporelles_Comment-predire-les-ventes-de-votre-site-ecommerce-avec-Spark.adoc[Machine learning et séries temporelles : Comment prédire les ventes de votre site ecommerce avec Spark]
+|18:55 / 19:25		|Paris 243			|Tools-in-Action	|link:jeudi/jeudi_1855-1925_Apache-Beam_live-data-discovery-from-the-open-NYC-Taxi-Trip-Records-stream.adoc[Apache Beam, live data discovery from the open NYC Taxi Trip Records stream]
+|19:45 / 20:35		|					|BOF 				|PAUSE
+|20:40 / 21:30		|					|BOF 				|PAUSE
+|21:35 / 22:25		|					|BOF 				|PAUSE
+|===
+
+== Vendredi
+
+[cols="1,1,1,4", options="header"] 
+|===
+|Date				|Salle				|Type				|Description
+|09:00 / 09:20		|Amphi Bleu			|Keynote 			|link:vendredi/vendredi_0900-0920_Ethical-AI.adoc[Ethical AI]
+|09:25 / 09:45		|Amphi Bleu			|Keynote 			|link:vendredi/vendredi_0925-0945_Quel-droit-pour-les-robots.adoc[Quel droit pour les robots]
+|09:50 / 10:10		|Amphi Bleu			|Keynote 			|link:vendredi/vendredi_0950-1010_Revolution-cyberindustrielle-en-France.adoc[Révolution cyberindustrielle en France]
+|10:15 / 10:35		|Amphi Bleu			|Keynote 			|link:vendredi/vendredi_1015-1035_Human-Machine-Improvised-Theatre.adoc[Human / Machine Improvised Theatre]
+|11:15 / 12:00		|Amphi Bleu			|Conference 		|PAUSE
+|12:05 / 12:20		|[red]*Neuilly 253*	|Quickie 			|https://github.com/Ardemius/unsafe-wizardry[[red]*Sorcellerie en Java : outrepasser les interdits avec sun.misc.Unsafe*]
+|12:25 / 12:40		|					|		 			|PAUSE
+|12:55 / 13:40		|Maillot			|Conference 		|link:vendredi/vendredi_1255-1340_CQRS-EventSourcing-par-la-pratique.adoc[CQRS/EventSourcing par la pratique]
+|13:55 / 14:40		|Amphi Bleu			|Conference 		|link:vendredi/vendredi_1355-1440_Les-bornes-des-limites_comment-maintenir-de-la-coherence-dans-votre-architecture-microservices.adoc[Les bornes des limites : comment maintenir de la cohérence dans votre architecture microservices]
+|14:55 / 15:40		|Paris 241			|Conference 		|link:vendredi/vendredi_1455-1540_GraphQL-vs-Falcor.adoc[GraphQL vs Falcor]
+|16:10 / 16:55		|Maillot			|Conference 		|link:vendredi/vendredi_1610-1655_Le-changement-c-est-maintenant.adoc[Le changement c'est maintenant!]
+|17:10 / 17:55		|Amphi Bleu			|Conference 		|link:vendredi/vendredi_1710-1755_De-bronze-a-legendaire-comment-reussir-vos-IA-de-bot.adoc[De bronze à légendaire, comment réussir vos IA de bot]
+|18:10 / 18:55		|Neuilly 252 AB		|Conference 		|Les Cast Codeurs Podcast : tu prends ta bière(*), tu tends les jambes sous la chaise de ton voisin et tu te relaxes
+|===
+

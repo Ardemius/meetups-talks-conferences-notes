@@ -1,0 +1,53 @@
+= Mercredi 18:40 / 19:10 - JUnit-docker
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Xavier Detant et Vincent Demeester. +
+https://cfp.devoxx.fr/2017/talk/YOJ-9199/JUnit-docker[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, Agile, Methodology & Tests
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Sujet : Test d'une petite application à l'architecture simple : telS portables -> serveur Java -> MongoDB
+
+== JUnit 5
+
+Possibilité d'imbriquer des classes au sein de la classe de test via l'annotation `@Nested`
+
+Renomage de certaines annotation entre les versions 4 et 5 :
+
+* @Before -> @BeforeEach
+* @BeforeClass -> @BeforeAll
+* etc.
+
+Un certain nombre de problèmes peuvent être rencontrés, Docker peut en adresser certains :
+
+image::mercredi_1840_junit-docker_01.jpg[width="800"]
+
+Xavier et Vincent ont également créé un plugin JUnit 5 pour adresser certaines de ces erreurs. +
+Ce plugin est déjà sur Maven Central (en version RC 4, car JUnit 5 n'est pas encore officiellement releasé)
+
+librairie `DockerJava` pour la communication Java -> Docker
+
+== Ressources
+
+* Vincent (So@t) : @vdemeest
+* Xavier (Docker) : @xdetant
+* github.com/FaustXVI/junit5-docker pour le plugin JUnit 5
+
+== Mon avis
+
+Recensement utiles des problèmes rencontrés classiquement lors de la mise en place / du run de vos tests.

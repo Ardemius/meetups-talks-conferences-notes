@@ -1,0 +1,45 @@
+= Mercredi 17:10 - Feign(ant) in action
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Igor Laborie. +
+http://cfp.devoxx.fr/2016/talk/OOT-8042/Feign%28ant%29_in_Action.html[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=IeY5C24SjGQ[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::IeY5C24SjGQ[youtube, width=640, height=480]
+endif::[]
+
+== Notes
+
+image::20160420-1710_Feign(ant)-in-action.jpg[]
+
+Développement de client Rest
+
+*Très léger, très peu de dépendances requises.*
+
+[source,java]
+----
+Feign.builder()
+	.decoder(new GsonDecoder())
+	.encoder(new GsonEncoder())
+	.requestInterceptor(...)
+	.target(<interface>, URL)
+----
+
+Annotation `@ResquestLine` dans l'interface pour préciser les `GET` ou `POST`.
+
+Si ID pas trouvé (404 ou 500), Feign crée automatiquement un objet erreur.
+
+Fonctionnalités avancées :
+
+* `RequestInterceptor` : pour intercepter et customizer la requête. 
+* `ErrorDecoder` : pour transformer les erreurs rencontrées (interception)
+
+== Ressources
+
+* https://github.com/Netflix/feign : le repo de Feign chez Netflix.

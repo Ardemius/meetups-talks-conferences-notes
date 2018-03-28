@@ -1,0 +1,149 @@
+= Mercredi 09:30 - Architecture découplée grâce aux Reactive Extensions
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Brice Dutheil, David Wursteisen. +
+http://cfp.devoxx.fr/2016/talk/EMM-1176/Architecture_decouplee_grace_aux_Reactive_Extensions.html[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=4To7s3qln2s[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::4To7s3qln2s[youtube, width=640, height=480]
+endif::[]
+
+
+== Introduction
+
+image::20160420-0930_architecture-découplée-grâce-aux-Reactive-Extensions.jpg[présentation]
+
+Voir leur *Tools-in-Action de Devoxx France 2015 sur Rx Java*, _RxJava - From Future To Rx_, bon complément de la présente conf :
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=TT8TLS2Ac0o&feature=youtu.be
+endif::[]
+ifdef::env-browser[]
+video::TT8TLS2Ac0o[youtube, width=640, height=480]
+endif::[]
+
+Hashtag *#devoxxfr* *#Rx* pour les slides en fin de conf.
+
+Architecture Tomcat classique >> problème habituel de file d'attente. +
+Solution ? *Changer le connecteur Tomcat* (passer de *BIO* (Java Blocking I/O) à *NIO* (Java Non-blocking I/O), *APR* (Apache Portable Runtime) ou *NIO2* ?) +
+Mais pas si terrible que ça car : Requête HTTP = 1 seul thread, cf spec JEE
+
+Donc, *Reactive extensions* (ReactiveX) ! +
+*Créées par Microsoft*, et portées en Java par *Netflix* pour *résoudre des problèmes de traitements distribués*.
+
+== Partie théorique
+
+Future / callback, pas forcément une bonne solution :
+
+* *future* : opérations bloquantes 
+* *callback* : pas de get bloquant, mais complexe (callback hell)
+
+*RxJava* : communication synchrone ou asynchrone
+
+Diagrammes *Marble* : 
+
+* avec fin de flux
+* ou infinis (sans fin de flux)
+
+Un exemple :
+
+image::20160420-0930_diagrammes-Marble.PNG[title="un exemple de diagramme Marble"]
+
+Voir le site http://rxmarbles.com/ pour plus de détails.
+
+Reactive extensions = utilisation massive d'opérateurs sur des Observable. 
+
+* *Observable = monade*
++
+image::20160420-0930_monade.jpg[title="concept de monade", width="800"]
+
+* monade = pas d'effet de bord permis (pas de modification de l'ensemble de données de départ permis)
+
+Liste des opérateurs reactive disponible sur http://reactivex.io/documentation/operators.html[reactivex.io]
+
+`Observable.create` : factory la plus compliquée (à utiliser en dernier recours)
+Doit gérer :
+
+* contrat Rx
+* désabonnement
+* backpressure 
+
+Essayer d'utiliser d'autres factory dès que possible.
+
+== Partie pratique
+
+Voir l'ouvrage https://pragprog.com/book/pb7con/seven-concurrency-models-in-seven-weeks[Seven Concurrency Models in Seven Weeks] de Paul Butcher pour des moyens de gérer la concurrence autres que les threads.
+
+Attention ! Par défaut Rx est *synchrone*. 
+
+Production des éléments par le 1er `SubscribeOn` déclaré. 
+
+* `Schedulers.computation()` = event loop >> augmente le rendement du CPU +
+Il ne fait pas bloquer l'event loop (sleep, wait & co)
+* `Schedulers.io()` = pool de thread
+
+Exemple avec JAX-RS et Rx
+
+* Jax impose un couplage fort (monolith) pas vraiment adapté 
+* Finalement JEE (JAX-RS) est-il adapté ici ? +
+Certains en sont sortis (Netflix, Spotify, etc.)
+
+Composition avec opérateur "zip"
+
+*Hystrix* (implémentation du pattern *circuit breaker*) de Netflix pour remplacer *JAX-RS* (*Jersey*)
+
+* très complet, mais un peu verbeux
+* présence d'un coupe-circuit sur les dépendances (de la composite API)
+* *hystrix-javanica* pour ajouter des annotations (pour le "trop verbeux")
+* permet de protéger les dépendances en cas d'erreur
+* ajoute des dashboards de monitoring
+
+Retour à RxJava : 
+
+* *Backpressure* : les évènements s'empilent  (consommateur trop lent par rapport au producteur) +
+Le consommateur peut s'isoler du producteur le temps de rattraper les wagons ("pression arrière")
+
+== Partie Reactive Extensions
+
+Leçons apprises des parties précédentes :
+
+* Pas une solution à tout : les *streams Java 8* peuvent être plus performants +
+On peut d'ailleurs faire communiquer les 2 :
++
+** Rx utilise les streams
+** les streams utilisent Rx (Observable `Merge` à voir)
++
+Attention quand même à éviter le code spaghetti dans ce cas
+
+Question : comment savoir quand composer les 2 ?!
+
+Conseil : *ne pas quitter la monade !*
+
+Rappels : 
+
+* `FlatMap` permet d'émettre 0, 1 ou n évènements. 
+* `FlatMap` ne remplace pas un Observable par un autre
+* `Interval` n'émet pas de "fin" (pas de complétion du flux, revoir la 1ere image sur le diagramme Marble)
+
+Différence cold / hot : 
+
+* *cold* : Sequences that are passive and start producing notifications on request (when subscribed to)
+* *hot* : Sequences that are active and produce notifications regardless of subscriptions.
+
+Rx est local à la VM.
+
+Côté réseau, il faut ajouter soi-même une couche.
+
+== Mon avis
+
+L'université manquait un peu d'entrain, sur 3 heures, cela pèse. +
+Trop de temps à lister les fonctionnalités sur des exemples séparés. J'aurais préféré que ce soit sur un même poc plus complet.

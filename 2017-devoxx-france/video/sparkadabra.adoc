@@ -1,0 +1,98 @@
+= Spark-adabra : Comment construire un datalake ! 
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+== Overview
+
+* Importance de la collecte de la meta data, qui est souvent implicite.
+
+Parquet : format orienté colonne.
+
+== Kafka
+
+* est remodélisé autour de la notion de commit log : on peut consommer de la data qui 
+a été publiée dans Kafka avant. +
+Très difficile avec d'autres systèmes, assez unique et spécifique à Kafka. +
+-> On peut créer un consommateur dédié à la résolution d'un bug de PROD, et relire la data dans le temps. +
+Quand on consomme, la data ne disparaît pas : c'est le consommateur qui garde son état de consommation.
+
+* peut garantir que tous les messages concernant un même sujet (clé) se retrouvent stockés au même endroit (garantie sur la complexité spatiale) : permet une optimisation des traitements
+
+* modèle : 
+	** chaque topic est une séquence de partitions
+	** chaque partition est une séquence de messages
+
+== Spark
+
+Rappel : évite l'écriture sur disque (les I/O) qui étaient le points faibles de MapReduce v1. +
+A la place, Spark tient toute la volumétrie en mémoire.
+
+Spark : *Graphe Acyclique Dirigé*. +
+Les opérations sont *lazy*. +
+le graphe n'est déroulé qu'au moment de l'écriture.
+
+*Architecture* : le *Driver program* va déterminer le graphe qui va être exécuté par les différents *worker node* (executor), sous forme de task, elles-mêmes divisées en stage.
+
+Autre problème de perf classique en BI / Big Data : éviter les *shuffles* (shuffle = redistribution de la data, tout le *transit réseau*)
+
+Spark est un concentré de librairies : Spark SQL, Spark Streaming, MLLib, GraphX, etc.
+
+GraphX : moteur de calcul graph distribué. on va directement faire les requêtes sur la données source. (Contrairement à une BDD graphe qui va nécessiter le we en initial load des data) +
+Pas besoin de pre-chargement dans une BDD graphe.
+
+== Impala
+
+* Hive = vision batch (les requêtes SQL sont traduites en jobs MapReduce)
+* Impala = moteur qui va requêter *directement* les datasets à froid. +
+On reste sur du SQL très riche qu'on peut donner à des personnes expertes. +
+On peut brancher Impala sur du Parquet, qui, 
+à l'aide d'une certaine interface, va permettre de faire du *Predicate Push-Down* : ne lire que les champs nécessaires à la construction du résultat final de l'utilisateur.
+
+== Elasticsearch / Kibana
+
+Permet de "rassurer" tout le monde autour du projet : on peut donner un 1er accès à la data à tout le monde.
+
+Elasticsearch est bien une BDD à part entière (qui ne s'intègre pas dans Hadoop) : il faut construire son propre job qui va faire sa projection (à partir des data dans Hadoop)
+
+== HDFS
+
+Système de fichier distribué, stockage à très haute densité.
+
+L'essentiel en Big Data est de stocker la *data brute* (raw), et de la *persister pour toujours*.
+
+== Persistance des data
+
+L'ensemble des données doit être accessible comme une *structure de données persistance*.
+
+Cela va ensuite permettre de monter un *Data warehouse transient* : on va être capable de le reconstruire à partir des données source.
+
+== Structure d'un job permettant de construire un DWH
+
+plusieurs data sources 
+. -> *cogroup* : grouper la donnée
+. -> *staging* : redonner la structure naturelle : les dates n'étant pas forcément des dates, certaines données sont dupliquées, etc.
+. -> *modeling* : unifier / enrichir 
+. -> *projection*
+
+
+

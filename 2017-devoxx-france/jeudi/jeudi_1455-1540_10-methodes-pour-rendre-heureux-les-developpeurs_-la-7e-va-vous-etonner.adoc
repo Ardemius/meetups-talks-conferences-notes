@@ -1,0 +1,112 @@
+= Jeudi 14:55 / 15:40 - 10 méthodes pour rendre heureux les développeurs, la 7e va vous étonner !
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Cyril Lakech et Romain Linsolas. +
+https://cfp.devoxx.fr/2017/talk/MQX-7143/10_methodes_pour_rendre_heureux_les_developpeurs_la_7e_va_vous_etonner[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, Agile, Methodology & Tests
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Possibilité de poser des questions en live sur https://sli.do/
+
+Un constat : 
+
+* la plupart des développeurs (2/3)
+
+
+Etude annuelle de StackOverflow
+
+== Comment retenir les candidats, leur donner envie de venir ?
+
+=== Recrutement
+
+. Un recrutement adapté aux devs
+	* partage de la vision
+	* description du cadre
+	* *un salaire en adéquation avec le marché*
+	* la manière dont on gère le code : les pratiques de dévelopement, les outils utilisés. +
+Si on est en full Agile, et qu'on recrute une personne qui n'en a pas l'habitude (pair programming) cela peut dérouter / poser problème.
+. permettre au développeur d'intégrer le plateau de dev pendant 1/2 journée
+	* Faire passer le 1er TU au vert ensemble
+	* boire une bière ensemble
+
+=== Fidélisation du dev
+
+* donner des perspectives de carrière. +
+Ne pas rester dans la même case : 
+** expertise technique
+** leadership
+** multi-technos
+** multi-métiers
+** architecture
+* proposer des expériences "extra"-ordinaire
+* former les développeurs, et / ou leur donner du temps pour le faire
+* apprendre est notre métier, et *apprendre à apprendre aux autres* permet également d'évoluer, aussi bien humainement que techniquement
+
+=== Environnement de travail
+
+* "l'Open Space m'a tuer" : ce n'est pas le meilleur modèle (bruit, distraction), mais ils sont néanmoins très répandus. +
+Par contre, il est toujours possible de les rendre plus humain, en permettant aux devs de les "customiser"
+* Le bureau : 
+** Une chaise de qualité
+** un bureau réglable en hauteur, afin de pouvoir par moment travailler debout
+* *avoir du bon matériel* : si on perd 1 heure de productivité par jour du fait d'un poste qui rame...
+* *idem pour les softs !* : qui plus est, il s'agit d'un sujet que les devs adorent. +
+Il est bien plus profitable de s'adapter aux besoins devs, que de leur demander de s'adapter à un environnement unique.
+* *ne pas brider le dev* : tu n'auras pas les droits d'admin, les droits de télécharger, etc. +
+Il faut faire confiance aux devs, après tout, nous sommes tous des ingénieurs ;)
+* *télétravail* : possible, MAIS éviter le mixe entre public et privé. +
+Exemple, si on dispose d'une petite pièce chez soi, on s'y installe *et on ferme la porte* (histoire de ne pas être déranger par les enfants et / ou les droïdes)
+* *création d'équipe à taille humaine* (pizza-team)
+{lb}
+* le développeur, en bon software craftsman, souhaite toujours *s'améliorer*. +
+Il faut tout faire pour lui faciliter cette mission :
+** Train, Train & Mentor
+** Master Yoda : do NOT try, *do or do not*, there is no try
+{lb}
+* Environnement technologique : classifier les technos :
+** Assess
+** Reinforce
+** Excel
+** Deprecated
+** Candidates
+
+* La fameuse 7e méthode... Ben, j'ai pô compris...
+
+* *Créer des communautés internes !* De ce côté, qui s'aligne sur nos StarTECHs, hein ? :P +
+Ce n'est pas grave si on ne crée une commumnauté que pour 6 mois (un essai pour une feature team sur un sujet qui peut ne pas marcher)
+{lb}
+* *Inner & Open Source* + 
+Une grosse problématique en entreprise : sa vision de l'open source ("oui, mais, c'est super confidentiel ce que tu veux montrer, ce n'est pas possible...") +
+On peut déjà commencer par de *l'inner sourcing* : rendre son travail disponible dans toute l'entreprise.
+* Accueillir dans l'entreprise des BBL & Co : permet d'améliorer sa veille technologique
+* idem pour les MeetUps (voir http://www.meetup.com)
+* *Hackaton* : n'est pas un moyen de gagner des jours de dev gratuit, *MAIS* de promouvoir quelques idées fortes, pour lesquelles on pourrait imaginer la création d'une boîte dans un incubateur, avec hébergement dans les locaux.
+* *sponsoring*
+
+En conclusion :
+
+image::jeudi_1455_10-methodes_01.jpg[width="800"]
+
+== Ressources
+
+* @cyril_lakech
+* @romaintaz
+
+== Mon avis
+
+Sympa, des conseils utiles, et, en toute objectivité, une très bonne note pour Softeam ! (Surtout côté communauté, où les StarTECHs, ça roxxxxe !!!!)

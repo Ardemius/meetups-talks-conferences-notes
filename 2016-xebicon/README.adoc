@@ -1,0 +1,29 @@
+= Notes de la XebiCon'16 (2016/11/10)
+
+--
+* Site web : http://xebicon.fr/#edition2016
+* http://xebicon.fr/wp-content/uploads/2016/11/programme-xebicon16.pdf[Programme de la conférence]
+
+ifdef::env-github[]
+https://youtu.be/v_bVRt94UlM[Trailer de présentation du salon]
+endif::[]
+ifdef::env-browser[]
+video::v_bVRt94UlM[youtube, width=640, height=480]
+endif::[]
+--
+
+== Mon programme
+
+[cols="1,4", options="header"] 
+|===
+|Date			|Description
+|09:15 / 10:00	|link:keynote-ouverture.adoc[Keynote d'ouverture : le train de l'innovation]
+|10:45 / 11:30	|link:the-physical-web.adoc[The Physical Web : un coup d’oeil sur le futur de l’IoT et de la mobilité]
+|11:45 / 12:30	|link:choisissez-votre-style-avec-docker-et-amazon-web.adoc[Choisissez votre style avec Docker et Amazon WebServices]
+|13:45 / 14:05	|link:5-techniques-de-pricing.adoc[Thiga - Vendre un produit en SaaS - 5 techniques de Pricing]
+|14:10 / 14:30	|link:extrem-architecture-et-design-sprint.adoc[eXtrem Architecture, le Sprint Design au service de la technique]
+|14:45 / 15:30	|link:choisir-son-framework-web.adoc[Angular2, React, Vue.js : bien choisir son framework FrontEnd]
+|16:15 / 17:00	|link:data-science-et-craftsmanship.adoc[Data Science et Craftsmanship : je t’aime, moi non plus]
+|17:15 / 18:00	|link:architecture-microservices-avec-le-cloud-azure.adoc[Architecture Microservices avec le Cloud Azure]
+|===
+

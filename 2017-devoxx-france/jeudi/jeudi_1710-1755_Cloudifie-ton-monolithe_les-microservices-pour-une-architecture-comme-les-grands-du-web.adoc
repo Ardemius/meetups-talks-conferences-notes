@@ -1,0 +1,163 @@
+= Jeudi 17:10 / 17:55 - Cloudifie ton monolithe : les microservices pour une architecture comme les grands du web
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par François Berthault, Cyril Deverson et Christophe THEPAUT. +
+https://cfp.devoxx.fr/2017/talk/SIZ-1676/Cloudifie_ton_monolithe_:_les_microservices_pour_une_architecture_comme_les_grands_du_web[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, Agile, Methodology & Tests
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Retour d'XP sur un projet de la BNP CIB : ConnectIt Cash
+
+Le monolithe en question à 10 ans : il faut maintenant le passer sur le cloud. +
+Tout ceci est similaire à une grande aventure, et dans une aventure, que rencontre-t-on ? Des monstres bien sûr !
+
+4 phases :
+
+* *transformation*
+* *industrialisation*
+
+== Monstre 1 : Complexité
+
+* Application 24 / 7, déployée partout dans le monde
+* process en cascade avec 4 releases en parallèle +
+* peu de TU, il faut compter quasi-exclusivement sur les tests End-to-End
+
+== Monstre 2 : Obsolescence
+
+Encore du JDK 1.4... Encore du XDoclet +
+14 000 j/h de dette technique...
+
+Changer de frmk est un véritable effort, avec un coût très conséquent.
+
+Ces obsolescences sont backend, certaines autres sont au Front, et donc beaucoup plus visibles. +
+-> un bon levier pour un changement
+
+== Monstre 3 : Artisanat
+
+??? revoir la présentation
+
+== Monstre 4 : Monolithe
+
+* 2012 : sont partis sur une approche _Business Component Factory_ +
+-> malheureusement, cela a été fait *au sein* du monolithe, ce qui a eu pour effet de faire grossir le monolithe...
+* 2013 : un jar exécutable en mode message. +
+-> là, on a commencé à avoir un 1er composant micro-service
+
+On a développé ici la capacité _Style d'architecture_
+
+== Monstre 5 : Peur du changement
+
+La bonne manière d'écrire un composant :
+
+* responsabilité la plus petite possible
+* petit (quelques Mo)
+* déployé en dehors du WAS
+* processus autonome
+* propre code (repo Git spécifique)
+* propre base de données
+* propre implémentation
+* propre cycle de livraison
+* communique avec un protocole lâche (Pub / Sub)
+* *scallable* !
+
+On a développé ici la capacité _Règles d'architecture_
+
+== Monstre 6 : Changement
+
+Expérimentation phase 1 :
+
+* Spring Boot
+* DropWizard
+
+2 équipes sont partis là-dessus : les devs ont repris du plaisir à coder ! +
+Problème : on s'est retrouvé avec 3 environnements de développement différents...
+
+D'où le monstre suivant :
+
+== Monstre 7 : Chaos technique
+
+Choix de Spring Boot : transformer en châssis (tout le fonctionnel en a été sorti)
+
+Puis ajout d'une automatisation de l'installation "Homemade"
+
+On a développé ici la capacité _Adoption_ (par les OPS)
+
+== Monstre 8 : Complexité induite
+
+Maintenant, on a les micro-services :
+
+* 10 micro-services -> 10 ports différents : comment communiquer avec notre GUI ? +
+Réponse : on passe par la stack Netflix et par une API gateway
+
+image::jeudi_1710_cloudifie-ton-monolithe_01.jpg[width="800"]
+
+On a développé ici les capacités _simplicité de déploiement_, _résilience_
+
+== Monstre 9 : Ambiguité
+
+Au fil du temps, il y a eu pas mal de départs, la connaissance fonctionnelle s'est perdue.
+
+Pour pallier à cela : Domain Driven Design +
+-> a servi à mettre à plat les blocs fonctionnels
+
+== Monstre 10 : Densité
+
+Migration en faux micro-services : on a un monolithe distribué, il ne faut pas en rester là.
+
+Par "là", on entend des micro-services mais la même persistance (toutes les tables dans la même BDD). +
+Il a fallu éplucher progressivement le monolithe (long et compliqué) afin de rendre les persistances indépantes, progressivement.
+
+== Monstre 11 : Silos organisationnels
+
+Création de feature team multi-profiles.
+
+Mise en place d'un Cloud Privé pour réduire l'adhérence avec l'infra actuelle.
+
+Une bonne équipe d'OPS leur a mis en place Docker et Rancher comme Infra as a code.
+
+Passage au *packaging as a code* :
+
+* `mvn clean package`
+* `mvn deploy` (image Docker poussée dans un Docker registry (sur nouveau Nexus 3.x))
+
+Puis passage au *déploiement* :
+
+* On utilise Rancher pour répartir sur plusieurs hosts nos containers docker 
+
+image::jeudi_1710_cloudifie-ton-monolithe_02.jpg[width="800"]
+
+== Monstre 12 : Cohérence des données
+
+== Monstre 13 : Perturbation
+
+*CQRS / Event Sourcing*
+
+image::jeudi_1710_cloudifie-ton-monolithe_03.jpg[width="800"]
+
+== Pour conclure
+
+* utiliser les coûts de l'obsolescence comme levier pour initier le changement
+* n'ayez pas peur de vous tromper dans votre archi, jusqu'à ce que vous trouviez celle qui vous convient (lire, lire, se renseigner, lire des bouquins)
+* quand ça marche -> définition des *règles d'architecture*
+* utiliser CQRS
+
+image::jeudi_1710_cloudifie-ton-monolithe_04.jpg[width="800"]
+
+== Mon avis
+
+Gros retour d'XP, présentation très complète, à revoir au calme.

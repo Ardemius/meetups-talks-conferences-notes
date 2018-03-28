@@ -1,0 +1,85 @@
+= Si les Feature Teams m’étaient contées
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Laurène Thénoz et Stéphane Guédon de Xebia
+
+== Abstract
+
+À travers une série de scénettes et mises en situation, nous vous proposons de faire un tour d’horizon des questions que l’on se pose et des *problèmes que l’on rencontre avant, pendant et après la mise en place des Feature Teams*.
+
+== Notes
+
+Talk sous la forme d'une *discussion entre le scrum master* (Laurène) et *le "big boss"* (Stéphane).
+
+Problématique d'*Agilité à l'échelle* (le fameux Agility @ Scale) sur 60, 70 personnes.
+
+*Que faire ?*
+
+. Big Boss, tu veux pas en savoir un peu plus sur l'Agilité dissssss ???
+
+. On fait des *Feature Teams* : des équipes multi-disciplinaires (plutôt que des équipes par compétence) +
+-> Mais dans ce cas, *il faut lancer ~10 équipes en même temps ???* +
+{sb}
+Coach Agile, tu en penses quoi ? On les lance toutes en même temps, ou on commence par 1 ou 2 ??? +
+-> *Banco ! Tout le monde en même temps !* +
+Plusieurs RX sur ce point, le temps de monter 1 à 2 équipes à 10 personnes, on ne livre pas grand chose, et cela finit par coûter une blinde...
+
+. *Quels profils prend-on ?*
+	** l'expert
+	** le junior
+	** le Touche à tout
+-> *On prend un peu d'experts, un peu de juniors et beaucoup de touche à tout*. +
+Les experts se positionnent en mentors, et font monter tout le monde en compétence. +
+Dès lors, la vélocité, qui n'était à la base pas terrible, va augmenter progressivement. 
++
+WARNING: Si on avait pris *beaucoup d'expert et beaucoup de juniors*, il est possible que *les experts s'épuisent* (sur-bookés), n'arrivent plus à former les juniors et à corriger leurs bugs +
+-> Ils finissent pas faire un burn-out
+
+. Coach ?! *Comment s'organise la gestion du product ?* +
+Suivant les avis, on a soit 1 PM et des POs pour plusieurs équipes (1 PO par équipe), soit 1 PM qui fait aussi PO. +
+-> Pas de solution idéale, dépend de la situation
+
+. *Estimations en folie* : estimation par composant, ou estimation par fonctionnalité (1 fonctionnalité = plusieurs composants) ? +
+Le coach sort ses dés, on prend l'estimation par composant... +
+Résultat : ça sort vite, mais on sous-estime toutes les tâches un peu transverses, d'où...
+
+.  *Des backs sous l'eau* ! Une grande majorité de points Back à traiter, et peu de points Front +
+Que choisit l'équipe ? +
+-> *Les Front vont aider les backs* (plutôt que de créer de nouvelles stories Front) +
+Cela *va permettre aux Front de monter en compétence*, et de rééquilibrer les forces en présence. Le résultat est la *création d'une vraie Feature Team* (accent mis sur la pluridisciplinarité des membres).
+
+. Toujours plus loin ! *On rajoute l'intégration du travail cross-équipe dans la Definition of Done ???* +
+-> l'intégration prend de plus en plus de temps ! On arrive pas à être Done à la fin du Sprint, on arrive pas à livrer, et la vélocité baisse ! +
+-> Coach décide de faire une grosse Retro : il en ressort que *l'IC n'était absolument pas faite pour cela*. +
+Il faut donc refaire des stories et libérer du temps pour mettre à niveau l'IC. Suite à cela, la vélocité remonte progressivement. +
+-> *Conclusion* : il faut bien penser à ce point *avant* de se lancer (il *faut* que l'environnement soit prêt !)
+
+== Conclusion
+
+Présentation très vivante ! Beaucoup d'informations pragmatiques données.
+
+== Ressources
+
+
+* https://www.youtube.com/watch?v=ZyyXUI1VXSc[Vidéo de la présentation]

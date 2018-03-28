@@ -1,0 +1,103 @@
+= Faire dire n’importe quoi à Bruce Willis ou Sylvester Stallone
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Pierre Sendorek de Xebia (psendorek@xebia.fr)
+
+== Abstract
+
+Notre algorithme transforme la voix de l’utilisateur en celle d’une personne de votre choix. +
+Comment ? Avec des *réseaux de neurones artificiels*. 
+
+Nous présenterons l’architecture de réseaux de neurones utilisée pour réaliser cette tâche en expliquant pourquoi elle est adaptée pour traiter de la voix. +
+Nous ferons aussi une parenthèse sur les mécanismes acoustiques sous-jacents. +
+Nous ferons enfin une démonstration de notre algorithme sur des phrases proposées par des membres du public.
+
+== Introduction
+
+Objectif : *transformer sa voix en celle de Bruce Willis !* :wink: +
+Par quelles étapes faut-il passer pour cela ?
+
+. voder
+. réseau de neurones
+. voder inverse
+
+NOTE: *Voder* = modèle simplifié du mécanisme de génération de la voix
+
+NOTE: Pour info, Pierre a un doctorat de mathématiques et de traitement sur signal, ce qui se sent très fortement dans toute la conférence :wink:
+
+== Voder
+
+*Transformée de Fourier* : représente le *spectre* fréquentiel d'un signal
+
+Pour ceux qui veulent se rappeler leurs anciens cours de maths et de physique, je vous conseille de jeter un oeil à https://en.wikipedia.org/wiki/Fourier_transform[la version anglaise de l'article Wikipedia sur la transformée de Fourier] (que je trouve juste bien plus claire et concrète que la française) :
+
+[quote, Wikipedia - Fourier transform]
+____
+The Fourier transform (FT) decomposes a function of time (a signal) into the frequencies that make it up, in a way similar to how a musical chord can be expressed as the frequencies (or pitches) of its constituent notes.
+
+image::https://upload.wikimedia.org/wikipedia/commons/7/72/Fourier_transform_time_and_frequency_domains_%28small%29.gif[]
+____
+
+Nous allons utiliser des *successions / enchaînements* de spectres -> *filtrage par transformée de Fourier*.
+
+image::faire-parler-bruce-willis.jpg[]
+
+http://www.numpy.org/[*NumPy*] : principale bibliothèque mathématique de Python pour les calculs scientifiques. Utilisée pour les opérations sur la voix (contient les transformées de Fourier)
+
+== Apprentissage de la conversion par réseau de neurones artificiels
+
+Technologie utilisée : https://www.tensorflow.org/[*TensorFlow*] (Google)
+
+[quote, Wikipedia - TensorFlow]
+____
+TensorFlow is an open-source software library for dataflow programming across a range of tasks. It is a symbolic math library, and also used for *machine learning* applications such as *neural networks*.
+____
+
+image::faire-parler-bruce-willis-2.jpg[]
+
+C'est un bloc auquel on va passer des exemples (la voix à obtenir) pour qu'il apprenne au fur et à mesure.
+
+Ici, utilisation de *réseau de neurones récurrents* : prennent en entrée, l'input *et* la sortie du réseau de neurones précédent. +
+Pour les intéressés, voir https://fr.wikipedia.org/wiki/R%C3%A9seau_de_neurones_r%C3%A9currents[la page Wikipedia associée], mais, franchement, accrochez-vous...
+
+*Alignement des séquences* via le *Dynamic time warping* : permet de garder le même *rythme de conversation* (synchronisation des paroles)
+
+Applications potentielles : 
+
+* imiter la voix d'un acteur décidé pour un film :wink:
+* beaucoup d'autres...
+
+== Conclusion
+
+*Présentation hyper intéressante* (fortes composantes mathématiques, physique en plus de l'informatique) sur un sujet complexe. +
+Pierre est passionné par le sujet (doctorat, voir http://pierresendorek.free.fr/html/[sa page perso]), et cela se voit.
+
+Le résultat est *très impressionnant* (marche parfaitement, bluffant), beaucoup de matière derrière, laisse entrevoir un vaste domaine.
+
+Les slides sont vraiment à récupérer, et à creuser pour les intéressés !
+
+== Ressources
+
+* https://www.youtube.com/watch?v=jjdS0HGN3Js[Vidéo de la présentation]
+* https://github.com/pierresendorek/voice_converter

@@ -1,0 +1,47 @@
+= Jeudi 09:20 / 09:40 - De la responsabilité des ingénieurs
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Eric Sadin. +
+https://cfp.devoxx.fr/2017/talk/JAM-0695/De_la_responsabilite_des_ingenieurs[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Alternate Languages
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Idées du talk
+
+A l'avenir, de plus en plus, les capteurs vont envahir notre quotidien, en permanence et partout. +
+Les data remontées par ces derniers seront traitées par nombres de start-ups, avec pour finalité la *marchandisation algorithmique de la vie*. 
+
+Il s'agit d'un *nouveau modèle de civilisation*, auquel Eric Sadin n'adhère pas du tout !
+
+Nous, en tant que développeurs, avec une très grande responsabilité dans ce nouveau modèle, étant donné que nous en sommes les créateurs. 
+
+A la révolution industrielle : *apparition des brevets* +
+Les industriels ont commencé à acheter les innovations des ingénieurs, et à employer ces derniers. +
+Avant cela, les ingénieurs maîtrisaient leurs inventions / créations de bout en bout, sur toute la chaîne. +
+Avec cet *assujetissement* (moins répondre à ses propres inspirations, mais plus à une logique industrielle et économique), *l'ingénieur a perdu de sa liberté inventive et entrepreneuriale*. +
+L'époque du "garage californien" (Steve Jobs, Wozniack) est passée. +
+Nous sommes assujetis aux tendances, et volonté des bureaux marketing.
+
+On dit souvent que les ingénieurs "répondent à la demande sociale". +
+Médaille Fields 1936, ingénieur Lars Ahlfors (vérifier date et personne) : son labo était financé par l'OTAN +
+Cet ingénieur n'a pas voulu de ce financement, et s'est retiré.
+
+Les écoles d'ingénieurs forment notre esprit critique, MAIS ces écoles sont financées par des grands groupes comme Accenture, Free (Eric n'apprécie pas trop les déclarations de Xavier Niel expliquant ne pas avoir de bibliothèque chez lui, 1er lieu de développement de l'esprit critique selon Eric), etc. qui orientent forcément les programmes et sapent notre esprit critique. 
+
+== Mon avis
+
+Super keynote ! Eric a un avis tranché, et a bien argumenté ce dernier, en étant un rien vindicatif par moment ;) +
+Fin à 09:56, la plus grosse dérive d'une keynote depuis sa création !

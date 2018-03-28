@@ -1,0 +1,106 @@
+= Vendredi 17:10 / 17:55 - De bronze à légendaire, comment réussir vos IA de bot
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Grégory Ribéron. +
+https://cfp.devoxx.fr/2017/talk/SSI-2477/De_bronze_a_legendaire,_comment_reussir_vos_IA_de_bot[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Qu'est-ce qu'un challenge d'IA ?
+
+C'est une compétition internationale : votre code combat *contre le code des autres*. 
+
+* Vous codez dans le langage que vous voulez
+* En termes de performances, votre bot doit répondre suffisamment (latence minimum ou élimination)
+
+Pour s'entraîner : site Coding Game
+
+* Pour un 1er bot : quelques minutes suffisent
+* plusieurs dizaines sont par contre requises pour avancer dans les ligues.
+
+== Comment bien débuter ?
+
+* créer déjà une IA *basique*
+* comprendre le design du jeu
+
+*Structure du jeu* :
+
+* Parsing
+* Evaluation
+* AI algorithm
+* High level AI
+
+Conseils :
+
+* Ne jamais laisser de côté les tests !
+* LOG ! L'idéal est d'être capable de comprendre en 1 tour de jeu ce qui a pêché +
+Comme on ne peut pas débugger, *printer l'état du jeu dans vos logs*.
+* *REGARDER* votre bot jouer
+* *VOLER LES IDEES DES AUTRES* : on joue contre le 1er, et on prend ce qui marche. Rien de honteux, tout le monde le fait.
+* Les 1eres heures, amusez-vous !
+* Les jours qui suivent : codez !
+* le dernier soir : regardez votre bot joué, et... Piqué les bonnes idées des autres ?
+* Les dernières heures : ON NE TOUCHE PLUS A RIEN
+
+Pour trouver des idées : *regardez les reports des concours des top players*
+
+Autre conseil : détachez-vous un peu du PC. Allez courir, prenez des notes.
+
+Mieux vaut un petit truc qui marche, qui gros truc qui plante...
+
+Pour conserver ses idées, un SCM c'est bien, ça sert. +
+Et faire des feature branch, c'est bien aussi (qui ça plante, c'est tout de même top de pouvoir revenir en 2 sec sur master...)
+
+== Types de jeux et algos
+
+image::vendredi_1710_IA-bot_01.jpg[width="800"]
+
+Stratégies d'exploration des arbres de jeu :
+
+* *fixed depth* : on descend jusqu'à une profondeur fixée, puis on appelle une [red]*fonction d'évaluation* +
+Pour cette dernière, on part simplement du principe que l'adversaire va effectuer l'action qui le favorise le plus.
+* *trouver la branche la plus prometteuse en 1er* (Tree search, Monte Carlo) : la théorie est plus compliquée
+
+Pour des jeux de *resources management*, ce qui marche très bien, ce sont les algorithmes de diffusion.
+
+Pour les *jeux de simulation*, une bonne idée : le random ! +
+Mais attention ! Il y a le bon random, et le mauvais random ;) +
+Le bon random : 
+
+* use Heuristic function
+* algorithm genetic : merge de mouvements, et mutation de combinaisons +
+On va sélectionner les meilleures combinaisons parmi toutes celles disponibles.
+
+WARNING: *Le Machine Learning n'est pas une bonne solution* pour ce type de concours. +
+Pas suffisamment de temps pour l'apprentissage, et le comportement des adversaires va évoluer au cours du temps (son apprentissage du lundi ne sera plus d'actualité le vendredi)
+
+== Best language ?
+
+. Beaucoup de C++
+. C#
+. Python
+. Java
+
+Mais le bon langage, c'est surtout celui que vous maîtrisez !
+
+== Ressources
+
+* `Manwe56/competitive-programming` : les slides de la présentation y sont.
+
+== Mon avis
+
+Présentation sur un sujet sympa, et *très vaste* en y regardant de plus près. +
+La partie concernant les stratégies d'exploration mérite d'être revue à tête reposée.

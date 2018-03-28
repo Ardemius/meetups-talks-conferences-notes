@@ -1,0 +1,125 @@
+= Chatbots : Etat de l’art et prochains challenges
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Jean-Baptiste Claramonte et Josselin Moulay de Xebia
+
+== Abstract
+
+Les *Chatbots* (ou *systèmes conversationnels*) connaissent une croissance fulgurante et promettent d’être à terme *l’interface principale entre les utilisateurs et l’Information*.
+
+Venez découvrir les axes fondateurs de cette discipline prise entre reproduction du comportement humain (Cognitive Computing), collecte, analyse et interprétation de données (Machine Learning) et anticipation d’événements (Predictive Analytics). +
+Des exemples d’utilisation et de conception, autour de cas d’usages d’aujourd’hui et de demain, ainsi que des anecdotes croustillantes illustreront ces 45 minutes de présentation.
+
+== Introduction
+
+image::chatbots-1.jpg[]
+
+Nous commençons à vivre une montée en puissance des chatbots, qui sont amenés à révolutionner notre façon de chercher de l'information. +
+D'ici peu, nos enfants ne taperont plus de mots clés dans Google, mais demanderont (parlerons) directement l'info à leur smartphone. +
+Les *chatbots* deviendraient donc la *principale interface entre les utilisateurs et l'information recherchée*.
+
+NOTE: *Google 2017* : Passage de "Mobile First" à "AI First" (dixit Sundar Pichai, PDG de Google)
+
+== Conception d'un Chatbot
+
+Différencier plusieurs types de chatbots : *récupération* et *génération*
+
+image::chatbots-2.jpg[]
+
+Dans tous les chatbots, la compréhension de *l'intention* (*intent*) du l'utilisateur est capitale, et est un des grands domaines d'application du *Natural Language Processing* (NLP).
+
+image::chatbots-3.jpg[]
+
+=== Importance du *contexte* et de la *personnalité* du chatbot
+
+*Contexte* :
+
+* court ou long
+* informations utilisateur
+
+*Personnalité* :
+
+* social ou neutral
+	** le *social* va *faciliter l'acquisition et la fidélisation de l'utilisateur*. +
+	Permet également une *meilleure proximité* avec l'utilisateur. +
+	-> développement complexe
+	**  *neutral* : développement plus simple, *permet de contrôler le contenu* (et d'éviter certaines réponses étonnantes provenant du Machine Learning) +
+	-> inconvénient : *génère de la frustration*
+
+== Création d'un chatbot de consultation météo
+
+Réalisé par Jean-Baptiste avec https://dialogflow.com/[*Dialogflow*] (technologie Google).
+
+Pour info, Dialogflow, anciennement *API.AI* / *Speaktoit*, a été racheté par Google en septembre 2016, et renommé Dialogflow tout dernièrement, en octobre 2017.
+
+Voir https://en.wikipedia.org/wiki/Dialogflow[la page wikipedia] pour plus de détails :
+
+[quote, Wikipedia]
+____
+*Dialogflow* (formerly Api.ai, Speaktoit) is a developer of human–computer interaction technologies based on natural language conversations. +
+[...] +
+Speaktoit has also created a *natural language processing engine* that incorporates conversation context like dialogue history, location and user preferences. +
+[...] +
+Google bought the company in September 2016 and was initially known as API.AI; it provides tools to developers *building apps ("Actions") for the Google Assistant virtual assistant*.
+____
+
+D'autres plateformes sont également disponibles, comme *IBM Watson*, la technologie sur laquelle travaille notre *Softeam Innovation Lab* :
+
+image::chatbots-4.jpg[]
+
+Pour information, Jean-Baptiste a choisi Dialogflow, non pas parce que c'est la meilleure techno, mais tout simplement car c'est celle qu'il connaissait le mieux.
+
+TIP: C'est également un conseil que je ne répéterai jamais assez : quand vous connaissez *bien* un outil qui répond à vos besoins, n'allez pas forcément en chercher un autre sous prétexte que c'est le dernier sorti / buzz du moment !
+
+=== Workflow de la solution
+
+User -> Google Home -> Google Assistant (actions) -> Dialogflow -> Webhook
+
+La compréhension de *l'intent* de l'utilisateur est capitale. +
+A ce niveau, tout dépend de l'algo utilisé par la plateforme (reconnaissance de mots clé, IA, etc.)
+
+[NOTE]
+====
+Dialogflow est gratuit. +
+Google veut ainsi encourager la création de chatbots dans sa plateforme, afin d'avoir plus de données pour améliorer sa reconnaissance des *intents*.
+
+Néanmoins, une version Enterprise, actuellement en beta, existe déjà : https://cloud.google.com/dialogflow-enterprise/ +
+Dataflow est bien sûr intégré à la *Google Cloud Platform*.
+====
+
+== Conclusion
+
+Dans le https://www.gartner.com/smarterwithgartner/top-trends-in-the-gartner-hype-cycle-for-emerging-technologies-2017/[*Gartner Hype Cycle 2017*], les *chatbots* (conversational user interface) arrivent *en haut de la vague "hype"* (_peak of inflated expectations_). +
+*La phase de désillusion est donc à venir* (préalable à une prochaine phase de maturité), qui devrait s'accompagner d'un resserrement des technologies (toute la difficulté est donc de choisir la bonne aujourd'hui...)
+
+image::chatbots-5.jpg[]
+
+Nous n'avons malheureusement pas pu voir le résultat de la démo du fait de la lenteur du wifi :cry:
+
+== Ressources
+
+* https://www.youtube.com/watch?v=rhFwaQoVi4c[Vidéo de la présentation]
+* https://blog.eleven-labs.com/fr/dialogflow-votre-chatbot-facile/[Tutoriel complet de création d'un chatbot par Eleven Labs]
+
+

@@ -1,0 +1,65 @@
+= Vendredi 09:50 / 10:10 - Révolution cyberindustrielle en France
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Laurent Bloch. +
+https://cfp.devoxx.fr/2017/talk/IAK-9866/Revolution_cyberindustrielle_en_France[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Architecture, Performance and Security
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Contenu du talk
+
+image::vendredi_0950_revolution_01.jpg[width="800"]
+
+Nous sommes en face d'une révolution *cyberindustrielle*. +
+Et comme toutes les révolutions industrielles, elle bouleverse *TOUT* :
+
+* régime politique
+* institutions juridiques
+* etc.
+
+Nous devons adapter notre système éducatif à cette révolution !
+
+image::vendredi_0950_revolution_02.jpg[width="800"]
+
+Grosse bâche de Laurent sur nos derniers gouvernements : "le numérique a été donnée à des femmes, car, après tout, c'est un sujet secondaire..." +
+Et il nous explique qu'il n'y a qu'elles qui aient compris quelque chose à ce qui se passe en ce moment.
+
+Voir les slides pour récupérer le lien du rapport parlementaire de la député dont Laurent a parlé.
+
+Notre budget recherche est bien trop bas par rapport aux pays qui ont compris la situation.
+
+WARNING: Un pays fort doit construire *SES* propres systèmes.
+
+Exemple : l'aviation Irakienne lors de la guerre du Golfe a été détruite en quelques heures par l'armée américaine, car les avions irakiens étaient construits par les russes, et que les américains ont demandé à ces derniers la signature numérique des avions irakiens. +
+Un pays qui fabrique ses propres avions n'a pas ce type de problème.
+
+Exemple identique avec l'informatique russe (virus et botnet) : ils n'ont pas d'industrie informatique, donc ne sont pas réellement un gros problème.
+
+La France a encore des usines, et *pourrait être une puissance cyberindustrielle* (encore une usine de construction de microprocesseurs, dans le coin de Chambéry)
+
+Investissement dans la R&D
+
+image::vendredi_0950_revolution_03.jpg[width="800"]
+
+Pourquoi si peu d'industries de ce type ? Car trèr très cher.
+
+image::vendredi_0950_revolution_04.jpg[width="800"]
+
+Qui sont les cyberpuissanes ?
+
+image::vendredi_0950_revolution_05.jpg[width="800"]
+
+les cyberdragons n'ont pas de ressources autres que leur population, *ils ont tout investi sur l'éducation de celle-ci*.

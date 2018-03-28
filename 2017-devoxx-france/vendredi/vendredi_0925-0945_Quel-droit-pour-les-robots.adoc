@@ -1,0 +1,39 @@
+= Vendredi 09:25 / 09:45 - Quel droit pour les robots
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Alain Bensoussan. +
+https://cfp.devoxx.fr/2017/talk/EOM-5359/Quel_droit_pour_les_robots[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Future & Robotics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Contenu du talk
+
+Alain est avocat, spécialisé dans le droit des robots (sa passion).
+
+Présente :
+
+* *contrôle / orientation des émotions* par Facebook en 2014 : plus de 600 000 personnes bombardées par des messages filtrés suivant les règles de Facebook. +
+Bombardement de messages positifs OU négatifs sur cette "population de test".
+* exemple flippant (et un peu déroutant) : accident de voiture, 3 voitures en montagne, 1 avec 1 voiture descend normalement la route, une autre autonome monte à la vitesse maximale autorisée, une 3e de sport avec 4 personnes à bord descend beaucoup trop vite, double et se retrouve face à la voiture autonome. +
+Là, la voiture autonome, 4 contre 1, choisit de laisser passer la voiture de sport et fracasse la voiture descendant normalement, tuant son conducteur. +
+Au tribunal, sont au banc des accusés, le propriétaire du véhicule (le papa), la maman qui a envoyé la voiture autonome chercher ses enfants, *ET les codeurs de l'algorithme de la voiture*. +
+L'avocat de la partie civile, et l'avocat général ont accusé les codeurs, et au final, tous ont été acquittés, car n'étant pas responsables au yeux de la loi.
+
+*Les robots ne sont pas objet de loi, mais sujet de loi.*
+
+== Mon avis
+
+Alain est un très bon orateur, ne pas hésitez à revoir son talk.

@@ -1,0 +1,53 @@
+= Jeudi 18:10 / 18:40 - Machine learning et séries temporelles : Comment prédire les ventes de votre site ecommerce avec Spark
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Quentin Ambard. +
+https://cfp.devoxx.fr/2017/talk/ZUR-8901/Machine_learning_et_series_temporelles_:_Comment_predire_les_ventes_de_votre_site_ecommerce_avec_Spark[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Quentin travaille chez Datastax (Cassandra)
+
+Le soir, travaille chez http://wwww.lapetitetranche.fr : expéditeur de saucissons +
+
+* plus de 10 tonnes de saucissons envoyées avec amour !
+* créé en 2014
+* pic d'activité à Noël et pour la fête des pères
+
+== Timeseries
+
+NOTE: *Forecast* : prédiction des valeurs numériques de la timeseries dans le future
+
+Pour le forecast :
+
+* approche statistique
+* réseaux de neurones : Long Short Term memory
+* *Algorithme ML*
+
+== Live demo
+
+Avec Apache Zeppelin (notebook) & DSE (solution de Datastax avec Cassandra, SolR, etc.)
+
+NOTE: *Random Forest* : basé sur les arbres de décisions +
+Va créer des buckets logiques pour représenter certains cas.
+
+== Conclusion
+
+* *Random Forest capture automatiquement les saisonnalités* (*GROSSE* force de la solution) : pas d'indiqué que c'est Noël ou la fête des pères, c'est appris tout seul
+* des features doivent être créées sur des évènements non-prédictibles (comme des promotions)
+* *tout n'est pas prédictible* !

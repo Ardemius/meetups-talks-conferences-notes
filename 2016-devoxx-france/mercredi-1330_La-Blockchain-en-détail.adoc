@@ -1,0 +1,249 @@
+= Mercredi 13:30 - La Blockchain en détail
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Benoît Lafontaine, Yann Rouillard. +
+http://cfp.devoxx.fr/2016/talk/SMP-6581/La_Blockchain_en_detail.html[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=J0MgFQ-j6nE[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::J0MgFQ-j6nE[youtube, width=640, height=480]
+endif::[]
+
+== Introduction
+
+image::20160420-1330_la-blockchain-en-détails.jpg[présentation]
+
+A l'origine, le bitcoin : réseau pair à pair, pour un transfert d'argent sans entité centrale
+
+== Fonction de hashage (*hash*)
+
+image::20160420-1330_hash.png[title="un exemple de fonction de hashage"]
+
+* *taille du hash fixe en sortie*
+* *même entrée = même hash*
+
+Hash = rapide / résistant à la collision / non réversible 
+
+== Signature électronique 
+
+Principe : *clé publique / clé privée* +
+On signe son message avec la clé privée (1 message = 1 signature) >> *infalsifiable* +
+La vérification est faite avec la clé publique par une tierce personne.
+
+== La Blockchain
+
+NOTE: *Blockchain* = blocs de données qu'on lie entre eux en y incorporant le hash du bloc précédent (*arbre de Merkle*). 
+
+image::20160420-1330_merkle_tree.jpg[title="arbre de Merkle"]
+
+== Le Bitcoin
+
+Bitcoin rules :
+
+* *on ne transfère que les Bitcoin que l'on possède* (*transaction de type "paye"*)
+* *seuls les mineurs peuvent créer des Bitcoin* (*transaction de type "coin base"*)  
+
+Dans l'exemple suivant, Michel, un mineur, crée un Bitcoin, le transfère à Alice, qui elle-même le transfère à Bob.
+
+image::20160420-1330_transfert-de-bitcoin.PNG[title="création et transfert de Bitcoin"]
+
+Tout utilisateur de bitcoin possède tout l'historique des transactions. +
+Les transactions sont diffusées à tous les utilisateurs.
+
+Quand il y a des latences de transfert, et des transactions contradictoires entre US et Australie, cela peut donner lieu à des versions différentes... Pour palier à cela, l'algorithme suivant a été mis en place :
+
+. Nouvelles transactions sont broadcastées
+. Chaque noeud crée un bloc avec les transactions qu'il a vues, à la suite de sa chaîne
+. Un noeud est *tiré au hasard*
+. Ce noeud broadcast son bloc
+. Les autres noeuds reçoivent et valident ce bloc
+. S'il est valide, ils le rajoutent à leur chaîne
+
+NOTE: le tirage au sort est réalisé par le *proof of work*
+
+image::20160420-1330_détail-bloc.jpg[title="détail d'un bloc"]
+image::20160420-1330_tirage-au-sort-et-nonce.PNG[title="tirage au sort et nonce"]
+
+Tout le travail du mineur consiste en fait à trouver un *nonce* permettant que le hash du bloc soit inférieur à une certaine valeur (hash dit *valide*)
+
+[NOTE]
+====
+*Nonce*: The "nonce" in a bitcoin block is a 32-bit (4-byte) field whose value is set so that the hash of the block will contain a run of zeros. The rest of the fields may not be changed, as they have a defined meaning.
+====
+
+Une transaction ancienne est plus sûre (on ne peut pas écraser un bloc ancien). +
+Si on a plus de 50% de la puissance CPU du réseau, on peut créer une chaîne "la plus longue", qui deviendrait donc la "vérité" pour tout le monde. +
+Pour rappel, l'algorithme derrière le bitcoin faisant que c'est toujours la chaîne la plus longue qui est considérée comme valide.
+
+image::20160420-1330_chaîne-la-plus-longue-valide.PNG[title="la chaîne valide est la plus longue"]
+
+Dans l'exemple ci-dessus, le bloc orange est non valide (dit "orphelin"), et c'est la chaîne du bas qui est la seule considérée comme valide.
+
+Travail des mineurs >> *sécuriser le réseau* en :
+
+* *valider les transactions*
+* *validant les blocs*
+* *s'accorder sur la chaîne*
+
+NOTE: *Mineur* : à chaque bloc trouvé ("nonce" trouvé), peut ajouter une transaction "coin base" à la chaîne, qui correspond à la *création monétaire du bitcoin*. 
+
+image::20160420-1330_évolution-difficulté.PNG[title="évolution de la difficulté du minage depuis la création du Bitcoin"]
+
+Les ruptures de pentes correspondent aux avancées technologiques  (GPU spécialisé, etc.) +
+*Actuellement, on veut que ne soient créés que ~10 blocs par minute.*
+
+* Avec un équipement normal, il est quasi impossible de trouver un nouveau bloc avant quelqu'un d'autre. 
+* Les gens s'organisent en *pool de minage*, afin d'avoir plus de chance de trouver un bloc avant les autres +
+Attention ! Ces groupes vont à l'encontre de la décentralisation. 
+
+En même temps, des groupes s'accordant pour avoir 51% du réseau auraient investi fortement dans le bitcoin, et s'auto-ruineraient en faisant tomber le réseau. 
+
+*Coût en énergie de la solution très élevée* (10% d'une centrale nucléaire en 2014).
+Alternatives :
+
+* LiteCoin
+* NXT : spécificité : le mineur est tiré au sort
+* bitshares
+
+Bitcoin, *monnaie programmable* :
+
+* langage de script
+* multisignatures
+* lock time
+* whitelist
+
+== Ethereum et les Smart Contracts
+
+*Ethereum* a repensé le protocole par rapport à bitcoin. +
+L'*ether* (la monnaie d'Ethereum) sert plus à payer le coût du système qu'il ne représente une monnaie (contrairement au bitcoin).
+
+Ethereum, c'est un ordinateur :
+
+* décentralisé
+* infalsifiable
+* toujours disponible
+* accessible de partout
+
+C'est aussi un ordinateur :
+
+* où *TOUT* se paie (temps de traitement, stockage, etc.)
+* qui produit des résultats cohérents À TERME
+* aussi rapide qu'un smartphone des années 90...
+
+Les évolutions d'Ethereum :
+
+. plus rapide (pas besoin d'attendre 1 heure pour le réseau valide la transaction...)
+. *stocke des données*
+
+=== Comment ont-ils rendu leur blockchain plus rapide ?
+
+* *Block size* qui s'adapte
+* *Block time* plus court (12s entre 2 blocs, contre 600s pour le Bitcoin)
+
+[IMPORTANT]
+====
+*Plus un block time est court* (se rapproche du temps de propagation réseau), *plus le réseau est vulnérable* (possibilité de créer la chaîne la plus longue, même sans avoir strictement plus de 50% de la puissance CPU du réseau)
+
+image::20160420-1330_impac-block-time-court.PNG[title="Impact d'un block time court"]
+
+Dans cet exemple, le mineur B arrive à allonger sa chaîne plus rapidement que ses concurrents, l'"autovalidant" par là même.
+
+====
+
+* Nouveau protocole *GHOST* (_Greedy Heaviest Observed Subtree_) : permet de trouver une utilité aux blocs orphelins. +
+Permet de palier à certains des problèmes relatifs au block time court : la chaîne valide n'est plus la plus longue, mais *la plus supportée*. 
++
+Les blocs orphelins, appelés *uncle* dans Ethereum, permettent de supporter une chaîne.
++
+image::20160420-1330_blocs-orphelins-en-support-dans-Ethereum.PNG[title="les blocs orphelins à la rescousse"]
+
+
+=== Le stockage des données dans Ethereum
+
+* Livret de compte amélioré : espace de stockage clé / valeur
+* Un compte par utilisateur par smart contract 
+* paiement à l'écriture
+* rétribution pour l'effacement 
+* illimité (ou presque)
+* limité par... Le prix : *130 000€ par Go*
+* faible débit 
+* taille physique
+
+*Possibilité de stocker du code !*
+Des contrats intelligents (*smart contracts*)
+Smart Contrat = simple programme :
+
+* permet de modifier la blockchain 
+* stocké dans la blockchain
+* exécution transactionnelle 
+
+Le code est *immuable* une fois mis dans la blockchain. +
+Il est exécuté dans l'*Ethereum Virtual Machine*.
+
+image::20160420-1330_interactions-smart-contract.PNG[title="exemples de Smart Contracts"]
+
+Langages de développement :
+
+* *Solidity* : ressemble au Javascript (le plus populaire actuellement)
+* *Serpent* : ressemble à  python
+* *LLL*: ressemble à Lisp
+
+Les *"Dapps"* : Decentralized Applications. +
+Correspond à la vision du futur d'Ethereum, où Ethereum serait le *backend d'applications entièrement décentralisées*.
+
+=== Live demo
+
+Coût des opérations très élevé (5€ pour un quicksort de 1000 éléments).
+
+Les *événements* servent à notifier des programmes *EXTÉRIEURS* à la blockchain. 
+
+*Oracles* : smart contracts permettant d'avoir *accès à l'état extérieur à la blockchain*. +
+Cette opération est impossible DIRECTEMENT (pas d'accès DIRECT à l'extérieur possible)
+
+image::20160420-1330_les-oracles-mode-synchrone.PNG[title="Les oracles"]
+
+*Mais à quoi ça sert au final ?*
+
+* plateforme transactionnelle ouverte à tous
+* transactions auditables et infalsifiable 
+* coûts de transactions faibles (semble surprenant de prime abord, mais par rapport à des coûts de transactions financières, c'est rentable)
+* paiement à l'usage
+* des transactions sans besoin de confiance mutuelle (plus d'intermédiaire)
+
+Multiples utilisations :
+
+* *Certifications, preuve d'antériorité*
+** diplôme d'ingénieur
+** enregistrement des créations et des droits d'auteurs
+* *Echanges pair à pair et pouvoir de la foule*
+* *Internet des objets*
+* *Produits financiers / monnaiebnp place de marché titres*
+** BNP : place de marché des titres de société non côtés
+* *Société / organisation*
+** *DAO* : Decentralized Autonomous Organization, mini-société démocratique dont le fonctionnement est régi par des Smart Contracts +
+*Slock.it* a prévu de passer sur le modèle DAO
+
+=== Gouvernance
+
+Qui contrôle le code ? +
+*Hashocracy* : ce sont les mineurs (et pas les développeurs) qui décident (et eux sont intéressés financièrement)
+
+Des solutions existent (pour exercer un contre-pouvoir) : +
+*Dash* (ancien *Darkcoin*) a introduit des Master nodes qui peuvent influer sur les évolutions de la blockchain. 
+
+*R3* : groupe de 42 banques mettant leurs moyens en commun sur la technologie +
+C'est ironique de voir que cette technologie plutôt orientée "contre les banques", les intéresse grandement maintenant  (ils se sentent sûrement très menacés emoji:wink[2x] )
+
+== Mon avis
+
+SUPER ! +
+Fluide, sujet maîtrisé, rythme soutenu, parfait ! +
+En plus, ils avaient prévu une live demo. 

@@ -1,0 +1,92 @@
+= Choisissez votre style avec Docker et Amazon Web Services
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Alexis Kinsella, CTO de Xebia et Gérome Egron, Développeur chez Xebia
+
+== Description
+
+La mode est aux conteneurs. Mais tout le monde n'est pas capable de transformer radicalement son DataCenter pour accueillir ces nouvelles unités de déploiement. Dès lors, le cloud est une alternative plus que valide. Mais il existe de nombreuses façons de déployer son conteneur dans les nuages ! À travers un retour d'expérience basé sur AWS, nous balayerons ces différents patterns, du plus indépendant de l'infrastructure sous jacente, au plus intriqué avec les services managés AWS.
+
+== Mes notes
+
+Comme indiqué dans la description, la conférence est un retour d'XP sur l'utilisation de Docker et / avec AWS.
+
+image::style-Docker-Amazon-1.jpg[title="architecture classique Docker / AWS", width="800"]
+
+ECR : *Amazon EC2 Container Registry*
+
+"Amazon ECR is a fully-managed *Docker container registry* that makes it easy for developers to store, manage, and deploy Docker container images."
+-- from https://aws.amazon.com/fr/blogs/aws/ec2-container-registry-now-generally-available/
+
+A l'heure actuelle, il existe des *distributions minimalistes*, spécialement conçues pour faire tourner des containers : *Rancher* ou *CoreOS*. +
+Malheureusement, elles sont encore peu répandues chez nos clients.
+
+Depuis juin et la Dockercon : https://beta.docker.com/docs/aws/[*Docker for AWS*]
+Représente une alternative (encore en beta) aux classiques *Mesos / Marathon / Zookeeper*, *Kubernetes*, ou encore *Nomad*.
+
+https://aws.amazon.com/fr/elasticbeanstalk/[*AWS Elastic Beanstalk*] : *service d'orchestration* pour déployer une infrastructure dans le cloud AWS. +
+AWS Elastic Beanstalk provides deployment and management of applications in the cloud.
+
+[quote,http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/Welcome.html]
+____
+With Elastic Beanstalk, you can quickly deploy and manage applications in the AWS Cloud without worrying about the infrastructure that runs those applications.
+[...].
+You simply upload your application, and Elastic Beanstalk automatically handles the details of capacity provisioning, load balancing, scaling, and application health monitoring.
+____	
+
+Support du déploiement d'applications multi-containers avec https://aws.amazon.com/fr/ecs/[*Amazon EC2 Container Service (ECS)*] +
+ECS est un *service de gestion de conteneurs* prenant en charge les conteneurs Docker, et permettant d'exécuter facilement des applications sur un cluster d'instances Amazon EC2. +
+Beanstalk va manipuler ECS :
+
+image::style-Docker-Amazon-2.jpg[title="", width="800"]
+
+Pourquoi Elastic Beanstalk avec Docker ?
+
+* blue green deployment (déploiement en double)
+* multi-env management
+
+*Cloud Formation* : AWS CloudFormation provides a declarative *template-based Infrastructure as Code* model for configuring AWS.
+
+Elastic Container Registry : accès Docker par AWS
+
+* intégration end to end
+* stockage sécurisé des imagess
+* avantages :
+** pas de cluster / orchestrateur (fourni par Amazon)
+** scaling 
+
+image::style-Docker-Amazon-3.jpg[title="", width="800"]
+
+Service discovery avec Route53
+
+Schedulers ECS
+
+* scheduler par tâche
+** mode random ou placé (on démarre une instance à cet endroit)
+* scheduler de services
+
+On différencie les jobs à durée de vie courte ou longue
+
+Très important : gestion des logs
+
+* problème rencontré avec logstash, sont passés à CloudWatch
+
+image::style-Docker-Amazon-4.jpg[title="", width="800"]
+
+Conclusion :
+
+* ec2 : le tout custom mais à votre charge
+* Beanstalk : on s'appuie sur les services managés
+* ecs : plus complexe, mais plus riche
+
+== Mon avis
+
+Une présentation complète, qui propose une revue de tous les outils utilisés dans la solution. +
+Le plus simple est de récupérer les slides de la présentation, et de les relire au calme. +
+Bonne ressource à conserver pour avoir un exemple de mise en oeuvre.
+
+
+

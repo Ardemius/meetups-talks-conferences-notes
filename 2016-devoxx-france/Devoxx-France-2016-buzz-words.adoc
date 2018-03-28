@@ -1,0 +1,103 @@
+= Devoxx France 2016 - Buzz words and synthesis
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+== Buzz words
+
+* *Reactive programming* (RxJava, Vert.x)
+* *Feign* (REST (mais pas que) client de Netflix)
+* on peut ajouter la stack *Netflix* dans l'absolu (Feign, Hystrix, Zuul, Falcor, Vector, etc.)
+* *iBeacon* (IoT localisation via Bluetooth)
+* *Docker & Co* (techno devient matûre, on commence à plus parler de l'environnements autour de Docker que de Docker lui-même)
+* *DevOps*
+* les *notebook BigData*
+* un peu dans la même veine, les *frameworks de dashboard* pour le monitoring (Dashing, Kinesis en partie, etc)
+* *Asciidoctor*
+* *Spring Boot*
+* les *types* pour aider et / ou se passer des tests ! Types algébriques, *Type Directed Development*.
+* la *blockchain*
+
+
+== Thème principal : Informatique et Société
+
+* *La médecine de demain (Jean-Michel Billaut)* +
+Notre corps est mathématique, et représente un *ensemble de données*. +
+De nombreuses start-ups se positionnent sur le secteur de la e-Santé, Chine et Etats-Unis en tête (la France à la traîne…)
++
+--
+* analyse en temps réel à partir d'une goutte de sang
+* création d'un nouveau foie à partir de vos cellules souches
+--
+
+* *The impact of code in society (par Joël Spolsky - founder and CEO of Stack Overflow)*
++
+____
+There’s an elite group of people in this world, who are the people who are responsible for creating the apps that define how we lead our lives - even how we feel.
+____
++
+*Fullstack developper = ridiculous*, you have to choose.
+
+* *Algorithmes, les nouveaux pouvoirs du développeur (par Fabrice Epelboin – FABULEUSE conférence)* +
+Le monde politique est complètement largué par rapport aux mutations technologiques actuelles +
+_code is law_, le code façonne nos sociétés, et les politiciens cherchent à nous (développeurs) utiliser +
+Repenser l’organisation du travail, la sécurité : *DevOps + sécurité* (DevSecOps ou DevOpsSec)
+
+* *Software development, responsibility and ethics: the coming crisis (par Richard Fontana, avocat de RedHat)* +
+Met en avant une particularité de nos métiers, une clause classique dans quasi toutes les licences (Oracle, OpenSource, etc.) :
++
+____
+Non responsable de l'utilisation du code / logiciel, et des dégâts potentiellement causés par ce dernier.
+____
++
+Cela est différent de nombreuses autres professions (bâtiment, médecine, etc.) où la responsabilité est beaucoup plus forte. +
+*Nous devons nous responsabiliser*, afin de garantir la qualité de nos créations. C'est une grande responsabilité étant donné que _software is eating the world_
+
+* *Le Service Public à l'heure d'internet (par Matti Schneider – super keynote)*
++
+Opposition action publique et numérique
++
+--
+* administration : planification à 3, 4, 5 ans
+* numérique : fonctionnement itératif, on s'adapte
+--
++
+*Beta.gouv.fr* et *l’Open Data Fr* : en moins de 6 mois, ce portail open data a été mis en place en France +
+Début des contributions via GitHub pour améliorer un service public ! Se rapprocher de *api.beta.gouv.fr* et *@betagouv* pour en apprendre plus sur la rénovation de notre action publique.
+
+== Conclusion
+
+Le développeur est un "héros", son travail modèle notre environnement quotidien, et décide de ses orientations à venir. +
+Néanmoins, "à grand pouvoir grandes responsabilités", nous devons maintenant prendre bien conscience de ces dernières, et faire en sorte :
+
+* d'assurer la qualité de nos développements
+* de garantir la sécurité 
+* de porter attention à l'éthique
+* de peut-être réfléchir à un cadre "normalisé" pour encadrer ces points
+
+== Divers & ressources
+
+À suivre :
+
+* https://cloud.google.com/dataflow/[Google Dataflow]
+
+À essayer :
+
+* *Dashing* (même si plus maintenu) : création rapide de dashboard.
+* parallélisation avec les `Future`
+
+A voir en vidéo absolument :
+
+* https://www.youtube.com/watch?v=LIFZPzupwgs[Pourquoi Maurice ne doit pas faire du Go]
+* https://youtu.be/v53caX5egMo[blockchain as a trust machine]
+
+A lire :
+
+* https://www.amazon.com/Java-Performance-Definitive-Scott-Oaks/dp/1449358454[Java performance: the definitive guide]
+* https://www.amazon.com/Seven-Concurrency-Models-Weeks-Programmers/dp/1937785653[Seven Concurrency Models in Seven Weeks]
+
+Ressources :
+
+* https://www.youtube.com/channel/UCsVPQfo5RZErDL41LoWvk0A/videos?live_view=500&flow=grid&sort=dd&view=0[chanel YouTube de DevoxxFrance 2016]
+

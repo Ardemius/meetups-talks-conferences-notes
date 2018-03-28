@@ -1,0 +1,685 @@
+= Notes du salon Big Data Paris 2018 (2018/03/12 - 13)
+Thomas SCHWENDER <https://sgithub.fr.world.socgen/tschwend041717[@thomas.schwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+== Overview
+
+* Site web : https://www.bigdataparis.com/
+* https://www.bigdataparis.com/programme-12-mars.html[Programme de la conférence]
+
+== CONFERENCES DU LUNDI
+
+=== Discours d'ouverture par Mounir MAHJOUBI, secrétaire d'état au numérique
+
+Principaux sujets :
+
+* *GDRP* comme principal thème
+	** "Vous pouvez utilisez nos données, mais tenez-nous au courant"
+* *portabilité des données*
+* "Il faut avancer, en même temps, sur la performance et l'éthique" +
+Certains autres continents commencent par la performance, et se disent qu'ils s'occuperont de l'éthique dans 5, 10 ans. +
+Nous pensons que cela va les limiter à terme. +
+-> En faisant le choix d'avancer en même temps sur la performance *ET* l'éthique, nous pensons pouvoir aller plus loin.
+
+=== Face au règlement ePrivacy et aux GAFA, comment les acteurs européens peuvent reprendre le pouvoir sur les données ?
+
+Par Louis Dreyfus, président du directoire du Monde.
+
+*739 milliards d'euros* : la valeur de l'économie européenne de la données en 2020 +
+-> 3 x plus qu'en 2015
+
+* réglementation *ePrivacy* : pourrait être problématique pour les entreprises NON GAFA (ex: Criteo pour la pub). +
+Cette réglementation concerne *l'installation des cookies* sur le poste utilisateur.
+
+.Infos de LD
+[NOTE]
+====
+Si on demande à l'ouverture du navigateur si, globalement, l'utilisateur souhaite accepter les cookies sur son poste, seuls "10%" diront oui. +
+Mais si on pose cette même question au cas par cas, *pour chaque site*, cela devient 90% de oui.
+
+ePrivacy forcerait le 1er cas, ce qui avantagerait les GAFA, car, pour utiliser leurs systèmes, il est avant tout nécessaire de se logger. +
+-> Résultat, avec ePrivacy, seuls les GAFA (et les plus grosses entreprises) pourraient toucher les 739 milliards précédents...
+==== 
+
+ePrivacy est donc contesté, et les acteurs "non GAFA" cherchent à se rassembler pour développer d'autres solutions / propositions :
+
+* login universel créé par le groupe norvégien Amedia (s'appuie sur une stratégie de développement des abonnements)
+* *Skyline* : stratégine commune de commercialisation du numérique regroupant le Figaro et le Monde.
+
+Photo 1 pour les points essentiels à garder en tête
+
+*Marché de la publicité en ligne* : 90% dans les mains de Google et Facebook, et surtout 110% de la croissance.
+
+=== Talend : vos données sont-elles prêtes pour GDPR ?
+
+image::talend_5-piliers-GDPR.jpg[]
+
+Vision 360° : gérée par le *Meta Data Management* (MDM)
+
+Les 3 points *les plus difficiles* de GDPR :
+
+* *gestion du consentement*
+* *droits d'accès* / portabilité (export des données vers d'autres systèmes)
+* *droit à l'oubli* (le plus compliqué)
+
+-> Et tout ceci doit être en place pour le *25 mai 2018* (date "théorique")
+
+Talend propose un portail répondant à ces 3 précédents besoins. +
+-> dixit l'un des speakers : "si les users ont confiance dans votre respect des contraintes instaurées par GDPR, ils ne demanderont *PAS* l'application du droit à l'oubli sur leurs données..."
+
+=== MapR : Learn globally, act locally: cloud, on-premises, edge: comment valoriser l'ensemble de vos données
+
+Sujet : architecture type *Data Fabric*
+
+*Digital Transformation* : Extraire et capturer la valeur des données à grande échelle.
+
+Les contraintes opérationnelles rendent l'utilisation en temps réel des données extrêmement complexe.
+
+[NOTE]
+====
+*Data Fabric* : "Fabric" est un faux ami, qui doit être compris comme *tissu*
+
+Définition : *Interconnexion de systèmes de stockage*, permettant d'accéder de manière transparente à l'ensemble des données, sur n'importe quel noeud du cluster.
+
+Data Fabric implique donc gestion d'un *"multi-cluster"*
+====
+
+*MapR Converged Data Platform* :
+
+* Résilience et data protection
+* multi-format / multi-protocole
+	** file system : POSIX, NFS, S3, HDFS
+	** database : SQL, HBase, REST, OJAI
+	** streaming : REST, Kafka
+
+*"edge"* : cluster que l'on va poser au plus près de la donnée
+
+Use cases :
+
+* Autonomous Driving : TensorFLow, Caffe, H2O.ai
+
+MapR Global Data Fabric :
+
+* Plateforme de données globale
+* Administration centralisée
+* Hautement scalable et résiliente
+* ...
+
+=== De grandes espérances : l'IA au service de la transition énergétique
+
+Par :
+
+* Emmanuel BACRY, professeur et responsable de l'initiative "Big Science", à l'Ecole Polytechnique
+* Grégory LABROUSSE, CEO et fondateur de NamR
+* Pierre LESCURE, board member groupe LAGARDERE
+* Lila TRETIKOV, CEO Terrawatt Initiative
+
+*NamR* : publicité pour la promotion de leur *"double numérique"* +
+-> "en 2 ans, NamR a recréé le jumeau numérique de la France..."
+
+Ce double numérique permet d'accéder, suivant les situations du quotidien, à de nouvelles informations nous facilitant le vie / évitant certaines erreurs.
+
+* Partenariat de recherche entre Polytechnique et CNAM (chance inouïe pour un Data Scientist)
++
+[NOTE]
+====
+La *base de données de la Caisse Nationale d'Assurance Maladie* recense 65 millions de personnes (200 To ?). +
+TOUS les pays nous envient cette base (la plus grosse base d'une mutuelle aux USA ne fait que 8 millions de personnes) +
+Du fait des données contenues, ces dernières ne sont pas en Open Data (Polytechnique et CNAM travaillent dessus en environnement complètement fermé, les données ne sortent pas)
+====
+* SNDS (Système National des Données de Santé) ouvert depuis peu
+
+-> NamR a commencé mi 2016 à étudier ces jeux de données
+
+Type d'analyse / croisement, recoupement de données réalisé par NamR :  pente des toits / accumulation de poussière / etc.
+
+Annonce de Jean-Louis BORLOO de ce matin : "le droit à l'énergie est comparable aux droits de l'homme"
+
+Discours très intéressant de Lila TRETIKOV sur l'optimisation de notre consommation énergétique grâce à la Transformation Digitale et l'utilisation des (Big) Data.
+
+Rapport Villani remis le 29 mars sur la Transformation Digitale (et son impact écologique)
+
+Emmanuel BACRY : autre secteur de la rechercher : *anonymisation de données*
+
+-> Très bonne conf, très bon intervenants +
+La *Data* et son utilisation (*IA*) doit et peut être utilisée pour *éviter le gâchis* au quotidien, permettre de mieux choisir les solutions aux grands projets (ex : chantier des Halles)
+
+Se renseigner sur formation de Data Strategy à la Sorbonne (apparemment unique au monde)
+
+=== Machine Learning: what works and what they won't tell you
+
+image::machine-learning-ted-dunning.jpg[]
+
+Très bonne conf de Ted DUNNING de MapR, à revoir !
+
+=== Multi-tenant Hadoop : EDF relève le challenge de la garantie du niveau de service pour les applications Big Data
+
+Nicolas LALUQUE, EDF - DSIT, chef de projet "Big Data v3"
+
+image::big-data-edf.jpg[]
+
+Choix de clusters *mutualisés* (mutualisation des infrastructures) :
+
+* la *répartition des ressources* est cruciale en env mutualisé : sinon une appli peut manger les ressources de toutes les autres.
+* EDF n'avait pas les bonnes métriques : sizing des clusters, etc.
+
+Pour faire face à ces contraintes :
+
+* travail direct avec Hortonworks
+
+-> Talk à récupérer pour avoir des astuces *très pratiques* sur l'utilisation d'un cluster Hadoop mutualisé :
+
+* ne pas avoir une facturation trop simple
+* vision globabe de tout ce qui tourne sur les clusters
+* etc.
+
+Les clusters sont sécurisés : Kerberos, Rancher
+
+=== Governance on Big Data to unlock data and create business value
+
+Présenté par Stan CHRISTIAENS, CTO de https://www.collibra.com/[Collibra]
+
+Discussion sur l'importance du passage au numérique pour les sociétés, et de celle de la monétisation des données que l'on récupérer de ce fait. 
+
+=== Déployer un datalake et mettre ses données en mouvement : le Web Analytics comme cas d'usage avancé
+
+Présenté par les sociétés IPH-BRAMMER et Hurence
+
+* De plus en plus de commerce digital, qui implique une demande en data de plus en plus grande.
+
+* Ne voulait plus passer par Google Analytics
+
+* Datalake sur Hortonworks :
+	** architecture Kappa
+	** *LogIsland* pour les traitements Spark Streaming (solution Open Source disponible sur GitHub)
+	** Kafka comme bus (pour les WebEvents)
+
+image::deployer-datalake.jpg[]
+
+Le pilote a été mis en place (MEP) suite à 3 sprints (~20 jours ?)
+
+* le même conseil une nouvelle fois : *s'entourer d'experts !*
+
+=== Data scientists, statisticiens, mathématiciens... Quels sont les besoins, et pour quels objectifs ?
+
+Par : 
+
+* Samya BARKAOUI : Head of Data, Toucan Toco
+* Juvénal CHOKOGOUE : consultant et auteur Big Data, Cap Gemini
+* Benoît BINACHON : fondateur d'un cabinet de chasseur de têtes spécialisé dans le "Big Data" -> le gars parle bien, et est intéressant
+
+Ce domaine, le "Big Data" n'est pas "apparu" il y a 6, 7 ans, mais bien avant. +
+On trouve dans plusieurs grands data lab, des experts qui ont 70 ans, et en font depuis plus de 30 ans (des chercheurs)
+
+Auparavant, les SGBDR répondaient à 2 besoins :
+
+* stockage des données
+* traitement des données (réponse aux interrogations des users)
+
+Maintenant, on différencie les 2, il existe des outils différents pour répondre à chacun de ces besoins.
+
+Il y a actuellement une explosion des *spécialités du Big Data*, en voici les principales :
+
+* orchestrer le transformation, coordonner des projets. Etre capable de parler au métier, aux décideurs, et de comprendre la technique.
+* personnes plus techniques, mais devant *toujours* être capable de communiquer
+	** des *data scientists* très en amont
+	** *data engineer*, va faire passer à l'échelle ce qu'a trouvé le data scientist
+	** *data architect* qui va s'occuper de l'infrastructure
+
+IMPORTANT: Le tout 1er besoin du "Big Data" : *disposer d'un point d'accès unique aux data*
+
+Actuellement, il y a *plusieurs profils Big Data* à former afin de *créer une équipe pluridisciplinaire*, au lieu de chercher (comme c'était le cas avant) un mouton à 5 pattes qui puisse tout faire...
+
+IMPORTANT: Attention ! Certains métiers actuels du Big Data vont peut-être disparaître du fait de l'automatisation à venir de certaines actions.
+
+.Les 3 compétences à avoir dans l'équipe Big Data
+[NOTE]
+====
+* *communication*
+* *SQL*
+* *programmation* (fonctionnelle ou déclarative)
+====
+
+-> Cette équipe est obligatoirement *Agile* -> afin qu'il y ait des boucles de retour rapides.
+
+Beaucoup d'outil de dataviz intègrent plus ou moins du NLP (ce qui évite au business la connaissance d'un langage pour requêter les data)
+
+Dans tous les domaines (même le vin !), toutes les boîtes moyennes et petites vont avoir besoin d'une solution packagée / "clé en main". +
+Seuls les grands groupes vont pouvoir se payer un Data scientist interne, voire toute une équipe.
+
+NOTE: Les Data engineer rapportent généralement à la DSI, tandis que les Data scientists et Analysts sont plus proches des projets.
+
+=== Challenges et bonnes pratiques d'implémentation et d'industrialisation du Big Data
+
+* Distribution *MapR* au *Crédit Agricole* pour leur projet Datalake : fournie par l'entité groupe "SILCA", responsable de l'infrastructure.
+
+image::bonnes-pratiques-indus-big-data.jpg[]
+
+image::bonnes-pratiques-indus-big-data-2.jpg[]
+
+[NOTE]
+====
+Vertica : The *column-oriented* Analytics Platform was designed to manage large, fast-growing volumes of data and provide very fast query performance when used for data warehouses and other query-intensive applications.
+====
+
+* repriorisation toutes les 3 semaines (durée d'un de leur sprint ?)
+
+* architecture en 3 étages : *données brut -> harmonisées -> préparées* (une proposition)
+
+Facteurs de succès : 
+
+image::bonnes-pratiques-indus-big-data-3.jpg[]
+
+* *investir sur l'expertise technique* : se servir des cabinets de conseil pour faire monter en compétences les équipes internes
+
+Enjeux 2018 : 
+
+image::bonnes-pratiques-indus-big-data-4.jpg[]
+
+* GDPR encore une fois
+* réflexion sur un *datalake multi-instances* pour faciliter le travail avec les *filiales à l'international*.
+
+Conclusion : Bonne conférence, une des plus techniques du salon, détaillant bien leur architecture Datalake basée sur MapR.
+
+== CONFERENCES DU MARDI
+
+=== Keynote d'ouverture
+
+Michael CURTIS, vice-président engineering AirBnB
+
+* Paris est la 1ere destination pour les clients AirBnB
+* Les 1ers investissements de AirBnB dans le Big Data ont commencé il y a 5 ans.
+* ~120 personnes travaillant dans la Data science, et le Machine Learning
+* En train de se conformer à la GDPR (donc pas encore prêt à début mars pour le 25 mai)
+
+=== Big Data, IoT, Intelligence Artificielle et cybersécurité dans l'industrie et les environnements critiques
+
+Philippe KERYER, EVP Strategy & Technology Thales (directeur général adjoint de la Stratégie, de la Recherche et de la Technologie)
+
+Thales : 50 / 50 entre les domaines civil et Défense
+
+image::thales-environnements-critiques.jpg[]
+
+* Insiste sur *l'IoT comme principale source des données pour le Big Data* 
+* La *connectivité* avec la *source et le lieu de traitement des données* est essentielle, et est plus compliquée dans les contextes dans lesquels intervient Thales.
+	** résilience : le système doit obligatoirement résister à toutes attaques
+
+Thales doit donc maîtriser les domaines suivants (garantie d'autonomie) :
+
+* Connectivité
+* Big Data
+* IA
+* Cybersecurité  
+
+Thales 4 V :
+
+* Volume
+* Vélocité
+* Variété
+* *Véracité* : le "V" supplémentaire par rapport aux 3 "V" classiques du Big Data
+
+Comparaison entre le *volume de données* traité par les GAFA et Thales :
+
+image::thales-environnements-critiques-2.jpg[]
+
+-> Thales, du fait de l'IoT avec lequel il travaille, traite (bien) plus de data que les GAFA
+
+En termes de *variété*, celle des données traitées par Thales est plus grande : images IR, radar, sonars, etc.
+
+image::thales-environnements-critiques-3.jpg[]
+
+*Véracité* : garantie de l'intégrité des données
+
+* Thales a commencé les recherches sur l'IA en 1989, mais a vite arrêté du fait des limitations matérielles de l'époque.
+
+* *Thales ne se limite pas au Deep Learning et à l'apprentissage profond* (cas des GAFA) +
+-> Ce type d'IA n'est *pas totalement fiable*, ce qui ne convient pas à Thales. +
+L'IA dont Thales a besoin doit être fiable et *explicable*.
+
+*Cybersécurité* : dans l'ADN de Thales depuis toujours
+
+* Tous les niveaux de sécurité sont couverts, jusqu'au niveau gouvernemental.
+* Approche globale (holistique) de la cybersécurité
+
+OPA de 5 milliards d'€ sur Gemalto en cours +
+Plusieurs gros investissements sur le Big Data en cours (150 millions dans les prochaines années sur leurs centres de recherche de Paris et Montréal)
+
+*Guavus* : leur propre plateforme Big Data temps réel (seulement 2 ou 3 plateformes de ce type dans le monde ("véritable" traitement Big Data temps réel, sur toute la chaîne ???) ). Une acquisition récente de Thales.
+
+image::thales-environnements-critiques-4.jpg[]
+image::thales-environnements-critiques-5.jpg[]
+
+Plusieurs use cases donnés :
+
+* transports aériens
+* détection vidéo de scènes de violence (prévisions)
+* détection d'images automatique du *pod du Rafale*
+* pilotage "unique" aérien : renforcement du pilotage automatique des avions (univers extrêmement réglementé)
+
+Objectif de Thales : devenir le *leader mondial du B2B*
+
+Conclusion : 
+
+* Très bon talk de Philippe, présentant très bien le métier de Thales, et son implication dans le Big Data +
+Philippe maîtrise son sujet, et rend Thalès très attrayant.
+
+=== GDPR : dernière ligne droite !
+
+Maître Olivier ITEANU, avocat, Université Paris XI
+
+GDPR : entrée en vigueur et application 25 mai 2018 (en fait est entré en vigueur le 25 mai 2016, mais application en 2018)
+
+photo 14 : les erreurs à éviter avec la GDPR 
+
+L'obligation est *d'engager* la mise en conformité avec la GDPR, et non d'être conforme au 25 mai +
+-> la réalité "pragmatique"
+
+Plusieurs dérogations existent suivant certaines caractéristiques des entreprises (taille de l'entreprise par exemple)
+
+25 mail 2018 : les déclarations CNIL vont disparaître +
+Des registres de traitement vont devoir être tenus par les entreprises (potentielle présence d'un CIL : Correspondant Informatique et Liberté)
+
+photo 15
+
+Dixit un philosophe connu (aussi la base de la CNIL) : "Laisser, par la loi, le contrôle des données aux personnes"
+
+Les allemands sont encore plus moteur que nous sur ce sujet.
+
+Photo 16
+
+Photo 17
+-> Responsable du traitement : "controller" en anglais (meilleur terme)
+-> Sous-traitant : "processor" en anglais (meilleur terme)
+
+photo 18
+photo 19
+
+*Faire la cartographie de ses données est essentiel* 
+
+photo 20
+
+Les plus grandes entreprises sont déjà au courant de contre-mesures et des procédures à opposer à la GDPR (appel à des juridictions supra nationales, comme la commission européenne). +
+Ce qui leur fait très peur, c'est l'action de groupe qui est en train d'être réformée (car ces entreprises sont très soucieuses de leur image)
+
+Conclusion :
+
+* Très bon talk
+
+=== Twitter et la nouvelle donne de communication des entreprises : plus de transparence, plus de données, plus de responsabilités
+
+Damien VIEL, Twitter France
+
+Twitter est la 1ere plateforme "d'échange" des entreprises de plus de 100 personnes. +
+-> Bon pour le recrutement
+
+=== IA et Machine Learning appliqués au Big Data
+
+par Mick Hollison de Cloudera
+
+Confirmation : Cloudera is the 1st Hadoop distributor in the world.
+
+Met en avant l'adoption de Spark et Impala sous Cloudera.
+
+=== Amadeus et Big Data : analyse en temps réel sur plus de 3,2 milliards de transactions quotidiennes
+
+Amadeus : 
+
+* 15 000 personnes dans le monde, 95% du dev à Nice (~5000 développeurs)
+* 1er métier : vendre du voyage (vente de billets en ligne)
+
+SSP : Search, Shopping and Pricing
+
+Voir le volume de logs générés
+
+photo 21
+
+photo 22
+
+architecture Lambda sur Hadoop (en n'excluant aucune techno)
+
+Batch Leg
+
+photo 23
+
+Utilisation de MapR : pourquoi ? du fait du MapR FS qui est POSIX ! (on peut utiliser un montage NFS comme source de données) +
+Facilite la migration (a permis de passer du NAS à autre chose) +
+Très bonnes performances obtenues avec MapR
+
+photo 24
+photo 25
+
+On met toutes les data dans le même format "brute" -> populate de la RAW DB (très lourd en computation, mais il faut) +
+tout en Parquet : il a fallu développer un convertisseur pour cela (tous les clients n'acceptant, ou ne pouvant pas produire ce format en sortie)
+
+spark pour la partie Hadoop
+
+Camel pour fournir les données au client
+
+Streaming leg
+
+Le résultat de la computation est stocker dans Kafka (afin de pouvoir être utiliser pour le monitoring en temps réel)
+
+PDD : Prototype Driven Development -> du fait de la jeunesse et la complexité des technos
+
+* il est nécessaires d'intégrer des boîtes noires
+* incompatibilité entre certaines technologies
+
+photo 26
+
+Rendre la vie facile aux opérateurs :
+
+* limiter le nombre de technos : max 5/6 frameworks, avec les devs forcés de les utiliser
+* OOZIE est le point d'entrée de toute opération sur le cluster
+* définir des conventions de nommage (topic = bucket = répertoire = ...)
+* penser à monitorer tout cela ! async log4j -> kafka -> kafka connect -> elastic search -> kibana
+
+=== Agritech : comment on intègre le Big Data pour prédire le rendement et la qualité des cultures
+
+Cyrille COQUERET, JEMS Datafactory et Patrick VINCENTI, SMAG
+
+* JEMS : plus de 25 projets Big Data actuellement en production, pour ~450 collaborateurs
+* SMAG : société spécialisée dans l'agronomie et l'informatique
+
+* Une des sources de data permettant la prédiction en question est l'imagerie satellite.
+* ainsi que d'autres source Open Data
+
+photo 27
+
+Photo 28
+
+photo 29
+
+* Le data lab est la partie réservée aux data scientists
+* data governance via Talend Big Data (Award reçu en fin d'année 2017 pour la solution)
+
+photo 30
+
+photo 31
+
+résultats concrets : projet Datacrop
+
+* permet de suivre l'évolution des cultures, et du rendement en blé en France
+* a tourné en 2015, précision de 96% 
+
+Offre Big AGRO Data by SMAC
+
+photo 32
+
+traitement en streaming 
+
+Synthèse de quelques bonnes pratiques pour mener un projet Big Data en production
+
+photo 32
+
+la modélisation en étoile ne marche pas dans un contexte distribué
+
+Très bon retour d'XP, et belle architecture
+
+Voir JEMS stand A46
+
+=== The rise of the Streaming platform: new perspectives for the data flow management
+
+Ben STOPFORD, engineer and architect at Confluent (Apache Kafka)
+
+photo 33
+
+Comme le montre le schéma, on peut bâtir une application directement sur la partie Kafka
+
+=== Panama papers
+
+pas pu voir, conf à regarder en vidéo
+
+=== BNP Paribas Retail Banking : mise en place d'un Data Lab CASD et réalisation d'algos de Machine Learning...
+
+BNP Paribas Retail Banking : mise en place d'un Data Lab CASD et réalisation d'algos de Machine Learning sur données bancaires, en assurant la sécurité, l'anonymisation et la conformité au GDPR dans le traitement de milliards de transactions ultra sensibles.
+
+Analogie avec la chimie : le CASD est comparable à une "boite à gants" de chimie :
+
+* la boîte permet de voir et de manipuler le produit
+* le produit est protégé, et ne peut pas sortir de la boîte
+* le "chimiste" (ici Data scientist) est également protégé
+
+Les speakers étaient hésitants, et le sujet a été, selon moi, abordé de façon trop superficielle (très peu de détail sur la stack technique).
+
+=== Projet ARC : comment la Poste optimise sa chaîne logistique grâce au Big Data
+
+Pascal FREUND, la Poste et Olivier GUERIN, Artik Consulting
+
+photo 34
+
+se base sur une distribution Hadoop Cloudera  
+
+== Entreprises et partenaires rencontrés
+
+* SSII spécialisées dans le Big Data
+	** *BGFI BY ADNEOM* : B1 -> 60 consultants spécialistes Big Data, partenaire exclusif IBM
+	** *BLUESCALE* : B52 -> 60 consultants spécialisés Big Data
+	** *JEMS DATAFACTORY* - GOLD SPONSOR : A46 -> JEMS datafactory, filiale de JEMS group créée en 2002, est le leader français du conseil et de l’ingénierie en Big Data et Analytics.
+	** *XEBIA* : B56
+
+* *Thales* : B20
+
+* Distributions Hadoop
+	** *MAPR TECHNOLOGIES* - GOLD SPONSOR : A30
+
+* Ecole d'ingénieurs :
+	** *EISTI* : B32
+
+=== MapR
+
+Echange sur notre programme de certification, et un potentiel partenariat avec Raphael ???, xxx, et Ted Cunning
+
+Voir la possibilité de mettre en place un Boot Camp MapR chez nous (ainsi que pour nos clients / prospects), tel que cela a été le cas aux Pays-Bas (Amsterdam)
+
+Il y a du MapR à la SGCIB, pour un problème de traitement de petits fichiers (voir Cédric LOUVRET ?)
+
+=== Thales
+
+Suite à l'excellent talk de Philippe KERYER, je suis allé me renseigner à leur stand sur leur activité.
+
+J'ai été reçu par un expert en sécurité, qui m'a donné plus détails sur le contexte sur lequel intervient Thalès :
+
+* La plateforme américaine Guavus a été rachetée ces dernières années : les équipes France sont en train de monter en compétence sur cette nouvelle stack
+* Thalès débauche beaucoup de séniors dans les autres sociétés, et son recrutement de seniors fonctionne beaucoup par réseau.
+* Un profil Big Data en candidat libre sera *toujours* bien accueilli
+
+Il serait intéressant de se renseigner sur leur solution de sécurisation "Vormetrics", qui est capable de gérer les problématiques d'accès aux données encryptées.
+
+Préférer passer par leurs comptes Twitter pour obtenir des infos sur leurs activités.
+
+=== Bluescale
+
+"60 consultants spécialisés Big Data" : il s'agit en fait d'une SSII en train d'effectuer un virage technologique.
+
+Les consultants sont "nouvellement" formés au Big Data par des moyens classiques (formations d'un type ou d'un autre).
+
+Peut-être à contacter pour trouver des ressources pour former une "grosse" équipe Big Data (sous-traitance) 
+
+=== BGFi
+
+Cabinet de consulting racheté par "ademeon" : 60 consultants spécialisés sur 2000 (2000 pour le groupe ademeon)
+
+Même situation que 2B Consulting avec Softeam, 2B était leur principal concurrent.
+
+Fondateur (rencontré) : Frédéric GOUJON +
+Travaille régulièrement à la SGCIB, et connaît bien Mathias (KLUBA)
+
+Dans le domaine du Big Data depuis 2012, avec IBM Big Insights. +
+Reconverti (depuis que IBM a interdit la vente de la précédente solution par tout autre que lui...) sur la stack Hadoop, avec une préférence pour Cloudera (Impala, Kudu)
+
+-> Une "vraie" entreprise Big Data
+
+=== NoData - Advanced Schema
+
+Plateforme data du groupe Advanced Schema.
+
+* gère la data governance (data catalog) et la Dataviz via la plateforme, mais délègue le processing et le stockage à la solution en place côté client (via un connecteur nommé le bridge, s'adaptant à de nombreuses sources)
+* côté Dataviz, tout a été développé en interne (composants Javascript maison)
+* l'intérêt de la plateforme semble être la Data governance (la partie Dataviz n'est pas obligatoire, on peut utiliser une autre solution)
+
+=== JEMS Datafactory
+
+Discuté avec Cyrille COQUERET (voir talk Agritech avec SMAG)
+
+JEMS datafactory, filiale de JEMS group créée en 2002, est le leader français du conseil et de l’ingénierie en Big Data et Analytics.
+
+* Virage technologique vers le Big Data en 2012 (1er cluster Hadoop), avec le rachat de Edis (???), société spécialisée dans la Data.
+* viennent du monde de la data
+* ont été plusieurs fois récompensés (comme pour le projet Agritech avec SMAG)
+* ~280 personnes formées sur le Big Data, et 25 vrais projets en production
+* évidemment quelques véritables experts seniors sur le domaine
+* 450 personnes au total
+* partenariat avec PoleEmploi : 3 mois de formation full time avant d'intégrer la société
+* ont maintenant suffisamment de missions pour faire envie à des expérimentés en Big Data 
+
+== Buzz words
+
+* *Beaucoup* de sujets sur la GDPR
+* *Data governance* (va avec GDPR)
+* "Les données sont le nouveau pétrole..."
+* *Kubernetes* comme orchestrateur de containers
+* "s'entourer d'experts" : tous les disent, on ne passe pas seul au "Big Data"
+* *Open Data* (voir ses "variantes" moins connues : Open Data "Priv", etc.)
+* Tout le monde fait maintenant sa propre "Data Platform" (qui va jusqu'à la Dataviz)
+* IA
+* vision 360 -> proposer une vision globale sur un élément d'un domaine métier (comme un client). Le Datalake permettant de centraliser les données associées (*issues de plusieurs sources*)
+* l'architecture Lambda semble reprendre du poil de la bête par rapport à la Kappa (on veut de nouveau matérialiser une branche de traitement batch)
+
+== Avis général
+
+* le programme sous forme d'images, et non de texte, est un mauvais choix -> pas de copier / coller possible pour prise de notes, lenteur au chargement
+* logistique : pas de temps mort entre les conférences de l'amphi, les entrées / sorties se font donc en parallèle de ces dernières. +
+Pire, besoin de badger au début et à la fin de chaque conférence... Génère de grosses files d'attente :(
+* certaines des personnes du staff, présentant les speakers à chaque conférence, ne connaissent pas le sujet (très souvent à chercher leur texte)
+* Musique façon Rocky pour présenter chaque conférence et ses speakers (un peu "too much")
+* Trop de "placement de produit" à mon goût
+* Etait-il utile de mettre à disposition des casques de traduction, alors que la grande majorité du public doit (bien) parler anglais ?
+* Nous avons reçu quelques semaines après le salon une synthèse des conférences de l'amphi et de la salle Ternes (le parcours Expert). +
+L'intention est louable, mais :
+	** la synthèse est privée, avec une demande explicite de ne pas la communiquer, ce que je n'avais jamais rencontré pour aucun autre salon.
+	** aucune image dans la synthèse, mais des pavés peu digestes. +
+	-> il est donc très peu probable que je la lise (sauf en diagonale)
+
+Au final, je trouve que *ce salon n'est pas destiné à un public technique*, mais est avant tout un bon moyen de "réseauter", du fait du grand nombre de sociétés présentes. +
+Pour *se former* et *faire de la veille*, les *Devoxx* me semblent vraiment bien meilleurs.
+

@@ -1,0 +1,50 @@
+= Jeudi 10:10 / 10:30 - La disruption des langues a commencé.
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Philippe Anel. +
+https://cfp.devoxx.fr/2017/talk/JYF-9046/La_disruption_des_langues_a_commence[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Future & Robotics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Résumé du talk
+
+Commence par une démo bluffante de traduction on the fly d'un talk dans différentes langues (MediaWen, pour qui travaille Philippe).
+
+*Deep learning* : concept datant de 1970, réseau de neurones auquel on envoie des data, qui va processer ces data avec des paramètres pour chaque neurone, et va apprendre et corriger ces paramètres en remonter les niveaux de l'arbre de neurones.
+
+Si ça marche aujourd'hui, c'est uniquement car *nous collectons maintenant énormément de data* (1 milliard d'images échangées par jour sur Facebook)
+
+* 1er moteur de reconnaissance vocale : IBM Audrey 1950, pouvait reconnaître des chiffres de 1 à 10.
+* 1970 - 90 : accélération de la recherche (reconnaissance d'1 millier de mots)
+* 2000 - 2010 : émergence du deep learning
+
+1ere machine de synthèse vocale : 1770 (chercher sur YouTube)
+
+La traduction automatique est un domaine très complexe, cible de travaux constants. +
+L'intérêt majeur est la diffusion de la culture.
+
+Actuellement la qualité de la traduction automatique n'est pas encore parfaite, mais ce qu'il faut surtout comprendre, c'est qu'il s'agit d'un mouvement qui ne pourra pas être arrêté (on va persister dans le domaine pour essayer d'atteindre la perfection).
+
+== Ressources
+
+Outils Open Source :
+
+* CMU Sphinx
+* voir présentation
+
+Traduction automatique :
+
+* https://research.google.com/ : des progrès considérables (incroyables) sur les avancées de la traduction automatique à l'aide du Deep Learning.

@@ -1,0 +1,45 @@
+= Jeudi 09:45 / 10:05 - Video games: The quest for smart dumbness.
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Laurent Victorino. +
+https://cfp.devoxx.fr/2017/talk/KUB-0999/Video_games_The_quest_for_smart_dumbness[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Le joueur doit pouvoir gagner !
+
+Le contexte de l'IA dans les jeux vidéos : l'IA a l'air tout le temps "bête" car elle est *designée* ainsi. +
+Cela doit être le seul domaine dans lequel on ne veut pas que l'IA soit parfaite. +
+Une IA parfaite, ce serait "trop chiant !". +
+Le joueur perdrait tout le temps, il critiquerait le jeu, et ferait une déprime !
+
+Dans le jeu vidéo, on va chercher l'IA parfaite, et la rendre suffisamment débile pour que la masse des joueurs soit capable de la battre. 
+
+Joueur = générateur de chaos parfaitement imprédictible.
+
+Les arbres de comportement réagissent en fonction stimulus, et sont réellement impossible à prévoir, c'est là d'où vient le fun.
+
+Maintement, pour une autre utilisatio de l'IA dans le jeu vidéo :
+
+* *Gladiabots* : programmation IA de bataille de robots (encore en early access actuellement). +
+Hyper top d'après Laurent
+* *Event[0]* : jeu d'aventure, voir la vidéo YouTube du célèbre YouTubeur "Jackaboy" (nom à vérifier)
+
+== Mon avis
+
+Fabuleuse Keynote ! +
+Laurent est un super speaker, présentant avec beaucoup d'humour un sujet passionant.
+La dernière anecdote sur le serveur Quake 3 qui a tourné avec ses seules IA pendant 4 ans est bluffante (les IA ont appris seules que la meilleure façon de gagner la guerre était de ne pas la faire)

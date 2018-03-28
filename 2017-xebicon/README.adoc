@@ -1,0 +1,112 @@
+= Notes de la XebiCon'17 (2017/11/30)
+Thomas SCHWENDER <https://sgithub.fr.world.socgen/tschwend041717[@thomas.schwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+== Overview
+
+* Site web : http://xebicon.fr/#edition2017
+* http://xebicon.fr/wp-content/uploads/2017/05/pdf-programme-xebicon-2017.pdf[Programme de la conférence] +
+Pour la description des sessions, voir http://xebicon.fr/programme/[ici]
+
+ifdef::env-github[]
+https://youtu.be/opQCN8y0v2c[Trailer de présentation du salon]
+endif::[]
+ifdef::env-browser[]
+video::opQCN8y0v2c[youtube, width=640, height=480]
+endif::[]
+
+Au final, la XebiCon'17 s'était (chiffres "réels", issus du programme, et non du trailer :wink: ) :
+
+* 1000 participants
+* 60 speakers
+* 16 conférences
+* 11 retours d'expérience 
+* 13 Fast Tracks
+* 3 Hands On
+
+Toutes les sessions sont filmées, et devraient se retrouver sur https://www.youtube.com/watch?v=opQCN8y0v2c&list=PL-Wbj9VN8zDQIklcuAEoBlsTiFwBlO9zD[le channel YouTube de Xebia, Xebia TV], peu de temps après le salon. +
+-> Tous les *slides et vidéos* du salon sont listés sur http://xebicon.fr/videos-et-slides-xebicon17/[cette page].
+
+== Mon programme
+
+[cols="1,4", options="header"] 
+|===
+|Date			|Description
+|09:15 / 09:30	|link:keynote-ouverture.adoc[Keynote d'ouverture]
+|09:30 / 10:20	|link:chatbots-etat-de-l-art.adoc[Chatbots : état de l'art et prochains challenges]
+|10:45 / 11:30	|link:communicating-sequential-processes.adoc[Communicating sequential processes]
+|11:45 / 12:30	|link:faire-parler-bruce-sylvester.adoc[Faire dire n'importe quoi à Bruce Willis ou Sylvester Stallone]
+|14:00 / 14:45	|link:GDPR-big-data.adoc[Ce que la GDPR va changer dans le monde Big Data]
+|15:00 / 15:20	|link:deploiement-continu-machine-learning.adoc[Déploiement continu de modèle de Machine Learning]
+|15:25 / 15:45	|link:feature-teams-contees.adoc[Si les Feature Teams m'étaient contées]
+|16:15 / 17:00	|link:fluo-choix-startup.adoc[FLUO, les choix déterminants pour une startup innovante et productive]
+|17:15 / 18:00	|link:deep-learning-dans-la-vraie-vie.adoc[Deep Learning dans la vraie vie]
+|===
+
+== Entreprises et partenaires présents
+
+=== Zeenea : la dernière spin-off de Xebia.
+
+http://www.zeenea.com/product/
+
+Propose un *Data Catalog* pour Datalake. +
+S'attaque tout particulièrement à la problématique actuelle de *GDPR* (General Data Protection Regulation), et met donc l'accent sur la *sécurité des données*. +
+
+Sur ce dernier point, les technos tournent toujours autour de *Ranger* (HDP), et *Sentry* (Cloudera).
+
+=== Renault Digital
+
+Existe depuis janvier 2017.
+
+En train de passer massivement sur des technos Big Data pour préparer l'avenir, le milieu de l'automobile étant en pleine transformation (révolution). +
+Actuellement, le volume de data à traiter dans ce secteur reste "faible", mais est amené à augmenter rapidement à l'avenir.
+
+Renault Digital gère un *multi-cloud*, pour éviter de se retrouver en dépendance avec une techno. +
+Les data sont gardées au plus proche de la production (au sens de la création de data), dans des systèmes cloud différents (AWS, Google, etc) et sont de natures différentes. +
+Quand un use case nécessite une agrégation provenant de ces différentes sources (système cloud), sur commande, ces dernières poussent les data dans un autre datalake interne (on-premises) pour traitement.
+
+TIP: Concernant la sécurisation d'un Datalake à bas niveau (ligne / valeur), leur CTO m'a conseillé de jeter un oeil à *Apache Atlas*.
+
+== Buzz words
+
+* *Machine learning*, *Deep learning*
+* *Data lineage* : traçabilité des données dans le Big Data
+* *sécurité des données* du Big Data (et GDPR : Global Data Protection Regulation)
+
+== Avis général
+
+Quelques soucis techniques en début de salon. +
+Il est difficile de capter la 4G dans l'espace Grande Arche, et le wifi n'était pas sizé pour plus de 1000 personnes...
+
+Autre détail très pragmatique, l'Espace Grande Arche est vraiment *très* (trop) grand. +
+Autant les locaux de l'édition 2016, au NEW CAP Event Center, se sont révélés trop petits pour les 700 participants, autant l'Espace Grande Arche était trop grand pour 1000... (toute la difficulté de trouver une salle adaptée sur Paris) +
+Jusqu'au déjeuner, l'espace partenaire, immense, semblait presque vide, surtout avec des stands placés presque contre les murs, et le buffet placé en plein centre. +
+A partir du goûter et pour le cocktail de clôture, l'espace était davantage rempli.
+
+Concernant les conférences du salon, j'en ai apprécié une majorité, certaines nous renvoyant à nos anciens cours de math et de physique, comme la transformation de la voix pour imiter Bruce Willis... +
+Par contre, je trouve que l'édition 2016, avec *l'Innovation Train* (vraiment fantastique), avait vraiment réussi à créer une trame commune entre les différentes présentations. +
+Cette impression était moins présente cette année.
+
+
+
+

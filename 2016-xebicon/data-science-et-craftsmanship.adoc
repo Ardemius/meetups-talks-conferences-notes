@@ -1,0 +1,92 @@
+= Data Science & Craftsmanship : je t'aime, moi non plus
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Monde craftsman et monde engineer sont différents +
+craftsmanship : le code est un art
+
+image::data-science-craftsmanship.jpg[title="", width="1000"]
+
+Crafts : Look at all the cool data that I have !!!! +
+Engineer : skip the tests just one more time you idiot !!!!
+
+silotage des postes : data scientist dans un silot, data engineer dans un autre
+
+Spark classiquement utilisé pour passer à l'échelle (scaler) 
+
+Amener le craftsman dans l'antre des data scientists : il va amener des contraintes afin d'améliorer les choses (car contrainte inconnues dans le monde data scientist)
+
+. make it work
+. make it right
+. make it fast
+
+c'est l'enchaînement de ces 3 actions qui compte le plus (et pas tout en même temps !)
+
+Et derrière, interviennent les notions de :
+
+* tests : il en faut, qui suivent les bonnes pratiques du craftsmanship (fast, reliable, etc.) +
+Pas de changement sans test préalable +
+Les tests doivent être rapides (re) !!!!
+
+Règle sympa et maso : if it hurts, do it more often
+
+== dans la pratique, comment résoudre ces nouvelles contraintes ?
+
+outils pour les tests : ScalaCheck / Nose / Doctest / RUnit / Unittest / Pytest / JUNit / ScalaTest, etc.
+
+test de *modèles* de marchine Learning
+
+* on teste la performance du modèle, et non celle de l'algo
+* on utilise des data au plus proche (le plus possible) de la prod
+
+== l'Agile pour les data scientists
+
+pour un data scientist :
+
+phase d'exploration -> feature engineering -> modélisation -> validation -> phase d'exploration -> ...
+
+* la phase d'exploration peut durer pluseiurs sprint +
+la sortie de cette phase est incertaine +
+cette phase permet de définir les prochaines étapges, et User Stories associées.
+
+=== Conseils
+
+* inclure les *résultats de la phase d'exploration* dans chaque spring review
+* accepter l'incertitude (l'exploration peut échouer)
+* le résultat peut ne *pas* être parfait (et cela ne doit pas empêcher la livraison en PROD)
+* timer boxer l'exploration
+* Y a pas que Scrum dans le vie ! Penser à Kanban
+
+== retour d'xp
+
+* tester votre code
+* automatiser le build et déploiement le plus tôt possible
+* utiliser du code packagé dans notre notebook
+* la Data Science peut fonctionner dans un env Agile
+* travailler *en feature team*
+
+* Bonne présentation des différentes contraintes du métier de data scientist avec celles du data engineer 
+* explique comment faire travailler les 2 mondes ensembleConfirmation : python et spark hyper utilisés en data science
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

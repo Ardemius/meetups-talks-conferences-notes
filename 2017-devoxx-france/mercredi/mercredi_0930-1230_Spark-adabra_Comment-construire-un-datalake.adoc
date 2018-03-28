@@ -1,0 +1,269 @@
+= Mercredi 09:30 / 12:30 - Spark-adabra : Comment construire un datalake !
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Jonathan Winandy et Bachir Aït M'Barek. +
+https://cfp.devoxx.fr/2017/talk/PLK-3557/Spark-adabra_:_Comment_construire_un_datalake_![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Usages de Spark :
+
+* Machine Learning
+* batch
+* SQL
+* etc.
+
+Cf les speakers, avec Spark, on adresse la plupart des besoins Big Data d'entreprise.
+
+Big Data -> motivation BI à l'heure actuelle
+
+But du talk : présentation de la méthodologie Big Data
+
+== Evolution du traitement de la data de 1958 à 2014/2015
+
+image::mercredi_0930_spark_01.jpg[width="800"]
+
+* 1958 : naissance du concept de la BI
+* 2000 : émergence de la BI "traditionnelle" avec les 1ers outils dédiés (qu'on pourrait encore qualifier d'embryonnaire)
+* 2008 : c'est la crise, perte des budgets et *remise en question* +
+Perte des budgets très pénalisante car les solutions de persistance (BDD) utilisées jusqu'à étaient TRES chères (Informatica, TerraData, autres ETL très couteux)
+* ~2012 : on commaece à parler de Big Data, de Hadoop.
+
+Dès lors, le concept de Datalake, l'agrégation des données en 1 seul endroit, afin de *le rendre accessible à tous*. Là où auparavant les équipes travaillaient en silo, sans chercher à communiquer / échanger avec leurs consoeurs, d'où aucune capitalisation -> *perte d'efficacité*
+
+== Datawarehouse vs Datalake
+
+Passage des data du monde relationnel (datawarehouse) au monde distribué (datalake)
+
+WARNING: *Attention !* Se méfier du Data swamp, où l'on perd les meta-data associées aux données, qui rendent ces dernières difficilement exploitables !
+
+Les 3 fondamentaux de la BI :
+
+* Exploration
+** Elastic Search / Impala
+* Visualition
+** Kibana / utilisation de *notebook* pour gagner en efficacité
+* Exploitation
+** Spark MLlib
+
+image::mercredi_0930_spark_02.jpg[width="800"]
+
+Caractéristiques des encodages de la data :
+
+* Binaire
+* Imbriqué : car les data peuvent présenter plusieurs niveaux de profondeur (niveaux de hiérarchie)
+* schéma : pour la structuration des data
+* en colonne : permet de sélectionner uniquement 3 colonnes sur 500
+
+image::mercredi_0930_spark_03.jpg[width="800"]
+
+NOTE: le format JSON n'expose *pas* son format (il faut "lire tout le JSON" pour obtenir son schéma) +
+Ce n'est pas un "bon" format, *MAIS* il a l'avantage d'être échangeable partout.
+
+XML est en perte de vitesse, de moins en moins utilisé, même si c'est un format finalement bien pratique (même si visuellement lourd)
+
+ORC, Avro et Parquet sont des formats de data spécifiques à la BI.
+
+La *collecte et la réutilisation de la metadonnée* permet de raisonner sur le cycle de vie de la data.
+
+=== Apache Kafka
+
+*Enorme* facilitateur à la *collecte de la data* :
+
+* système de messagerie distribué
+* Basé sur le concept de *commit log*
+* quand on consomme, la data ne disparaît pas (donc possibilité de consommer d'anciens messages)
+
+image::mercredi_0930_spark_04.jpg[width="800"]
+
+=== Apache Spark
+
+Potentiel remplaçant de Hadoop MapReduce.
+
+Problème de MapReduce : besoin de persister les data sur disques, et dieu sait que les IO sont chères...
+
+Spark : écriture oui, mais *en mémoire*. +
+De ce fait principalement, d'après sa propre doc, Spark est au min 10x plus rapide que MapReduce.
+
+Spark :
+
+* moteur de calcul distribué
+* Plusieurs paradigmes :
+** fonctionnel
+** relationnel
+** Graph Acyclic Dirigé
+
+Travail en *lasy*.
+
+(Spark 2 : projet Tungstène)
+
+image::mercredi_0930_spark_05.jpg[width="800"]
+
+Les *tasks* sont divisées en *stages* : un ensemble de transformations et de filtres
+
+Aujourd'hui, vrai problème de la BI (en plus de IO) : traffic réseau -> notre bon vieux réseau 1 Gigabit quand on doit traiter 100 Go de data... +
+Ce problème a un nom : *le (re)shuffle*
+
+La composition des paradigmes est une très grande force de Spark ! +
+Exemple : SQL -> Scala / Python -> ML -> SQL +
+Un data analyst n'y connaissant rien à Scala / Python va pouvoir simplement se servir de son notebook qui pourra être utilisé dans Spark.
+
+=== Impala
+
+Hive : vision batch
+
+Impala : moteur de dataset en SQL. +
+permet de faire du SQL interactif sur vos jeux de données.
+
+Les 2 outils ne répondent pas du tout à la même problématique.
+
+Vraiment mis en avant par Bachir (dixit "fabuleux")
+
+Impala :
+
+* moteur de requêtage interactif
+* basé sur Hive, ne se sert pas de MapReduce
+* permet de faire du "predicate push down" -> ne se servir QUE des données réellement utiles au milieu des autres.
+* peut bénéficier du cache HDFS
+
+image::mercredi_0930_spark_06.jpg[width="800"]
+
+`catalogd` : stocke les modifications DDL (comme création de table), afin de pouvoir prévenir les autres nodes des modifications structurelles effectuées
+
+==== possibilité de requêter des types complexes
+
+image::mercredi_0930_spark_07.jpg[width="800"]
+
+ici, il ne s'agit pas d'une jointure mais de navigation -> donc pas de reshuffle.
+
+=== Elasticsearch / Kibana
+
+NOTE: mettre en place Elasticsearch et Kibana est un bon moyen de donner accès à la data aux utilisateurs finaux (cela rassure tout le monde), et de clore un projet BI (en donnant accès aux data que l'on vient de créer)
+
+NOTE: les data sont finalement dupliquées entre HDFS et Elasticsearch +
+Il faut être capable de conserver différentes versions d'un même dataset (Elastic et Hadoop), *MAIS* si l'on ne devait n'en conserver un, ce serait les data *brutes* d'HDFS
+
+=== HDFS
+
+système de fichier distribué orienté Big Data.
+
+D'autres solutions existent :
+
+* SMAC avec Cassandra à la place d'HDFS
+
+== Cinématique
+
+Kafka : gestion explicite de la cinématique des data en temps réel. 
+
+Hadoop : accumuler toutes les data, et les émincer à la lecture
+
+Mais la clé est de persister la data brute "pour toujours".
+
+Le Dataware house Big Data est *transient* ! +
+Il est reconstruit au besoin à partir de la zone d'assemblage -> les jobs sont en capacité de tout reconstruire. +
+Plus de "migrer" la data, on peut tout simplement la reconstruire.
+
+== Structure d'un job (pipeline)
+
+image::mercredi_0930_spark_08.jpg[width="800"]
+
+`redonner la structure naturelle` : présenter la data comme si elle avait l'avait été "correctement" à la base.
+
+== Live coding
+
+Dataware house multi-canal
+
+Notion *d'historisation* des datasets.
+
+Pour cette démo, on utilise le format CSV -> pas le meilleur format, mais à l'avantage d'être lisible pour la demo.
+
+Le schéma du CSV est lisible en parsant sa ligne de header à l'aide, en Spark, de :
+
+----
+.option("header","true")
+----
+
+Toutes les transformations Dataframe sont typées, mais au runtime uniquement -> ce typage est donc étrangé à Scala
+
+*RDD* : Resilient Distributed Datasets
+
+Pour utiliser les fonctions plus avancées sur les RDD, on va passer à des "Pair" RDDs.
+
+`cogroup` : "group by" généralisé, permettant de remplacer les autres types de jointures. +
+Pas de `cogroup` en SQL car pas de structures imbriquées. 
+
+NOTE: Rappel : il est bon de *limiter le nombre de jointures*, afin de limiter le traffic réseau via reshuffle.
+
+NOTE: Conseil : écrire le `cogroup` sur disque (va permettre de travailler en local, donc plus rapide)
+
+Création d'un object en Scala pour les transformations de la demo.
+Object en Scala = singleton -> partagé sur tous les nodes
+
+Les data sont souvent fournies de manière moins structurées qu'elles devraient l'être (et donc, sans imbrication) +
+D'où une phase de staging très technique, car nécessite une renormalisation des data.
+
+Dans la démo, nous avons un modèle très imbriqué, avec 4 niveaux de hiérarchie. +
+Plus besoin de faire des `distinct` & Co lors de la lecture des data.
+
+image::mercredi_0930_spark_09.jpg[width="800"]
+
+=== Tests unitaires
+
+L'idéal pour les TU est d'avoir une boucle de rétroaction ultra rapide, d'où :
+
+. isolation d'un cas -> *cogroup + prédicat*
+. sérialisation dans le repo du projet
+. chargement du cas dans un test
+. reproduction du bug
+. correction !
+. on recommence !
+
+=== Restitution des data
+
+On n'est pas obligé d'avoir *toutes* les infos de rendus.
+
+Importance d'un bon dashboard. +
+Importance de la cartographie
+
+N'importe qui doit pouvoir exploiter simplement le "display" des data.
+
+== Techniques avancées
+
+* *gestion de la qualité de données intégrée* +
+La plupart du temps, les bugs dans les pipelines viennent des data. +
+-> la solution est d'intégrer le calcul de la qualité de data dans le job +
+Nos 2 speakers ont pour cela créer un concept "d'annotations" pouvant remonter dans les structures manipulées (un peu plus abscons)
+
+* *différential QA* +
+La recette incrémentale automatique permet de vérifier que la mise à jour d'un job ne fait pas évoluer la data de manière anormale. +
+On va comparer plusieurs datasets (résultats de nos tests), afin d'analyser le delta qui en résulte.
+
+* *gestion de metadata avancée* +
+Un moyen pour améliorer fortement un datalake est de gérer la metadata *explicitement*
+
+== Ressources
+
+
+
+== Mon avis
+
+Très bonne partie théorique. +
+Cas pratique (live coding) intéressant, même si par moment un peu abscons.
+
+Présentation très complète, à garder sous le coude.
+

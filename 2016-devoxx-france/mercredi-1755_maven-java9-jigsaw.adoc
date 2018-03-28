@@ -1,0 +1,43 @@
+= Mercredi 17:55 - Apache Maven, Java 9 et le projet Jigsaw
+:lb: pass:[<br> +]
+:imagesdir: images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Hervé Boutemy et Arnaud Héritier. +
+http://cfp.devoxx.fr/2016/talk/MKN-4721/Apache_Maven,_Java_9_et_le_projet_Jigsaw.html[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=6Aqka-QtzxY[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::6Aqka-QtzxY[youtube, width=640, height=480]
+endif::[]
+
+== Notes
+
+image::20160420-1710_maven-java9-jigsaw.jpg[]
+
+Java 9 (et Jigsaw) / Maven ça marche "en gros". +
+En fait, il y a *surtout des plug-ins à réécrire* :
+
+image::20160420-1710_maven-java9-jigsaw_state.jpg[]
+
+Le *support de Jigsaw* est en bonne voie :
+
+image::20160420-1710_maven-java9-jigsaw_jigsaw-support.jpg[]
+
+* *Maven as Jigsaw modules ?* +
+  -> En cours, mais pas un objectif à ce stade. 
+* *"Multi-releases" jar* : compiler plusieurs répertoires de sources avec des versions différentes. +
+  -> en cours, va se baser sur le multimodules maven plugin
+
+[NOTE]
+====
+Rappel : Utiliser le plug-in *Toolchains* pour gérer les différentes versions des dépendances en fonction de la version du compilateur.
+====
+
+== Ressources
+
+* https://github.com/MavenDemo/maven-java9-jigsaw-fr : démos sur Maven, Java 9 et Jigsaw par Arnaud Héritier
+* https://cwiki.apache.org/confluence/display/MAVEN/java+9+-+Jigsaw : état des lieux de l'intégration de Jigsaw à Maven

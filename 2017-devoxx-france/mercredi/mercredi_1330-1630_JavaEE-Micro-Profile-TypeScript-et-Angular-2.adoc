@@ -1,0 +1,192 @@
+= Mercredi 13:30 / 16:30 - Enterprise Java MicroProfile TypeScript and Angular 2
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Sébastien Pertus et Antonio Goncalves. +
+https://cfp.devoxx.fr/2017/talk/ULC-4036/Java_EE,_Micro_Profile,_TypeScript_et_Angular_2[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Introduction
+
+Sébastien Pertus : Microsoft Technical Evangelist
+
+* Sébastien pour l'utilisation d'Angular 2 dans le monde Microsoft
+* Antonio pour le backend Java
+
+== MicroProfile
+
+____
+On bascule vers le cloud, on a Java EE, Java SE mais rien pour le cloud. +
+On ne va pas attendre le prochain Java EE, on va faire par nous-mêmes.
+____
+
+Cette discussion a lieu l'année dernière, au pub, à Londres, lors du Devoxx UK, avec les gars de RedHat et d'autres. +
+Nous sommes donc *HORS* JCP, donc non-contraints par Oracle (même si tout le monde redeviendra forcément copain dans quelques temps)
+
+Actuellement, *MicroProfile 1.1* :
+
+* Configuration
+* Security : JWT token Exchange
+* Health Check
+* Fault Tolerance
+
+== Demo avec WildFly Swarm
+
+Ce dernier est basé sur le bon vieux JBoss AS.
+
+Actuellement, le container JEE est le même quel que soit le serveur d'application (contient les 34 specs de JEE)
+
+D'autres "fractions" peuvent être ajoutées :
+
+* Java EE
+* Netflix (Hystrix & Co)
+* Spring
+* Logstash
+* etc.
+
+Si maintenant, on veut bâtir un container MicroProfile uniquement avec le nécessaire.
+
+On crée un war de 27 ko, que l'on met dans un jar (oui oui, un war dans un jar) de 97 Mo. +
+Il s'agit de l'utilisation du plugin Maven WildFly Swarm. +
+C'est un "uber" (fat) jar que l'on peut déployer tel que dans Swarm.
+
+== TypeScript
+
+Actuellement, EcmaScript 7 (8 en cours).
+
+NOTE: Rappel : Typescript est transpilé en Javascript 
+
+Avec Typescript, j'écris du Typescript "d'aujourd'hui" qui va pouvoir être transpilé vers la version d'ES *souhaitée*.
+
+Actuellement, TypeScript 2.2
+
+NOTE: Rappel: TypeScript est *type safe*
+
+(Utilisation de Visual Studio Code par Sébabstien, rendu sympa)
+
+Via un fichier de configuration en JSON, TypeScript peut switcher sa transpilation d'une version Javascript à l'autre. +
+Il est également possible de modifier via ce fichier d'autres caractéristiques de la transpilation.
+
+Possibilité de faire du débuggage du TypeScript (même si code débuggé est le Javascript) en créant et ajoutant le support d'un fichier `.map` permettant de faire le mapping entre le code TypeScript et le code Javascript.
+
+La gestion des `null` et `undefined` est très compliquée en Javascript, *MAIS* grandement facilitée par TypeScript (vraiment, *vraiment*, plus besoin de se prendre la tête)
+
+== Docker
+
+Pour travailler entre Antonio et Sébastien, entre back et front : *Docker* !
+
+Avec Docker :
+
+. je lance mon JBoss
+. j'y déploie mon war de 27 ko
+
+WARNING: Attention ! La taille des "fat" jars peut vite passer à ~200 Mo ! +
+Elles peuvent également être longues à builder sous Docker
+
+== Angular 2 (en fait non, du 4 !)
+
+Rappel de l'architecture Angular 2
+
+image::mercredi_1330_micro-profile_01.jpg[width="800"]
+
+*Webpack* : bundler qui va regrouper tout le code Javascript
+
+Angular 2 dispose maintenant d'une CLI (_Command Line Interface_) +
+Création de component et service directement à l'aide de cette dernière.
+
+NOTE: `OpaqueToken` à utiliser à la place des String lors de l'injection de dépendances en Angular 2. +
+Rappel : injection de dépendances repose sur un principe de *clé* à remplacer par une *valeur*, si la clé n'est pas unique (possible avec une String), cela va poser problème.
+
+Sébastien a ajouté *Bootstrap* pour la GUI.
+
+== Exposing REST APIs
+
+Antonio utilise une "kind of" *JSon:API*
+
+Utilisation de Swagger pour documenter notre API :
+
+* What do you call?
+* what are the parameters?
+* What are the status code?
+
+Avec Swagger, on va venir annoter les méthodes pour créer la documentation de l'API.
+
+Via la génération du contrat de notre API à l'aide Swagger, Sébastien a pu directement récupérer / intégrer ce contrat côté Anguler.
+
+== CORS
+
+NOTE: CORS = Cross-Origin Resources Sharing
+
+C'est de là que viennent la plupart des problèmes ! +
+Pour les résoudre, certains HTTP Headers sont à ajouter (voir la présentation pour obtenir la liste)
+
+== HateOAS
+
+NOTE: HateOAS = Hypermedia As The Engine Of Application State +
+On va donner un code retour HTTP à *TOUTES* pour chaque verbe, pour toutes les URLs. +
+Cela nous permettra d'entamer un véritable dialogue avec le serveur HTTP, entièrement basé sur REST.
+
+Pas présent dans MicroProfile 1.1 actuellement, Antonio a du coder un équivalent du principe à la main (via l'ajout de links)
+
+== Caching
+
+Basé sur le mécanisme d'Etag du navigateur, et ses réponses 304.
+
+L'Etag est à gérer côté serveur, et *PAS* côté client.
+
+== Authentification
+
+Ici à l'aide de JSon Web Token
+
+Ce dernier :
+
+* encodé en base64
+
+Ici, pour des raisons de temps, on implémente pas OAuth2, mais on passe les login / mdp en clair (évidemment une mauvaise pratique, mais c'est une démo)
+
+Ce token est à transmettre dans toutes les requêtes.
+
+L'utilisation de ces tokens va passer par les *guards* d'Angular. +
+Ce sont ces derniers qui protègent les pages.
+
+== Déploiement en PROD
+
+On peut passer en configuration de PROD à l'aide de la CLI :  `ng serve -prod`
+
+Création d'un répertoire `dist` contenu le code minifié de TOUTE l'application (frmk Angular, JQuery, CSS, etc.) à partir duquel on peut très simplement créer une image Docker, il suffit, dans le dockerfile, de copier ce `dist` dans un NGinx.
+
+TIP: Astuce pour Docker, ouvrir le port 2375 pour XXX ?! (revoir la prez sur ce point)
+
+== Le mot de la fin
+
+Domaine super vaste !
+
+== Ressources
+
+* @sebastienpertus
+* @agoncal
+* github.com/Mimetis/UniversityDevoxx : pour tout le contenu de la partie Front, *avec les explications*. Permet de complètement reprendre la conf chez soi.
+* GitHub d'Antonio
+
+== Buzz words bingo !
+
+
+
+== Mon avis
+
+Présentation complète, from back to front, avec de l'humour (speakers sont top !) +
+Beaucoup de concepts passés en revue, à reprendre tranquillement chez soi.
+

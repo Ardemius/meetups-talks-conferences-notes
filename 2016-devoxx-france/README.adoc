@@ -1,0 +1,18 @@
+= devoxx-france-2016-presentation
+
+* link:Devoxx-France-2016-buzz-words.adoc[Buzz words et synthèse du salon]
+
+== Mercredi
+
+[cols="3,2,8", options="header"] 
+|===
+|Date					|Type				|Description
+|mercredi 09:30 / 12:30	|University			|link:mercredi-0930_architecture-découplée-grâce-aux-Reactives-Extensions.adoc[Architecture découplée grâce aux Reactive Extensions]
+|mercredi 13:30 / 16:30	|University			|link:mercredi-1330_La-Blockchain-en-détail.adoc[La blockchain en détail]
+|mercredi 17:10 / 17:40	|Tools-in-Action	|link:mercredi-1710_Feign(ant)-in-action.adoc[Feign(ant) in action]
+|mercredi 17:55 / 18:25	|Tools-in-Action	|link:mercredi-1755_maven-java9-jigsaw.adoc[Apache Maven, Java 9 et le projet Jigsaw]
+|===
+
+== Jeudi
+
+== Vendredi

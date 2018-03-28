@@ -1,0 +1,183 @@
+= Communicating sequential processes 
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+ 
+toc::[]
+
+Présentée par Diana Ortega de Xebia
+
+== Abstract
+
+Si nous considérons un logiciel comme un ensemble de tâches qui sont exécutées par des processus, le défi de créer des logiciels scalables nous amène aux questions de la gestion de la concurrence et de la communication entre processus. +
+Le modèle traditionnel de threads utilise des espaces partagés de mémoire pour communiquer, et des mutex ou des sémaphores pour se synchroniser. Cependant, à grande échelle, ce modèle reste très difficile à maintenir.
+
+Et si au lieu de partager la mémoire, nous synchronisions les processus via l’échange de messages ? +
+Cette idée n’est pas nouvelle et constitue même le fondement du *Modèle d’Acteurs* et du *Communicating Sequential Processes* (CSP). +
+D’ailleurs, saviez-vous que les routines du *langage Go*, le *framework Akka* et le *langage Erlang* sont en fait des implémentations de ces modèles ?
+
+Si vous voulez en savoir plus, venez voir les bases de la construction d’applications hautement scalables avec des exemples d’implémentation en *Go, Akka et Elixir*.
+
+[NOTE]
+.Au sujet d'Elixir
+====
+*Elixir* est un langage de programmation multi-paradigme fonctionnant sur la *machine virtuelle Erlang* (BEAM). +
+Il intègre les paradigmes de programmation fonctionnelle, programmation concurrente et programmation orientée processus.
+
+Pour plus de détails, voir https://fr.wikipedia.org/wiki/Elixir_(langage)[la page wikipedia].
+
+Un https://www.codeschool.com/learn/elixir[path de formation] sur cette technologie existe sur *Code School*.
+====
+
+== Introduction
+
+https://fr.wikipedia.org/wiki/Charles_Antony_Richard_Hoare[*Charles Antony Richard Hoare*] : le créateur du langage formel *Communicating Sequential Processes* (CSP, 1978), utilisé pour spécifier les interactions entre processus concurrents. +
+Hoare est également le créateur de l'algorithme de tri *quicksort*.
+
+WARNING: Un rappel : concurrence et parallélisme -> ce n'est *PAS* la même chose !
+
+image::csp-1.jpg[]
+
+Sur ce point, j'aime bien cette définition, issue de https://stackoverflow.com/a/1050257/1809195[Stackoverflow] :
+
+[quote, Stackoverflow]
+____
+*Concurrency* is when two or more tasks can start, run, and complete in overlapping time periods. It doesn't necessarily mean they'll ever both be running at the same instant. Eg. multitasking on a single-core machine.
+
+*Parallelism* is when tasks literally run at the same time, eg. on a multicore processor.
+____
+
+On trouve également http://tutorials.jenkov.com/java-concurrency/concurrency-vs-parallelism.html[un article sur le sujet dans l'excellent blog de Jakob Jenkov], avec la définition suivante :
+
+[quote, Jakob Jenkov]
+____
+*Concurrency* means that an application is making progress on more than one task at the same time (concurrently). Well, if the computer only has one CPU the application may not make progress on more than one task at exactly the same time, but more than one task is being processed at a time inside the application. It does not completely finish one task before it begins the next.
+
+*Parallelism* means that an application splits its tasks up into smaller subtasks which can be processed in parallel, for instance on multiple CPUs at the exact same time.
+____
+
+== 1er modèle de concurrence : les Threads
+
+1ere façon de gérer des exécutions concurrentes : *les threads* +
+Ce modèle de concurrence tourne autour de la *gestion de la mémoire partagée*.
+
+[WARNING]
+====
+Attention aux interactions avec la *mémoire partagée* !
+
+* *Locks*: allow only one thread to enter the part that's locked and the lock is not shared with any other processes.
+* *Mutex*: is the same as a lock but it can be system wide (shared by multiple processes). *It only locks one thread at a time*.
+* *Sémaphore*: does the same as a mutex but *allows x number of threads to enter*, this can be used for example to limit the number of CPU, OI or RAM intensive tasks running at the same time.
+* autre possibilité : future / callbacks (et le callbacks hell, il n'y a pas de solution parfaite...)
+====
+
+Les threads sont toujours (beaucoup) *plus compliqués à utiliser* que ce que l'on croit.
+
+[TIP]
+.Le conseil de Diana
+====
+Si l'on n'est pas *Brian Goetz* (Oracle's Java Language Architect) ou *Martin Thompson* (cofondateur de LMAX, et auteur du blog https://mechanical-sympathy.blogspot.fr/[Mechanical Sympathy], une sommité en matière de performances), *on oublie les threads*, et on utilise plutôt les technos suivantes :wink:
+====
+
+== 2e modèle de concurrence : CSP et Actor Model
+
+Ces 2 modèles, CSP et Actor Model, se basent sur les *échanges de messages*. +
+Dans ce cas, il n'y a *pas de données partagées*.
+
+Differences entre *CSP* (communicateurs) et *Actors* : 
+
+* *CSP* : communication par *channels de messages*.
+* *Actor Model* : communication par *mailbox*.
+
+.https://arild.github.io/csp-presentation/#10
+image::csp-2.jpg[]
+
+* *CSP* processes are *anonymous*, while *actors* have *identities*.
+* *CSP* uses *explicit channels* for message passing, whereas *actor* systems transmit messages to *named destination actors*.
+
+La dernière différence porte sur le *typage* proposé par chacun de ces modèles :
+
+* *CSP* : _The important point is that a *channel* is a value (you can pass it to a method, return it from a method) and usually *has a type*._ (voir https://news.ycombinator.com/item?id=7612775[cet article de Hacker News]) +
+Nous avons donc un *typage statique présent* pour le CSP.
+* Dans le cas du *Actor Model*, *le type de message n'est pas connu de l'Actor*, afin de garantir un maximum de flexibilité au modèle. +
+Voir ces 2 articles de Stackoverflow pour plus de détails :
+	** https://stackoverflow.com/a/47393487/1809195[Is there something infeasible about statically-typing actor models of interprocess communication?], surtout l'exemple de *Endre Varga*.
+	** https://stackoverflow.com/a/5551034/1809195[How to restrict actor messages to specific types?
+]
+
+Exemples avec l'algorithme du https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne[*Sieve of Eratosthenes* / *Crible d'Ératosthène*] pour trouver les nombres premiers.
+
+[NOTE]
+.Le Crible d'Ératosthène
+====
+L'algorithme procède par *élimination* : il s'agit de supprimer d'une table des entiers de 2 à N tous les multiples d'un entier. En supprimant tous les multiples, à la fin il ne restera que les entiers qui ne sont multiples d'aucun entier, et qui sont donc les nombres premiers.
+
+On commence par rayer les multiples de 2, puis à chaque fois on raye les multiples du plus petit entier restant. +
+On peut s'arrêter lorsque le carré du plus petit entier restant est supérieur au plus grand entier restant, car dans ce cas, tous les non-premiers ont déjà été rayés précédemment.
+
+image::https://upload.wikimedia.org/wikipedia/commons/8/8c/New_Animation_Sieve_of_Eratosthenes.gif[]
+
+Voir https://fr.wikipedia.org/wiki/Crible_d%27%C3%89ratosth%C3%A8ne[la page wikipedia] pour plus de détails.
+====
+
+=== Exemple avec Go (CSP)
+
+Diana va utiliser *Go lang*, qui utilise le modèle CSP.
+
+La notion de *channel* est centrale dans *Go lang*.
+
+[IMPORTANT]
+====
+*sender [red]#ET# receveir sont bloquants* si un autre processus attend.
+
+[quote, Wikipedia: CSP - Comparison with the Actor Model]
+____
+CSP message-passing fundamentally involves a rendezvous between the processes involved in sending and receiving the message, i.e. the sender cannot transmit a message until the receiver is ready to accept it.
+____
+
+image::csp-3.jpg[]
+====
+
+=== Exemple avec Akka (modèle Actor)
+
+Ici, c'est la notion de *mailbox* qui est centrale.
+
+NOTE: Le modèle Actor fut créé par Carl Hewitt en 1973.
+
+[IMPORTANT]
+====
+Contrairement au CSP, *seul le receiver est bloquant* dans le modèle Actor.
+
+[quote, Wikipedia: CSP - Comparison with the Actor Model]
+____
+Message-passing in actor systems is fundamentally asynchronous, i.e. message transmission and reception do not have to happen at same time, and senders may transmit messages before receivers are ready to accept them.
+____
+
+image::csp-4.jpg[]
+====
+
+Exemple d'outils pour le modèle Actor : *Elixir*, *Akka*.
+
+WARNING: contrairement au CSP, *pas de typage possible des messages dans le modèle Actor*, on prend tout (et on choisit de ne pas traiter ce qui ne convient pas.)
+
+== Ressources
+
+* https://www.youtube.com/watch?v=3aqmoYXokm8[Vidéo de la présentation]
+* https://en.wikipedia.org/wiki/Communicating_sequential_processes#Comparison_with_the_Actor_Model[Wikipedia: CSP - Comparison with the Actor Model]

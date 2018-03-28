@@ -1,0 +1,37 @@
+= Vendredi 10:15 / 10:35 - Human / Machine Improvised Theatre
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+Par Piotr Mirowski. +
+https://cfp.devoxx.fr/2017/talk/QBS-0960/Human_%2F_Machine_Improvised_Theatre[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Big Data, Machine Learning, IA & Analytics
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+
+== Contenu du talk
+
+Et ça commence par une énorme bâche sur l'élection de Trump !
+
+Nous a fait une live demo de théêtre d'improvisation avec un robot.
+
+A.L.Ex est un réseau de neurones créé par Piotr : *Artificial Language Experiment*
+
+image::vendredi_1015_impro_01.jpg[width="800"]
+
+A.L.Ex prend 1 mois pour être entraîné.
+
+== Ressources
+
+Revoir les slides pour récupérer celui des ressources (tout le code source du robot est disponible)
+
