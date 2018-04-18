@@ -1,0 +1,81 @@
+= Mercredi 17:10 / 17:40 - Concourse, l'Intégration Continue Cloud native
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Daniel Garnier-Moiroux (Pivotal). +
+https://cfp.devoxx.fr/2018/talk/CGV-7812/Concourse%2c_l'integration_continue_Cloud_Native[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, Continuous Delivery, Continuous integration, pipeline 
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Concourse est un outil de continuous integration & delivery, créé pour le monde "cloud native", en s'appuyant sur des outils et des pratiques modernes. +
+A vous les containers, les jobs stateless et l'intégration de ressources externes. + L'intégration continue nous a donné des reproducible builds, place maintenant à la reproducible CI.
+
+Concourse a été créé chez Pivotal en 2014, pour les besoins de CI des équipes développant Cloud Foundry. +
+Elles sont reparties de zéro pour dépasser les problèmes des solutions existantes, comme Jenkins ou Travis CI. C'est aujourd'hui la solution de CI #1 en interne comme chez nos clients, pour l'intégration comme pour le déploiement continu sur de multiples IaaS (AWS, GCP, Azure…). 
+
+Pour se faire une idée, voici https://wings.concourse-ci.org/teams/topher-concourse/pipelines/%F0%9F%8D%95PIZZA%F0%9F%8D%95[un petit exemple de pipeline].
+====
+
+== Notes
+
+* Dans Concourse, tout est est container
+* a été fait pour créer des *pipelines*
+* toute la config se trouve dans des fichiers YAML
+
+Concepts de Concourse :
+
+* *Resources* 
+* *Jobs*
+* *Pipeline* : comment on lie des des jobs avec des resources
+
+.Exemple de pipeline
+image::concourse_01.jpg[]
+
+*Concourse UI* :
+
+* un site web immutable (en fait permet quand même d'arrêter ou démarrer une tâche, mais c'est tout)
+* interaction via l'outil CLI "fly" *uniquement*
+
+image::concourse_02.jpg[]
+
+Dans le fichier de pipeline, il est possible d'utiliser une extension YAML permettant "d'injecter de la configuration commune" (comme une clé partagée).
+
+NOTE: Daniel nous a rapidement montré des tests End-to-End avec *TestCafé*
+
+image::concourse_03.jpg[]
+
+== Avis
+
+Conf sympa, avec un rythme soutenu. +
+A reprendre si besoin d'utiliser l'outil.

@@ -1,0 +1,96 @@
+= Mercredi 18:40 / 19:10 - Projet Sparkube: Transformer Apache Spark en cube OLAP
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Antoine Chambille (directeur de la R&D de ActiveViam, l'éditeur d'ActivePivot). +
+https://cfp.devoxx.fr/2018/talk/DOK-6562/Projet_Sparkube%3A_Transformer_Apache_Spark_en_cube_OLAP[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Apache Spark, Big Data, Analytics, interactivity
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Apache Spark est à l'origine une plateforme généraliste de traitement des données en batch. +
+Mais aujourd'hui grâce au stockage des données en colonnes, la gestion de la mémoire off-heap, la génération de code et le push des prédicats, Spark a beaucoup en commun avec les grands systèmes OLAP optimisés pour l'analyse interactive.
+
+Le projet *Sparkube* vient d'être lancé pour explorer cette idée, une extension Spark pour exposer les datasets comme des cubes multidimensionnels, sans rien avoir à configurer, et sans déplacer les données. +
+Cette nouvelle stack (qui incorpore le moteur MDX d'ActiveViam) permet à des utilisateurs métier *d'analyser les données d'un datalake directement dans une Pivot Table Excel, ou dans Tableau*, en déléguant les hiérarchies, les filtres et les agrégations au moteur Spark.
+
+Pendant la conférence nous expliquerons en détail comment Sparkube marche et nous ferons tourner un prototype en live pour illustrer les analyses et les expériences utilisateur qui deviennent possibles. +
+Nous terminerons sur une analyse des performances du moteur Spark sur ces workloads OLAP.
+====
+
+== Notes
+
+Une des toutes premières présentations sur *Sparkube*.
+
+*Cluster Spark standalone* piloté par un *notebook Zeppelin* pour la demo. +
+Très sympa en termes d'utilisation. +
+Comme le dit Antoine, ne manque que la partie graphique, d'où Sparkube.
+
+* Count products and price : ~10 000 000 de lignes dans ce dataset
+* 4 sec pour charger toutes les données
+* MDX et YMLA comme langage de requêtage
+
+Connection avec Excel en donnant simplement l'URL de la source, le sparkube server.
+
+* *Le point important et l'intérêt de Sparkube* : A chaque requête Excel effectuée dans la demo, une requête MDX a été effectuée par Excel et transmise à Sparkube, qui l'a convertie en job Spark. +
+-> tout est donc fait par Spark
+
+image::sparkube_01.jpg[]
+
+.Exemple de code Spark pour la demo
+image::sparkube_02.jpg[]
+
+[NOTE]
+====
+Sparkube permet de visualiser des datasets Spark comme des cubes multidimensionnels.
+
+* Sans installer de software
+* sans recopier de données
+* sans configuration
+* Dans Excel, Tableau ou ActiveUI
+====
+
+ActiveViam est apparemment le leader français de ces nouveaux usages BI (remplacement des feuilles Excel par des traitements Spark like)
+
+ActiveViam a également développé *ActiveUI*, le frontend de visualisation écrit en React.
+
+Les process Spark sont effectués contre de la mémoire *Off Heap* pour éviter tout impact du GC.
+
+== Ressources
+
+* https://www.activeviam.com/en/sparkube
+
+== Avis
+
+A l'air très prometteur ! A POCer. +
+Permet d'éviter la création d'un datamart, ou autre étape de préparation des données, avant l'affichage des données du lake dans un outil de BI.

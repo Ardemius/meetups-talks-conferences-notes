@@ -1,0 +1,90 @@
+= Mercredi 17:55 / 18:25 - Prometheus un outil pour les monitorer tous
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Ivan Beauvais (Xebia). +
+https://cfp.devoxx.fr/2018/talk/UKH-5807/Prometheus_un_outil_pour_les_monitorer_tous[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Prometheus, monitoring, metrics, alerts
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+On ne discute plus aujourd’hui le besoin de collecter, analyser et grapher les métriques issues de nos applications.
+
+Que ce soit mon application Java, le système, un serveur web ou même une solution custom, Prometheus propose des solutions simples à mettre en place afin de pouvoir exploiter ces informations et réagir.
+
+Dans ce tools in action, je vous propose un aperçu des possibilités de cet outil : en quoi diffère-t-il des autres solutions ? Comment l’installer ? comment monitorer ? Et comment exploiter ses métriques notamment via Grafana ?
+====
+
+== Notes
+
+Prometheus :
+
+* inspiré de google Borgmon
+* écrit en Go (donc juste un exécutable)
+* fonctionne par pull de metrics
+* c'est une BDD Time series
+* a un DSL de requête spécifique
+
+.Mode de fonctionnement *pull*
+image::prometheus_01.jpg[]
+
+Demo avec une application Spring Boot qui répond "world" quand on lui transmet "hello", et qui compte les appels.
+
+* Possibilité de rechargement à chaud de la configuration. +
+-> via envoi de signal HUP 
+* *Une centaine d'exporteurs disponibles* (JMX, Graphite, etc.) 
++
+[NOTE]
+====
+Pourrait donc être utilisé avec Kafka qui expose tous ses metrics en JMX
+====
+
+Gestion d'alertes via les *Alertmanager*
+
+En conclusion :
+
+* Client java complet
+* prise en main aisée
+* supporté par Grafana
+* *monitoring complet grâce aux nombreux exporters*
+* service discovery
+* alerting
+
+== Q&A
+
+Apparemment, solution souvent associée à Kubernetes. +
+Pour rappel, font partie de la même fondation.
+
+== Avis
+
+Un outil à tester et à suivre, surtout du fait de sa bonne intégration avec Kubernetes.

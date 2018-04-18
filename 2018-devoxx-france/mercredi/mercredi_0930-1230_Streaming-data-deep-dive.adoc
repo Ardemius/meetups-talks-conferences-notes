@@ -11,7 +11,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :warning-caption: :warning:
 endif::[]
-:imagesdir: images
+:imagesdir: ../images
 :source-highlighter: highlightjs
 // Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
 :lb: pass:[<br> +]
@@ -19,6 +19,8 @@ endif::[]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
 //:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
 
 toc::[]
 
@@ -46,9 +48,8 @@ Learning how to implement architectures that handle real-time streaming data, wh
 
 == Notes
 
-image::1
-
-image::2
+image:streaming-data_01.jpg[]
+image:streaming-data_02.jpg[]
 
 .C'est complexe !
 WARNING: Cf Clément, le sujet est *complexe*
@@ -65,9 +66,9 @@ Les micro-services ne se limitent pas à avoir un serveur HTTP pour la communica
 
 === Containers
 
-image::3
+image::streaming-data_03.jpg[]
 
-image::4
+image::streaming-data_04.jpg[]
 
 Les containers sont basés sur notion de partage. +
 Quand plusieurs tournent en même temps, ils partagent la même mémoire, les pools de threads, etc. +
@@ -76,14 +77,14 @@ Sur des solutions Cloud, cela coûte vite cher (surtout )
 
 Rappel : quand un container utilise trop de mémoire, que se passe-t-il ? *Il est tout simplement tué...*
 
-image::5
+image::streaming-data_05.jpg[]
 
 === Reactive everything...
 
 Pour pallier aux précédents problèmes des containers, on a décidé de faire du *Reactive*. +
 A tel point qu'on colle du Reactive partout maintenant.
 
-image::6
+image::streaming-data_06.jpg[]
 
 3 types de Reactive :
 
@@ -96,17 +97,17 @@ Techno associées : Akka, Vert.X
 "Que faire quand il y a trop de données et qu'elles commencent à s'accumuler ?" +
 A été intégré dans le JRE sous le nom de `java.util.concurrency.flow`.
 
-Revoir le Reactive Manifesto.
+Revoir le https://www.reactivemanifesto.org/fr[Reactive Manifesto].
 
 Il faut veiller à *l'idempotence* des services : il faut être capable de gérer les retry afin de permettre un même comportement à chaque appel.
 
 === Systèmes asynchrones
 
-image::7
+image::streaming-data_07.jpg[]
 
 Il nous faut une solution de concurrence non plus à base de Threads, mais à base de tâches.
 
-image::8
+image::streaming-data_08.jpg[]
 
 WARNING: Attention au *callback hell* ! (Trop de profondeur d'appels) 
 
@@ -121,9 +122,9 @@ Just un Hello world.
 On va *remplacer les callbacks par RX Java 2*. +
 RX Java 2 est une implémentation de *Reactive eXtension* (https://reactivex.io)
 
-image::9
+image::streaming-data_09.jpg[]
 
-image::10
+image::streaming-data_10.jpg[]
 
 `flatMap` est certainement l'opérateur le plus puissant de RX Java.
 
@@ -134,22 +135,185 @@ Ne jamais oublier le *subscribe*, car sans lui rien ne se passe ! +
 Car si RX ne trouve aucun abonné, il se dit qu'au temps ne rien faire...
 ====
 
-image:11
+image::streaming-data_11.jpg[]
 
-Reactive types :
+*Reactive types* :
 
 * *Completable* : pour des méthodes de type "flush", qui retournerait plutôt "void"
 * *Maybe* : Soit on utilise Maybe *correctement*, soit on utilise un Single d'Optional
 * *Flowable* : gros point fort : il a la back-pressure. +
 Il va demander à la source un certain nombre d'éléments. Quand il a terminé, il redemande des éléments. Cette précision change tout, c'est le consommateur qui demande les éléments, ils ne lui sont plus poussés aveuglément.
 
-=== Demo 
+=== Demo RX
+
+De nouveau, un hello world. +
+La prochaine étape (démo) sera de le faire tourner dans OpenShift.
+
+=== Gestion des containers : OpenShift et Kubernetes
+
+Rappel : tous les containers utilisent la même mémoire
+
+image::streaming-data_12.jpg[]
+
+* OpenShift ajoute une interface graphique.
+* Avec OpenShift, on lui envoie les sources du container, et c'est lui qui construit le container. +
+Intérêt -> on rajoute la *tracabilité*.
+
+.OpenShift - Workflow
+image::streaming-data_13.jpg[]
+
+*POD* : groupe de containers
+
+NOTE: Retour d'XP marrant de Clément sur la configuration en YAML : "je hais les espaces..." (on passe plus de temps à les débugger qu'autre chose...) +
+Pas vraiment mieux avec JSON.
+
+=== Demo OpenShift
+
+La dernière des demo "hello world" +
+Avec la prochaine, on attaquera le vrai "Data streaming"
+
+=== Data Streaming
+
+image::streaming-data_14.jpg[]
+
+.Use case for the example
+image::streaming-data_15.jpg[]
+
+*Use Case de l'exemple* : La ponctualité des trains suisses est un mythe !
+
+Une nouvelle fois, les données viennent (en partie) de l'*Open Data* (opendata.ch)
+
+.Ingestion architecture
+image::streaming-data_16.jpg[]
+
+.L'idée de Vert.X
+image::streaming-data_17.jpg[]
+
+Comme NodeJS, *Vert.X repose sur une Event Loop*. +
+Pour rappel :
+[quote, wikipedia]
+____
+Eclipse Vert.x est un framework événementiel pour la JVM s'inspirant librement de Node.js
+____
+
+.L'Event Loop
+image::streaming-data_18.jpg[]
+
+WARNING: Handlers must never block the thread calling them! +
+*On ne bloque JAMAIS l'event loop*.
+
+Notion de *Verticles* : L'unité d'exécution dans Vert.X
+
+Il est toujours compliqué de configurer un pool de threads, mais heureusement, avec un event loop, il n'y a qu'un thread... :smile:
+
+*Schedulers*
+
+.Generating a stream with back pressure
+image::streaming-data_19.jpg[]
+
+Infinispan est un cache avec "beaucoup de stéroÏdes" (presque une BDD)
+
+.Inject method
+image::streaming-data_20.jpg[]
+
+Les méthodes `zipWith` and `to` permettent de gérer la back pressure. +
+zipWith permet donc de simuler une espèce de "sleep", pour éviter de consommer les données trop vite.
+
+image:streaming-data_21.jpg[]
+image:streaming-data_22.jpg[]
+
+=== Demo - in memory datastore Infinispan
+
+.What is Infinispan
+image:streaming-data_23.jpg[]
+image:streaming-data_24.jpg[]
+
+* Doesn't need Zookeeper
+* Can be used for:
+	** distributed cache
+	** data analysis : can even be combined with Spark / Hadoop
+	** event-driven computation
+
+.Infinispan use cases
+image:streaming-data_25.jpg[]
+image:streaming-data_26.jpg[]
+
+Beaucoup d'utilisations d'Infinispan côté IoT ces dernières années
+
+Drawback: *harder to tune*.
+
+Gestion de la mémoire *Off-Heap* par Infinispan (pour ne pas être impacté par le GC)
+
+=== Demo - Infinispan on OpenShift
+
+.Diagram for demo
+image::streaming-data_27.jpg[]
+
+.Querying data remotely
+image::streaming-data_28.jpg[]
+
+Infinispan uses *Protobuf* as language independent POJO structure.
+
+.Diagram for next demo
+image::streaming-data_29.jpg[]
+
+=== Partie Web Tier
+
+Quand on a des donnée de ce type, il ne faut pas faire de refresh de data, mais pushé la data.
+
+Techno associées :
+
+* web-hooks : Google, GitHub, Travis
+* HTTP long-polling : maintains connections opened +
+Pas forcément la meilleure des idées, faire gaffe
+* Server side events : to solve long-polling issues. +
+Marche bien ! Mais le monde Microsoft n'utilise pas encore cette techno :sad:
+* Web sockets : seule techno bi-directionnelle. +
+Quand on veut push des data, on n'a besoin que d'un sens. +
+
+.Tableau comparatif
+image::streaming-data_30.jpg[]
+
+Avec Vert.X, pas besoin de choisir, il y a un Event Bus pour ça. +
+C'est à la base un protocole relativement simple.
+
+TIP: jetez un oeil à SockJS qui permet le lien (bridge) entre ces différentes technos
+
+=== Demo finale
+
+.Final diagram
+image::streaming-data_31.jpg[]
+
+Composant graphique de la carte des trains en retard réalisée par Octo suisse (octo.ch)
+
+=== Conclusion
+
+Points d'attention à garder en tête :
+
+* les flux de données sont généralement incompatibles
+* bien penser à la back-pressure
+* Kafka pourrait être une bonne techno (en stockage "infini", mais en faisant bien attention à ne pas dépasser cet "infini" *THEORIQUE*... Erreur très obscure...) 
+
+== Underlying concepts
+
+* Java Observable, Completable, Future
 
 == Ressources
 
 * *Streaming data - Andrew G.Psaltis* : pour débuter
 * *Streaming systems chez O'Reilly* : niveau très avancé, quand on connaît déjà le domaine. Encore en-cours d'écriture.
 
-== Mon avis
+//-
 
+* slides de la présentation :
+	** *Introduction* : bit.ly/streaming-data-dd-1
+	** *Ingestion Tier* : bit.ly/streaming-data-dd-2
+	** *Transport* : bit.ly/streaming-data-dd-3
+	** *In Memory Data Store* : bit.ly/streaming-data-dd-4
+	** *Web Tier* : bit.ly/streaming-data-dd-5
+	** *Lessons learned* : bit.ly/streaming-data-dd-6
+	** *code* : bit.ly/streaming-data-ddcode
 
+== Avis
+
+Une conférence complète sur le sujet, bien détaillée, et accompagnée d'une demo progressive.
