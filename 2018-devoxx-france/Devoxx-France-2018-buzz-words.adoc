@@ -1,0 +1,21 @@
+= Devoxx France 2018 - Buzz words and synthesis
+:lb: pass:[<br> +]
+:imagesdir: ../images
+:icons: font
+:source-highlighter: highlightjs
+
+== Buzz words
+
+* *Kubernetes*
+
+== Technos qui ont le vent en poupe
+
+
+
+== Technos en perte de vitesse
+
+
+
+== Synthèse
+
+

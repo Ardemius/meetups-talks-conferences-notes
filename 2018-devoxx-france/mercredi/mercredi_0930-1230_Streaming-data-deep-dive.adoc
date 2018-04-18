@@ -1,0 +1,155 @@
+= Mercredi 09:30 / 12:30 - Streaming Data - Deep Dive
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Par Clément Escoffier (Redhat - Infinyspan - cofounder), Galder Zamarreno (Redhat). +
+https://cfp.devoxx.fr/2018/talk/XSS-6450/Introduction_to_Data_Streaming[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Data streaming, Vert.x, Red Hat OpenShift 
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+Cf les speakers, il s'agit d'une conférence proposée par *Red Hat*.
+
+====
+Dealing with real-time, in-memory, streaming data is a unique challenge and with the advent of the smartphone and IoT (trillions of internet connected devices), we are witnessing an exponential growth in data at scale. +
+Learning how to implement architectures that handle real-time streaming data, where data is flowing constantly, and combine it with analysis and instant search capabilities is key for developing robust and scalable services and applications. In this university session, we will look at how to implement an architecture like this, using reactive open source frameworks. An architecture based on the Swiss rail transport system will be used throughout the university.
+
+*Technologies*: Java (attendees must be comfortable with Java 8), Infinispan, Eclipse *Vert.x*, Apache Kafka, OpenShift.
+====
+
+== Notes
+
+image::1
+
+image::2
+
+.C'est complexe !
+WARNING: Cf Clément, le sujet est *complexe*
+
+=== Micro-services
+
+Concept important derrière le data streaming : les *micro-services*. +
+Clément commence par un rappel des caractéristiques de ces derniers.
+
+Une remarque : on est en train de revenir à un *minimum de centralisation* du côté des micro-services, principalement afin d'en faciliter le monitoring. +
+Pour rappel, "à leur début", il était question que les micro-services soient le plus indépendant possible.
+
+Les micro-services ne se limitent pas à avoir un serveur HTTP pour la communication des services.
+
+=== Containers
+
+image::3
+
+image::4
+
+Les containers sont basés sur notion de partage. +
+Quand plusieurs tournent en même temps, ils partagent la même mémoire, les pools de threads, etc. +
+Cela implique qu'il y aura des Context Switch à gérer. +
+Sur des solutions Cloud, cela coûte vite cher (surtout )
+
+Rappel : quand un container utilise trop de mémoire, que se passe-t-il ? *Il est tout simplement tué...*
+
+image::5
+
+=== Reactive everything...
+
+Pour pallier aux précédents problèmes des containers, on a décidé de faire du *Reactive*. +
+A tel point qu'on colle du Reactive partout maintenant.
+
+image::6
+
+3 types de Reactive :
+
+* *Reactive systems* : tolérance à la panne, +
+Techno associées : Akka, Vert.X
+
+* *Reactive Programming* : pour composer des systèmes asynchrones et event driven
+
+* *Reactive Streams* : une spec parlant de back-pressure. +
+"Que faire quand il y a trop de données et qu'elles commencent à s'accumuler ?" +
+A été intégré dans le JRE sous le nom de `java.util.concurrency.flow`.
+
+Revoir le Reactive Manifesto.
+
+Il faut veiller à *l'idempotence* des services : il faut être capable de gérer les retry afin de permettre un même comportement à chaque appel.
+
+=== Systèmes asynchrones
+
+image::7
+
+Il nous faut une solution de concurrence non plus à base de Threads, mais à base de tâches.
+
+image::8
+
+WARNING: Attention au *callback hell* ! (Trop de profondeur d'appels) 
+
+=== Demo Vert.X from Galder
+
+With Vert.X, we can do a lot of things with only a very few number of threads.
+
+Just un Hello world.
+
+=== Taming the async beast with RX Java 2
+
+On va *remplacer les callbacks par RX Java 2*. +
+RX Java 2 est une implémentation de *Reactive eXtension* (https://reactivex.io)
+
+image::9
+
+image::10
+
+`flatMap` est certainement l'opérateur le plus puissant de RX Java.
+
+.Le subscribe ça compte !
+[NOTE]
+====
+Ne jamais oublier le *subscribe*, car sans lui rien ne se passe ! +
+Car si RX ne trouve aucun abonné, il se dit qu'au temps ne rien faire...
+====
+
+image:11
+
+Reactive types :
+
+* *Completable* : pour des méthodes de type "flush", qui retournerait plutôt "void"
+* *Maybe* : Soit on utilise Maybe *correctement*, soit on utilise un Single d'Optional
+* *Flowable* : gros point fort : il a la back-pressure. +
+Il va demander à la source un certain nombre d'éléments. Quand il a terminé, il redemande des éléments. Cette précision change tout, c'est le consommateur qui demande les éléments, ils ne lui sont plus poussés aveuglément.
+
+=== Demo 
+
+== Ressources
+
+* *Streaming data - Andrew G.Psaltis* : pour débuter
+* *Streaming systems chez O'Reilly* : niveau très avancé, quand on connaît déjà le domaine. Encore en-cours d'écriture.
+
+== Mon avis
+
+
