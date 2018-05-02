@@ -1,0 +1,145 @@
+= Vendredi 13:55 / 14:40 - GraphQL vs Traditional Rest API
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Vladimir Dejanovic, Founder and leader of AmsterdamJUG.. +
+https://cfp.devoxx.fr/2018/talk/PKA-3044/GraphQL_vs_Traditional_Rest_API[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : GraphQL, REST API, comparison
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+What does GraphQL and Traditional REST API have in common? Shouldn't the GraphQL be connected to some graphs or similar? What is actually GraphQL all about?
+
+Join me in this talk, while I try to answer all this questions and much more.
+
+In this talk I will explain what GraphQL is, what are differences and similarities compared to more traditional REST API and show you this on working examples, since code worth more then words only ;)
+====
+
+== Notes
+
+=== REST
+
+* implies client-server architecture
+* statelessness
+* cacheability
+* layered system
+* Code on Demand (optional)
+* *Uniform interface*
+
+=== GraphQL
+
+* GraphQL is a query language for APIs
+* GraphQL is a specification
+
+Vladimir uses *graphql-java* for his demo
+
+==== Demo
+
+* We first need a *GraphQL schema*
+	** it looks like a classic POJO
+
+image:1
+image:2
+
+We also have the documentation for free
+
+image::3
+
+=== Comparison witrh REST
+
+* implies client-server architecture : YES
+* statelessness : YES
+* cacheability : YES
+* layered system : YES
+* Code on Demand (optional) : YES
+* *Uniform interface* : YES
+
+So GraphQL is a REST API ?
+
+* In REST, schema is optional, even if a good practise
+* In GraphQL, it is mandatory
+
+This point on schema is the main difference between REST and GraphQL
+
+The idea behind GraphQL
+
+image::3
+
+* GraphQL: very powerful Query Language
+
+[IMPORTANT]
+====
+In GraphQL, "the client calls the shoots" +
+They have much more power than with REST API.
+
+* in REST, the developer fully defines everything the client will do.
+* with GraphQL, a lot of things is proposed to the client: there is more flexibility for the client
+====
+
+Protect from GraphQL abuses:
+
+* Time out
+* max query depth: to avoid a bad client to query too many data 
+* max query complexity
+
+=== GraphQL query lang for API
+
+3 parts in the language:
+
+* query
+* mutation
+* subscription
+
+2 types of resolvers:
+
+* root resolver
+* other resolvers
+
+Not all implementations implement subscription
+
+*In case of errors*, by example when asking a non-existing field
+
+image::4
+
+* Again, GraphQL *has a very rich SDL* (Schema Definition Language)
+	** much more precise, compact and powerful than Swagger by example
+* GraphQL has a *very powerful query lang* (even if not SQL of course) 
+
+== Resources
+
+* code du talk : https://github.com/vladimir-dejanovic/graphql-vs-traditional-rest-api-conftalk_demo
+
+== Avis
+
+Les slides ne sont pas assez détaillés (quelques labels à chaque fois). +
+Je pense qu'on irait plus vite avec un "bon vieil" article de blog détaillé

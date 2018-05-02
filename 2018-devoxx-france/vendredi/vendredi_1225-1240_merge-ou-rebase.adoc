@@ -1,0 +1,56 @@
+= Vendredi 12:25 / 12:40 - T'es plutôt merge ou rebase ?
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Jean Detoeuf. +
+https://cfp.devoxx.fr/2018/talk/AID-3738/T'es_plutot_merge_ou_rebase_%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Git
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Git est un outil essentiel dans la vie d'un développeur.
+
+Oui, seulement, beaucoup de développeurs ont juste peur de perdre du code avec une mauvaise manipulation ou lors de résolutions de conflits.
+
+Merge et rebase ont chacun leur utilité. Nous verrons comment les apprivoiser, éviter les erreurs et se prémunir au maximum des conflits.
+====
+
+== Notes
+
+== Ressources
+
+
+
+== Avis
+
+

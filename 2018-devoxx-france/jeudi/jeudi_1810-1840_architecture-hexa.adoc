@@ -1,0 +1,76 @@
+= Jeudi 18:10 / 18:40 - Architecture hexagonale pour les nuls
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Youen Chéné (CTO chez Saagie). +
+https://cfp.devoxx.fr/2018/talk/TSJ-4138/Architecture_hexagonale_pour_les_nuls_[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Java, Kotlin, DDD, Spring, hexagonal
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Le monde DDD aime bien troller le framework Spring. Et moi, après 10 années en tant que développeur Spring, je suis toujours déçu par les présentations de DDD (Domain Driven Development), je trouve que le code arrive toujours trop tard.
+
+Ce talk est une initiation au DDD pour des développeurs Java qui veulent contrôler la complexité au cœur du software avec leur framework favori et aller plus loin.
+
+Les exemples de code seront en kotlin.
+====
+
+== Notes
+
+A la base le titre était "architecture hexa pour les dev Spring"
+
+Le but est de mettre en relation les dev Spring avec les équipes DDD... +
+En gros, les équipes "plein de frameworks" face aux équipes "beaucoup plus à la mano"...
+
+TIP: Youen conseille de lire le livre de Julien DUBOIS qui explique très bien l'architecture en 5 couches.
+
+Simple Hexagonal Architecture with Spring Boot
+
+* Rule 1 : no framework or lib dependency in the domain
+* Rule 2 : *no infra code in the domain*
+
+Communication du domain avec l'extérieur : notions de *ports primaires* et *secondaires*
+
+image::1
+
+*Conclusion* :
+
+image::2
+
+== Ressources
+
+* https://github.com/youenchene/featurebrawl
+
+== Avis
+
+Une présentation très pragmatique de l'architecture hexagonale, illustrée par un exemple concret.

@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par Antoine Chambille (directeur de la R&D de ActiveViam, l'éditeur d'ActivePivot). +
+Par *Antoine Chambille* (directeur de la R&D de ActiveViam, l'éditeur d'ActivePivot). +
 https://cfp.devoxx.fr/2018/talk/DOK-6562/Projet_Sparkube%3A_Transformer_Apache_Spark_en_cube_OLAP[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Apache Spark, Big Data, Analytics, interactivity
 

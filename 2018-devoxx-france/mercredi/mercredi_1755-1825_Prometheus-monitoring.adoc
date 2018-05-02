@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par Ivan Beauvais (Xebia). +
+Par *Ivan Beauvais* (Xebia). +
 https://cfp.devoxx.fr/2018/talk/UKH-5807/Prometheus_un_outil_pour_les_monitorer_tous[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Prometheus, monitoring, metrics, alerts
 

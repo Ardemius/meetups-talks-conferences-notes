@@ -1,0 +1,142 @@
+= Jeudi 13:55 / 14:40 - DDD & Event Sourcing à la rescousse pour implémenter la RGPD ?
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *David Gageot* (Docker). +
+https://cfp.devoxx.fr/2018/talk/HIC-1887/Docker%2C_Kubernetes_et_Istio%2C_c'est_utile_pour_mon_monolithe%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Docker, Kubernetes, Istio
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Pour développer et mettre en production une architecture à base de micro-services, Docker, Kubernetes et Istio s'imposent. Docker nous donne l'isolation des services, Kubernetes permet de les distribuer sur un cluster et Istio apporte de l'intelligence au réseau.
+
+Mais voilà, comme 80% des développeurs, c'est une application monolithique et paléolithique que je dois moderniser. Comment puis-je tirer tous les bénéfices de ces outils ? Puis-je le faire sans toucher une ligne de code de mon application ?
+
+Simplification des montées de version, Déploiement sur le Cloud, Sécurisation des flux, Terminaison SSL, Blue/Green deployments, A/B Testing, Monitoring des Apis... Autant de cas concrets que l'on mettra en oeuvre sans toucher au monolithe !!
+====
+
+== Notes
+
+.Contexte
+NOTE: Pour le passage d'une application monolithique à une appli micro-services. +
+On prend pour exemple une "plain old" application "pet store" :wink:
+
+image::docker-kubernetes-istio_01.jpg[]
+
+* ligne de commande `kubectl` qui permet de *parler avec l'API Kubernetes*.
+
+* Plusieurs boucles de contrôles sur Kubernetes
+
+NOTE: *POD* : l'élément le plus petit dans un déploiement Kubernetes. +
+Contient un ou plusieurs containers
+
+-> On commence à améliorer l'application.
+
+image::docker-kubernetes-istio_02.jpg[]
+
+* Pour la conf du Nginx, le plus important est le `proxy-pass`, qui permet d'intercepter / rediriger tout le trafic vers les PODs. +
+*Pattern façade*, ou "*sidecar*" dans le jargon Kubernetes.
+
+.Qu'est-ce qu'Istio ?
+[NOTE]
+====
+*Istio* est une *surcouche de Kubernetes*, procurant plus de fonctionnalités aux containers. +
+Istio est un *Service Mesh*
+
+image::docker-kubernetes-istio_03.jpg[]
+
+[QUOTE, 'https://buoyant.io/2017/04/25/whats-a-service-mesh-and-why-do-i-need-one/']
+____
+A service mesh is a *dedicated infrastructure layer* for making service-to-service communication safe, fast, and reliable.
+
+The service mesh is typically implemented as an array of *lightweight network proxies* that are deployed alongside application code, without the application needing to be aware.
+____
+====
+
+* 1er apport d'Istio, remplacement de HTTP par *HTTPS* / TLS.
+
+-> on veut maintenant ajouter le *blue-green deployment*
+
+image::docker-kubernetes-istio_04.jpg[]
+
+* *Istio* apporte des `RouteRules` (règles de routage), totalement absentes de Kubernetes, et permettant donc de gérer le *routage*.
+
+image::docker-kubernetes-istio_05.jpg[]
+
+* Il y a composant *Istio* pour *Grafana*, afin de permettre le monitoring de la solution, et vérifier le bon fonctionnement du blue-green.
+
+image::docker-kubernetes-istio_06.jpg[]
+
+-> Check, ça marche bien, on a bien 20% en v2 et 80% en v1 pour notre test.
+
+image::docker-kubernetes-istio_07.jpg[]
+
+-> on va maintenant réécrire l'application
+
+On commence par l'*UI*, que l'on va *extraire dans un autre service*.
+
+image::docker-kubernetes-istio_08.jpg[]
+
+On a donc cluster v1, cluster v2 et maintenant nouvel UI.
+
+.Nouvelles problématiques introduites par les micro-services
+WARNING: Avant, on avait un *monolithe* qui *marchait en mémoire*, et maintenant nous avons *2 services* et les *problèmes de réseaux* qui vont avec.
+
+Grâce à Istio, via le *Service Graph*, on dispose d'un graphe des inter-connexions entre services.
+
+image::docker-kubernetes-istio_09.jpg[]
+
+[NOTE]
+====
+Dans les *dernières versions d'Istio*, le *Service Graph* est même en *D3.js*
+
+-> Attention quand même, passé un certain nombre de services (une dizaine), le graphe ne sera plus très lisible...
+====
+
+.Les autres fonctionnalités d'Istio
+image::docker-kubernetes-istio_10.jpg[]
+
+* Il y a également des *traces distribuées* de disponibles (via Zipkin), permettant de suivre les appels dans les différents micro-services
+* Istio permet également, par simple configuration, de limiter la fréquence de solicitation des services (*rate limits*). +
+Exemple : mon pet store va recevoir au maximum 1 requête / sec
+* possibilité d'injection d'erreur pour le *chaos computing*
+
+Istio développé par Google, IBM et le reste de la communauté.
+
+== Avis
+
+Bon rythme, très instructif, une super présentation d'Istio et de ses intérêts. +
+Explique une migration *progressive* vers une application micro-services.
+
+Super conf ! :+1: +
+A garder sous le coude pour tester Istio asap.

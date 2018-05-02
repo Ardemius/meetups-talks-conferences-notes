@@ -1,0 +1,166 @@
+= Jeudi 13:55 / 14:40 - DDD & Event Sourcing à la rescousse pour implémenter la RGPD ?
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Guillaume LOURS* (Saagie) et *Jérôme Avoustin* (Saagie). +
+https://cfp.devoxx.fr/2018/talk/ZPV-9609/DDD_&_Event_Sourcing_a_la_rescousse_pour_implementer_la_RGPD_%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Data privacy, CQRS, domain model
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Le Règlement Général sur la *Protection des Données* (RGPD ou *GDPR* en anglais) est le nouveau dispositif légal pour la protection des données en Europe, qui entrera en vigueur le *25 mai 2018*.
+
+Durant ce retour d'expérience, nous introduirons les grands principes de ce dispositif, tels que le consentement explicite, la portabilité de la donnée, etc.
+Nous présenterons également les notions d'*anonymisation*, de *pseudonymisation*, et de durée de rétention des données, ainsi que d'autres standards nécessaires pour se conformer à la nouvelle réglementation.
+
+Une fois le problème présenté, nous vous montrerons comment le *Domain Driven Design* et les patterns compatibles, tel qu'*Event Sourcing* nous ont aidés à appréhender les changements les plus importants pour les SI, résultant de l'application de la GDPR.
+====
+
+== Notes
+
+image:DDD-GDPR_01.jpg[]
+image:DDD-GDPR_02.jpg[]
+
+Importance de l'anonymisation, et la pseudonimisation.
+
+* *anonymisation* : irréversible +
+-> Je ne suis pas totalement d'accord sur ce point, l'anonymisation réversible existe aussi
+* *pseudonimisation* : réversible
+
+On veut passer en *DDD* (Domain Driven Design), le CRUD (solution initialement choisie pour l'exemple) n'étant une très bonne solution dans notre cas.
+
+image::DDD-GDPR_03.jpg[]
+
+* Cela va nous amener à des *architectures beaucoup moins orchestrées* : les *Event Driven Architecture*
+
+* Pour faire émerger un vocabulaire commun (*Ubiquitous Language*), un bon outil : l'*Event Storming* (créé par Alberto Brandolini)
++
+.Event Storming
+image::DDD-GDPR_04.jpg[]
+
+.Quelques infos sur l'Event Storming
+[NOTE]
+====
+La https://en.wikipedia.org/wiki/Event_storming[page anglaise de Wikipedia] sur ce workshop en donne une bonne idée :
+
+image::https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Event_Storming_example_process.jpg/1920px-Event_Storming_example_process.jpg[]
+
+. The first step is to find the *domain events* and write them on *orange* sticky notes. 
+. When all domain events are found the second step is to find for each domain event the *command that caused it*. +
+Commands are written on *blue* notes and placed directly before the corresponding domain event. 
+. In the third step the *aggregates* are identified on which the commands are executed and to which happen the domain events. +
+The aggregates are written in *yellow* stickies.
+====
+
+.Quelques précisions sur la notion d'*aggregate*
+[NOTE]
+====
+En voici une définition qui me plaît, provenant de https://lostechies.com/gabrielschenker/2015/05/25/ddd-the-aggregate/[LosTechies]
+
+____
+The *aggregate* is a *logical boundary* for things that can change in a business transaction of a given context. +
+An aggregate can be represented by a single class or by a multitude of classes. +
+If more than one class constitutes to an aggregate then one of them is the so called *root class or entity*. 
+
+*All access to the aggregate from outside has to happen through the root class*. +
+The outside world should only ever see (an interface to) the root class. Everything else remains internal to the aggregate.
+____
+====
+
+Puis, pour *nettoyer le core domain* : *Architecture Hexagonale* (also called *"Ports and Adapters"*, ou "Object Structural")
+
+.Hexagonal Architecture
+image::DDD-GDPR_05.jpg[]
+
+NOTE: Voir ce précédent https://github.com/Ardemius/devoxx-france-2015-presentation/blob/master/a-world-where-1ms-is-worth-100ME.adoc#hexagonal-architecture[CR de conférence de Devoxx France 2015] pour une rapide présentation de l'Architecture Hexagonale.
+
+Ce qui donne :
+
+image::DDD-GDPR_06.jpg[]
+
+-> Penser au maximum à *supprimer dans le code métier les dépendances à la partie technique*
+
+=== Event Sourcing
+
+* Persistance de l'*historique* des évènements
+* les evts deviennent la *source de vérité*, pour reconstituer l'état
+* source de données *immutable* (append only)
+
+Avant on avait cela :
+
+image::DDD-GDPR_07.jpg[]
+
+Avec l'Event Sourcing cela devient :
+
+image:DDD-GDPR_08.jpg[]
+image:DDD-GDPR_09.jpg[]
+
+Avec l'Event sourcing, on a finalement *gardé toutes les étapes de préparation* du pot-au-feu.
+
+Intérêts :
+
+* Testabilité (immutabilité)
+* versioning d'agrégats
+* debugging et reproductibilité
+* Rollback facilité
+* Traçabilité gratuite
+* *Recomposition des projections à la demande !!*
+
+Donc, super !, *faut-il toujours tout event sourcer ?* -> Non ! 
+
+.Road to Event Sourcing
+image::DDD-GDPR_10.jpg[]
+
+Attention, la finalité n'est pas l'Event Sourcing !
+
+Au final, que faut-il faire techniquement pour la GDPR ?
+
+image::DDD-GDPR_11.jpg[]
+
+[NOTE]
+====
+Tout ceci a été mis en place dans la plateform *Saagie*.
+
+-> A garder en tête pour la mise en place de GDPR.
+====
+
+== Ressources
+
+* https://en.wikipedia.org/wiki/Domain-driven_design[La page anglaise de Wikipedia sur le DDD] est un bon point d'entrée vers les notions associées (entity, value object, aggregate, CQRS, ES, etc.)
+
+== Avis
+
+Très bonne conférence de Saagie, proposant la GDPR comme use case d'application de différents méthodes de conception (DDD, Event Sourcing, Architecte Hexagonale).
+
+Les exemples sont bien clairs et illustrent bien les différents concepts abordés.
+

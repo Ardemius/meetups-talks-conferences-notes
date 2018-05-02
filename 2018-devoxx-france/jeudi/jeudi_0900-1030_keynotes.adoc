@@ -1,0 +1,237 @@
+= Jeudi 09:00 / 10:30 - Keynotes
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== La Keynote de Devoxx France
+
+Voir https://cfp.devoxx.fr/2018/talk/RFY-5578/La_Keynote_de_Devoxx_France
+
+Par Nicolas Martignole, Antonio Goncalves, Zouheir Cadi.
+
+image::keynote_devoxx_01.jpg[]
+image::keynote_devoxx_05.jpg[]
+
+=== Overview
+
+====
+Machine à fumée, canon à mousse, saut à l'élastique... après toutes ces surprises les années précédentes, on promet de faire encore plus original pour 2018.
+
+Venez découvrir les coulisses de l'organisation de Devoxx France 2018.
+====
+
+=== Notes
+
+Aller sur *Kahoot.it*, code 5589342, pour un sondage en ligne humoristique :
+
+* *235 talks et speakers*
+* *3000 participants*
+* IDE préféré : IntelliJ loinnnnn devant
+* Buzz words : +
+{sp}
++
+image:keynote_devoxx_02.jpg[]
+
+Nouveau Kahoo.it, code 5613705, sur le *code of conduct* du salon.
+
+En passant, une fois encore, les chefs de projets se sont pris un gros GROS tacle :wink:
+
+Un petit mot de Stephan JANSEN, le fondateur des Devoxx :
+
+image::keynote_devoxx_03.jpg[]
+
+* Entre les Devoxx et Voxxed Days, par an, plus de 17 000 développeurs sont rassemblés.
+
+* Annonce par Stephan d'une nouvelle conférence *Voxxed Days Microservices Paris*, les 29-31/10/2018. +
+Voir https://voxxeddays.com/microservices, le CFP et la billeterie sont déjà ouverts.
+
+* Annonce de la transformation de JavaDay Ukraine en un nouveau *Devoxx Ukraine*.
+
+image::keynote_devoxx_04.jpg[]
+
+== La e-residence estonienne et l’entrepreneuriat sans frontieres
+
+Voir https://cfp.devoxx.fr/2018/talk/NUQ-9381/La_e-residence_estonienne_et_l%E2%80%99entrepreneuriat_sans_frontieres
+
+Par *Arnaud Castaignet*, directeur des relations publiques au sein du programme e-Residency créé par le gouvernement estonien en 2014.
+
+=== Overview
+
+====
+Si l’Estonie considere l’acces a Internet comme un droit humain, l’acces aux services en ligne reste inegal a travers le monde, empechant une large partie de la population mondiale d’avoir acces aux memes opportunites et de pouvoir etre integree dans le commerce et l’economie mondiale.
+
+C’est pourquoi l’Estonie a cree le programme e-Residency afin de liberer le potentiel entrepreneurial de chacun. +
+*La e-residence permet a chaque citoyen de n’importe quel Etat dans le monde de creer son entreprise europeenne*, de la gerer entierement en ligne grace a une administration integralement numerisee et de beneficier d’une identite numerique transnationale fournie par le gouvernement estonien.
+====
+
+=== Notes
+
+En 1991, l'Estonie retrouve son indépendance, et il n'y a plus rien, il faut donc tout reconstruire.
+
+A cette époque, c'est également le début de la révolution numérique. +
+Les dirigeants estoniens décident donc de s'engouffrer dans le mouvement :
+
+* 2008 : utilisation de la technologie Blockchain
+* 2011 : *carte d'identité numérique en Estonie*
+* 2015 : possibilité de vote en ligne avec cette carte
+
+Tout est faisable en ligne, à l'exception des 3 choses suivantes :
+
+* se marier
+* se divorser
+* acheter un bien immobilier
+
+image::estonie_01.jpg[]
+
+NOTE: Le gouvernement estonien s'est engagé à ne demander qu'*une seule fois une même donnée* à ses concitoyens.
+
+.Pourquoi l'e-Résidence ?
+image::estonie_02.jpg[]
+
+NOTE: *X-Road* est la dorsale internet de l'Estonie, responsable de l’interconnexion des services publics et privés. +
+Un soin tout particulier est apporté à la sécurité : authentification, trafic crypté, données horodatées, etc. 
+
+.Caratéristiques de l'e-Résidence
+image::estonie_03.jpg[]
+
+Très utile pour les entrepreneurs et résidents hors UE afin d'accéder au marché européen. +
+Un très bon exemple : *le Brexit*.
+
+.Comment devenir e-résident ?
+image::estonie_04.jpg[]
+
+Effet boule de neige du fait des services proposés aux e-résidents : des bénéfices *indirects*. +
+On propose aux e-résidents un ensemble de services estoniens : une aide juridique, un bureau virtuel, etc.
+
+.L'avenir
+image::estonie_05.jpg[]
+
+IMPORTANT: De plus en plus d'états veulent maintenant lancer leur propre programme. +
+La technologie *Blockchain* fait souvent partie de la stack technique.
+
+NOTE: *l'e-Residency* permet à l'Estonie d'*économiser ~2% de son PIB*
+
+Avec l'e-residency, on cherche :
+
+* à rendre les services administratifs les plus "invisibles" possibles
+* à développer et faciliter l'entrepreneuriat
+
+== L’économie collaborative : soutenez, financez
+
+Voir https://cfp.devoxx.fr/2018/talk/MGG-1231/L%E2%80%99economie_collaborative_%3A_soutenez%2C_financez
+
+Par *Laure Némée*, CTO de Leetchi Group depuis 2010.
+
+=== Overview
+
+====
+L’économie collaborative est en plein essor depuis 10 ans ; elle ouvre de nouveaux modes de d’échanges, et permet aux consommateurs et aux consommatrices, aux citoyennes et aux citoyens de soutenir les initiatives qui leur tiennent à coeur, et ce à travers l’économie du partage ou le financement participatif.
+====
+
+=== Notes
+
+* Création de https://www.mangopay.com/fr/[Mangopay] en 2013.
+
+* Le *journalisme* se tourne régulièrement et de plus en plus vers le crowdfunding pour financer des enquêtes. +
+Un bon exemple est le journal https://lesjours.fr/[LesJours.fr]
+
+* De manière générale, l'usage du *crowdfunding* se généralise à un peu tous les domaines. +
+(Jetez un oeil à https://www.leetchi.com/[Leetchi])
+
+.Record d'Europe de crowdfunding
+[NOTE]
+====
+Un exemple de réussite du crowdfunding que les geeks connaissent bien :
+
+image::economie-collaborative_01.jpg[]
+
+Pour information, https://fr.ulule.com/noob-le-film/[Noob, le fim !] avec 681 046 €, puis https://fr.ulule.com/noob-le-jeu-video/[Noob, le jeu vidéo !] avec 1 246 852 €, ont tous deux battus le record d'Europe de crowdfunding :star:
+====
+
+== Le Smart Building : par où commencer ?
+
+Voir https://cfp.devoxx.fr/2018/talk/XDA-2796/Le_Smart_Building_:_par_ou_commencer_%3F
+
+Par *Olivier Sellès*, Olivier a rejoint Bouygues Immobilier en 2013 pour y diriger les projets d’innovation liés à l’énergie et à la ville intelligente.
+
+=== Overview
+
+====
+On entend régulièrement parler de smart building, de bâtiment intelligent, des bâtiments bourrés de capteurs, capables de savoir en permanence combien de gens y sont, combien d'énergie est consommée à quel endroit, et de livrer des statistiques passionnantes sur l'utilisation des ascenseurs. +
+Mais à quoi ça sert ? Si un bâtiment peut être piloté à distance, le voulons-nous, quelle sécurité faut-il prévoir ? Qui développera le code source des équipements du bâtiment ? Faudra-t-il prévoir une DSI à demeure pour dépanner l'ascenseur qui ne répondra plus aux commandes ? Est-ce qu'un immeuble haussmannien n'est pas suffisant, en fait ? +
+Eh bien en fait, on peut avoir du smart et du haussmannien, et on y pense.
+
+Nous allons vous faire un petit tour d'horizon du smart building, son histoire, ses enjeux. Poser la question de son contrôle et de sa sécurité. Et voir si on pourrait finir par vous voir, vous les développeurs, sur les chantiers des bâtiments dans 5 ans, avec casque, bottes et gilet.
+====
+
+=== Notes
+
+.Constat alarmant
+IMPORTANT: Le *bâtiment* est un vieux monde qui ne va pas bien... Pire, il *recule*...
+
+image::smart-building_01.jpg[]
+
+* Nous sommes dans une phase de *désapprentissage*, nous construisons *moins bien* et *moins vite* qu'avant.
+
+* *Situation actuelle du bâtiment* : comme si sur le marché noir, l'iPhone 1 se vendait plus cher que le 10... +
+Actuellement, le bâtiment n'est pas capable de faire aussi bien que les anciens immeubles Haussmanniens (qui sont beaux mais quand même loin d'être parfaits en termes de quotient énergétique, de côté fonctionnel, etc.)
+
+image::smart-building_02.jpg[]
+
+Actuellement, le bâtiment connaît l'IT à peine mieux que les chasseurs... +
+-> d'où le *Smart Building* !
+
+*"Smart" = Commumnication + Décision*
+
+Le Smart Building compte *4 types de services* :
+
+* *ceux qui touchent les users* : pour une salle de réunion, à l'aide de capteurs, celle-ci détecte automatiquement si des personnes sont présentes sur un créneau réservé, et la libère dans le cas contraire.
+
+* *sureté des biens et des personnes*
+
+* *l'exploitation et la maintenance* : 3 types de maintenance :
+	** action quand "ça pète"
+	** action programmée : on change tout tous les 6 mois
+	** action prédictive : à l'aide de capteurs qui remontent des infos sur l'état du produit
+
+* *économie positive*
+
+.Info "fun" d'Olivier
+NOTE: Les tomates perdent leur goût en-dessous de 12°C +
+Donc jamais au frigo, et c'est mort pour celles du supermarché...
+
+.Smart building et sécurité
+WARNING: Un bâtiment bardé de *capteurs* implique une attention très forte en matière de *sécurisation*.
+
+*Qui va sécuriser ce type de smart bâtiment ?*
+
+* Sujet suivi de près par les GAFA. Mais avez-vous envie de vivre dans un bâtiment "sécurisé" par Facebook ? +
+-> Une solution : *miser sur la puissance de la foule*, et donc le *travail des développeurs* :wink: 

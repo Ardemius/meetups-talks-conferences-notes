@@ -8,15 +8,67 @@
 
 * *Kubernetes*
 * mémoire *Off Heap* en Java !
+* *Kafka*
+* *Spark* : l'avènement, il est partout
+* *informatique quantique* : on commence à en parler (et dire que cela faisait partie des talks que je n'ai pas eu le temps de présenter... Rah !)
+* Beaucoup de DevOps
+* *microservices* encore et encore, avec le constat que c'est compliqué, et qu'il faut prendre le temps de les maîtriser et s'équiper en conséquence
+* *flatMap*
+* programmation fonctionnelle (surtout les fonctionnalités disponibles via Java 8)
+* *DDD*, *CQRS* et *Event sourcing* : nous allons de plus en plus y être (massivement) confrontés, il faut donc connaître ces méthodes de conception.
+* C'était déjà le cas ces dernières années avec l'avènement de NodeJS, mais il faut maintenant encore plus connaître *l'Event Loop*
+* *hexagonal architecture*
 
 == Technos qui ont le vent en poupe
 
+* *Kubernetes*
+* *Kafka*
+* *Spark*
+* Hashicorp Vault
+* gRPC
 
+//-
+
+* https://kahoot.it[*Kahoot.it*] pour les questionnaires, jeux de question / réponses en ligne. +
+Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings à la SGCIB.
 
 == Technos en perte de vitesse
 
+== Technos à tester absolument
 
+* Sparkube
+* Istio
+* gRPC
+
+== Conf à voir sur YouTube
+
+* https://cfp.devoxx.fr/2018/talk/UHI-5975/Guide_de_survie_NodeJS_pour_le_developpeur_Java[Guide de survie NodeJS pour le développeur Java]
+
+* Université d'organisation perso et pro (GTD, Personal Kanban, Inbox 0) : https://cfp.devoxx.fr/2018/talk/INR-2511/Lab_productivite_personnelle%3A_l%E2%80%99optimisation_de_soi[Lab productivité personnelle: l’optimisation de soi]
+
+* https://cfp.devoxx.fr/2018/talk/UTJ-8549/Etre_architecte_logiciel_en_2018[Être architecte logiciel en 2018]
+
+* Les 3 conférences sur les enfants et le code :
+	** https://cfp.devoxx.fr/2018/talk/WCA-4379/Ce_que_les_enfants_m'ont_appris_lorsque_j'ai_essaye_de_leur_apprendre_a_coder.[Ce que les enfants m'ont appris lorsque j'ai essayé de leur apprendre à coder.]
+	** https://cfp.devoxx.fr/2018/talk/FTO-9618/Le_jaillissement_de_l'esprit[Le jaillissement de l'esprit]
+	** https://cfp.devoxx.fr/2018/talk/QNS-5990/un_Loof_ca_va,_de_Loof_bonjour_les_degats_%F0%9F%98%9C[un Loof ça va, de Loof bonjour les dégâts 😜]
+
+* Conférence sur l'informatique quantique (et dire que c'était mon sujet en préparation... Donnez-moi plus de tempppssssss !) : https://cfp.devoxx.fr/2018/talk/FSM-3825/Quand_Internet_sera_gouvernee_par_les_%7C%F0%9F%99%80%3E_de_Shrodinger[Quand Internet sera gouvernée par les |🙀> de Shrödinger]
+
+NOTE: Autre info sympa de Philippe (LAWSON, ancien collège chez Kompass) : bon cursus de Data Architect disponible sur OpenClassrooms
 
 == Synthèse
 
+Toujours aussi sympa et intéressant, dès lors que l'on choisit les bonnes conférences :wink:
 
+Juste quelques (tous) petits bémols par rapport à la version 2017 :
+
+* il fallait prendre séparemment sandwich, entrée et dessert contrairement à la version 2017 où l'on pouvait prendre un sac repas contenant déjà tout. +
+Je me dis que le recyclage dess-dits sacs (tissu) devait être problématique, d'où leur absence cette année.
+* le sac Devoxx 2018 n'est absolument pas à la hauteur du 2018, et je l'attendais comme le messie :cry:
+* j'ai été *très* déçu par la conférence Splunk de Murex. +
+A la base, je pensais qu'il s'attendait de la solution d'analytics des données machine (https://www.splunk.com/fr_fr), et pour laquelle il existe une version dédiée à Hadoop en partenariat avec MapR (Hunk : https://mapr.com/resources/splunk-and-mapr-explore-analyze-and-visualize-data-hadoop/). +
+Dans les faits, il s'agissait du Splunk de Murex, outil *propriétaire* pour lequel il n'existe apparemment même pas de version d'essai. +
+J'aurais du faire davantage attention à l'abstract avant d'assister à cette conférence, OK. Mais, pour un salon comme Devoxx, quel est l'intérêt de faire un talk sur un outil dont on ne peut jamais expliquer le "comment est-ce fait ?" +
+Le talk était obligé de se limiter à une présentation du produit et de ses possibilités (contre lesquelles je n'ai rien, et que je ne remets pas en cause). +
+Il aurait été très bien au Big Data Paris, mais c'était selon moi une erreur de casting pour un Devoxx.

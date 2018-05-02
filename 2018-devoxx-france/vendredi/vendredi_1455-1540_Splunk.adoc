@@ -1,0 +1,93 @@
+= Vendredi 14:55 / 15:40 - “Solving The Trillion Dollar Problem” Splunk@Murex. Developing Dashboard Analytics for Performance Testing and Development
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Robert Lynch, Splunk global manager and performance test manager at Murex. +
+https://cfp.devoxx.fr/2018/talk/RRA-4186/%E2%80%9CSolving_The_Trillion_Dollar_Problem%E2%80%9D_Splunk%40Murex%2E_Developing_Dashboard_Analytics_for_Performance_Testing_and_Development[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, analytics, Performance tuning, testing, Big Data
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Performance analysis on financial software is massively complex and challenging. +
+This is the story of how Murex started to use Splunk to help debug performance code issues.
+
+Before Splunk we had millions and millions of timings logs, the problem was displaying them quickly so they are usable for developers and testers. +
+Up to this point, we were using a basic PDF report with graphs with static mathematics. However, when we were able to dynamically graph this data with Splunk the analysis became much quicker and easier. The turnaround time decreased for resolution for testing and development. In addition to this we developed multiple functions in the dashboard to enhance the usability. A developer could attach their environment to Splunk in 20 seconds for live monitoring, they could save a test as a URL to share with colleagues.
+
+A success stories is one of the world’s largest “Clearing House” that needed to do 60 position updates per second. https://www.youtube.com/watch?v=pJsTp7XlGGA [Dashboard for Developers+Testers 5 min] Murex/Robert Lynch won the “Splunk Ninja Revolution Award 2017” for the work done in this field. FYI 2016 winners [“Harvard Medical” “Yahoo”, “American express”
+====
+
+== Notes
+
+Un peu d'info sur Robert, qui se définit comme un NON functional tester chez Murex
+
+image::1
+
+Un peu de contexte sur Murex : a leading vendor in the provision of integrated solutions for front office, back office and risk management for the capital markets industry.
+
+Splunk : 
+
+* 3rd party tool that needs a licence
+* used to analyse various data inputs
+
+TPS Tracing 
+
+* light performance tracing across any java services
+
+image::2
+
+In this example, 5 minutes is too long, 50 ms is too long
+
+TPS example
+
+image::3
+
+Formerly, Murex in-house solution had limitations:
+
+* TPS report was a PDF -> meaning static report
+* too slow to graph millions of lines
+* can't zoom
+
+Splunk deployment at Murex
+
+image::4
+
+== Avis
+
+Beaucoup trop de placement de produit dans ce talk, et pas assez de détails techniques, sur l'architecture par exemple. +
+Une conf pour le Big Data Paris, mais pas pour Devoxx...
+
+Autre exemple, trop de présentation du métier de Murex, du fonctionnement de la banque, ce n'est pas ce que l'on attend, selon moi, d'une conférence à Devoxx.
+
+Ni Splunk, ni TPS ne sont Open Source, ce ne sont que des techno propriétaires, sans version d'évaluation. +
+Une fois encore, pourquoi les présenter à un salon comme Devoxx ?!

@@ -1,0 +1,76 @@
+= Jeudi 18:55 / 19:25 - Ceinture noire Karate en tests d’API REST
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par Nicolas Comet (Lectra), Benoît Prioux (Lectra). +
+https://cfp.devoxx.fr/2018/talk/INV-5571/Ceinture_noire_Karate_en_tests_d%E2%80%99API_REST[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : REST API, testing, Gherkin, Continuous Integration
+
+// ifdef::env-github[]
+// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
+// endif::[]
+// ifdef::env-browser[]
+// video::XXXXXX[youtube, width=640, height=480]
+// endif::[]
+
+== Overview
+
+====
+Vous aviez toujours rêvé d'une syntaxe facile pour tester vos APIs REST ? 
+
+Karate est fait pour vous !  Son format DSL plain text inspiré de la syntaxe Cucumber (ie. Gherkin) permet même aux personnes aux notions basiques en développement de venir couvrir vos APIs ou Web services (micros, nanos ou pas!)
+
+Il n'y a plus Karate, ehm, non, qu'à réussir ses tests d'intégration ! 
+
+Venez apprendre comment avec Java et maven comme simples prérequis d'infrastructure, vous pouvez mettre en place et industrialiser ces tests. On l'utilise chez nous, et on ne s'en passe plus.
+====
+
+== Notes
+
+Karate : Web-services testing made simple +
+https://github.com/intuit/karate
+
+image::1
+
+Toujours un framework de test à base de "Given, When, Then"
+
+Si on aime pas la CLI, il existe une UI.
+
+[WARNING]
+====
+Même si ressemble (DSL, Gherkin), Karaté n'est pas du DDD :
+
+* facile à utiliser et à maintenir
+* pas de glue à coder
+* rapide
+* JSON first class citizen
+====
+
+Multiple image à venir plus conclusion (panne de batterie à ce moment)
+
+
+== Avis
+
+
