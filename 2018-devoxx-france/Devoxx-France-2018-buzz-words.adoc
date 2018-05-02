@@ -65,10 +65,13 @@ Juste quelques (tous) petits bémols par rapport à la version 2017 :
 
 * il fallait prendre séparemment sandwich, entrée et dessert contrairement à la version 2017 où l'on pouvait prendre un sac repas contenant déjà tout. +
 Je me dis que le recyclage dess-dits sacs (tissu) devait être problématique, d'où leur absence cette année.
+
 * le sac Devoxx 2018 n'est absolument pas à la hauteur du 2018, et je l'attendais comme le messie :cry:
+
 * j'ai été *très* déçu par la conférence Splunk de Murex. +
-A la base, je pensais qu'il s'attendait de la solution d'analytics des données machine (https://www.splunk.com/fr_fr), et pour laquelle il existe une version dédiée à Hadoop en partenariat avec MapR (Hunk : https://mapr.com/resources/splunk-and-mapr-explore-analyze-and-visualize-data-hadoop/). +
+A la base, je pensais qu'il s'agissait de la solution d'analytics des données machine (https://www.splunk.com/fr_fr), et pour laquelle il existe une version dédiée à Hadoop en partenariat avec MapR (Hunk : https://mapr.com/resources/splunk-and-mapr-explore-analyze-and-visualize-data-hadoop/). +
 Dans les faits, il s'agissait du Splunk de Murex, outil *propriétaire* pour lequel il n'existe apparemment même pas de version d'essai. +
-J'aurais du faire davantage attention à l'abstract avant d'assister à cette conférence, OK. Mais, pour un salon comme Devoxx, quel est l'intérêt de faire un talk sur un outil dont on ne peut jamais expliquer le "comment est-ce fait ?" +
+J'aurais du faire davantage attention à l'abstract avant d'assister à cette conférence, OK. +
+Mais, pour un salon comme Devoxx, quel est l'intérêt de faire un talk sur un outil dont on ne peut jamais expliquer le "comment est-ce fait ?" +
 Le talk était obligé de se limiter à une présentation du produit et de ses possibilités (contre lesquelles je n'ai rien, et que je ne remets pas en cause). +
 Il aurait été très bien au Big Data Paris, mais c'était selon moi une erreur de casting pour un Devoxx.

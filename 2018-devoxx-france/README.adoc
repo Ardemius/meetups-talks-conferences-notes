@@ -1,6 +1,6 @@
 = Retours sur Devoxx France 2018
 
-* link:Devoxx-France-2018-buzz-words.adoc[Buzz words du salon]
+* link:Devoxx-France-2018-buzz-words.adoc[Buzz words et synthèse du salon]
 
 == Mercredi
 
