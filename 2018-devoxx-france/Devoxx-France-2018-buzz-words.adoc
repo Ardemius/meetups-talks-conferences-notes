@@ -4,20 +4,45 @@
 :icons: font
 :source-highlighter: highlightjs
 
+.2018/05/03 - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=PLTbQvx84FrARa9pUtZYK7t_UfyGMCPOBn[Devoxx France 2018] de la chaîne Devoxx Fr
+
 == Buzz words
 
-* *Kubernetes*
-* mémoire *Off Heap* en Java !
-* *Kafka*
-* *Spark* : l'avènement, il est partout
-* *informatique quantique* : on commence à en parler (et dire que cela faisait partie des talks que je n'ai pas eu le temps de présenter... Rah !)
+* *DevOps* en général, et tout particulièrement :
+	** *Kubernetes* qui a pris le pouvoir parmi les orchestrateurs de containers
+	** *Chaos engineering* dont on attend parler de plus en plus
+
+* La mémoire *Off Heap* en Java est toujours un sujet d'actualité, malgré la fin annoncé de la classe `Unsafe`.
+
+* *Kafka* qu'on essaye maintenant de mettre partout, même quand ce n'est pas forcément une bonne idée... +
+A noter que l'écosystème Kafka (Connect, Streams, etc.) est très fortement poussé par Confluent, afin d'étendre ses use cases au-delà du simple MoM.
+
+
+* *Spark* : l'avènement, il est partout, mais 
+* *Informatique quantique* : on commence à en parler (et dire que cela faisait partie des talks que je n'ai pas eu le temps de présenter... Rah !)
 * Beaucoup de DevOps
-* *microservices* encore et encore, avec le constat que c'est compliqué, et qu'il faut prendre le temps de les maîtriser et s'équiper en conséquence
+* *Microservices* encore et encore, avec le constat que c'est compliqué, et qu'il faut prendre le temps de les maîtriser et s'équiper en conséquence
+
 * *flatMap*
 * programmation fonctionnelle (surtout les fonctionnalités disponibles via Java 8)
+
 * *DDD*, *CQRS* et *Event sourcing* : nous allons de plus en plus y être (massivement) confrontés, il faut donc connaître ces méthodes de conception.
 * C'était déjà le cas ces dernières années avec l'avènement de NodeJS, mais il faut maintenant encore plus connaître *l'Event Loop*
-* *hexagonal architecture*
+* *Hexagonal architecture*
+* *Programmation reactive*
+
+NOTE: L'expression *"Big Data"* est définitivement en fin de vie, et en train d'être simplement *remplacée par le simple concept de "Data"*. +
+Ce dernier intègre progressivement les projets "les plus classiques" et le langage commun, et est sur le chemin de devenir une brique de base de la conception d'application (-> d'ici quelques temps, on ne dira plus que l'on fait du "big data" sur un projet)
+
+.En conclusion
+[IMPORTANT]
+====
+On continue à noter une *explosion du nombre de technologies, outils et méthodologies* disponibles sur le marché (bien aidée par la généralisation du traitement de la Data et https://hadoopecosystemtable.github.io/[l'écosystème Hadoop])
+
+Personne ne peut toutes les connaître, nous allons donc être de plus en plus confrontés à des façons différentes d'obtenir un même résultat. +
+-> Plus que nos connaissances spécifiques des technologies, c'est *notre capacité d'adaptation* à celle que nous ne connaissons pas qui va devenir (encore plus) capitale.
+====
 
 == Technos qui ont le vent en poupe
 
@@ -63,7 +88,7 @@ Toujours aussi sympa et intéressant, dès lors que l'on choisit les bonnes conf
 
 Juste quelques (tous) petits bémols par rapport à la version 2017 :
 
-* il fallait prendre séparemment sandwich, entrée et dessert contrairement à la version 2017 où l'on pouvait prendre un sac repas contenant déjà tout. +
+* il fallait prendre séparément sandwich, entrée et dessert contrairement à la version 2017 où l'on pouvait prendre un sac repas contenant déjà tout. +
 Je me dis que le recyclage dess-dits sacs (tissu) devait être problématique, d'où leur absence cette année.
 
 * le sac Devoxx 2018 n'est absolument pas à la hauteur du 2018, et je l'attendais comme le messie :cry:

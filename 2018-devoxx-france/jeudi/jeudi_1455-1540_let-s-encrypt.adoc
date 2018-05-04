@@ -63,11 +63,11 @@ image::lets-encrypt_01.jpg[]
 	** Par contre, le système est *lent*
 	** mais va permettre de faire de la *signature* : DSA, etc.
 
-.signature
+.Mécanisme de signature
 image::lets-encrypt_02.jpg[]
 
 .Plus de détails sur le mécanisme de signature
-[NOTE]
+[TIP]
 ====
 Pour une explication claire et concise du principe de *signature électronique*, je vous conseille de jeter un oeil à http://www-igm.univ-mlv.fr/~dr/XPOSE2006/depail/fonctionnement.html[cet article], que je trouve plus simple à comprendre que le schéma précédent.
 
@@ -93,11 +93,12 @@ Pour passer de l'un à l'autre, on peut utiliser le couteau suisse *openssl*.
 
 * *Certificats génériques* : touche de multiples sous-domaines
 
-* *Autorités de certification* :
-
-* * *tiers de confiance* : va nous apporter de la confiance dans le certificat. +
+* *Tiers de confiance* : va nous apporter de la confiance dans le certificat. +
 Ex : Verisign, Let's Encrypt, IdenTruts +
 Mais peut également être vous ou moi (en utilisant le couteau suisse openssl)
+
+	** Les *autorités de certifications* sont des tiers de confiance permettant d'authentifier l'identité des correspondants. +
+	Une AC délivre des certificats décrivant des identités numériques, et met à disposition les moyens de vérifier la validité des certificats qu'elle a fournis.
 
 * *Chaînes de certificats*
 +
@@ -116,6 +117,12 @@ ____
 
 .Validation d'un certificat
 image::lets-encrypt_04.jpg[]
+
+Rôle du DNS : Certification Authority Authorization (CAA)
+[quote, 'https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization']
+____
+DNS Certification Authority Authorization (CAA) is an Internet security policy mechanism which allows domain name holders to indicate to certificate authorities whether they are *authorized to issue certificates for a particular domain name* using a Domain Name System (DNS) resource record.
+____ 
 
 Pour gérer les problèmes de compromission de certificats :
 
@@ -147,8 +154,7 @@ image::lets-encrypt_06.jpg[]
 
 Let's Encrypt est basé sur le protocole *ACME*
 
-* Le client normatif est *Certbot*
-* le server normatif est ...
+* Le client recommandé est *Certbot*
 
 image::lets-encrypt_07.jpg[]
 

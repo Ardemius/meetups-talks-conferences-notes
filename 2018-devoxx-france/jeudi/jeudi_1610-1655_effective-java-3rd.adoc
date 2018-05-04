@@ -50,25 +50,28 @@ This talk covers some highlights from the third edition, concentrating on stream
 == Notes
 
 .The evolution of Effective Java
-image::1
+image::effective-java_01.jpg[]
 
-=== prefer lambdas to anonymous classes
+-> De la même façon que pour nous environnement technologique dans l'absolu, on voit bien qu'il y a de *plus en plus de choses à connaître* (et donc apprendre !) au niveau du langage Java.
+
+=== Prefer lambdas to anonymous classes
 
 You must understand *generics* to use *Lambdas*.
 
-=== prefer method references to lambdas
+=== Prefer method references to lambdas
 
 .Les 5 types
-image::2
+image::effective-java_02.jpg[]
 
 === Favor standard functional interfaces
 
 === Use streams judiciously
 
-image::3
+image::effective-java_03.jpg[]
 
-image::4
+image::effective-java_04.jpg[]
 
 == Avis
 
-Le livre est déjà dans ma bibliothèque.
+Le livre est déjà dans ma bibliothèque... +
+
