@@ -38,21 +38,23 @@ icon:tags[] Key words : Java, Kotlin, DDD, Spring, hexagonal
 == Overview
 
 ====
-Le monde DDD aime bien troller le framework Spring. Et moi, après 10 années en tant que développeur Spring, je suis toujours déçu par les présentations de DDD (Domain Driven Development), je trouve que le code arrive toujours trop tard.
+Le monde DDD aime bien troller le framework Spring. +
+Et moi, après 10 années en tant que développeur Spring, je suis toujours déçu par les présentations de DDD (Domain Driven Development), je trouve que le code arrive toujours trop tard.
 
-Ce talk est une initiation au DDD pour des développeurs Java qui veulent contrôler la complexité au cœur du software avec leur framework favori et aller plus loin.
+Ce talk est une initiation au DDD pour des développeurs Java qui veulent contrôler la complexité au coeur du software avec leur framework favori et aller plus loin.
 
-Les exemples de code seront en kotlin.
+Les exemples de code seront en Kotlin.
 ====
 
 == Notes
 
-A la base le titre était "architecture hexa pour les dev Spring"
+.petit troll sympa...
+NOTE: A la base le titre était "architecture hexa pour les dev Spring"...
 
-Le but est de mettre en relation les dev Spring avec les équipes DDD... +
+Le but est de mettre en relation les dev Spring avec les équipes DDD. +
 En gros, les équipes "plein de frameworks" face aux équipes "beaucoup plus à la mano"...
 
-TIP: Youen conseille de lire le livre de Julien DUBOIS qui explique très bien l'architecture en 5 couches.
+TIP: Youen conseille de lire le livre de Julien DUBOIS (https://www.amazon.fr/Spring-par-Pratique-2-5-3-0/dp/221212421X[Spring par la pratique]) qui explique très bien l'architecture en 5 couches.
 
 Simple Hexagonal Architecture with Spring Boot
 
@@ -61,15 +63,16 @@ Simple Hexagonal Architecture with Spring Boot
 
 Communication du domain avec l'extérieur : notions de *ports primaires* et *secondaires*
 
-image::1
+image::hexagonal-architecture_01.jpg[]
 
 *Conclusion* :
 
-image::2
+image::hexagonal-architecture_02.jpg[]
 
 == Ressources
 
 * https://github.com/youenchene/featurebrawl
+* De nouveau, voir ce précédent https://github.com/Ardemius/devoxx-france-2015-presentation/blob/master/a-world-where-1ms-is-worth-100ME.adoc#hexagonal-architecture[CR de conférence de Devoxx France 2015] pour une rapide présentation de l'Architecture Hexagonale
 
 == Avis
 

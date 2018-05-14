@@ -56,6 +56,7 @@ Personne ne peut toutes les connaître, nous allons donc être de plus en plus c
 
 * https://kahoot.it[*Kahoot.it*] pour les questionnaires, jeux de question / réponses en ligne. +
 Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings à la SGCIB.
+* *Asciidoctor* est de plus en plus utilisé pour les notes et les slides (avec l'addition d'un backend approprié)
 
 == Technos en perte de vitesse
 
@@ -80,7 +81,12 @@ Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings
 
 * Conférence sur l'informatique quantique (et dire que c'était mon sujet en préparation... Donnez-moi plus de tempppssssss !) : https://cfp.devoxx.fr/2018/talk/FSM-3825/Quand_Internet_sera_gouvernee_par_les_%7C%F0%9F%99%80%3E_de_Shrodinger[Quand Internet sera gouvernée par les |🙀> de Shrödinger]
 
-NOTE: Autre info sympa de Philippe (LAWSON, ancien collège chez Kompass) : bon cursus de Data Architect disponible sur OpenClassrooms
+== Divers
+
+* Info sympa de Philippe (LAWSON, ancien collège chez Kompass) : bon cursus de Data Architect disponible sur OpenClassrooms
+
+* Slides du talk de jeudi sur Karate générés automatiquement en Asciidoctor :smile: +
+Voir https://github.com/binout/karate-devoxxfr2018 pour les détails
 
 == Synthèse
 

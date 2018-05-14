@@ -1,38 +1,41 @@
 = Retours sur Devoxx France 2018
 
-* link:Devoxx-France-2018-buzz-words.adoc[Buzz words et synthèse du salon]
+IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* du salon]
 
 == Mercredi
 
-[cols="1,1,1,4", options="header"] 
+[cols="1,1,1,1,4", options="header"] 
 |===
-|Date				|Salle				|Type				|Description
-|09:30 / 12:30		|Neuilly 253		|University			|link:mercredi/mercredi_0930-1230_Streaming-data-deep-dive.adoc[Introduction to Data Streaming]
-|13:30 / 16:30		|Neuilly 234		|University			|link:mercredi/mercredi_1330-1630_decentralized-app-gRPC.adoc[Building a Decentralized Application with gRPC]
-|17:10 / 17:40		|Paris 242			|Tools-in-Action	|link:mercredi/mercredi_1710-1740_Concourse-CI-cloud-native.adoc[Concourse, l'intégration continue Cloud Native]
-|17:55 / 18:25		|Neuilly 252		|Tools-in-Action	|link:mercredi/mercredi_1755-1825_Prometheus-monitoring.adoc[Prometheus un outil pour les monitorer tous]
-|18:40 / 19:10		|Paris 243			|Tools-in-Action	|link:mercredi/mercredi_1840-1910_sparkube-cube-OLAP.adoc[Projet Sparkube: Transformer Apache Spark en cube OLAP]
+|Date				|Salle				|Type				|Avis				|Description
+|09:30 / 12:30		|Neuilly 253		|University			|Bien				|link:mercredi/mercredi_0930-1230_Streaming-data-deep-dive.adoc[Introduction to Data Streaming]
+|13:30 / 16:30		|Neuilly 234		|University			|					|link:mercredi/mercredi_1330-1630_decentralized-app-gRPC.adoc[Building a Decentralized Application with gRPC]
+|17:10 / 17:40		|Paris 242			|Tools-in-Action	|Bien				|link:mercredi/mercredi_1710-1740_Concourse-CI-cloud-native.adoc[Concourse, l'intégration continue Cloud Native]
+|17:55 / 18:25		|Neuilly 252		|Tools-in-Action	|					|link:mercredi/mercredi_1755-1825_Prometheus-monitoring.adoc[Prometheus un outil pour les monitorer tous]
+|18:40 / 19:10		|Paris 243			|Tools-in-Action	|Bien				|link:mercredi/mercredi_1840-1910_sparkube-cube-OLAP.adoc[Projet Sparkube: Transformer Apache Spark en cube OLAP]
 |===
 
 == Jeudi
 
-[cols="1,1,1,4", options="header"] 
+[cols="1,1,1,1,4", options="header"] 
 |===
-|Date				|Salle				|Type				|Description
-|09:00 / 10:30		|Amphi Bleu			|Keynote			|link:jeudi/jeudi_0900-1030_keynotes.adoc[les keynotes du matin]
-|11:15 / 12:00		|Maillot			|Conference			|link:jeudi/jeudi_1115-1200_reactive-spring.adoc[Reactive Spring]
-|12:05 / 12:20		|					|					|PAUSE
-|12:25 / 12:40		|					|					|PAUSE
-|12:55 / 13:40		|Maillot			|Conference			|link:jeudi/jeudi_1255-1340_docker-kubernetes-istio.adoc[Docker, Kubernetes et Istio, c'est utile pour mon monolithe?]
-|13:55 / 14:40		|Maillot			|Conference			|link:jeudi/jeudi_1355-1440_DDD-event-sourcing.adoc[DDD & Event Sourcing à la rescousse pour implémenter la RGPD ?]
-|14:55 / 15:40		|Neuilly 252 AB		|Conference			|link:jeudi/jeudi_1455-1540_let-s-encrypt.adoc[Balade au pays de «Let's Encrypt»]
-|16:10 / 16:55		|Amphi Bleu 		|Conference			|link:jeudi/jeudi_1610-1655_effective-java-3rd.adoc[Effective Java, Third Edition: Keepin' it Effective]
-|17:10 / 17:55		|Paris 242 AB 		|Conference			|link:jeudi/jeudi_1710-1755_gRPC-haute-frequence.adoc[gRPC, échanges à haute fréquence !]
-|18:10 / 18:40		|Amphi Bleu 		|Tools-in-Action	|link:jeudi/jeudi_1810-1840_architecture-hexa.adoc[Architecture hexagonale pour les nuls]
-|18:55 / 19:25		|Amphi Bleu 		|Tools-in-Action	|link:jeudi/jeudi_1855-1925_karate.adoc[Ceinture noire Karate en tests d’API REST]
-|19:45 / 20:35		|					|BOF 				|PAUSE
-|20:40 / 21:30		|					|BOF 				|PAUSE
-|21:35 / 22:25		|					|BOF 				|PAUSE
+|Date				|Salle				|Type				|Avis				|Description
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/file:///D:/trainings-talks-notes/meetups-talks-conferences/2018-devoxx-france/jeudi/jeudi_0900-1030_keynotes.adoc%23_la_keynote_de_devoxx_france[La Keynote de Devoxx France]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/file:///D:/trainings-talks-notes/meetups-talks-conferences/2018-devoxx-france/jeudi/jeudi_0900-1030_keynotes.adoc%23_la_e_residence_estonienne_et_l_entrepreneuriat_sans_frontieres[La e-residence estonienne et l’entrepreneuriat sans frontieres]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/file:///D:/trainings-talks-notes/meetups-talks-conferences/2018-devoxx-france/jeudi/jeudi_0900-1030_keynotes.adoc%23_l_%C3%A9conomie_collaborative_soutenez_financez[L’économie collaborative : soutenez, financez]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/file:///D:/trainings-talks-notes/meetups-talks-conferences/2018-devoxx-france/jeudi/jeudi_0900-1030_keynotes.adoc%23_le_smart_building_par_o%C3%B9_commencer[Le Smart Building : par où commencer ?]
+|11:15 / 12:00		|Maillot			|Conference			|					|link:jeudi/jeudi_1115-1200_reactive-spring.adoc[Reactive Spring]
+|12:05 / 12:20		|					|					|					|PAUSE
+|12:25 / 12:40		|					|					|					|PAUSE
+|12:55 / 13:40		|Maillot			|Conference			|TOP !				|link:jeudi/jeudi_1255-1340_docker-kubernetes-istio.adoc[Docker, Kubernetes et Istio, c'est utile pour mon monolithe?]
+|13:55 / 14:40		|Maillot			|Conference			|TOP !				|link:jeudi/jeudi_1355-1440_DDD-event-sourcing.adoc[DDD & Event Sourcing à la rescousse pour implémenter la RGPD ?]
+|14:55 / 15:40		|Neuilly 252 AB		|Conference			|Bien				|link:jeudi/jeudi_1455-1540_let-s-encrypt.adoc[Balade au pays de «Let's Encrypt»]
+|16:10 / 16:55		|Amphi Bleu 		|Conference			|					|link:jeudi/jeudi_1610-1655_effective-java-3rd.adoc[Effective Java, Third Edition: Keepin' it Effective]
+|17:10 / 17:55		|Paris 242 AB 		|Conference			|TOP !				|link:jeudi/jeudi_1710-1755_gRPC-haute-frequence.adoc[gRPC, échanges à haute fréquence !]
+|18:10 / 18:40		|Amphi Bleu 		|Tools-in-Action	|					|link:jeudi/jeudi_1810-1840_architecture-hexa.adoc[Architecture hexagonale pour les nuls]
+|18:55 / 19:25		|Amphi Bleu 		|Tools-in-Action	|					|link:jeudi/jeudi_1855-1925_karate.adoc[Ceinture noire Karate en tests d’API REST]
+|19:45 / 20:35		|					|BOF 				|					|PAUSE
+|20:40 / 21:30		|					|BOF 				|					|PAUSE
+|21:35 / 22:25		|					|BOF 				|					|PAUSE
 |===
 
 == Vendredi

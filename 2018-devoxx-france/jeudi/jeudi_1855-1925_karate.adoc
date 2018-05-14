@@ -38,25 +38,34 @@ icon:tags[] Key words : REST API, testing, Gherkin, Continuous Integration
 == Overview
 
 ====
-Vous aviez toujours rêvé d'une syntaxe facile pour tester vos APIs REST ? 
+Vous aviez toujours rêvé d'une syntaxe facile pour tester vos APIs REST ? +
+Karate est fait pour vous ! 
 
-Karate est fait pour vous !  Son format DSL plain text inspiré de la syntaxe Cucumber (ie. Gherkin) permet même aux personnes aux notions basiques en développement de venir couvrir vos APIs ou Web services (micros, nanos ou pas!)
+Son format DSL plain text inspiré de la syntaxe Cucumber (ie. Gherkin) permet même aux personnes aux notions basiques en développement de venir couvrir vos APIs ou Web services (micros, nanos ou pas!)
 
 Il n'y a plus Karate, ehm, non, qu'à réussir ses tests d'intégration ! 
 
-Venez apprendre comment avec Java et maven comme simples prérequis d'infrastructure, vous pouvez mettre en place et industrialiser ces tests. On l'utilise chez nous, et on ne s'en passe plus.
+Venez apprendre comment avec Java et maven comme simples prérequis d'infrastructure, vous pouvez mettre en place et industrialiser ces tests. +
+On l'utilise chez nous, et on ne s'en passe plus.
 ====
 
 == Notes
 
-Karate : Web-services testing made simple +
+*Karate* : Web-services testing made simple +
 https://github.com/intuit/karate
 
-image::1
+.Karate pros/cons
+image::karate_01.jpg[]
 
-Toujours un framework de test à base de "Given, When, Then"
+Toujours un framework de test à base de *"Given, When, Then"*
+
+image::karate_02.jpg[]
 
 Si on aime pas la CLI, il existe une UI.
+
+image:karate_03.jpg[]
+image:karate_04.jpg[]
+image:karate_05.jpg[]
 
 [WARNING]
 ====
@@ -68,9 +77,10 @@ Même si ressemble (DSL, Gherkin), Karaté n'est pas du DDD :
 * JSON first class citizen
 ====
 
-Multiple image à venir plus conclusion (panne de batterie à ce moment)
+.Pour aller plus loin
+image::karate_06.jpg[]
 
+== Ressources
 
-== Avis
-
+* https://github.com/binout/karate-devoxxfr2018
 

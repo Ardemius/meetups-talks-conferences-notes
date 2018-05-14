@@ -58,17 +58,17 @@ Along the way we will cover:
 
 == Notes
 
-image::gRPC_01.jpg[]
+image::decentralized-app-gRPC_01.jpg[]
 
 *Decentralized*: 
 
 * No single node is the primary server.  No node instructing other nodes what to do.  No central authority.
 * Most common example: Bitcoin and Ethereum
 
-image::gRPC_02.jpg[]
+image::decentralized-app-gRPC_02.jpg[]
 
 .Decentralized Data Structures
-image::gRPC_03.jpg[]
+image::decentralized-app-gRPC_03.jpg[]
 
 *Problème des généraux byzantins* : lequel est compromis et va, à tord, donner le signal aux autres pour qu'ils attaquent et se fasse massacrer (à vérifier).
 
