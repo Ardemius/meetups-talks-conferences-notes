@@ -58,9 +58,7 @@ Personne ne peut toutes les connaître, nous allons donc être de plus en plus c
 Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings à la SGCIB.
 * *Asciidoctor* est de plus en plus utilisé pour les notes et les slides (avec l'addition d'un backend approprié)
 
-== Technos en perte de vitesse
-
-== Technos à tester absolument
+=== Technos / outils à tester absolument
 
 * Sparkube
 * Istio
