@@ -46,7 +46,7 @@ IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* d
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_software_heritage_pourquoi_et_comment_preserver_le_patrimoine_logiciel_de_l_humanite[Software Heritage: pourquoi et comment préserver le patrimoine logiciel de l’Humanité ?]
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_french_road[French-Road]
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_ordinateur_quantique[L’ordinateur quantique]
-|09:00 / 10:30		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_homme_sur_mars_pourquoi_comment_les_d%C3%A9fis[L’Homme sur Mars : Pourquoi ? Comment ? Les défis.]
+|09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_homme_sur_mars_pourquoi_comment_les_d%C3%A9fis[L’Homme sur Mars : Pourquoi ? Comment ? Les défis.]
 |11:15 / 12:00		|Maillot			|Conference 		|					|link:vendredi/vendredi_1115-1200_Stream-all-things.adoc[Stream All Things - Patterns of Modern Data Integration]
 |12:05 / 12:20		|					|		 			|					|PAUSE
 |12:25 / 12:40		|					|		 			|					|PAUSE

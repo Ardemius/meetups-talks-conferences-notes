@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par Gwen Shapira, Confluent, author of “Kafka - The Definitive Guide” and "Hadoop Application Architectures". +
+Par *Gwen Shapira*, *Confluent*, author of “Kafka - The Definitive Guide” and "Hadoop Application Architectures". +
 https://cfp.devoxx.fr/2018/talk/NCH-3345/Stream_All_Things_-%5FPatterns_of_Modern_Data_Integration[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Kafka, Stream Processing, Event-Driven Microservices
 
@@ -49,43 +49,42 @@ We will explore how these patterns can be implemented using Apache Kafka and sha
 
 == Notes
 
-Comparison of advantages and drawbacks for DWH, datalake, Data Stream
-
-image::1
+.Comparison of advantages and drawbacks for DWH, datalake and *Data Stream*
+image::stream-all-things_01.jpg[]
 
 Gwen doesn't like Informatica !
 
-image::2
+image::stream-all-things_02.jpg[]
 
-* DWH et datalake: for ETL engineers
-* datalake and data stream: for software engineer
+* DWH and datalake: for *ETL engineers*
+* datalake and data stream: for *software engineer*
 
-Now, software engineers replaced a whole bunch of other jobs:
+-> Now, *software engineers replaced a whole bunch of other jobs*:
 
-image::3
+image::stream-all-things_03.jpg[]
 
 They do things a bit differently:
 
 * write code, rather than be the "Informatica Guy"
-* buld apps, rather than helping people to explore data
+* build apps, rather than helping people to explore data
 
-In fact, they have multiple responsibilities (Swiss knife)
+In fact, they have *multiple responsibilities* (Swiss knife)
 
 === Stream of events
 
-Main pain-points of data integration:
+Main pain-points of *data integration*:
 
 * all your data is event streams : continuous chain of events, the whole being *immutable*
 
-Data integration is to collect, process and store data
+Data integration is to *collect*, *process* and *store data*.
 
 Managing hundreds of different event types is insane. +
--> a solution: put all streams in *One* Kafka
+-> a solution: *put all streams in ONE Kafka*
 
 Put everything in one place is a good pattern -> it avoids the need of connecting to hundreds of different stores
 
 .Recap
-image::4
+image::stream-all-things_04.jpg[]
 
 La structure de log de Kafka est un gros avantage qui permet à Kafka de scaller facilement.
 
@@ -94,66 +93,72 @@ This can be a problem (you can easily break a lot of consumers with broadcasting
 
 Exemple
 
-image::5
+image::stream-all-things_05.jpg[]
 
-IMPORTANT: Stream processing world : Event schemas ARE the API
+[IMPORTANT]
+====
+Stream processing world -> *Event schemas ARE the API*
 
-image::6
+image::stream-all-things_07.jpg[]
+====
 
-image::7
+image:stream-all-things_06.jpg[]
+image:stream-all-things_08.jpg[]
 
-A reminder of Kafka scalable model
+.A reminder of Kafka scalable model
+image::stream-all-things_09.jpg[]
 
-image::8
-
-Hipster Stream Processing : a very simple framework. +
+*Hipster Stream Processing* : a very simple framework. +
 "very simple" meaning *NOT* for all use cases
 
-Kafka Connect
+.Kafka Connect
+image::stream-all-things_10.jpg[]
 
-image::9
-
-A (very) big bunch of connectors to connect Kafka to sources and sinks.
+A (very) big bunch of connectors exist to connect Kafka to sources and sinks.
 
 WARNING: Don't take this pattern too far! +
 Too far meaning *state management*
 
-Example of Kafka workflow - initial one
+=== Example of Kafka workflow
 
-image::10
+.Initial workflow
+image::stream-all-things_11.jpg[]
 
-Update 1
+. *Update 1*
++
+image::stream-all-things_12.jpg[]
++
+-> But *latency problems* with the connection with the DB (not enough throughput) 
++
+. *Update 2* +
+On ajoute un cache pour éviter les problèmes de latence côté BDD.
++
+image::stream-all-things_13.jpg[]
++
+-> Mais vient alors le pb : *quand dois-je invalider le cache ?*
++
+. *Update 3* +
+We store the event log from the DB in Kafka -> we do CDC (Change Data Capture)
++
+image::stream-all-things_14.jpg[]
 
-image::11
+En conclusion, *we turn state (in DB) into stream of events (in Kafka)*
 
-But *latency problems* with the connection with the DB (not enough throughput)
+image:stream-all-things_15.jpg[] image:stream-all-things_16.jpg[]
 
-Update 2
+Dans les faits, il y a plusieurs grandes questions à se poser :
 
-On ajoute un cache pour éviter les problèmess de latence côté BDD. +
-Mais vient alors le pb : *quand dois-je invalider le cache ?*
-
-Update 3
-
-image::12
-
-We store the event log from the DB in Kafka (we do CDC)
-
-image::13
-
-Dans les faits, il y a plusieurs grandes questions à se poser 
-
-image::14
+image::stream-all-things_17.jpg[]
 
 * Si cela ne tient pas en mémoire, je dois sharder
-* maintenir un cache distribué n'est pas simple
-* comment persister l'état ? (avec la résilience qui va avec ?)
-* *comment gérer des co-partitions pour les JOIN ?*
+* Maintenir un cache distribué n'est pas simple
+* Comment persister l'état ? (avec la résilience qui va avec ?)
+* *Comment gérer des co-partitions pour les JOIN ?*
 
--> Pour tout cela, il y a *KafkaStreams*
-
-
+-> Pour tout cela, il y a *KafkaStreams* +
+Pour un exemple, voir https://www.confluent.io/blog/distributed-real-time-joins-and-aggregations-on-user-activity-events-using-kafka-streams/
 
 == Avis
 
-Gwen parle plus vite que Lucky Luke ne tire...
+Gwen parle plus vite que Lucky Luke ne tire... +
+Mais la conférence était très intéressante, avec une bonne illustration d'un workflow Data stream (utilisant Kafka bien sûr) et des difficultés probablement rencontrées.

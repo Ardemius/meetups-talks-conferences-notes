@@ -37,8 +37,8 @@ Voir https://cfp.devoxx.fr/2018/talk/RFY-5578/La_Keynote_de_Devoxx_France
 
 Par Nicolas Martignole, Antonio Goncalves, Zouheir Cadi.
 
-image::keynote_devoxx_01.jpg[]
-image::keynote_devoxx_05.jpg[]
+image::keynote-jeudi_01.jpg[]
+image::keynote-jeudi_05.jpg[]
 
 === Overview
 
@@ -58,7 +58,7 @@ Aller sur *Kahoot.it*, code 5589342, pour un sondage en ligne humoristique :
 * Buzz words : +
 {sp}
 +
-image:keynote_devoxx_02.jpg[]
+image:keynote-jeudi_02.jpg[]
 
 Nouveau Kahoo.it, code 5613705, sur le *code of conduct* du salon.
 
@@ -66,7 +66,7 @@ En passant, une fois encore, les chefs de projets se sont pris un gros GROS tacl
 
 Un petit mot de Stephan JANSEN, le fondateur des Devoxx :
 
-image::keynote_devoxx_03.jpg[]
+image::keynote-jeudi_03.jpg[]
 
 * Entre les Devoxx et Voxxed Days, par an, plus de 17 000 développeurs sont rassemblés.
 
@@ -75,7 +75,7 @@ Voir https://voxxeddays.com/microservices, le CFP et la billeterie sont déjà o
 
 * Annonce de la transformation de JavaDay Ukraine en un nouveau *Devoxx Ukraine*.
 
-image::keynote_devoxx_04.jpg[]
+image::keynote-jeudi_04.jpg[]
 
 == La e-residence estonienne et l’entrepreneuriat sans frontieres
 

@@ -15,22 +15,24 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 * La mémoire *Off Heap* en Java est toujours un sujet d'actualité, malgré la fin annoncé de la classe `Unsafe`.
 
+* *Spark* : l'avènement, il est partout, mais 
+
 * *Kafka* qu'on essaye maintenant de mettre partout, même quand ce n'est pas forcément une bonne idée... +
 A noter que l'écosystème Kafka (Connect, Streams, etc.) est très fortement poussé par Confluent, afin d'étendre ses use cases au-delà du simple MoM.
+	** Kafka pousse également le concept de *Data Stream* (comme une évolution des DWH et Datalake)
 
-
-* *Spark* : l'avènement, il est partout, mais 
-* *Informatique quantique* : on commence à en parler (et dire que cela faisait partie des talks que je n'ai pas eu le temps de présenter... Rah !)
-* Beaucoup de DevOps
 * *Microservices* encore et encore, avec le constat que c'est compliqué, et qu'il faut prendre le temps de les maîtriser et s'équiper en conséquence
-
-* *flatMap*
-* programmation fonctionnelle (surtout les fonctionnalités disponibles via Java 8)
 
 * *DDD*, *CQRS* et *Event sourcing* : nous allons de plus en plus y être (massivement) confrontés, il faut donc connaître ces méthodes de conception.
 * C'était déjà le cas ces dernières années avec l'avènement de NodeJS, mais il faut maintenant encore plus connaître *l'Event Loop*
 * *Hexagonal architecture*
 * *Programmation reactive*
+
+* *flatMap*
+* programmation fonctionnelle (surtout les fonctionnalités disponibles via Java 8)
+
+* *Informatique quantique* : on commence à en parler (et dire que cela faisait partie des talks que je n'ai pas eu le temps de présenter... Rah !)
+* Beaucoup de DevOps
 
 NOTE: L'expression *"Big Data"* est définitivement en fin de vie, et en train d'être simplement *remplacée par le simple concept de "Data"*. +
 Ce dernier intègre progressivement les projets "les plus classiques" et le langage commun, et est sur le chemin de devenir une brique de base de la conception d'application (-> d'ici quelques temps, on ne dira plus que l'on fait du "big data" sur un projet)

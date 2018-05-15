@@ -31,121 +31,137 @@ toc::[]
 // video::XXXXXX[youtube, width=640, height=480]
 // endif::[]
 
-image::0
+image::keynote-vendredi_01.jpg[]
 
 == Software Heritage: pourquoi et comment preserver le patrimoine logiciel de l'Humanite
 
 Voir https://cfp.devoxx.fr/2018/talk/NRE-7647/Software_Heritage%3A_pourquoi_et_comment_preserver_le_patrimoine_logiciel_de_l'Humanite
 
-Par Roberto Di Cosmo
+Par *Roberto Di Cosmo*, professeur d'informatique à l'Université Paris Diderot. Il est actuallement detaché chez Inria.
 
 === Overview
 
 ====
-Le logiciel est au cœur de notre société numérique au point et le code source des logiciels contient une part croissante de nos connaissances scientifiques, techniques et organisationnelles, au point d'etre devenu desormais une partie integrante du patrimoine de l'Humanité.
+Le logiciel est au coeur de notre société numérique, et le code source des logiciels contient une part croissante de nos connaissances scientifiques, techniques et organisationnelles, au point d'être devenu desormais une partie intégrante du patrimoine de l'Humanité.
 
-La mission de *Software Heritage* est de veiller à ce que cette précieuse masse des connaissances soit collectée, préservée, organisée et mise à la disposition de tous.
+La mission de *Software Heritage* est de veiller à ce que cette précieuse masse de connaissances soit collectée, préservée, organisée et mise à la disposition de tous.
 
 Nous faisons cela pour de multiples raisons. +
-Pour préserver les connaissances scientifiques et technologiques intégrées dans le code source du logiciel, qui est une partie précieuse de notre patrimoine. Pour permettre un meilleur développement et réutilisation des logiciels pour la société et l'industrie, en construisant la plus grande base de connaissances de logiciels. Et pour favoriser une science meilleure, en fournissant la plus grande base de code pour la recherche sur les logiciels et en créant l'infrastructure pour préserver et partager les logiciels de recherche, complément nécéssaire de l'Open Access, et brique essentielle pour la reproducibilité.
+Pour préserver les connaissances scientifiques et technologiques intégrées dans le code source du logiciel, qui est une partie précieuse de notre patrimoine. +
+Pour permettre un meilleur développement et réutilisation des logiciels pour la société et l'industrie, en construisant la plus grande base de connaissances de logiciels. +
+Et pour favoriser une science meilleure, en fournissant la plus grande base de code pour la recherche sur les logiciels et en créant l'infrastructure pour préserver et partager les logiciels de recherche, complément nécéssaire de l'Open Access, et brique essentielle pour la reproducibilité.
 ====
 
 === Notes
 
 Roberto nous rappelle nos jeunes années (et les siennes) au travers de Doom et Quake :wink:
 
-Il insiste au travers de divers exemples, sur l'importance de sauvegarder, conserver le code source, car ce dernier renferme une grande partie de notre savoir actuelle.
+Il insiste, au travers de divers exemples, sur l'importance de sauvegarder, *conserver le code source*, car ce dernier renferme une grande partie de notre savoir actuelle.
 Il rappelle l'envoi d'un homme sur la lune, avec ses 60 000 lignes de code à une époque ou rien n'existait.
+
+.Margaret Hamilton: 1ere programmeuse de l'histoire
+[NOTE]
+====
+Concernant Apollo 11, rendons de nouveau hommage à https://fr.wikipedia.org/wiki/Margaret_Hamilton_(scientifique)[Margaret Hamilton], responsable du code du logiciel de navigation pour le programme Apollo. 
+
+image::https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Margaret_Hamilton_-_restoration.jpg/440px-Margaret_Hamilton_-_restoration.jpg[]
+====
 
 Présentation de *Software Heritage*
 
-image::1
+image::software-heritage_01.jpg[]
 
 * *Mission* : Collect, preserve and share the source code of ALL the software that is available
 
-image::2
+image::software-heritage_02.jpg[]
 
 Comment ça marche ? +
-L'objectif est de sauvegarde le code de *toutes* les plateformes disponibles (GitHub, GitLab, etc.) +
+L'objectif est de sauvegarder le code de *toutes* les plateformes disponibles (GitHub, GitLab, etc.) +
 Les plateformes étant différentes (avec des protocoles différents), cela nécessite la création d'un certain nombre d'adapteurs.
 
 * Représente un peu moins de 200 To
 * l'architecture de la solution est assimilable à un (très) grand arbre de Merkel
 
+image:software-heritage_03.jpg[]
+image:software-heritage_04.jpg[]
+
+Voir également le doc plus complet : https://hal.archives-ouvertes.fr/hal-01590958/document
+
 Roberto nous propose un accès développeur à leur site :
 
-image::5
+image::software-heritage_05.jpg[]
 
-* http://archive.softwareheritage.org/browse (credential: devoxx / 2018)
+-> http://archive.softwareheritage.org/browse (credential: devoxx / 2018)
 
 Il faut une prise de conscience que le code que nous écrivons fait partie du patrimoine de l'humanité.
 
 Software Heritage recrute, mais à surtout besoin d'aide, et de contributeurs. +
 Et s'il y a des sociétés qui veulent devenir sponsor, elles sont les bienvenues.
 
-image::6
+image::software-heritage_06.jpg[]
 
 == French-Road
 
 https://cfp.devoxx.fr/2018/talk/ESJ-4326/French-Road
 
-Par Emmanuel PESENTI, Président de French-road, est architecte des systèmes d'information actuellement en poste dans un des services du premier ministre.
+Par *Emmanuel PESENTI*, Président de French-road, architecte des systèmes d'information actuellement en poste dans un des services du premier ministre.
 
 === Overview
 
 ====
-La France, et l’Europe qui est dans le même état, que nous qualifions de « pré-numérique« , se trouvent à portée de l’Asie et des Etats Unis. 
+La France, et l’Europe qui est dans le même état, que nous qualifions de "pré-numérique", se trouvent à portée de l’Asie et des Etats Unis. 
 
 Si nous n’accélérons pas notre transformation digitale, nous serons le terrain de bataille du numérique américain, et du numérique chinois. +
-Mais en France, comment passer à l'ère digitale (sans manquer d'R) ? Par la confiance et la maturité digitale, les véritables inducteurs d'une nation digitale, sur un continent dont l'histoire est forgée de périodes terribles et de valeurs fortes. 
+Mais en France, comment passer à l'ère digitale (sans manquer d'R) ? +
+Par la confiance et la maturité digitale, les véritables inducteurs d'une nation digitale, sur un continent dont l'histoire est forgée de périodes terribles et de valeurs fortes. 
 
 Nous exigeons pour notre pays et pour l’Europe, l'excellence juridique, citoyenne, sécuritaire, économique, organisationnelle et politique. rien que ça ! +
 Mais ça se mérite un peu quand même ! +
-Notre initiative se propose donc d’amorcer la mise en œuvre de la x-road française, et nous l’appelons la French-Road.
+Notre initiative se propose donc d’amorcer la mise en œuvre de la *X-road française*, et nous l’appelons la *French-Road*.
 ====
 
 === Notes
 
-Constat d'Emmanuel : nous (la France) sommes en retard comparé aux GAFAM et à leurs équivalents chinois. +
+Constat d'Emmanuel : nous (la France) sommes en retard comparé aux GAFAM et à leurs équivalents chinois (BATX : Baidu / Alibaba / Tencent / Xiaomi). +
 Un retard chiffrable de 5 à 30 ans.
 
 French-road veut installer la X-road en France et en Europe.
 
-*French-road* veut mettre en place une autre carte d'ID numérique (ressemble au modèle estonien), permettant un ensemble de services numériques autour d'elle.
+*French-road* veut mettre en place une autre *carte d'ID numérique* (ressemble au modèle estonien), permettant un ensemble de services numériques autour d'elle.
 
 Cette carte sera associée à une version disponible sur mobile.
 
-image::7
+image::french-road_01.jpg[]
 
 Dans la mise en place de ce dispositif, la sécurité et la "cyber-hygiène" sont essentielles. +
-La blockchain fait de nouveau partie des technos sous-jacentes, semble être devenu la solution de base pour ces besoins.
+La *blockchain* fait de nouveau partie des technos sous-jacentes, et semble être devenu la solution de base pour ces besoins.
 
-Emmanuel explique qu'avec son équipe, ils se sont clairement inspirés du modèle estonien.
+Emmanuel explique qu'avec son équipe, *ils se sont clairement inspirés du modèle estonien*.
 
 .Bénéfices de l'identité digitale
-image::8
+image::french-road_02.jpg[]
 
 Emmanuel explique que l'Estonie est le pays le moins corrompu du monde.
 
-* système de vote estonien : ouvert pendant 1 semaine, seulement le dernier vote compte
-* leur grande peur depuis leur indépendance il y a 27 ans : être envahis par la Russie
-	** si cela arrive, le gouvernement part en diaspora à leur e-ambassade du Luxembourg, et peut gouverner depuis un téléphone portable
+* Système de vote estonien : ouvert pendant 1 semaine, *seul le dernier vote compte*
+* Leur grande peur depuis leur indépendance il y a 27 ans : *être envahis par la Russie*
+	** si cela arrive, le gouvernement part en diaspora à leur e-ambassade du Luxembourg, et peut gouverner depuis un téléphone portable.
 
-Gestion des données par le X-road : l'objectif est de *rationaliser la data*.
+Gestion des données par la X-road : l'objectif est de *rationaliser la data*.
 
-image::9
+image::french-road_03.jpg[]
 
 Nous sommes à l'aube d'une transformation (révolution) de notre administration et de notre mode de vie (enfin !)
 
 .X-road platform architecture
-image::10
+image::french-road_04.jpg[]
 
 * X-road est complètement décentralisée et déconcentrée
 
 .architecture technique
-image::11
+image::french-road_05.jpg[]
 
-Le système estonien est RGPD natif.
+Le système estonien est *RGPD natif*.
 
 French-road recrute !
 
@@ -153,7 +169,7 @@ French-road recrute !
 
 Voir https://cfp.devoxx.fr/2018/talk/MLP-9385/L'ordinateur_quantique
 
-Par David Rousset, “Program Manager” pour Microsoft Corp au sein de la division PAX de Windows.
+Par *David Rousset*, “Program Manager” pour Microsoft Corp au sein de la division PAX de Windows.
 
 === Overview
 
@@ -161,65 +177,82 @@ Par David Rousset, “Program Manager” pour Microsoft Corp au sein de la divis
 L'informatique quantique est entrain d'arriver et va opérer un changement majeur.
 
 Nous tenterons d’expliquer pourquoi nous devons avoir ce changement de paradigme gigantesque avec la mort imminente de la loi de Moore. +
-Qu’est-ce qu’un ordinateur quantique ? Que peut-il faire de différent d’un ordinateur classique ? Comment programmer un algorithme quantique ? 
+Qu’est-ce qu’un ordinateur quantique ? +
+Que peut-il faire de différent d’un ordinateur classique ? +
+Comment programmer un algorithme quantique ? 
 
 Voilà quelques questions que nous allons essayer de résoudre ensemble.
 ====
 
 === Notes
 
-Actuellement 1 transistor = 14 nanomètres, quand 1 cellule humaine fait 7 micromètres.
+Actuellement *1 transistor = 14 nanomètres*, quand *1 cellule humaine fait 7 micromètres*.
 
-Mais, rappel, au bout d'un moment, en-dessous d'une certaine taille, les propriétés de la physique change ! +
-On ne pourra réduite sans cesse la taille des transistors, d'ici peu, l'architecture des processeurs va donc changer (si elle veut continuer à progresser).
+Mais, rappel, au bout d'un moment, *en-dessous d'une certaine taille, les propriétés de la physique changent !* +
+On ne pourra réduire sans cesse la taille des transistors, *d'ici peu, l'architecture des processeurs va donc changer* (si elle veut continuer à progresser).
 
-Richard Feynman, père fondateur de la mécanique quantique.
+*Richard Feynman*, père fondateur de la mécanique quantique.
 
-Mécanique quantique : tant que l'état n'est pas mesuré, ce dernier n'est finalement pas défini. +
+image::ordinateur-quantique_01.jpg[]
+
+.Mécanique quantique
+NOTE: Tant que l'état n'est pas mesuré, ce dernier n'est finalement pas défini. +
 En fait, quand on demande la mesure, on *force l'état*.
 
 Donc, exemple pour simplifier, avec 4 qBits, leurs 16 valeurs vont pouvoir toutes être stockées *en même temps*. +
 -> C'est ce qui va permettre de booster les performances de l'informatique quantique.
 
-.Pièce de monnaie quantique
-image::12
+.Illustration du principe avec une pièce de monnaie quantique
+image::ordinateur-quantique_02.jpg[]
 
 Algorithmes quantiques actuels :
 
 * based on probabilities
 
-Actuellement, dans le domaine de la chimie des molécules, on dépasse déjà les possibilités des ordinateurs classiques.
+Actuellement, dans le domaine de la *chimie des molécules*, on dépasse déjà les possibilités des ordinateurs classiques.
+
+image::ordinateur-quantique_03.jpg[]
 
 IMPORTANT: Actuellement la NSA a arrêté tout investissement technologique autre que l'informatique quantique.
 
-Pour tester l'informatique quantique :
+Pour *tester l'informatique quantique* :
 
-image::14
+image::ordinateur-quantique_04.jpg[]
 
-IBM, Google, Microsoft cherchent à développer, améliorer leur ordinateur quantique
+* https://www.research.ibm.com/ibm-q/qx[IBM Quantum Experience]
+* http://www.quantumplayground.net[Google Quantum Computing Playground]
+
+*IBM, Google, Microsoft* cherchent à développer, améliorer leur ordinateur quantique.
 
 David explique que s'il s'est à la base intéressé à cette technologie, c'est dans l'espoir que cela puisse aider son fils, touché d'une maladie génétique. +
 
 Il nous donne les ressources suivantes sur l'informatique quantique :
 
-image::15
+* https://www.youtube.com/watch?v=JhHMJCUmq28[Quantum Computers Explained – Limits of Human Technology]
+* https://www.davrous.com/2018/04/20/lia-et-la-fin-du-silicium-introduction-aux-ordinateurs-quantiques/[L’IA et la fin du Silicium : introduction aux ordinateurs quantiques]
+* https://www.youtube.com/watch?v=Rj3jTw2DxXQ[La mécanique quantique en 7 idées]
+* https://www.youtube.com/watch?v=70Z-UUPjYY4[Future Decoded Quantum Computing Keynote]
+* http://aka.ms/quantumplaylist[MS Quantum Playlist]
+* https://www.youtube.com/watch?v=JRIPV0dPAd4[A Beginner’s Guide To Quantum Computing]
 
 === Avis
 
 Super talk à revoir ! +
 Et dire que cela devait être mon sujet pour ce Devoxx ! (que je n'ai, hélas !, pas eu le temps de terminer)
 
-== L'Homme sur Mars : Pourquoi ? Comment ? Les défis.
+== L'Homme sur Mars : Pourquoi ? Comment ? Les défis
 
 Voir https://cfp.devoxx.fr/2018/talk/OLV-7275/L'Homme_sur_Mars_:_Pourquoi_%3F_Comment_%3F_Les_defis.
 
-Par Richard Heidmann, Ancien élève de l’École Polytechnique et de l’École Nationale Supérieure de l’Aéronautique et de l’Espace, Richard Heidmann est ingénieur en propulsion spatiale.
+Par *Richard Heidmann*, Ancien élève de l’École Polytechnique et de l’École Nationale Supérieure de l’Aéronautique et de l’Espace, Richard Heidmann est ingénieur en propulsion spatiale.
 
 === Overview
 
 ====
-Bien que reconnus, les enjeux du projet d'un débarquement sur la Planète rouge : connaissances scientifiques, innovation, influence géostratégique, motivation de la jeunesse, n’ont pas conduit à une décision de programme, les décideurs politiques considérant l’échéance trop lointaine, les coûts et les risques trop importants. +
-Mais l'initiative privée acquiert une influence grandissante. La société SpaceX a dévoilé en 2016 son projet de transporteur interplanétaire à coût réduit, fondé sur le principe de réutilisabilité totale. Une révolution astronautique.
+Bien que reconnus, les enjeux du projet d'un débarquement sur la Planète rouge : connaissances scientifiques, innovation, influence géostratégique, motivation de la jeunesse, n’ont pas conduit à une décision de programme, les décideurs politiques considérant l’échéance trop lointaine, les coûts et les risques trop importants. 
+
+Mais *l'initiative privée acquiert une influence grandissante*.
+La société *SpaceX* a dévoilé en 2016 son projet de transporteur interplanétaire à coût réduit, fondé sur le principe de réutilisabilité totale. Une révolution astronautique.
 
 Nous possédons les technologies à appliquer pour nous établir sur Mars. +
 Cependant l’édification d’une colonie exigera un modèle économique crédible, permettant la mobilisation d’investissements à long terme.
@@ -233,32 +266,42 @@ Quoi qu'il advienne, le paysage est bouleversé et on devrait assister à une dy
 
 Mars est une destination privilégiée, car elle dispose d'un large spectre de ressources :
 
-image::16
+image::homme-sur-mars_01.jpg[]
 
-Quelles sont les motivations politiques ?
+Quelles sont les *motivations politiques* ?
 
-image::17
+image::homme-sur-mars_02.jpg[]
 
 * avancement des connaissances : mystères de la vie, comprendre la Terre
-* développement économique
+* développement économique : développement des nations et *coopération*
 * c'est un moyen de *remotiver la jeunesse dans les métiers de la technique*
 
-Au niveau gouvernementale, les agences ne semblent pas avoir l'envie d'aller sur Mars (elles n'en donnent vraiment pas l'impression, )
+Au niveau gouvernemental, les agences ne semblent pas avoir l'envie d'aller sur Mars (elles n'en donnent vraiment pas l'impression)
 
 * pas assez de budget
 * projets irréalistes (on pourrait presque dire volontairement, cf Richard, histoire d'être sûr que cela ne se fasse pas...)
 
 Actuellement, si une solution doit venir, elle viendra du domaine privé, avec la société *SpaceX d'Elon Musk*.
 
-On commence à imaginer la colonisation
+On commence à *imaginer la colonisation*.
 
-image::18
+image::homme-sur-mars_03.jpg[]
 
 Si on doit faire quelque chose sur Mars, cela doit être *spécifique à Mars*. +
 Sinon, autant, de loin, le faire ailleurs...
 
-En conclusion
+En conclusion :
 
-image::19
+image::homme-sur-mars_04.jpg[]
+
+* le projet *https://fr.wikipedia.org/wiki/Big_Falcon_Rocket[BFR] (Big Falcon Rocket)* d'Elon MUSK pourrait, s'il réussit, entraîner la NASA -> possibilité d'un partenariat public-privé
++
+[NOTE]
+====
+Remarquez bien les *objectifs d'Elon Musk* concernant BFR : 
+
+* *Atterrir sur Mars en 2022*, lors d’une mission non habitée
+* Si succès, le lanceur emmènera des *astronautes* sur la planète rouge en *2024*
+====
 
 
