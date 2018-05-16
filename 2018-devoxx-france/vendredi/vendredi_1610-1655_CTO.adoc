@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par Mathilde Lemée, CTO Jolimoi, JUG des Duchess. +
+Par *Mathilde Lemée*, CTO Jolimoi, JUG des Duchess. +
 https://cfp.devoxx.fr/2018/talk/DRW-1612/Je_me_lance_et_deviens_CTO_![Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : job, organization, Agile
 

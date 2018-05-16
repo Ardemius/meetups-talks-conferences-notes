@@ -47,10 +47,10 @@ IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* d
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_french_road[French-Road]
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_ordinateur_quantique[L’ordinateur quantique]
 |09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_homme_sur_mars_pourquoi_comment_les_d%C3%A9fis[L’Homme sur Mars : Pourquoi ? Comment ? Les défis.]
-|11:15 / 12:00		|Maillot			|Conference 		|					|link:vendredi/vendredi_1115-1200_Stream-all-things.adoc[Stream All Things - Patterns of Modern Data Integration]
+|11:15 / 12:00		|Maillot			|Conference 		|Bien				|link:vendredi/vendredi_1115-1200_Stream-all-things.adoc[Stream All Things - Patterns of Modern Data Integration]
 |12:05 / 12:20		|					|		 			|					|PAUSE
 |12:25 / 12:40		|					|		 			|					|PAUSE
-|12:55 / 13:40		|Amphi Bleu			|Conference 		|					|link:vendredi/vendredi_1255-1340_java8-9-10.adoc[Après Java 8, Java 9 et 10]
+|12:55 / 13:40		|Amphi Bleu			|Conference 		|Bien				|link:vendredi/vendredi_1255-1340_java8-9-10.adoc[Après Java 8, Java 9 et 10]
 |13:55 / 14:40		|Maillot			|Conference 		|					|link:vendredi/vendredi_1355-1440_GraphQL.adoc[GraphQL vs Traditional Rest API]
 |14:55 / 15:40		|Paris 243			|Conference 		|					|link:vendredi/vendredi_1455-1540_Splunk.adoc[“Solving The Trillion Dollar Problem” Splunk@Murex. Developing Dashboard Analytics for Performance Testing and Development]
 |16:10 / 16:55		|Paris 242 AB		|Conference 		|					|link:vendredivendredi_1610-1655_CTO.adoc[Je me lance et deviens CTO !]

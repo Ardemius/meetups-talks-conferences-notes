@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par Vladimir Dejanovic, Founder and leader of AmsterdamJUG.. +
+Par *Vladimir Dejanovic*, Founder and leader of AmsterdamJUG. +
 https://cfp.devoxx.fr/2018/talk/PKA-3044/GraphQL_vs_Traditional_Rest_API[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : GraphQL, REST API, comparison
 
@@ -38,7 +38,9 @@ icon:tags[] Key words : GraphQL, REST API, comparison
 == Overview
 
 ====
-What does GraphQL and Traditional REST API have in common? Shouldn't the GraphQL be connected to some graphs or similar? What is actually GraphQL all about?
+What does GraphQL and Traditional REST API have in common? +
+Shouldn't the GraphQL be connected to some graphs or similar? +
+What is actually GraphQL all about?
 
 Join me in this talk, while I try to answer all this questions and much more.
 
@@ -68,14 +70,14 @@ Vladimir uses *graphql-java* for his demo
 * We first need a *GraphQL schema*
 	** it looks like a classic POJO
 
-image:1
-image:2
+.schema.graphqls
+image:graphql_01.jpg[]
+image:graphql_02.jpg[]
+image:graphql_03.jpg[]
 
 We also have the documentation for free
 
-image::3
-
-=== Comparison witrh REST
+=== Comparison with REST
 
 * implies client-server architecture : YES
 * statelessness : YES
@@ -84,18 +86,19 @@ image::3
 * Code on Demand (optional) : YES
 * *Uniform interface* : YES
 
-So GraphQL is a REST API ?
+-> So GraphQL is a REST API ?
 
 * In REST, schema is optional, even if a good practise
-* In GraphQL, it is mandatory
+* In GraphQL, *it is mandatory*
 
-This point on schema is the main difference between REST and GraphQL
+This point on schema is the *main difference between REST and GraphQL*
 
-The idea behind GraphQL
+The idea behind GraphQL:
 
-image::3
+image:graphql_04.jpg[]
+image:graphql_05.jpg[]
 
-* GraphQL: very powerful Query Language
+* *GraphQL*: very powerful *Query Language*
 
 [IMPORTANT]
 ====
@@ -106,11 +109,11 @@ They have much more power than with REST API.
 * with GraphQL, a lot of things is proposed to the client: there is more flexibility for the client
 ====
 
-Protect from GraphQL abuses:
+To protect against GraphQL abuses:
 
-* Time out
-* max query depth: to avoid a bad client to query too many data 
-* max query complexity
+* *Time out*
+* *Max query depth*: to avoid a bad client to query too many data 
+* *Max query complexity*
 
 === GraphQL query lang for API
 
@@ -129,10 +132,11 @@ Not all implementations implement subscription
 
 *In case of errors*, by example when asking a non-existing field
 
-image::4
+image::graphql_06.jpg[]
 
 * Again, GraphQL *has a very rich SDL* (Schema Definition Language)
 	** much more precise, compact and powerful than Swagger by example
+
 * GraphQL has a *very powerful query lang* (even if not SQL of course) 
 
 == Resources

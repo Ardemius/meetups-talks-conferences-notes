@@ -24,7 +24,7 @@ endif::[]
 
 toc::[]
 
-Par *Gwen Shapira*, *Confluent*, author of “Kafka - The Definitive Guide” and "Hadoop Application Architectures". +
+Par *Gwen Shapira*, *Confluent*, author of "Kafka - The Definitive Guide” and "Hadoop Application Architectures". +
 https://cfp.devoxx.fr/2018/talk/NCH-3345/Stream_All_Things_-%5FPatterns_of_Modern_Data_Integration[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Kafka, Stream Processing, Event-Driven Microservices
 
