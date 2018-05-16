@@ -26,7 +26,7 @@ A noter que l'écosystème Kafka (Connect, Streams, etc.) est très fortement po
 * *DDD*, *CQRS* et *Event sourcing* : nous allons de plus en plus y être (massivement) confrontés, il faut donc connaître ces méthodes de conception.
 * C'était déjà le cas ces dernières années avec l'avènement de NodeJS, mais il faut maintenant encore plus connaître *l'Event Loop*
 * *Hexagonal architecture*
-* *Programmation reactive*
+* Programmation *Reactive*
 
 * *flatMap*
 * programmation fonctionnelle (surtout les fonctionnalités disponibles via Java 8)

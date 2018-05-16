@@ -38,7 +38,14 @@ icon:tags[] Key words : Java 9, Java 10, migration
 == Overview
 
 ====
-Les versions de Java se suivent et leurs engouements ne se ressemblent pas : la version 8 de Java est probablement celle qui a suscité le plus d’intérêts chez les développeurs. Java 9, au contraire, est la version de Java qui génère le plus de craintes et d’interrogations voir de peurs. Il faut se préparer pour utiliser Java 9 d’autant que Java 10 est déjà là et les versions suivantes vont s’enchaîner. Le but de ce talk est de parcourir les avantages et les intérêts à utiliser ces nouvelles versions mais aussi certaines difficultés possibles lors de la migration.
+Les versions de Java se suivent et leurs engouements ne se ressemblent pas : 
+
+* la version 8 de Java est probablement celle qui a suscité le plus d’intérêts chez les développeurs. 
+* Java 9, au contraire, est la version de Java qui génère le plus de craintes et d’interrogations voir de peurs. 
+
+Il faut se préparer pour utiliser Java 9, d’autant que Java 10 est déjà là et les versions suivantes vont s’enchaîner. 
+
+Le but de ce talk est de parcourir les avantages et les intérêts à utiliser ces nouvelles versions mais aussi certaines difficultés possibles lors de la migration.
 ====
 
 == Notes
@@ -46,8 +53,8 @@ Les versions de Java se suivent et leurs engouements ne se ressemblent pas : la 
 * Java 9 est la version le plus controversée.
 * 1ere fois que l'EC du JCP vote "Non"
 
-* JPMS / Jigsaw introduit une vraie rupture +
--> introduit un mode de compatbilité, pour faciliter la migration
+* JPMS / *Jigsaw introduit une vraie rupture* +
+-> introduit un mode de compatibilité, pour faciliter la migration
 
 * 89 JEPs (conséquent)
 
@@ -63,7 +70,7 @@ Donc, aujourd'hui, on a Java 9 qui n'est pas utilisé MAIS qui est déjà obsol�
 	** Unsafe est retiré : NON
 
 * Nouvelle Flow API (Reactive Stream)
-* Var Handles pour implémenter certaines des fonctionnalités de Unsafe
+* *Var Handles* pour implémenter certaines des fonctionnalités de Unsafe
 * JShell
 
 De nouveau il y a eu des améliorations côté JVM :
@@ -72,7 +79,7 @@ De nouveau il y a eu des améliorations côté JVM :
 
 === Les modules
 
-* plus de split packages : même package dans 2 jars
+* plus de *split packages* : même package dans 2 jars
 * plus d'introspection par défaut sur les classes d'un module
 
 Avantages :
@@ -82,31 +89,37 @@ Avantages :
 
 WARNING: il faudra remettre de l'ordre dans les API utilisées (gaffe à celles du JDK qui ne sont plus exposées)
 
-Jlink nécessite que TOUTES les dépendances (y compris transitives) soit modulaires.
+* *Jlink* nécessite que TOUTES les dépendances (y compris transitives) soit modulaires.
++
+[quote, 'https://blog.idrsolutions.com/2017/05/java-9-jlink-explained-in-5-minutes/']
+____
+Jlink is Java’s new command line tool which allows you to link sets of modules (and their transitive dependencies) to create a run-time image
+____
 
-JDeps doit être passé sur l'application, mais *surtout* sur les dépendances. +
+
+* *JDeps* (Java class dependency analyzer) doit être passé sur l'application, mais *surtout* sur les dépendances. +
 De nombreux rendus disponibles pour la cartographie générée.
 
-* GraphWith peut être utilisé pour obtenir un beau rendu graphique
+* "Graph With" (???) peut être utilisé pour obtenir un beau rendu graphique
 
-Migrer une biblithèque : 2 façons de faire module ou classpath. +
+* Migrer une biblithèque : 2 façons de faire, module ou classpath. +
 -> les comportements sont différents dans les 2 cas, et doivent donc être testés séparemment
 
-Quand le support d'une version de Java s'arrête, on ne reçoit plus les mises à jour associées :
+* Quand le support d'une version de Java s'arrête, on ne reçoit plus les mises à jour associées : +
+-> Donc *pas de mise à jour de sécurité*, comme celle de la *GDPR*
 
-* Donc *pas de mise à jour de sécurité*, comme celle de la *GDPR*
-
-Plutôt qu'une migration, on peut peut-être attendre la prochaine LTS ? +
--> sauf que la prochaine est dans 6 mois...
+Plutôt qu'une migration, on peut peut-être *attendre la prochaine LTS* ? +
+-> sauf que la prochaine est dans 6 mois... (les nouvelles LTS commence avec Java 11 en septembre 2018)
 
 IMPORTANT: A terme, il faudra dans tous les cas migrer vers les modules.
 
 La migration incrémentale sera généralement la stratégie utilisée.
 
-image::1
+image::java-8910_01.jpg[]
 
 .Accès entre modules
-image::2
+image::java-8910_02.jpg[]
 
 == Avis
 
+Une présentation qui couvre bien les nouvelles fonctionnalités prévues dans les prochaines versions de Java
