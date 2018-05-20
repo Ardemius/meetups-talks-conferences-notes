@@ -24,39 +24,48 @@ endif::[]
 
 toc::[]
 
-Par DuyHai DOAN, consultant freelance en Big Data/Cassandra. +
+Par *DuyHai DOAN*, consultant freelance en Big Data/Cassandra. +
 https://cfp.devoxx.fr/2018/talk/MRQ-7567/Algorithmes_distribues_pour_le_Big_Data_saison_3	%3A_une_histoire_du_temps[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Highly performant Network Frameworks, live coding & demos, gRPC, HTTP/2, Protobuf3
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=eYJ6AmrSSHU[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::eYJ6AmrSSHU[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
 ====
-La maitrise du temps et du consensus ont toujours été les 2 graals du monde distribué. +
-Pour cette saison nous allons nous intéresser aux nouveaux algorithmes pour l'ordonnancement temporel. Qui contrôle le temps contrôle l'ordre global des opérations, donc permet d'éviter les locks/consensus distribués et grapiller de précieuses secondes en latence.
+La maîtrise du temps et du consensus ont toujours été les 2 graals du monde distribué. +
+Pour cette saison nous allons nous intéresser aux nouveaux algorithmes pour l'ordonnancement temporel. 
 
-En face de chaque algorithme, on regardera l'implémentation pratique associée: les horloges de Lamport appliqués aux producteurs idempotents de Kafka, True Time appliqué à Google Spanner, HybridTime appliqué à Apache Kudu et enfin Hybrid Logical Clock appliqué à CockRoach DB
+Qui contrôle le temps contrôle l'ordre global des opérations, donc permet d'éviter les locks / consensus distribués et grapiller de précieuses secondes en latence.
+
+En face de chaque algorithme, on regardera l'implémentation pratique associée: 
+
+* les *horloges de Lamport* appliqués aux producteurs idempotents de *Kafka*
+* *True Time* appliqué à *Google Spanner*
+* *HybridTime* appliqué à *Apache Kudu* 
+* et enfin *Hybrid Logical Clock* appliqué à *CockRoach DB*
 ====
 
 == Notes
 
+Pour rappel, DuyHai est un ancien *évangéliste Cassandra* passé Freelance.
+
+image::algo-distri_01.jpg[]
+
 === Lamport Clock avev Kafka
 
-image::1
-
-image::2
+image::algo-distri_02.jpg[]
 
 NOTE: L'algorithme de Lamport permet de définir un ordre partiel des évènements.
 
 Application avec *Kafka* et les *idempotents producer*.
 
-image::3
+image::algo-distri_03.jpg[]
 
 Parmi les détails d'implémentations :
 
@@ -72,13 +81,13 @@ Technique militaire de *spoofing* pour brouiller un GPS
 
 Combinaison horloge atomtique (Stabilité) + synchronisation GPS
 
-=== Hybrid Logical Clock avec Cockroach DB
+=== Hybrid Logical Clock (HLC) avec Cockroach DB
 
 Cockroach DB utilise une approche optimistique.
 
 Conclusion :
 
-* HLC = True Time du pauvre
+* HLC = True Time "du pauvre"
 * Read-wait vs Commit-wait
 
 == Avis

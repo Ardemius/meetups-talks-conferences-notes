@@ -145,5 +145,4 @@ image::graphql_06.jpg[]
 
 == Avis
 
-Les slides ne sont pas assez détaillés (quelques labels à chaque fois). +
-Je pense qu'on irait plus vite avec un "bon vieil" article de blog détaillé
+J'aurais préféré des slides plus détaillés (quelques labels à chaque fois).

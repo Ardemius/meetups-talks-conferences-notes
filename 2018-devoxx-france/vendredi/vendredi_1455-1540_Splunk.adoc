@@ -42,35 +42,41 @@ Performance analysis on financial software is massively complex and challenging.
 This is the story of how Murex started to use Splunk to help debug performance code issues.
 
 Before Splunk we had millions and millions of timings logs, the problem was displaying them quickly so they are usable for developers and testers. +
-Up to this point, we were using a basic PDF report with graphs with static mathematics. However, when we were able to dynamically graph this data with Splunk the analysis became much quicker and easier. The turnaround time decreased for resolution for testing and development. In addition to this we developed multiple functions in the dashboard to enhance the usability. A developer could attach their environment to Splunk in 20 seconds for live monitoring, they could save a test as a URL to share with colleagues.
+Up to this point, we were using a basic PDF report with graphs with static mathematics. +
+However, when we were able to dynamically graph this data with Splunk the analysis became much quicker and easier. +
+The turnaround time decreased for resolution for testing and development. +
+In addition to this we developed multiple functions in the dashboard to enhance the usability. +
+A developer could attach their environment to Splunk in 20 seconds for live monitoring, they could save a test as a URL to share with colleagues.
 
-A success stories is one of the world’s largest “Clearing House” that needed to do 60 position updates per second. https://www.youtube.com/watch?v=pJsTp7XlGGA [Dashboard for Developers+Testers 5 min] Murex/Robert Lynch won the “Splunk Ninja Revolution Award 2017” for the work done in this field. FYI 2016 winners [“Harvard Medical” “Yahoo”, “American express”
+A success stories is one of the world’s largest “Clearing House” that needed to do 60 position updates per second. +
+https://www.youtube.com/watch?v=pJsTp7XlGGA[Dashboard for Developers / Testers in 5 min (Murex/Robert Lynch)] won the “Splunk Ninja Revolution Award 2017” for the work done in this field. +
+FYI 2016 winners: "Harvard Medical", "Yahoo", "American express"
 ====
 
 == Notes
 
 Un peu d'info sur Robert, qui se définit comme un NON functional tester chez Murex
 
-image::1
+image::splunk-murex_01.jpg[]
 
 Un peu de contexte sur Murex : a leading vendor in the provision of integrated solutions for front office, back office and risk management for the capital markets industry.
 
-Splunk : 
+https://www.splunk.com/[Splunk] : 
 
 * 3rd party tool that needs a licence
 * used to analyse various data inputs
 
-TPS Tracing 
+*TPS Tracing*
 
 * light performance tracing across any java services
 
-image::2
+image::splunk-murex_02.jpg[]
 
 In this example, 5 minutes is too long, 50 ms is too long
 
-TPS example
+*TPS example*
 
-image::3
+image::splunk-murex_03.jpg[]
 
 Formerly, Murex in-house solution had limitations:
 
@@ -78,16 +84,17 @@ Formerly, Murex in-house solution had limitations:
 * too slow to graph millions of lines
 * can't zoom
 
-Splunk deployment at Murex
+.Splunk deployment at Murex
+image::splunk-murex_04.jpg[]
 
-image::4
+== Ressources
+
+Les slides semblent être les mêmes que lors de la https://conf.splunk.com/files/2017/slides/if-you-graph-it-they-will-see-it-identifying-root-issues-from-product-testing-to-production-crisis-splunkmurex-for-test-and-development.pdf[Splunk .conf2017]
 
 == Avis
 
-Beaucoup trop de placement de produit dans ce talk, et pas assez de détails techniques, sur l'architecture par exemple. +
-Une conf pour le Big Data Paris, mais pas pour Devoxx...
+La conférence rentrait trop peu dans les détails techniques à mon goût. +
+Après, avec Splunk qui est une solution propriétaire, je comprends bien que cela pose problème. +
+Néanmoins, je trouve que cela dénote comparé autres conférences de Devoxx.
 
-Autre exemple, trop de présentation du métier de Murex, du fonctionnement de la banque, ce n'est pas ce que l'on attend, selon moi, d'une conférence à Devoxx.
-
-Ni Splunk, ni TPS ne sont Open Source, ce ne sont que des techno propriétaires, sans version d'évaluation. +
-Une fois encore, pourquoi les présenter à un salon comme Devoxx ?!
+Cela serait beaucoup mieux passé au Big Data Paris (où l'on retrouve beaucoup plus de placement / présentation de produit).

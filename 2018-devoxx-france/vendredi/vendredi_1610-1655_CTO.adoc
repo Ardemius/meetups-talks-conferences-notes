@@ -28,60 +28,66 @@ Par *Mathilde Lemée*, CTO Jolimoi, JUG des Duchess. +
 https://cfp.devoxx.fr/2018/talk/DRW-1612/Je_me_lance_et_deviens_CTO_![Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : job, organization, Agile
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=qKwncj5l9Mo[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::qKwncj5l9Mo[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
 ====
-C'est décidé, 2018 sera l'année de votre changement ! Envie de rejoindre ou de créer une startup en tant que CTO ?
+C'est décidé, 2018 sera l'année de votre changement ! +
+Envie de rejoindre ou de créer une startup en tant que CTO ?
 
 Nous ferons un tour d'horizon du métier de CTO, avec un retour d'expérience sur les points qui ont marché et ceux qui marchent moins bien et les différents types de CTO ;)
 ====
 
 == Notes
 
-IMPORTANT: Avant toute autre chose, *Mathilde a 2 enfants*.
+NOTE: Avant toute autre chose, *Mathilde a 2 enfants*.
 
 Rappels :
 
-* CEO : Chief Executive Officer
-* CTO : Chief Technical Officer
-
+* *CEO* : Chief Executive Officer
++
+[IMPORTANT]
+====
 Le CEO porte la vision de l'entreprise. +
-Elle connaît le marché et les clients.
+Il connaît le marché et les clients.
+====
+* *CTO* : Chief Technical Officer
 
-Mathilde insiste sur la différence entre visionnaires et exécutant. +
+Mathilde insiste sur la différence entre *visionnaires* et *exécutants*. +
 -> Mathilde se dit exécutant. +
-Elle n'a pas "d'étoiles plein les yeux", mais doit dire au CEO comment on "peut réaliser ses rêves".
+Elle n'a pas "d'étoiles plein les yeux", mais doit dire au CEO *comment* il est possible de "réaliser ses rêves".
 
-C'est le CEO qui, normalement, apporte les idées. +
--> même un développeur peut 
+-> C'est le CEO qui, normalement, apporte les idées. +
 
-Quand on grossit, passage du garage à quelque chose d'un peu plus structuré, le métier de CTO change.
+*Quand on grossit*, passage du garage à quelque chose d'un peu plus structuré, *le métier de CTO change*.
 
-Des sites existent pour trouver des CTO, comme "adopteUnCTO".
+Des sites existent pour trouver des CTO, comme https://www.adopteuncto.com/[Adopte un CTO].
 
-Le mail de la CEO à Mathilde :
+Un exemple de mail d'un CEO reçu par Mathilde :
 
 ____
 Hey, j'ai une super idée mais je ne sais pas coder, je te donne 50% des parts, et je garde le reste, parce que c'est mon idée...
 ____
 
 Mathilde -> une idée seule ne vaut *RIEN* +
-Ce n'est pas l'idée qui compte, mais la connaissance du marché et des clients par le CEO
+Ce n'est pas l'idée qui compte, mais *la connaissance du marché et des clients par le CEO*.
 
-image::1
+image::cto_01.jpg[]
 
 Il y a des questions essentielles à se poser lors du lancement d'un projet, et d'une startup :
 
-image::2
+* Quel est la taille de ton marché ?
+* Quel est le besoin ?
+* Qui sont tes concurrents ?
+* Comment tu adresses le marché ? 
 
--> Si par exemple, il n'y a pas de concurrents, méfiez-vous... Il n'y a peut-être pas de marché...
+-> Si par exemple, il n'y a *pas de concurrents*, méfiez-vous... Il n'y a peut-être *pas de marché*...
 
 Trouver un associé, c'est comme un mariage ! +
 On passe énormément de temps avec, c'est un ascenseur émotionnel, il va y avoir des très hauts, mais *aussi des très bas*.
@@ -91,29 +97,37 @@ ____
 Surround yourself with only people who are going to lift you higher
 ____
 
-Il ne faut pas s'engager sans refléxion. +
-Dans le cas de Mathilde, entre le 1er mail et son accord / arrivée dans la boîte il y a eu 5 mois. Mois durant lesquelles elles se sont rencontrées plusieurs fois, 
+Il ne faut pas s'engager sans réflexion. +
+Dans le cas de Mathilde, entre le 1er mail et son accord / arrivée dans la boîte, il y a eu 5 mois. +
+Mois durant lesquelles elles se sont rencontrées plusieurs fois.
 
-Startup et association :
+*Startup et association* :
 
-* le nombre de parts est proportionnel au salaire : plus vous avez de parts, moins vous êtes payés. *Le nombre de parts est là pour compenser le risque*.
+* *le nombre de parts est proportionnel au salaire*. +
+Plus vous avez de parts, moins vous êtes payés. +
+-> *Le nombre de parts est là pour compenser le risque*.
 	** Startup garage : vous avez 20 à 50% (vous êtes 2 vous faites la moitié du job)
 	** startup avec levée de fonds : il y a des salaires, le risque est passé, vous avez moins de 1%
 
-image::3
+Mathilde explique qu'il faut toujours estimer la compensation financière à obtenir pour les 1eres années où l'on est moins payé.
+
+.Une petite moulinette qui vaut ce qu'elle vaut
+NOTE: On estime le salaire perdu sur 3 / 4 ans, on le multiplie par 3 ou 5 -> vous donne la valeur que devraient valoir vos parts sous 3 / 4 ans.
+
+.Un exemple d'application de la moulinette pour un Tech Lead à 80 k€
+image::cto_02.jpg[]
 
 * Startup garage : Tous les 6 mois, vous avez 1% en plus
 * Que se passe-t-il quand quelqu'un est malade ? Fait une faute grave ?
-* Prendre bien le temps de lire le contrat d'association, et écouter l'avocat de la boîte.
+* Prendre bien le temps de *lire le contrat d'association*, et [red]*écouter l'avocat de la boîte*.
 
 Dans une startup garage, en tant que CTO, vous faites plein de choses (RH, juridique)
 
-CTO est un job différent (très) de Tech Lead. +
-On développera moins.
+*CTO est un job (très) différent de Tech Lead*. +
+-> On développera moins.
 
-*Chasseur de tête* : va prendre 25% du salaire brut annuel de la personne embauchée.
-
-Pour une petite boîte, on ne pourra pas se payer ce type de service. +
+*Chasseur de tête* : va prendre 25% du salaire brut annuel de la personne embauchée. +
+-> Pour une petite boîte, on ne pourra pas se payer ce type de service. +
 Le sourcing est donc un sujet compliqué, très consommateur de temps.
 
 NOTE: Si Mathilde devait recommencer sur ce point, elle paierait un chasseur de tête, au regard du temps qu'elle a passé sur le sujet.
@@ -122,9 +136,9 @@ Netflix, pour le sourcing, leur culture est : "We seek Excellence"
 
 Netflix, comme Amazon, vérifie à l'embauche que vous *matchez bien la culture de l'entreprise*.
 
-Un recrutement coûte cher et prend du temps : il faut être sûr de soi.
+Un *recrutement* coûte cher et prend du temps : *il faut être sûr de soi*.
 
-Mathilde : en tant que CTO vous êtes pas le "boss" des gens. +
+Mathilde : en tant que CTO vous n'êtes pas le "boss" des gens. +
 -> Vous êtes là pour aider l'équipe (ex : montez les écrans des devs pour qu'ils puissent mieux travailler le lundi en arrivant...)
 
 === La paperasse !
@@ -136,7 +150,7 @@ Ce travail est hyper chronophage...
 === Le côté juridique
 
 * Tout ce qui est les contrats de travail.
-* Et de nouveau le sujet de la GDPR
+* Et de nouveau le sujet de la GDPR...
 
 NOTE: La stack technique de Mathilde est du PHP5, et cela "ne fait pas rêver". +
 Elle n'a vraiment pas choisi le job pour la stack technique.
@@ -159,22 +173,24 @@ Donc :
 
 . On fait hyper vite et sale en 2 jours
 . ça marche
-. ON JETTE ET ON REFAIT PROPRE
+. *ON JETTE ET ON REFAIT PROPRE*
 
 Il faut être capable d'expliquer l'importance de la qualité à son CEO
+
+image::cto_03.jpg[]
 
 === Le CTO code-t-il ?
 
 OUI ! 60 à 70% de son temps
 
-Plus la startup grossit, moins on code, le CTO étend quasi toujours "volontaire" quand il faut un volontaire...
+Plus la startup grossit, moins on code, le CTO étant quasi toujours "volontaire" quand il faut un volontaire...
 
 === Derniers conseils
 
 NOTE: De manière générale, ne pas rester seul, demander de l'aide. +
-Voir l'association *Tech.rocks* pour CTO et Tech leads.
+Voir l'association https://event.techs.rocks/[Tech.Rocks] pour CTO et Tech leads.
 
-Il est critique de savoir s'organiser, et de poser des limites.
+IMPORTANT: Il est critique de savoir s'organiser, et de poser des limites.
 
 == Avis
 
