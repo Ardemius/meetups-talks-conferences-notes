@@ -1,0 +1,73 @@
+= 12@13 Benchmark Fractals with Go!
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté par Daniel CHAFFIOL, Softeam.
+
+== Abstract
+
+Go (https://golang.org/) est un langage open-source initié par Google en 2009.
+Il se caractérise par sa simplicité et se trouve derrière de "petits" projets comme Docker, Kubernetes, Grafana ou Terraform.
+
+Go vient avec une librairie de base très complète : concurrence et multi-threading, détection des "race condition", formatage standardisé du code, framework de test unitaire et benchmark.
+
+Avec Go 1.10, les benchmarks sont à l'honneur, et je vous propose de découvrir un exemple d'optimisation: accélérer la création d'un ensemble de Julia (https://fr.wikipedia.org/wiki/Ensemble_de_Julia)
+
+== Notes
+
+Possibilité de fichier de test à part du code, à lancer avec la commande `go test`
+
+-> `go test -bench=Simple` : que l'exécution des fonctions "benchmark" contenant le mot "simple"
+
+Go va lancer les méthodes de test un certain nombre de fois ("N") qui va lui-même définir, en fonction du test. +
+Cela afin d'établir un temps global moyen d'exécution. +
+Comme un exec Go contient tout ce qui est nécessaire au programme, cette boucle permet surtout de lisser les dérives dues à l'utilisation CPU (donc un ensemble de facteurs propres à la machine et non au programme)
+
+2 types de profiling disponibles :
+
+* fixed time / statistic : tous les x temps (10 ms), Go check l'état du programme
+* event based : `go tool trace ...` pour ouvrir le fichier de résultat du monitoring
+
+[NOTE]
+====
+Go est réputé pour sa gestion de la concurrence et du parallélisme avec ses threads légers (Go routine) +
+
+*Go routine* : call a lambda, assynchronously
+====
+
+Ensemble de trade-off à garder en tête :
+
+* statictic vs events
+* concurrency vs parallelism
+* process vs GC
+
+-> les event based sont plus *intrusives*, mais permettent de voir plus de choses.
+
+Exemples de Daniel avec Visual Studio Code.
+
+=== Conclusion
+
+* GoDoc
+* Static code analysis (linters)
+* built-in testing and profiling framework
+* race condition detection
