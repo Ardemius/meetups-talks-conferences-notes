@@ -24,12 +24,12 @@ endif::[]
 
 toc::[]
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=779t43QCe3w[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::779t43QCe3w[youtube, width=640, height=480]
+endif::[]
 
 image::keynote-vendredi_01.jpg[]
 

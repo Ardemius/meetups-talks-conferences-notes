@@ -28,12 +28,12 @@ Par *Jean-Michel Doudoux*, CTO d’Oxiane Luxembourg et du groupe Oxiane. +
 https://cfp.devoxx.fr/2018/talk/PCF-2127/Apres_Java_8%2C_Java_9_et_10[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Java 9, Java 10, migration
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=dYubeLiObqY[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::dYubeLiObqY[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

@@ -28,13 +28,6 @@ Par *Ray Tsang* (Dev Advocate - Google Cloud Platform), *Ryan Knight* (Principal
 https://cfp.devoxx.fr/2018/talk/PDL-6381/Building_a_Decentralized_Application_with_gRPC[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : gRPC, decentralized application, microservices, cloud native applications, client side load balancing
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
-
 == Overview
 
 Préparation du poste ici : bit.ly/grpc-blockchain

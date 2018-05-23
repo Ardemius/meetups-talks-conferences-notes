@@ -28,12 +28,12 @@ Par *Guillaume LOURS* (Saagie) et *Jérôme Avoustin* (Saagie). +
 https://cfp.devoxx.fr/2018/talk/ZPV-9609/DDD_&_Event_Sourcing_a_la_rescousse_pour_implementer_la_RGPD_%3F[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Data privacy, CQRS, domain model
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=RK4mrpro2B4[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::RK4mrpro2B4[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

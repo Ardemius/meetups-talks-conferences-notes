@@ -28,12 +28,12 @@ Par *Gwen Shapira*, *Confluent*, author of "Kafka - The Definitive Guide” and 
 https://cfp.devoxx.fr/2018/talk/NCH-3345/Stream_All_Things_-%5FPatterns_of_Modern_Data_Integration[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Kafka, Stream Processing, Event-Driven Microservices
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=vfFmcIlKo_M[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::vfFmcIlKo_M[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

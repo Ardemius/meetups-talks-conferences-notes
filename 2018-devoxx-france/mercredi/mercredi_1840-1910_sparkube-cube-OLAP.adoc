@@ -28,12 +28,12 @@ Par *Antoine Chambille* (directeur de la R&D de ActiveViam, l'éditeur d'ActiveP
 https://cfp.devoxx.fr/2018/talk/DOK-6562/Projet_Sparkube%3A_Transformer_Apache_Spark_en_cube_OLAP[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Apache Spark, Big Data, Analytics, interactivity
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=CbfQiMhfaJk[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::CbfQiMhfaJk[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

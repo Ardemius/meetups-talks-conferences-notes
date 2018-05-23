@@ -28,12 +28,12 @@ Par *Vladimir Dejanovic*, Founder and leader of AmsterdamJUG. +
 https://cfp.devoxx.fr/2018/talk/PKA-3044/GraphQL_vs_Traditional_Rest_API[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : GraphQL, REST API, comparison
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=ZtpO7PtTKaQ[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::ZtpO7PtTKaQ[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

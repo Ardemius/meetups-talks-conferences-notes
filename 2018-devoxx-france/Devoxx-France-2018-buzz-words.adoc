@@ -85,7 +85,7 @@ Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings
 
 * Info sympa de Philippe (LAWSON, ancien collège chez Kompass) : bon cursus de Data Architect disponible sur OpenClassrooms
 
-* Slides du talk de jeudi sur Karate générés automatiquement en Asciidoctor :smile: +
+* Slides du talk de jeudi sur Karate générés automatiquement en Asciidoctor 🙂 +
 Voir https://github.com/binout/karate-devoxxfr2018 pour les détails
 
 == Synthèse
@@ -97,5 +97,4 @@ Juste quelques (tous) petits bémols par rapport à la version 2017 :
 * il fallait prendre séparément sandwich, entrée et dessert contrairement à la version 2017 où l'on pouvait prendre un sac repas contenant déjà tout. +
 Je me dis que le recyclage dess-dits sacs (tissu) devait être problématique, d'où leur absence cette année.
 
-* le sac Devoxx 2018 n'est absolument pas à la hauteur du 2018, et je l'attendais comme le messie :cry:
-
+* le sac Devoxx 2018 n'est absolument pas à la hauteur du 2018, et je l'attendais comme le messie 😭

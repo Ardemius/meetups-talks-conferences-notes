@@ -28,12 +28,12 @@ Par *Juergen Hoeller* (co-founder of the Spring Framework open source project), 
 https://cfp.devoxx.fr/2018/talk/ZYX-2364/Reactive_Spring[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : Reactive programming, Spring Boot, Spring 5, Kotlin, Spring Cloud
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=RJpbuqsoLPo[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::RJpbuqsoLPo[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

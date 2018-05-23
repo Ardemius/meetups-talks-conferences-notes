@@ -24,12 +24,12 @@ endif::[]
 
 toc::[]
 
-// ifdef::env-github[]
-// https://www.youtube.com/watch?v=XXXXXX[vidéo de la présentation sur YouTube]
-// endif::[]
-// ifdef::env-browser[]
-// video::XXXXXX[youtube, width=640, height=480]
-// endif::[]
+ifdef::env-github[]
+https://www.youtube.com/watch?v=wrqSK-NhxB0[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::wrqSK-NhxB0[youtube, width=640, height=480]
+endif::[]
 
 == La Keynote de Devoxx France
 
