@@ -1,0 +1,103 @@
+= 12@13 : Une semaine dans ma peau de Scrum Master
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté par *Jean Pierre LAMBERT*, Agile Test Evangelist, Scrum Master, Author of Scrum Life chez Wemanity (jp-lambert.me, @jpierrelambert, jlambert@wemanity.com)
+
+== Abstract
+
+C'est quoi déjà un Scrum Master ?
+
+Que fait-il de ses journées ? Est-ce qu'il nous en faut un ? Qu'est-ce qu'il nous apporterait ?
+
+Pourquoi ne pas répondre à ces questions en me suivant pendant une semaine ? +
+Pendant une semaine, vous allez voir à quoi ressemble le quotidien d'un Scrum Master, voir ce qu'il fait de ses journées, voir à quoi il sert réellement.
+
+Je suis Scrum Master auto-didacte et j'ai d'ailleurs un avis très mitigé sur les certifications. +
+Loin de tout dogmatisme, attendez-vous à voir avant tout du retour d'expérience, du vécu. 
+
+Le tout sur le ton de l'humour et du troll !
+
+== Notes
+
+-> présentation déjà donnée lors de l'Agile Tour 2017.
+
+Scrum Master = aider l'équipe à respecter les règles qu'elle s'est elle-même fixée.
+
+image::20180523_scrum-master_01.jpg[]
+
+* 1 après-midi de libre pour l'équipe par itération (pour des dojos par exemple)
+* équipe Agile = jamais d'heures supp, contraire à la philosophie
+* atelier [RED]*"Extreme Quotation"* pour les plus grosses stories +
+-> Voir l'article d'Octo sur l'Extreme Quotation.
+
+Rôles du Scrum Master :
+
+* cadre
+* bouclier
+* viser / cultiver l'excellence
+	** autonomie / auto-organisation
+	** focus sur le produit
+
+.conseil / rappel
+NOTE: cela ne sert à rien de commencer le dev d'une nouvelle story, si la précédent n'est pas finie à 3 jours de la fin de l'itération...
+
+* Un Scrum Master n'est *PAS* un chef de projet
+
+* Tech Lead \+ Scrum Master = Super Héros ! -> un *très mauvais* pattern... +
+Votre Super Héros finira par craquer...
+
+image::20180523_scrum-master_02.jpg[]
+
+image::20180523_scrum-master_03.jpg[]
+
+== Q&A
+
+NOTE: "Vision" cf Jean-Pierre : un outil qui permet d'avancer sans avoir besoin d'escaler au patron
+
+NOTE: Si on a pas de vision produit, ce n'est pas la peine de faire du Scrum, mieux vaut le Kanban (et simplement dépiler des tâches sans se poser plus de questions). +
+*Un Scrum Master devrait avoir une vision produit*.
+
+== Ressources
+
+* Slides de la présentation : https://fr.slideshare.net/JeanPierreLambert1/une-semaine-dans-ma-peau-de-scrum-master
+
+* vidéo d'une précédente session du talk : 
++
+ifdef::env-github[]
+https://www.youtube.com/watch?v=YlzCtPFwsLQ[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::YlzCtPFwsLQ[youtube, width=640, height=480]
+endif::[]
+
+* Pour ceux que cela intéresse, https://www.youtube.com/playlist?list=PLxTb_ZC4kmrSpjDE2IkRjSRAkfIsLYfP9[la série *"Scrum Life"* de Jean-Pierre sur YouTube].
+
+
+
+
+
+
+
+
+
