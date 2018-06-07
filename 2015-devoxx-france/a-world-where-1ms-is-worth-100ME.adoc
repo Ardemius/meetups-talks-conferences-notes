@@ -1,0 +1,391 @@
+= A world where 1ms is worth 100 millions euros
+:backend: deckjs
+:deckjs_theme: web-2.0
+:deckjs_transition: fade
+:blank:
+:split:
+:navigation:
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ./images
+
+Presented at Devoxx France 2015 by Alexandre VICTOOR and Thierry ABALEA +
+Elucidation by Thomas SCHWENDER (Softeam StarTech Java)
+
+== Bank is an other Big Data domain
+
+Alexandre and Thierry explain us that Big Data isn't only for Google, Facebook and Twitter. +
+Bank is an other big consumer / producer of data.
+
+image::a-world-where-1ms-is-worth-100ME/big-data-in-bank.PNG[]
+
+The need for speed (for financial transactions) is so high, that *even the optical fibre is not enough*. +
+Because of the http://fr.wikipedia.org/wiki/Indice_de_r%C3%A9fraction[refractive index] of the light in the heart of the fibre (1.5), it's "only" the half of the speed of light in vacuum. +
+To address this problem, trading companies are now using microwave communication. +
+Take a look at http://www.ft.com/cms/s/2/2bf37898-b775-11e2-841e-00144feabdc0.html[this article of the Financial Times] if you want to know more on this _speed race_.
+
+== Code optimization: Cache and Hardware Memory Architecture
+
+A first example puts forward the good comprehension of caches working in modern hardware memory architecture (meaning in *multicore processor*).
+
+image::a-world-where-1ms-is-worth-100ME/scan-array-comparison.PNG[]
+
+This example is a comparison of a 2D array traversal, which ends with *the left program being much faster than the right one*.
+
+[TIP]
+====
+This is the consequence of one of the main principles behind cache: *spatial locality* (the other being *temporal locality*).
+
+* *Spatial locality* means that, if you access a data entry at some address, you will probably need data entries whose addresses are close soon.
+* *Temporal locality* means that, if you accessed a data entry, you will probably need it, and so access it again soon.
+====
+
+Here, the left program traverses the array *a row at a time*, thus reading the memory sequentially. +
+But, the right program does it column-wise, and so, after having read an entry, *jumps to a completely different location* (the start of the next row), and repeats this working all along the traversal. +
+So, when finally getting back to a previous row, it will probably not be in the cache anymore.
+
+A quick reminder of the cost of I/O:
+
+image::a-world-where-1ms-is-worth-100ME/cost-of-IO.PNG[]
+
+== 	Benchmark to be sure!
+
+IMPORTANT: Do not assume which is the fastest! Benchmark to be sure!
+
+http://openjdk.java.net/projects/code-tools/jmh/[OpenJDK JMH] (for *Java Microbenchmarking Harness*) is the new "hot" tool to *build, run, and analyse nano/micro/milli/macro benchmarks written in Java* (or other languages targeting the JVM). +
+Its main advantage over other frameworks is to be developed by the same guys in Oracle who implement the JIT. 
+
+== Multithreading is not always the solution
+
+Do not forget that *the setting up of multithreading always as a cost*. +
+Depending on your process duration, this extra time can really be NON-neglibible.
+
+image::a-world-where-1ms-is-worth-100ME/multithreading-has-a-cost.PNG[]
+
+IMPORTANT: Again, do not assume it will be faster, benchmark it!
+
+== Other ways to go faster
+
+To avoid a brutal use of multithreading, Alexandre and Thierry propose some asynchronous architectures.
+
+Even if that wasn't the main purpose of this conference, they also said a few words on *hexagonal architecture*, which also was a "buzz" word during the whole show.
+Here is a quick explanation about it.
+
+=== Hexagonal architecture
+
+The main purpose of *hexagonal architecture* (or *Ports and Adapters* architecture) is an old one: to clearly *separate business from technical implementation*.
+
+Its underlying principles are summarized in a hexagonal schema:
+
+image::a-world-where-1ms-is-worth-100ME/hexagonal-architecture.PNG[]
+
+* the *domain layer* is at the center of the hexagon, in green. It contains the business logic of the application.
+* the *ports layer*, around the domain model, receives all the requests that corresponds to a use case that orchestrates the work in the domain model.
+* the *adapters / connectors*, that allow communication with the outside, are in grey outer hexagon.
+* all that is at the *left of the hexagon* represents *those that need it*.
+* all that is at the *right of the hexagon* represents *the components that the hexagon needs*.
+
+[TIP]
+====
+The purpose of this architecture is to defined *business-centric modules* whose business layer has no dependency with any technical part. +
+This requires the use of the *DIP*: _Dependency Inversion Principal_. +
+By looking at the last schema we indeed see that the internal hexagon has no dependency towards the outside: those are the adapters that do the link between the domain and the services to be called.
+====
+
+Now, let's come back to our asynchronous alternatives to brutal multithreading.
+
+=== Event loop and queue MPSC (Multiple Producer Single Consumer)
+
+image::a-world-where-1ms-is-worth-100ME/event-loop-and-queue-MPSC.PNG[]
+
+[TIP]
+====
+A definition of the *Event loop* could be: +
+An entity that handles and processes external events and converts them into callback invocations.
+====
+
+The important thing to remember is that the Event loop itself is *single threaded*. +
+In the current architecture, it reads its inputs from from a Multiple Producer Single Consumer queue.
+
+So we are not creating a new thread for each new input, but are relying on the dispatching of the single threaded Even loop, which is better.
+
+Now, if we want to be even faster, we must consider that the *MPSC queue being NOT lock free*, it can be a *bottleneck in case of huge volumetry*. +
+Effectively, with *locks*, you must pay for:
+
+* system calls
+* context switch
+
+So, let's now present a lock free alternative.
+
+=== Event loop and queues SPSC (Single Producer Single Consumer)
+
+image::a-world-where-1ms-is-worth-100ME/event-loop-and-queues-SPSC.PNG[]
+
+In this case, we do not use anymore Multiple Producer Single Consumer queues, but *Single Producer Single Consumer*, *lock free* ones. +
+By doing so, we respect the *Single Writer Principle*, hence our threads *do not contend for the right to write*.
+
+[quote, Martin Thompson]
+____
+The Single Writer Principle is that for any item of data, or resource, that item of data should be owned by a single execution context for all mutations.
+____
+
+image::a-world-where-1ms-is-worth-100ME/single-writer-principle.PNG[]
+
+=== An example of lock-free SPSC queue: the Ring Buffer
+
+The *Ring Buffer*, or Circular Buffer, was one of the buzz word of the performance oriented presentations of the conference. +
+
+It is a first in, first out (*FIFO*) data structure that uses a *bounded* (fixed-size) buffer, as if it were connected end-to-end. +
+You use to pass stuff from one context (one thread) to another. +
+
+One of its useful characteristic is that *items in the buffer are never moved*. +
+Instead, *changeable pointers* are used to *identify the head and tail* of the queue.
+
+image::a-world-where-1ms-is-worth-100ME/ring-buffer-schema.PNG[]
+
+With one reader and one writer (SPSC), the Ring Buffer is a *lock-free* and *wait-free* FIFO buffer. +
+
+IMPORTANT: Beware when reader and writer indices remain too close. +
+In this case, you'll have each thread constantly invalidating a shared cache line.
+
+=== The `volatile` keyword: an efficient design for memory synchronization
+
+`volatile` is Java keyword about which much was written, especially since *its definition changed as of Java 5*. +
+From this version, it has the following characteristics:
+
+* *_rule 1:_* +
+The value of a `volatile` variable will never be cached thread-locally: *all reads and writes will go straight to "main memory"*. +
+That implies that different threads can access the variable.
+* *_rule 2:_* +
+The adding of Java 5: accessing a volatile variable creates *a memory barrier*. +
+It effectively *synchronizes ALL cached copies of variables with main memory*. *ALL*, not only the lone `volatile` variable. +
+Therefore, it becomes possible to *write to one variable without synchronization, and then take advantage of subsequent synchronization on a different variable*, to ensure that main memory is updated with both variables.
+* *_rule 3:_* +
+A *write* to a volatile field *happens-before* every subsequent *read* of that field.
++ 
+[TIP]
+====
+*Happens-before* relationship: +
+If one action *happens-before* another, then *the first is visible to and ordered before the second*.
+====
++ 
+This implies that *the reading and writing instructions of volatile variables cannot be reordered by the JVM*. +
+Other instructions before and after can be reordered, but the volatile read or write cannot be mixed with these instructions.
+
+Let's illustrate that with the 2 following examples:
+
+. First:
+
+	// Thread A:
+    sharedObject.nonVolatileInteger = 123;
+    sharedObject.volatileInteger    = volatileInteger + 1;
+
+	// Thread B:
+    int volatileInteger    = sharedObject.volatileInteger;
+    int nonVolatileInteger = sharedObject.nonVolatileInteger;
+
+* Since Thread A writes the non-volatile variable `sharedObject.nonVolatileInteger` before writing to the volatile `sharedObject.volatileInteger`, then *BOTH* variables (rule 2) are written to main memory (rule 1). +
+* Since Thread B starts by reading the volatile `sharedObject.volatileInteger`, then BOTH the `sharedObject.volatileInteger` and `sharedObject.nonVolatileInteger` are read in from main memory. +
+That illustrates rule 3: volatile read or write can NOT be reordered with other instructions.
+
+. Second:
+
+	public class StoppableTask extends Thread {
+		private volatile boolean pleaseStop;
+
+		public void run() {
+			while (!pleaseStop) {
+				// do some stuff...
+			}
+		}
+
+		public void tellMeToStop() {
+			pleaseStop = true;
+		}
+	}
++ 
+Let's say Thread A reads the `pleaseStop` variable, and Thread B writes it.
+{lb}
+If `pleaseStop` were not declared volatile, then it would be legal for the Thread A (running the loop) *to cache its value at the start of the loop and never read it again*. +
+That would mean that, even if Thread B writed in `pleaseStop`, it would end in an *infinite loop*. +
+With volatile rule 1, both threads are *guaranteed to share the same `pleaseStop` value* (because read and written from main memmory).
+
+In the case of the former Ring Buffer, with the following variables declaration:
+
+	private final E[] buffer;
+	private volatile long producerIndex = 0;
+	private volatile long consumerIndex = 0;
+
+We know that we would obtain this:
+
+image::a-world-where-1ms-is-worth-100ME/volatile-happens-before-Java-1.5.PNG[]
+
+It is guaranteed that the write of `producerIndex` (`producerIndex++;`) happens-before its subsequent read (`if (consumerIndex == producerIndex)`) (rule 3), and that those read / write synchronize *ALL* cached copies of variables from main memory (the `buffer` variable here).
+
+==== Volatile and performance
+
+Reading and writing of volatile variables causes those last to be *read or written to main memory*, which is *slower than accessing the CPU cache*.
+
+Moreover, writing a volative variable implies *a flush of its underlying store buffer*, which has a cost.	
+
+[TIP]
+====
+Volatile store buffer: +
+This store buffer is also called *Memory Ordering buffer* and is placed between registers and L1 cache.
+====
+
+image::a-world-where-1ms-is-worth-100ME/volatile-store-buffer.PNG[]
+
+[IMPORTANT]
+====
+As a consequence of this performance cost, only use volatile variables when you really need to *enforce the visibility of variables*.
+====
+
+==== java.util.concurrent.atomic.AtomicXXX to overcome volatile performance
+
+When *only* wanting to *ensure memory ordering across Java threads* (meaning you are not interested by ensuring data visibility to other threads, see `volatile` rule 1), instead of setting a volatile variable, you can use the `lazySet` method of Java *atomics* (see `AtomicInteger`, `AtomicLong`, `AtomicReference`, etc.). +
+By doing so, *you do not pay for the volatile underlying store buffer flushing*.
+
+Using atomics instead of volatiles, we can still improve the precedent ring buffer implementation:
+
+	private final E[] buffer;
+	private final AtomicLong producerIndex = new AtomicLong();
+	private final AtomicLong consumerIndex = new AtomicLong();
+
+image::a-world-where-1ms-is-worth-100ME/AtomicLong-instead-of-volatile.PNG[]
+
+This results in a ~3 times faster implementation.
+
+=== Instruction Pipelining
+
+Alexandre and Thierry presented the *instruction pipelining* through the following quizz:
+
+image::a-world-where-1ms-is-worth-100ME/instruction-pipeline-quizz.PNG[]
+
+In this case, that's the 1st program which ~5 times faster, precisely because of this technique.
+
+[TIP]
+====
+*Instruction pipelining*: +
+A technique used by *processors*, by which *the basic instruction cycle is broken up into a series* called a *pipeline*.
+====
+
+image::a-world-where-1ms-is-worth-100ME/instruction-pipeline.PNG[]
+
+The avantage of this technique is to *increase the instruction throughput* (the number of instructions that can be executed in a unit of time). +
+As each instruction is split up into a *sequence of steps* (`Fetch` / `Decode` / `Execute` / `Write-back` in the current example), those last can be *executed in parallel*.
+
+[IMPORTANT]
+====
+Be aware that we are speaking of *parallel processing inside one thread*, which is *NOT* multithreading.
+====
+
+In the current example, the reason why program 1 is faster than program 2 comes from a matter of *prediction*.
+
+Program 2 is based on a `if / else` statement. +
+If we want the processor to be able to execute instructions, *without knowing in advance the result of this `if / else` statement*, it will have to do a *prediction*. +
+This prediction is done by a *branch predictor* component of the processor, that acts based on the instructions history. +
+If only `else` were done in the past, it will try an other `else` next time.
+
+Understandably, there will be some *bad predictions*, with the result of *nullifying the next results*.
+
+image::a-world-where-1ms-is-worth-100ME/instruction-pipeline-bad-prediction.PNG[]
+
+On the contrary, program 1, using Java native `Math.abs` method, is based on a *simple ternary operator*. +
+This operator doesn't imply prediction, and so, is not concerned by bad predictions (also called *hazards*), hence the better performance.
+
+== Logs
+
+When facing high volumetry, *logs can quickly become a high performance cost*.
+
+Classic log writing in a file is blocking, which is a problem. +
+To solve it, we can use a buffer, but if the process crashes, we lose its content, which is another problem.
+To solve both those last, Alexandre and Thierry put forward the *Chronicle-Logger* API from Peter Lawrey, which is based on a *memory-mapped file*.
+
+[TIP]
+====
+A theorical definition of a *memory-mapped file*: +
+A *memory-mapped file* is a segment of virtual memory which has been assigned a direct byte-for-byte correlation with some portion of a file or file-like resource. +
+This correlation between the file and the memory space permits applications to *treat the mapped portion as if it were primary memory* (meaning your RAM).
+====
+
+Simplier, a memory-mapped file is a *mechanism that synchronizes a memory area of your RAM with your hard drive*.
+
+image::a-world-where-1ms-is-worth-100ME/memory-mapped-file.PNG[]
+
+Characteristics:
+
+* Memory-mapped files are stored *off-heap*.
+* It's a *very performant, fast, solution for big files*, but is *not recommended for smaller ones* (probably slower than a classic access).
+* Once you wrote to the mapped memory area, then, later, *asynchronously*, the *operating system* will flush those writings to the disk. +
+So, from the moment the initial writing in the memory area is done (and it's rather quick), even if the Java process then crashes, the OS will still be able to flush the data to the disk. That way, you are far less likely to lose the last log message. 
+
+[IMPORTANT]
+====
+Even if its underlying memory-mapped file implies an asynchronous data flush by the OS, the *Chronicle-Logger is a synchronous logger* (contrary to Log4J `AsynAppenders` or `AsyncLoggers` by example). +
+Log are indeed written *at once* in the memory area.
+====
+
+You can be even faster by *logging binary data rather than text* (it, of course, depends on what you have to log.)
+
+Here is a quick comparison (using HdrHistogram, see below) of a classic *FileAppender against a binary appender, using a memory map file*, from Chronicle-Logger:
+
+image::a-world-where-1ms-is-worth-100ME/file-appender-vs-memory-map-file-binary.PNG[]
+
+Even in the worst cases
+
+== Final advise
+
+[IMPORTANT]
+====
+Never assume about the latency of your solution, *MEASURE IT!*
+====
+
+As already explained in presentation https://www.parleys.com/tutorial/understanding-latency-application-responsiveness-1[Understanding latency and application responsiveness] from Gil Tene, *do not trust averages*, which can hide some behaviours, prefer the use of *percentile*. +
+For that you can use his open source tool: http://hdrhistogram.org/[HdrHistogram]
+
+image::a-world-where-1ms-is-worth-100ME/HdrHistogram.PNG[]
+
+
+== Ressources
+
+Slides and video of the presentation:
+
+* https://www.parleys.com/tutorial/un-monde-ou-1-ms-vaut-100-m[]
+* http://fr.slideshare.net/ThierryAbalea/un-monde-o-1-ms-vaut-100-m-devoxx-france-2015[]
+
+=== The ressources I used to dig deeper
+
+* Java Memory Model & cache understanding ressources
+** http://stackoverflow.com/a/763434/1809195[How does one write code that best utilizes the cpu cache to improve performance - Stackoverflow]
+** http://lwn.net/Articles/255364/[Ulrich Drepper's "What every programmer should know about memory" - Memory part 5: What programmers can do]
+** http://www.cs.cornell.edu/courses/cs3110/2014sp/lectures/26/memory.html[Memory and Locality - section "Caches"]
+** http://www.cs.umd.edu/~pugh/java/memoryModel/jsr-133-faq.html[JSR 133 (Java Memory Model) FAQ - Jeremy Manson and Brian Goetz, February 2004]
+** http://tutorials.jenkov.com/java-concurrency/java-memory-model.html[Java Memory Model - tutorial by Jakob Jenkov, GREAT RESSOURCE]
+** http://www.cacheonix.com/articles/Caching_for_Java_Applications.htm[Caching for Java applications - Cacheonix Systems] 
+* http://fideloper.com/hexagonal-architecture[hexagonal architecture - Fideloper]
+* Event loop, queues and circular buffer ressources
+** http://blog.mixu.net/2011/02/01/understanding-the-node-js-event-loop/[The node.js event loop] 
+** http://www.infoq.com/articles/High-Performance-Java-Inter-Thread-Communications[Inter-thread communications in Java at the speed of light]
+** http://mechanical-sympathy.blogspot.fr/2011/09/single-writer-principle.html[The Single Writer Principle - Martin Thompson]
+** https://github.com/angrave/SystemProgramming/wiki/Synchronization,-Part-8:-Ring-Buffer-Example[System Programming - Synchronisation, Part 8: Ring Buffer Example - Lawrence Angrave]
+** https://en.wikipedia.org/wiki/Circular_buffer[Circular buffer (check the _Absolute indices_ section) - Wikipedia]
+** http://stackoverflow.com/questions/7890601/circular-buffer-vs-lock-free-stack-to-implement-a-free-list[Circular buffer vs lock-free stack to implement a free list - Stackoverflow]
+** http://www.blackwasp.co.uk/CircularBuffer_2.aspx[A generic circular buffer]
+* Volatile ressources
+** http://www.javamex.com/tutorials/synchronization_volatile.shtml[The volatile keyword in Java (and all linked pages, GREAT RESSOURCE) - Neil Coffey]
+** http://stackoverflow.com/questions/17108541/happens-before-relationships-with-volatile-fields-and-synchronized-blocks-in-jav[Happens-before relationships with volatile fields - Stackoverflow]
+** http://stackoverflow.com/questions/4934913/are-static-variables-shared-between-threads[Are static variables shared between threads - Stackoverflow]
+** http://docs.oracle.com/javase/specs/jls/se8/html/jls-8.html#jls-8.3.1.4[the Java Language Specification - §8.3.4.1 Volatile Fields]
+** http://docs.oracle.com/javase/specs/jls/se8/html/jls-17.html#jls-17.4.5[the Java Language Specification - §17.4.5 Happens-before Order]
+** http://mechanical-sympathy.blogspot.fr/2013/02/cpu-cache-flushing-fallacy.html[CPU cache flushing fallacy - Martin Thompson, especially check the *Concurrent Programming* section]
+** http://jpbempel.blogspot.fr/2013/05/volatile-and-memory-barriers.html[Volatile and memory barriers - Jean-Philippe Bempel, very good illustration of volatile use preventing reordering, check also the *lasySet* explanation]
+** https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/atomic/package-summary.html[Description of Java package java.util.concurrent.atomic - especially read the lazySet method description]
+* https://en.wikipedia.org/wiki/Instruction_pipeline[Instruction pipeline - Wikipedia]
+* Memory-mapped file ressources
+** https://github.com/OpenHFT/Chronicle-Queue[Chronicle-Queue API (formerly Java-Chronicle) - Peter Lawrey]
+** https://github.com/OpenHFT/Chronicle-Logger[Chronicle-Logger - Peter Lawrey]
+** https://en.wikipedia.org/wiki/Memory-mapped_file[Memory-mapped file - Wikipedia]
+** http://blog.ippon.fr/2011/11/03/java-acces-directs-a-la-memoire-off-heap/[Accès à la mémoire off-Heap - blog Ippon Technologies]

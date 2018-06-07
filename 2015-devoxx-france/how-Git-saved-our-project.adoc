@@ -1,0 +1,51 @@
+= How Git saved our project? (or nearly...)
+:backend: deckjs
+:deckjs_theme: web-2.0
+:deckjs_transition: fade
+:blank:
+:navigation:
+:toc:
+:split:
+:imagesdir: ./images
+
+Presented at Devoxx France 2015 by Cécilia BOSSARD +
+Summary by Thomas SCHWENDER (Softeam StarTech Java)
+
+== An interesting feedback on a migration from SVN to Git
+
+In a short time (quickies format requires), Cécilia expounded some advantages and issues when migrating a *really big* project from SVN to Git.
+
+Her project was several millions of code lines, and was having problems when releasing a new version, because of some merge issues. +
+Those last came mainly from the project size, and the number of different branches to merge at this moment.
+
+To try to solve their problem, they made an analysis to check if they could migrate from SVN to Git, with a https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow[Gitflow workflow].
+
+image::how-Git-saved-our-project/gitflow.jpg[title="the Gitflow workflow"]
+
+After weeks of analysis, they first conclude that *it was not possible because of the whole size of the project*. +
+With Git, *you effectively retrieve all the code on your local repository*. You can't do partial checkouts, contrary to SVN (check the note below for a precision on this point).
+
+Then, thinking to http://git-scm.com/about[the advantages of the migration], they decided the reduce the size of the project, by cleaning dead code.
+With that, the 2nd conclusion was let's go to Git!
+
+
+== Tips and things to remember
+
+* With Git, less disk space is required. +
+As for Git, *branch are only pointers*, contrary to SVN where they are file system copies.
+* Beware of the whole project size! + 
+Contrary to SVN, Git doesn't allow partial checkouts (feature called http://svnbook.red-bean.com/en/1.7/svn.advanced.sparsedirs.html[_sparse directories_] in SVN). +
+So, do not forget the housekeeping, and *clean dead code*!
++
+[NOTE]
+====
+To be more precised, since version 1.7.0, Git also enables sparce checkouts *for the working directory* (check http://schacon.github.io/git/git-read-tree.html#_sparse_checkout[here]).
+Unfortunately, *it does not affect the size of the overall local repository* (you *WILL* get the whole thing).
+====
+* Beware of https://help.github.com/articles/dealing-with-line-endings/[line endings configuration].
+* Beware of the *encoding of your merge tool*. +
+Think to configure it to use UTF-8.
+* *get the `.git` out ouf the Eclipse workspace*, so as not to slow your IDE too much.
+
+
+

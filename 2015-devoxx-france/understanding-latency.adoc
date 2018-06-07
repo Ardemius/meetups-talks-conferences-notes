@@ -1,0 +1,159 @@
+= Understanding latency and application responsiveness
+:backend: deckjs
+:deckjs_theme: web-2.0
+:deckjs_transition: fade
+:blank:
+:navigation:
+:toc:
+:split:
+:imagesdir: ./images
+
+Presented at Devoxx France 2015 by Gil Tene, CTO of Azul Systems +
+Summary by Thomas SCHWENDER (Softeam StarTech Java)
+
+== A few words on Gil and his company: Azul Systems
+
+Gil has a long history of working on Garbage Collectors and GC algorithms, Virtual Machines, Operating Systems and Enterprise apps.
+
+http://www.azulsystems.com/[Azul Systems] is a high-technology company specialised in performance, real time business, for the Java world.
+It is the editor of:
+
+* a highly reactive custom JVM: http://www.azulsystems.com/products/zing/whatisit[Zing]
+* a multi-platform build of OpenJDK: http://www.azulsystems.com/products/zulu[Zulu]
+* a performance monitoring tool: http://www.azulsystems.com/product/jHiccup[jHiccup]
+
+
+== Summary
+
+In this talk, Gil discusses:
+
+* common pitfalls encountered in measuring and characterizing latency. +
+The main idea being that *good characterization of bad data isn't worth a penny*.
+* ways to address those pitfalls using some new open source tools.
+
+
+== What matters with latency is BEHAVIOR
+
+Latency, response time, round trip: all that are the same thing.
+But, if we want a definition, let's say:
+
+NOTE: *Latency* is the time it took one operation to happen
+
+And what matters in latency is its *behavior*, its WHOLE, REAL behavior. +
+As latency doesn't follow a normal distribution, we can't "feel" what will be its worst cases from an average, or from the 90%, 99%, 99.99% most favorable cases.
+
+image::understanding-latency/latency_notANormalDistribution.PNG[title="Latency does NOT follow a normal distribution"]
+
+== Dealing with Hiccups
+
+Gil calls those unpredictable "bad" cases *Hiccups*.
+
+image::understanding-latency/Hiccups.PNG[title="Hiccups"]
+
+[options="step"]
+Those hiccups:
+
+[options="step"]
+* are generally NOT correlated to load
+* can happen because of "noise"
+* can happen because periodic events (garbage collection)
+* can happen because of cumulated work you have to pay for (ex: you had the CPU for the last 10 ms, and now that's somebody else turn)
+* look like periodic freezes
+
+<<<
+
+The big problem with Hiccups is that, most of time, when you ask people "how does behave the 99% of that", they answer by a *projection* based on the data they have, and *not with the real data*. +
+As we saw that those data, those Hiccups, are unpredictable, this answer is always *bad*.
+
+To deal with them, we need *real data*, and numerous ones.
+Once we have them, we can ask for some *Service Level Requirements* based on a real behavior:
+
+image::understanding-latency/latency-characterization.PNG[title="Requirements compared to REAL behavior"]
+
+From there, if the latency behavior doesn't match the requirements, *we know where to focus our efforts*.
+
+== Requirements
+
+* Latency requirements are usually a list of PASS/FAIL tests based on some predefined criteria.
+* And *measurements should provide data to evaluate those requirements*.
+
+[options="step"]
+So be sure to have the requirements established *exhaustively*, with no case forgotten.
+An example of correct Service Level Requirements for latency:
+
+[options="step"]
+* 50% better than 20 msec
+* 90% better than 50 msec
+* 99.9% better than 500 msec
+* 100% better than 2 seconds
+
+[options="step"]
+A notion to remember:
+
+[options="step"]
+
+NOTE: *Sustainable throughput*: the throughput achieved while safely maintening service levels
+
+== The coordinated omission problem
+
+Gil explains that some dreadful omissions are done when load testing or monitoring:
+
+[options="step"]
+For load tests, we generally expect all requests to have the same duration, to be sent at a certain rate.
+
+[options="step"]
+WARNING: But it doesn't work if requests are sent in an uncoordinated way.
+
+[options="step"]
+For monitoring, we generally measure latency between the start and end of each operation.
+
+[options="step"]
+[WARNING]
+====
+But it only works when no queuing occurs. +
+Long operations only get measured once, queued operations are measured wrong.
+====
+
+[options="step"]
+Example:
+
+[options="step"]
+
+image::understanding-latency/Coordinated-omission_bad-example.PNG[title="Here you have a BIG problem"] 
+
+<<<
+
+TIP: The solution: to test *other cases* !
+
+[options="step"]
+* vary the duration of the requests
+* test those other duractions in big number
+* do not hesitate to *freeze* the system while testing (to create a request engorgement)
+* always measure Max time.
+
+[options="step"]
+image::understanding-latency/Coordinated-omission_correct-example.PNG[title="You should have done that"]
+
+== How to detect those coordinated omission?
+
+If, in an uncorrected metric, you see a *vertical rise*, think it is probably a coordinated omission.
+
+Examples:
+
+image::understanding-latency/Coordinated-omission_correction.PNG[]
+image::understanding-latency/Coordinated-omission_correction2.PNG[]
+
+[CAUTION] 
+====
+Those omissions are present in a LOT OF tools (JMeter & Co). +
+So, BE CAREFUL!
+====
+
+== Some tools
+
+* https://github.com/HdrHistogram/HdrHistogram[HdrHistogram]: a High Dynamic Range Histogram.
+** covers a configurable *dynamic* value range (ex: track values between 1 ms and 1 hour)
+** built-in *compensation for Coordinated Omission*
+* http://www.azulsystems.com/jHiccup[JHiccup]: a tool for *capturing and displaying platform hiccups*
+** records any observed *non-continuity* of the underlying platform
+

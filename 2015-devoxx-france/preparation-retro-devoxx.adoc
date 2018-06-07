@@ -1,0 +1,183 @@
+= Préparation retro Devoxx France 2015
+:toc:
+:toclevels: 3
+:toc-placement: preamble
+:lb: pass:[<br> +]
+:imagesdir: ./images
+
+Thomas SCHWENDER
+
+== Description du salon
+
+Déjà, un petit récapitulatif :
+
+* 1413 participants
+* 786 via la formation OXiane
+* 132 exposants et organisateurs
+* Au total, 2509 personnes présentes.
+
+Pour rappel : 
+
+* 1497 personnes présentes en 2014
+* 1375 en 2013
+
+== Buzz words
+
+* Performance
+* cache
+* percentile
+* devops (une fois de plus)
+** mais avec Docker qui devient mature et continuer d'exploser, c'est normal
+* Mesos
+* Sécurité et confidentialité des données (robot aide aux personnes, espionnage du gouvernement)
+* Java 8 !!!!
+
+== Sécurité
+
+Keynotes d'Eric Filiol, directeur du laboratoire de recherche de l'ESIEA, spécialiste en cyber-sécurité, 22 ans dans l'armée française : *la problèmatique du contrôle des technologies de l'information*
+
+Evolutions opposées : 
+
+* nos sociétés passent d'un *modèle vertical*, très hiérarchique, vers un nouveau *modèle basé sur la collaboration*.
+* En parallèle de cela, les acteurs des techno de l'information ne sont *plus des passionnés, mais des politiques*, qui ne *comprennent rien à la technologie*, mais sont juste *avides du pouvoir* qu'elle peut leur donner.
+
+Du fait des menaces actuelles, ils en profitent de plus en plus pour justifier un espionnage soi-disant "pour la bonne cause". +
+Eric insiste sur notre rôle de développeur dans cette situation : nous ne devons pas rester passifs, et, afin d'éviter toute dictature et faire respecter notre vie privée, avons la responsabilité de faire au mieux pour ne pas laisser, dans nos applications, de vulnérabilités exploitables par les services de renseignement.
+
+=== Ressources :
+
+https://www.parleys.com/tutorial/la-problematique-du-controle-des-technologies-de-linformation
+
+
+== Evolution de notre approche de la gestion de l'infrastructure informatique
+
+Keynotes de Quentin Adam, CEO of Clever Cloud : *The end of server management: hosting have to become a commodity!*
+
+Dans une présentation bien à l'américaine, Quentin détaille sa vision de l'évolution de l'infrastructure informatique.
+Sa phrase choc : 
+[quote, Quentin Adams]
+____
+la responsabilité du développeur doit s’arrêter à un "git push" !
+____
+
+Il y explique que notre métier et nos technologies sont jeunes, et qu'actuellement notre *code applicatif est encore trop lié à la plateforme*. +
+Même si la virtualisation et les Docker, Chef / Puppet & Co, sont autant de progrès qui nous facilitent la vie, la *migration de l'hébergement d'un SI* est encore généralement une *galère* qui se règle sur des mois, voire des années.
+
+Quentin fait un *parallèle avec l'électricité au début du XXe siècle*. +
+Beaucoup d'entreprises produisaient alors leur propre électricité, sans norme ni standard. +
+Maintenant tout le monde est passé sur le même 220V alternatif (en Europe), le service est fiable, standardisé, et plus personne ne s'en soucit autrement qu'en cherchant où se trouve la prise électrique.
+
+Il faut que nous tendions vers ce modèle. +
+Pour ce faire : *améliorer le cloud, les containers (Docker toujours et encore), normaliser l'ensemble*.
+
+=== Ressources :
+https://www.parleys.com/tutorial/the-end-of-server-management
+
+== Performance
+
+=== Les subtilités du cache
+
+Les 2 principes essentiels à connaître :
+
+* *localité spaciale (spatial locality)* : si vous accédez à une donnée à une certaine adresse, vous aurez probablement besoin d'autres données à des adresses proches sous peu.
+* *localité temporelle (temporal locality)* : si vous avez accédé à une donnée, vous en aurez probablement de nouveau besoin, et y accéderez de nouveau.
+
+Cas pratique : quand vous balayez un tableau, balayez-le bien ligne à ligne (boucle sur les lignes et boucle imbriquée sur les colonnes).
+De la sorte, vous ne sauterez pas d'un emplacement à un autre du cache, avec pour résultat de ne plus retrouver vos données quand vous reviendrez à l'emplacement initial.
+
+==== Ressources
+
+* https://www.parleys.com/tutorial/un-monde-ou-1-ms-vaut-100-m[]
+* https://ardemius.github.io/2015/07/20/A-world-where-1ms-is-worth-100-millions-euros.html
+
+=== Le multithreading n'est pas toujours la solution
+
+Le multithreading a un *temps de mise en place qui peut ne pas être négligeable*. +
+Donc, avant de penser qu'il va rendre algorithme plus rapide, FAITE LE TESTE !
+
+Des alternatives existent :
+
+* algorithmes lock-free
+* utilisation de queues plus performantes
+* pipelining d'instructions
+
+=== le Ring Buffer : un exemple de queue lock-free
+
+Le *Ring Buffer (ou buffer circulaire)* est une queue *lock-free*, SPSC (Single Producer Single Consumer), FIFO et de taille fixe.
+
+image::ring-buffer-schema.PNG[]
+
+Sa particularité est que les objets placés dans le buffer ne sont *jamais déplacés*. +
+On utilise des pointeurs pour identifier son début (head) et sa fin (tail).
+
+Avec un reader et un writer, ce buffer est lock-free et wait-free.
+
+=== mémoire off-heap : le memory-mapped file
+
+Un memory-mapped file est une *partie de mémoire virtuelle que l'on a mappée, octect par octet, à une portion de fichier*
+Grâce à ce mapping / corrélation, les applications utilisant le memory-mapped file le traitent *comme s'il était en RAM* (gain de performance).
+
+A savoir : 
+
+* Solution adaptée aux gros fichiers, moins aux petits
+* L'écriture dans le memory-mapped file est synchrone, mais, ENSUITE, de façon *asynchrone*, l'OS flushera ces modifications sur le disque dur.
+
+Cas d'utilisation : pour les logs, où l'écriture dans un fichier classique est bloquante, ce qui peut vite devenir un problème en terme de performance.
+
+image::off-heap-memory_eden_ten_perm.PNG[]
+image::off-heap-memory_native_heap.PNG[]
+
+==== Ressources
+
+* http://www.slideshare.net/cnbailey/java-code-to-java-heap
+
+=== Ne supposez pas, TESTEZ !
+
+*JMH (Java Microbenchmarking Harness)* vous permet de tester en profondeur un algorithme / morceau de code (précision jusqu'à la nano-seconde)
+
+*Méfiez vous des moyennes*, ces dernières masquent généralement le vrai comportement d'un programme. +
+De plus, il faut également se méfier des cas de tests où "tout va bien". +
+Comme l'explique Gil Tene en parlant de *"coordinated omission"*, on oublie trop souvent que, "dans la vraie vie" :
+
+* le système peut se bloquer et les opérations s'accumuler
+* les requêtes ne sont pas forcément reçues à un rythme constant
+
+Vous pouvez utiliser *HdrHistogram* pour mesurer la latence en prenant en compte ces derniers cas.
+
+==== Ressources
+
+* JMH : http://openjdk.java.net/projects/code-tools/jmh/
+* HdrHistogram : http://hdrhistogram.org/
+
+== Retour d'expérience sur un migration d'un GROS projet SVN vers Git
+
+Quickie de Cecilia Bossard : Comment Git a sauvé notre projet (ou presque)
+
+Il est question de plusieurs millions de lignes de code.
+
+Les raisons de cette migration : *les problèmes de merge de SVN*, plus particulièrement lors de la préparation d'une nouvelle version.
+
+Comme d'habitude, le workflow Git proposé est le *Gitflow*.
+
+Points importants à retenir :
+
+* Commençons par la contrainte : il n'y a pas (ou plutôt n'y avait pas, car c'est en train de changer !) de checkout *partiel* dans Git, alors que la fonctionnalité existe dans SVN. +
+Quelque soit la taille du projet, avec Git, on récupère tout ! +
+Dans le cas de Cécilia, il fut nécessaire de faire du ménage (suppression de code mort), pour rendre la migration possible.
+* Git consomme moins d'espace que SVN : ses branches sont des pointeurs, contrairement à SVN
+* Faites attention à la configuration des retours à la ligne
+* Vérifiez l'encodage (UTF-8 est votre ami)
+* Supprimez le .git du workspace Eclipse, sinon votre IDE va vite se traîner
+
+
+=== Ressources
+
+* Comment Git a sauvé notre projet (ou presque) : https://www.parleys.com/tutorial/comment-git-sauve-notre-projet-ou-presque
+* Gitflow workflow : https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
+
+
+
+
+
+
+
