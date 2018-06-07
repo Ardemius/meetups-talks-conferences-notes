@@ -1,0 +1,232 @@
+= Journée anniversaire des 10 ans du Paris JUG (2018/05/15)
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+== 12h00 à 13h45 - Accueil
+
+L’accueil se déroulera au pied de la Tour Eiffel. +
+Le lieu précis de cet accueil vous sera transmis par mail le matin de l’événement, vers 8h. Il vous faudra être présent dès midi pour passer la sécurité et prendre les ascenseurs par petits groupes.
+
+image::parisjug10-intro.jpg[]
+image::startech-team.jpg[]
+
+== 14h00 - Voyage de 1 à 10 par Remi Forax
+
+=== Overview
+
+65 ans déjà (comptés en année chat, en informatique, on parle plutôt en année chat, c'est plus représentatif de la vitesse des cycles), Java a bien changé aussi, Sun est mort, l'OpenJDK a repris le flambeau, on a maintenant des releases continues ... 
+
+Avec un brin de nostalgie pour les vieux et comme une époque glorieuse et sépia pour les plus jeunes, je raconterais comment c’était Java au début, comment c'était Java il y a 65 ans, c'est quoi Java maintenant et bien sûr quel sont les futures de Java. 
+
+=== Notes
+
+* OpenJDK : Java will be Open Sourced the 13th November 2006. +
+OpenJDK 6 project was developped by RedHat, and was at that time ONLY tested on server, NOT on anything else (desktop by example...)
+
+NOTE: RedHat resigned the support of OpenJDK 6 in 2017, which was then taken by Azul Systems and Microsoft
+
+* Have a look at the VM Eclipse OpenJ9 (October 2017)
+
+== 15h15 - Designing Functional Programs par Dr. Venkat Subramaniam
+
+=== Overview
+
+Functional Programming promotes immutability and the use of higher order functions. 
+
+For those of us who have designed and architected applications using imperative style of programming and the object-oriented paradigm, this largely appears like a strange idea. +
+We often ask, how is it practical to apply these ideas, realistically to build practical applications. +
+It turns out it's highly practical but we have to change how we design and how we model our systems. 
+
+Come to this presentation to think about functional style and how to start viewing design to make better use of this way of programming.
+
+=== Notes
+
+1967 -> 1990 : 23 ans nécessaires pour l'adoption de la programmation OO ! +
+Et pourquoi si longtemps ? -> *Il a fallu attendre qu'une nouvelle génération arrive...*
+
+[quote, Venkat]
+____
+`goto` is to structured programming as assignment is to functional programming! +
+-> NO EXPLICIT ASSIGNMENT
+____
+
+* Imperative = tell what to do *and* also how to do
+* Declarative = tell what and *NOT* how
+
+image::parisjug10_design-funct-programs_01.jpg[]
+
+*functional style* = declarative + higher-order functions
+
+* We often talk about immutability and higher-order function, but these are really means to a greater end:
+	** functional composition and lazy evaluation +
+	(expressive and efficiency)
+
+*Streams are fundamentaly lasy*
+
+-> close-over = closure
+
+image::parisjug10_design-funct-programs_02.jpg[]
+
+Rappel du *"effectively final"* quand on ote un final qui peut être donné implicitement du fait du contexte.
+
+image:parisjug10_design-funct-programs_03.jpg[]
+image:parisjug10_design-funct-programs_04.jpg[]
+
+* Voir également précédemment les 2 règles de *pureté d'une fonction* :
+	** the function does not modify anything
+	** the function does not depend on anything that may possibly change
+
+image::parisjug10_design-funct-programs_05.jpg[]
+
+-> Java assumes that *lambdas and closures are pure*
+
+IMPORTANT: *Immutability* is absolutely necessary for *lazy evaluation*.
+
+* Plutôt que créer notre archi avec au centre la BDD (*circle of purity*) et "tout le code" autour (*ring of impurity*), ne faudrait-il pas mieux mettre notre code au centre ?
+
+image::parisjug10_design-funct-programs_06.jpg[]
+
+[IMPORTANT]
+====
+We should move the mutability to the outer ring, to keep the center pure. +
+(Kind of Data pipeline)
+====
+
+* Exception handling and functional programming are mutually exclusive.
+
+The functional mindset :
+
+* in Java 8 -> Streams
+* in Javscript -> Promises CompletableFuture
+
+					List 					vs 		Stream
+could be seen as: 	Bucket					vs 		Pipe
+					collection of data 		vs 		collection of functions
+
+IMPORTANT: *Stream* does *NOT* execute each function for each value, instead it *executes a collection of function for each value*, but only as necessary.
+
+=== Avis
+
+Venkat est un fantastique speaker, très clair, super anglais, dynamique et plein d'humour. +
+De plus, c'est bien la 1ere conf que je vois se dérouler sous la forme d'un live coding et présentation sur Notepad++
+*Fantastique conf à revoir.*
+
+-> On peut trouver https://www.youtube.com/watch?v=s6T-t_shpQg[la même conf sur YouTube, lors des XP Days Ukraine] (2018/02)
+
+== 16h30 - From Functional to Reactive Programming par Dr. Venkat Subramaniam
+
+=== Overview
+
+We're in the midst of renewed interest in functional programming. +
+At the same time we see quite a bit of excitement around reactive programming. 
+
+Where did reactive programming come from? +
+How is it related to functional programming, if at all? 
+
+In this presentation we will discuss the merits of reactive programming and how functional programming concepts seamlessly transition into the programming model espoused by reactive programming.
+
+=== Notes
+
+* Learn a new language is not that difficult -> *learning a new paradigm is a lot more*
+
+* We are moving towards "Collection Pipeline Pattern" (cf https://martinfowler.com/articles/collection-pipeline/[l'article de Martin FOWLER])
++
+imamge::parisjug10_from-funct-to-react_01.jpg[]
+
+* Formerly : *CRUD*
+	** database -> process / function -> database
+* And now Dataflow computation : d -> f -> d -> f -> d -> f
+	** Amazon lambdas and serverless
+
+IMPORTANT: Reactive programming *IS* dataflow computation
+
+* In life, we should never share 2 thinkgs:
+	** toothbrush
+	** database
+
++
+-> Do *not* expose your database, instead, *export your data*
+
+Reactive applications:
+
+* Elastic
+* Message Driven
+* Responsive
+* Resilience
+
+-> *Reactive proramming is functional programming++* +
+It is built on *functional composition* and *lazy evaluation*.
+
+Reactive programming is a very good application of functional programming.
+
+==== Example with RX Java (io.reactivex.Flowable)
+
+image:parisjug10_from-funct-to-react_02.jpg[]
+image:parisjug10_from-funct-to-react_03.jpg[]
+
+* *Java 8 Streams* : "push at your pace" which is not a good thing +
+-> Whereas with Reactive Streams, there is *backpressure*.
+
+[IMPORTANT]
+====
+Info très intéressante de Venkat dans la gestion des erreurs.
+
+Venkat n'aime pas la gestion des erreurs via les Monades, car ces dernières gèrent le "bon" cas ET le "mauvais" (l'erreur). +
+Dans le même flux de programmation on se retrouve donc à gérer 2 types d'objets différents, d'où une *cohérence moindre*.
+
+Avec la programmation reactive, on dispose d'un flux normal ET d'un flux d'erreur, chacun gérant son type d'objets, d'où une meilleure cohésion.
+====
+
+.Differences between Java 8 streams and Reactive streams
+image::parisjug10_from-funct-to-react_04.jpg[]
+
+(qtip = cotons-tiges)
+
+=== Avis
+
+Tout aussi bon que le talk précédent 
+
+-> On peut également trouver https://www.youtube.com/watch?v=kfSSKM9y_0E[la même conf au Warsaw JUG] (2017/11)
+
+== 18h00 - Déjà 10 ans : retour vers le futur avec JMX par Jean-Michel Doudoux
+
+=== Overview
+
+Profitons de ce dixième anniversaire pour :
+
+* faire une rétrospective des apports de Java et du Paris JUG à la communauté durant cette décennie,
+* et esquisser leur futur.
+
+=== Notes
+
+Un bon balayage des 10 dernières années en termes de techno, et tout spécialement Java.
+
+image::parisjug10_java-retour-vers-le-futur_01.jpg[]
+
+image::parisjug10_java-retour-vers-le-futur_02.jpg[]
+
+image::parisjug10_java-retour-vers-le-futur_03.jpg[]
+
+-> *Jakarta* EE : focus *cloud native* et *microservices*
+
+
