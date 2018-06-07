@@ -1,0 +1,537 @@
+= DataXDay 2018
+Thomas SCHWENDER <https://sgithub.fr.world.socgen/tschwend041717[@thomas.schwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To avoid numbering in tables and images
+:caption:
+ 
+toc::[]
+
+== Overview
+
+* Site web : https://dataxday.fr
+* Les https://dataxday.fr/videos-slides[vidéos de la présentation] sont toutes disponibles sur le site.
+
+== Buzz words
+
+* *Kafka* (the whole Confluent stack)
+* [red]*Kafka schema registry*
+* NiFi registry
+* Jupyter comme Notebook
+* multi-tenant
+* Avro
+
+== Sociétés rencontrées
+
+* Indexima :
+	** Ai discuté avec Nicolas Korchia (nicolas@indexima.com), l'un des 3 associés de la startup. +
+	On peut le contacter pour un BBL.
+
+* Xebia : 
+	** 130 personnes sur Paris, dont 20 non IT
+	** 2 directeurs artistiques
+	** 6 à 8 personnes au marketing, dont 1 à 2 dédiées full time aux évènements
+	** 2 UX à plein temps pour les goodies et la réalisation de tous les sites requis pour les différents évènements.
+	** n'accepte que des projets Agile, *from scratch*, d'une durée courte (~9 mois max), pour que les consultants ne s'ennuient pas
+
+== Conférences
+
+=== Machine learning models at scale with Amazon SageMaker - AWS
+
+Présenté par *Olivier Bergeret*, Solution Architect Manager - AWS
+
+==== Abstract
+
+Build, train, and deploy machine learning models at scale
+
+Machine learning often feels a lot harder than it should be to most developers because the process to build and train models, and then deploy them into production is too complicated and too slow.
+
+Amazon SageMaker includes modules that can be used together or independently to build, train, and deploy your machine learning models.
+
+==== Notes
+
+Présentation de la stack Amazon dédiée au Machine Learning.
+
+image::AWS-sagemaker_01.jpg[]
+image::AWS-sagemaker_02.jpg[]
+
+Côté *hardware*, instances *Amazon EC2* dédiées, basées sur les tout derniers GPU NVidia.
+
+image::AWS-sagemaker_03.jpg[]
+
+* *partie UX*
+	** notebook *Jupyter* managé (par SageMaker)
+	** la configuration est égalemeent accessible depuis le portail Amazon SageMaker
+	** et également en ligne de commande (donc accessible par API)
+
+* *partie training*
+	** pas de setup initial
+	** containerisé et orchestré par Amazon ECS (au travers de Sagamaker)
+
+* *partie hosting* 
++
+image::AWS-sagemaker_04.jpg[]
+
+* Présence de *built-in algorithms* ()
+
+image::AWS-sagemaker_05.jpg[]
+
+Toute la configuration est accessible et définissable depuis le Amazon SageMaker Notebook :
+
+* définition des hyper-paramètres
+
+SageMaker va orchestrer la flotte d'instances réalisant les prédictions
+
+Fonctionnalité en preview actuellement : *optimisation des hyperparameters*.
+
+.Les avantages de SageMaker
+image::AWS-sagemaker_06.jpg[]
+
+===== Demo 1
+
+"02-image-classification-cifar-10-training-from-scratch"
+
+Utilise le dataset *CIFAR-10*, contenant un grand nombre d'images.
+
+Tous ces notebooks sont disponibles sur GitHub.
+
+Dans l'exemple, c'est l'image classifier d'Amazon qui est utilisé. +
+Mais on aurait également pu utiliser Gluon ou TensorFlow (code disponible dans les samples)
+
+==== Avis
+
+Une bonne présentation du produit, détaillant les grandes briques de son architecture, et étaillée d'une demo.
+
+=== TOP ! Kafka beyond the brokers: Stream processing and Monitoring - CONFLUENT (FR)
+
+Présenté par *Florent Ramière*, Technical Account Manager (florent@confluent.io, @framiere)
+
+==== Abstract
+
+The Kafka ecosystem goes way beyond the brokers: Kafka Connect, Kafka Stream and KSQL are amazing tools!
+I propose to walk you through the implementation of all these components with a focus on streaming and monitoring.
+Come Join me to learn how to leverage Kafka to put your data in motion!
+
+==== Notes
+
+Tout est disponible sur GitHub : github.com/framiere/a-kafka-story
+
+Florent insiste sur l'utilité de *KSQL*.
+
+image::kafka-stream-processing_01.jpg[]
+
+La grande question concerne la partie *processing* : où et avec quoi le faire ? +
+-> Kafka streams ? Spark ? KSQL ?
+
+Question de Florent : que mettez dans Kafka (à la salle) ? +
+-> une grosse majorité d'*Avro*, avec un [red]*schema registry*
+
+.Rappel
+NOTE: Kafka est un gros *commit log*.
+
+* *Kafka Streams* est une *lib*, pas un framework (contrairement à Flink et Spark)
+
+*Kafka Streams* :
+
+* clustering done for you
+* *exactly-once processing*
+* event-time processing
+* integrated database (RocksDB) -> uniquement quand nécessaire (quand un état est présent / nécessaire. Ex : un JOIN DB)
+
+Kafka Streams est très *facilement dimensionnable* (même pour de petites tailles, contrairement à Flink et Spark)
+
+*Kafka Connect* peut être vu comme un *Logstash distribué*. +
+En 3 lignes, on peut copier une table dans Kafka avec Logstash, alors quel intérêt pour Kafka Connect ? +
+-> L'intérêt arrive quand au lieu de devoir copier 1 table, il faut en copier 10 000 (gros CRM)
+
+*KSQL* is a Declarative. +
+C'est une interface au-dessus de Kafka Streams +
+KSQL n'est pas fait pour faire de la BI (pas d'index, pas de possibilité de connecter un Tableau dessus)
+
+[NOTE]
+====
+Dans Elasticsearch, pas de join ! +
+Mais sinon, c'est un "cube OLAP à pas cher"
+====
+
+*Demo* complète d'un *vrai use case* qu'on aurait pu rencontrer au travail.
+
+NOTE: S3 local = *Minio*
+
+Les Nested Types arrivent dans les jours qui viennent dans KSQL.
+
+[NOTE]
+====
+TLS dans Kafka -> 30% d'impact sur les perf (détruit le "0 copy" de Kafka)
+
+Pour rappel, à la base, Kafka place directement les bytes dans un *memory mapped file* (Off-Heap memory)
+====
+
+Depuis peu, Confluent a mis à disposition des *playbook Ansible* pour déployer la stack.
+
+* Pas encore aussi bien que le déploiement via Cloudera Enterprise (qui est très fort sur ce point) +
+* Marche forcée est mise pour l'intégration *Kubernetes* (encore une fois) 
+
+==== Ressources
+
+* A Kafka story: https://github.com/framiere/a-kafka-story 
+
+//-
+
+* KSQL project page : https://www.confluent.io/product/ksql
+* Confluent blog: http://blog.confluent.io/
+* Blog Formule 1 game: https://www.confluent.io/blog/taking-ksql-spin-using-real-time-device-data/
+* KSQL github repo: https://github.com/confluentinc/ksql
+* CP-Demo: https://github.com/confluentinc/cp-demo
+* Un tour de l'environnement Kafka: https://www.youtube.com/watch?v=BBo-rqmhpDM
+* KSQL Recipies: https://github.com/bluemonk3y/ksql-recipe-fraudulent-txns/
+
+//-
+
+* Regarder surtout le blog de *formule 1*.
+* Voir également le *monitoring-demo* sur le github de Florent
+* Idem avec le *cp-demo* sur le GitHub de Confluentinc, surtout utile pour la mise en place de la sécurité.
+
+A regarder également :
+
+* le slack de Confluence Community
+* la *reference architecture* de Gwen
+
+==== Q&A
+
+* *Pulsar vs Kafka* +
+Pulsar a ouvert une nouvelle voie : *multi-DC*, *géo-réplication* et *réplication infinie*. +
+-> Kafka a vu que le marché appréciait ces fonctionnalités, qui vont donc arriver incessamment sous peu dans Confluent.
+
+==== Avis
+
+Très bonne conf présentant bien la stack Confluent / Kafka, et donnant beaucoup de points d'entrée et de ressources sur le sujet.
+
+=== How to deal with workflows lifecycle in Apache NiFi? - HORTONWORKS (EN)
+
+Présenté par *Pierre Villard*, Solution Architect chez Hortonworks
+
+==== Abstract
+
+Apache NiFi provides a revolutionary data flow management system with a broad range of integrations with existing data production, consumption, and analysis ecosystems, with robust data delivery and provenance infrastructure. This talk will mainly focus on how to deal with workflows lifecycle.
+
+==== Notes
+
+Apache NiFi to address modern data flows.
+
+Both batch and streaming use cases.
+
+.Multiples processors available
+image::apache-nifi-workflows_01.jpg[]
+
+.Common Use Cases
+image::apache-nifi-workflows_02.jpg[]
+
+.What is the positioning of NiFi ?
+image::apache-nifi-workflows_03.jpg[]
+
+-> NiFi can be seen as some "middleman" between Bus / ESB / ETL and processing frameworks.
+
+How do I deploy myflow?
+
+* do NOT copy flow.xml.gz between environments
+* do NOT use templates
+* DO USE a [red]*NiFi registry* ! +
+	** a place where you are going to share resources between different NiFi instances
+
+The [red]*NiFi registry* is really the big point avec this talk.
+
+image::apache-nifi-workflows_04.jpg[]
+
+With NiFi, everything available in the UI can be done with the REST API.
+
+==== Avis
+
+Rythme soutenu, le speaker est bon, beaucoup d'info pragmatiques de données (surtout sur l'utilisation du NiFi registry, mais pas que)
+
+Toute la présentation est décrite dans https://pierrevillard.com/2018/04/09/automate-workflow-deployment-in-apache-nifi-with-the-nifi-registry/[un article de son blog] (sur Wordpress).
+
+=== Transforming pictures into memories - PHOTOBOX (FR)
+
+Présenté par *Adrien Morvan* & *Cristina Oprean*, Machine Learning Engineers chez Photobox
+
+==== Abstract
+
+Photobox business is about pictures and derived products: we process 2 to 6 millions photos on a daily basis. To suggest adapted products to our customers we need to handle and better understand the content of their pictures.
+
+Since the number of personal photos has greatly increased thanks to the development of digital cameras and smartphones, scalability is a must.
+The goal of this presentation is to introduce our large scale automatic photo labelling pipeline.
+
+==== Notes
+
+Photobox permet la création d'albums photos en ligne, et de les imprimer après coup.
+
+Plusieurs fonctionnalités intéressantes de leur soft dans l'aide de la création d'album en ligne (Machine Learning is especially important in that case):
+
+* near duplicate photo filtering
+* photo selection from aesthetics
+
+.Problématique de l'analyse photo
+image::photobox_01.jpg[]
+
+Architecture
+
+image::photobox_02.jpg[]
+
+image::photobox_03.jpg[]
+
+* Several workers to assign a different number depending on the type of processing to be done +
+This is done to maximize GPU usage
+* *Redis* for the simple queue system
+
+*Technical Stack*
+
+image::photobox_04.jpg[]
+
+*Pros and Cons*
+
+image::photobox_05.jpg[]
+
+An architecture to analyse photos with deep learning at scale.
+
+=== Exploring graphs: looking for communities & leaders - QUANTMETRY (EN)
+
+Présenté par *Aurélia Nègre* & *Alberto Guggiola*, Data Scientists chez Quantmetry
+
+==== Abstract
+
+Ever been stuck in a data science use case where any approach seems too hard? +
+Graph theory, describing a system just in terms of nodes and links, could be your answer! In the practical example we’ll show, we’ll try to find data science communities and their leaders in LinkedIn. Challenge accepted?
+
+==== Notes
+
+Commence par parler des Panama Papers et des efforts de traitements de données qu'ils ont nécessités : (2.6 To de data principalement non structurées
+
+Parmi les moyens utilisés : *Graph Theory*
+
+[NOTE]
+====
+QuantMetry est une ESN de 70 personnes spécialisée dans la data (Data scientists, architect, engineer, etc.)
+====
+
+Examples d'algorithmes
+
+image::exploring-graphs_01.jpg[]
+
+Examples of tools
+
+image::exploring-graphs_02.jpg[]
+
+Pour faire des tests, voici un très bon site de datasets https://snap.stanford.edu/data/[*Stanford Large Network Dataset Collection*]
+
+image::exploring-graphs_03.jpg[]
+
+Voir le blog de QuantMetry : https://www.quantmetry.com/blog
+
+=== The internals of query execution in Spark SQL (EN)
+
+Présenté par *Jacek Laskowski*, auteur de plusieurs livres sur Spark, disponibles gratuitement as *Gitbooks* (@jacekLaskowski)
+
+-> Voir tout particulièrement https://legacy.gitbook.com/book/jaceklaskowski/mastering-apache-spark/details["Mastering Apache Spark"]
+
+==== Abstract
+
+If you want to get even slightly better performance of your structured queries (regardless whether they are batch or streaming) you have to peek at the foundations of Dataset API starting with QueryExecution. +
+That's where any query ends up at and my talk starts.
+
+The talk will show you what stages a structured query has to go through before execution in Spark SQL. +
+I'll be talking about the different phases of query execution and the logical and physical optimizations. +
+In the end, I'll do a live coding session to show the steps to write logical and physical optimizations in Scala.
+
+==== Notes
+
+Va parler de Apache Spark 2.3, et tout particulièrement Spark SQL
+
+*Structured query* is a query over data sets that are described by schema. +
+-> in other words, data sets have a structure
+
+*DataFrame* : a collection of rows *with a schema*
+
+* row and row encoder
+* DataFrame = Dataset[Row]
+
+Project *Catalyst* : Tree manipulation framework
+
+* *TreeNode* with child nodes
+* *Rules* to manipulate TreeNodes
+* RuleExecutor : does nothing except executing batches of rules
+
+NOTE: Everything in SparkSQL ends up in Tree.
+
+Demo faite avec le REPL Scala et l'import de SparkSQL
+
+*QueryExecution* : the heart of any structured query
+
+* use `Dataset.explain` to know the plans
+* use `Dataset.queryExecution` to access the phases
+* `QueryExecution.toRdd` to generate a RDD
+
+*Spark can only execute RDD* +
+-> So what is SparkSQL, if Spark can only execute RDD ?
+
+*SparkSQL* : just a different way to create RDD (RDD database) +
+It is just a wrapper around RDD
+
+For Jacek, a *database* is made of 2 things :
+
+* *a query execution*
+* *storage*
+
+What is missing SparkSQL to be a database ? +
+-> only storage ! But, in its case, its storage is HDFS !
+
+image::sparksql_01.jpg[]
+
+IMPORTANT: *SparkSQL* is nothing else but *RDD by code generator*.
+
+==== Ressources
+
+* https://legacy.gitbook.com/book/jaceklaskowski/mastering-apache-spark/details[Mastering Apache Spark (Gitbook)]
+
+==== Avis
+
+Présente bien les différents composants (mécanique interne) de SparkSQL à bas niveau.
+
+=== Building a Real Time Analytics API at Scale - ALGOLIA (EN)
+
+Présenté par *Sylvain Friquet*, software engineer chez Algolia
+
+==== Abstract
+
+This talk will cover how we redesigned our analytics API from the ground up to serve metrics in near real time from billions of events per day. We'll go through the tools we considered for the job to how we actually implemented our solution, starting from the datastore up to the whole data pipeline and its API, leveraging *Golang*, *Kubernetes*, *GCP* and *Citus*.
+
+==== Notes
+
+* *Algolia* : Firm providing "Search as a Service" solution
+
+Advantages: speed and relevance
+
+* Bare metal approach
+* offices in both USA and Europe
+
+They made a full overhaul some years ago
+
+.What they wanted
+image::real-time-analytics-API-at-scale_01.jpg[]
+
+.The architecture chosen
+image::real-time-analytics-API-at-scale_02.jpg[]
+
+* Again, *Kubernetes* as the container orchestrator
+* Citus (*CitusData*) is the main *datastore*
+	** why it and NOT Google BigQuery or RedShift? +
+	Those 2 last were very good for DWH but, *for real time analysis, Citus was better*.
+
+.what is Citus?
+image::real-time-analytics-API-at-scale_03.jpg[]
+
+"Rollup" -> aggregation
+
+image::real-time-analytics-API-at-scale_04.jpg[]
+
+image::real-time-analytics-API-at-scale_05.jpg[]
+
+Conclusion :
+
+* Rollup approach working at scale
+* *Citus* becoming the foundation for several new products (Click Analytics) +
+-> *Très satisfait de Citus* !
+
+==== Avis
+
+Algolia (startup) est très spécialisée sur le sujet. +
+Une boîte à suivre, on sent vraiment l'expertise
+
+=== Real-Time Access log analysis - BLABLACAR (EN)
+
+Présenté par *Thomas Lamirault*, Software Architect chez BlaBlaCar
+
+==== Abstract
+
+At BlaBlaCar we have built a *streaming platform* to have fast insights about the usage of our services. 
+
+I will show you how BlaBlaCar builds an automatic access log streaming analysis to improve the security and gain fine-grained knowledge of the platform usage.
+
+==== Notes
+
+BlaBlaCar existe depuis plus de 10 ans, *MAIS* ne connaît une très forte croissance que depuis les 2, 3 dernières années.
+
+* 60 000 000 de users actuellement
+
+.Architecture
+image:real-time-access-log-analysis_01.jpg[]
+image:real-time-access-log-analysis_02.jpg[]
+
+* *Kafka* et [red]*Kafka Connect*, avec un [red]*schema registry* qui est de nouveau mis en avant.
+
+*Flink*
+
+* Standalone mode
+* Containerized with Rocket / Fleet, *MAIS*, pour faire comme tout le monde, vont passer à *Docker* et *Kubernetes*.
+* *Avro plutôt que JSON* (sont en train de remplacer tout leur JSON) ou Protobuf
+
+image:real-time-access-log-analysis_03.jpg[]
+image:real-time-access-log-analysis_04.jpg[]
+
+Ces quelques lignes de code représente l'essentiel de l'application (simple)
+
+* L'usage du *Schema registry* de Confluent est de nouveau plébiscité.
+
+== Closing Keynote
+
+Présentée par *Alain Bensoussan*, avocat spécialisé dans la propriété intellectuelle (le même que pour Devoxx)
+
+"La data est le pétrole du XXIe siècle" -> grosse erreur :
+
+* le gisement de data ne s'appauvrit pas avec le temps, il augmente.
+* le coût "de création" de la data est quasi nulle.
+
+Aucune loi n'existe au sujet de la *propriété de la donnée*.
+
+Distinction faite entre :
+
+* propriété classique de la data
+* propriété d'usage
+
+Donner ses données, ce n'est pas comme donner un rein -> on "garde" les données après les avoir données.
+
+IMPORTANT: *La propriété des données est à construire*, et il va falloir la défendre.
+
+=== Avis
+
+Keynote hyper intéressante ! +
+A réécouter ! 
+
+
+
+
+
+
+
+
+
+
+
+
