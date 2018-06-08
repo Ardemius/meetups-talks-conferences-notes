@@ -1,0 +1,148 @@
+= NodeJS : 5 bonnes raisons pour lesquelles vous devriez y jeter un oeil
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté par *Thierry ABALEA* et *Alexandre VICTOOR*. +
+Sera également présenté à Devoxx France 2018.
+
+== Notes
+
+* Tout en Javascript, y compris le serveur
+
+* Derrière Node, il y a une fondation avec beaucoup de grosses boites : Google, IBM, etc.
+
+* Créé en 2009 par Ryan Dahl (tout seul dans son garage, était un dev de sites web en Ruby)
+	** aime la prog concurrentielle
+	** inspiré du framework eventMachine
+
++
+-> sa conclusion : pour être rapide, il faut des *I/O non bloquantes*
+
+Quand on a ses I/O non bloquantes : on a des *Event Loop*.
+
+* NodeJS : tout est non-bloquant (Ryan a choisi javascript coimme base car mono-threadé "fait pour" dans le navigateur )
+
+* Ryan a pris V8, le moteur javascript de Chrome, et libUV, comme lib C++ pour les I/O.
+
+image::20180409_NodeJS_01.jpg[]
+
+=== Possibilté de scaling vertical : mode cluster
+
+-> on peut *détecter le nombre de CPUs*, et forker le cluster sur tous les CPUS
+
+image::20180409_NodeJS_02.jpg[]
+
+* *Flow* : type checker développé par Facebook (ajoute un système de typage pour javascript), écrit en OCaml
+* *Typescript* : ajoute une phase de compilation
+
+Le reste des examples sera en Typescript +
+Va également utiliser le framework Nest
+
+* *Sandbox Editor* : éditeur de code en ligne, tourne dans un navigateur (utilise l'éditeur de code https://github.com/Microsoft/monaco-editor[Microsoft Monaco], qui est également utilisé par Visual Studio Code)
+
+== Spread Operator
+
+== Ecosystème
+
+Grosse communauté, ecosystème très présent
+
+=== Environnement de dev : *Visual Studio Code*
+
+"Ze" l'outil pour les devs Javascripts
+
+=== Debugger et Profiler dans Chrome (gros plus pour Node)
+
+Chrome DevTools : link:chrome://inspect[]
+
+-> voir cet https://medium.com/the-node-js-collection/debugging-node-js-with-google-chrome-4965b5f910f4[article de Medium] pour plus de détails sur le debugging Node.js avec Google Chrome
+
+Nécessite de lancer Node avec le paramètre `--inspect` :
+
+[source]
+----
+$ node --inspect <your_file>.js
+----
+
+== Frameworks
+
+* *HTTP* : *Express* et *Koa* (ce dernier utilisé chez FLuo, et pourrait être vu comme le sucesseur d'Express. Il a été créé par les créateurs d'Express)
+* *base de données* : photo (très bon driver MySQL, écrit uniquement en Javascript)
+* `async await` (qui est néanmoins très décrié à la SGCIB, notamment par Cyrille)
+
+=== Intégration avec d'autres applications ?
+
+image::20180409_NodeJS_03.jpg[]
+
+Que REST ? +
+NON ! Voir ci-dessous :
+
+image::20180409_NodeJS_04.jpg[]
+
+Et une fois de plus *gRPC* est dispo, ainsi que *GraphQL*. +
+-> L'implem de référence de GraphQL côté serveur est full javascript.
+
+== React
+
+* Intérêt : *React Native* qui est utilisé sur Mobile
+
+Chez Fluo : + 200 000 lignes de code en Javascript
+
+=== Conclusion, avantages / inconvénients
+
+* démarre très très vite
+* prend peu de mémoire +
+-> donc très bon pour le cloud
+
+-> Nouvelle édition du *livre de Martin Fowler "refactoring"*, ne proposera plus d'exemples en Java mais *tout en Javascript*.
+
+Les 5 bonnes raisons :
+
+* simplicité
+* légèreté
+* le JS moderne
+* écosystème
+* ET...
+
+* beaucoup de TU avec https://facebook.github.io/jest/[Jest] côté Fluo
+* tests plus métier avec du https://github.com/jsGiven/jsGiven[JSGiven]
+* tests plus end to end avec https://testcafe.devexpress.com/[TestCafe] (très récent, à la place de Protractor)
+
+-> La sécurité est un point auquel il faut faire très attention !
+
+* *Fluo travaille en monorepo*
+
+* Flow et React sont les 2 grosses dépendances de Fluo
+-> dans l'absolu *peu d'adhérence à des frameworks avec Node.js*
+
+Après, *no silver bullet* : Node et le JS ne répondent pas à tout, il faut savoir avoir plusieurs cordes à son arc
+
+NOTE: Pour rappel, Facebook et plusieurs gros sites web utilisent PHP
+
+.Retour de Thierry
+TIP: *reality check* -> il faut prendre la techno qui permet d'aller vite ET de recruter facilement (il est actuellement difficile de trouver des devs Java)
+
+== Ressources
+
+* slides de la présentation : https://devoxxfr2018-nodejs.github.io/devoxxfr2018-conf-nodejs
+* Blogs posts sur NodeJS : https://medium.freecodecamp.org/@samerbuna
+* NodeJS la première conf : https://www.youtube.com/watch?v=ztspvPYybIY
