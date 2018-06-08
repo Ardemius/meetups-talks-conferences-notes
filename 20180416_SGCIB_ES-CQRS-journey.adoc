@@ -1,0 +1,170 @@
+= 9 things that will make your ES/CQRS journey painful
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+
+toc::[]
+
+Présenté par Clément Héliou (Xebia) à la SGCIB. +
+Clément a travaillé chez CTY à la SGCIB, ce talk est en partie un retour d'XP de cette époque.
+
+== Overview
+
+====
+De prime abord, l'Event Sourcing et CQRS ne présentent pas de complexité majeure. Et pourtant, nous sommes nombreux à avoir souffert en les implémentant de façon maladroite ou à mauvais escient.
+
+Après avoir re-posé les bases de ces 2 patterns, je vous propose de revenir ensemble sur les 9 pièges à éviter lorsque l'on se lance dans leur implémentation. +
+Nous aborderons notamment les problématiques des systèmes distribués, le versionnage des évènements, la cohérence à terme, les process managers/sagas, le Domain Driven Design et l'Event Storming.
+====
+
+*CQRS* : permettre la lecture sans impacter le métier (écriture)
+
+== Les 9 pièges
+
+=== L'utilisation de frameworks
+
+Pas la meilleure chose à faire pour commencer. +
+Il faut être capable de faire des compromis (latence, haut débit, etc.), ce que ne permettent pas forcément, ou facilement, les frameworks.
+
+=== Persist commands instead of persist events
+
+Voir https://thinkbeforecoding.com/post/2013/07/28/Event-Sourcing-vs-Command-Sourcing[l'article de Jérémie Chassaing] sur le sujet.
+
+Lors d'un rejeu, à rejouer la fonction d'évolution ("Command"), on peut être victime d'effets de bord.
+
+NOTE: Je trouve http://blog.xebia.fr/2017/01/16/event-sourcing-comprendre-les-bases-dun-systeme-evenementiel/[cet article de Xebia] très clair sur ce point.
+
+WARNING: Il semblerait que Martin Fowler, dans son article sur le sujet, mélange un peu command et event. D'où les mises en garde de Jérémie CHASSAING. 
+
+=== Think of ES/CQRS as top-level architecture
+
+ES/CQRS are not silver bullets :
+
+* montée en compétence non négligeable
+* l'ES est coûteux à mettre en place
+* la mise en place de l'ES et du CQRS implique la création de beaucoup de petits éléments (difficultés de debugging)
+
+=== Consider ES/CQRS only to be a technical stuff
+
+Le choix principal qui doit amener l'Event Sourcing doit être le métier.
+
+==== Domain Driven Design
+
+Comment faire ? -> le DDD ! (une façon de faire) +
+Le DDD doit être utilisé pour des workflows / process métiers complexes (pas la peine de le sortir pour un simple CRUD), sur des sujets amenés à durer (et donc à justifier l'investissement initial)
+
+Le DDD doit permettre :
+
+* de créer un *ubiquitous language* avec le métier
+* la création d'un *Domain Model*
+* de définir les *entities* (object qui a une identité arbitraire : sert à nous identifier indépendamment de nos attributs)
+* de définir des *value objects* : l'opposé des entities, sont caractérisés par leurs attributs, et non ce qu'ils sont.
+* de définir des *aggregates* : définit une frontière autour d'un ensemble d'objets, et est le point d'entrée permettant de manipuler les objets contenus
+
+IMPORTANT: *Bounded Contexts* = Domain Model \+ Ubiquitous language
+
+==== Event Storming
+
+Atelier dans lequel on rassemble IT et métier dans le but de découvrir l'ubiquitous language.
+
+. On donne des post-its à tout le monde, et on demande au métier de *raconter une histoire à partir des évènements*. +
+Il va donc falloir placer les post-its (events) par ordre chronologique sur le mur. +
+	** 1 des objectifs est d'identifier les hot-spots (éléments métier centraux)
+	** Ensuite, on recherche les évènements qui déclenchent des évènements.
+	** on va ensuite chercher à regrouper les aggregates par bounded contexts
+
+image::20180416_ES-CQRS-journey_01.jpg[]
+
+WARNING: L'atelier peut faire ressortir des grosses différences de vision -> la présence d'un facilitateur est vivement recommandée. +
+Il va laisser les choses sortir au début, puis va recentrer les choses.
+
+Voir la doc d'Alberto Brandolini "introducing Event Storming" (checker http://ziobrando.blogspot.com/2014/06/eventstorming-recipes.html[son site] à ce sujet)
+
+=== Do not embrace eventual consistency (cohérence à terme)
+
+On va limiter le scope de la transaction à la seule aggregate, et non la projection.
+
+La réalité côté cohérence à terme est de *réagir* (on ne peut pas de façon réaliste tout prévoir à l'avance)
+
+=== To be unaware of events evolution
+
+Greg Young est en train de finir un livre en ligne sur le sujet.
+
+image::20180416_ES-CQRS-journey_02.jpg[]
+
+* Importance de l'utilisation d'un format adapté : *Avro*, *Protobuf*
+* Utiliser une gestion de contrat permettant la *retro-compatibilité*
+
+IMPORTANT: Penser à protéger les bounded contexts avec un *couche d'anti-corruption* (ACL)
+	
+=== Ignore the 4 challenges of messaging systems
+
+image::20180416_ES-CQRS-journey_03.jpg[]
+
+* lost messages
+* duplicated messages
+* out-of-order messages
+* unprocessed messages
+
+.Rappel
+NOTE: *consommateur idempotent* : sait gérer plusieurs fois le même message
+
+=== Not to be able to easily switch any piece of technology
+
+image::20180416_ES-CQRS-journey_04.jpg[]
+
+L'implémentation de l'Event Store ne doit pas dépendre de la technologie sous-jacente.
+
+Exemple : Kafka est peut-être une bonne solution aujourd'hui, mais qu'en sera-t-il dans 5 ans ? +
+-> Une map en mémoire pourrait très bien faire l'affaire.
+
+Même remarque pour la techno des *projections*, qui sont, par principe, *volatiles* (on peut les reconstruire via les events)
+
+=== Lack of Process managers and sagas
+
+* *Process managers* : son rôle est de coordonner des messages entre différents aggregates (je coordonne). +
+Se représente bien par une *machine à état*. +
+
+image::20180416_ES-CQRS-journey_05.jpg[]
+
+Le coût est que le process manager doit être *persisté* (comme il y a une notion d'état sous-jacent).
+
+* *Sagas* : permet de remplacer une transaction distribuée entre plusieurs aggregates. +
+Est bien représenté par une transaction compensatoire (qui remplace donc la transaction distribuée)
+
+image::20180416_ES-CQRS-journey_06.jpg[]
+
+=== BONUS ! 10e piège : être dogmatique
+
+Il n'y a pas qu'une seule manière de faire de l'event sourcing
+
+Toujours chercher à faire des *compromis* (éclairés bien sûr...), et être capable de les revoir.
+
+== Conclusion
+
+Dans les conférences en général, il y a souvent un amalgame entre CQRS et Event Sourcing, mais il s'agit bien de 2 éléments différents. +
+Il y a 2 ans (?) Thomas PIERRAIN avait présenté le CQRS seul, sans l'Event Sourcing.
+
+Pour faire monter en compétence les nouveaux, un conseil : *pairer pairer pairer*
+
+Ne pas oublier les *Architecture Decision Record*, qui permettent de lister les décisions d'architecture avec leurs justifications, et qui doivent pouvoir se trouver *rapidement* (le mieux serait d'être capable de les rendre accessibles via les repos GitHub) 
+
+
+
