@@ -1,7 +1,16 @@
 = Devoxx France 2018 - Buzz words and synthesis
 :lb: pass:[<br> +]
 :imagesdir: ../images
-:icons: font
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
 :source-highlighter: highlightjs
 
 .2018/05/03 - Vidéos disponibles sur YouTube

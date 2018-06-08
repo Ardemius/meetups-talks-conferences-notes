@@ -1,4 +1,14 @@
 = Retours sur Devoxx France 2018
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
 
 IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* du salon]
 
