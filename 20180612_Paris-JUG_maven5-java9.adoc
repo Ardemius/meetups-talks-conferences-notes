@@ -1,0 +1,171 @@
+= Soirée Java EE 8? Ah ben non peut-être! - 2017/10/10
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+== Overview
+
+https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20180612[Descriptif de la soirée sur le site du ParisJUG.]
+
+image::20180612_parisjug_maven5-java9_01.jpg[]
+
+Etaient présents pour Softeam :
+
+* *Guillaume LEMONT*
+* *Thomas SCHWENDER*
+* *Clarence CHARLES*
+
+== Maven et Java 9
+
+Présenté par https://www.parisjug.org/xwiki/wiki/oldversion/view/Speaker/HerveBoutemy[*Hervé Boutemy*] (https://twitter.com/hboutemy[@hboutemy])
+
+=== Abstract 
+
+====
+Maintenant que Java 9 est sorti, on va pouvoir ajouter des descripteurs de modules dans tous nos projets, n'est-ce pas? +
+Pas si sûr... 
+
+Les modules Java 9 sont très puissants, mais sans maîtrise, ils risquent de tout casser non seulement au niveau de vos programmes Java mais aussi au niveau de l'écosystème Maven. +
+Avez vous déjà réfléchi au nom de module de votre jar ? Un conseil d'ami : ne vous contentez pas du nom par défaut. +
+Cette session vous donnera de nombreux conseils pratiques qui ne sont pas directement dans la spécification, mais qui doivent absolument être gardés en tête au fil de l'adoption générale du système de modules Java.
+====
+
+=== Notes
+
+* Maven 3 *marche avec Java 9* +
+-> ce qui peut planter, ce sont les *plugins*. Ce sont eux qu'il faut absolument *mettre à jour*.
+
+* Pour gérer les modules avec Maven 3
+	** ajouter un module-info.java dans src/main/java
+	** maven-compiler-plugin en version 3.7.0 au minimum
+
+* Points de collision de juin à septembre 2017 autour de Jigsaw pour Java 9 (JSR 376)
+	** *le nom des modules* -> point similaire à "comment choisir mes groupId et artifactId ?" dans Maven +
+	-> les noms de modules doivent être aussi uniques ques les noms de dépendances. +
+	On a constaté des pbs avec les *noms de modules avec des nombres*, et les *noms de modules automatiques*
+
+*Noms de modules avec des nombres*, Oracle ne voulait plus des nombres comme derniers caractères. +
+Mais alors, que fait-on avec *"DB2"* par exemple ? +
+-> Oracle est finalement revenu sur cette proposition.
+
+*Nom de modules automatiques*. +
+Constation maven au sujet des [red]*collisions* : de nombreux artifactId ont le même groupId. +
+Si on base le nom de modules *uniquement sur le nom de fichier*, qui correspond à l'artifactId, les collisions vont pleuvoir... +
+Les fournisseurs de librairies ne doivent *JAMAIS* livrer des librairies dont le nom vient d'un *auto-module* (qui serait par exemple `library-a.jar` et non `library-a-1.0.jar`) +
+-> Un jar qui n'a *pas d'export* = c'est une *application* +
+-> Un jar avec des *exports* = c'est une *librairie*
+
+NOTE: A partir de Maven 3.5.0, on a la coloration syntaxique !
+
+image::20180612_parisjug_maven5-java9_02.jpg[]
+
+* Pour éviter tout problème de collision découlant des noms des auto-modules, il *FAUT* définir ses propres `Automatic-Module-Name`
+
+Quelques rappels :
+
+* plus de "split" packages
+* à la racine, pas de classes sans package
+
+.Astuces pour utiliser Java 9 avec Maven
+image::20180612_parisjug_maven5-java9_03.jpg[]
+
+En cas de problèmes :
+
+* Stackoverflow est votre ami
+* le wiki Confluence de Maven
+* et si toujours pas de solution, ouvrez un ticket
+
+=== Q&A
+
+* Tous les projets peuvent-ils devenir modulaires ? -> *NON* +
+Plus le projet est vieux, plus c'est compliqué
+
+* *Le classpath ne va pas disparaître* (y compris à l'avenir) +
+Le *module-path* complémente le classpath, mais ne le remplace pas.
+
+* Maven va-t-il générer mon descripteur de module ? -> *NON* 
+	** le POM sert à télécharger les librairies
+	** le descripteur de module sert à gérer de façon fine les visibilités de module à module. +
+	-> Ce n'est *PAS* le même usage
+
+* On utilise le goal `depdendency:analyse` pour vérifier si les dépendances déclarées sont bien utilisées.
+	** *JDEPS* peut créer un descripteur de déploiement "grossier" (mais est surtout prévu pour permettre de créer le descripteur de déploiement final) 
+
+== Maven 3 & 5
+
+Présenté par https://www.parisjug.org/xwiki/wiki/oldversion/view/Speaker/HerveBoutemy[*Hervé Boutemy*]
+
+=== Abstract 
+
+====
+Ca fait bien longtemps que Maven 3 est sorti. Depuis, il n'y a que des releases mineures : plus rien de bouge ? C'est mort ? Même pour Java 9, il n'y a pas eu besoin de release Maven ! +
+Je vous rassure, Maven continue d'évoluer : simplement, il le fait sans bruit inutile et en vous garantissant une évolution à votre rythme.
+
+Pourtant, une évolution majeure va être nécessaire, qui méritera une nouvelle version : Maven 5.  +
+Pourquoi pas 4 ? Quelle est cette évolution ? Et comment l'équipe Maven va t'elle faire pour conserver la stabilité à laquelle on était habitués, malgré ce grand changement ?
+====
+
+=== Notes
+
+.Disclaimer
+IMPORTANT: Tout ce qui suit n'est qu'une opinion personnelle d'Hervé, et en aucun cas un engagement de Maven !
+
+* Autre rappel : tous les contributeurs sont les bienvenus. +
+Ne pas hésiter à créer des Jira, ou des PR
+
+* Hervé est présent tous les derniers mardi du mois au Paris Hackergarten ("Adopte un projet Open Source")
+
+* *Migration de Subversion à Git* pour Maven
+	** Jeter un oeil à *Apache GitBox* = un multi-master de GitHub
+	** plus de 100 repo Git suite à la migration +
+	-> Utilisation de *Google Repo* pour récupérer facilement tous ces derniers...
+
+.Astuce : on peut maintenant facilement mettre à jour la doc Maven
+image::20180612_parisjug_maven5-java9_04.jpg[]
+
+.Carte du code Maven
+image::20180612_parisjug_maven5-java9_05.jpg[]
+
+* *Classworlds* : tout le système de classloader au coeur de Maven (permet d'éviter les problèmes de classloader parmi tous les plugins Maven)
+
+.structuration Maven 3.0
+image::20180612_parisjug_maven5-java9_06.jpg[]
+
+.structuration Maven 3.5
+image::20180612_parisjug_maven5-java9_07.jpg[]
+
+* librairie *compat* depuis Maven 3.0 (nécessaire pour clarifier la structure de Maven 2) : tous les scories de la migration y sont. +
+-> *Plein de split packages*, la preuve que Maven ne passera *PAS* à Java 9...
+
+.Pourquoi Maven 5 et non 4 ?
+[NOTE]
+====
+Si on a un *Maven 5* et non un Maven 4, c'est parce que le POM était auparavant en version 4, et que pour le faire évoluer, on a créé une v5.
+
+-> Gros problème, du fait du format XML et du site Maven Central, on ne peut *PAS* utiliser autre chose qu'un POM v4 pour Maven Central. +
+Donc, *notre POM v5 va être consommé au build afin de créer un POM v4*, qui pourra lui être intégré dans Maven Central... 
+====
+
+*Nouveau rappel d'Hervé* : il a besoin de retours des users sur l'expérience d'utilisation de Maven. +
+-> Donc, venez au MeetUp pour en parler !
