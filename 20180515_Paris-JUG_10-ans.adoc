@@ -27,8 +27,8 @@ toc::[]
 L’accueil se déroulera au pied de la Tour Eiffel. +
 Le lieu précis de cet accueil vous sera transmis par mail le matin de l’événement, vers 8h. Il vous faudra être présent dès midi pour passer la sécurité et prendre les ascenseurs par petits groupes.
 
-image::parisjug10-intro.jpg[]
-image::startech-team.jpg[]
+image::20180515_parisjug-intro.jpg[]
+image::20180515_parisjug_startech-team.jpg[]
 
 == 14h00 - Voyage de 1 à 10 par Remi Forax
 
@@ -73,7 +73,7 @@ ____
 * Imperative = tell what to do *and* also how to do
 * Declarative = tell what and *NOT* how
 
-image::parisjug10_design-funct-programs_01.jpg[]
+image::20180515_parisjug_design-funct-programs_01.jpg[]
 
 *functional style* = declarative + higher-order functions
 
@@ -85,18 +85,18 @@ image::parisjug10_design-funct-programs_01.jpg[]
 
 -> close-over = closure
 
-image::parisjug10_design-funct-programs_02.jpg[]
+image::20180515_parisjug_design-funct-programs_02.jpg[]
 
 Rappel du *"effectively final"* quand on ote un final qui peut être donné implicitement du fait du contexte.
 
-image:parisjug10_design-funct-programs_03.jpg[]
-image:parisjug10_design-funct-programs_04.jpg[]
+image:20180515_parisjug_design-funct-programs_03.jpg[]
+image:20180515_parisjug_design-funct-programs_04.jpg[]
 
 * Voir également précédemment les 2 règles de *pureté d'une fonction* :
 	** the function does not modify anything
 	** the function does not depend on anything that may possibly change
 
-image::parisjug10_design-funct-programs_05.jpg[]
+image::20180515_parisjug_design-funct-programs_05.jpg[]
 
 -> Java assumes that *lambdas and closures are pure*
 
@@ -104,7 +104,7 @@ IMPORTANT: *Immutability* is absolutely necessary for *lazy evaluation*.
 
 * Plutôt que créer notre archi avec au centre la BDD (*circle of purity*) et "tout le code" autour (*ring of impurity*), ne faudrait-il pas mieux mettre notre code au centre ?
 
-image::parisjug10_design-funct-programs_06.jpg[]
+image::20180515_parisjug_design-funct-programs_06.jpg[]
 
 [IMPORTANT]
 ====
@@ -151,7 +151,7 @@ In this presentation we will discuss the merits of reactive programming and how 
 
 * We are moving towards "Collection Pipeline Pattern" (cf https://martinfowler.com/articles/collection-pipeline/[l'article de Martin FOWLER])
 +
-imamge::parisjug10_from-funct-to-react_01.jpg[]
+imamge::20180515_parisjug_from-funct-to-react_01.jpg[]
 
 * Formerly : *CRUD*
 	** database -> process / function -> database
@@ -181,8 +181,8 @@ Reactive programming is a very good application of functional programming.
 
 ==== Example with RX Java (io.reactivex.Flowable)
 
-image:parisjug10_from-funct-to-react_02.jpg[]
-image:parisjug10_from-funct-to-react_03.jpg[]
+image:20180515_parisjug_from-funct-to-react_02.jpg[]
+image:20180515_parisjug_from-funct-to-react_03.jpg[]
 
 * *Java 8 Streams* : "push at your pace" which is not a good thing +
 -> Whereas with Reactive Streams, there is *backpressure*.
@@ -198,7 +198,7 @@ Avec la programmation reactive, on dispose d'un flux normal ET d'un flux d'erreu
 ====
 
 .Differences between Java 8 streams and Reactive streams
-image::parisjug10_from-funct-to-react_04.jpg[]
+image::20180515_parisjug_from-funct-to-react_04.jpg[]
 
 (qtip = cotons-tiges)
 
@@ -221,11 +221,11 @@ Profitons de ce dixième anniversaire pour :
 
 Un bon balayage des 10 dernières années en termes de techno, et tout spécialement Java.
 
-image::parisjug10_java-retour-vers-le-futur_01.jpg[]
+image::20180515_parisjug_java-retour-vers-le-futur_01.jpg[]
 
-image::parisjug10_java-retour-vers-le-futur_02.jpg[]
+image::20180515_parisjug_java-retour-vers-le-futur_02.jpg[]
 
-image::parisjug10_java-retour-vers-le-futur_03.jpg[]
+image::20180515_parisjug_java-retour-vers-le-futur_03.jpg[]
 
 -> *Jakarta* EE : focus *cloud native* et *microservices*
 
