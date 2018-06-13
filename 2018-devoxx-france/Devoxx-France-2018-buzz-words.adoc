@@ -1,6 +1,6 @@
 = Devoxx France 2018 - Buzz words and synthesis
-:lb: pass:[<br> +]
-:imagesdir: ../images
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
 ifdef::env-github[]
 :status:
@@ -11,7 +11,18 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :warning-caption: :warning:
 endif::[]
+:imagesdir: ../images
 :source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
 
 .2018/05/03 - Vidéos disponibles sur YouTube
 IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=PLTbQvx84FrARa9pUtZYK7t_UfyGMCPOBn[Devoxx France 2018] de la chaîne Devoxx Fr
@@ -46,14 +57,15 @@ A noter que l'écosystème Kafka (Connect, Streams, etc.) est très fortement po
 NOTE: L'expression *"Big Data"* est définitivement en fin de vie, et en train d'être simplement *remplacée par le simple concept de "Data"*. +
 Ce dernier intègre progressivement les projets "les plus classiques" et le langage commun, et est sur le chemin de devenir une brique de base de la conception d'application (-> d'ici quelques temps, on ne dira plus que l'on fait du "big data" sur un projet)
 
-.En conclusion
-[IMPORTANT]
-====
+NOTE: Lors des différents salons du moment sur la Data, on remarque que de plus en plus d'éditeurs proposent des *plateformes "tout-en-un"* pour gérer un *Data pipeline* (ex: Kafka, mais aussi ActivePivot, MapR, etc.) +
+Les raisons de cette tendance sont en bonne partie à chercher du côté de la *complexité de la gestion d'une stack Hadoop on-premise* (nécessite une équipes d'OPS conséquente et bien formée, ce que tout le monde ne peut pas se payer).
+
+=== En conclusion
+
 On continue à noter une *explosion du nombre de technologies, outils et méthodologies* disponibles sur le marché (bien aidée par la généralisation du traitement de la Data et https://hadoopecosystemtable.github.io/[l'écosystème Hadoop])
 
 Personne ne peut toutes les connaître, nous allons donc être de plus en plus confrontés à des façons différentes d'obtenir un même résultat. +
 -> Plus que nos connaissances spécifiques des technologies, c'est *notre capacité d'adaptation* à celle que nous ne connaissons pas qui va devenir (encore plus) capitale.
-====
 
 == Technos qui ont le vent en poupe
 
@@ -97,7 +109,7 @@ Pour information, nous l'utilisons déjà pour nos Town Halls et autres meetings
 * Slides du talk de jeudi sur Karate générés automatiquement en Asciidoctor 🙂 +
 Voir https://github.com/binout/karate-devoxxfr2018 pour les détails
 
-== Synthèse
+== Avis sur le salon
 
 Toujours aussi sympa et intéressant, dès lors que l'on choisit les bonnes conférences :wink:
 
