@@ -134,7 +134,17 @@ IMPORTANT: Tout ce qui suit n'est qu'une opinion personnelle d'Hervé, et en auc
 * Autre rappel : tous les contributeurs sont les bienvenus. +
 Ne pas hésiter à créer des Jira, ou des PR
 
-* Hervé est présent tous les derniers mardi du mois au Paris Hackergarten ("Adopte un projet Open Source")
+[NOTE]
+====
+Hervé est présent tous les derniers mardi du mois au https://www.meetup.com/fr-FR/Paris-Hackergarten/[Paris Hackergarten] (https://twitter.com/hckrgartenparis[@HckrgartenParis])
+
+Il s'agit d'un MeetUp dont le but est de promouvoir 
+Ce MeetUp est le rendez-vous de ceux qui veulent se lancer dans la contribution aux projets OpenSource, en étant encadrés par leurs principaux committeurs. +
+"_Adopt an OpenSource project_" est la devise du MeetUp 😉.
+
+Hervé a besoin de vous sur Maven, venez !
+====
+
 
 * *Migration de Subversion à Git* pour Maven
 	** Jeter un oeil à *Apache GitBox* = un multi-master de GitHub
@@ -167,5 +177,12 @@ Si on a un *Maven 5* et non un Maven 4, c'est parce que le POM était auparavant
 Donc, *notre POM v5 va être consommé au build afin de créer un POM v4*, qui pourra lui être intégré dans Maven Central... 
 ====
 
-*Nouveau rappel d'Hervé* : il a besoin de retours des users sur l'expérience d'utilisation de Maven. +
--> Donc, venez au MeetUp pour en parler !
+== En conclusion
+
+.Wanted ! Maven contributors !
+[IMPORTANT]
+====
+Nouveau rappel d'Hervé : il a besoin de vos retours utilisateur sur Maven, et de votre aide. +
+Venez donc le retrouver au https://www.meetup.com/fr-FR/Paris-Hackergarten/[Paris Hackergarten] !
+====
+
