@@ -1,0 +1,232 @@
+= 12@13 : DataStax Cassandra
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Présenté par *l'équipe DataStax France* : *Julien MICHEL*, Solution Engineer (julien.michel@datastax.com), et *Jérôme RUIZ* Regional Channel Director (jerome.ruiz@datastax.com)
+
+// Julien tel : 07 87 03 02 44
+
+== Abstract
+
+====
+Avez-vous toujours eu envie d'approfondir vos connaissances Big Data ?
+
+Venez à notre deuxième 12@13 de la série sur le NoSQL, ce nouveau type de base de données adaptées aux problématiques Big Data !
+
+Nous recevons l'équipe de DataStax, qui nous fera une vue d'ensemble de Cassandra (base NoSQL de type colonne) et de DSE, la solution enterprise qui intègre Cassandra aux frameworks Spark (Analytics), SOLR (Search) et TinkerPop (Graph).
+
+Et si vous voulez aller plus loin, rejoignez l'initiative Big Data - Datastax chez Softeam, venez le 13 juin pour plus d'informations !
+====
+
+
+Etait offert durant le MeetUp l'édition de poche _"Designing a Distributed Cloud Database for dummies"_
+
+image::20180613_datastax-cassandra_10.jpg[width=200]
+
+
+== Notes
+
+.The New Database Market
+image::20180613_datastax-cassandra_01.jpg[]
+
+.The DSE (DataStax Enterprise) platform
+image::20180613_datastax-cassandra_02.jpg[]
+
+* Suite à un rachat Cassandra gère maintenant les *graphes*
+* Cassandra impose un certain modèle de données
+
+//-
+
+* Le principal *rival* de DataStax Cassandra est *Cassandra OpenSource*
+
+Qui utilise déjà Cassandra ?
+
+* *Apple* pour les notions de *scalibilité* de la plateforme
+* *Netflix* pour les qualités de *résilience* (*Chaos Monkey*)
+* *Spotify* pour la *BDD distribuée* (facteur de réplication) et le *zero data loss*
+
+*Cassandra Use Cases*
+
+* MDM
+* IoT and Time Series
+* Personalization and Recommendation
+* Fraud Detection
+* List Management
+* Messaging
+* Inventory Management
+* Authentication / Sessions -> exemple, le PlayStation Network
+
+image::20180613_datastax-cassandra_03.jpg[]
+
+=== Apache Cassandra characteristics
+
+image::20180613_datastax-cassandra_04.jpg[]
+
+* Cassandra a été créé en s'inspirant de *Google Big Table* (distributed) et *Amazon Dynamo* (master-less)
+* est *faite pour perdre des noeuds*
+
+Les 2 principaux critères pour *estimer le nombre de noeuds à avoir dans son cluster* :
+
+* Nombre de requêtes / sec
+* volume de données
+
+-> Voir le https://medium.com/netflix-techblog/benchmarking-cassandra-scalability-on-aws-over-a-million-writes-per-second-39f45f066c9e[benchmark de Netflix]
+
+Apache Cassandra :
+
+* est *master-less* (contrairement à MongoDB par exemple, qui est *master / slave*)
+* *read/write to any node* : tous les noeuds sont identiques, et peuvent accepter lecture et écriture
+* configurable Data Replication 
+* Préco par défaut de Cassandra : *facteur de réplication de 3*
+* Cassandra est multi-DC (Data Center) : *active-active* avec *geo-replication*
+
+.Gestion du multi-DC
+image::20180613_datastax-cassandra_05.jpg[]
+
+-> Pour info, si on active l'analytics sur un noeud, il faut l'activer sur tous les noeuds du DC.
+
+*Consistence dans Cassandra*
+
+* [red]*Eventually Consistent* (et non strongly consistent)
++
+NOTE: Pour une bonne comparaison d'Eventually Consistent vs Strongly Consistent, voir https://hackernoon.com/eventual-vs-strong-consistency-in-distributed-databases-282fdad37cf7[ce post du blog de Hackernoon].
+
+* *3 niveaux de cohérence* :
+	** *ONE* : j'attends d'uniquement 1 noeud
+	** *QUORUM* : j'attends *la majorité* des noeuds 
+	** *ALL* : je dois avoir la réponse de *tous les noeuds*
+
++
+-> Les niveaux de cohérence se configurent en lecture *ET* en écriture.
+
+.Write ONE, read ALL
+image::20180613_datastax-cassandra_06.jpg[]
+
+image::20180613_datastax-cassandra_07.jpg[]
+
+Les modèles de cohérence les plus fréquents :
+
+* ONE Read + One Write
+* QUORUM Read + QUORUM Write
+
+*Langage de requêtage* : Cassandra Query Language (CQL)
+
+* pas un langage relationnel (Cassandra n'est *PAS* une base relationnelle)
+* pas de proc stock
+
+.Cassandra : BDD NoSQL de type Wide Column Stores
+[NOTE]
+====
+Cassandra est une base NoSQL de type _"Wide Column Stores"_. +
+Pour des détais précis, je vous conseille d'aller regarder https://db-engines.com/en/article/Wide+Column+Stores[la définition sur l'excellent site DB-engines].
+
+Pour résumer simplement les choses : Dans Cassandra, *les colonnes sont persistées en fonction d'une clé de partition*. +
+On pourrait le voir comme un hybride entre une base orientée colonne et un key-value store.
+====
+
+image::20180613_datastax-cassandra_08.jpg[]
+
+=== DataStax platform
+
+* *DSE* = DataStax Enterprise, la plateforme unifiée de DataStax.
+* Plateforme *unifiée* pour graphe, batch analytics, indexing & search, streaming analytics
+
+WARNING: Cassandra n'a pas pour vocation de concurrencer tous les types de BDD (Cassandra ne concurrence pas Hadoop par exemple)
+
+* DataStax *OpsCenter*
+	** Visual, browser-based user interface
+	** Secure role based access control
+	** Version 6 : ajout du *NodeSync* +
+	-> fait que *le repair devient inutile* dans 99% des cas
+
+NOTE: Preco de base Cassandra : *1 To / noeud* +
+Principalement pour éviter le streaming d'un trop gros volume de data lors de la chute d'un noeud et du bootstrap d'un nouveau
+
+Evidemment, présence d'un *support* :
+
+* 24x7x365
+* PROD et *NON*-PROD env
+
+* *DSE Advanced Replication*
+	** allows one-way replication from ed 
+
+* *DSE Tiered Storage*
+	** preco Cassandra : utiliser au max des SSD, mais peut devenir cher pour un gros volume de données
+	** d'où l'ajout du Tiered Storage qui permet de déplacer les data anciennes sur un support moins onéreux
+	** Les SAN sont très fortement déconseillés par Cassandra, car va ajouter un Single Point of Failure (pour un système distribué, c'est dommage)
+
+* *DSE Enterprise Security*
+	** *Transparent Data Encryption* of ALL DSE at rest +
+	-> *baisse de performance de l'ordre de ~10%* (l'encryption coûte de moins en moins en perf avec l'amélioration des micro-processeurs)
+	** Unified authentication : Kerberos / AD, mais *PAS d'OAuth2* 😭
+
+* *DSE Search*
+	** se base sur Solr
+
+* *DSE Analytics*
+	** Embedded Apache Spark
+	** Distributed FS (DSEFS), compatible avec HDFS, mais *sans Name Node* +
+	-> Permet d'avoir les données d'archive dessus (économie de coût)
+
+* *DSE Graph*
+	** inspiré sur TitanDB graph database
+	** build on Apache Tinkerpop graph framework (graph -> ce qui va se rapprocher le plus d'une BDD relationnelle)
+	** utilise le langage Gremlin
+	** Cas d'usage les plus fréquents : la détection de fraudes (ex : les Panama papers)
+
+.DSE technology stack
+image::20180613_datastax-cassandra_09.jpg[]
+
+== Conclusion & synthèse
+
+On a vu que DataStax mettait très en avant sa *plateforme unifiée*, comme beaucoup d'autres éditeurs en ce moment (Kafka, ActivePivot, MapR, etc.).
+
+Celle-ci comporte maintenant de nombreuses fonctionnalités gravitant autour de la BDD "historique" Apache Cassandra (DSE Search, DSE Analytics, etc.) +
+Néanmoins, Julien et Jérôme ont indiqué que ces fonctionnalités n'avaient PAS pour vocation de placer DSE comme un remplacement aux produits historiquement développés pour ces domaines (Elasticsearch pour l'indexation, Hadoop pour l'analytics, etc.)
+
+Donc, *dans quels cas les utiliser* ? Voici leur réponse :
+
+* A la base on utilise Cassandra pour avoir *une base qui scale*
+* Cette base permet d'avoir sur un même noeud la gestion du Temps Réel ET de l'archivage
+* La plateforme DSE représente une solution à *moindre coût*, où l'on peut faire un peu de tout, et qui *évite la grande complexité de la maintenance d'une stack Hadoop on-premise*.
++
+NOTE: Ce constat comme quoi la stack Hadoop est diffice à maintenir est un pain point que l'on retrouve *partout* en ce moment.
+* Par contre, la cible de DSE n'est pas les grands comptes (qui peuvent eux se payer une équipe d'OPS administrant une stack on-premise compliquée), mais les "moyens" comptes. 
++
+NOTE: J'avoue être un peu surpris de cette communication, même si j'en comprends les raisons. +
+La complexité des stacks data est une des grandes préoccupations du moment, et l'on sent bien que de nombreux éditeurs cherchent à en profiter, en proposant une solution "tout-en-un" plus simple à maintenir.
+
+TIP: Pour des ressources sur Cassandra, jetez à oeil à la https://academy.datastax.com/[DataStax Academy] qui propose plusieurs cours en ligne.
+
+== Q&A
+
+* Pas la notion de transaction au sens ACID dans Cassandra, mais existence d'une notion de "light transaction" +
+Par contre, cela a un coût en termes de performance.
+
+
+
+
+
+
