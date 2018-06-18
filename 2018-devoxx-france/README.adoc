@@ -29,10 +29,10 @@ IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* d
 [cols="1,1,1,1,4", options="header"] 
 |===
 |Date				|Salle				|Type				|Avis				|Description
-|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1030_keynotes.adoc%23_la_keynote_de_devoxx_france[La Keynote de Devoxx France]
-|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1030_keynotes.adoc%23_la_e_residence_estonienne_et_l_entrepreneuriat_sans_frontieres[La e-residence estonienne et l’entrepreneuriat sans frontieres]
-|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1030_keynotes.adoc%23_l_%C3%A9conomie_collaborative_soutenez_financez[L’économie collaborative : soutenez, financez]
-|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1030_keynotes.adoc%23_le_smart_building_par_o%C3%B9_commencer[Le Smart Building : par où commencer ?]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1030_keynotes.adoc_la_keynote_de_devoxx_france[La Keynote de Devoxx France]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1030_keynotes.adoc#_la_e_residence_estonienne_et_l_entrepreneuriat_sans_frontieres[La e-residence estonienne et l’entrepreneuriat sans frontieres]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1030_keynotes.adoc#_l_%C3%A9conomie_collaborative_soutenez_financez[L’économie collaborative : soutenez, financez]
+|09:00 / 10:30		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1030_keynotes.adoc#_le_smart_building_par_o%C3%B9_commencer[Le Smart Building : par où commencer ?]
 |11:15 / 12:00		|Maillot			|Conference			|					|link:jeudi/jeudi_1115-1200_reactive-spring.adoc[Reactive Spring]
 |12:05 / 12:20		|					|					|					|PAUSE
 |12:25 / 12:40		|					|					|					|PAUSE
@@ -48,15 +48,19 @@ IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* d
 |21:35 / 22:25		|					|BOF 				|					|PAUSE
 |===
 
+link:jeudi/jeudi_0900-1030_keynotes.adoc#_la_keynote_de_devoxx_france[La Keynote de Devoxx France]
+
+https://github.com/Ardemius/meetups-talks-conferences-notes/blob/master/2018-devoxx-france/jeudi/jeudi_0900-1030_keynotes.adoc%2523_la_keynote_de_devoxx_france[Devoxx keynote]
+
 == Vendredi
 
 [cols="1,1,1,1,4", options="header"] 
 |===
 |Date				|Salle				|Type				|Avis				|Description
-|09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_software_heritage_pourquoi_et_comment_preserver_le_patrimoine_logiciel_de_l_humanite[Software Heritage: pourquoi et comment préserver le patrimoine logiciel de l’Humanité ?]
-|09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_french_road[French-Road]
-|09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_ordinateur_quantique[L’ordinateur quantique]
-|09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc%23_l_homme_sur_mars_pourquoi_comment_les_d%C3%A9fis[L’Homme sur Mars : Pourquoi ? Comment ? Les défis.]
+|09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc#_software_heritage_pourquoi_et_comment_preserver_le_patrimoine_logiciel_de_l_humanite[Software Heritage: pourquoi et comment préserver le patrimoine logiciel de l’Humanité ?]
+|09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc#_french_road[French-Road]
+|09:00 / 10:30		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc#_l_ordinateur_quantique[L’ordinateur quantique]
+|09:00 / 10:30		|Amphi Bleu			|Keynote 			|Bien				|link:vendredi/vendredi_0900-1030_keynotes.adoc#_l_homme_sur_mars_pourquoi_comment_les_d%C3%A9fis[L’Homme sur Mars : Pourquoi ? Comment ? Les défis.]
 |11:15 / 12:00		|Maillot			|Conference 		|Bien				|link:vendredi/vendredi_1115-1200_Stream-all-things.adoc[Stream All Things - Patterns of Modern Data Integration]
 |12:05 / 12:20		|					|		 			|					|PAUSE
 |12:25 / 12:40		|					|		 			|					|PAUSE
