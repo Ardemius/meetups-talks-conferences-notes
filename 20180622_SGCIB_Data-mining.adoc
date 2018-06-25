@@ -1,0 +1,105 @@
+= Les vendredis de l'architecture : Data Mining
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Présenté par Gael CHERIEF, architecte technique à la SGCIB, chez DCC/ARC
+
+== Notes
+
+Gael a présenté cette conf pendant 7 ans dans une école d'ingénieur française. +
+Il travaille à la SGCIB depuis 6 mois.
+
+* *Qu'est ce que le Data mining ("exploration de données") ?*
+	** l'extraction d'un savoir à partir d'une grande quantité de données
+	** davantage une *grande variété de données* qu'un grand volume
+	** par des méthodes automatiques ou semi-automatiques
+	** à la fois une science, une méthode et un ensemble de techniques (statistiques et probabilistes)
+
+* *Machine Learning*
+	** *un des moyens de faire du Data Mining* (une de ses boîtes à outils)
+	** sous-ensemble de l'IA
+	** développement et implémentation de méthodes permettant à une machine d'évoluer vers un processus systématique
+
+* *IA* : ensemble de tbéorie et techniques mises en oeuvre en vue de réaliser des machines capables de *simuler* l'intelligence
+
+* Les *données* sont (seulement) un des *moyens de représenter une information*. +
+	** Et il y a (quasi) toujours de la perte dans cette représentation
+
+* *Data Scientist*
+	** *Créer le modèle* : *5% de leur travail*, car, actuellement, de plus en plus de réutilisation de modèles déjà existants (les plus récents ont 20 ans...). +
+	-> Et de plus en plus de compositions de modèles.
+	** l'essentiel de leur travail consiste à trouver des data ou des modèles à amener vers le Machine Learning (à vérifier)
+
+* *Résultat du Data Mining* :
+	** Data Mining *descriptif* : extraire de l'information existante mais masquée
+	** *Prédictif* : prédire une information en fonction d'informations disponibles
+	** les *types de résultats* :
+		**** classification : paquet de choses (ne se ressemblant pas obligatoirement)
+		**** estimation
+		**** association
+		**** détermination de relations
+		**** prédiction
+		**** prévision
+		**** description
+		**** optimisation
+		**** segmentation : paquet de choses se ressemblant (homogènes)
+
+* Le Data Mining est un processus *itératif* et *coopératif* :
+	** définir le problème
+	** recherche de données
+	** sélection de données
+	** *nettoyage de données*
+	** réorganisation de données
+	** recherche du ou des modèles
+	** évaluation du résultat
+
+-> *le travail du Data Scientist est de travailler les données* (en y ajoutant de l'information, généralement "masquée" initialement, en nettoyant la data, etc.) afin d'améliorer le résultat du Machine Learning.
+
+"l'ordinateur adore les sophismes" 
+-- Gael
+
+-> Donc attention aux fausses corrélations, *se méfier des résultats*.
+
+* A partir de la sélection des données (inclus), tout le process doit être industrialisé. +
+	** Principalement car nous vivons dans un monde changeant, auquel il faut pouvoir s'adapter rapidement.
+	** Le travail du Data Scientist est de travailler les Data (sélection, nettoyage, réorganisation, etc.). +
+	C'est ce travail qui devra, de par la suite, être industrialisé.
+
+* Apprentissage *supervisé* ou *non supervisé* :
+	** *supervisé* : on guide l'algo en lui fournissant des exemples de qui est attendu en sortie. +
+	-> L’apprentissage supervisé est utilisé quand l’utilisateur sait labelliser les informations, l’extraction des données est donc *prédictive*.
+
+	** *non supervisé* : apprentissage autonome, les data sont communiquées à la machine sans lui fournir les exemples de résultats attendus en sortie. +
+	-> L’apprentissage non-supervisé cherche à *trouver des partitions de modèles par lui-même*, l’extraction des données est donc *descriptive*.
+
+	** *matrice de confusion* : tableau 2 dimensions entre la prédiction obtenue par le modèle, et la réalité.
+
+
+
+
+
+
+
+
