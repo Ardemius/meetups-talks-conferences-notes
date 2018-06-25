@@ -1,0 +1,205 @@
+= BBL Tests de charge avec Gatling
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+:example-caption!:
+
+toc::[]
+
+Présenté par *Stéphane LANDELLE*, créateur de Gatling.
+
+== Abstract
+
+.Comment arrêter de croiser les doigts lorsqu'on passe en prod ?
+====
+Face à l'explosion du trafic sur internet et la croissance exponentielle de l'économie numérique, la performance des applications devient un enjeu majeur des projets informatiques. +
+Pourtant, il est fréquent que le  équipes adressent mal les tests de charges. +
+La première partie de cette présentation présente les concepts de tests de charge et leur méthodologie. +
+La seconde se focalise sur Gatling. Gatling est un outil de test de charge open-source, utilisé pour générer des utilisateurs virtuels naviguant sur un site web.
+
+Il se caractérise par :
+
+* une architecture moderne et performante basée sur des IO non-bloquants et un modèle d'acteurs, vous permettant de générer un très grand nombre d'utilisateurs concurrents
+* un DSL concis et lisible vous permettant d'écrire un code flexible et maintenable, plutôt qu'une interface graphique consue
+* des rapports élégants et aux métriques pertinentes
+====
+
+== Notes
+
+Stéphane travaille pour https://gatling.io/[Gatling Corp] (6 personnes actuellement), qui pousse l'utilisation de Gatling open source, et propose également une *version enterprise* (nommée *Frontline*).
+
+NOTE: Gatling Corp va s'installer à Station F dans l'été.
+
+*Constat* : nos applications ne sont plus du tout soumises aux mêmes contraintes que celles du début 2000. +
+-> Le web est devenu le 1er média de vente, avec les potentielles montées en charge que cela implique.
+
+* Les tests de charge sont un process itératif. +
+-> on adresse les problèmes les uns après les autres
+
+.Conseil de Stéphane
+NOTE: Faire les tests de charge le plus tôt possible.
+
+* Les tests de charge sont beaucoup plus faciles à maintenir que les tests d'interface (à la Selenium). +
+-> Plus facile de changer un payload JSON que de changer un test Selenium.
+
+.Attention aux *Load Injector*
+[WARNING]
+====
+Ils attaquent sans cesse *la même URL statique*. 
+
+httpd est fourni avec https://httpd.apache.org/docs/current/programs/ab.html[un outil de benchmarking, ("ab")], qui est un URL basher. +
+-> les URL bashers sont plutôt des outils de *test*, et non des outils de test de charge.
+
+Ces URL bashers ne permettent la plupart du temps de ne tester qu'un "chemin", ce qui ne permet finalement que de *tester les caches de son application*.
+====
+
+-> Un *bon* outil de test de charge permet de *simuler le trafic*, ainsi que les *différents comportements utilisateurs* (différents chemins, et non le seul test d'une URL statique).
+
+
+Ces "chemins" peuvent concerner : 
+
+* Le (ou les) cache de l'application
+* Les optimisations apportées par le JIT de Java
+* etc.
+
+image::20180621_Gatling_01.jpg[]
+
+* MQTT seulement en version entreprise
+* Gatling est très utilisé pour les tests de protocoles de messaging (car s'y prête bien)
+
+Gatling est très performant quand comparé aux autres outils du marché, qui, pour la plupart, ont été créés il y a longtemps, à une époque où le matériel était différent (mono-coeur)
+
+* Principales caractéristique de l'architecture de Gatling : *messaging* (Akka) et *non blocking IO* (Netty) 
+* ~40 threads par coeur pour Gatling
+* tous les threads sont quasiment tous à 100% en permanence (conséquence des IO non bloquants)
+* Gatling est capable de gérer énormément de charge. +
+-> Quand on atteint une limite de charge, il y a de fortes chances que cela vienne en fait du réseau (ex : carte réseau 1 Go qu'il faudrait changer pour une 10 Go)
+
+Historiquement les outils de test de charge (le 1er était *Load Runner*) étaient des outils graphiques, et donc assez difficilement maintenables (nécessité d'aller chercher dans l'interface graphique)
+
+* Pas d'interface graphique avec Gatling, mais *du code*
++
+image::20180621_Gatling_02.jpg[]
++
+* Gatling fournit un *DSL* (avec du method chaining)
++
+image::20180621_Gatling_03.jpg[]
++
+* les *assertions* permettent de tester les *critères d'acceptance*
+* le langage de programmation derrière Gatling est *Scala*
+
+.Autre point d'attention
+WARNING: Ne pas se fier aux *moyennes*, ni aux *standard deviations* (écart type, ce dernier n'étant valable que pour des distributions *normales*)
+
+-> Préférer l'utilisation de centiles (*percentiles*) +
+C'est un classique, pour plus d'informations à ce sujet, et sur les Hiccups, voir https://github.com/Ardemius/meetups-talks-conferences-notes/blob/master/2015-devoxx-france/understanding-latency.adoc[le CR de la conf Understanding Latency de Gil Tene], lors de Devoxx France 2015.
+
+NOTE: Stéphane indique que JMH n'est pas viable quant à ses centiles (quant à la manière dont il les calcule) +
+-> *A creuser*, mais semble étonnant, c'est l'outil de référence en la matière, je n'avais encore jamais eu ce retour dessus.
+
+* *Moyenner des centiles* fait perdre tout intérêt à ces derniers
+
+.Intégration avec d'autres outils
+image::20180621_Gatling_04.jpg[]
+
+NOTE: Support de Kubernetes et OpenShift d'ici la fin d'année. +
+-> Encore une confirmation de la domination de Kubernetes sur le marché, et de la montée en puissance d'OpenShift.
+
+== Demo de Gatling Enterprise (Frontline)
+
+Demo sur Eclipse, et pas IntelliJ ! 😃
+
+* Attention aux problèmes *SSL* (HTTPS). +
+Bien lire la doc pour la *gestion des certificats* et des man-in-the-middle.
+
+Exemple de code :
+
+image::20180621_Gatling_05.jpg[]
+
+* *Modèle fermé* : on a le contrôle sur le nombre d'utilisateurs concurrents (analogie avec un Call Center : "Tous nos opérateurs sont occupés, merci de bien vouloir attendre X minutes...") +
+-> Traduction pour un outil de test de charge : 10 utilisateurs sur 2 min, puis (accélération) 100 users sur 1 sec. +
+C'est le modèle le plus adapté au web, mais...
+
+* Malheureusement la plupart des applications ne fonctionnent ainsi, mais en *modèle ouvert* : tous les utilisateurs essayent d'accéder à l'application en même temps... +
+-> Traduction pour un outil de test de charge : 10 utilisateurs sur 2 min, puis (accélération) 100 users sur 1 sec. 
+
+IMPORTANT: Il faut donc expliquer aux personnes demandant les tests que *raisonner en termes de nombres d'utilisateurs concurrents du système n'a pas de sens*.
+
+* Dans Gatling, le *comportement par défaut* est de *stocker les data dans une queue*. +
+-> Quand il n'y a plus de data dans la queue et qu'un nouveau test est demandé, Gatling remonte une erreur (apparemment "comportement indéterminé")
+
+* *Feeder* : itérateur qui retourne des maps de <string, object>
+
+.Attention aux builders !
+[IMPORTANT]
+====
+Les builders ne sont *évalués qu'une fois*, à l'initiation de la suite de tests. +
+Un random dans un builder ne sera évalué qu'une fois, et c'est donc la même donnée qui sera ensuite fournie à tous les tests.
+
+Pour éviter cela, passer une fonction en paramètre du builder (donc utiliser une Lambda, afin d'utiliser non pas une valeur mais un comportement)
+====
+
+.Architecture de Gatling *Enterprise* (Frontline)
+image::20180621_Gatling_06.jpg[]
+
+* *Cassandra* est utilisé non pas pour des raisons "(Big) Data", mais pour sa *gestion des time-series binaires* +
+(En comparaison, InfluxDB ne peut stocker que des time-series numériques)
+
+.Pourquoi des time-series binaires ?
+[NOTE]
+====
+Gatling stocke des distributions de métriques (~tableaux de comptage, time-series), et *non des centiles*. +
+Pour gagner de la place, Gatling compresse ces tableaux (via un algo spécifique propriétaire).
+
+En effet, Stéphane nous a déjà expliqué qu'il n'était pas pertinent d'aggréger des centiles, pour les problèmes de moyennes que l'on connaît (disparation de certaines valeurs au profit de la moyenne).
+====
+
+* Frontline est uniquement disponible sous forme d'instance privée (donc *pas de SaaS*)
+	** Bientôt (fin 2018 ?) disponible sur Amazon +
+	-> Une preuve de plus d'un passage global des techno à une *stratégie public cloud* 
+
+.Adoption d'OpenShift
+NOTE: Stéphane nous indique qu'OpenShift va être supporté par Gatling, car déjà utilisé par les 2/3 de leurs clients pour leur cluster privé.
+
+* Beaucoup plus de dashboards disponibles avec Frontline que dans la version Open Source.
+* monitoring de l'activité mémoire, du CPU, et de la *charge des injecteurs* (pour vérifier qu'on ne les sature pas)
+* API REST documentée sur *Swagger*
+
+== Conclusion
+
+Le travail effectué par Gatling Corp est impressionant. +
+Frontline semble être un outil complet, répondant à un grand nombre de use cases (pour des tests de charge), et ayant nécessité de la recherche, du développement custom de composants (et pas uniquement de la réutilisation de composants existants).
+
+Stéphane maîtrise le sujet, ainsi que la "théorie" des tests sous-jacente. +
+-> On voit bien que gérer ses tests de charge nécessite des connaissances, et ne s'improvise pas. +
+En fonction de ses moyens (temps, ressources), plutôt que de monter une équipe interne, on peut envisager passer par Gatling Corp.
+
+Autre info de Stéphane : le projet en vogue en ce moment (pour collecter et analyser des métriques) : https://prometheus.io/[*Prometheus*] +
+-> Déjà bien mis en avant lors du dernier Devoxx France, voir le CR de la conf https://github.com/Ardemius/meetups-talks-conferences-notes/blob/6eb85dcf8f01b40cf3fd176518132d3896e69559/2018-devoxx-france/mercredi/mercredi_1755-1825_Prometheus-monitoring.adoc[Prometheus, un outil pour les monitor tous]
+
+
+
+
+
+
+
