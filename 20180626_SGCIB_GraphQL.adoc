@@ -1,0 +1,106 @@
+= BBL From Rest to GraphQL
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+:example-caption!:
+
+toc::[]
+
+Présenté par *Mathieu BRETON*, Co-Founder et CTO chez JS-Republic.
+
+== Abstract
+
+.From REST to GraphQL
+====
+Ce BBL vous montrera comment, étape par étape, migrer un blog basique fait avec une API REST vers une implémentation full GraphQL (et sans  Apolo).
+====
+
+== Notes
+
+* GraphQL
+	** spécification de communication pour API
+	** over HTTP, typé fortement
+
+-> REST tire énormément parti de la puissance d'HTTP, et plus particulièrement de *son cache*.
+
+* *Pourquoi avoir créé GraphQL ?*
+	** mettre à disposition la bonne quantité de data pour tous les types de devices
+	** pour alléger les échanges (les headers HTTP pouvant être très lourds)
+	** faciliter la mise à disposition des data pour les différentes version d'un client (ex: les différentes versions d'Android en cours d'usage à un moment donné)
+
+.GraphQL pour les microservices et le serverless
+NOTE: Mathieu indique que *GraphQL* est particulièrement adapté quand on fait du *microservices* et du *serverless*. +
+-> On s'adapte en effet à tous les langages
+
+.Adhésion à Falcor
+NOTE: Soyons clair, Falcor (développé par Netflix) *a perdu la guerre* par rapport à GraphQL.
+
+* *Concepts clés de GraphQL* :
+	** une API GraphQL n'a qu'un seul end-point
+	** *QUE* du POST
+	** pour définir la structure d'une API GraphQL, on définit *un schéma*
+
+github.com/graphql/graphiql[GraphiQL] : IDE de visualisation / manipulation d'une API GraphQL (marche avec un server Node.js)
+
+* *3 grands types de données* :
+	** *type* : déclare la forme des modèles
+	** *query* : requêtes pour récupérer les data
+	** *mutation* : actions pour transformer les data
+
++
+-> 1 seul query et mutation par API GraphQL
+
+* Obligatoirement *1 resolver par type déclaré*
+
+image::20180626_GraphQL.jpg[]
+
+* GraphQL est "promesse aware"
+
+* *axios* librairie pour faire des appels HTTP en JS
+
+.De nouveau Visual Studio Code
+NOTE: Comme beaucoup (la majorité), Mathieu utilise Visual Studio Code (ici pour sa démo de GraphQL)
+
+* *Input Type* : Fait pour représenter des objets complexes en paramètre de mutation
+
+== Conclusion
+
+* Apollo est une implémentation de la spec GraphQL qui apporte plus de fonctionnalités. +
+Pour démarrer en GraphQL, Apollo est un peu une usine à gaz. Mais on peut très bien se mettre à l'utiliser après coup.
+	** Apollo offre une fonctionnalité de cache, absente en GraphQL "de base" (la grosse différence entre Apollo et GraphQL)
+	** On peut exporter ses logs / stats sur une API en SaaS sur Apollo (avec un OPS sympa côté sécurité...)
+	** Attention ! Apollo ne supporte peut-être *que* le *Node.js*
+
+* GraphQL est massivement soutenu par Facebook. +
+-> Donc on va facilement trouvé des exemples de code / projet utilisant React et GraphQL (utilisation de toute la stack Facebook)
+
+* La doc des API est native (via GraphiQL), mais *pas de Swagger* (sauf peut-être avec Apollo)
+
+== Ressources
+
+* *slides du BBL* : http://slides.com/mbreton/graphql-workshop +
+Slides en Reveal.js, jouables directement dans le navigateur
+* *source du workshop* : https://github.com/js-republic/graphql-workshop
+
+
+
