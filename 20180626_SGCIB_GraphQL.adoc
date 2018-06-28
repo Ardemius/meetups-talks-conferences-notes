@@ -87,12 +87,13 @@ NOTE: Comme beaucoup de dev pour du JS ou du Node (la majorité), Mathieu utilis
 
 * Apollo est une implémentation de la spec GraphQL qui apporte plus de fonctionnalités. +
 Pour démarrer en GraphQL, Apollo est un peu une usine à gaz. Mais on peut très bien se mettre à l'utiliser après coup.
-	** Apollo offre une fonctionnalité de cache, absente en GraphQL "de base" (la grosse différence entre Apollo et GraphQL)
+	** *Apollo* offre une *fonctionnalité de cache*, absente en GraphQL "de base" (la grosse différence entre Apollo et GraphQL)
 	** On peut exporter ses logs / stats sur une API en SaaS sur Apollo (avec un OPS sympa côté sécurité...)
 	** Attention ! Apollo ne supporte peut-être *que* le *Node.js*
 
-* GraphQL est massivement soutenu par Facebook. +
--> Donc on va facilement trouvé des exemples de code / projet utilisant React et GraphQL (utilisation de toute la stack Facebook)
+* *GraphQL* est massivement soutenu par *Facebook*. +
+-> Donc on va facilement trouver des exemples de code / projet utilisant *React et GraphQL* (utilisation de toute la stack Facebook) +
+-> Pour information, le site de cours en ligne https://wesbos.com/courses/[Wes Bos] (bien connu dans le domaine du Front), est justement en train  de travailler sur un cours complet portant sur la stack *React / GraphQL*.
 
 * La doc des API est native (via GraphiQL), mais *pas de Swagger* (sauf peut-être avec Apollo)
 
