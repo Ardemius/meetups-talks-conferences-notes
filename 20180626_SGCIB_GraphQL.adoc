@@ -79,7 +79,7 @@ image::20180626_GraphQL.jpg[]
 * *axios* librairie pour faire des appels HTTP en JS
 
 .De nouveau Visual Studio Code
-NOTE: Comme beaucoup (la majorité), Mathieu utilise Visual Studio Code (ici pour sa démo de GraphQL)
+NOTE: Comme beaucoup de dev pour du JS ou du Node (la majorité), Mathieu utilise Visual Studio Code (ici pour sa démo de GraphQL)
 
 * *Input Type* : Fait pour représenter des objets complexes en paramètre de mutation
 
