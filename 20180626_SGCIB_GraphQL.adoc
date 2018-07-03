@@ -20,9 +20,11 @@ endif::[]
 :toc: macro
 //:toclevels: 3
 // To turn off figure caption labels and numbers
-:figure-caption!:
+//:figure-caption!:
 // Same for examples
-:example-caption!:
+//:example-caption!:
+// To turn off ALL captions
+:caption:
 
 toc::[]
 
@@ -72,6 +74,7 @@ github.com/graphql/graphiql[GraphiQL] : IDE de visualisation / manipulation d'un
 
 * Obligatoirement *1 resolver par type déclaré*
 
+.My image
 image::20180626_GraphQL.jpg[]
 
 * GraphQL est "promesse aware"
