@@ -1,0 +1,210 @@
+= FOD Meetup #7: Big Data, IoT et IA pour l'industrie 4.0
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté dans les locaux de http://www.benextcompany.com/[BeNext] +
+(très beaux locaux d'ailleurs)
+
+== Agenda
+
+Agenda
+
+* 18h45 - 19h00 : Accueil des participants
+* 19h00 - 19h30 : *IA et industrie 4.0 : promesses et défis* (Amine Benhenni - Dataswati)
+* 19h30 - 20h00 : *Construire un système d'IoT industriel avec Apache NiFi, MiNiFi et MQTT* (Abdelkrim Hadjidj - Hortonworks)
+* 20h00 - 20h30 : *Algorithme prédictif en temps réel: déploiement d'un modèle Spark avec PMML et Stream Analytics Manager* (Vitor Lundberg - Hortonworks)
+* 20h30 - 21h00 : Apéro
+
+== IA et industrie 4.0 : promesses et défis
+
+Présenté par *Amine Benhenni* - Lead Data Scientist - Dataswati
+
+=== Abstract
+
+L'industrie 4.0 se veut agile et automatisée grâce aux promesses offertes par la numérisation et l'interconnexion des différentes éléments de la chaîne de production. +
+Parmi les nombreux axes d'innovation et de développement, l'exploitation des données générées par la numérisation offre des perspectives de transformation durables de la production.
+
+En attendant le renouvellement du parc machine et l'adoption massive de l'Industrial IoT et de standards de communication pour la transmission massive de données de production, nous allons illustrer l'évolution des métiers de la production, comme le contrôle qualité, la métrologie, ou la maintenance prédictive, et allons pointer les principaux défis que l'on rencontre aujourd'hui dans une usine classique, et comment y répondre grâce aux outils de l'intelligence artificielle pour optimiser le coût de la qualité, réduire la facture énergétique, améliorer le TRS, etc.
+
+=== Notes
+
+* 1er gros hic en usine : *le réseau*
+	** il est difficile d'avoir du wifi dans une usine (interférence)
+	** il eqt difficile de tirer des câbles réseau dans une usine
+
++
+Ne pourraît-on pas faire les calculs "sur place" (*edge computing*) ? 
+	** les technologies ne sont pas encore matûres sur ce point
+
+* Autre (très) gros problème : *la qualité des données*
+	** elles ne sont PAS disponibles, exploitables, de bonne qualité et complètes
+	** elles sont souvent irrégulières
+	** volumétrie pas fiable
+	** *bruit et incertitudes*
+	** données non-structurées
+	** données *déséquilibrées* : *l'ennemi n°1 de la maintenance prédictive*
+	** données non-labelisées
+
+Il est difficile de construire un Dataset exploitable à partir de cela (avant même de commencer à parler de modèle)
+
+NOTE: les algorithmes *apprenants* ne valent pas mieux que les données sur lesquelles ils apprennent.
+
+-> On va "mieux" apprendre dans les usines qui ont les meilleures données.
+
+image::20180718_FOD_01.jpg[]
+
+* ce n'est qu'à partir de la *Central Database* qu'on va commencer à faire du Machine Learning.
+
+[NOTE]
+====
+*kaggle* : compétitions de Machine Learning
+====
+
+WARNING: La partie "sympa" (le machine learning) arrive tard dans le process, et est finalement vite passée. +
+On revient donc très vite sur les tâches "ingrates".
+
+.Utiliser le Design Thinking
+image:20180718_FOD_02.jpg[]
+image:20180718_FOD_03.jpg[]
+
+.Hype du Design Thinking
+NOTE: le *Design Thinking* se développe vraiment de plus en plus (buzz / hype)
+
+Il faut *penser itératif et incrémental* -> pilotage *Agile*
+
+image::20180718_FOD_04.jpg[]
+
+En conclusion, les facteurs de succès :
+
+image::20180718_FOD_05.jpg[]
+
+== Construire un système d'IoT industriel avec Apache NiFi, MiNiFi et MQTT
+
+Présenté par *Abdelkrim Hadjidj* - Solution Engineer - Hortonworks
+
+=== Abstract
+
+Combien de temps pensez-vous nécessaire pour construire un système IoT industriel capable de:
+
+* Collecter des données provenant de différentes usines vers le Cloud ou un Data Center
+* Déployer une nouvelle application IIoT ou reconfigurer des applications existantes de manière centralisée et temps réel
+* Garantir un passage à l'échelle et une sécurité des données de bout en bout
+
+Avec les bonnes technologies, vous pouvez construire un tel système en moins d'une heure! Dans cet présentation, nous vous montrerons comment implémenter un prototype IIoT avancé en utilisant du matériel Raspberry PI et des logiciels open source (MQTT, Apache NiFi, MiNiFi). Nous montrerons comment ce système assure la connectivité, la collecte de données et la reconfiguration automatique. De plus, nous utiliserons cette architecture pour implémenter un cas d'usage de supervision de processus industriels avec réaction contextuelle.
+
+=== Notes
+
+image::20180718_FOD_06.jpg[]
+
+.Flow management with Apache NiFi
+image::20180718_FOD_07.jpg[]
+
+1er avantage de NiFi : interface graphique +
+-> MAIS, cet avantage est un inconvénient pour l'IoT, car pénalisant côté perf
+
+Autre problème, NiFi accapare *TOUTES* les ressources du hardware sur lequel il se trouve. +
+-> là aussi, très pénalisant côté IoT
+
+Donc pour l'IoT, NiFi ne répond pas au besoin -> il faut regarder du côté *MiNiFi* (subproject de NiFi) +
+-> minifi vient toujours 
+
+NOTE: *NiFi* doit maintenant être considéré comme un *ecosystème* (NiFi, MiNiFi, registry)
+
+Tous les connecteurs de NiFi peuvent être utilisés par MiNiFi.
+
+.MiNiFi est "light" quand comparé à NiFi
+image::20180718_FOD_08.jpg[]
+
+.How does MiNiFi interact with NiFi?
+image::20180718_FOD_09.jpg[]
+
+.Work in progress MiNiFi C2 : Control & Command
+image::20180718_FOD_10.jpg[]
+
+Objectif : disposer d'un *outil graphique* permettant de *suivre l'état des différents agents*.
+
+image::20180718_FOD_11.jpg[]
+
+NOTE: Dans cette présentation, on sent effectivement une forte coloration industrielle à la paire NiFi / MiNiFi
+
+Rappel : l'objectif de NiFi est de déplacer la donnée d'un endroit à l'autre.
+
+* Question que j'ai posée à Abdelkrim : *si avec NiFi / MiNiFi il est principalement question de déplacer de la data, pourquoi ne pas utiliser Kafka à la place ?* 
+	** NiFi existait avec Kafka Connect, à une époque où Kafka ne pouvait donc pas se connecter à tout
+	** Dans le monde de l'IoT, Kafka reste une solution lourde (zookeeper, install, etc.), comparée à laquelle NiFi / MiNiFi est plus léger
+
+A vérifier : l'"esprit" de NiFi / MiNiFi est de travailler avec une flotte d'agents, vers lesquels le server C2 peut pousser les nouvelles configurations.
+
+NiFi sert en effet à ramener les données dans le Datalake.
+
+==== Demo
+
+image::20180718_FOD_12.jpg[]
+
+== Algorithme prédictif en temps réel: déploiement d'un modèle Spark avec PMML et Stream Analytics Manager
+
+Présenté par *Vitor Lundberg* - Solution Engineer - Hortonworks
+
+=== Abstract
+
+Cette présentation illustre comment construire et industrialiser un cas d'usage industriel prédictif temps réel. Nous verrons comment un modèle construit avec Spark peut être déployé avec le standard PMML et intégré dans Stream Analytics Manager pour une application en temps réel. Ensuite, nous montrerons comment faire de la visualisation sur les données en temps réel avec Superset.
+
+=== Notes
+
+Vitor travaille également pour Hortonworks, et son 1er schéma montre bien que *NiFi est utilisé pour l'ingestion dans le datalake.*
+
+image::20180718_FOD_13.jpg[]
+
+*SAM* : Streaming Analytics Manager +
+https://github.com/hortonworks/streamline
+
+SAM semble permettre une certaine "industrialisation" autour de la création de nouveaux modèles (de ML)
+
+NOTE: la plateforme Hortonworks semble beaucoup insister sur l'aspect configuration graphique de ses différents outils.
+
+Tous les outils de la plateforme Horton sont disponibles via *Ambari*.
+
+Storm est le moteur d'exécution derrière SAM.
+
+.Qu'est-ce que SAM finalement ?
+[NOTE]
+====
+SAM n'est finalement "que" la couche graphique (l'UI) permettant d'utiliser plus facilement Storm. +
+Storm ou un autre moteur de processing d'ailleurs (Spark Streaming, Flink, etc.)
+====
+
+
+
+
+
+
+
+
+
+
