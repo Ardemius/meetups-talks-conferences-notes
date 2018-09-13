@@ -134,7 +134,11 @@ C'est un choix parfaitement correct pour *Spark* par exemple.
 
 image::20180911_JVM-GC-Cassandra_22.jpg[]
 
-NOTE: Quentin avait déjà donné ce talk lors du derniers Devoxx France 2018, dont voici https://www.youtube.com/watch?v=trXfcqpWWyA[la vidéo].
+[NOTE]
+====
+Quentin avait déjà donné ce talk lors du derniers Devoxx France 2018, dont voici https://www.youtube.com/watch?v=trXfcqpWWyA[la vidéo]. +
+Les *slides* sont quant à eux disponibles sur https://www.slideshare.net/QuentinAmbard/jvm-tuning-for-low-latency-application-cassandra-95381363[SlideShare].
+====
 
 == Le futur d'*Apache* Cassandra
 
