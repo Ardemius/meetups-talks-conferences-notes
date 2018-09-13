@@ -1,0 +1,222 @@
+= Quelle JVM et Garbage Collector choisir et Le futur d'Apache Cassandra ? - 2018/09/11
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté dans les locaux de https://www.parisjug.org/xwiki/wiki/oldversion/view/Location/Criteo[Criteo]
+
+== Agenda
+
+Agenda
+
+* 19h15 - 19h30 : Accueil des participants
+* 19h30 - 20h15 : *JVM et Garbage Collection : découvrez les algos et configurations qui font (ou pas) la différence sur la BDD Cassandra* (Quentin Ambard)
+* 20h15 - 21h00 : *Le futur d'Apache Cassandra* (DuyHai Doan)
+* 21h00 - 22h00 : Buffet
+
+== JVM et Garbage Collection : découvrez les algos et configurations qui font (ou pas) la différence sur la BDD Cassandra
+
+=== Abstract 
+
+G1, CMS, Shenandoah, ou Zing ? Heap size à 8GB ou 31GB ? Pointers compressés ? Region size ? Quel temps de pause maximum ? Débit ou Latence ... Un vrai gain est-il à espérer ? Quels sont les paramètres ayant le plus d'impact ?
+
+Après un bref recapitulatif des differents GC, vous nous verrons l'effet des paramètres de la JVM sur Cassandra, une base de donnée à faible latence.
+
+=== Notes
+
+* *G1* est maintenant le GC par défaut
+* Il est *générationnel*, comme la plupart des GCs les plus courants.
+* Tous les graphes de perf présentés durant la pres ont été faits avec *Gatling* (qui tourne sur la JVM *Azul Zing*)
+
+* *Parallel GC* : bad latencies, good throughput
+	** bien pour des batchs, mais pas pour Cassandra (latence) 
+* *Concurrent Mark Sweep* (CMS) collector : 
+	** comportement semblable au parallel GC
+	** bien pour des petites heap
+	** son vrai problème est qu'il est statique et *difficile à régler*
+* *G1* (Garbage 1st) collector
+	** cette fois on donne un objectif de temps de pause à la Young Generation. +
+	-> resize dynamic pour respecter la durée max définie (ex: GC Young de 300 ms max)
+	** Lors du "region scan", je vais nettoyer en priorité les régions comportant *le plus d'objets morts* +
+	Ainsi, il y aura *moins d'objets vivants à déplacer* (c'est CA qui est coûteux)
+	+
+	image:20180911_JVM-GC-Cassandra_01.jpg[]
+	image:20180911_JVM-GC-Cassandra_02.jpg[]
+	** *principaux paramètres à setter* : taille de la heap, durée max de pause acceptée (target pause time)
+
+NOTE: *gceasy.io* pour avoir des infos de logs de GC "lisibles" (des graphes sympa)
+
+Objectif de Cassandra : moins de 200 ms de latence max
+
+image:20180911_JVM-GC-Cassandra_03.jpg[]
+image:20180911_JVM-GC-Cassandra_04.jpg[]
+
+Sur ce graphe, le ratio "Total pause time / Heap size" nous permet d'estimer le *débit de la JVM* +
+-> On voit que les *petites JVM* (< 20 Go) ont un *mauvais débit* (1ere partie de la courbe) +
+Par contre, on observe également un palier dans le débit quand on augmente la taille de la heap.
+
+Conclusion :
+
+* *G1* a besoin d'une *heap conséquente*
+* MAIS, cela ne sert à rien de lui allouer trop de heap !
+
+image::20180911_JVM-GC-Cassandra_05.jpg[]
+
+.31 ou 32 Go ?
+image::20180911_JVM-GC-Cassandra_06.jpg[]
+
+==== Test des différents paramètres du G1
+
+* `XX:ParallelGCThreads` : defines how many threads participate in GC
+* *Minimum young size*
++
+image::20180911_JVM-GC-Cassandra_07.jpg[]
+* *Survivor Threshold* : 
++
+image::20180911_JVM-GC-Cassandra_08.jpg[]
+
+-> Une bonne revue, détaillée, des impacts des différentes paramètres 👍
+
+==== Low latencies JVMS
+
+* *Zing* (Azul) : la seule réellement fiable actuellement
+* *Shenandoah* (Red Hat) : non générationnel
+* *Zgc* (Oracle)
+
+* JVM classiques -> Write barrier
+* JVM low latencies -> *READ barrier*
+
+-> Tests à l'appui, très bonnes performances de Zing ! Idem pour Shenandoah ! +
+(très bon tests / graphes fournis par Quentin)
+
+image:20180911_JVM-GC-Cassandra_23.jpg[]
+image:20180911_JVM-GC-Cassandra_24.jpg[]
+
+==== Small heap
+
+* ex : typical webserver or Kafka uses a few GB max
+
+image::20180911_JVM-GC-Cassandra_09.jpg[]
+
+==== Conclusion
+
+NOTE: les graphes / résultats précédents ont nécessité *plus de 300 heures de test*. +
+*ENORME boulot* de la part de Quention (Datastax) sur le sujet (garder le contact !)
+
+* Par défaut, si on ne veut pas y consacrer trop de temps, le mieux est d'utiliser G1, avec lequel on a moins de chances de se planter de conf qu'avec CMS.
+* *Parallel GC*, même si vieux, n'est pas une mauvaise solution. +
+C'est un choix parfaitement correct pour *Spark* par exemple.
+
+image::20180911_JVM-GC-Cassandra_22.jpg[]
+
+NOTE: Quentin avait déjà donné ce talk lors du derniers Devoxx France 2018, dont voici https://www.youtube.com/watch?v=trXfcqpWWyA[la vidéo].
+
+== Le futur d'*Apache* Cassandra
+
+=== Abstract
+
+Apache Cassandra devenant de plus en plus mainstream, nous allons tenter une prospective pour anticiper son évolution dans les 2-3 prochaines années.
+
+Nous aborderons notamment les sujets suivants:
+
+* la roadmap de la Cassandra 4.0
+* la fragmentation de l'écosystème avec les divers forks
+* la menace du cloud
+* l'éternel débat OSS vs Propriétaire
+
+=== Notes
+
+==== Roadmap 4.0
+
+* 02/11/2016: Jonathan Ellis (CTO Datastax) annonce le désengagement progressif de Datastax d'Apache Cassandra.
+
+image::20180911_JVM-GC-Cassandra_10.jpg[]
+
+.Support for selecting Map values and Set elements
+image::20180911_JVM-GC-Cassandra_11.jpg[]
+
+.Conseil de DuyHai
+NOTE: ne PAS utiliser les listes dans Cassandra (faibles performances), sauf si on souhaite conserver l'ordre d'insertion.
+
+Plusieurs problèmes apportés par les nouveaux *Transient replicas*. +
+-> ce système casse la symétrie des nodes de Cassandra !
+
+* *Enorme impact* sur la base de code pour ce changement (CASSANDRA-14404)
+* A la base, c'est une demande d'Apple... +
+Pour la gestion de ses Data Centers, mais les autres utilisateurs (normaux) n'ont *pas les mêmes problématiques de gestion d'un très grand nombre de noeuds*. +
+-> *Apple* débauche énormément chez Cassandra en ce moment, et on peut se demander si ce changement ne leur est pas (quasiment) réservé...
+
+* *Pluggable storage engine* (comme l'ajout de RockDB) +
+-> énorme charge de travail !
+
+===== Conclusion pour la 4.0
+
+* Depuis le désengagement de Datastax, gros problèmes de QA...
+
+image::20180911_JVM-GC-Cassandra_12.jpg[]
+
+==== La menace du Cloud
+
+* A partir de 2005-2006, le rythme des innovations a énormément augmenté !
+
+image::20180911_JVM-GC-Cassandra_13.jpg[]
+
+Les différentes Business Models possible pour gagner de l'argent avec l'OSS :
+
+.le support
+image::20180911_JVM-GC-Cassandra_14.jpg[]
+
+.le consulting
+image::20180911_JVM-GC-Cassandra_15.jpg[]
+
+.l'outillage
+image::20180911_JVM-GC-Cassandra_16.jpg[]
+
+.les fonctionnalités
+image::20180911_JVM-GC-Cassandra_17.jpg[]
+
+.le SaaS
+image::20180911_JVM-GC-Cassandra_18.jpg[]
+
+-> Le BM du SaaS est la bonne solution ! Voir l'exemple d'Amazon ! +
+On accepte plus (trop !) facilement de payer *POUR UN SERVICE* !
+
+La menace est là ! -> Tout cet écosystème est finalement presque négligeable face aux principaux acteurs du cloud !
+
+image::20180911_JVM-GC-Cassandra_19.jpg[]
+image::20180911_JVM-GC-Cassandra_20.jpg[]
+
+* Idée intéressante d'Elastic qui se protège des géants du Cloud en changeant sa licence (ce qui est toujours possible) 
+* Redis et sa "Common Clause"
+
+.financement participatif
+image::20180911_JVM-GC-Cassandra_21.jpg[]
+
+-> *Une analyse TRES intéressante* du milieu OSS. +
+C'est bien sûr l'avis de DuyHai, mais ce dernier est vraiment appuyé par de nombreux arguments, de l'expérience et de la logique. 
+
