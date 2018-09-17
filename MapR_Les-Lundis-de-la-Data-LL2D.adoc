@@ -1,0 +1,74 @@
+= MapR Les Lundis de la Data (LL2D)
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== 2018/09/17 LL2D [Workshop] Etes-vous plutot Hive (SQL en mode Batch) ou Drill (SQL en temps-réel)
+
+image::20180917_LL2D_drill-hive_1.jpg[]
+
+* *Drill* a été créé chez MapR, qui sont toujours le 1er commiter dessus.
+	** 37 commiters, 4 ans d'existence
+	** réellement ANSI SQL
+	** On peut requêter directement les données dans le FS (HDFS, MapR-FS, RDBMS, MongoDB, Kafka, etc.), pas besoin de définir un schéma comme pour Hive
+	** Drill utilise son propre *moteur de ressources* (*PAS* Yarn) : *Drillbits*
+	** Drill utilise *Zookeeper* pour le fallback
+	** Drill utilise un moteur d'exécution In Memory
+	** *Plutôt bien adapté pour de la Dataviz*, en lien avec un outil de BI.
+	** PAS fait du transactionnel, ou de l'anatyc In Memory (comme pour le Machine Learning)
+	** Drill est tout particulièrement efficace pour *requêter du Parquet*
+* *Impala* principalement développé par Cloudera
+* *Hive*
+	** 75 commiters, 8 ans d'existence
+	** pour le batch processing (et les traitements ETL), principalement car très scallable
+	** *PAS* fait pour de la *dataviz* (donc à ne pas coupler à un outil de BI)
+	** Le *HiveServer2* est le composant de Hive recevant les query
+
+-> Hive, Drill et Cloudera tournent sur MapR
+
+* *MapReduce* et *Tez* sont 2 *moteurs d'exécution* : Tez étant le plus récent des 2
+
+image::20180917_LL2D_drill-hive_2.jpg[]
+image::20180917_LL2D_drill-hive_3.jpg[]
+
+* le moteur d'exécution de Drill est plus performant que celui de Hive (meilleure latence)
+* Dans l'absolu, *Drill et Hive sont complémentaires*
+
+=== Demo
+
+Données OpenData donnant la dispo des Velib sur Paris.
+
+* *Drill est capable de requêter Hive*
+	** Dans ce cas Dril utilise SON moteur d'exécution, MAIS utilise les Meta Data de Hive (le MetaCatalog)
+
+* Pour convertir du csv en Parquet sous Drill : +
+`create table parquet_velib as select * from hive.velib.velib;`
+	** *très intéressant* pour du traitement ETL
+
+-> Les slides et l'enregistrement seront bientôt disponibles sur le site de MapR
+
