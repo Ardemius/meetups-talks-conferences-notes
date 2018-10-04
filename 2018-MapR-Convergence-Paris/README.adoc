@@ -1,0 +1,550 @@
+= MapR Convergence Paris
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Le *03/10/2018*, au https://goo.gl/maps/Nqhc5nS6syz[Pavillon Royal] (Carrefour du bout des lac, 1 Route de la Muette à Neuilly, 75116 Paris) +
+4e ou 5e édition de la conférence. +
+Site sur EventBrite : https://www.eventbrite.com/e/convergence-paris-tickets-45087380569
+
+== Description
+
+Big data comes with big myths. +
+Convergence, a full-day seminar, focuses on busting through those myths and getting to the truth so you can make informed decisions. +
+Learn from executives, practitioners, myth busters, and technical experts how to solve real-world problems by harnessing disruptions in data, artificial intelligence, cloud, containers, and edge technologies.
+
+*Area of focus:* +
+Use cases, artificial intelligence, data analytics, edge analytics, analytics in cloud, hybrid and multi cloud, containers, microservices, data and cyber security, intelligent applications, global event systems, Hadoop and friends, IoT transformation
+
+image::20181003_MapR-Convergence_agenda.jpg[]
+
+== Three Problems, Three Myths, Three Realities
+
+Presented by *Jack Norris*, Senior Vice President of Data and Applications, *MapR*.
+
+=== Abstract
+
+This session explores the hottest problems customers are struggling to sort out given the advent of many new breakthrough technological tools. +
+It also addresses conventional wisdom and myths and highlights the reality around three hot issues with best practice guidance and recommendations for each.
+
+=== Notes
+
+==== 1st myth
+
+-> *AI is about the right algorithms & needs its own silo*
+
+* More than just tools, it's a journey (a continuous evolution)
+* 90% of Machine Learning success is *Data Logistics* +
+> lire "Machine Learning Logistics" par Ted (https://mapr.com/ebook/machine-learning-logistics/[téléchargeable sur le site de MapR])
+* Article intéressant à lire : https://ai.google/research/pubs/pub43146[Machine Learning: The High-Interest credit card of Technical Debt] +
+e nouveau, mets en avant l'importance de la *Data Logistics*
+* The reason for a *Data Fabric* is to *avoid latency*
+* De nouveau, on parle de *DataOps* : a data management that *increase collaboration* between Data engineer, data scientists, ops
+
+==== 2nd myth
+
+-> *going all-cloud with one provider is best*
+
+.The Cloud reality
+image::3-myths_01.jpg[]
+
+* with the cloud providers, easy to get it, *hard to get out* -> but data is always in movement
+* *No solution for multi-cloud strategies* (one of the (big) advantages of MapR Data Platform)
+* Cloud alone is difficult (*especially security*), and here are the interest of a *Data platform*: 
++
+.Cloud with a Data Platform means Portable, Unified Access & Security
+image:3-myths_02.jpg[] 
+
+.Edge computing
+[NOTE]
+====
+*Edge computing* = traitement des données à la périphérie +
+C'est une pratique consistant à traiter les données à proximité de la périphérie de votre réseau, *là où les données sont générées*, et non dans un entrepôt de traitement de données centralisé. +
+Voir cet https://www.hpe.com/fr/fr/what-is/edge-computing.html[article de HPE] (Hewlett Packard Enterprise)
+====
+
+.A Data Platform inside the Cloud pays off
+image:3-myths_03.jpg[] 
+
+* Having a multi-cloud platform is a consequent avantage 
+
+.Conclusion
+[IMPORTANT]
+====
+* *MYTH*: The cloud provider's features and capabilities are the best to use
+* *REALITY*: A *data platform* inside a cloud makes it *easy to move data and appliations between clouds or on-prem* +
+Can lower cost, speed development time, avoid lock-in
+====
+
+==== 3rd Myth
+
+-> *Containers are only good for simple stateless apps. No help for complex stateful apps*
+
+* The data platform can access the containers as if local: +
+image:3-myths_04.jpg[] 
+
+* *A short history of IT*: +
+image:3-myths_05.jpg[] 
+
+* *Dataware* (hardware -> *new dataware* -> middleware -> software) turns data into a *manageable resource*, all in software.
+
+* Where is MapR innovation? +
+image:3-myths_06.jpg[] 
+
+.Conclusion
+[IMPORTANT]
+====
+* *MYTH*: Containers are only for stateless apps
+* *REALITY*: Stateful apps in containers with persisted data is a radical enhancer for ML/AI microservices
+====
+
+*To sum up things*: +
+image:3-myths_07.jpg[] 
+
+== Protecting Hyperscale Analytics Systems
+
+Presented by *Nicolas Helleringer*, VP engineering / Head of SRE at *Criteo*
+
+=== Notes
+
+*Thème* : comment s'est construite la Data Fabric chez *Criteo*, et pourquoi le *choix (récent) de MapR*.
+
+*Criteo* est passé sur *MapR* durant *l'été 2018*, principalement pour des *raisons de sécurité*
+
+Quelques infos sur la [red]*taille de Criteo* (impressionnant !) : +
+image:criteo_01.jpg[]
+
+-> 4 clusters Hadoop, le plus gros faisant *plus de 3000 noeuds*
+
+Objectif du projet : +
+image:criteo_02.jpg[]
+
+* Criteo cherchait à *briser la propagation des incidents* (du fait de la magie de la réplication)
+
+.Evolution de l'architecture Data chez Criteo
+image:criteo_03.jpg[]
+image:criteo_04.jpg[]
+image:criteo_05.jpg[]
+
+[NOTE]
+====
+* Architecture réseau *Est-Ouest* : trafic de données *entre serveurs*
+* Architecture réseau *Nord-Sud* : trafic de données des serveurs vers les utilisateurs
+====
+
+* A la base, la techno de Criteo se reposait quasi-exclusivement sur *SQL Server*
+* A partir d'un moment, pb de scalabilité, de temps de traitement -> *passage à Hadoop*, chez *Cloudera* pour des raisons de *commodité d'installation*
+	** Néanmoins *100 noeuds à l'époque*, c'était *trop en termes de déploiement*, même pour Cloudera, d'où beaucoup de customisation côté Criteo (surtout via Chef)
+* L'architecture actuelle a nécessité :
+	** de grosses optimisations du GC pour des *pbs de name nodes* +
+	Les *JVMs d'Azul* ont été utilisées dans ce contexte
+	** Les gens qui travaillent en Open Source sur ces problèmes de name nodes : Criteo, Google et c'est tout... (Facebook sont sur autre chose, et Apple ne communique pas) +
+	-> *MapR prend en compte ces problèmes de name nodes nativement depuis le début*.
+
+Le projet *Backup* : +
+image:criteo_06.jpg[]
+
+* Criteo *perd plusieurs dizaines de disques par jour* sur ses clusters. +
+Et ils ne les changent pas tout de suite
+
+* Qui choisir parmi https://www.openio.io/[OpenIO], https://ceph.com/[Ceph] et https://mapr.com/[MapR] ? +
+-> Un POC de *6 semaines* demandé à chacun, avec les caractéristiques suivantes :
+	** 100 noeuds
+	** 10 Po de data
+
+-> Au final, MapR a été la solution, qui marchait (pas le cas de toute), la plus homogène.
+
+* Parmi les tests effectués : +
+image:criteo_07.jpg[] +
+-> Un des tests a consisté à arracher à chaud des disques en cours d'écriture
+
+.Reminder
+NOTE: *CLDB* = MapR Container Location Database
+
+*Le Futur ?* +
+image:criteo_08.jpg[] +
+-> Criteo réfléchit à étendre l'usage de MapR au reste de sa production.
+
+IMPORTANT: *Criteo n'est PAS DU TOUT DANS UNE OPTIQUE CLOUD !* +
+Cela du fait de leur taille, et du coût associé d'un stockage dans le cloud.
+
+*Conclusion* : en termes d'expertise technologique et de complexité, le niveau est toujours aussi stratosphérique chez Criteo... +
+-> *Vidéo du talk à voir*
+
+== Fortune 100 : L’architecture des Data Lakes pour l'Analyse et l'IA en Temps Réel ?
+
+Presented by *Laurent SZPIRGLAS*, Sales Director France and Belux, *Attunity*
+
+=== Abstract
+
+L'analyse moderne et les initiatives d'IA requièrent un data Lake adaptable avec une architecture multi-niveaux pour capturer, stocker et fournir des jeux de données spécifiques en temps réel. +
+Attunity partagera son expérience et ses « Best Practices » en fournissant une solution d'intégration de données en temps réel aux organisations Fortune 100 telles que Cardinal Health, Verizon, etc.
+
+=== Notes
+
+* Il va surtout être question *d’ingénierie de réplication de données*, et de *CDC* (Change Data Capture)
+
+* En gros, il est surtout question *d'accélérer le temps de traitement du CDC* : Attunity est une solution répondant à ces besoins de meilleures performances en CDC (ex: 6 To de data en diff à copier sur un datalake par jour)
+
+Use cases et exemples : +
+image:attunity_01.jpg[]
+image:attunity_02.jpg[]
+
+Un autre exemple pour une chambre de compensation : *DB2 et Oracle -> MapR* +
+image::attunity_03.jpg[]
+
+* Attunity permet d'anonymiser la data durant le transfert : Attunity est donc très utilisé dans le cadre de GDPR
+
+* Le moteur de Microsoft SSIS est développé en collaboration avec Attunity. 
+
+== Qwant an Artificial Intelligence Company
+
+Presented by *Eric Leandri*, CEO, *Qwant*
+
+=== Abstract
+
+L'intelligence artificielle est devenue centrale dans le développement des technologies numériques et le moteur de recherche européen Qwant n'y fait pas exception. +
+L'IA est partout présente dans la création de ses produits, avec toujours le soin de développer une IA éthique. Eric Léandri expliquera cette vision de l'entreprise et ses motivations.
+
+=== Notes
+
+* *Qwant* : moteur de recherche européen
+
+* Seul moteur qui *respecte la vie privée des utilisateurs* : +
+image:qwant_01.jpg[]
+image:qwant_02.jpg[]
+
+* *Qwant est le 8e moteur de recherche mondial*
+	** une croissance soutenue 
+
+* dixit Eric : [red]*Un moteur recherche n'est QUE de l'IA* +
+image::qwant_03.jpg[]
+
+* *Représentation d'un site internet vu d'un moteur de recherche* : +
+image::qwant_04.jpg[] +
+-> En rouge ce que le public voit, en jaune ce que le moteur de recherche voit
+
+* Autre exemple d'usage d'IA par Qwant, pour un cas d'attaque / anomalie : +
+image::qwant_05.jpg[]
+-> Les comportements à risque sont identifiés *SANS* données utilisateur (Qwant ne sait pas qui a réalisé l'attaque)
+
+Bientôt, Qwant va mettre à disposition :
+
+* *Qwant Translate* : avec 4 personnes et de l'IA, on arrive à faire ce que 100 personnes faisaient il y a quelques années +
+image:qwant_06.jpg[]
+
+Qwant utilise l'IA :
+
+* Nécessite beaucoup de puissance, d'où un *partenariat avec NVidia pour les GPUs*
+* d'où un *partenariat avec MapR* pour amener cette puissance là où elle est nécessaire
+
+Qwant (la société) est également sollicité dans le cadre de la *recherche médicale* (modélisation d'un fibrome en 3D et opération avec un casque de réalité virtuelle)
+
+.Reconnaissance audio
+[quote, Eric]
+____
+en 30 min, on est capable de reproduire parfaitement la voix de n'importe qui...
+____
+
+image::qwant_07.jpg[]
+
+-> Il s'agit sur ce schéma de la technologie de Qwant, qui, contrairement à Google & co, place le traitement de l'audio (de votre parole) dans un *middle-End*, et *PAS* chez eux dans le back-end. +
+Il est inquiétant de se dire que l'on pourrait actuellement facilement reproduire votre voix, et donc usurper votre identité.
+
+*Les risques de l'IA* :
+
+image::qwant_08.jpg[]
+
+*Conclusion* : *Fantastique conférence*, Eric est un peu "gavé" par rapport aux dernières actualités (Google qui vient de signer avec Renault pour équiper 100% de ses voitures connectées...), mais ses arguments et conclusions sont hyper intéressantes. +
+-> Il prône une IA "GDPR compliant".
+
+*Questions du public* : 
+
+* depuis peu l'Europe a validé qu'on pouvait avoir Androïd *SANS GOOGLE* +
+Renault aurait pu le faire, mais n'était peut-être tout simplement pas au courant.
+
+* L'assemblée nationale et l'armée viennent de basculer sur Qwant
+
+* Dernièrement Google a payé 9 milliards pour être le moteur par défaut sur Safari
+
+* autre remarque intéressante d'Eric : *on cherche toujours à avoir en France des sociétés bénéficiaires tout de suite*, alors qu'Amazon ne fait des bénéfices que depuis 1 an 1/2, et Facebook a été grandement déficitaire pendant 8 ans, etc. +
+Aujourd'hui Qwant vit toujours grâce aux fonds de ses investisseurs, mais espère être rentable rapidement (à vérifier)
+
+== Getting Data Analytics and Artificial Intelligence into Production
+
+Presented by *Ted Dunning*, PhD, Chief Application Architect at *MapR* Technologies, et board member de la fondation Apache
+
+=== Notes
+
+image::photo28.jpg[]
+
+90% of the effort in successful machine learning isn't the learning... It's the *logistics*
+
+* 1st pattern: get the data *RIGHT*
+
+image::photo29.jpg[]
+
+* 2nd pattern: Cloudy architecture event without a cloud
+	** Ted le dit comme tout le monde : pour l'orchestration des containers, *utilisez Kubernetes !*
+	** Ted: we need something like Kubernetes, *but for data*.
+
+* 3rd pattern: Streaming system of record
+
+image::photo30.jpg[]
+
+We need to understand when to use the "cheap" learning instead of an unnecessary Deep Learning.
+
+NOTE: de très nombreux eBooks pointus sont disponibles gratuitement sur le site de MapR
+
+== Vers un « pipeline de données » de bout en bout, avec HPE
+
+Presented by *Didier Kirszenberg*, Responsable France des architectures Massive Data, *Hewlett Packard Entreprise*
+
+=== Abstract
+
+Le nouveau monde digital plonge les utilisateurs, les métiers dans une multitude d'expériences nouvelles… et, par conséquent, les entreprises dans des opportunités & challenges sans précédent..
+
+Traiter les données est un défi croissant: Internet des objets, IT distribuée des devices au Datacenter, nouvelle réalité "cloud hybride"…
+
+Certaines de ces données sont attendues et planifiées, d'autres non, et il devient très souvent impossible de les gérer à travers un « continuum données » optimisé.
+
+Dans ce but, HPE fournit des solutions pour un « pipeline de données » de bout en bout et pour toutes les charges de travail : "Edge Data" & traitement des données à la périphérie, "Fast Data" & analytique temps réel, "Big Data" & analytique à grande échelle, AI & Deep Learning / machine Learning…
+
+Venez découvrir la vision et les solutions HPE !
+
+=== Notes
+
+Il va être question de fournir une *infrastructure optimisée*.
+
+image::photo31.jpg[]
+
+image::photo32.jpg[]
+
+* HPC : High Performance Computing
+* Didier est très positif sur MapR (un des avantages avancé : évite la démultiplication des outils)
+	** Avec MapR (cf schémas à venir, on a un FS permettant d'adresser les 3 phases à venir)
+
+An End to End Data Pipeline
+
+image::multiplephoto.jpg[]
+
+.A CHECKER !
+NOTE: Didier parle du lancement de la Société Générale l'année avec MapR ?! Le projet Osmose ?
+
+* De nombreuses informations sur les gains associés à une bonne optimisation du matériel
+	** Une optim du BIOS permettant 5% de better perf par proc, sur une machine avec X proc, cela représente vite une belle somme
+* Des mises en garde sur les réalités industrielles de l'utilisation du Data Center (chauffe des machines, etc.)
+
+* Voir le Data Tiring depuis Hadoop v3, et depuis plus longtemps chez MapR 
+
+IMPORTANT: Le *Big Data dans le Cloud* est souvent soumis à des *problèmes de latence*. +
+J'en ai discuté après le talk avec Didier, il m'a expliqué que l'on pouvait gagner de 40 à 70% de perf à faire tourner des containers sur bare metal plutôt que sur des VMs
+
+Conclusion : Didier est un très bon speaker, et donne beaucoup d'informations très pertinentes, et peu connues / relayées dans les medias, sur les gains associés à une infrastructure, un matériel bien adapté aux besoins.
+
+[NOTE]
+====
+Didier m'a confirmé que le projet SGCIB sous MapR est bien OSMOSE, et qu'il est bien prévu que la solution soit vendue à l'extérieur de la SG ! +
+Cédric a également contacté (été contacté à la base ?) par HP pour améliorer son usage du hardware (le choix de machine plus adaptée) +
+Apparemment, il a même été question de monter un start-up au sein de la SG pour vendre la solution
+
+CORRECTION : Didier m'a expliqué que OSMOSE c'est 120 noeuds, et non 1200...
+====
+
+== Peut-on avoir confiance dans l’IA ?
+
+Presented by *Isabelle Galy*, COO, *CNAM Learning Lab*
+
+=== Abstract
+
+Chaque révolution technologique repose la question de la confiance, l'IA n'échappe pas à la règle. Sans cette confiance l'IA ne pourra pas se développer.
+
+Mais peut-on avoir confiance dans les IA ? Est-ce une problématique d'éthique des concepteurs ? De l'ordre de la responsabilité des utilisateurs ? Quid des datas ?
+
+=== Notes
+
+* Ce qui va gêner dans l'IA : *A qui appartient la décision ?*
+
+*Questions du public* :
+
+* Les lois et l'éthique de l'IA doivent-elles différentes de l'éthique des humains ? (question posée par une étudiante de la Sorbonne) 
+	** intérêt croissant des jeunes générations pour les questions éthiques
+* Déterminisme technologique à la Minority Report (qui commence aux US) : un algo prédit que vu mon passé / histoire, je vais commettre un crime de type X à la date Y...
+
+Débat très intéressant sur l'éthique, la responsabilité (à venir) de l'IA dans les décisions qu'elle va prendre.
+* ex: Les IA de détection des (certains types de) cancers sont plus performantes que les médecins. +
+Quand le médecin se trompe, c'est dommage mais ça arrive, personne n'est parfait... +
+Quand l'IA se trompe, c'est inacceptable, et *à qui la faute ?*
+
+== NVIDIA GPUs & Deep Learning, The Universe of Modern AI
+
+Presented by *Serge Palaric*, Vice President EMEA Enterprise South Europe & Embedded Europe, *NVIDIA*
+
+=== Notes
+
+* NVidia fait bien plus que des cartes graphiques pour les jeux...
+* Fonctionne encore comme une startup malgré sa taille (12 000 personnes)
+
+CUDA pour programmer le core des GPU
+
+* Le dernier GPU NVidia : 5120 cores (et +600 tensor cores), que l'on est capable de faire fonctionner en parallèle
+	** hyper adapté pour le *deep learning*
+	** le NVidia DGX-1 est dédié à l'IA
+* Pas la peine d'avoir un processing hyper puissant si derrière le réseau et le stockage ne suivent pas.
+* Certains verticaux sont améliorés par des GPU optimisés (mais *PAS* tous)
+{lb}
+* Etat des lieux de l'IA en 2020 :
++
+image::photo.jpg[]
+	** 47 milliards d'investissement associés
+
+NVidia dispose maintenant d'une force commerciale pour expliquer ce qu'ils font aux industries.
+
+* NVidia est très intéressé par la recherche médicale (l'imagerie médicale et beaucoup d'autres)
+
+image::photo.jpg[]
+
+NVidia a lancé sa Deep Learning Institute :
+
+image::photo.jpg[]
+
+== Une plateforme Big Data en Production en quelques semaines
+
+Presented by Cedric Thao, DataScientist at RelevanC
+
+=== Notes
+
+StartUp créée en 2017, rachetée par Casino.
+
+image::photo.jpg[]
+
+image::photo.jpg[]
+
+Macro-architecture :
+
+image::photo.jpg[]
+
+Les besoins techniques :
+
+image::photo.jpg[]
+
+La conséquence de ces besoins est la création d'un datalake, un *cluster Hadoop avec MapR*.
+
+Le futur :
+
+image::photo.jpg[]
+
+Conclusion : un nouvel exemple d'utilisation de MapR, mettant en avant les avantages du FS POSIX de MapR, et la facilité d'utilisation qu'il donne aux Data Scientists.
+
+
+== Expert Closing Panel
+
+Presented by *Isabelle Galy*, *Serge Palaric*, *Cedric Thao*, *Jems*, *Ted Dunning*, *Jack Norris*, *John Omernik*
+
+=== Abstract 
+
+Turn ideas from the day into your own practical course of action. +
+This panel of experts applies the insights from the day’s sessions to real-world challenges by engaging the audience in a spirited discussion.
+
+=== Notes
+
+Parmi les panélistes, en plus des précédents intervenants, il y avait également Amid, de JEMS Datafactory
+
+* 1ere question aux panélistes : *quels use cases d'IA avez-vous déjà rencontrés ?*
+	** Serge : banque -> Deep Learning pour vérification de chèque
+	** Didier : maintenance prédictive des systèmes d'information +
+	Avec, mis en avant, leur dernier rachat de la société *Nimble* +
+	Les principaux critères de réussite selon lui :
+		**** 1) *ROI*
+		**** 2) oui il faut le Data Scientist, mais il faut surtout la *source de données* +
+	Exemple d'une société qui n'a plus de support 1 et 2, car un système d'IA identifie 95% des alertes, les classifie, et trouve la solution associée dans la base de référence (créée au fur et à mesure). +
+	Ces alertes ne sont plus des "problèmes", seuls les 5% restant le sont, et sont directement communiqués au support de niv 3.
+	** Didier : un exemple malin de démarrage de projet Big Data (comment convaincre la direction) : commencer par la Dataviz, pour donner conscience aux users de la valeur contenue dans leurs data, puis lancer le projet sur les bonnes données.
+* 2e question : quels sont les difficultés / écueils classiques dans la data ?
+	** Didier : *l'effet de mode* -> je pose un Hadoop mais je ne sais pas pourquoi... +
+	Dixit ce qu'un DSI lui a dit : "l'informatique n'est pas un marché technologique, mais un marché de mode"
+* 3e question : effets Wahooo rencontrés ?
+	** Serge : Holodeck -> travail collaboratif dans un environnement virtuel
+* 4e question : que des POC en France ?
+	** Amid : JEMS évite de faire des POC, et préfère faire des pilotes
+	** Didier : on a une vraie culture mathématique en France, MAIS un frein sur des sociétés qui préfèrent avancer avec des outils éprouvés, plutôt que pour des innovations de rupture.
+
+== Sociétés rencontrées
+
+=== Attunity
+
+J'ai échangé avec *Laurent SZPIRGLAS*, Sales Director France and Belux, Attunity (un des speakers du salon)
+
+* Société américaine, existe depuis 30 ans, en train de s'implanter en Europe, et en France tout dernièrement
+* Son coeur de métier le *transfert de data en CDC* (Change Data Capture)
+* Son solution technique repose principalement sur *l'exploitation des logs des systèmes de stockage*
+	** Ex: CDC d'Oracle à Vertica
+* macro-architecture : Base source -> serveur Attunity (avec connecteur source et connecteur cible) -> Base cible
+	** 27 connecteurs existants actuellement
+	** système fermé, pas possible de développer son propre connecteur
+	** Les connecteurs traduisent les logs en SQL "classique" (je pense que Laurent veut dire que c'est du ANSI SQL) 
+* modèle de licensing par coeur (si la base Oracle source utilise 2 coeurs, 2 coeurs sont facturés par Attunity), mais uniquement en fonction de l'usage réel.
+* De nombreuses collaborations avec plusieurs grands groupes : Microsoft, Amazon, SAP, MapR, Cloudera, Hortonworks, Confluent, Gartner, Terradata
+	** de manière générale, travaille avec tous les éditeurs de base
+
+== Divers
+
+=== YOLO: Open source Real-time Object Detection system
+
+Entre les talks était projetée une vidéo très impressionnante de *reconnaissance d'images en temps réel sur un James Bond* (scène d'action avec Daniel Craig, donc qui va vite). +
+Les personnes, animaux, voitures, motos, camions, etc. étaient reconnus quasi-instantanément. +
+-> Il s'agit d'une démonstration de https://pjreddie.com/darknet/yolo/[YOLO (You Only Look Once)], a *Real-time Object Detection* system.
+
+Regardez la vidéo, cela se passe de commentaires...
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=VOC3huqHrss[YOLO on James Bond action scene]
+endif::[]
+ifdef::env-browser[]
+video::VOC3huqHrss[youtube, width=640, height=480]
+endif::[]
+
+Et pour un article poussé sur la technologie, prenez votre temps (cela ne va *PAS* prendre 5 min) sur cet https://medium.com/@jonathan_hui/real-time-object-detection-with-yolo-yolov2-28b1b93e2088[article sur Medium].
+
+Voici également https://www.suasnews.com/2017/08/yolo-open-source-real-time-image-recognition/[un autre lien] plus accessible. 
+
+=== Demo de Mike UZAN (MapR)
+
+Sur le stand de MapR, Mike UZAN faisait une *demo de reconnaissance d'image en TR à l'aide d'un drone* et d'une architecture basée sur MapR.
+
+Comme Mike est sur Mac, il a utilisé un GPU NVidia sur clé USB pour le traitement d'images :
+
+Le code source devrait d'ici peu être disponible sur GitHub.
+
+
+
+
+
+
+
+
