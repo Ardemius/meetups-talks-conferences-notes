@@ -18,7 +18,7 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 1
+:toclevels: 2
 // To turn off figure caption labels and numbers
 //:figure-caption!:
 // Same for examples
@@ -41,7 +41,7 @@ Learn from executives, practitioners, myth busters, and technical experts how to
 *Area of focus:* +
 Use cases, artificial intelligence, data analytics, edge analytics, analytics in cloud, hybrid and multi cloud, containers, microservices, data and cyber security, intelligent applications, global event systems, Hadoop and friends, IoT transformation
 
-image::20181003_MapR-Convergence_agenda.jpg[]
+image::20181003_MapR-Convergence_agenda.png[]
 
 == Three Problems, Three Myths, Three Realities
 
@@ -243,14 +243,14 @@ image:qwant_02.jpg[]
 	** une croissance soutenue 
 
 * dixit Eric : [red]*Un moteur recherche n'est QUE de l'IA* +
-image::qwant_03.jpg[]
+image:qwant_03.jpg[]
 
 * *Représentation d'un site internet vu d'un moteur de recherche* : +
-image::qwant_04.jpg[] +
+image:qwant_04.jpg[] +
 -> En rouge ce que le public voit, en jaune ce que le moteur de recherche voit
 
 * Autre exemple d'usage d'IA par Qwant, pour un cas d'attaque / anomalie : +
-image::qwant_05.jpg[]
+image:qwant_05.jpg[]
 -> Les comportements à risque sont identifiés *SANS* données utilisateur (Qwant ne sait pas qui a réalisé l'attaque)
 
 Bientôt, Qwant va mettre à disposition :
@@ -301,25 +301,25 @@ Presented by *Ted Dunning*, PhD, Chief Application Architect at *MapR* Technolog
 
 === Notes
 
-image::photo28.jpg[]
+image::data-analytics-IA-in-prod_01.jpg[]
 
-90% of the effort in successful machine learning isn't the learning... It's the *logistics*
+* 90% of the effort in successful Machine Learning isn't the learning... It's the *logistics*
+* A very important concern : to think from the beginning to the *NEXT* project (multi-tenancy)
 
-* 1st pattern: get the data *RIGHT*
+* 1st pattern: *get the data RIGHT* +
+image:data-analytics-IA-in-prod_02.jpg[]
 
-image::photo29.jpg[]
-
-* 2nd pattern: Cloudy architecture event without a cloud
+* 2nd pattern: *Cloudy architecture event without a cloud*
 	** Ted le dit comme tout le monde : pour l'orchestration des containers, *utilisez Kubernetes !*
 	** Ted: we need something like Kubernetes, *but for data*.
 
-* 3rd pattern: Streaming system of record
+* 3rd pattern: *Streaming system of record* +
+image:data-analytics-IA-in-prod_03.jpg[]
 
-image::photo30.jpg[]
+-> We need to understand *when to use the "cheap" learning instead of an unnecessary Deep Learning*.
 
-We need to understand when to use the "cheap" learning instead of an unnecessary Deep Learning.
-
-NOTE: de très nombreux eBooks pointus sont disponibles gratuitement sur le site de MapR
+.MapR resources and eBooks
+NOTE: De très nombreux *eBooks* pointus sont disponibles gratuitement sur https://mapr.com/ebooks/[le site de MapR]
 
 == Vers un « pipeline de données » de bout en bout, avec HPE
 
@@ -341,39 +341,57 @@ Venez découvrir la vision et les solutions HPE !
 
 Il va être question de fournir une *infrastructure optimisée*.
 
-image::photo31.jpg[]
+image:end2end-pipeline-HPE_01.jpg[]
+image:end2end-pipeline-HPE_02.jpg[]
 
-image::photo32.jpg[]
-
-* HPC : High Performance Computing
-* Didier est très positif sur MapR (un des avantages avancé : évite la démultiplication des outils)
-	** Avec MapR (cf schémas à venir, on a un FS permettant d'adresser les 3 phases à venir)
-
-An End to End Data Pipeline
-
-image::multiplephoto.jpg[]
-
-.A CHECKER !
-NOTE: Didier parle du lancement de la Société Générale l'année avec MapR ?! Le projet Osmose ?
-
-* De nombreuses informations sur les gains associés à une bonne optimisation du matériel
-	** Une optim du BIOS permettant 5% de better perf par proc, sur une machine avec X proc, cela représente vite une belle somme
-* Des mises en garde sur les réalités industrielles de l'utilisation du Data Center (chauffe des machines, etc.)
-
-* Voir le Data Tiring depuis Hadoop v3, et depuis plus longtemps chez MapR 
-
-IMPORTANT: Le *Big Data dans le Cloud* est souvent soumis à des *problèmes de latence*. +
-J'en ai discuté après le talk avec Didier, il m'a expliqué que l'on pouvait gagner de 40 à 70% de perf à faire tourner des containers sur bare metal plutôt que sur des VMs
-
-Conclusion : Didier est un très bon speaker, et donne beaucoup d'informations très pertinentes, et peu connues / relayées dans les medias, sur les gains associés à une infrastructure, un matériel bien adapté aux besoins.
-
+.Reminder
 [NOTE]
 ====
-Didier m'a confirmé que le projet SGCIB sous MapR est bien OSMOSE, et qu'il est bien prévu que la solution soit vendue à l'extérieur de la SG ! +
-Cédric a également contacté (été contacté à la base ?) par HP pour améliorer son usage du hardware (le choix de machine plus adaptée) +
+*MPP* : Massively Parallel Processing
+*HPC* : High Performance Computing
+====
+
+Didier est très positif sur *MapR*.
+
+* Un des avantages avancé : *évite la démultiplication des outils* -> Mis en avant par MapR avec le nom de sa solution : la *"Converged"* Data Platform.
+* Avec MapR (cf schémas ci-après), on a un FS permettant d'adresser les 3 phases de :
+	** Streaming Analytics / Fast Data
+	** Big Data
+	** AI
+
+An *End to End Data Pipeline* : +
+image:end2end-pipeline-HPE_03.jpg[]
+image:end2end-pipeline-HPE_04.jpg[]
+image:end2end-pipeline-HPE_05.jpg[]
+image:end2end-pipeline-HPE_06.jpg[]
+
+* *Aruba IntroSpect* à gauche dans le dernier schéma
+* Le dernier schéma nous montre le matériel HPE dédié à chaque phase.
+
+Didier donne de nombreuses informations sur les *gains associés à une bonne optimisation du matériel*. +
+-> Une optim du BIOS permettant 5% de better perf par proc, sur une machine à X proc, représente vite une belle somme
+
+Il nous met également en garde sur les réalités industrielles de l'utilisation d'un Data Center (chauffe des machines, etc.)
+
+* Voir le *Data Tiering* depuis *Hadoop v3*, et depuis plus longtemps chez *MapR*.
+
+[IMPORTANT]
+====
+Le *Big Data dans le Cloud* est souvent soumis à des *problèmes de latence*.
+
+J'en ai discuté après le talk avec Didier, il m'a expliqué que l'on pouvait *gagner de 40 à 70% de perf en faisant tourner des containers sur bare metal plutôt que sur des VMs*.
+====
+
+*Conclusion* : Didier est un très bon speaker, et donne beaucoup d'informations très pertinentes, peu connues / relayées dans les médias, sur les gains associés à une infrastructure, un matériel bien adapté aux besoins.
+
+.Projet OSMOSE à la SGCIB (RESG/BSC - Cédric ROUVRAIS)
+[NOTE]
+====
+Didier m'a confirmé que *le projet SGCIB sous MapR est bien OSMOSE* (il évoque le projet et le donne en exemple durant le talk), et qu'il est bien prévu que la solution soit vendue à l'extérieur de la SG. +
+Cédric a également contacté (été contacté à la base ?) par HP pour améliorer son usage du hardware (le choix de machines plus adaptée) +
 Apparemment, il a même été question de monter un start-up au sein de la SG pour vendre la solution
 
-CORRECTION : Didier m'a expliqué que OSMOSE c'est 120 noeuds, et non 1200...
+CORRECTION : Didier m'a expliqué que *OSMOSE* c'est *120 noeuds*, et non 1200... (apparemment (à vérifier), c'est quand même plus que tous les autres projets Data *en PROD*, réunis, de la SGCIB...)
 ====
 
 == Peut-on avoir confiance dans l’IA ?
@@ -393,11 +411,11 @@ Mais peut-on avoir confiance dans les IA ? Est-ce une problématique d'éthique 
 *Questions du public* :
 
 * Les lois et l'éthique de l'IA doivent-elles différentes de l'éthique des humains ? (question posée par une étudiante de la Sorbonne) 
-	** intérêt croissant des jeunes générations pour les questions éthiques
-* Déterminisme technologique à la Minority Report (qui commence aux US) : un algo prédit que vu mon passé / histoire, je vais commettre un crime de type X à la date Y...
+	** *intérêt croissant des jeunes générations pour les questions éthiques*
+* Déterminisme technologique à la Minority Report (qui commence aux US) : un algo prédit que, vu mon passé / histoire, je vais commettre un crime de type X à la date Y...
 
-Débat très intéressant sur l'éthique, la responsabilité (à venir) de l'IA dans les décisions qu'elle va prendre.
-* ex: Les IA de détection des (certains types de) cancers sont plus performantes que les médecins. +
+Débat très intéressant sur l'éthique, *la responsabilité (à venir) de l'IA* dans les décisions qu'elle va prendre. +
+-> ex: Les IA de détection des (certains types de) cancers sont plus performantes que les médecins. +
 Quand le médecin se trompe, c'est dommage mais ça arrive, personne n'est parfait... +
 Quand l'IA se trompe, c'est inacceptable, et *à qui la faute ?*
 
@@ -408,30 +426,36 @@ Presented by *Serge Palaric*, Vice President EMEA Enterprise South Europe & Embe
 === Notes
 
 * NVidia fait bien plus que des cartes graphiques pour les jeux...
-* Fonctionne encore comme une startup malgré sa taille (12 000 personnes)
+* Fonctionne encore comme une startup malgré sa taille (*12 000 personnes*)
 
-CUDA pour programmer le core des GPU
+*CUDA* pour programmer le core des GPU
 
-* Le dernier GPU NVidia : 5120 cores (et +600 tensor cores), que l'on est capable de faire fonctionner en parallèle
+*La montée en performance des GPU* est juste impressionnante : +
+image:nvidia_01.jpg[] +
+-> Regardez la différence annoncée de performances entre système mono-threadé et GPU en 2025, x1000...
+
+* Le dernier *GPU NVidia* : *5120* cores (et +600 tensor cores), que l'on est capable de faire fonctionner en parallèle
 	** hyper adapté pour le *deep learning*
-	** le NVidia DGX-1 est dédié à l'IA
+	** le *NVidia DGX-1* est dédié à l'*IA*
+
 * Pas la peine d'avoir un processing hyper puissant si derrière le réseau et le stockage ne suivent pas.
 * Certains verticaux sont améliorés par des GPU optimisés (mais *PAS* tous)
-{lb}
-* Etat des lieux de l'IA en 2020 :
-+
-image::photo.jpg[]
-	** 47 milliards d'investissement associés
 
-NVidia dispose maintenant d'une force commerciale pour expliquer ce qu'ils font aux industries.
+*Etat des lieux de l'IA* en 2020 : +
+image:nvidia_02.jpg[]
+
+* 47 milliards de $ d'investissement associés d'ici à 2020 !
+
+* NVidia dispose maintenant d'une force commerciale pour expliquer ce qu'ils font aux industries.
 
 * NVidia est très intéressé par la recherche médicale (l'imagerie médicale et beaucoup d'autres)
 
-image::photo.jpg[]
-
-NVidia a lancé sa Deep Learning Institute :
-
-image::photo.jpg[]
+* NVidia est très impliqué dans l'IA et le Deep Learning
+	** NVidia Deep Learning platform +
+	image:nvidia_03.jpg[]
+	** NVidia a lancé sa *Deep Learning Institute* : +
+	image:nvidia_04.jpg[] +
+	-> *Caffe* et *PyTorch* de nouveau mis en avant
 
 == Une plateforme Big Data en Production en quelques semaines
 
@@ -439,32 +463,33 @@ Presented by Cedric Thao, DataScientist at RelevanC
 
 === Notes
 
-StartUp créée en 2017, rachetée par Casino.
+* StartUp créée en 2017, rachetée par Casino +
+image:relevanc_01.jpg[]
 
-image::photo.jpg[]
+* 4 piliers : *connaître* / *segmenter* / *activer* / *mesurer* +
+image:relevanc_02.jpg[]
 
-image::photo.jpg[]
+* *Macro-architecture* : +
+image:relevanc_03.jpg[] +
+-> de nouveau (normal vu le salon) une solution sur socle MapR (ainsi que Elastic et Kubernetes)
 
-Macro-architecture :
+* Les besoins techniques : +
+image:relevanc_04.jpg[]
 
-image::photo.jpg[]
+* La conséquence de ces besoins est la création d'un datalake, un *cluster Hadoop avec MapR* : +
+image:relevanc_05.jpg[]
 
-Les besoins techniques :
+* Le futur : +
+image:relevanc_06.jpg[] +
+-> les 2 produits technologiques phares de ce futur étant MapR et Kubernetes
 
-image::photo.jpg[]
-
-La conséquence de ces besoins est la création d'un datalake, un *cluster Hadoop avec MapR*.
-
-Le futur :
-
-image::photo.jpg[]
-
-Conclusion : un nouvel exemple d'utilisation de MapR, mettant en avant les avantages du FS POSIX de MapR, et la facilité d'utilisation qu'il donne aux Data Scientists.
-
+*Conclusion* : un nouvel exemple d'utilisation de MapR, mettant en avant *les avantages du FS POSIX de MapR*, et la *facilité d'utilisation* qu'il donne aux Data Scientists.
 
 == Expert Closing Panel
 
-Presented by *Isabelle Galy*, *Serge Palaric*, *Cedric Thao*, *Jems*, *Ted Dunning*, *Jack Norris*, *John Omernik*
+Presented by (from left to right) *Serge Palaric*, *Didier Kirszenberg*, *Cedric Thao*, *Amid (Jems Datafactory)* et *Isabelle Galy*.
+
+image::expert-closing-panel.jpg[]
 
 === Abstract 
 
@@ -480,17 +505,17 @@ Parmi les panélistes, en plus des précédents intervenants, il y avait égalem
 	** Didier : maintenance prédictive des systèmes d'information +
 	Avec, mis en avant, leur dernier rachat de la société *Nimble* +
 	Les principaux critères de réussite selon lui :
-		**** 1) *ROI*
-		**** 2) oui il faut le Data Scientist, mais il faut surtout la *source de données* +
+		1. *ROI*
+		2. Oui, il faut le Data Scientist, mais il faut surtout la *source de données* +
 	Exemple d'une société qui n'a plus de support 1 et 2, car un système d'IA identifie 95% des alertes, les classifie, et trouve la solution associée dans la base de référence (créée au fur et à mesure). +
 	Ces alertes ne sont plus des "problèmes", seuls les 5% restant le sont, et sont directement communiqués au support de niv 3.
 	** Didier : un exemple malin de démarrage de projet Big Data (comment convaincre la direction) : commencer par la Dataviz, pour donner conscience aux users de la valeur contenue dans leurs data, puis lancer le projet sur les bonnes données.
-* 2e question : quels sont les difficultés / écueils classiques dans la data ?
+* 2e question : *quels sont les difficultés / écueils classiques dans la data ?*
 	** Didier : *l'effet de mode* -> je pose un Hadoop mais je ne sais pas pourquoi... +
-	Dixit ce qu'un DSI lui a dit : "l'informatique n'est pas un marché technologique, mais un marché de mode"
-* 3e question : effets Wahooo rencontrés ?
-	** Serge : Holodeck -> travail collaboratif dans un environnement virtuel
-* 4e question : que des POC en France ?
+	Dixit ce qu'un DSI lui a dit : "l'informatique n'est pas un marché technologique, mais un marché de mode..."
+* 3e question : *effets Wahooo rencontrés ?*
+	** Serge : Holodeck -> travail collaboratif dans un environnement virtuel (voir https://www.01net.com/actualites/holodeck-on-a-essaye-la-vr-collaborative-de-nvidia-1276118.html[cet article] pour plus de détails)
+* 4e question : *que des POC en France ?*
 	** Amid : JEMS évite de faire des POC, et préfère faire des pilotes
 	** Didier : on a une vraie culture mathématique en France, MAIS un frein sur des sociétés qui préfèrent avancer avec des outils éprouvés, plutôt que pour des innovations de rupture.
 
@@ -537,11 +562,22 @@ Voici également https://www.suasnews.com/2017/08/yolo-open-source-real-time-ima
 
 Sur le stand de MapR, Mike UZAN faisait une *demo de reconnaissance d'image en TR à l'aide d'un drone* et d'une architecture basée sur MapR.
 
-Comme Mike est sur Mac, il a utilisé un GPU NVidia sur clé USB pour le traitement d'images :
+image:demo-mike-uzan_01.jpg[]
+image:demo-mike-uzan_02.jpg[]
+image:demo-mike-uzan_03.jpg[]
+
+Comme Mike est sur Mac, il a utilisé un GPU NVidia sur clé USB (https://software.intel.com/en-us/neural-compute-stick[Movidius Neural Compute Stick]) pour le traitement d'images : +
+image:demo-mike-uzan_04.jpg[]
 
 Le code source devrait d'ici peu être disponible sur GitHub.
 
-
+.Au sujet du redémarrage de la sandbox MapR
+[NOTE]
+====
+J'ai demandé à Mike ce qu'il en était des soucis de redémarrage de la sandbox MapR (le MapR-FS qui ne remonte pas) +
+En fait, il semblerait que le MapR-FS remonte bien, mais au bout de 15 minutes (à tester) +
+Apparemment, on peut également forcer son démarrage via un restart du service warden.
+====
 
 
 
