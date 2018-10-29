@@ -18,7 +18,7 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 3
+:toclevels: 2
 // To turn off figure caption labels and numbers
 //:figure-caption!:
 // Same for examples
@@ -31,13 +31,25 @@ toc::[]
 Du 29 au 31/10/2018, à l'espace Charenton à Paris. +
 Site : https://voxxeddays.com/microservices/
 
-== Description
-
 == Monday
 
 === Welcome to Voxxed Days Microservices
 
 Presented by Antonio GONCALVES.
+
+Pour les tables rondes (panel), on peut poser des questions aux panelistes via les hashtages `#MicroServices` and `#panel`
+
+.Plan de lieux et sponsors
+image::voxxed_place_map.jpg[]
+
+*Wifi* : SSID "Espace Charenton Fibre" : / mdp : CharentonfibreFibre#Paris12
+
+Parmi les partenaires :
+
+* Manning : on *ctwvoxxed18* pour avoir 40% de réduction sur tous les livres Manning
+* Comme pour Devoxx France, *321IdCom* est partenaire pour la comm de l'évènement (c'est une des boîtes utilisée pour les goodies de Devoxx France)
+
+*Twitter* : @vxdmicroservice
 
 === Distant Past of Microservices
 
@@ -51,7 +63,29 @@ Whether it’s Netflix OSS, Spring Cloud, or any other open source framework for
 
 ==== Notes
 
+When speaking of microservices, we are speaking of *distributed systems*
 
+Ken : client / server architecture is just another distributed system
+
+*Characteristics of microservices* :
+
+* retries
+* transaction manager
+* Command objects
+* service registry
+* caching
+
+Ken cite (comme tout le monde) *Istio* pour la gestion de l'environnement associé aux microservices.
+
+[quote, Ken]
+____
+We have to stop reinventing the same wheel, just because we can...
+____
+
+.Consistent state
+image::voxxed_01.jpg[]
+
+Ken vient de "Enterprise Java Microservices" chez Manning.
 
 === distributed: of systems and teams
 
@@ -64,6 +98,57 @@ We endeavor to build consistency, availability, and fault tolerance into our dis
 Drawing in comparisons from theoretical computer science and practical systems implementation, I’ll explore how building understanding requires a practical application of great tools in a deliberate pursuit of a constructive culture.
 
 ==== Notes
+
+____
+We replace our monolith with microservices so that every outage could be more like a murder mystery
+____
+
+.CAP theorem
+image::voxxed_02.jpg[]
+
+.Reminder
+NOTE: *CAP theorem* : trade-off between *Consistency / Availability / partition tolerance*
+
+==== Consistency
+
+Bridget remembering a startup going to Docker in PROD in 2013 (!). +
+For which reasons? -> *more consistent deployments, more repeatable ones*
+
+Containers don't solve all problems
+
+*Helm*: the package manager for Kubernetes +
+"Help is the best way to find, share, and use software built for Kubernetes"
+
+image::voxxed_03.jpg[]
+
+==== Availability
+
+Kubernetes: a choice for orchestration 
+
+* portable
+* extensible
+* self-healing
+
+Tools to check : *Draft*, *Brigade*, *Virtual Kubelet*
+
+.Virtual Kubelet
+image::voxxed_04.jpg[]
+
+Orchestrating containers is a tool, *NOT* a goal! +
+-> If no benefit, don't do it
+
+==== Partition tolerance (or Fault tolerance)
+
+[quote, Loi de Conway]
+____
+Any organization that designs a system.... will produce a design whose structure is a copy of the organization's *communication* structure
+____
+
+* *Monitoring* is for operating software/systems
+* *Insturmentation* is for wrting software
+* *observability* is for understanding systems.
+
+_Winter is coming_ -> k8s getting real
 
 === Preparing For a Future Microservices Journey
 
@@ -78,19 +163,135 @@ After having already introduced microservices in a startup context I would like 
 
 ==== Notes
 
+Quite a journey to move to monolith to microservices
+
+.Microservices required components
+image::voxxed_05.jpg[]
+
+____
+Build the things that differentiate you, offload the things that don't
+____
+
+.Cloud native
+image::voxxed_06.jpg[]
+
+.Kubernetes
+image::voxxed_07.jpg[]
+
+.Cloud native citizen principles
+image::voxxed_08.jpg[]
+
+Importance of the separation of concerns -> with the use of *Service Mesh*
+
+image::voxxed_09.jpg[]
+
+And now *Serverless* principles
+
+image:voxxed_10.jpg[]
+image:voxxed_11.jpg[]
+
+.Serverless example with image processing
+image::voxxed_12.jpg[]
+
 === Hexagonal at Scale, with DDD and microservices!
 
 Presented by Cyrille MARTRAIRE, CTO and partner at Arolla.
 
 ==== Abstract
 
-Microservices need DDD absolutely. Bounded Contexts, a key DDD ingredient, is the tool of choice to define services boundaries that won’t end up in a complete disaster at runtime and at deployment time. And for a given service, the Hexagonal Architecture is a great implementation style as well.
+*Microservices need DDD absolutely*. +
+Bounded Contexts, a key DDD ingredient, is the tool of choice to define services boundaries that won’t end up in a complete disaster at runtime and at deployment time. And for a given service, the Hexagonal Architecture is a great implementation style as well.
 
 In this talk, you’ll get a deeper understanding of what these abstract buzzwords are all about, illustrated with short Java code. You’ll discover how to really split your monolith correctly, and when to go Hexagonal, or not, because one should never abuse of the good things. It will be fun, with perhaps a few surprises as well!
 
 ==== Notes
 
+* Split by technology +
+Also wrong...
+* Split by entity +
+Still wrong, even if the most common...
 
+So how to define our Bounded Contexts correctly? +
+*By (sub-)domain*
+
+image::voxxed_13.jpg[]
+
+-> This alignment is just what we want. +
+But we only know *afterwards* that our boundaries where right
+
+We want to partition things into *independent* things.
+
+*Strategic design* = in the *long* term
+
+See this example, with a very bad add of a 2nd address in the class :
+
+image::voxxed_14.jpg[] 
+
+-> At term, it will *NOT* be maintainable.
+
+In this other example : Customer is not Account is not Recipient, EVENT IF THEY LOOK LIKE EACH OTHER! +
+*not to be* means (most of the time) different Bounded Contexts.
+
+-> *DRY PLUS coupling OR isolation PLUS redundancy*
+
+In the former customer, account, recipient factorizing common attributes (like address) means coupling. +
+Moreover, it is not because things look like each other that they are the same thing (meaning the same BC) +
+-> duplication (same address in several different BC) can be a good thing or even a required thing.
+
+.High coupling and low cohesion
+image::voxxed_15.jpg[]
+
+Every pb on a coupled element will propagate to the whole application.
+
+With this alternative, we now only rely on "shipping" -> low coupling, better cohesion
+
+image::voxxed_16.jpg[]
+
+Mapping = ACL (Anti COrruption Layer) in DDD
+
+.Good and bad architecture
+image::voxxed_17.jpg[]
+
+Now, how do we identify the Bounded Contexts?
+
+* DIfferent Company Departments -> different Bounded Contexts
+* Different USAGE of the same thing -> different Bounded Contexts
++
+image::voxxed_18.jpg[]
+
+Like in a dictionary, a same word can have different meanings in different contexts.
+
+image::voxxed_19.jpg[]
+
+Good domains generally end with "-ing" or "-tion" (because *purpose verbs* made into nouns)
+
+When using Event Storming, do it for *Big Things*
+
+image::voxxed_20.jpg[]
+
+* "Search" is always a bounded context on its own.
+* Same thing for "Reporting"
+
+Do not mandatorily split your monolith *too soon*, wait a bit to know it better
+
+===== Hexagonal architecture
+
+Indeed a good thing, but introduce some complexity.
+
+To compensate that:
+
+* Hexagonal light
+* CRUD: most of the time, instead of unnecessary complexity, go CRUD!
+
+To illustrate the need for isolation, and so microservices
+
+image::voxxed_21.jpg[]
+
+-> on the right, if something goes rotten, it will not contaminate the other things
+
+You can also have *BFF* (Backend for Frontend)
+
+*CONCLUSION*: Invest some time in learning DDD, hexagonal architecture, because they are fundamentals and reusable skills
 
 === Accelerate your CI/CD on Kubernetes with Jenkins X
 
@@ -109,7 +310,55 @@ After watching this talk you should be able to accelerate your delivery of micro
 
 ==== Notes
 
+Advise of James: read _The science of DevOps - ACCELERATE_
 
+.Capabilities of Jenkins X
+image::voxxed_22.jpg[]
+
+* Use version control for all artifacts
+* automate your deployment process
+* use *trunk based* development
+* implement continuous integration
+* implement continuous delivery
+* use loosely coupled architecture
+
+.How does Jenkins X help?
+image::voxxed_23.jpg[]
+
+.Install process of Jenkins X: different ways
+image::voxxed_24.jpg[]
+
+-> it uses *Google Kubernetes Engine*
+
+.Advise from James
+NOTE: : Try to *avoid mini-kube*, go straight to the cloud (as soon as possible)
+
+What's the result? +
+-> each team gets their own:
+
+* Dev Tools environment
+	** jenkins master
+	** elastic pool of Kubernetes build pods
+	** *Nexus + monocular (Helm application store)*
+* stating env
+* production env
+
+.Different ways of importing and creating projects
+image::voxxed_25.jpg[]
+
+Pour la démo, voir le projet sur le repo GitHub de James (directement), _voxxedms_ (in repo _jstrachan_)
+
+IMPORTANT: James insiste sur l'intérêt de faire un max de test sur les branches de PR plutôt que sur le master (qui peut-être broken)
+
+image::voxxed_26.jpg[]
+
+.Resources
+image::voxxed_27.jpg[]
+
+-> in those links, there is the one of their very active Slack channel
+
+NOTE: James, comme bien d'autres, fait ses slides sur la suite Google. +
+De plus en plus, on se retrouve soit avec des slides Asciidoctor, soit avec des slides Google
 
 === Monolith 2 MicroServices - Houston we've got a problem !
 
@@ -125,7 +374,7 @@ We will see how my customers managed to get out of their migration nightmare suc
 
 ==== Notes
 
-
+-> Not done (was eating !)
 
 === Stop reinventing the wheel with Istio
 
@@ -144,7 +393,80 @@ In this talk, we will take a look at some of the key capabilities of Istio and s
 
 ==== Notes
 
+The need for *Istio*
 
+1st a reminder about containers:
+
+image::voxxed_28.jpg[]
+
+But *containers are not enough*:
+
+image::voxxed_29.jpg[]
+
+And hence the use of *Kubernetes*
+
+image::voxxed_30.jpg[]
+
+-> Kubernetes manages *applications*, NOT machines
+
+Finally, for *microservices in Kubernetes world*:
+
+image::voxxed_31.jpg[]
+
+But *Kubernetes is not enough either*!
+
+image::voxxed_32.jpg[]
+
+And so we have *Istio*: +
+-> *An open framework for connecting, securing, managing and monitoring services*.
+
+Its goal:
+
+* community maturing and gathering around common tools
+* decouple application code from underlying platform and policies
+
+.Service architecture with Istio
+image::voxxed_33.jpg[]
+
+To have Istio, first you need to have a Kubernetes cluster.
+
+.Istio in one slide
+image::voxxed_34.jpg[]
+
+* metrics can be seen with Graphana
+* trace spans with Zipkin
+
+.Istio architecture
+image::voxxed_35.jpg[]
+
+* On voit l'usage de *Envoy* (à la place de Zuul ou Ribbon)
+
+image::voxxed_36.jpg[]
+image::voxxed_37.jpg[]
+
+We can install Istio without all its components (without dealing with Mixer or Pilot by example)
+
+Gateway is where you accept traffic in your service mesh.
+
+Istio add-ons
+
+* Graphana
+* Jaeger / Zipkin
+
+Istio features:
+
+image::voxxed_38.jpg[]
+
+[NOTE]
+====
+*New Routing API*: only from v1alph3 (O.8.0)
+
+image::voxxed_39.jpg[]
+====
+
+*Resources*:
+
+image::voxxed_40.jpg[]
 
 === Data in a Microservices world: from conundrum to options
 
@@ -166,6 +488,85 @@ And the list goes on. This presentation is an opinionated answer to these questi
 
 ==== Notes
 
+.Microservices architecture benefits
+image::voxxed_41.jpg[]
+
+Monolith to microservices +
+-> To data velocity
+
+Benefits of *data virtualization* (here with *Teiid*) :
+
+image:voxxed_42.jpg[]
+image:voxxed_43.jpg[]
+
+* Virtual DB doesn't really store data
+
+image::voxxed_44.jpg[]
+
+* Still with this last schema, if we wan't to rollback, we didn't touch the legacy DB
+
+Now *Data security*, important point today, especially because of *regulatory constraints*
+
+image:voxxed_45.jpg[]
+image:voxxed_46.jpg[]
+
+* main piece here is *data firewall*
+
+===== Demo (breaking the monolith)
+
+image::voxxed_47.jpg[]
+
+.Breaking up the monolithic database *virtually*
+image::voxxed_48.jpg[]
+
+The *virtual DB* is defined with an XML file.
+
+The whole demo is deployed on OpenShift.
+
+Our microservices will be built on top of those virtual DBs.
+
+===== how do we share the state in a stateless application?
+
+.the challenge of state
+image::voxxed_49.jpg[]
+
+-> there is a service to do that (with *Infinispan*)
+
+image:voxxed_50.jpg[]
+image:voxxed_51.jpg[]
+
+-> *advantages*: complexity outside the app / low latency / cross data center replication
+
+===== Caching
+
+As says Emmanuel: _One service to fail them all..._
+
+-> Again, use a service to do that (still Infinispan)
+
+image::voxxed_52.jpg[]
+
+===== CQRS and more
+
+Now that we went a bit further in our migration towards microservices, let's consider the following:
+
+image::voxxed_53.jpg[]
+
+*CDC* (Change Data Capture) to the rescue
+
+image::voxxed_54.jpg[]
+
+* *Debezium* is based on *Kafka* and *Kafka Connect* (check the "Real time DB change (CDC)" in the last schema)
+
+*Conclusion*:
+
+image::voxxed_55.jpg[]
+
+* Take a pragmatic approach and *break up large data sources logically*
+* delegate data handling to specialized services (out of the app)
+
+.Resources
+image::voxxed_56.jpg[]
+
 === Habitat: Automation that travels with the app
 
 Presented by *Romain Sertelon*
@@ -180,7 +581,38 @@ We'll go over existing build tools, their pro's and con's, industry best practic
 
 ==== Notes
 
+Context at Habitat: migration from monolith to microservices
 
+* 4 years
+* 2 developpers
+* simplest infrastructure possible
+	** 2 envs
+	** 8 services
+	** "container" tarballs
+	** manual deployment each sprint
+
+More was needed on the *infra side*:
+
+* "no more SSH"
+* config management
+* continuous deployment
+* infrastructure agnostic tooling (to adapt easily to infra changes)
+
+And hence the use of *Habitat project*, which is *backed by CHEF*.
+
+.Habitat innovative vision (application automation)
+image::voxxed_57.jpg[]
+
+How is it done:
+
+* Encapsulates and automates your application
+* package management
+
+Docker is the only thing required as prerequisite by Habitat.
+
+.Conclusion
+image:voxxed_58.jpg[]
+image:voxxed_59.jpg[]
 
 === A Software Architect's Approach towards SPA-Based Micro Apps
 
@@ -194,7 +626,7 @@ Using several examples and case studies, we explore different approaches. By dis
 
 ==== Notes
 
-
+Not done
 
 === State or events? Which shall I keep?
 
@@ -215,7 +647,7 @@ The talk is going to cover a broad set of buzzwords like: *event sourcing*, *CQR
 
 ==== Notes
 
-
+Not done
 
 === Ask the architects
 
@@ -290,7 +722,7 @@ We’ll touch on how to set up Kafka clusters on OpenShift via the Strimzi proje
 
 == Buzz words
 
-* *Service Mesh* +
+* *Service Mesh*, et plus particulièremnet *Istio* +
 En voici une définition tirée de cet article d'Octo : 
 +
 ----
@@ -298,3 +730,10 @@ Le Service Mesh désigne une plateforme chargée d’assurer la sécurité, le r
 ----
 
 * *Kafka*
+* *Hexagonal architecture* (with DDD)
+* *Kubernetes* and its tools like *Helm*, *Nexus*, *Skaffold*
+
+== Misc
+
+.Scène / format vidéo utilisé par le salon pour l'enregistrement des talks
+image::voxxed_video_scene_format.jpg[]
