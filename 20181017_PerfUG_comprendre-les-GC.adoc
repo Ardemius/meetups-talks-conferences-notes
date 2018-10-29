@@ -1,0 +1,136 @@
+= PerfUG : Comprendre les GC de la JVM : Mode avancé !
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Le *17/10/2018*, dans les locaux d'Octo. +
+Présenté par Jean-Philippe BEMPEL, Critéo.
+
+== Description
+
+Depuis quelques années, le monde du GC sur la JVM évolue : *G1* est par défaut sur le JDK9, *Shenandoah* est mis à disposition par Red Hat, un nouveau GC entre dans l’OpenJDK depuis le JDK 11: *ZGC* et Azul *C4* est toujours là. +
+Comme les GC « classiques » sont plutôt bien compris maintenant, cette présentation s’attardera sur les arcanes des plus récents. Nous allons expliquer le *concurrent marking* (*tri-color marking*), les specificités de G1, la *Load Value Barrier de C4*, les *Brooks pointers de Shenandoah* et le *multi-mapping de ZGC*.
+
+Développeur passionné par les performances, les runtimes (JVM, CLR) et adepte de Mechanical Sympathy, *Jean-Philippe Bempel* a plus de 8 ans d’expérience dans les systèmes de trading low latency. Maintenant il apporte son expertise sur la JVM chez *Criteo* afin d’optimiser les jobs *Map/Reduce* & *Spark*.
+
+== Notes
+
+.Card table
+image::20181017_perfug_01.jpg[]
+
+Les *Card table* permettent d'indiquer quels objets de la old generation sont liés à des objets de la new generation (et ne sont donc PAS à supprimer)
+
+NOTE: revoir la différence entre *mémoire physique* et *mémoire virtuelle*
+
+=== Concurrent Marking
+
+=== Full GC
+
+* jusqu'au JDK 10, *mono-threadé*.
+
+=== Shenandoah
+
+* GC low-latency introduit par Red Hat en 2013.
+* Démarré par Christine FLODD (?), qui a également travaillé sur G1
+* *NON* générationnel (mais toujours une option pour partial collection)
+
+* region based
+* Read Barrier : Brooks pointer
+* Self-Healing : le GC thread fait le plus gros boulot, mais de temps en temps l'application thread vient donner un coup de main
+
+* Mostly based on G1 for *concurrent compaction*
+
+.Les différentes phases
+image::20181017_perfug_02.jpg[]
+
+-> Les régions ne sont libérées qu'à la fin du cycle
+
+NOTE: Revoir le *CAS* : primitive de base de tous les algo lock free
+
+=== Azul's C4
+
+C4 = Continuously Concurrent Compacting Collector
+
+* *generational* (young & old)
+* region based (appelées "pages")
+* use read barrier: *Loaded Value Barrier*
+* self-healing : Azul a été le 1er à introduire cette notion
+* pauseless algorithm, but implementation requires safepoints
+* *pauses are most of the time < 1 ms*
+
+C4 phases : All phases are *parallel* and *concurrent*
+
+Importance de la *Relocation phase* (la clé du dispositif)
+
+==== C4 @ Criteo
+
+* Used by Hadoop Name Node : le bottle neck de Hadoop
+* No issue so far regarding GC since production roll out (octobre 2017)
+
+=== ZGC
+
+* non générationnel
+* region based
+* concurrent marking, compaction, ref processing
+* use colored pointers & read/load barrier
+* self-healing
+
+NOTE: Cliff Click (créateur du JIT de Hotspot): ZGC ressemble énormément à C4 (à tel point que c'est louche, d'autant plus qu'il y a des brevets derrière C4)
+
+* 42 bits for addressing (donc 4 To de heap)
+* 4 bits for metadata
+	** Marked0
+	** Marked1
+	** Remapped
+	** Finalizable
+
+* Multi-mapping
+
+=== Comment choisir son algo de GC ?
+
+.throughput vs latency
+image::20181017_perfug_03.jpg[]
+
+image::20181017_perfug_04.jpg[]
+
+=== References
+
+image::20181017_perfug_05.jpg[]
+image::20181017_perfug_06.jpg[]
+image::20181017_perfug_07.jpg[]
+image::20181017_perfug_08.jpg[]
+
+Pour Shenandoah, voir les articles d'aleksey shipilev
+
+*Slides de la présentation* : http://perfug.github.io/compte-rendu/2018/10/20/compte-rendu-du-perfug-gc-avance
+
+
+
+
+
+
