@@ -1,0 +1,190 @@
+= FOD Meetup #8: Apache Kafka and Streams Messaging Manager
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté à l'hôtel Renaissance La Défense, et co-organisé par Invivoo (www.invivoo.com).
+
+== Agenda
+
+Agenda
+
+* 18h45 - 19h00 : Accueil des participants
+* 19h00 - 19h30 : Hybrid batch and stream processing - meeting the global business requirements of an organization (Marcos ALMEIDA, Senior Developper - Invivoo)
+* 19h30 - 20h00 : Curing the Kafka Blindness with SMM (Abdelkrim Hadjidj, Solution Engineer - Hortonworks) +
+* 20h00 - 20h30 : Apache Kafka 2.0 : New Features you probably didn't know about! (Stephane Maarek, CEO - DataCumulus) +
+* 20h30 - 21h00 : Apéro
+
+== Hybrid batch and stream processing - meeting the global business requirements of an organization
+
+Présenté par *Marcos ALMEIDA*, Senior Developper - Invivoo
+
+=== Abstract
+
+There's an increasing pressure on leveraging enterprise data on improving business processes and/or products. +
+In companies that didn't make the full transition from a small to a big data infrastructure, accessing company data requires the integration of a mix of tools, from batch systems, through private grids, to cutting edge big data enabled systems.
+
+=== Notes
+
+Une présentation du logiciel XComponent Koordinator édité par Invivoo.
+
+image::20181025_FOD_01.jpg[]
+
+Koordinator est axé sur les populations métier (qui n'a pas envie de faire du Go pour se servir de l'outil)
+
+image::20181025_FOD_02.jpg[]
+
+Code de la demo : https://github.com/xcomponent (dans un sous-répertoire)
+
+== Curing the Kafka Blindness with SMM
+
+Présenté par *Abdelkrim Hadjidj*, Solution Engineer - Hortonworks
+
+=== Abstract
+
+Companies who use Kafka today struggle with monitoring and managing Kafka clusters. +
+Kafka is a key backbone of streaming analytics applications. The challenge is understanding what is going on overall in the Kafka cluster including performance, issues and message flows. +
+No open source tool caters to needs of different users that work with Kafka: DevOps/developers, platform team and security/governance teams. 
+
+In this talk, we will see how the new Hortonworks Streams Messaging Manager (SMM) enables users to visualize their entire Kafka environment end-to-end and simplifies Kafka operations.
+
+=== Notes
+
+DPS - *DataPlane Service* : La 3e et dernière offre côté Hortonworks
+
+SMM - *Streams Messaging Manager* : pour de *l'administration de clusters Kafka*
+
+image::20181025_FOD_03.jpg[]
+
+image::20181025_FOD_04.jpg[]
+
+Tout passe de nouveau par Knox comme Gateway.
+
+image::20181025_FOD_05.jpg[]
+
+Tous les services sont des containers Docker.
+
+image::20181025_FOD_06.jpg[]
+
+De bons outils de monitoring des clusters Kafka :
+
+* gestion des topics, avec données entrées et sorties
+* visualisation des consumers branchés aux topics
+
+Changement de licence chez *Hortonworks* pour DPS : *passage en licence RedHat* +
+-> le source est disponible sur GitHub, mais le binaire compilé n'est pas fourni (mais rien n'empêche de le compiler soi-même à partir des sources)
+
+*SMM fonctionne via un agent*, qui, apparemment (cf speaker), consomme peu de ressources, et donc n'impacte pas le fonctionnement de Kafka.
+
+*SMM* n'est finalement qu'un outil de monitoring de Kafka, *utilisant l'API même de Kafka*. +
+D'autres outils existent pour répondre à ce besoin (même si peu nombreux) :
+
+* chez Confluent
+* chez Yahoo
+
+*Valeur Ajoutée de SMM* et DPS par rapport à un "simple Kafka Manager" :
+
+* gestion d'ACL avec Ranger
+* gestion de la gouvernance avec Atlas
+* et maintenant gestion de Kafka avec SMM
+
+Au final, Hortonworks continue de développer sa stratégie visant à couvrir / industrialiser au maximum l'ecosystème Data (via la création de multiples outils évitant la manipulation bas niveau des briques techniques)
+
+== Apache Kafka 2.0 : New Features you probably didn't know about!
+
+Présenté par *Stephane Maarek*, CEO - DataCumulus
+
+=== Abstract
+
+Apache Kafka is notorious for being a stable project that doesn't change much over the releases. +
+Nonetheless, once in a while, a major improvement will happen, and you probably won't have heard about it. 
+
+In this session, Stephane will introduce you to the various improvements and features Kafka 2.0 has had over the past year, some of which you may know... and some of which you may not know!
+
+=== Notes
+
+Rah ! Arnaque ! En fait le speaker n'a pas eu le temps de préparer ce sujet, et va finalement parler de *sécurité avec Kafka*. +
+Si votre Kafka est déjà sécurisé (car wrapped dans la suite HDP par exemple), pas la peine d'aller plus loin 😉
+
+.Risks encountered when NOT securing your Kafka
+image::20181025_FOD_07.jpg[]
+
+image::20181025_FOD_08.jpg[]
+
+Commment sécuriser son Kafka ?
+
+* *Encryption*
+* *Authentication*
+* *Authorization*
+
+==== Encryption with SSL
+
+* Be aware that SSL lowers the performance of your brokers, and it's quite a big price
+
+-> Solution : *end-to-end encryption*
+
+Who implements end-to-end encryption?
+
+* Closed source (so sad) : Apple 
+* Open Source : Quicksign Kafka-encryption
+
+==== Authentication
+
+* SSL authentication : 2 way client authentication +
+-> Hard to revoke
+
+* SASL (SImple Authentication and Security Layer)
+	** SASL/GSSAPI - Kerberos : nearly Microsoft as an implementation +
+	Very very hard to setup, errors are cryptic
+	** SASL/PLAIN
+	** SASL/SCRAM-SHA-256/512
+	** SASL/OAUTHBEARER
+
+Automate ! The key word in security (in Kafka only ?)
+
+==== Authorization
+
+Stephane a créé le *Kafka Security Manager* pour cela (github simplesteph kafka-security-manager)
+
+==== Client security
+
+librdkafka for Kafka CLIENT Security and NON Java clients (for Java clients, it works rather well)
+
+Default Kafka clients have EVERY security options available ! +
+-> Your client will only use 1 security setup, so create your own wrapped custom Kafka client...
+
+Again automate! Once it works once, DOCKERIZE! +
+-> once done, it will work each time
+
+==== Ressources for Kafka security
+
+image::20181025_FOD_09.jpg[]
+
+-> Stéphane est un très bon speaker, et fait apparemment de très bon cours sur Udemy
+
+
