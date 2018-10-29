@@ -1,0 +1,300 @@
+= Voxxed days Microservices
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Du 29 au 31/10/2018, à l'espace Charenton à Paris. +
+Site : https://voxxeddays.com/microservices/
+
+== Description
+
+== Monday
+
+=== Welcome to Voxxed Days Microservices
+
+Presented by Antonio GONCALVES.
+
+=== Distant Past of Microservices
+
+Presentedy by *Ken Finnigan*, Senior Principal Software Engineer for *Red Hat* Middleware.
+
+==== Abstract
+
+Microservices, distributed systems in sheep's clothing, have been around in various forms since the 1960s! We trek down amnesia lane, finding that what we’re doing has been done before, but the names and tools have changed.
+
+Whether it’s Netflix OSS, Spring Cloud, or any other open source framework for microservices, we’ve likely experienced using them all at one point. What have using these frameworks taught us? Do they help or hinder us? Is Service Mesh the answer? I’ll explore these questions as we meander along a journey through the past.
+
+==== Notes
+
+
+
+=== distributed: of systems and teams
+
+Presented by *Bridget Kromhout*, Principal Cloud Developer Advocate at Microsoft.
+
+==== Abstract
+
+We endeavor to build consistency, availability, and fault tolerance into our distributed systems, but how do we build them into our teams? The human factors in microservices require as much attention as do our technical implementations.
+
+Drawing in comparisons from theoretical computer science and practical systems implementation, I’ll explore how building understanding requires a practical application of great tools in a deliberate pursuit of a constructive culture.
+
+==== Notes
+
+=== Preparing For a Future Microservices Journey
+
+Presented by Susanne Kaiser, independent Tech Consultant.
+
+==== Abstract
+
+In the light of rapidly changing market requirements organizations must accelerate to excel in the market. A 4-years research (by Nicole Forsgren, Jez Humble and Gene Kim) has revealed that software delivery performance has a strong impact on profitability, productivity and market share of technology organizations. +
+Loosely coupled architecture, such as promoted by microservices, and empowered teams are some of the capabilities to improve software delivery performance. 
+
+After having already introduced microservices in a startup context I would like to share some thoughts what to do differently when introducing microservices next time in the future.
+
+==== Notes
+
+=== Hexagonal at Scale, with DDD and microservices!
+
+Presented by Cyrille MARTRAIRE, CTO and partner at Arolla.
+
+==== Abstract
+
+Microservices need DDD absolutely. Bounded Contexts, a key DDD ingredient, is the tool of choice to define services boundaries that won’t end up in a complete disaster at runtime and at deployment time. And for a given service, the Hexagonal Architecture is a great implementation style as well.
+
+In this talk, you’ll get a deeper understanding of what these abstract buzzwords are all about, illustrated with short Java code. You’ll discover how to really split your monolith correctly, and when to go Hexagonal, or not, because one should never abuse of the good things. It will be fun, with perhaps a few surprises as well!
+
+==== Notes
+
+
+
+=== Accelerate your CI/CD on Kubernetes with Jenkins X
+
+Presented by *James Strachan*, one of the founders of Jenkins X, also created the Groovy programming language and the Apache Camel integration framework.
+
+==== Abstract
+
+We all want to become high performing teams delivering real business value quickly! This talk will show you how you can go faster by automating:
+
+* setting up your CI/CD so you can spin up new microservices in seconds
+* packaging of your application as container images and helm charts so it can be deployed easily on any cluster
+* automatic or manual promotion of your application through Testing, Staging and Production via GitOps
+* using Preview environments to get fast feedback on code changes at Pull Request before you merge them and without blocking urgent bug fixes
+
+After watching this talk you should be able to accelerate your delivery of microservices and go faster!
+
+==== Notes
+
+
+
+=== Monolith 2 MicroServices - Houston we've got a problem !
+
+Presented by *Mike Francois*
+
+==== Abstract
+
+Monolith to Microservices is a move from the complexity of one block into the runtime environment. Companies make a common mistake to think that they can implement microservices without upskilling efficiently their developers and getting them on an appropriate learning curve. Another mistake is that the IT department is often working on their own when the involvement of other departments is a key to success in this migration. Additionally, IT usually lacks clear roadmaps and a real incremental and iterative approach.
+
+Most of the time, companies develop a Hype Driven Development syndrome with often only superficial knowledge and without having defined the right segregation of concerns in an environment ( monitoring, service discovering, circuit breaker, containers, etc. ). They give in to mature in-vogue architectures without solid prerequisites leading them early on to a complex architecture system (agnosticity, etc.) and decisions over the architecture set without a clear definition of boundaries and real needs (where, when, how to’s).
+
+We will see how my customers managed to get out of their migration nightmare successfully by changing their approach.
+
+==== Notes
+
+
+
+=== Stop reinventing the wheel with Istio
+
+Presented by *Mete Atamel*, a Developer Advocate at Google, focused on helping developers with Google Cloud.
+
+==== Abtract
+
+Containers provide a consistent and reproducible environment to run our services. +
+Orchestration systems like Kubernetes help us to manage and scale our container cluster with a consistent API. +
+This is a good start for a loosely coupled microservices architecture but it is not enough. 
+
+How do you control the flow of traffic and enforce policies between services? How do you visualize service dependencies and quickly identify issues? How can you provide verifiable service identities, handle and test for failures? +
+You can implement your own custom solutions or you can rely on Istio, an open platform to connect, manage and secure microservices. 
+
+In this talk, we will take a look at some of the key capabilities of Istio and see how it can help with your microservices network.
+
+==== Notes
+
+
+
+=== Data in a Microservices world: from conundrum to options
+
+Presented by *Emmanuel BERNARD*, Chief Architect for data stuff at Red Hat Middleware, and *Madou COULIBALY*.
+
+==== Abtract
+
+Microservices are great, problems arise when you start to have two of them and when you want to deal with data :)
+
+Pun aside, data and state is a big subject that is largely ignored when discussing Microservices.
+
+* Conundrum #1 : What is the aimed data architecture in a perfect Microservices architecture?
+* Conundrum #2 : How do you share state between instances of a given Microservice in a stateless 12 factor approach?
+* Conundrum #3 : how to echange state between Microservices that must remain independent?
+* Conundrum #4 : how do I go from my brownfield database to a fleet of Microservices IRL without a Big Bang?
+* Conundrum #5 : with many Microservices touching many data sets, how do I guarantee uniformed security (GDPR anyone)?
+
+And the list goes on. This presentation is an opinionated answer to these questions. And yes we do demo these concepts.
+
+==== Notes
+
+=== Habitat: Automation that travels with the app
+
+Presented by *Romain Sertelon*
+
+==== Abstract
+
+There are a plethora of build tools and package managers out in the universe, but no one way to ensure a happy path from local development to production when you have a micro service architecture.
+
+This talk explains why Habitat was created, as an open source application automation engine, and how you can use it to build and ship your applications to any infrastructure with the same guarantees.
+
+We'll go over existing build tools, their pro's and con's, industry best practices, and what Habitat adds to the mix.
+
+==== Notes
+
+
+
+=== A Software Architect's Approach towards SPA-Based Micro Apps
+
+Presented by *Manfred Steyer*.
+
+==== Abtract
+
+Even though Microservices are a very popular nowadays, many people are left wondering how single-page applications fit into this. This session taps a software architect's perspective to answer this question.
+
+Using several examples and case studies, we explore different approaches. By discussing the pros and cons of each approach from the perspective of an JavaScript developer you will see which approach works best where. The session ends with a decision tree to help you select the right solution for your specific project.
+
+==== Notes
+
+
+
+=== State or events? Which shall I keep?
+
+Presented by *Jakub Pilimon* and *Kenny Bastani*, both from Pivotal.
+
+==== Abstract
+
+Tired of fancy abstractions without actual down to earth implementation? +
+In this talk we will go through both benefits and problems by implementing a real example of event-sourced model. 
+
+This is a full-time live coding and we will develop features in parallel - one of us in a classic ORM-based way and the other one using event sourcing. We are going to tackle the problems step by step in both solutions from various perspectives.
+
+From the point of view of the stakeholders our software should have quick time to market, ability to do complex data reporting and fast way to extend and to deploy new features. +
+On the other hand, our fellow developers would be interested in learning curve when it comes to event sourcing and how it differs in turns of e.g. unit testing. 
+
+At the end of each step it will be clear what kind of problems/benefits we have using one of two models. +
+The talk is going to cover a broad set of buzzwords like: *event sourcing*, *CQRS*, *distributed systems*, *spring cloud stream*, *eventual consistency*, *unit testing* and *zero downtime deployments*.
+
+==== Notes
+
+
+
+=== Ask the architects
+
+Presented by Ken Finnigan, Bridget Kromhout, David Schmitz and Susanne Kaiser.
+
+== Tuesday
+
+=== Reactive design patterns for microservices on multicore
+
+Presented by *Charly Bechara*, and *Alain Habra* from Tredzone
+
+==== Abstract
+
+Most of the challenges encountered when designing microservices are solved using concurrent design patterns. However, these patterns usually do not take into account the multicore issues and possible optimizations. This is a hard requirement for real-time mission-critical applications, such as a trading platform.
+
+This talk will cover best practices for building Reactive design patterns optimized for multicore. To achieve this, we’ll be using the actor model as implemented in our runtime Simplx: https://github.com/Tredzone/simplx
+
+We will present use-cases related to our experience working with Euronext on the next generation trading platform. We will show how to obtain throughput scalability with the number of cores, while keeping the end-to-end latency stable.
+
+C/C++ and Java knowledge is helpful but not required to enjoy this talk.
+
+==== Notes
+
+
+
+=== Integrating microservices by accepting the data dichotomy
+
+Presented by *Damien Gasparina*, engineer and an open-source enthusiast working for Confluent.
+
+==== Abstract
+
+When building a microservices-based systems, we don’t generally think too much about data. If we need data from another service, we ask for it. This pattern works well for whole swathes of use cases, particularly ones where datasets are small and requirements are simple. But real business services have to join and operate on datasets from many different sources and this can be slow and cumbersome in practice.
+
+These problems stem from an underlying dichotomy. Data systems are built to make data as accessible as possible - a mindset that focuses on getting the job done. Services, instead, focus on encapsulation - a mindset that allows independence and autonomy as we evolve and grow. But these two forces inevitably compete in most serious service-based architectures.
+
+Understanding and accepting this dichotomy is an important part of designing service-based systems at any significant scale. In this talk, we will explain how to make use of a shared, immutable sequence of records to balance data that sits inside their services with data that is shared, an approach that allows the likes of Uber, Netflix, and LinkedIn to scale to millions of events per second.
+
+==== Notes
+
+== Wednesday - workshop
+
+=== Boundaries of Microservices: How to Build Them and How to Cross Them
+
+https://vxdms2018.confinabox.com/talk/YQD-1465/Boundaries_of_Microservices%3A_How_to_Build_Them_and_How_to_Cross_Them
+
+Presented by *Linda van der Pal*, *Régina ten Bruggencate*, *Emmanuel Bernard* and *Gunnar Morling*.
+
+==== Defining Service Boundaries With DDD
+
+===== Abstract
+
+The first part of the workshop focuses on defining the borders between microservices. +
+How to split up your big problem into clearly defined microservices. In real life everything is related, and seeing the individual trees in the big picture of the sprawling forest is challenging. This is where Domain Driven Design (DDD) comes to the rescue. 
+
+After a short presentation about DDD, we’ll get hands-on with an actual problem to end up with a working program.
+
+===== Notes
+
+
+
+==== Data Streams to Cross Boundaries
+
+===== Abstrat
+
+In the second part we’ll discuss why microservices must avoid tight coupling and how they still can share data. 
+
+Based on Kafka, Debezium and Kubernetes, our microservices will produce and consume data streams. +
+We’ll also use change data capture to stream data changes directly out of a database, without any application changes needed. +
+We’ll touch on how to set up Kafka clusters on OpenShift via the Strimzi project and how to monitor and tune them for performance and resilience.
+
+===== Notes
+
+== Buzz words
+
+* *Service Mesh* +
+En voici une définition tirée de cet article d'Octo : 
++
+----
+Le Service Mesh désigne une plateforme chargée d’assurer la sécurité, le routage et la traçabilité des communications entre applications microservices déployées de façon dynamique dans des conteneurs.
+----
+
+* *Kafka*
