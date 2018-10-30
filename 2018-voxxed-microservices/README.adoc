@@ -28,10 +28,14 @@ endif::[]
 
 toc::[]
 
-Du 29 au 31/10/2018, à l'espace Charenton à Paris. +
-Site : https://voxxeddays.com/microservices/
+Du 29 au 31/10/2018, à l'espace Charenton à Paris.
 
-== Monday
+* *Site* : https://voxxeddays.com/microservices/
+* *Schedule* : https://vxdms2018.confinabox.com/talks/conf
+
+== MONDAY
+
+*Schedule* : https://vxdms2018.confinabox.com/byday/mon
 
 === Welcome to Voxxed Days Microservices
 
@@ -360,22 +364,6 @@ image::voxxed_27.jpg[]
 NOTE: James, comme bien d'autres, fait ses slides sur la suite Google. +
 De plus en plus, on se retrouve soit avec des slides Asciidoctor, soit avec des slides Google
 
-=== Monolith 2 MicroServices - Houston we've got a problem !
-
-Presented by *Mike Francois*
-
-==== Abstract
-
-Monolith to Microservices is a move from the complexity of one block into the runtime environment. Companies make a common mistake to think that they can implement microservices without upskilling efficiently their developers and getting them on an appropriate learning curve. Another mistake is that the IT department is often working on their own when the involvement of other departments is a key to success in this migration. Additionally, IT usually lacks clear roadmaps and a real incremental and iterative approach.
-
-Most of the time, companies develop a Hype Driven Development syndrome with often only superficial knowledge and without having defined the right segregation of concerns in an environment ( monitoring, service discovering, circuit breaker, containers, etc. ). They give in to mature in-vogue architectures without solid prerequisites leading them early on to a complex architecture system (agnosticity, etc.) and decisions over the architecture set without a clear definition of boundaries and real needs (where, when, how to’s).
-
-We will see how my customers managed to get out of their migration nightmare successfully by changing their approach.
-
-==== Notes
-
--> Not done (was eating !)
-
 === Stop reinventing the wheel with Istio
 
 Presented by *Mete Atamel*, a Developer Advocate at Google, focused on helping developers with Google Cloud.
@@ -614,46 +602,9 @@ Docker is the only thing required as prerequisite by Habitat.
 image:voxxed_58.jpg[]
 image:voxxed_59.jpg[]
 
-=== A Software Architect's Approach towards SPA-Based Micro Apps
+== TUESDAY
 
-Presented by *Manfred Steyer*.
-
-==== Abtract
-
-Even though Microservices are a very popular nowadays, many people are left wondering how single-page applications fit into this. This session taps a software architect's perspective to answer this question.
-
-Using several examples and case studies, we explore different approaches. By discussing the pros and cons of each approach from the perspective of an JavaScript developer you will see which approach works best where. The session ends with a decision tree to help you select the right solution for your specific project.
-
-==== Notes
-
-Not done
-
-=== State or events? Which shall I keep?
-
-Presented by *Jakub Pilimon* and *Kenny Bastani*, both from Pivotal.
-
-==== Abstract
-
-Tired of fancy abstractions without actual down to earth implementation? +
-In this talk we will go through both benefits and problems by implementing a real example of event-sourced model. 
-
-This is a full-time live coding and we will develop features in parallel - one of us in a classic ORM-based way and the other one using event sourcing. We are going to tackle the problems step by step in both solutions from various perspectives.
-
-From the point of view of the stakeholders our software should have quick time to market, ability to do complex data reporting and fast way to extend and to deploy new features. +
-On the other hand, our fellow developers would be interested in learning curve when it comes to event sourcing and how it differs in turns of e.g. unit testing. 
-
-At the end of each step it will be clear what kind of problems/benefits we have using one of two models. +
-The talk is going to cover a broad set of buzzwords like: *event sourcing*, *CQRS*, *distributed systems*, *spring cloud stream*, *eventual consistency*, *unit testing* and *zero downtime deployments*.
-
-==== Notes
-
-Not done
-
-=== Ask the architects
-
-Presented by Ken Finnigan, Bridget Kromhout, David Schmitz and Susanne Kaiser.
-
-== Tuesday
+*Schedule* : https://vxdms2018.confinabox.com/byday/tue
 
 === Reactive design patterns for microservices on multicore
 
@@ -661,17 +612,115 @@ Presented by *Charly Bechara*, and *Alain Habra* from Tredzone
 
 ==== Abstract
 
-Most of the challenges encountered when designing microservices are solved using concurrent design patterns. However, these patterns usually do not take into account the multicore issues and possible optimizations. This is a hard requirement for real-time mission-critical applications, such as a trading platform.
+Most of the challenges encountered when designing microservices are solved using concurrent design patterns. However, these patterns usually do not take into account the multicore issues and possible optimizations. +
+This is a hard requirement for *real-time mission-critical applications*, such as a *trading platform*.
 
-This talk will cover best practices for building Reactive design patterns optimized for multicore. To achieve this, we’ll be using the actor model as implemented in our runtime Simplx: https://github.com/Tredzone/simplx
+This talk will cover best practices for building Reactive design patterns optimized for multicore. +
+To achieve this, we’ll be using the *actor model* as implemented in our runtime *Simplx*: https://github.com/Tredzone/simplx
 
-We will present use-cases related to our experience working with Euronext on the next generation trading platform. We will show how to obtain throughput scalability with the number of cores, while keeping the end-to-end latency stable.
+We will present use-cases related to our experience working with Euronext on the next generation trading platform. +
+We will show how to obtain throughput scalability with the number of cores, while keeping the end-to-end latency stable.
 
 C/C++ and Java knowledge is helpful but not required to enjoy this talk.
 
 ==== Notes
 
+*Tredzone* : high problematics of performances
 
+3 parts (categories for the following patterns) :
+
+* Microservices on multicore
+* monitoring 
+
+image::voxxed_60.jpg[]
+
+* have a special look at the "fast data" part of the graph
+
+More and more several microservices can now run on the same CPU socket (instead of 1 microservice per CPU socket) -> because of the evolution of hardware
+
+.cores per CPU socket
+image::voxxed_61.jpg[]
+
+2 parameters that impact *scalability* :
+
+* Contention 
+* Coherency
+
+image::voxxed_62.jpg[]
+
+* No contention on the private cache
+* *MESI* protocol is the way to copy data from a private cache to another (*cache coherency*) 
+
+image::voxxed_63.jpg[]
+
+* Share multiple actors per cores
+* use of an *Event Loop* with Simplx (a runtime)
+
+What is Simplx?
+
+image::voxxed_64.jpg[]
+
+Very good resources (books) :
+
+* _Reactive messaqging patterns with the actor model_
+* _Reactive design patterns_ (roland kuhn)
+
+*Pattern 1: The core-aware messaging pattern*
+
+image::voxxed_65.jpg[]
+
+* core / socket / server for the not so visible legend
+
+*Sometimes* (meaning not always) synchronous direct call are better than pushing an asynchronous message +
+-> 100 times faster
+
+*Pattern 2: the message mutualization pattern*
+
+image::voxxed_66.jpg[]
+
+* left: 3 events / right: 1 event and 3 direct calls
+
+*Pattern 4: the core usage pattern*
+
+image::voxxed_67.jpg[]
+
+* Detect overloading cores before it's too late
+
+*Pattern 5: the queuing prevention pattern*
+
+* other example of monitoring
+* purpose: avoid the "my destination can't process what I send" (and so there is messages queuing)
+
+*Pattern 6: the cache-aware split pattern*
+
+image::voxxed_68.jpg[]
+
+* we split the order, then *I send ONLY the useful part*, then I only send back what has changed 
+
+*Pattern 7: the $-friendly actor directory pattern*
+
+* save about 40% cache memory (to find the correct core to contact)
+
+===== Modern software roadmap
+
+image::voxxed_69.jpg[]
+
+-> This sentence says that the software guys waste performance efforts made by the hardware guys.
+
+image::voxxed_70.jpg[]
+
+* architect should first think concurrently
+* unfortunately our human brains are made to think sequentially
+* so *develop monothreaded*
+* but then *run parallel*, and *execute reactive*
+
+===== Demo
+
+It shows that it is possible to monitor *without impacting the performances*.
+
+===== Resources
+
+image::voxxed_71.jpg[]
 
 === Integrating microservices by accepting the data dichotomy
 
@@ -687,7 +736,236 @@ Understanding and accepting this dichotomy is an important part of designing ser
 
 ==== Notes
 
-== Wednesday - workshop
+____
+A good architecture is before all an architecture that can evolve over time
+____
+
+For that:
+
+* autonomy
+	** independence is where services get their value
+* allows scaling
+	** you can scale monolith, but that very difficult to do *in terms* of people (lots of developers) +
+	That's where *microservices* come: *to allow people to work efficiently together*
+* Services work best in a single bounded context
+	** that's generally possible for technical services (like SSO)
+	** but is much more difficult for business services
++
+image::voxxed_72.jpg[]
++
+(check the "authorisation" service)
+	** we need encapsulation to hide internal state. Be loosely coupled.
+
+Database magnify the data
+
+image::voxxed_73.jpg[]
+
+[IMPORTANT]
+====
+Data systems are about exposing data. +
+Services are about hiding data.
+====
+
+IMPORTANT: Microservices shouldn't share a database
+
+Data is tend to amplify the "data-service" problem -> when your service is finally principally use to expose data
+
+Reality: data diverges over time
+
+* the more mutable copies, the more data diverge over time
++
+image::voxxed_74.jpg[]
+
+Forces competing in the systems world: *Accessibility vs coupling vs divergence*
+
+SO, WHAT'S THE BETTER WAY?
+
+-> *Event Driven*: interact through events, don't talk to services.
+
+* Request sourcing -> high coupling
+* *Event broadcast* -> lowest coupling 
++
+image::voxxed_75.jpg[]
+
+We need to share event, and so we need a messaging system for that. +
+-> Hence *Kafka*, more than a messaging bus, it's a *streaming platform*.
+
+image::voxxed_75.jpg[]
+
+* Kafka scales very well
+* a place to *keep data on the outside*
++
+image::voxxed_77.jpg[]
+
+.Kafka: a streaming platform
+image:voxxed_78.jpg[]
+
+The [red]*streaming engine* is a big force of the Kafka platform
+
+image:voxxed_79.jpg[]
+image:voxxed_80.jpg[]
+
+* rockDB to store...
+
+.After Event service, Query service
+image::voxxed_81.jpg[]
+
+____
+So we have shared storage in the Log, and a query engine layered on top
+____
+
+Data storage PLUS query engine = DATABASE +
+Is Kafka
+
+image:voxxed_82.jpg[]
+image:voxxed_83.jpg[]
+
+A database use a log and hide it. +
+But Kafka do the opposite: it exposes its log +
+-> it decentralizes responsibility for query processing
+
+image::voxxed_84.jpg[]
+image::voxxed_85.jpg[]
+
+So, if you want to *share a database*, *turn it inside out*!
+
+(Very good) Synthesis
+
+image::voxxed_86.jpg[]
+
+==== Resources
+
+images::voxxed_87.jpg[]
+
+Conclusion
+
+* VERY GOOD SLIDES!
+* very good and pragmatical talk
+* the best talk on Kafka I ever seen!
+
+=== Microservices Lessons Learned
+
+Presented by Susanne Kaiser
+
+==== Abstract
+
+The journey from monolith to microservices is different for every organization. A variety of challenges come with introducing microservices itself, but also organizational circumstances impacting the transformation that needed to be considered.
+
+In this talk I would like to share some microservices lessons learned from a startup perspective - and in hindsight, what to watch out for if starting the journey again.
+
+==== Notes
+
+
+=== Running Kafka in Kubernetes - a practical guide
+
+Presented by Katherine Stanley, from IBM
+
+==== Abstract
+
+Apache Kafka is a very popular choice publish/subscribe messaging and event streaming in modern Cloud Native application. These reactive and event-driven applications are increasingly containerised and deployed to Kubernetes. This session will cover the practical aspects of deploying Kafka to a Kubernetes environment, from configuring resources to deploying applications.
+
+We will show an example deployment of Kafka on Kubernetes, including the Kubernetes objects to use and the resource considerations you must make when configuring your deployment. The session will highlight useful metrics to consider when creating Kubernetes health checks and pitfalls to avoid.
+
+Finally we will demonstrate how to connect an application to your Kafka deployment. This will include the additional objects required to expose Kafka to applications running externally to your Kubernetes cluster.
+
+==== Notes
+
+
+=== What is SmallRye and How Can You Help?
+
+Presented by Ken Finnigan, Senior Principal Software Engineer for Red Hat Middleware
+
+==== Abstract
+
+Eclipse MicroProfile moves at a pace that is very unfamiliar to our past experiences with Java EE. That’s why Red Hat, in conjunction with other vendors and the community, has started the SmallRye project for developing implementations of the Eclipse MicroProfile specifications that can be used by any implementer to facilitate faster turn around of implementations.
+
+This talk will introduce you to SmallRye and which implementations it works on. While also providing details of the community, where the work is being done, and how you can help us to deliver the best implementations of Eclipse MicroProfile possible.
+
+==== Notes
+
+
+
+=== Cloud Native Java, part deux
+
+Presented by Josh Long (Pivotal)
+
+==== Abstract
+
+You know what nobody has ever said to me? +
+"I wish you'd covered even more in your 45 minute 'Cloud Native Java' talk!" And I listened! In this talk, we'll look at Spring Cloud.next to support modern microservices development, focusing on the things that really matter (or, at least, the things we've got cooking in Spring Boot 2.0 and Spring Cloud Finchley.
+
+* functions-as-a-service with Spring Cloud Function and Project RIff
+* functional reactive REST endpoints (totally different meaning for "function" here, though) reactive programming with Spring Framework 5. Leverage flow control at every layer and make the most efficient use of every CPU when doing input/output. You're going to need every bit of efficiency that you can get after you've installed the patches for Spectre and Meltdown!
+* Kotlin. Yes, KOTLIN: you wanted Java and I'm giving it to you.. in libraries that I'll use from Kotlin.
+* messaging with Apache Kafka. Nothing funny here. It's just awesome.
+* Live on the edge with the new, reactive, rate-limiting, proxying, websocket-aware Spring Cloud Gateway
+* ASCII art!
+
+==== Notes
+
+=== Data Streaming for Microservices using Debezium
+
+Presented by Gunnar Morling (Red Hat)
+
+==== Abstract
+
+==== Notes
+
+
+
+=== Create API for your databases, Rest, GraphQL, gRPC which one should you choose ?
+
+Presented by Cedrick Lunven, Developer Advocate at DataStax 
+
+==== Abstract
+
+Depending on your use cases you may need to access your databases which different patterns and technologies (CRUD+UI, batch, reactive, IoT, ...).
+
+At DataStax, the developer advocates team implements reference applications for developers. We had the chance to implement multiple approaches and can provide feedback. KillrVideo.com is one of this application, it has been written in 3 languages (Java, C# and Node) and implement API with REST, Grpc and GraphQL.
+
+Though live session, browsing real code, you will see implementation details, lessons learnt and get working source code in Github as takeaway.
+
+==== Notes
+
+
+
+=== Do microservices dream about CQRS-ES, Kafka Stream and BPMN ?
+
+Presented by Cédric Vidal (Quicksign) and Nicolas Romanetti (QuickSign)
+
+==== Abstract
+
+Like many other software vendors Quicksign has chosen to migrate its SAAS platform from an on-premise monolith to a microservices platform in the Cloud.
+
+Using a modern tech stack including Kafka, Kubernetes, the Camunda BPMN engine and some in-house development we have built a Kappa CQRS-ES multi-tenant platform able to execute BPMN workflows that can discover and consume any microservice registered in a Kubernetes backed extended registry that allows content type and protocol negotiation.
+
+Our platform leverages Kafka Streams to dynamically generate from a reactive stream of workflow events a bespoke REST-API (HATEOAS) representation so as to ease our customers’ integration effort and allow fast iterations.
+
+We propose to briefly introduce the audience to BPMN and then expose the rationale that led us to build this architecture, its advantages in terms of agility and scalability.
+
+==== Notes
+
+
+
+=== Introduction to Micronaut: Lightweight Microservices with Ahead of Time Compilation
+
+Presented by Graeme Rocher
+
+==== Abstract
+
+In this session, the creator of Micronaut and Grails introduces the newly released Micronaut framework and demonstrates how Micronaut’s unique compile-time approach enables the development of ultra-lightweight microservices for Java. Compelling aspects of the Micronaut framework include
+
+• Subsecond startup time • Small processes that can run in as little as 10 MB of JVM heap • No runtime reflection • Dependency injection and AOP • Cloud Native
+
+Graeme will also demonstrate how you can take your Microservices to the next level by using Micronaut's Ahead of Time Compilation (AOT) support and Oracle's GraalVM to achieve instant startup and ultra-low memory footprint.
+
+==== Notes
+
+
+
+== WEDNESDAY - workshop
+
+*Schedule*: https://vxdms2018.confinabox.com/byday/wed
 
 === Boundaries of Microservices: How to Build Them and How to Cross Them
 
@@ -721,6 +999,8 @@ We’ll touch on how to set up Kafka clusters on OpenShift via the Strimzi proje
 ===== Notes
 
 == Buzz words
+
+"Main theme": *splitting the monolith*
 
 * *Service Mesh*, et plus particulièremnet *Istio* +
 En voici une définition tirée de cet article d'Octo : 
