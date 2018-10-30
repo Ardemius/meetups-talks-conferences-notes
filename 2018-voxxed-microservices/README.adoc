@@ -728,11 +728,18 @@ Presented by *Damien Gasparina*, engineer and an open-source enthusiast working 
 
 ==== Abstract
 
-When building a microservices-based systems, we don’t generally think too much about data. If we need data from another service, we ask for it. This pattern works well for whole swathes of use cases, particularly ones where datasets are small and requirements are simple. But real business services have to join and operate on datasets from many different sources and this can be slow and cumbersome in practice.
+When building a microservices-based systems, we don’t generally think too much about data. +
+If we need data from another service, we ask for it. +
+This pattern works well for whole swathes of use cases, particularly ones where datasets are small and requirements are simple. +
+But real business services have to join and operate on datasets from many different sources and this can be slow and cumbersome in practice.
 
-These problems stem from an underlying dichotomy. Data systems are built to make data as accessible as possible - a mindset that focuses on getting the job done. Services, instead, focus on encapsulation - a mindset that allows independence and autonomy as we evolve and grow. But these two forces inevitably compete in most serious service-based architectures.
+These problems stem from an underlying dichotomy. +
+*Data systems are built to make data as accessible as possible* - a mindset that focuses on getting the job done. +
+*Services, instead, focus on encapsulation* - a mindset that allows independence and autonomy as we evolve and grow. +
+But these two forces inevitably compete in most serious service-based architectures.
 
-Understanding and accepting this dichotomy is an important part of designing service-based systems at any significant scale. In this talk, we will explain how to make use of a shared, immutable sequence of records to balance data that sits inside their services with data that is shared, an approach that allows the likes of Uber, Netflix, and LinkedIn to scale to millions of events per second.
+Understanding and accepting this dichotomy is an important part of designing service-based systems at any significant scale. +
+In this talk, we will explain how to make use of a shared, immutable sequence of records to balance data that sits inside their services with data that is shared, an approach that allows the likes of Uber, Netflix, and LinkedIn to scale to millions of events per second.
 
 ==== Notes
 
@@ -849,7 +856,8 @@ Presented by Susanne Kaiser
 
 ==== Abstract
 
-The journey from monolith to microservices is different for every organization. A variety of challenges come with introducing microservices itself, but also organizational circumstances impacting the transformation that needed to be considered.
+The journey from monolith to microservices is different for every organization. +
+A variety of challenges come with introducing microservices itself, but also organizational circumstances impacting the transformation that needed to be considered.
 
 In this talk I would like to share some microservices lessons learned from a startup perspective - and in hindsight, what to watch out for if starting the journey again.
 
@@ -961,9 +969,12 @@ Presented by Katherine Stanley, from IBM
 
 ==== Abstract
 
-Apache Kafka is a very popular choice publish/subscribe messaging and event streaming in modern Cloud Native application. These reactive and event-driven applications are increasingly containerised and deployed to Kubernetes. This session will cover the practical aspects of deploying Kafka to a Kubernetes environment, from configuring resources to deploying applications.
+Apache Kafka is a very popular choice publish/subscribe messaging and event streaming in modern Cloud Native application. +
+These reactive and event-driven applications are increasingly containerised and deployed to Kubernetes. +
+This session will cover the practical aspects of deploying Kafka to a Kubernetes environment, from configuring resources to deploying applications.
 
-We will show an example deployment of Kafka on Kubernetes, including the Kubernetes objects to use and the resource considerations you must make when configuring your deployment. The session will highlight useful metrics to consider when creating Kubernetes health checks and pitfalls to avoid.
+We will show an example deployment of Kafka on Kubernetes, including the Kubernetes objects to use and the resource considerations you must make when configuring your deployment. +
+The session will highlight useful metrics to consider when creating Kubernetes health checks and pitfalls to avoid.
 
 Finally we will demonstrate how to connect an application to your Kafka deployment. This will include the additional objects required to expose Kafka to applications running externally to your Kubernetes cluster.
 
@@ -1018,7 +1029,7 @@ You know what nobody has ever said to me? +
 ==== Notes
 
 .Josh contact (very active on Twitter)
-image::photo.jpg[]
+image::voxxed_113.jpg[]
 
 Bientôt, nouveau livre de Josh : _Reactive Spring_ (https://ReactiveSpringBook.io)
 
@@ -1040,9 +1051,101 @@ Presented by Gunnar Morling (Red Hat)
 
 ==== Abstract
 
+Debezium (noun | de·be·zi·um | /dɪ:ˈbɪ:ziːəm/) - Secret Sauce for *Change Data Capture*
+
+Streaming changes from your datastore enables you to solve multiple challenges: synchronizing data between microservices, maintaining different read models in a CQRS-style architecture, updating caches and full-text indexes, and feeding operational data to your analytics tools.
+
+Join this session to learn what change data capture (CDC) is about and how it can be implemented using Debezium, an open-source CDC solution based on Apache Kafka. Find out how Debezium captures all the changes from datastores such as MySQL, PostgreSQL and MongoDB, how to react to the change events in near real-time, and how Debezium is designed to not compromise on data correctness and completeness also if things go wrong.
+
+In a live demo we'll show how to set up a change data stream out of your application's database, without any code changes needed. You'll see how to sink the change events into other databases and how to push data changes to your clients using WebSockets.
+
 ==== Notes
 
+.Gunnar contact (again to contact on Twitter)
+image::voxxed_114.jpg[]
 
+*CDC Use Cases*
+
+image::voxxed_115.jpg[]
+
+But also, those use cases:
+
+* microservices Data Prograpation
+* extract microservices out of monoliths
+
+And finally:
+
+image::voxxed_116.jpg[]
+
+How to Capture Data Changes?
+
+image::voxxed_117.jpg[]
+
+-> *Dual writes* are a *BAD* idea (failures and prone to *race conditions*)
+
+image::voxxed_118.jpg[]
+
+A better solution: *to monitor the database*
+
+* As a part of this solution, let's [red]*read the database log* for CDC
+	** MySQL: binlog
+	** Postgres: write-ahead log
+	** MongoDB: op log
+
+And so, hence again, *Kafka* -> perfect fit for CDC
+
+image::voxxed_119.jpg[]
+
+Now *Kafka Connect*:
+
+* a framework for *source* ans *sink* connectors
+* track offsets
+* schema support
+* clustering
+* rich eco-system of connectors
+	** *Debezium* is a set of connectors
+
+.CDC message structure
+image::voxxed_120.jpg[]
+
+Debezium set of connectors
+
+image::voxxed_121.jpg[]
+
+Now, let's dip in the streaming part
+
+image::voxxed_122.jpg[]
+
+migrating from monoliths to microservices :
+
+* stream changes to extracted microservice
+
+Again *materialize Aggregate Views*
+
+image:voxxed_123.jpg[]
+image:voxxed_124.jpg[]
+
+-> last one is a *good explicative schema of CDC* (and also simple by the way)
+
+*To detect missing or wrong data:*
+
+* constantly *compare record counts* on source an sink side
+	** raise alert if threshold is reached
+* compare every n-th record *field by field*
+	** E.g. have all recors compared within one week
+
+.Leverage the powers of Kafka Connect SMTs (Single Message Transofrmations)
+image:voxxed_125.jpg[]
+
+Debezium current status
+
+image::voxxed_126.jpg[]
+
+==== Summary
+
+image::voxxed_127.jpg[]
+
+Mon avis : des infos intéressantes, mais j'ai trouvé le talk de Susanne plus clair.
 
 === Create API for your databases, Rest, GraphQL, gRPC which one should you choose ?
 
@@ -1156,10 +1259,11 @@ Best talks:
 * Integrating microservices by accepting the data dichotomy, by Damien
 * Microservices Lessons Learned, by Susanne
 
-
 Message broker poussé dans toutes les solutions (= Kafka)
 Archi hexa
 consider managed services to offload infrastructure complexities
+
+More and more speakers insist on being *contacted on Twitter*.
 
 == Misc
 
