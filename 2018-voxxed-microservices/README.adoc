@@ -841,7 +841,7 @@ Conclusion
 
 * VERY GOOD SLIDES!
 * very good and pragmatical talk
-* the best talk on Kafka I ever seen!
+* [red]*the best talk on Kafka I ever seen!*
 
 === Microservices Lessons Learned
 
@@ -855,6 +855,105 @@ In this talk I would like to share some microservices lessons learned from a sta
 
 ==== Notes
 
+REX on Susanne startup, which she was CTO.
+
+It was a big monolith.
+
+image::voxxed_88.jpg[]
+
+.The motivation for microservices
+image::voxxed_89.jpg[]
+
+*Decomposition strategy*
+
+image::voxxed_90.jpg[]
+
+Mise en avant (une fois encore) de *l'architecture hexagonale* pour la décomposition
+
+image:voxxed_91.jpg[]
+image:voxxed_92.jpg[]
+
+BUT, was a bit too many steps at once, too difficult to begin with
+
+image::voxxed_93.jpg[]
+
+And so, another way to start:
+
+image:voxxed_94.jpg[]
+image:voxxed_95.jpg[]
+image:voxxed_96.jpg[]
+
+*Cross-cutting concerns*
+
+* *authorization*: need to be a unique service
+	** Handle them as early as possible
+	** avoid to build a distributed monolith, and to do so *use one stable common contract*
++
+image::voxxed_97.jpg[]
+image::voxxed_98.jpg[]
+
+*Service interaction*
+
+image::voxxed_99.jpg[]
+
+* Request driven: direct call to the API
+
+*How to manage shared data?*
+
+image::voxxed_100.jpg[]
+
+* Event not only used for notification, but also to share state
+
+.Source of Truth
+image::voxxed_101.jpg[]
+
+-> extremly important
+
+And hence *Kafka* (again and again)
+
+image::voxxed_102.jpg[]
+
+* messaging system
+* storage system
+* streaming platform (through *Kafka streams*)
+
+image:voxxed_103.jpg[]
+image:voxxed_104.jpg[]
+
+Use *materialized views* with Kafka Streams (as a *State Store*)
+
+image::voxxed_105.jpg[]
+image::voxxed_106.jpg[]
+
+And again, microservices is complex, checkout their associated infrastructure
+
+image::voxxed_107.jpg[]
+
+[quote, Susanne moto again]
+____
+Build the things that differentiate you, offload the things that don't
+____
+
+You have to differentiate from your competitors (we feel that Susanne was the CTO of a startup (_Just Social_))
+
+*Summary and lessons learned*
+
+image::voxxed_108.jpg[]
+
+-> road to microservices are a journey
+
+* start small
+* consider managed services to offload infrastructure complexities (again! As in the previous conf)
+* every journey is different, *there is no UNIQUE solution to handle them all*
+* you need to have the management on your side to take the microservice road
+
+==== Conclusion
+
+Super talk ! +
+Slides à récupérer et conserver, quasiment tout est à garder. +
+-> Susanne a fait les slides à la main ! (mouse drawing)
+
+Contact pour Susanne : @suksr
 
 === Running Kafka in Kubernetes - a practical guide
 
@@ -870,20 +969,35 @@ Finally we will demonstrate how to connect an application to your Kafka deployme
 
 ==== Notes
 
+Kat spotlights *IBM Event Streams*.
 
-=== What is SmallRye and How Can You Help?
+image::voxxed_109.jpg[]
 
-Presented by Ken Finnigan, Senior Principal Software Engineer for Red Hat Middleware
+Techno mises en avant : Kafka, Docker, Kuberntes, Istio
 
-==== Abstract
+Kafka cluster and the notion of Replica leader
 
-Eclipse MicroProfile moves at a pace that is very unfamiliar to our past experiences with Java EE. That’s why Red Hat, in conjunction with other vendors and the community, has started the SmallRye project for developing implementations of the Eclipse MicroProfile specifications that can be used by any implementer to facilitate faster turn around of implementations.
+image::voxxed_110.jpg[]
 
-This talk will introduce you to SmallRye and which implementations it works on. While also providing details of the community, where the work is being done, and how you can help us to deliver the best implementations of Eclipse MicroProfile possible.
+*Kubernetes*: pods containing containers, with a coordinating service above all.
 
-==== Notes
+image::voxxed_111.jpg[]
 
+-> If the pod needs a persistent storage, hence Kafka, we do it through a *persistent volume*.
 
+.Performance tip
+NOTE: Keeps Zookeeper (for metadata) next to Kafka, because of the frequent exchanges between them.
+
+Kubernetes metrics:
+
+* *Liveness*
+	** is container running? +
+	failure -> restart container
+* *Readiness*
+	** ready to receive traffic +
+	check in-sync replicas
+
+image::voxxed_112.jpg[]
 
 === Cloud Native Java, part deux
 
@@ -902,6 +1016,23 @@ You know what nobody has ever said to me? +
 * ASCII art!
 
 ==== Notes
+
+.Josh contact (very active on Twitter)
+image::photo.jpg[]
+
+Bientôt, nouveau livre de Josh : _Reactive Spring_ (https://ReactiveSpringBook.io)
+
+*start.spring.io* for the Sprint Initializr
+
+1st Josh's advise: as we are speaking about *reactive stuff*, do NOT choose *SQL stuff* in the initializer...
+
+*Flow Control* = *Back pressure* in the Reactive world
+
+Each thread here is an *Event Loop*.
+
+Mainly a live demo (as he already did before)
+
+*rsockets* are going to be supported on a short future.
 
 === Data Streaming for Microservices using Debezium
 
@@ -1010,8 +1141,25 @@ Le Service Mesh désigne une plateforme chargée d’assurer la sécurité, le r
 ----
 
 * *Kafka*
-* *Hexagonal architecture* (with DDD)
+* [RED]*Hexagonal architecture* (with DDD)
 * *Kubernetes* and its tools like *Helm*, *Nexus*, *Skaffold*
+
+== Synthesis
+
+Best speakers (my opinion):
+
+* Susanne Kaiser
+* Damien Gasparina
+
+Best talks:
+
+* Integrating microservices by accepting the data dichotomy, by Damien
+* Microservices Lessons Learned, by Susanne
+
+
+Message broker poussé dans toutes les solutions (= Kafka)
+Archi hexa
+consider managed services to offload infrastructure complexities
 
 == Misc
 
