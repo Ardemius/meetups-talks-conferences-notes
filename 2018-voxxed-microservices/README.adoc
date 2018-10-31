@@ -842,7 +842,7 @@ image::voxxed_86.jpg[]
 
 ==== Resources
 
-images::voxxed_87.jpg[]
+image::voxxed_87.jpg[]
 
 Conclusion
 
@@ -1363,20 +1363,20 @@ Le Service Mesh désigne une plateforme chargée d’assurer la sécurité, le r
 
 Best speakers (my opinion):
 
-* Susanne Kaiser
-* Damien Gasparina
+* *Susanne Kaiser*: @suksr
+* *Damien Gasparina*: @DamienGasparina
 
-Best talks:
+Best talks I saw:
 
-* Integrating microservices by accepting the data dichotomy, by Damien
-* Microservices Lessons Learned, by Susanne
-* Do microservices dream about CQRS-ES, Kafka Stream and BPMN ? by Cédric Vidal
+* _Integrating microservices by accepting the data dichotomy_, by Damien
+* _Microservices Lessons Learned_, by Susanne
+* _Do microservices dream about CQRS-ES, Kafka Stream and BPMN?_ by Cédric Vidal
 
 Au final on peut dire que :
 
-* Avoir un Message broker est poussé dans toutes les solutions (= Kafka)
-* l'Architecture hexagonale se répand un peu partout, bien aidée par la généralisation du DDD, dont les avantages sont maintenant reconnus
-* _"consider managed services to offload infrastructure complexities"_ : en microservices, cela devient une bonne pratique de plus en plus répandue, que de sortir certaines complexités liées à l'infra (comme le cache) dans un service managé.
+* Avoir un *Message Broker* est poussé dans toutes les solutions (= *Kafka*)
+* l'*Architecture Hexagonale* se répand un peu partout, bien aidée par la généralisation du *DDD*, dont les avantages sont maintenant reconnus
+* _"consider managed services to offload infrastructure complexities"_ : en microservices, cela devient une bonne pratique de plus en plus répandue, que de sortir certaines *complexités* liées à l'infra (comme le cache) dans un *service managé*.
 
 NOTE: More and more speakers insist on being *contacted on Twitter*.
 
