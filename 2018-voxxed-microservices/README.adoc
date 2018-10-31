@@ -1312,36 +1312,167 @@ Un architecture bien expliquée, avec de bonnes explications de choix effectués
 
 *Schedule*: https://vxdms2018.confinabox.com/byday/wed
 
-=== Boundaries of Microservices: How to Build Them and How to Cross Them
+=== Deploy Microservices on Kubernetes and Istio
 
-https://vxdms2018.confinabox.com/talk/YQD-1465/Boundaries_of_Microservices%3A_How_to_Build_Them_and_How_to_Cross_Them
+By SFEIR team: Abdennebi Mohamed, Julien Furgerot, Abderrazak BOUADMA and Yann CHENU
 
-Presented by *Linda van der Pal*, *Régina ten Bruggencate*, *Emmanuel Bernard* and *Gunnar Morling*.
+==== Abstract
 
-==== Defining Service Boundaries With DDD
+After attending this workshop, you will know and understand:
 
-===== Abstract
+* The overall Kubernetes architecture: master vs node / api-server, etcd, controllers & kubelet
+* The most important Kubernetes objects and their responsibilities: pod, deployment, service, ingress, config, secret, volume
+* How to use Istio to deploy applications based on microservices: rolling upgrade, canary and blue/green, * advanced routing
+* How to use Istio to increase visibility and security on what you deployed
 
-The first part of the workshop focuses on defining the borders between microservices. +
-How to split up your big problem into clearly defined microservices. In real life everything is related, and seeing the individual trees in the big picture of the sprawling forest is challenging. This is where Domain Driven Design (DDD) comes to the rescue. 
+==== Notes
 
-After a short presentation about DDD, we’ll get hands-on with an actual problem to end up with a working program.
+image::voxxed_150.jpg[]
 
-===== Notes
+What is a Kubernetes cluster?
+
+image::voxxed_151.jpg[]
+
+Content of a node:
+
+image::voxxed_152.jpg[]
+
+In Kubernetes, the basis is the *pod* +
+The most used pod is one containing *only 1 container*.
+
+image::voxxed_153.jpg[]
+
+3 patterns for *multiple containers in pods*:
+
+image::voxxed_154.jpg[]
+
+* sidecar
+* Adapter: Adapter take the user connection, and passes the request to the App Container
+* Ambassader: 
+
+IMPORTANT: You guarantee with that (multiple containers in a pod) that *all containers in a pod will run on the same machine*, hence avoiding I/O and perf issues.
+
+image::voxxed_155.jpg[]
+
+* The scalling of the pods is handled by Kubernetes *ReplicaSet*.
+* *Deployment* will manage the pod life cycle: if by example I want to deploy v2 instead of v1, the Deployment will deploy a new ReplicaSet for v2, and deletes the old v1 ReplicaSet once done.
+* *Ingress* allows you to have a single entry point to the cluster, and will manage HTTP routing.
+* To secure all of that, you can create different spaces in Kubernetes, to separate your application from aplications of other teams
+
+===== Kubernetes Internals
+
+Kubernetes was created by Google, which uses containers (lots of!) for now 15 years. +
+To manage all those containers, Google created an orchestrator called *Borg*
+
+image::voxxed_156.jpg[]
+
+* All this works with a *Control Loop*
+* conf is a resource definition file (.yaml) which is given to *etcd* (???) (distributed among master nodes)
+* in Node you have a special component: Kubelet +
+This last watches the configuration
+
+-> So resources are only yml
+
+Example of Pod:
+
+image::voxxed_157.jpg[]
+
+* *spec* part is the definition of the resources
+	** currently Kubernetes uses Docker, but it can technically use anything that launches processes (like a VM image)
+
+image::voxxed_158.jpg[]
+
+* `kubectl explain pod` gives you life info on the pod
+
+image:voxxed_159.jpg[]
+image:voxxed_160.jpg[]
+
+* In *Deployment* section, the *template* section gives info on the pod definition
+
+===== The labels game
+
+image::voxxed_161.jpg[]
+
+* this concept of *labels* is the way Kubernetes uses to link different ReplicaSet.
+
+image::voxxed_162.jpg[]
+
+===== Services
+
+image::voxxed_163.jpg[]
+
+* *service B* is on several pods, and has 1 IP. Accessing this last allows to load balance to the different pods.
+
+Services can have different types:
+
+* *Cluster IP*
++
+image:voxxed_164.jpg[]
+
+* *NodePort*
++
+image:voxxed_165.jpg[]
++
+	** uses a *kubeproxy*, automatically defined, allowing to calls this pod on a given port from any other pod
+
+* *LoadBalancer*
++
+image:voxxed_166.jpg[]
+
+The other way (not using a host platform like Google) to expose your application through standard ports is to use *Ingress*:
+
+image::voxxed_167.jpg[]
+
+* Will route your request based on the URL path
+
+===== Rolling-upgrade
+
+How to upgrade your pods without interruption?
+
+image:voxxed_168.jpg[]
+image:voxxed_169.jpg[]
+image:voxxed_170.jpg[]
+
+* 2/4 Kubernetes will replace one pod of your application
+* 3/4 and 4/4: once 2/4 is done, Kubernetes will continue replacing v1 pods with v2 pods
+
+==== Workshop
+
+The workshop will be done on *GKE* (*Google Kubernetes Engine*)
+
+*registering for the Sfeir demos*: https://goo.gl/forms/cY9HxHvsjLouF9LG3
+
+The GitHub repo of the demos is: https://github.com/Sfeir/kubernetes-istio-workshop +
+And for the explanations, check here: https://sfeir.github.io/kubernetes-istio-workshop/kubernetes-istio-workshop/1.0.0/index.html
+
+===== 1st Demo
+
+Let's go
+
+----
+Informations sur le projet
+
+Nom du projet
+Workshop istio ardemius
+
+ID du projet
+workshop-istio-ardemius
+
+Numéro du projet
+856831673950
+----
+
+image::workshop_01.jpg[]
+
+I do also add my favorite `git log` aliases, and apparently I finished to setup my GCP et Cloud Shell, and I'm ready to start "Part1: Kubernetes"
+
+image::workshop_02.jpg[]
+
+===== Part 1: Kubernetes
+
+image::workshop_03.jpg[]
 
 
-
-==== Data Streams to Cross Boundaries
-
-===== Abstrat
-
-In the second part we’ll discuss why microservices must avoid tight coupling and how they still can share data. 
-
-Based on Kafka, Debezium and Kubernetes, our microservices will produce and consume data streams. +
-We’ll also use change data capture to stream data changes directly out of a database, without any application changes needed. +
-We’ll touch on how to set up Kafka clusters on OpenShift via the Strimzi project and how to monitor and tune them for performance and resilience.
-
-===== Notes
 
 == Buzz words
 
@@ -1359,6 +1490,8 @@ Le Service Mesh désigne une plateforme chargée d’assurer la sécurité, le r
 * [RED]*Hexagonal architecture* (with DDD)
 * *Kubernetes* and its tools like *Helm*, *Nexus*, *Skaffold*
 
+* A bit of *12 Factors application*
+
 == Synthesis
 
 Best speakers (my opinion):
@@ -1371,6 +1504,11 @@ Best talks I saw:
 * _Integrating microservices by accepting the data dichotomy_, by Damien
 * _Microservices Lessons Learned_, by Susanne
 * _Do microservices dream about CQRS-ES, Kafka Stream and BPMN?_ by Cédric Vidal
+
+I didn't see but friends told me it was great:
+
+* https://vxdms2018.confinabox.com/talk/LLD-3111/10_tips_for_failing_at_microservices[10 tips for failing at microservices] par David Schmitz +
+For what I was told David is a german guy with a lot of humor, who knows how to insist on important points.
 
 Au final on peut dire que :
 
