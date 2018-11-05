@@ -1008,6 +1008,20 @@ Kubernetes metrics:
 	** ready to receive traffic +
 	check in-sync replicas
 
+.Definition from the workshop "Deploy Microservices on Kubernetes and Istio"
+[NOTE]
+====
+Kubernetes supports *monitoring applications* in the form of *readiness* and *liveness* probes. +
+Health checks can be performed on each container in a Pod. 
+
+* *Readiness* probes indicate when a Pod is *"ready" to serve traffic*. +
+If a readiness check fails the container will be marked as not ready and will be removed from any load balancers.
+
+* *Liveness* probes indicate a *container is "alive"*. +
+If a liveness probe fails multiple times the container will be restarted. +
+Liveness probes that continue to fail will cause a Pod to enter a crash loop. 
+====
+
 image::voxxed_112.jpg[]
 
 === Cloud Native Java, part deux
@@ -1399,6 +1413,8 @@ image::voxxed_162.jpg[]
 
 ===== Services
 
+Services provide *stable endpoints for Pods* based on a set of *labels*.
+
 image::voxxed_163.jpg[]
 
 * *service B* is on several pods, and has 1 IP. Accessing this last allows to load balance to the different pods.
@@ -1436,43 +1452,46 @@ image:voxxed_170.jpg[]
 * 2/4 Kubernetes will replace one pod of your application
 * 3/4 and 4/4: once 2/4 is done, Kubernetes will continue replacing v1 pods with v2 pods
 
-==== Workshop
+===== Istio
 
-The workshop will be done on *GKE* (*Google Kubernetes Engine*)
+.Microservices drawbacks
+image::voxxed_171.jpg[]
 
-*registering for the Sfeir demos*: https://goo.gl/forms/cY9HxHvsjLouF9LG3
+To answer to those drawbacks, we can use tools like *Spring Cloud* or *Netflix OSS*
 
-The GitHub repo of the demos is: https://github.com/Sfeir/kubernetes-istio-workshop +
-And for the explanations, check here: https://sfeir.github.io/kubernetes-istio-workshop/kubernetes-istio-workshop/1.0.0/index.html
+* Hystrix
+* Ribbon
+* Eureka
+* Zuul: edge gateway
 
-===== 1st Demo
+-> But all those tools are for the Java world, what to do for other techno? +
+Answer is *Service Mesh*
 
-Let's go
+image::voxxed_172.jpg[]
 
-----
-Informations sur le projet
+.Istio
+image::voxxed_173.jpg[]
 
-Nom du projet
-Workshop istio ardemius
+* With Istio you don't need Hystrix (and in addition is more powerful)
+* Istio is a Service Mesh with Zero Application Code Changes
 
-ID du projet
-workshop-istio-ardemius
+.Istio Components
+image::voxxed_174.jpg[]
 
-Numéro du projet
-856831673950
-----
+* Istio transparently adds a proxy for each service
+* Those proxies will catch all ingoing and outgoing traffic
+* They will also transmit different metrics (telemetry) to the Mixer
+* *Citadel* is a component responsible for handling and creating keys and certificates for TLS
 
-image::workshop_01.jpg[]
+*Traffic management* and definition of *VirtualService, DestinationRule, subsets and Policies*:
 
-I do also add my favorite `git log` aliases, and apparently I finished to setup my GCP et Cloud Shell, and I'm ready to start "Part1: Kubernetes"
+image:voxxed_175.jpg[]
+image:voxxed_176.jpg[]
+image:voxxed_177.jpg[]
 
-image::workshop_02.jpg[]
+* This kind of traffic management is not possible with only Kubernetes (this feature is NOT available)
 
-===== Part 1: Kubernetes
-
-image::workshop_03.jpg[]
-
-
+NOTE: Istio has some impact on the performances
 
 == Buzz words
 

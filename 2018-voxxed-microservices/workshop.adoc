@@ -1,0 +1,474 @@
+= Workshop - Deploy Microservices on Kubernetes and Istio
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 3
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Workshop du Voxxed Days Microservices, le mercredi 31/10/2018
+
+== Description
+
+The workshop will be done on *GKE* (https://cloud.google.com/kubernetes-engine/[Google Kubernetes Engine])
+
+*To register for the Sfeir demos*: https://goo.gl/forms/cY9HxHvsjLouF9LG3 +
+-> This will allow you to benefit from SFEIR's subscription to GKE. +
+This other option is to register to GKE 1 year trial period (or free 300$ of use)
+
+The *GitHub repo* of the demos is: https://github.com/Sfeir/kubernetes-istio-workshop +
+
+For the *explanations and instructions*, go the associated GitHub Pages: https://sfeir.github.io/kubernetes-istio-workshop/kubernetes-istio-workshop/1.0.0/index.html
+
+NOTE: My following notes are to be read in parallel with this statement
+
+=== Setup environment
+
+Let's go! Informations from the *Google Cloud Platform Console*:
+
+----
+Informations sur le projet
+
+Nom du projet
+Workshop istio ardemius
+
+ID du projet
+workshop-istio-ardemius
+
+Numéro du projet
+856831673950
+----
+
+image::workshop_01.jpg[]
+
+NOTE: I do also add my favorite https://github.com/Ardemius/personal-wiki/wiki/git-tips#useful-git-aliases[`git log` aliases]
+
+-> Setup finished for GCP et Cloud Shell, and I'm ready to start "Part1: Kubernetes"
+
+image::workshop_02.jpg[]
+
+=== Part 1: Kubernetes
+
+WARNING: Main folder for the doc is `~/kubernetes-istio-workshop`. +
+You will NOT be in that folder after opening a new Cloud Shell!
+
+TIP: Add `source <(kubectl completion bash)` at the end of your `.bashrc` to benefit from *kubectl completion* in all Cloud Shell.
+
+==== Create cluster
+
+===== Create Kubernetes cluster on GKE
+
+image:workshop_03.jpg[]
+image:workshop_04.jpg[]
+
+===== Configure Kubernetes command-line client
+
+image:workshop_05.jpg[]
+image:workshop_06.jpg[]
+image:workshop_07.jpg[]
+
+==== Creating and managing pods
+
+===== Tutorial: Creating Pods
+===== Exercise: View Pod details
+
+image:workshop_08.jpg[]
+image:workshop_09.jpg[]
+image:workshop_10.jpg[]
+
+*Quiz*
+
+* _What is the IP address of the monolith Pod?_
+	** `IP:           10.24.0.7`
+* _What node is the monolith Pod running on?_
+	** `Node:         gke-kube-cluster-default-pool-a6f79a8f-snmf/10.132.0.3`
+* _What containers are running in the monolith Pod?_
+	** only "monolith" container:
++
+----
+Containers:
+  monolith:
+    Container ID:  docker://df71f70933285c5549f7f209a5780022c1ca6dc4a8cb9932d244b1d6cbc2905c
+    Image:         kelseyhightower/monolith:1.0.0
+    Image ID:      docker-pullable://kelseyhightower/monolith@sha256:72c3f41b6b01c21d9fdd2f45a89c6e5d59b8299b52d7dd0c9491745e73db3a35
+
+[...]
+----
++
+* _What are the labels attached to the monolith Pod?_
+	** `Labels:       app=monolith`
+* _What arguments are set on the monolith container?_
++
+----
+Args:
+      -http=0.0.0.0:80
+      -health=0.0.0.0:81
+      -secret=secret
+----
+
+===== Exercise: Interact with a Pod remotely
+
+image:workshop_11.jpg[]
+image:workshop_12.jpg[]
+
+===== Exercise: View the logs of a Pod
+
+on se met en écoute avec l'option `-f` sur le pod, et on spamme sur une autre console quelques `curl` sur le pod au travers du port que nous avons forwardé avant :
+
+image:workshop_15.jpg[]
+image:workshop_16.jpg[]
+
+===== Exercise: Run an interactive shell inside a Pod
+
+image:workshop_13.jpg[]
+image:workshop_14.jpg[]
+
+==== Monitoring and Health Checks
+
+Kubernetes supports monitoring applications in the form of readiness and liveness probes. +
+Health checks can be performed on each container in a Pod. 
+
+* *Readiness* probes indicate when a Pod is *"ready" to serve traffic*.
+	** If a readiness check fails the container will be marked as not ready and will be removed from any load balancers.
+* *Liveness* probes indicate a *container is "alive"*. 
+	** If a liveness probe fails multiple times the container will be restarted. Liveness probes that continue to fail will cause a Pod to enter a crash loop.
+
+*Tutorial: Creating Pods with Liveness and Readiness Probes*
+
+image:workshop_17.jpg[]
+
+*Exercise: View Pod details*
+
+image:workshop_18.jpg[]
+
+*Quiz*
+
+* How is the readiness of the healthy-monolith Pod determined?
+	** *readiness* check in the following logs
+* How is the liveness of the healthy-monolith Pod determined?
+	** *healthz* check in the following logs
+* How often is the readiness probe checked?
+	** in _healthy-monolith.yaml_: `readinessProbe` section: `timeoutSeconds: 1` -> mais semble être 10 sec dans les logs ?! +
+	-> Parce que c'est le param  `periodSeconds` qui devrait être utilisé, et comme ce n'est pas le cas dans le yaml, c'est qu'il est utilisé implicitement, avec sa valeur par défaut, qui doit donc être 10 CQFD 😉
+* How often is the liveness probe checked?
+	** in _healthy-monolith.yaml_: `livenessProbe` section: `periodSeconds: 15`
+
+NOTE: The healthy-monolith Pod logs each health check. Use the kubectl logs command to view them.
+
+image:workshop_19.jpg[]
+
+*Tutorial: Experiment with Readiness Probes*
+
+image:workshop_20.jpg[]
+image:workshop_21.jpg[]
+
+And now forcing the monolith container readiness probe to pass again:
+
+image:workshop_22.jpg[]
+
+*Exercise: Experiment with Liveness Probes*
+
+image:workshop_23.jpg[]
+
+*Quiz*
+
+* What happened when the liveness probe failed?
+	** A *restart* is launched to get back to the initial state (what is shown is the previous `RESTART` column)
+* What events where created when the liveness probe failed?
+	** Given by `kubectl describe pods healthy-monolith`: 
++
+----
+Warning  Unhealthy              1m (x2 over 1m)     kubelet, gke-kube-cluster-default-pool-a6f79a8f-snmf  Liveness probe failed: HTTP probe failed with statuscode: 503
+----
+
+[NOTE]
+====
+* *Readiness* : notion métier, la tâche ne peut pas rendre le service attendu car un service tiers (par exemple) ne répond pas (comme la BDD toujours par exemple)
+
+* *liveness* : cette fois, c'est le pod lui-même qui a un problème (ou un souci de config), ce qui va entraîner son *redémarrage*
+====
+
+==== Managing Application Configurations and Secrets
+
+*Tutorial: Creating Secrets*
+
+image:workshop_24.jpg[]
+image:workshop_25.jpg[]
+
+*Quiz*
+
+* How many items are stored under the tls-certs secret?
+	** `cert.pem:    1545 bytes`
+	** `key.pem:     1704 bytes`
+	** `ca-key.pem:  2484 bytes`
+	** `ca.pem:      1712 bytes`
+* What are key the names?
+
+*Tutorial: Creating Configmaps*
+
+image:workshop_27.jpg[]
+
+*Quiz*
+
+* How many items are stored under the nginx-proxy-conf configmap?
+* What are the key names?
+
+*Tutorial: Use Configmaps and Secrets*
+
+image:workshop_26.jpg[]
+
+*Quiz*
+
+* How are secrets exposed to the secure-monolith Pod?
+* How are configmaps exposed to the secure-monolith Pod?
+
+image:workshop_28.jpg[]
+
+==== Creating and Managing Services
+
+*Tutorial: Create a Service*
+
+image:workshop_29.jpg[]
+
+* *Exercise: Interact with the Monolith Service Remotely*
+* *Exercise: Explore the monolith Service*
+
+image:workshop_30.jpg[]
+
+* *Exercise: Interact with the Monolith Service Remotely*
+* *Tutorial: Remove Labels from Pods*
+
+image:workshop_31.jpg[]
+
+==== Creating and Managing Deployments
+
+*Create and Expose the Auth Deployment*
+
+image:workshop_32.jpg[]
+
+Samething to be done for the other Deployments Hello and Frontend
+
+* *Create and Expose the Hello Deployment*
+* *Create and Expose the Frontend Deployment*
+
+*Tutorial: Scaling Deployments*
+
+image:workshop_33.jpg[]
+image:workshop_34.jpg[]
+
+*Exercise: Scaling Deployments*
+
+image:workshop_35.jpg[]
+image:workshop_36.jpg[]
+
+*Exercise: Interact with the Frontend Service*
+
+image:workshop_37.jpg[]
+
+==== Rolling out Updates
+
+*Tutorial: Rollout a new version of the Auth service*
+
+image:workshop_38.jpg[]
+image:workshop_39.jpg[]
+image:workshop_40.jpg[]
+
+*Tutorial: Pause and Resume an Active Rollout*
+
+image:workshop_41.jpg[]
+image:workshop_42.jpg[]
+
+=== Part 2: Istio
+
+==== Setup Istio
+
+image:workshop_43.jpg[]
+
+==== Deploy Microservices
+
+image:workshop_44.jpg[]
+image:workshop_45.jpg[]
+
+*Deploy preference*
+
+image:workshop_46.jpg[]
+
+*Deploy recommendation*
+
+image:workshop_47.jpg[]
+
+==== Monitoring and Tracing
+
+image:workshop_48.jpg[]
+image:workshop_49.jpg[]
+image:workshop_50.jpg[]
+image:workshop_51.jpg[]
+image:workshop_52.jpg[]
+image:workshop_53.jpg[]
+image:workshop_54.jpg[]
+
+==== Simple Route Rules
+
+*Deploy recommendation:v2*
+
+image:workshop_55.jpg[]
+
+*Changing Istio Routings*
+
+image:workshop_56.jpg[]
+
+[NOTE]
+====
+Pour débugger les *virtualservices* (ou d'autres composants), utiliser l'option `-o yaml`, pour avoir un output détaillé au format yaml :
+
+image:workshop_57.jpg[]
+====
+
+image:workshop_58.jpg[]
+
+==== Advanced Route Rules
+
+*Traffic Steering*
+
+image:workshop_59.jpg[]
+
+*Load Balancer*
+
+image:workshop_60.jpg[]
+
+*Rate Limiting*
+
+image:workshop_61.jpg[]
+image:workshop_62.jpg[]
+image:workshop_63.jpg[]
+
+[NOTE]
+====
+Confirmé avec l'équipe SFEIR, il y a un petit bug dans le script de rate limiting. +
+Ce dernier ne fonctionne pas, en relançant la bouche `while` de monitoring, on ne voit aucune erreur 429 apparaître, contrairement à ce qu'indique l'énoncé.
+
+Pour le moment, la cause du bug n'a pas été trouvée
+====
+
+==== Fault Injection
+
+*HTTP Error 503*
+
+image:workshop_64.jpg[]
+
+*Delay*
+
+image:workshop_65.jpg[]
+
+NOTE: We see in the `while` loop than a 7sec delay now sometimes (50%) happens *before* the service is called.
+
+*Retry*
+
+image:workshop_66.jpg[]
+
+* We see in the *first* `while` loop that 1 service call on 2 (1 on 2 because of the round robbin), is failing with a 503 error because targeting *recommendation-v2* pod, which we configured to fail systematically using the `127.0.0.1:8080/misbehave` special endpoint.
+
+And now back to normal:
+
+image:workshop_67.jpg[]
+
+*Timeout*
+
+image:workshop_68.jpg[]
+
+* Just a quick watch to the way the new pod _recommendation v2_ "slow version" (777598bdc4) is replacing the old "classic" one (7bc4f7f696) +
+We can simply do it by successive calls to `kubectl get pots` command
+
+image:workshop_69.jpg[]
+
+* In the first `while` loop, we see that there is a delay in the call to _recommendation v2_. +
+But once the *timeout* is applied, we see this slowness is replaced by a: +
+`customer => 503 preference => 504 upstream request timeout`
+
+Here is the final clean up (including the deletion of the timeout rule):
+
+image:workshop_70.jpg[]
+
+==== Circuit Breaker
+
+*Fail Fast with Max Connections and Max Pending Requests*
+
+image:workshop_71.jpg[]
+
+*Test 1: Load test without circuit breaker*
+
+image:workshop_71.jpg[]
+
+[NOTE]
+====
+There is an error in the initial command of the workshop, which uses the _lonelyplanet/siege_ Docker image: +
+`docker run lonelyplanet/siege siege -r 2 -c 20 -v $CUSTOMER_URL`
+
+This last runs a Siege v2.7.0, which is bugged (check here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=610420) +
+I made a PR (https://github.com/Sfeir/kubernetes-istio-workshop/pull/11) to replace it by a new image, running a v4.0.4 Siege version, which works:
+
+`docker run --rm funkygibbon/siege siege --version` +
+`docker run --rm funkygibbon/siege siege -r 2 -c 20 -v $CUSTOMER_URL`
+====
+
+*Test 2: Load test with circuit breaker*
+
+*Pool Ejection*
+
+image:workshop_74.jpg[]
+
+*Test 1: Load test without failing instances*
+
+image:workshop_75.jpg[]
+
+*Test 2: Load test with failing instance*
+
+image:workshop_76.jpg[]
+
+* Here we clearly see that, as set, only the pod _recommendation-v2-7bc4f7f696-8pntk_ is misbeaving and returns a 503 (hence, 25% of the traffic)
+
+*Test 3: Load test with failing instance and with pool ejection*
+
+image:workshop_77.jpg[]
+
+*Test 4: Ultimate resilience with retries, circuit breaker, and pool ejection*
+
+image:workshop_78.jpg[]
+
+* Thanks to our new configuration using *circuit breaker*, *pool ejection* and *retries*, there is no more any request done to the misbehaving _recommendation-v2-7bc4f7f696-8pntk_ pod, even the initial one. +
+This last is still circuit broken and pool ejected, but now a retry immediately happens to redirect the traffic to a live and ready pod.
+
+*Clean up*
+
+image:workshop_79.jpg[]
+
+==== Mutual TLS
+
+NOTE: For a quick reminder of what is *mutual authentication*, check https://en.wikipedia.org/wiki/Mutual_authentication[Wikipedia].
+
+NOTE: I didn't have time to practice this part 😜
+
+.A good best practice about Mutual TLS in Istio
+NOTE: As best practice, use a *separate port for health check* and enable mutual TLS only on the regular service port.
