@@ -26,6 +26,8 @@ toc::[]
 
 == Overview
 
+Salon du 17/05/2018.
+
 * Site web : https://dataxday.fr
 * Les https://dataxday.fr/videos-slides[vidéos de la présentation] sont toutes disponibles sur le site.
 

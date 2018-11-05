@@ -185,6 +185,8 @@ Again automate! Once it works once, DOCKERIZE! +
 
 image::20181025_FOD_09.jpg[]
 
+Slides : https://www.slideshare.net/AbdelkrimHadjidj/paris-fod-meetup-kafka-security-101
+
 -> Stéphane est un très bon speaker, et fait apparemment de très bon cours sur Udemy
 
 
