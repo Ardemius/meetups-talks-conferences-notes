@@ -1,0 +1,634 @@
+= Xebicon 2018
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[width=800]
+
+Le 20/11/2018, au palais Brogniart à Paris.
+
+== Présentation
+
+* *Site* : https://xebicon.fr/
+* *Schedule* : https://xebicon.fr/programme-xebicon/
+{lb}
+* 1254 participants +
+image:pres-01.jpg[width=800]
+
+* Les développements de la Xebicon sont faits sur le temps libre des Xebians 
+* Anne Beauchart et son équipe marketing pour l'organisation de l'évènement, 6 mois de préparation
+{lb}
+* Framework SAFE pour la transformation Agile de l'entreprise, et non plus seulement les équipes et le département
+
+.Sponsors
+image:pres-02.jpg[width=800]
+
+== Keynote d'ouverture de Maurice LEVY
+
+Par *Maurice LEVY*, président du conseil de surveillance chez publicis groupe sera interviewé par LUC LEGARDEUR, président de XEBIA france
+
+Maurice confirme que Publicis a racheté Xebia vendredi dernier, le 16/11/2018.
+
+== Scaling : Framework ou pas framework ?
+
+10h00 - 10h45 +
+*Isabelle Roques* et *Stéphane Guedon*, Coachs Agile chez Purple Wise
+
+=== Notes
+
+Je n'ai regardé que le début (car REX Renault après coup), mais semble être un récapitulatif / présentation des principaux frameworks Agile de Scaling (Scrum of Scrum, SAFe, etc.) +
+
+Ce que j'en ai vu était très bien, surtout les commentaires des speakers. +
+Il faut donc bien revoir la conf, et ne pas se limiter aux seuls slides.
+
+== REX Renault Digital - La gouvernance des données
+
+10h25 - 10h45 +
+Par *Geoffrey Thiesset*, Datalake Design & Build Manager chez Renault Digital
+
+Le groupe Renault a décidé de mettre en place un Data Lake Hybride (on premise et cloud). +
+Pour ces raisons, une gouvernance sur ces données - et l'outillage transverse nécessaire pour manager ce patrimoine de données - est devenue cruciale. +
+En 20 minutes, Geoffrey Thiesset partagera avec l'audience la vision de ce qu'est une gouvernance des données pour l'entité Renault Digital, les actions déjà mises en place et celles à venir.
+
+=== Notes
+
+image::rex-renault-01.jpg[width=800]
+
+* DDL : Datalake Loader, framework développé en Spark / Scala
+* Scheduling avec Oozie
+* *Data Catalog avec Zeenea* : donne la visibilité sur le contenu du lake, et les metadata stockées.
+* Horton et Ranger
+
+What's next ?
+
+image::rex-renault-02.jpg[width=800]
+
+* Passage au cloud hybride chez GCP +
+-> ce passage confirme bien la tendance : un passage général au Cloud (au minimum Hybrid)
+* La mise en place d'un *Data lineage*
+
+== REX Société Générale - L’expérience AWS avec Lumo
+
+11h10 - 11h55 +
+Par *Akram Blouza*, Cloud Builder chez WeScale et *David Caramelo*, CTO chez Société Générale
+
+Lors de cette session, vous verrez que le passage au cloud avec AWS permettra de répondre aux exigences les plus pointues en terme de qualité et de sécurité. 
+
+Après avoir présenté brièvement le projet Lumo (plateforme d'épargne participative dédiée aux énergies renouvelables) et son architecture initiale, nous rentrerons dans le vif du sujet pour vous exposer l’architecture AWS cible, en abordant l’ensemble des solutions apportées sur les aspects sécurité, résilience et haute disponibilité. 
+
+Enfin, vous aurez un aperçu sur la solution apportée pour la chaîne de déploiement de Lumo dans AWS.
+
+=== Notes
+
+*Lumo* : *crowdfunding* sur les énergies renouvelables
+
+-> Les particuliers peuvent investir dans la transition énergétique (, en échange d'un certain rendement financier
+
+Quelques chiffres :
+
+* 7500 personnes
+* 6 millions €
+* 50 projets
+* 330 Kwh: +120 000 foyers français
+
+Depuis 2017 rachat de Lumo par la SG :
+
+* Travaille entre grand groupe et petite startup (5 personnes pour Lumo)
+* Chez Lumo, *tout était sur 1 seul serveur*, sur le Web, qui hébergait *TOUT* (web, data, doc, etc.)
+
+Techniquement :
+
+* Séparation forte des *rôles* : watchers, tinkers, keepers et settlers +
+image:lumo-01.jpg[width=800]
+* Utilisation de *CloudWatch*, et stockage chiffré sur S3
+* Création de *subnets différents* +
+image:lumo-02.jpg[width=800]
+* mise en place d'un *pare-feu applicatif* (un WAF, AWS WAF)
+* Le *Security Group* permet de bien séparer le trafic entrant et sortant +
+image:lumo-03.jpg[width=800]
+	** par exemple, les BDD n'acceptent que le trafic en provenance des flux EC2
+* *HTTPS* (SSL derrière) +
+image:lumo-04.jpg[width=800]
+	** utilisation du AWS Certificate Manager
+* *VPN*
+	** le backoffice n'est accessible QUE pour les administrateurs (via un VPN)
+* *Cryptage des données* +
+image:lumo-05.jpg[width=800]
+	** tout est crypté
+	** les clés sont stockés de façon sécurisée dans un KMS
+
+NOTE: Attention toute particulière portée à la *résilience* (domaine bancaire), et la *scalabilité*
+
+image::lumo-06.jpg[width=800]
+
+*CloudFront* : réseau rapide de diffusion du contenu (Content Delivery Network : CDN) +
+image:lumo-07.jpg[width=800]
+
+*Terraform* comme *Infra as a Code*, pour monter / rapidement l'infra +
+image:lumo-08.jpg[width=800]
+
+.Terraform tfstate
+[NOTE]
+====
+Terraform must store state about your managed infrastructure and configuration. This state is used by Terraform to map real world resources to your configuration, keep track of metadata, and to improve performance for large infrastructures.
+
+This state is stored by default in a local file named "terraform.tfstate", but it can also be stored remotely, which works better in a team environment.
+
+Voir https://www.terraform.io/docs/state/
+====
+
+* *Automatisation* et déploiement de l'application +
+image:lumo-09.jpg[width=800]
+	** avec *Jenkins* et *Ansible*
+	** tous les déploiements doivent être retro-compatibles avec la base de données (toutes les évolutions doivent être retro-compatibles)
+	** important du *Health Check*
+
+La suite et les améliorations possibles ?
+
+* ne plus déployer des applications mais des containers Docker
+
+-> Au final, ce projet d'intégration à mobiliser 2 personnes sur 6 mois. +
+David insiste sur l'importance de designer son application AWS en pensant *dès le début* à la *sécurité*.
+
+La partie clé KMS a nécessité plusieurs modifications applicatives (1 sprint de travail)
+
+== Modern Infrastructure
+
+12h05 - 12h50 +
+Par *Alexis "Horgix" Chotard*, SRE & Automation addict chez Xebia
+
+Vous avez beau avoir modernisé vos applications, les avoir rendu stateless, 12factor-compliant, etc., si vous n'avez pas l'infrastructure pour les déployer proprement et les gérer, votre bénéfice final sera fortement amoindri. 
+
+Cette conférence a pour but de vous faire ressortir avec une définition et une vision claires des principaux concepts qui caractérisent une infrastructure moderne. +
+Nous y parlerons Configuration Management, infrastructure immuable, infra-as-Code, orchestration, self-healing, systèmes distribués, applications Cloud Native, Serverless ... et ce n'est qu'un avant goût !
+
+=== Notes
+
+L'histoire de Pizza Corp : 1 serveur, 1 jeune sysadmin (Maxime) juste sorti de l'école, etc.
+
+Evolution de l'infra / l'environnement chez Pizza Corp
+
+1. *virtualisation*
+2. *ne plus utiliser une pléthore de shell scripts* (pb de maintenabilité et de montée en compétences des nouveaux), on va utiliser certains outils spécifiques à la place : +
+image:modern-infra-01.jpg[width=800]
+3. *Configuration management* : on automatise le setup des machines, que l'on stocke en gestion de conf
+image:modern-infra-02.jpg[width=800]
+4. on passe en *Infra as a service*, pour éviter d'avoir à gérer soi-même le hardware : +
+image:modern-infra-03.jpg[width=800]
+	** BONUS : on gagne en flexibilité : pour plus de puissance, pas besoin de commander de matériel +
+	On gagne également en rapidité, et l'équipe de support AWS n'est composée que d'experts.
+5. *La gestion via l'AWS console est désastreuse...* Là aussi, comment peux-tu automatiser tout cela ? +
+Heureusement, les Cloud provider ne fournissent pas seulement des consoles, mais aussi des API +
+Donc rebelote Infra as a Code, avec HashiCorp Terraform par exemple (encore Terraform !) +
+image:modern-infra-04.jpg[width=800]
+Au final, concernant *l'Infra as a Code* : +
+image:modern-infra-05.jpg[width=800]
+
+Par contre, Infra as a Code avec la conf récupérée de GitHub, *gare au SPOF sur GitHub* (que se passe-t-il si GitHub tombe ?) +
+image:modern-infra-06.jpg[width=800]
+
+Pour la répétition des 4 étapes, mieux vaut Ansible que Puppet -> meilleur paradigme : simple connexion ssh aux machines, et présence d'un super module de communication avec l'API d'AWS
+
+* Pour éviter le côté répétitif de l'étape 3 (appels aux API d'Amazon) : *HashiCorp Packer* +
+image:modern-infra-07.jpg[width=800]
+Plutôt que 150 lignes de yaml pour Ansible, seulement 15 lignes de json avec Packer
+
+Maxime est content, il a maintenant de *l'infrastructure immutable* +
+image:modern-infra-08.jpg[width=800]
+
+Maintenant, un audit arrive, mais Maxime se rappelle qu'il supprime les VMs quand plus nécessaire. +
+-> les logs étant sur les VMs, plus de VMs plus de logs, il faudrait les stocker ailleurs ! +
+On pourrait donc les stocker dans un *Elasticsearch* (via un FluentDB, ou un LogStach, etc.)
+
+Et plutôt que de gérer lui-même l'ES, il utilise l'ES managé d'Amazon.
+
+.Log centralization
+image::modern-infra-09.jpg[width=800]
+
+* Maintenant, pour permettre aux développeurs de travailler, même quand il n'y a pas le Net, Maxime trouve *Vagrant* (toujours de HashiCorp). +
+Et peu après, il découvre *Docker*. +
+
+* Au travers du *Docker Hub*, Docker facilite l'échange entre les développeurs
+* Docker est très bien outillé, ce sont les devs (et pas lui) qui écrivent les Dockerfile
+
+image::modern-infra-10.jpg[width=800]
+
+Maxime à maintenant des containers, il va maintenant falloir les orchestrer. +
+Du fait de sa grande communauté très active, il se tourne vers *Kubertenes*. +
+Et depuis peu, Amazon propose maintenant un Kubernetes managé, géré par AWS (donc bye bye, )
+
+image::modern-infra-11.jpg[width=800]
+
+Au final, What's a modern infrastructure ?
+
+image::modern-infra-12.jpg[width=800]
+
+* *infra immutable* = avoir des *images* !
+
+Avis : un retour d'XP intéressant, et beaucoup de Hashicorp mis en avant.
+
+== REX Galeries Lafayette - Migration d'un Datalake vers Google Cloud
+
+14h15 - 15h00 +
+Par Ivan Beauvais, Cloud Data Engineer chez Xebia, Enguérand Acquarone, Data Scientist chez Galeries Lafayette et Marc Vaudiau, Product Owner chez Galeries Lafayette
+
+Les Datalake, c’est un peu le Saint-Graal des grosses entreprises et on en voit partout. +
+Chez Xebia, nous en avons mis un en place, on-premise, aux Galeries Lafayette. Alors pourquoi sommes nous en train de le migrer vers Google Cloud et du 100% services managés ? Quelles sont les conséquences techniques et organisationnelles, les écueils rencontrés et nos solutions pour les éviter ? Quel impact sur la Data Science ce changement va-t-il avoir ? +
+Venez découvrir, sans détour ou embellissement, ce que donne un Datalake sur GCP !
+
+=== Notes
+
+* 2016 : lancement du projet DataLab -> mise en place d'un Datalake +
+image:mig-gcp-01.jpg[width=800]
+	** sur stack Cloudera
+
+* 2018 -> passage sur Google Cloud Plateform +
+image:mig-gcp-02.jpg[width=800]
+	** Hadoop / Zookeeper / Kafka / Spark / Spark Streaming -> tout est remplacé par Google Cloud Platform
+
+.Passage au Cloud (encore une fois !)
+IMPORTANT: Le constat : la stack Hadoop est trop complexe, il est trop compliqué de former des ITs sur toutes ces technos, donc on passe sur GCP.
+
+.L'équipe de migration
+image::mig-gcp-03.jpg[width=800]
+
+* les services d'un expert GCP de WeScale ont été loués pour l'occasion.
+
+-> Les *data scientists* sont les *1ers utilisateurs* de la plateforme.
+
+.Stratégie de migration
+image::mig-gcp-04.jpg[width=800]
+
+* attention au coût : en GCP, les VMs sont up en permanence
+* il faut toujours administrer son YARN
+
+Donc, à la place, utilisons du *serverless* :
+
+image::mig-gcp-05.jpg[width=800]
+
+* inconvénient : on se lie à Google (et il y a du recodage à faire)
+
+Gestion des ressources Cloud : automatisation
+
+* une fois de plus, utilisation de *HashiCorp Terraform*
+
+.BigQuery: Serverless Data warehouse
+image::mig-gcp-05.jpg[width=800]
+
+.Cloud Storage: Serverless blog storage
+image::mig-gcp-06.jpg[width=800]
+
+.Pub/Sub: Serverless Message Queue
+image::mig-gcp-07.jpg[width=800]
+
+* pour un remplacement de Kafka (même si n'a pas toutes les fonctionnalités de Kafka)
+
+*Dataflow* : pour du calcul batch, ou streaming
+
+image::mig-gcp-08.jpg[width=800]
+
+-> Au final, *plus de Spark* dans toute celle nouvelle stack ! +
+Remplacé par *Dataproc* (qui en plus démarre en 2 min, donc qui, contrairement à un cluster Hadoop, n'a même pas besoin d'être up en permanence)
+
+image::mig-gcp-09.jpg[width=800]
+
+D'où, pour utiliser du Spark avec BigQuery :
+
+image::mig-gcp-10.jpg[width=800]
+
+*Du côté des Data scientists*, qu'en est-il ? +
+-> La réponse sous forme d'histoire :
+
+image:mig-gcp-11.jpg[width=800]
+image:mig-gcp-12.jpg[width=800]
+image:mig-gcp-13.jpg[width=800]
+
+* Utilisation des technologies *Pandas* et *NumPY*
+
+image:mig-gcp-14.jpg[width=800]
+
+== REX Sanofi - eXtrem Archi et après... De la théorie à la pratique, avec la mise en place du Datalake "Industrie" de Sanofi
+
+15h10 - 15h55 +
+Par Alexis Kinsella, CTO de Xebia
+
+"Nous avons la conviction qu’une architecture ne peut être validée que si elle survit à son implémentation". 
+
+Un atelier d'eXtrem Archi est un point de départ, et non une conclusion à une réponse apportée à une problématique posée. C'est pour cette raison que Xebia se propose d'accompagner ses clients, par une réponse d'architecture, mais également par un changement de paradigme dans la façon de mener les projets avec ses clients. 
+
+C'est dans cet esprit que nous nous sommes donné 3 mois pour valider, via la réalisation d'un MVP, la proposition qui a découlé d'ateliers d'eXtrem Archi menés avec Sanofi pour monter un Datalake industrie dans le Cloud d'AWS. 
+
+Ce que nous vous proposons dans ce REX, c'est de revenir sur le chemin qui a permi à Sanofi et Xebia, à partir des conclusions de l'atelier d'eXtrem Archi de construire un produit fini qui réponde à la notion de Minimum Viable Product énoncée lors des ateliers d'eXtrem Archi. 
+
+Nous passerons en revue les challenges d'organisation projet, de culture d'entreprise, et de contraintes qualité imposés par un acteur global du monde pharmaceutique. Les problématiques qui ont été posées et comment nous les avons résolues.
+
+=== Notes
+
+Méthodologie : ateliers eXtrem archi
+
+Sanofi : 
+
+* 5e laboratoire pharmaceutique mondial, 1er francais, 
+* 35,1 milliards € de CA en 2017
+* 33 000 employés
+
+.La transformation Data de Sanofi
+image::sanofi-extrem-archi-01.jpg[width=800]
+
+Le *datalake* comme enabler de la transformation.
+
+Mais qu'est-ce qu'un atelier *eXtrem Archi (XA)* ?
+
+* une séquence cohérente d'ateliers sur 3 jours
+* évite une vision partielle et court-termiste
+* éviter de s'engager sur un plan quinquennal
+* inclure toutes les parties prenantes
+
+image::sanofi-extrem-archi-02.jpg[width=800]
+
+Les ateliers ont eu lieu au mois de mars, en voici les conclusions :
+
+* serverless
+* automatisation
+* sécurité by design
+* accessibilité aux données
+
+.Stack technique Serverless
+image:sanofi-extrem-archi-03.jpg[width=800]
+
+* Python pour langage
+* AWS Glue pour le processing -> *Spark managé*
+* *séparation du stockage et du processing* (alors que sur les mêmes noeuds en Hadoop on premise)
+
+CI / CD également côté Amazon, pour éviter d'avoir à instancier soi-même des serveurs pour cela. +
+-> *Donc, PAS de Jenkins*
+
+image::sanofi-extrem-archi-04.jpg[width=800]
+
+*Infra as a code* :
+
+* Objectif *zéro* ressource créée manuellement
+* *automatiser* la construction des ressources
+* environnements identiques
+* Déploiements répétables
+
+*Sécurité by design*
+
+* Pas d'utilisateur IAM -> Fédération d'identité
+	** clés temporaires générées le temps d'une session
+* assumer des rôles pour obtenir des permissions (Services & Cross Account)
+* Attribuer uniquement les privilèges nécessaires
+* *chiffrer tout*: transport, mais aussi stockage, données de service (S3, SQS, etc.)
+* Déporter les configurations sensibles (Parameter Store, Secret Store)
+
+-> techno associées : AWS IAM, AWS KMS, AWS SSM
+
+*Accessibilité*
+
+* Catalogue de données (AWS Glue / Data Catalog) : permet un lien avec Hive
+* Interrogation des données simplifiée (AWS Athena)
+* Sécurisation de l'accès aux données (AWD S3 / AWS IAM)
+* Documentation de la donnée
+
+.Lessons Learned
+image::sanofi-extrem-archi-05.jpg[width=800]
+
+* approche économique : on ne paye que ce qui tourne à un instant "t"
+* la sécurité est "by design"
+* gestion et sécurité des droits d'accès à un niveau extrêmement fin
+
+*Et maintenant*
+
+* Plus seulement Security by design, mais maintenant *Compliance by Design*, en s'appuyant à fond sur les services AWS
+* Passage à l'échelle (rappel : Sanofi = 75 sites)
+* implémenter un Monitoring global et systématique -> *DataDog*
+
+image::sanofi-extrem-archi-06.jpg[width=800]
+
+*Q&A* :
+
+* Depuis son existence, Amazon a toujours baissé ses coûts (une ~30e de fois), jamais augmentés
+* la collecte des données a été faite via un ETL "classique", Informatica
+
+== Rex Jobteaser - Destination Kubernetes
+
+16h20 - 17h05 +
+Par Ludovic Vielle, Software Engineer chez JobTeaser et Thomas Auffredou, Consultant chez Xebia
+
+JobTeaser est le leader européen du recrutement des jeunes talents. Nous nous sommes donnés pour mission de préparer la nouvelle génération à révéler tout son potentiel, pour s'accomplir, et en faire bénéficier la société. C’est l’histoire de la migration d’une plateforme vers Kubernetes. 
+
+Cette histoire commence par les raisons qui nous ont conduites à engager cette migration. Rien n’est jamais aussi simple que prévu, aussi nous reviendrons sur les intentions initiales. 
+
+Les conteneurs changent la manière de développer et de déployer nos applications. Parfois souhaitées, parfois contraintes nous vous partagerons ces détails qui font toute la différence, qu’il s’agisse de build, de déploiement, de sécurité ou d'exploitation.
+
+=== Notes
+
+* migration vers les microservices à amener le choix de Kubernetes
+* autre raison de ce choix : l’homogénéité des environnements
+
+*Kops* pour la gestion du cluster Kubernetes
+	** communauté active
+	** 1 an de décalage pour suivre les montées en version de K8 (pour pouvoir faire les tests nécessaires)
+
+2 clusters: DEV et PROD
+
+*Gestion des logs*
+
+* (auto-)scaling : logs sources varies from 1 to n
+* dynamic : logs sources location will change over time
+* collector : based on Kubernetes API but you can lose your ability to create specific configuration.
+
+Stack de logs : stack Elastic +
+image:kubernetes-jobteaser-01.jpg[width=800]
+
+* filebeat >= 6.2.3
+* logstash
+* elasticsearch
+* kibana
+
+*Automatisation* : encore une fois *Hashicorp Terraform* comme unique point d'entrée (réduction de la complexité)
+
+* create the infra
+* wrap kubectl commands
+* wrap helm commands
+
+.From code to release
+image:kubernetes-jobteaser-02.jpg[width=800]
+
+* *Container image* : la taille des images compte ! Le temps de téléchargement en dépend directement, il faut donc l'optimiser. +
+L'outil utilisé pour cela par JobTeaser est le *multistage build* de Docker.
+
+* *Configuration* : log to stdout (le standard de Docker et Kubernetes), with JSON if possible
+* *Package manager* : Helm est utilisé à ce niveau.
+	** Helm est un mal nécessaire
+	** nécessite un certain temps de monter en compétences
+	** est malgré tout incontournable
+
+*Orchestrate your deployment*
+
+* init containers: when multiple Init Containers are specified, they are run one at a time in sequential order
+* StatefulSet: when N replicates, pods are being deployed sequentially and terminated in reverse order
+
+== Spark in jail : conteneurisez vos traitements data sans serveur
+
+17h15 - 18h00 +
+Par Bruno Bouchahoua, Architect Data chez Xebia
+
+Terminé l'adminstration de cluster Hadoop ! +
+Depuis l'arrivée de la version 2.3 de Spark, il est maintenant possible de lancer des jobs sur un cluster Manager Kubernetes. Ce slot se propose de vous faire découvrir Spark sur un cluster manager Kubernetes mais pas seulement. +
+Il se propose également de montrer les nouvelles façons de faire du Spark sans être dépendant d'une distribution Hadoop tout en interagissant de manière sécurisée avec un stockage de masse. +
+Toutes ces solutions seront présentées à l'aide d'un provider de Cloud. Vous découvrirez lequel durant la présentation.
+
+=== Notes
+
+image::spark-in-jail-01.jpg[width=800]
+
+Attention ! Pour une fois le cloud de ce talk ne sera pas Amazon mais *Azure*
+
+*Contexte Data Lake & Cluster Hadoop*
+
+3 constats :
+
+* Data lake centric +
+image::spark-in-jail-02.jpg[width=800]
+
+* Traitements des données : Spark est couplé avec Hadoop
+* Mode d'exécution de Spark \+ Cloud +
+image:spark-in-jail-03.jpg[width=800]
+
+	** clients majoritairement dans les 2 cas rouges
+	** La ligne horizontale représente le cloud
+
+Ce qu'il ne faut pas oublier : La facturation 
+
+.Focus sur une stratégie client
+image:spark-in-jail-04.jpg[width=800]
+
+* cette solution est PaaS first, le principal outil est *HDInsight*
+
+Plusieurs écueils avec ce service :
+
+image:spark-in-jail-05.jpg[width=800]
+image:spark-in-jail-06.jpg[width=800]
+
+* temps conséquent de démarrage et d'arrêt des clusters, tous deux facturés.
+* coût humain du processus d'industrialisation
+
+*Plan de repli*
+
+image:spark-in-jail-07.jpg[width=800]
+
+* Spark sans HDI
+* Serverless
+
+*Détails du plan de repli*
+
+* *Interaction avec un stockage de masse* +
+image:spark-in-jail-08.jpg[width=800]
+
+Depuis peu (>= 2.9.1) il y a un support de *Azure Data lake store* (nécessite une modif de `core-site.xml`) +
+Permet d'intéragir directement avec le data lake store depuis l'extérieur du cluster Hadoop
+
+* *Faire Spark avec interaction avec un stockage de masse*
+	** possible via une env var `SPARK_DIST_CLASSPATH`
+	** Spark \+ Hadoop \+ ADLS
+
+* *Faire du Spark sur Kubernetes*
+	** historiquement il y avait 3 managers permettant de faire du Spark : Mesos, Stand-alone, XXX +
+	-> Maintenant il est possible de faire tourner Spark sur Kubernetes +
+	image:spark-in-jail-09.jpg[width=800]
+
+*Construction de l'image Spark* :
+
+image::spark-in-jail-10.jpg[width=800]
+
+* Attention ! ne PAS mettre le jar dans l'image Docker (contrairement à ce que dit la doc officielle)
+
+image::spark-in-jail-11.jpg[width=800]
+
+* Spark sur Kubernetes *local* : *minikube*
+* Spark sur Kubernetes *managé* : AKS
+
+Avec cela, on peut mutualiser une même infra pour des traitements Data (Spark), ainsi que des applications plus traditionnelles
+
+* *Spark sur conteneur instance* (Azure Conteneur Instance) : offre hyper simple, sans temps de démarrage +
+Va utiliser la *verticalité* de la machine (1 seule instance) pour faire de la *scalabilité* (le CPU de la machine) +
+-> bien suffisant pour des petits fichiers
+
+image::spark-in-jail-12.jpg[width=800]
+
+image::spark-in-jail-13.jpg[width=800]
+
+*Conclusion :* +
+Le postulat est en train de changer -> on passe maintenant sur de nouvelles offres CaaS et Serverless
+
+image:spark-in-jail-14.jpg[width=800]
+image:spark-in-jail-15.jpg[width=800]
+
+== Buzz words
+
+* *HashiCorp*, tout particulièrement [red]*Terraform*
+* *Jenkins* et *Ansible* pour l'automatisation
+* Beaucoup de talks sur l'Agilité, et plus particulièrement son *passage à l'échelle*
+
+IMPORTANT: Une grosse partie de nos clients quittent (au moins en partie) la stack Hadoop pour du Cloud (et du serverless)
+
+Donc côté Cloud :
+
+* Amazon en force
+	** Amazon Glue -> *Spark managé*
+
+En techno "classiques" Hadoop on premise :
+
+* HDFS, *Presto* pour le SQL 
+
+== Divers
+
+Photos du salon au Palais Brongniart :
+
+image:salon-01.jpg[width=800]
+image:salon-02.jpg[width=800]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
