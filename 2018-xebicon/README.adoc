@@ -2,7 +2,7 @@
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
-ifdef::env-github[width=800]
+ifdef::env-github[]
 :status:
 :outfilesuffix: .adoc
 :caution-caption: :fire:
@@ -10,7 +10,7 @@ ifdef::env-github[width=800]
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
-endif::[width=800]
+endif::[]
 :imagesdir: images
 :source-highlighter: highlightjs
 // Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
