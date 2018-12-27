@@ -44,7 +44,7 @@ Dans notre plan de prez, on pourrait rappeler les différents composants d'une s
 il faudrait se débrouiller pour faire nos exemples Microprofiles et Spring Boot avec les mêmes outils en commun (quand possible biensûr) +
 il faudrait essayer de garder une trame commune, pour faciliter la comparaison
 
-== Préparation du plan
+== Préparation des slides
 
 The common work of a developper is to:
 
@@ -58,13 +58,49 @@ The common work of a developper is to:
 
 As this can be complex, they generally do rely on frameworks to ease those steps. 
 
+When working with Java, *JEE* and *Spring* and 2 common ones
 
+Taken as is, JEE is a specification for an Application Server dedicated to monolithic webapps, whereas Spring Boot and Cloud are designed to build microservices. +
+One could say there is nothing to compare, "just choose Spring", but that's just when Microprofile comes into play.
+
+So let's compare Spring Boot and Cloud and Microprofile, and to do so let's quickly remind ourselves what are microservices.
+
+Microservices originated from the Hexagonal Architecture, also known as Ports and Adapters pattern, coined by Alistair Cockburn. +
+He describes microservices as:
+
+____
+an architectural style or an approach to building IT systems as aset of business capabilities that are autonomous, self-contained, and loosely coupled.
+____
+
+This implies that they need to be:
+
+* small:
+
+.https://dzone.com/articles/microservices-in-practice-1
+----
+The foundation of microservices architecture(MSA) is about developing a single application as a suite of *small* and *independent* services that are running in its own process, developed and deployed independently.
+----
+
+* isolated
+* reusable
+
+.https://dzone.com/articles/microservices-in-practice-1
+----
+In the context of SOA, SOA governance guides the development of reusable services, establishing how services will be designed and developed and how those services will change over time.
+----
+
+* disposable
+
+The need of *failing fast* 
 
 === Resources
 
-* https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud
+* https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud : old (2016) but great resource
+	** the associated GitHub repo is also very good (https://github.com/benwilcock/cqrs-microservice-sampler) +
+	A detailed explanation of the work done is also available at https://benwilcock.wordpress.com/2016/06/20/microservices-with-spring-boot-axon-cqrses-and-docker/
+* https://dzone.com/articles/microservices-in-practice-1: good def of all elements of the microservices stack
 
-=== Reminder
+=== Reminders
 
 .https://thenewstack.io/from-monolith-to-microservices/
 ----
@@ -88,8 +124,15 @@ For this last ref, check:
 * https://hub.packtpub.com/microservices-and-service-oriented-architecture/
 * https://hub.packtpub.com/capability-model-microservices/
 
+Good characteristics for microservices: https://stackoverflow.com/questions/48653762/how-microservices-are-different-from-isolated-standalone-service
 
+Especially do not forget the argument on *independent life cycles* to use Conway's law to your advantage.
 
+* https://blog.bernd-ruecker.com/3-common-pitfalls-in-microservice-integration-and-how-to-avoid-them-3f27a442cd07: excellent ref
 
+----
+Microservices are about decomposition, but giving each component a high degree of autonomy and isolation
+----
 
+This link also explains the importance of *failing fast*
 
