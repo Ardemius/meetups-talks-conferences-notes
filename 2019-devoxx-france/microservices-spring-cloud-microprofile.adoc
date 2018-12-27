@@ -93,6 +93,14 @@ In the context of SOA, SOA governance guides the development of reusable service
 
 The need of *failing fast* 
 
+To guarantee those last, a classic technical stack emerged around the following component:
+
+* API Gateway
+* Service Discovery
+* Load Balancer
+* Circuit Breaker
+* monitoring and logging
+
 === Resources
 
 * https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud : old (2016) but great resource
