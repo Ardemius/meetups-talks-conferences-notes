@@ -1,0 +1,95 @@
+= Devoxx France 2019 - Microservices: Spring Cloud vs JEE Microprofile?
+
+Spring Microservices vs MicroProfile JEE
+
+== Darren : 
+
+Voilà la liste des link :
+
+* https://spring.io/guides/gs/rest-service/
+* https://spring.io/guides/gs/consuming-rest/
+* https://spring.io/guides/gs/spring-boot-docker/
+* http://eldermoraes.com/2018/07/31/how-to-implement-microservices-using-microprofile-thorntail-and-eclipse-ide/
+* https://developers.redhat.com/blog/2018/11/21/eclipse-microprofile-for-spring-boot-developers/
+* https://itnext.io/migrating-a-spring-boot-service-to-kubernetes-in-5-steps-7c1702da81b6
+* https://www.e4developer.com/2018/01/21/java-enterprise-and-microservices-meet-microprofile/
+* https://medium.com/@the.raj.saxena/springboot-2-performance-servlet-stack-vs-webflux-reactive-stack-528ad5e9dadc
+* https://itnext.io/migrating-a-spring-boot-service-to-kubernetes-in-5-steps-7c1702da81b6
+
+== Thomas :
+
+Pour la comparaison de 2 stacks microservices complètes, bien penser à :
+
+* comparer l'outillage associé, dont une base va être commune (ex : SonarQube ?)
+
+Fonctionnalités à comparer :
+
+* API Gateway
+* Load Balancer
+* Service Discovery
+* Circuit Breaker
+
+Des exemples d'outils gérant ces 4 fonctionnalités:
+
+* côté Netflix OSS : Zuul / Ribbon / Eureka / Hystrix
+* côté Hashicorp : ??? / Fabio / Consul (très à la mode partout en ce moment) / ???
+
+Netflix est peut-être en train d'abandonner une partie de sa stack, ou de la renouveler Voir par exemple Envoy qui pourrait remplacer Zuul : +
+https://piotrminkowski.wordpress.com/2017/10/25/envoy-proxy-with-microservices/
+
+Pour la partie sécurité, dans le EJM, en 206/297, on trouve : +
+"Standard protocols— Out of the box, Keycloak provides support for OpenID Connect, OAuth 2.0, and Security Assertion Markup Language (SAML)."
+
+Dans notre plan de prez, on pourrait rappeler les différents composants d'une stack microservices (API gateway, Service discovery, Load Balancer, etc.) +
+il faudrait se débrouiller pour faire nos exemples Microprofiles et Spring Boot avec les mêmes outils en commun (quand possible biensûr) +
+il faudrait essayer de garder une trame commune, pour faciliter la comparaison
+
+== Préparation du plan
+
+The common work of a developper is to:
+
+* develop
+* secure (check if we add this step or not?)
+* test
+* package
+* deploy
+* monitor
+* scale their application
+
+As this can be complex, they generally do rely on frameworks to ease those steps. 
+
+
+
+=== Resources
+
+* https://fr.slideshare.net/BenWilcock1/microservices-java-ee-vs-spring-boot-and-spring-cloud
+
+=== Reminder
+
+.https://thenewstack.io/from-monolith-to-microservices/
+----
+Alistair Cockburn introduced the “ports and adapters” pattern, also called hexagonal architecture, in the context of building applications that can be tested in isolation. However, it has been increasingly used for building reusable microservices-based systems, as advocated by James Gardner and Vlad Mettler. A hexagonal architecture is an implementation of a pattern called  bounded context, wherein the capabilities related to a specific business domain are insulated from any outside changes or effects.
+----
+
+.What are microservices? - https://hub.packtpub.com/capability-model-microservices/
+----
+Microservices originated from the idea of Hexagonal Architecture coined by Alister Cockburn. Hexagonal Architecture is also known as thePorts and Adapters pattern.
+----
+
+.Microservices definition from Alistair Cockburn
+----
+Microservices originated from the idea of Hexagonal Architecture coined by Alister Cockburn. Hexagonal Architecture is also known as the Ports and Adapters pattern.
+
+Microservices is an architectural style or an approach to building IT systems as aset of business capabilities that are autonomous, self-contained, and loosely coupled.
+----
+
+For this last ref, check:
+
+* https://hub.packtpub.com/microservices-and-service-oriented-architecture/
+* https://hub.packtpub.com/capability-model-microservices/
+
+
+
+
+
+
