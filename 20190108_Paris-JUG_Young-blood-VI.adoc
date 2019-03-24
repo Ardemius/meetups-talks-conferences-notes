@@ -1,0 +1,160 @@
+= Paris JUG - Young Blood VI - 2019/01/08
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté dans les locaux de https://www.parisjug.org/xwiki/wiki/oldversion/view/Location/RedHat[RedHat] +
+Site : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20190108
+
+== 19h30 - Quand l’architecture est un fardeau
+
+Présenté par *Christophe SCHREIBER*, ancien du StarTECH Java de Softeam
+
+.abstract
+----
+Le code legacy, tout le monde connait et les pratiques du craftsmanship permettent d’y remédier. Mais parfois, le problème est profond et vient de choix architecturaux qui nous compliquent la vie. Je présenterai plusieurs types de mauvais choix que j’ai croisés durant ma carrière et comment y remédier.
+----
+
+*Architecture smells* :
+
+* *partager sa base de données : PÔ BIENNNN !!!!*
+	** 2 équipes différentes ne doivent pas utiliser la même table (surtout en write) pour partager des data
+
+* *construire son SI autour d'un logiciel propriétaire*
+	** pas de liberté dans les choix techniques -> isoler le progiciel à l'aide d'architecture hexagonale
+	** modèle difficile à comprendre -> avoir son propre modèle
+	** propriétaire = boîte noire -> travailler en équipe pour faciliter le partage de connaissances
+
+* *se coupler à toutes les applications du SI*
+	** synchronisation des livraisons entre les équipes -> casser les dépendances binaires
+	** utilisation par d'autres équipes de nos composants -> isoler et ne publier que ce qui doit être partagé
+
+* *externaliser tout le code métier*
+	** règles difficilement compréhensibles -> utiliser des noms expressifs et clairs +
+	-> Domain Driven Design
+
+*Conclusion* :
+
+* attention aux choix structurants en début de projet
+* *différer les décisions autant que possible*
+
+== 19h50 - Containers : Il n'y a pas que Docker dans la vie !!!
+
+Présenté par Renaud Fleury et Caroline de Vasson
+
+.abstract
+----
+Ce Quickie pour faire un tour 360° de la question des offres du marché des containers avec un zoom particulier sur l'outil RKT de CoreOS ...
+----
+
+Parle de l'implémentation concurrente de Docker, créé par CoreOS : *Rocket*
+
+* *Quay* : référentiel de conteneurs
+* *Tectonic* : orchestrateur de conteneurs basé sur Kubernetes
+
+Contrairement à Docker, Rocket est resté sur une implémentation Linux uniquement.
+
+2015 : Open Container Initiative
+
+== 20h10 - Making JPA great again
+
+Présenté par Réda Housni Alaoui
+
+.abstract
+----
+Chez Cosium, nous utilisons une stack Spring Data JPA + JPA + Hibernate. Voici maintenant quelques années que nous utilisons les EntityGraphs pour réduire le nombre de requêtes générées par Hibernate et ainsi résoudre le problème de "n+1 query". Pour une méthode de repository, Spring Data JPA permet seulement de sélectionner les EntityGraphs à la compilation via des annotations. Afin de corriger ce qui est selon nous une lacune, nous avons développé une extension Spring Data JPA. 
+L'extension est https://github.com/Cosium/spring-data-jpa-entity-graph
+----
+
+Comment traiter 3 problèmes classiques en JPA
+
+* *trop verbeux* -> utiliser *Spring Data* (tout particulièrement Spring Data JPA) +
+Exemple : utiliser `extends CrudRepository<Book, Long>`
+
+* *N+1 query issue* -> JPA 2.1 a amené la solution *EntityGraph* +
+-> permet de modifier dynamiquement le fetch type +
+ATTENTION ! Spring Data neutralizes EntityGrah -> on doit ajouter une annotation sur la requête, ce qui va à l'encontre du principe de l'EntityGraph (modification *dynamique* du fetch type)
+
+== 21h00 - Ton ICO (shitcoin) en 15min
+
+par Léonard Lys
+
+.abstract
+----
+Un workshop de 15min pour apprendre a créer une ICO bidon sur la blockchain Ethereum (initial coin offering) et lancer sa première shitcoin to the moon. Comment éviter les les arnaques ? Apprenez à les faire ;-)
+----
+
+Wallet : client Blockchain
+
+== 21h20 - Design patterns : boîte à outils pour un craftsman
+
+Présenté par Bacem Ounis
+
+.abstract
+----
+une présentation du design pattern decorator en 2 parties :
+
+La présentation d'un problème de design résolu avec le pattern decorator pour montrer l'utilité des design patterns
+Un petit guide pour la transition vers l'utilisation des design patterns.
+----
+
+== 21h40 - Gerrit is fantastic, use Vet to get it!
+
+par Julien Béti
+
+.abstract
+-----
+Nous avons découvert et apprécié Gerrit suite à une contribution à Chromium. Les raisons de notre passage sur Gerrit: voir l'épisode 190 des Castcodeurs. 
+Afin de pouvoir utiliser Gerrit de la même manière que GitHub, Gitlab, Bitbucket and co, nous avons mis en place le client "vet", développé en Java et tirant parti de JLink afin de proposer un livrable autonome pour les plateformes Linux, Windows et Mac.
+----
+
+Focus sur *Vet*, un client pour Gerrit.
+
+Gerrit peut-être comparé à GitHub, GitLab, BitBucket. +
+Comme Gerrit ne gère pas complètement la notion de Pull Request, création du client *Vet*.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
