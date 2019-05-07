@@ -1,0 +1,95 @@
+= Vendredi 11:45 / 12:30 - Kata Retrospective en Java 11
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Remi Forax*, travaille pour l'Université Paris-Est Marne-la-vallée
+
+====
+Java Plombier, Maitre de Conférence, Virtual Machine Whisperer, martirise ses pauvres étudiants, complexifie Java en étant experts pour les JSR 292, 335 et 376, développe des librariries et langage dynamiques open source utilisés ou pas.
+====
+
+== Overview
+
+====
+Bon alors, il y a quoi de neuf en Java 11 ? Java devient encore plus fonctionnel ? Au lieu de répondre à cette question avec une présentation clasique pourquoi ne pas faire un kata à la place, et pour que cela soit intéressant, je vous propose que vous fassiez un kata et qu'on en discute après.
+
+Aller sur http://github.com/forax/kata-restrospective-11 vous faites le kata et essayant d'utiliser le maximum de feature de Java 11 (et aussi pas mal de Java 8) et on se prend 40 mins pour en faire une retrospective.
+====
+
+== Notes
+
+Le kata en pré-requis est ici : GitHub - https://github.com/forax/kata-restrospective-11
+
+image:photo1.jpg[]
+image:photo2.jpg[]
+
+Remi démarre le code :
+
+image:photo3.jpg[]
+
+Les optionals doivent se mettre le plus tôt possible dans la monade, et pas à la fin.
+
+image:photo4.jpg[]
+
+pour tester le nombre de groupes dans la regex, il nous faut 1 seul et unique groupe, et pour ce faire, la syntaxe de Java est "pourrie" : on doit faire un nouveau mapper qui match rien ("") pour récupérer les groupes.
+
+Apparation de la méthode "or", pour gérer le "else" des optionals :
+
+image:photo5.jpg[]
+image:photo6.jpg[]
+image:photo7.jpg[]
+
+=== 2e partie
+
+le "squelette" de cette 2e partie :
+
+image:photo8.jpg[]
+
+Puis :
+
+Pensez aux *copies défensives* des listes (pour les rendre immutables)
+
+=== Conclusion
+
+image::photo9.jpg[]
+image::photo10.jpg[]
+image::photo11.jpg[]
+
+NOTE: les "?" en generics sont appelés des "Use-Site Variance"
+
+Pour la vraie implémentation du Railroad :
+
+image::photo12.jpg[]
+
+=== Questions
+
+image::photo13.jpg[]
+
+=== Avis
+
+Live coding très sympa, à revoir tête reposée (c'est Rémi...)
+
+
+

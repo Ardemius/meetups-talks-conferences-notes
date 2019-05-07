@@ -1,0 +1,141 @@
+= Mercredi 13:30 / 16:30 - Quarkus Deep Dive
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Emmanuel Bernard* (Red Hat, co-fondateur de Quarkus), *Clément Escoffier* (Red Hat, principal ingénieur de tout le "reactive programming" chez Red Hat). +
+https://cfp.devoxx.fr/2019/talk/GSE-9991/Quarkus%2c_Pourquoi_%26_Comment_faire_une_appli_Java_Cloud_Native_avec_Graal_VM[Descriptif de la conférence sur le site du CFP de Devoxx] +
+
+== Overview
+
+====
+Les applications Cloud Native (microservices classiques, event-driven, serverless) en Java, c’est bien. Mais pas que. Malgré son énorme écosystème technique et humain, Java souffre dans les containers face à Golang ou Node.js: consommation mémoire initiale haute, temps de démarrage digne d’un diesel, etc. Vous êtes-vous demandé pourquoi peu de fonctions AWS-Lamba ou Azure sont écrites en Java?
+
+La donne change grâce au projet Graal VM: une compilation des applications Java en binaire natif. Il permet:
+
+des temps de démarrages en millisecondes
+des consommations mémoire système initiale de l’ordre de la dizaine de MB
+des dépendances et donc des tailles de containers minimales
+Mais ce n’est pas gratuit et beaucoup de challenges se dressent entre votre application Java et sa compilation en natif par Graal VM. Quarkus a été architecturé pour résoudre ces problèmes.
+
+Objectif de la session: Plonger dans l’univers Quarkus, comprendre pourquoi Graal VM est le prochain gros virage du monde Java que vous utilisiez Graal VM ou pas. Et surtout apprendre comment rendre vos applications vraiment Nativement Cloud Native. Démo et live coding inclus bien sûr.
+====
+
+== Notes
+
+GitHub de Clément : quarkus-deep-dive
+
+.1 monolith ~ 20 microservices ~ 200 functions
+image:photo1.jpg[]
+
+Définition de réactif : *agir en réponse à quelque chose que l'on ne contrôle pas* 
+
+De bons constats et explications sur les problématiques auxquelles les applications cloud-native (et la gestion de tout le "bazar" du capability model)
+
+.Reactive Systems
+image:photo2.jpg[]
+
+Derrière Quarkus, il y a en fait une *native image*
+
+Philosophie de Quarkus -> davantage de choses de faites au moment du build
+image:photo3.jpg[]
+image:photo4.jpg[]
+
+Quarkus se sert massivement (voire optimise) de *l'ahead of time compilation*
+
+Quarkus fait de *l'élimination de code mort* à niveau plus fonctionnel que GraalVM, mais c'est une des grandes caractéristiques de ces 2 technologies
+
+Running on GraalVM : l'équipe Quarkus s'est démenée pour faire évoluer les extensions (faciles pour Hibernate ORM, ils étaient "à la maison", mais cela a également été fait pour Postgre, ...)
+
+.Quarkus "kernel"
+image:photo5.jpg[]
+
+.Quarkus *build process*
+image:photo6.jpg[]
+
+NOTE: Il y a Quarkus DI (à vérifier) qui permet d'utiliser les annotations Spring (certaines) au sein d'une application Quarkus (performances à checker)
+
+Avec Quarkus (et un peu grâce à ses blocs static) rien n'est existé en *LAZY*, c'est même tout le contraire, le démarrage est "aggressif" et tout peut être utilisé immédiatement, sans attente.
+
+NOTE: Quarkus vient en remplacement de Spring Boot, et ne peut pas vraiment (voire pas du tout) être utilisé AVEC Spring Boot
+
+Le "Hot reload" de Quarkus fonctionne à coup de remplacement du class loader (carrément !) : dès qu'un changement est détecté, Quarkus jette le class loader associé, et en repop un nouveau. +
+-> Comme ce "repop" ne prend que 200 ms, au diable que ce soit "bourrin"...
+
+S'il y avait eu plus de temps, ils auraient live codé l'appliation "TODO Backend"
+
+image:photo7.jpg[]
+
+-> A la place, on va directement passer aux résultats et conclusions
+
+On va faire de l'ORM, mais avec *Panache* -> "PanacheEntity" (Hibernate with Panache)
+
+Exemple de code avec Panache :
+
+image::photo8.jpg[]
+
+Ici, avec Panache et Quarkus, la compilation native est plus longue (application simplement plus volumineuse que précédemment, donc *plus de choses à faire au build time*)
+
+.Reactive @ Quarkus
+image:photo9.jpg[]
+
+Tout le côté reactif de Quarkus est géré par *Vert.X*
+
+Exemple de codage en reactif, notez le `@Incoming` et `@Outcoming` :
+image:photo9.jpg[]
+
+Reactive Messaging s'exécute au-dessus de Quarkus :
+image:photo10.jpg[]
+
+-> Au final, Quarkus n'a *AUCUNE* dépendance sur Kafka (on pourrait le remplacer par n'importe quoi d'autre, un broker AMQP, etc.)
+
+Pour la partie test :
+
+* Quarkus facilite beaucoup la création de *tests natifs*
+* l'usage de *Test Containers* est vraiment reommandé par Clément
+* "Il faut tester" -> Quarkus testing bien
+
+=== Conclusion
+
+* Benefit 1: developer joy +
+image:photo11.jpg[]
+* Benefit 2: Supersonic Subatomic Java
+image:photo12.jpg[]
+* Benefit 3: unifies imperative & reactive
+image:photo13.jpg[]
+* Benefit 4: best of breed frameworks and standards
+image:photo14.jpg[]
+
+Au final, aller sur https://quarkus.io/ pour se faire une idée de l'outil, les tutoriels sont assez poussés. 
+
+== Ressources
+
+
+
+== Avis
+
+
+
+
+

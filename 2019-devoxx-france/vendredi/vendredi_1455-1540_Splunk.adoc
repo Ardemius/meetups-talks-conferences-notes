@@ -1,0 +1,100 @@
+= Vendredi 14:55 / 15:40 - “Solving The Trillion Dollar Problem” Splunk@Murex. Developing Dashboard Analytics for Performance Testing and Development
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Robert Lynch*, Splunk global manager and performance test manager at Murex. +
+https://cfp.devoxx.fr/2018/talk/RRA-4186/%E2%80%9CSolving_The_Trillion_Dollar_Problem%E2%80%9D_Splunk%40Murex%2E_Developing_Dashboard_Analytics_for_Performance_Testing_and_Development[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : DevOps, analytics, Performance tuning, testing, Big Data
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=UiY2mjpiPAk[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::UiY2mjpiPAk[youtube, width=640, height=480]
+endif::[]
+
+== Overview
+
+====
+Performance analysis on financial software is massively complex and challenging. +
+This is the story of how Murex started to use Splunk to help debug performance code issues.
+
+Before Splunk we had millions and millions of timings logs, the problem was displaying them quickly so they are usable for developers and testers. +
+Up to this point, we were using a basic PDF report with graphs with static mathematics. +
+However, when we were able to dynamically graph this data with Splunk the analysis became much quicker and easier. +
+The turnaround time decreased for resolution for testing and development. +
+In addition to this we developed multiple functions in the dashboard to enhance the usability. +
+A developer could attach their environment to Splunk in 20 seconds for live monitoring, they could save a test as a URL to share with colleagues.
+
+A success stories is one of the world’s largest “Clearing House” that needed to do 60 position updates per second. +
+https://www.youtube.com/watch?v=pJsTp7XlGGA[Dashboard for Developers / Testers in 5 min (Murex/Robert Lynch)] won the “Splunk Ninja Revolution Award 2017” for the work done in this field. +
+FYI 2016 winners: "Harvard Medical", "Yahoo", "American express"
+====
+
+== Notes
+
+Un peu d'info sur Robert, qui se définit comme un NON functional tester chez Murex
+
+image::splunk-murex_01.jpg[]
+
+Un peu de contexte sur Murex : a leading vendor in the provision of integrated solutions for front office, back office and risk management for the capital markets industry.
+
+https://www.splunk.com/[Splunk] : 
+
+* 3rd party tool that needs a licence
+* used to analyse various data inputs
+
+*TPS Tracing*
+
+* light performance tracing across any java services
+
+image::splunk-murex_02.jpg[]
+
+In this example, 5 minutes is too long, 50 ms is too long
+
+*TPS example*
+
+image::splunk-murex_03.jpg[]
+
+Formerly, Murex in-house solution had limitations:
+
+* TPS report was a PDF -> meaning static report
+* too slow to graph millions of lines
+* can't zoom
+
+.Splunk deployment at Murex
+image::splunk-murex_04.jpg[]
+
+== Ressources
+
+Les slides semblent être les mêmes que lors de la https://conf.splunk.com/files/2017/slides/if-you-graph-it-they-will-see-it-identifying-root-issues-from-product-testing-to-production-crisis-splunkmurex-for-test-and-development.pdf[Splunk .conf2017]
+
+== Avis
+
+La conférence rentrait trop peu dans les détails techniques à mon goût. +
+Après, avec Splunk qui est une solution propriétaire, je comprends bien que cela pose problème. +
+Néanmoins, je trouve que cela dénote comparé autres conférences de Devoxx.
+
+Cela serait beaucoup mieux passé au Big Data Paris (où l'on retrouve beaucoup plus de placement / présentation de produit).

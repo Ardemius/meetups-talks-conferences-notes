@@ -1,0 +1,75 @@
+= Jeudi 10:45 / 11:30 - Modern Java
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Mark Reinolds* 
+
+
+
+== Overview
+
+====
+Spring Framework 5 is here ! +
+It introduces the Spring developer to a growing world of support for reactive programming across the Spring portfolio, starting with a new Netty-based web runtime, component model and module called Spring WebFlux, and then continuing to Spring Data Kay, Spring Security 5.0, Spring Boot 2.0 and Spring Cloud Finchley.
+
+Sure, it sounds like a lot, but don't worry! join us, your guides, Spring co-founder and Spring Framework lead Juergen Hoeller and Spring developer advocate Josh Long, and we'll explore the wacky world of Reactive Spring together.
+====
+
+== Notes
+
+Utiliser *JDeps* pour détecter les utilisations de librairies internes, et bientôt non supportées / supprimées
+
+L'évolution de Java :
+
+* livraison tous les 6 mois, pour coller au marché et aux concurrents (Go, NodeJs, etc.)
+* un système modulaire
+
+.Les 8 JEPs de Java 12 (JDK 12)
+image:photo1.jpg[]
+
+Il n'y a maintenant quasiment plus de différence entre Oracle JDK et Open JDK (on peut changer de provider sans crainte) +
+image:photo2.jpg[]
+
+D'après Mark, migrer de version de Java (passage à la 9 et plus) se fait relativement facilement. +
+Il a posé la question sur Twitter, et voici les réponses :
+
+image::photo3.jpg[]
+
+
+* Amber : right-sizing language ceremony
+	** réduire le boilerplate code dans Java
+
+image:photo4.jpg[]
+image:photo5.jpg[]
+image:photo6.jpg[]
+
+Objet *Record* pour éviter dans à coder entièrement un POJO avec getter et setter
+
+* Loom : fibers
+
+* Valhalla : value types and ...
+
+
+

@@ -1,0 +1,98 @@
+= Vendredi 17:10 / 17:55 - Algorithmes distribués pour le Big Data saison 3: une histoire du temps
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *DuyHai DOAN*, consultant freelance en Big Data/Cassandra. +
+https://cfp.devoxx.fr/2018/talk/MRQ-7567/Algorithmes_distribues_pour_le_Big_Data_saison_3	%3A_une_histoire_du_temps[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Highly performant Network Frameworks, live coding & demos, gRPC, HTTP/2, Protobuf3
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=eYJ6AmrSSHU[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::eYJ6AmrSSHU[youtube, width=640, height=480]
+endif::[]
+
+== Overview
+
+====
+La maîtrise du temps et du consensus ont toujours été les 2 graals du monde distribué. +
+Pour cette saison nous allons nous intéresser aux nouveaux algorithmes pour l'ordonnancement temporel. 
+
+Qui contrôle le temps contrôle l'ordre global des opérations, donc permet d'éviter les locks / consensus distribués et grapiller de précieuses secondes en latence.
+
+En face de chaque algorithme, on regardera l'implémentation pratique associée: 
+
+* les *horloges de Lamport* appliqués aux producteurs idempotents de *Kafka*
+* *True Time* appliqué à *Google Spanner*
+* *HybridTime* appliqué à *Apache Kudu* 
+* et enfin *Hybrid Logical Clock* appliqué à *CockRoach DB*
+====
+
+== Notes
+
+Pour rappel, DuyHai est un ancien *évangéliste Cassandra* passé Freelance.
+
+image::algo-distri_01.jpg[]
+
+=== Lamport Clock avev Kafka
+
+image::algo-distri_02.jpg[]
+
+NOTE: L'algorithme de Lamport permet de définir un ordre partiel des évènements.
+
+Application avec *Kafka* et les *idempotents producer*.
+
+image::algo-distri_03.jpg[]
+
+Parmi les détails d'implémentations :
+
+* *Zookeeper* permet d'avoir une séquence monotone croissante (en utilisant le atomic broadcast)
+
+=== True Time avec Google Spanner
+
+Invalidation de pas mal d'hypothèses faites sur les systèmes distribués ces 40 dernières années.
+
+Dans tous les cas, il y a une dérive temporelle, même avec une horloge atomique.
+
+Technique militaire de *spoofing* pour brouiller un GPS
+
+Combinaison horloge atomtique (Stabilité) + synchronisation GPS
+
+=== Hybrid Logical Clock (HLC) avec Cockroach DB
+
+Cockroach DB utilise une approche optimistique.
+
+Conclusion :
+
+* HLC = True Time "du pauvre"
+* Read-wait vs Commit-wait
+
+== Avis
+
+Un talk technique (vraiment) qui mérite que l'on s'attarde sur ses slides. +
+-> C'est quand même bien compliqué... Pour de la culture générale. 
+
+Comme le dit DuyHai, cela nécessite par moment un PhD en Distributed Computing.

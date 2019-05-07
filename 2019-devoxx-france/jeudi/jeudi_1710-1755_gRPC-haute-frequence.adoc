@@ -1,0 +1,128 @@
+= Jeudi 17:10 / 17:55 - gRPC, échanges à haute fréquence !
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par David Caramelo (SGCIB), Carles Sistare (Ogury). +
+https://cfp.devoxx.fr/2018/talk/TXO-1273/https://cfp.devoxx.fr/2018/talk/UIV-8161/gRPC,_echanges_a_haute_frequence_![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Highly performant Network Frameworks, live coding & demos, gRPC, HTTP/2, Protobuf3
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=X6ki3Kr00jc[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::X6ki3Kr00jc[youtube, width=640, height=480]
+endif::[]
+
+== Overview
+
+====
+Une plateforme micro-services c’est cool et c’est à la mode … mais il y a aussi le revers de la médaille ! +
+L’augmentation du traffic inter-services peut dégrader vos temps de réponses car les connexions HTTP sont lentes.
+
+Cependant des solutions existent pour optimiser le trafic réseau, durant cette session, David et Carles vous parleront de la solution qu’ils ont expérimentée : gRPC
+====
+
+== Notes
+
+*Plateforme Data Mobile Ogury* : reçoit beaucoup de data en provenance des mobiles
+
+Constat API REST / JSON :
+
+* Gourmand en bande passante
+* Pas de contrat d'API formel
+* pas conçu pour faire du streaming
+
+Donc que faire ? Quelles alternatives ?
+
+* WebSocket ? -> NON !
+* Swagger ? -> NON, reste du REST
+* Apache Thrift ? également du gRPC, mais la communauté gRPC officielle est plus grande
+
+.Modèle OSI
+image::gRPC_01.jpg[]
+
+-> *gRPC va essayer d'opmitiser les 3 couches 5, 6 et 7* (session, présentation, application)
+
+image::gRPC_02.jpg[]
+
+=== Couche application : Passage à *HTTP/2*
+
+image::gRPC_03.jpg[]
+
+* 1 connexion TCP pour de multiples requêtes (multiplexed Requests), contre 1 connexion par requête en HTTP/1
+
+* Header HTTP/2 compressé via codage de Huffman = compression sans perte
+
+=== Couche présentation : *protobuf* (protocol buffers)
+
+image::gRPC_04.jpg[]
+
+L'*entête* va permettre de connaître la *position des données* dans le message.
+
+.Exemple de fichier *.proto
+image::gRPC_05.jpg[]
+
+.Comparaison d'échange de données JSON vs Protobuf
+image::gRPC_06.jpg[]
+
+*Très gros gain en protobuf !*
+
+[TIP]
+====
+* Préférer les enums, car *protobuf ne compresse pas les chaînes de caractères*
+* Toujours setter un *UNKNOWN = 0 dans le message protobuf*. +
+En effet, protobuf utilise la *1ere valeur d'une enum* comme *valeur par défaut*. +
+Si un mapping n'est pas trouvé, cette valeur sera toujours retournée (peut vite être problématique en cas d'évolution). +
+Voir http://androiddevblog.com/protocol-buffers-pitfall-adding-enum-values/ pour un exemple.
+====
+
+=== Couche session : *RPC*
+
+*RPC* : Remote Procedure Call
+
+Pour tester les perf, comme Gatling ne fait que du REST, on intercale un proxy qui convertit en gRPC (à vérifier)
+
+Résultats :
+
+image::gRPC_07.jpg[]
+
+WARNING: En *full duplex*, chaque requête nécessite une réponse, pour laquelle on doit donc savoir à quelle requête elle correspond.
+
+=== Demo
+
+https://github.com/dcaramelo/grpc-demo
+
+=== Conclusion
+
+* *optimisation du trafic réseau inter-machines*
+* diminution des temps de latences
+* importance du *monitoring* (le binaire n'étant pas lisible par l'humain...)
+* *debug plus compliqué* (cURL, proxy, http-grpc, double entrée http-grpc, etc.)
+
+== Avis
+
+Très bon talk. +
+Présentation précise et détaillée de HTTP/2, protobuf et RPC. +
+Donne des exemples détaillés et des conseils, à garder sous le coude pour le passage à la pratique avec gRPC

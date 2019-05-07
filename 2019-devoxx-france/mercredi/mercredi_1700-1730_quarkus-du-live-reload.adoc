@@ -1,0 +1,50 @@
+= Mercredi 17:00 / 17:30 - Quarkus du live reload à la compilation native
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Emmanuel Bernard* (RedHat). +
+https://cfp.devoxx.fr/2019/talk/HRS-0291/Quarkus%2c_du_live_reload_a_la_compilation_native[Descriptif de la conférence sur le site du CFP de Devoxx] +
+
+== Overview
+
+====
+Quarkus est la stack Java optimisée pour GraalVM et HotSpot construite sur le meilleur des librairies et des standards Java (Hibernate, Netty, Vert.x, Camel, RESTEasy, etc). Mais c’est surtout une stack qui se concentre sur le plaisir du développeur.
+
+Venez découvrir comment Quarkus rend votre tâche aisée pour construire vos microservices et autres applications modernes:
+
+configuration unifiée
+Live reload sans configuration ni plugin
+Code simplifié pour les 80% de cas communs, flexible pour les 20% avancés
+Génération d’exécutable natif GraalVM sans complexité offrant démarrage rapide et faible mémoire consommation
+Tout ça en session de codage sans filet.
+====
+
+== Notes
+
+
+
+== Avis
+
+
