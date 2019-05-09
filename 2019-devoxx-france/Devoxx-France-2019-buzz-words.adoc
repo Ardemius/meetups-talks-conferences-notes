@@ -31,7 +31,10 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 * *Kubernetes / Istio*
 * *Quarkus* : comme évolution de Thorntail en tant qu'implémentation de Eclipse MicroProfile, mais est également beaucoup plus que cela, et monte en puissance !
-* *GraalVM*
+* *GraalVM*, qui implique
+	** *SubstrateVM*, qui lui même implique
+	** la *compilation Ahead Of Time* (AOT)
+* On note toujours plus de poussée du côté de la *programmation réactive*
 * *Microservices*
 	** Et surtout microservices avec Kubernetes, et *Istio, comme service mesh*, pour gérer les fonctionnalités transverses du Capability Model
 	** Plusieurs conf sur *MicroProfile*, comme quoi Java Enterprise continue d'évoluer ! 🙂
@@ -55,9 +58,11 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 * Voir *Manager* de Saagie pour l'organisation des jobs Big Data (outil à destination des Data Engineer)
 	** se renseigner également sur *DataFabric* de Saagie
-	
+
 * L'excellent projet http://todobackend.com/[Todo-Backend], découvert durant l'université sur Quarkus d'Emmanuel et Clément. +
 Ce dernier regroupe les (très) nombreuses implémentations d'une même API web, représentant une simple TODO liste, à l'aide d'une vaste combinaison de technologies.
+
+* Les super T-shirts de Takima ont été réalisés par mistertee.fr[Mister Tee]
 
 == Avis sur le salon
 

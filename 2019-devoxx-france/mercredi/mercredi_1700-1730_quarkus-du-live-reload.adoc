@@ -25,7 +25,14 @@ endif::[]
 toc::[]
 
 Par *Emmanuel Bernard* (RedHat). +
-https://cfp.devoxx.fr/2019/talk/HRS-0291/Quarkus%2c_du_live_reload_a_la_compilation_native[Descriptif de la conférence sur le site du CFP de Devoxx] +
+https://cfp.devoxx.fr/2019/talk/HRS-0291/Quarkus%2c_du_live_reload_a_la_compilation_native[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=JhAYfP99agc&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::JhAYfP99agc[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 

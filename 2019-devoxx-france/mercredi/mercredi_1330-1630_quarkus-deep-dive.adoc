@@ -25,7 +25,14 @@ endif::[]
 toc::[]
 
 Par *Emmanuel Bernard* (Red Hat, co-fondateur de Quarkus), *Clément Escoffier* (Red Hat, principal ingénieur de tout le "reactive programming" chez Red Hat). +
-https://cfp.devoxx.fr/2019/talk/GSE-9991/Quarkus%2c_Pourquoi_%26_Comment_faire_une_appli_Java_Cloud_Native_avec_Graal_VM[Descriptif de la conférence sur le site du CFP de Devoxx] +
+https://cfp.devoxx.fr/2019/talk/GSE-9991/Quarkus%2c_Pourquoi_%26_Comment_faire_une_appli_Java_Cloud_Native_avec_Graal_VM[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=S05WsHJZsYk&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::S05WsHJZsYk[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
@@ -67,6 +74,21 @@ image:quarkus-university_04.jpg[width=450]
 Quarkus se sert massivement (voire optimise) de *l'Ahead of Time Compilation (AOT)*
 
 Quarkus fait de *l'élimination de code mort* à un niveau plus fonctionnel que GraalVM, mais c'est une des grandes caractéristiques de ces 2 technologies
+
+.Reminder : GraalVM et SubstrateVM
+[NOTE]
+====
+1ere chose à savoir : SubstrateVM est l'une des composantes du projet, plus vaste, qu'est GraalVM.
+
+SubstrateVM (SVM) compile des applications JVM classiques en applications natives. +
+L'exécutable natif ainsi obtenu peut être lancé *sans besoin d'une JVM*. +
+C'est ce point qui va particulièrement nous intéresser dans le cadre de Quarkus.
+
+Pour plus d'informations sur GraalVM et SubstrateVM, jetez un oeil à ces 2 ressources :
+
+* https://www.graalvm.org/[le site de GraalVM] (tout simplement)
+* https://medium.com/@jponge/the-graalvm-frenzy-f54257f5932c[The GraalVM frenzy], qui vous donnera des billes sur SubstrateVM
+====
 
 *Running on GraalVM* : l'équipe Quarkus s'est démenée pour faire évoluer les extensions : plutôt facile à faire pour Hibernate ORM (ils étaient "à la maison"), mais cela a également été fait pour Postgre, et d'autres bien plus compliquées.
 

@@ -25,14 +25,22 @@ endif::[]
 toc::[]
 
 Par *Olivier Revial*. +
-https://cfp.devoxx.fr/2019/talk/WPM-6585/Micronaut%2C_le_framework_JVM_ultra-light_du_futur[Descriptif de la conférence sur le site du CFP de Devoxx] +
+https://cfp.devoxx.fr/2019/talk/WPM-6585/Micronaut%2C_le_framework_JVM_ultra-light_du_futur[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=xtoPh9xiIE4&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::xtoPh9xiIE4[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
 ====
 Temps de démarrage proche de la seconde, empreinte mémoire de 10MB, pas de réflection, approche "cloud native" : autant de caractéristiques qui font du framework Micronaut le compagnon idéal de développement de vos microservices Java/Kotlin.
 
-Si des frameworks comme Spring Boot ont grandement facilité l'écriture d'applications en permettant de générer des applications standalone et auto-configurées, ils souffrent néanmoins de l'historique Spring et de sa "lourdeur". En effet, l'injection de dépendances au runtime et la réflection rendent plus longs les temps de démarrage et font grossir l'empreinte mémoire de nos applis.
+Si des frameworks comme Spring Boot ont grandement facilité l'écriture d'applications en permettant de générer des applications standalone et auto-configurées, ils souffrent néanmoins de l'historique Spring et de sa "lourdeur". +
+En effet, l'injection de dépendances au runtime et la réflection rendent plus longs les temps de démarrage et font grossir l'empreinte mémoire de nos applis.
 
 En partant de 0, Micronaut prend le contre-pied de ses prédécesseurs en se passant de la réflection et en utilisant la "Ahead-Of-Time compilation" pour des temps de démarrage en dessous de la seconde !
 
@@ -41,11 +49,36 @@ Pensé de base pour supporter et faciliter le développement de microservices et
 
 == Notes
 
-image:photo1.jpg[]
+.Micronaut, the big picture
+image:micronaut_01.jpg[width=450]
+image:micronaut_02.jpg[width=450]
 
-== Q&A
+* Utilise également la *compilation Ahead Of Time (AOC)*, pour ne pas tout faire au runtime (comme Quarkus plus de choses au buildtime) +
+image:micronaut_03.jpg[]
 
+* Se distingue de Spring et Trails qui font tout en dynamique au runtime
 
+* Ligne de commande Micronaut : `mn`
 
-== Avis
+* Support de RxJava pour la programmation réactive
+
+Demo avec une Twitter App
+
+* Présence d'un support pour GraalVM +
+-> Fait tout au build time, donc ce dernier est assez long
+
+* Rebuzz word : perf en java, *tout au build time* (et PLUS à la compilation), l'avènement de Quarkus et GraalVM
+
+* Démarrage de l'application de démo compilé en natif : de l'ordre de 15ms
+
+* Micronaut permet d'envisager d'envoyer de Java sur du serverless, du fait de son temps de démarrage très réduit, et de la faible empreinte mémoire.
+
+Pour conclure : +
+image:micronaut_04.jpg[]
+
+J'aime bien cette réflexion donnée en dernier slide du talk : +
+image:micronaut_05.jpg[]
+
+-> Avec tout le buzz, le support de RedHat, et l'apport de Jakarta EE autour de Quarkus, *je ne suis pas sûr que Micronaut résiste aux prochaines années*. +
+Par contre, *il a clairement été le 1er, et a ouvert la voie aux autres*.
 
