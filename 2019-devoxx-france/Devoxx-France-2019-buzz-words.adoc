@@ -24,8 +24,8 @@ endif::[]
 
 toc::[]
 
-// .2019/xx/xx - Vidéos disponibles sur YouTube
-// IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=xxx[Devoxx France 2019] de la chaîne Devoxx Fr
+.2019/05/07 - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[Devoxx France 2019] de la chaîne Devoxx Fr
 
 == Buzz words & Technos qui ont le vent en poupe
 
@@ -38,7 +38,7 @@ toc::[]
 * *GraphQL*
 * *gRPC* (forcément aidé par Kubernetes)
 
-== Technos dont on parle moins, ou plus
+== Technos dont on parle moins (ou plus !)
 
 * Excepté le talk sur le "shit coin", *plus un mot sur la blockchain*.
 * Pas un talk sur l'*informatique quantique*, qui était un des buzz de la précédente édition.
@@ -46,14 +46,18 @@ toc::[]
 
 == Conf à voir sur YouTube
 
-* La conf sur "PostGre NoSQL" 
-* "D’architecte à Métarchitecte : une évolution nécessaire" de Rémi Cocula (vendredi 14:30)
-* "Au secours, mon projet BigData est en production!" par Vincent Devillers (vendredi 16:45)
+* https://www.youtube.com/watch?v=h_l2z-Ti8gg&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[PostgreSQL c'est le nouveau NoSQL] de Laurent Doguin
+* https://www.youtube.com/watch?v=sEK68arLUq0&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[D’architecte à Métarchitecte : une évolution nécessaire] de Rémi Cocula +
+-> Vu ! Très bon talk sur le métier d'architecte, tel qu'il devrait être aujourd'hui (et non il y a 20 ans)
+* https://www.youtube.com/watch?v=YL7JDO89HWQ&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[Au secours, mon projet BigData est en production!] par Vincent Devillers
 
 == Divers
 
 * Voir *Manager* de Saagie pour l'organisation des jobs Big Data (outil à destination des Data Engineer)
 	** se renseigner également sur *DataFabric* de Saagie
+	
+* L'excellent projet http://todobackend.com/[Todo-Backend], découvert durant l'université sur Quarkus d'Emmanuel et Clément. +
+Ce dernier regroupe les (très) nombreuses implémentations d'une même API web, représentant une simple TODO liste, à l'aide d'une vaste combinaison de technologies.
 
 == Avis sur le salon
 
