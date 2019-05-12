@@ -25,17 +25,29 @@ endif::[]
 toc::[]
 
 Par *Alexandre Kolacz*. +
-https://cfp.devoxx.fr/2019/talk/SHY-6819/Ansible_dans_la_vraie_vie_avec_AWX[Descriptif de la conférence sur le site du CFP de Devoxx] +
+https://cfp.devoxx.fr/2019/talk/SHY-6819/Ansible_dans_la_vraie_vie_avec_AWX[Descriptif de la conférence sur le site du CFP de Devoxx]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=1-bzgTKHX-s&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::1-bzgTKHX-s[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
 ====
-Ansible est un outil formidable, tout le monde le sait, mais dès qu’il faut contrôler qui va exécuter, éditer, ou consulter les playbooks, les choses peuvent devenir complexes. AWX est le centre de contrôle qui vient compléter les fonctionnalités d’Ansible. Ce projet Open-Source sortit des forges de Red Hat est la clé opérationnelle pour gérer efficacement votre infrastructure sur le long terme. Avec cette présentation, vous aurez tous les éléments pour le mettre en place chez vous dès demain.
+Ansible est un outil formidable, tout le monde le sait, mais dès qu’il faut contrôler qui va exécuter, éditer, ou consulter les playbooks, les choses peuvent devenir complexes. 
+
+*AWX* est le *centre de contrôle* qui vient compléter les fonctionnalités d’Ansible. +
+Ce projet Open-Source sortit des forges de Red Hat est la clé opérationnelle pour gérer efficacement votre infrastructure sur le long terme. 
+
+Avec cette présentation, vous aurez tous les éléments pour le mettre en place chez vous dès demain.
 ====
 
 == Notes
 
-image:photo1.jpg[]
+image:ansible_01.jpg[]
 
 * AWX est installé sur container Docker
 * Gros point fort : *permet l'appel d'Ansible par API*
@@ -43,8 +55,11 @@ image:photo1.jpg[]
 Les 5 composants de AWX :
 
 * RabbitMQ
-* postgre +
-TIP: conseil, le passer en actif / passif (doit être préciser manuellement)
+* PostgreSQL
++
+TIP: conseil, le passer en actif / passif (doit être préciser manuellement) +
+Pour des rappels sur les modes actif / actif (load balancing) ou actif / passif, voir rapidement https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster[cet article].
+
 * memcached
 * AWX_task
 * AWX_web : le frontal
