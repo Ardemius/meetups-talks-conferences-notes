@@ -10,7 +10,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-IMPORTANT: link:Devoxx-France-2018-buzz-words.adoc[*Buzz words* et *synthèse* du salon]
+IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* du salon]
 
 == Mercredi
 

@@ -1,0 +1,173 @@
+= Jeudi 09:00 / 10:30 - Keynotes
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+== La Keynote de Devoxx France
+
+Voir https://cfp.devoxx.fr/2019/talk/SQE-0977/La_Keynote_de_Devoxx_France
+
+Par Nicolas Martignole, Antonio Goncalves, Zouheir Cadi.
+
+=== Notes
+
+En 2019, Devoxx France c'est :
+
+* 246 orateurs
+* 292 exposants
+* 36 polos rouge (équipe d'orga)
+* 1889 pass 3 jours
+* 678 pass 2 jours
+* 94 pass pour le seul mercredi (universités)
+
+Informations sur les participants :
+
+image:keynote-devoxx-france_01.jpg[width=600]
+
+== Le Bonheur au travail : au delà du bullshit.
+
+https://cfp.devoxx.fr/2019/talk/ZGF-7420/Le_Bonheur_au_travail_%3A_au_dela_du_bullshit[Description du CFP]
+
+Par *Christian Fauré*, ingénieur et philosophe. +
+Il est Directeur Scientifique chez OCTO Technology, ancien Président de l’Institut de Recherche et d’Innovation au Centre Pompidou, et membre du Conseil d’Administration de l’association Ars Industrialis, fondée par le philosophe Bernard Stiegler.
+
+=== Overview
+
+====
+Il faut certainement baigner dans une culture anglo-saxonne de la "startup nation" pour vraiment prendre au sérieux les injonctions concernant le bonheur au travail. Ça fait un peu « too much » quand, ce que l’on voit et constate, c’est plutôt burn-out et misère au travail.
+
+Essayons quand-même de ne pas prendre cette expression de « bonheur au travail » comme une simple provocation et tentons de lui donner une consistance qui aille au-delà des logiques de communication pour le moins très maladroites.
+====
+
+=== Notes
+
+*Prolétaire* = personne qui *perd son savoir* (et non personne "pauvre", ce qui est généralement une conséquence) +
+-> le terme vient de Karl MARX
+
+Le bonheur au travail implique que l'on ne soit PAS "désoeuvré". +
+*Désoeuvré* et *travail insipide* (dans lequel on ne peut pas s'investir) -> *pas de bonheur possible au travail*
+
+Lire https://www.editionsladecouverte.fr/catalogue/index-%5Floge_du_carburateur-9782707160065.html[Eloge du carburateur] (texte connu de la communauté Software Craftmanship) : 
+
+image::https://extranet.editis.com/it-yonixweb/IMAGES/DEC/P3/9782707160065.JPG[width=300]
+
+Il faut distinguer *emploi* et *travail* :
+
+* on peut avoir un emploi et ne pas travailler (dixit "sans cibler les fonctionnaires...")
+* on peut travailler et être sans emploi
+
+Ref. livre : https://www.fayard.fr/poche/lemploi-est-mort-vive-le-travail-9782755507461[L'emploi est mort, vive le travail] de Bernard Stiegler :
+
+image::https://www.fayard.fr/sites/default/files/styles/couv_livre/public/images/livres/couv/9782755507461-T.jpg?itok=kySTpIG9[]
+
+*L'amateur, c'est celui qui aime ce qu'il fait.* +
+A opposer au "professionnel", où il est davantage question de "vendre quelque chose" (ce que l'on est) +
+-> Très bel image ! 👍
+
+Super talk ! Très inspirant, à regarder plus tard.
+
+== La bienveillance en entreprise
+
+https://cfp.devoxx.fr/2019/talk/YMT-2000/La_bienveillance_en_entreprise[Description du CFP]
+
+Par l'amiral *Olivier Lajous* +
+Il a été marin de l'État pendant 38 ans, 17 ans de navigation, commandant de 3 navires de combat, directeur de la communication, du centre d'enseignement supérieur et des richesses humaines (DRH) de la marine nationale, conférencier et consultant, créateur de deux sociétés.
+
+Président du Club DeciDRH de 2010 à 2016, de la Mutuelle Nationale Militaire de 2014 à 2017 et dirigeant de l'EMRH de Sciences Po 2017-2018.
+
+Olivier Lajous est maintenant Président du cabinet de conseil RH : BPI Group.
+
+=== Overview
+
+====
+Le mot bienveillance, du latin bene volens, caractérise une disposition d’esprit visant au bien et au bonheur de l’autre. +
+Cela suppose de mettre de côtés les préjugés et a priori ancrés dans nos inconscients. +
+Nul en effet ne peut être libre aussi longtemps qu’il se sent coupable et voit dans l’autre un ennemi. La culpabilité et la méfiance sont des poisons mortifères. 
+
+La bienveillance, c’est la quête du juste équilibre entre nous et les autres, sans jamais renoncer à notre liberté ni à celle des autres. +
+La réciprocité des intentions est le cœur de la bienveillance. Dans l'entreprise, elle est source de performance.
+====
+
+=== Notes
+
+La *bienveillance* c'est *vouloir le bien de l'autre*. +
+-> On ne peut pas être bienveillant avec les autres, sans l'être déjà avec soi.
+
+Parabole des https://www.schopenhauer.fr/fragments/porcs-epics.html[*porc-épics de Schopenhauer*] (auteur du "contrat social").
+Les porc-épics doivent se rapprocher pour ne pas mourir de froid. +
+Mais pour cela, ils doivent trouver la "bonne distance" pour ne pas s'en mettre plein la tête : la *distance "de courtoisie"*
+
+J'ajoute le texte original ici, car je le trouve vraiment fantastique :
+
+[quote, A. Schopenhauer, Extraits des « Parerga et Paralipomena » §396]
+____
+Par une froide journée d’hiver un troupeau de porcs-épics s’était mis en groupe serré pour se garantir mutuellement contre la gelée par leur propre chaleur. Mais tout aussitôt ils ressentirent les atteintes de leurs piquants, ce qui les fit s’écarter les uns des autres. +
+Quand le besoin de se réchauffer les eut rapprochés de nouveau, le même inconvénient se renouvela, de sorte qu’ils étaient ballottés de çà et de là entre les deux maux jusqu’à ce qu’ils eussent fini par trouver une distance moyenne qui leur rendît la situation supportable.
+
+Ainsi, le besoin de société, né du vide et de la monotonie de leur vie intérieure, pousse les hommes les uns vers les autres ; mais leurs nombreuses manières d’être antipathiques et leurs insupportables défauts les dispersent de nouveau. +
+La distance moyenne qu’ils finissent par découvrir et à laquelle la vie en commun devient possible, c’est la politesse et les belles manières. +
+En Angleterre on crie à celui qui ne se tient pas à cette distance : Keep your distance ! Par ce moyen le besoin de se réchauffer n’est, à la vérité, satisfait qu’à moitié, mais, en revanche, on ne ressent pas la blessure des piquants. +
+Cependant celui qui possède assez de chaleur intérieure propre préfère rester en dehors de la société pour ne pas éprouver de désagréments, ni en causer.
+____
+
+IMPORTANT: Rien n'est pire que de vouloir que l'autre soit ce que l'on veut qu'il soit.
+
+* *Juste distance de soi et aux autres* : ni trop directif, ni pas assez, etc.
+* Avoir l’honnêteté de dire quand on va bien ou mal.
+
+_"Personne ne peut me blesser dans ma permission"_ +
+-> Il ne faut pas tout prendre au 1er degré
+
+L'homme n'est pas une ressource que l'on peut gérer : c'est une *richesse*.
+
+Mieux vaut le jeu de Go aux échecs : toujours des possiblités au Go, quand les échecs se finissent par "échec et mat"
+
+Les mots sont un glaive absolu : la forme de la parole est essentielle (on tourne 7 fois sa langue dans sa bouche avant de parler)
+
+
+.Les 3 piliers de la bienveillance
+[IMPORTANT]
+====
+* "Là, ce que je suis en train de faire, quelle conséquence cela aura dans 200 ans ?"
+* "Faire de son mieux"
+* "Bien s'inscrire dans l'environnement"
+====
+
+Etes-vous capable d'accepter l'autre dans sa différence ?
+
+*L'ennemi de la bienveillance* est le *dogme*, la *certitude*. +
+*L'ami de la bienveillance* c'est la *curiosité*.
+
+-> Importance de *l'humilité*.
+
+=== Avis
+
+Encore une fantastique keynote à regarder de nouveau !
+
+
+
+
+
+
+

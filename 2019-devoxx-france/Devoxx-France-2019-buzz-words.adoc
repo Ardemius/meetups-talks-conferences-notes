@@ -11,7 +11,7 @@ ifdef::env-github[]
 :tip-caption: :bulb:
 :warning-caption: :warning:
 endif::[]
-:imagesdir: ../images
+:imagesdir: ./images
 :source-highlighter: highlightjs
 // Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
 :lb: pass:[<br> +]
@@ -69,5 +69,9 @@ Ce dernier regroupe les (très) nombreuses implémentations d'une même API web,
 * Beaucoup de talks sur *Quarkus*, et les moyens de rendre Java "moins lourd", et aussi pratique d'utilisation (expérience développeur / *"developer joy"*) que des langages comme Node ou Go.
 * On continue de beaucoup parler des microservices, surtout de tout l'environnement qui gravite autour (*capability model*), et des meilleurs façons de le mettre en place / gérer au quotidien.
 	** On note un petit buzz autour de *MicroProfile*, dont il a été question plusieurs fois 🙂
-
+{lb}
 * On a de nouveau un sac qui déchire en goodies ! 😍
+
+On va quand même ajouter une chtite photo avec le Gantelet de l'Infini ! (Utiliser lors de notre université du mercredi : *Microservices Infinity War! Spring vs MicroProfile*)
+
+image::gantelet-infini.jpg[width=300]
