@@ -57,15 +57,16 @@ Les 5 composants de AWX :
 * RabbitMQ
 * PostgreSQL
 +
-TIP: conseil, le passer en actif / passif (doit être préciser manuellement) +
+.Conseil
+TIP: Le passer en actif / passif (doit être préciser manuellement) +
 Pour des rappels sur les modes actif / actif (load balancing) ou actif / passif, voir rapidement https://www.jscape.com/blog/active-active-vs-active-passive-high-availability-cluster[cet article].
 
-* memcached
+* Memcached
 * AWX_task
 * AWX_web : le frontal
 
 .Use Case classique
-image:photo2.jpg[]
+image:ansible_02.jpg[]
 
 Comparaison avec Ansible Tower (tous les 2 de RedHat)
 
@@ -74,19 +75,17 @@ Comparaison avec Ansible Tower (tous les 2 de RedHat)
 
 Un des points négatifs d'AWX : *pas de système d'upgrade automatique !*
 
-L'outil dispose, comme Ansible Tower, d'une GUI : +
-image:photo3.jpg[]
+L'outil dispose, comme *Ansible Tower*, d'une GUI : +
+image:ansible_03.jpg[]
 
 .Fonctionnalités disponibles via API
-image:photo4.jpg[]
+image:ansible_04.jpg[]
 
 *AWX Cluster* : on va "juste" rajouter des clusters
 
-*Playbook workflows* : avec questionnaires, un peu comme Jenkins pipeline
+*Playbook workflows* : avec la possibilité d'incorporer des *questionnaires*, un peu comme Jenkins pipeline
 
-.Article d'Alexandre sur le sujet
-image:photo5.jpg[]
-
+Article d'Alexandre sur le sujet : https://blog.wescale.fr/2019/02/21/awx-lansible-tower-open-source-part-1/ +
 -> La partie 2 sortira bientôt
 
 
