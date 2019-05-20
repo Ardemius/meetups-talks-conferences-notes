@@ -1,5 +1,5 @@
-= Jeudi 10:45 / 11:30 - Modern Java
-Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+= Jeudi 10:45 / 11:30 - Modern Java: Change is the Only Constan
+tThomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
 ifdef::env-github[]
@@ -24,22 +24,28 @@ endif::[]
 
 toc::[]
 
-Par *Mark Reinolds* 
+Par *Mark Reinolds*, Chief Architect of the Java Platform Group at Oracle. +
+https://cfp.devoxx.fr/2019/talk/WCE-4778/Modern_Java:%5FChange_is_the_Only_Constant[Descriptif de la conférence sur le site du CFP de Devoxx]
 
-
+ifdef::env-github[]
+https://www.youtube.com/watch?v=IvmoxgSatbg&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::IvmoxgSatbg[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
 ====
-Spring Framework 5 is here ! +
-It introduces the Spring developer to a growing world of support for reactive programming across the Spring portfolio, starting with a new Netty-based web runtime, component model and module called Spring WebFlux, and then continuing to Spring Data Kay, Spring Security 5.0, Spring Boot 2.0 and Spring Cloud Finchley.
+In the past two years, we changed Java in three ways that we never have before: We modularized the platform, we removed some components, and we accelerated the pace of new releases. +
+These changes aim to keep Java vibrant in an ever-changing world of competing platforms and new styles of application deployment, whether to the cloud or to app stores. 
 
-Sure, it sounds like a lot, but don't worry! join us, your guides, Spring co-founder and Spring Framework lead Juergen Hoeller and Spring developer advocate Josh Long, and we'll explore the wacky world of Reactive Spring together.
+We’ll see why these changes are not as disruptive as you may think, and demonstrate some of the recent and future additions to the language and the platform.
 ====
 
 == Notes
 
-Utiliser *JDeps* pour détecter les utilisations de librairies internes, et bientôt non supportées / supprimées
+* Utiliser *JDeps* pour détecter les utilisations de librairies internes, et bientôt non supportées / supprimées
 
 L'évolution de Java :
 
@@ -47,29 +53,27 @@ L'évolution de Java :
 * un système modulaire
 
 .Les 8 JEPs de Java 12 (JDK 12)
-image:photo1.jpg[]
+image:modern-java_01.jpg[width=600]
 
-Il n'y a maintenant quasiment plus de différence entre Oracle JDK et Open JDK (on peut changer de provider sans crainte) +
-image:photo2.jpg[]
+Il n'y a maintenant *quasiment plus de différence entre Oracle JDK et Open JDK* (on peut changer de provider sans crainte) +
+image:modern-java_02.jpg[width=600]
 
 D'après Mark, migrer de version de Java (passage à la 9 et plus) se fait relativement facilement. +
 Il a posé la question sur Twitter, et voici les réponses :
 
-image::photo3.jpg[]
+image::modern-java_03.jpg[]
 
 
 * Amber : right-sizing language ceremony
 	** réduire le boilerplate code dans Java
 
-image:photo4.jpg[]
-image:photo5.jpg[]
-image:photo6.jpg[]
+image:modern-java_04.jpg[]
+image:modern-java_05.jpg[]
 
-Objet *Record* pour éviter dans à coder entièrement un POJO avec getter et setter
+Objet *Record* pour éviter d'avoir à coder entièrement un POJO avec getter et setter
 
-* Loom : fibers
-
-* Valhalla : value types and ...
+* *Loom* : to support a high-throughput, lightweight *concurrency model* in Java (through the use of *fibers*)
+* *Valhalla* : value types, generic specialization (like `List<int>`), reified generics (retaining actual type at runtime), improved `volatile` support
 
 
 
