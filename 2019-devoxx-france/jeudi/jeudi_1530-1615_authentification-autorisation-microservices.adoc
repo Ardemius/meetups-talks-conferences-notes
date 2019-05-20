@@ -1,4 +1,4 @@
-= Jeudi 14:55 / 15:40 - Balade au pays de «Let's Encrypt»
+= Jeudi 15:30 / 16:15 - La gestion de l'authentification et de l'autorisation dans une architecture microservices ? Pas de soucis !
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -24,157 +24,37 @@ endif::[]
 
 toc::[]
 
-Par *Frédéric Cabestre* (EasyMile). +
-https://cfp.devoxx.fr/2018/talk/THX-0000/Balade_au_pays_de_%C2%ABLet's_Encrypt%C2%BB[Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Public-Key, security, computing infrastructure
+Par *Vivien Maleze* et *Florian Garcia*. +
+https://cfp.devoxx.fr/2019/talk/JOT-3424/La_gestion_de_l'authentification_et_de_l'autorisation_dans_une_architecture_microservices_%3F_Pas_de_soucis_![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Security, MicroServices, KeyCloak, Spring Boot, Spring Security 
 
 ifdef::env-github[]
-https://www.youtube.com/watch?v=mKcAFHtqdsM[vidéo de la présentation sur YouTube]
+https://www.youtube.com/watch?v=v41jO5feEOk&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
 endif::[]
 ifdef::env-browser[]
-video::mKcAFHtqdsM[youtube, width=640, height=480]
+video::v41jO5feEOk[youtube, width=640, height=480]
 endif::[]
 
 == Overview
 
 ====
-Let's Encrypt! Le mot d'ordre est lancé. +
-Ça semble tellement simple. Et pourtant l'arbre cache une forêt. 
+Détaillons ensemble l'implémentation de la sécurité dans une architecture microservice avec un exemple réel.
 
-Qu'est-ce qu'une signature numérique, un certificat, une chaîne ou une autorité de certification, une liste de révocation ? +
-C'est à une balade à la découverte de ces concepts — et de quelques autres — que je vous invite, avec pour destination la machinerie de Let's Encrypt!
+Ce que nous allons aborder:
+
+Les protocoles de sécurité (Oauth2, Open ID)
+
+Comment gérer les identités au sein de l'entreprise (LDAP, providers externes comme Google)
+
+Comment gérer les sessions entres les services ?
+
+Quid de l'authorisation ?
+
+La présentation contiendra une démonstration pratique en utilisant Keycloak, les JWTs, Spring ou encore NodeJs...
+
+Après ce talk, vous connaitrez à nouveau la joie de sécuriser vos applications !
 ====
 
 == Notes
 
-Voyage au pays des PKI : *Public Key Infrastructure*
-
-Thèmes :
-
-* Cryptographie
-* Certificats
-* etc.
-
-*Chiffrement asymétrique*
-
-image::lets-encrypt_01.jpg[]
-
-* résout le problème de distribution de clés : *on garde la privée* (*CAPITAL*, doit toujours rester secrète), mais on peut diffuser librement la publique.
-	** Par contre, le système est *lent*
-	** mais va permettre de faire de la *signature* : DSA, etc.
-
-.Mécanisme de signature
-image::lets-encrypt_02.jpg[]
-
-.Plus de détails sur le mécanisme de signature
-[TIP]
-====
-Pour une explication claire et concise du principe de *signature électronique*, je vous conseille de jeter un oeil à http://www-igm.univ-mlv.fr/~dr/XPOSE2006/depail/fonctionnement.html[cet article], que je trouve plus simple à comprendre que le schéma précédent.
-
-Les concepts de *fonction de hachage*, d'*empreinte* (application de la fonction de hash sur le document), ainsi que les *différents types de cryptographie asymétrique* (clé privée pour décrypter le document, ou, *dans le cas de la signature*, pour le crypter et donc *identifier la personne à la base de l'encryption*)
-====
-
-.Mais pourquoi toujours Alice et Bob ?
-NOTE: Pour ceux qui se demandent pourquoi nous avons *toujours* affaire à *Alice et Bob* pour des exemples dans le domaine de la cryptographie et de la signature électronique, regardez https://en.wikipedia.org/wiki/Alice_and_Bob[ici] :wink:
-
-* Un *certificat* associe une clef publique a :
-	** un *sujet*
-	** des *metadata*
-	** et est *signé* numériquement
-+
-
--> Donc 3 éléments pour caractériser un certificat.
-
-* Les *certificats* sont *normés* : X.509 & RFC 5280
-	** *DER* : un des formats de sérialisation binaire de ASN 1
-	** *PEM* : l'encodage en base64 de DER (nous permet donc d'avoir du *texte*)
-
-Pour passer de l'un à l'autre, on peut utiliser le couteau suisse *openssl*.
-
-* *Certificats génériques* : touche de multiples sous-domaines
-
-* *Tiers de confiance* : va nous apporter de la confiance dans le certificat. +
-Ex : Verisign, Let's Encrypt, IdenTruts +
-Mais peut également être vous ou moi (en utilisant le couteau suisse openssl)
-
-	** Les *autorités de certifications* sont des tiers de confiance permettant d'authentifier l'identité des correspondants. +
-	Une AC délivre des certificats décrivant des identités numériques, et met à disposition les moyens de vérifier la validité des certificats qu'elle a fournis.
-
-* *Chaînes de certificats*
-+
-image::lets-encrypt_03.jpg[]
-
-Les certificats "root" peuvent *s'auto-signer*.
-
-* Mais alors, comment faire confiance à ces derniers ?
--> Requirements donnés par le CAB (https://cabforum.org/[CA/Browser forum]).
-+
-.CA/Browser forum
-[QUOTE]
-____
-Organized in 2005, we are a voluntary group of certification authorities (CAs), vendors of Internet browser software, and suppliers of other applications that use X.509 v.3 digital certificates for SSL/TLS and code signing
-____
-
-.Validation d'un certificat
-image::lets-encrypt_04.jpg[]
-
-Rôle du DNS : Certification Authority Authorization (CAA)
-[quote, 'https://en.wikipedia.org/wiki/DNS_Certification_Authority_Authorization']
-____
-DNS Certification Authority Authorization (CAA) is an Internet security policy mechanism which allows domain name holders to indicate to certificate authorities whether they are *authorized to issue certificates for a particular domain name* using a Domain Name System (DNS) resource record.
-____ 
-
-Pour gérer les problèmes de compromission de certificats :
-
-* *CRL* : Certificate Revocation List
-* *OCSP* : Online Certificate Status Protocol
-
-.Avec CRL
-image::lets-encrypt_05.jpg[]
-
-Comme était pas évident avec CRL, on a sorti *OCSP* :
-
-image::lets-encrypt_06.jpg[]
-
--> Avec l'OSCP, on fait la vérification en ligne, *certificat par certificat*.
-
-=== Let's Encrypt
-
-*Let's Encrypt* est :
-
-* une autorité de certification
-* un service en ligne (API REST, donc "cURLable")
-* *permet d'automatiser* la livraison de certificats
-
-//-
-
-* les certificats sont validés par domaine
-* pas de certificat à validation étendue
-* certificats génériques
-
-Let's Encrypt est basé sur le protocole *ACME*
-
-* Le client recommandé est *Certbot*
-
-image::lets-encrypt_07.jpg[]
-
-*Phase de génération de certificat* :
-
-image::lets-encrypt_08.jpg[]
-
-Pour la *révocation* :
-
-image::lets-encrypt_09.jpg[]
-
-*Limitations* :
-
-* On ne peut demander que 20 certificats / semaine
-* 100 SAN / certificat
-* Je peux demander 5 fois un certificat / semaine +
-(mais renouvellements illimités)
-
-Depuis le *27/02/2018*, on est passé au protocole ACME v2.0, qui permet de créer de *certificats génériques*.
-
-== Avis
-
-Une bonne conférence, qui a le mérite d'ouvrir la porte d'un sujet complexe, et de donner des points d'entrée pour s'y retrouver et l'appronfondir.
+image::authentification-autorisation_01.jpg[]

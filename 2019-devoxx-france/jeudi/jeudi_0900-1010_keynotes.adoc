@@ -1,4 +1,4 @@
-= Jeudi 09:00 / 10:30 - Keynotes
+= Jeudi 09:00 / 10:10 - Keynotes
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
