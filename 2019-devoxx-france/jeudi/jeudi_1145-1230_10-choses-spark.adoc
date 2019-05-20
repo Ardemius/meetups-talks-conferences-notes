@@ -1,4 +1,4 @@
-= Jeudi 10:45 / 11:30 - PostgreSQL c'est le nouveau NoSQL
+= Jeudi 10:45 / 11:30 - 10 choses que j'aurais aimé savoir avant d'utiliser Spark en production
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -24,25 +24,54 @@ endif::[]
 
 toc::[]
 
-Par *Juergen Hoeller* (co-founder of the Spring Framework open source project), *Josh Long* (Spring Developer Advocate at Pivotal). +
-https://cfp.devoxx.fr/2018/talk/ZYX-2364/Reactive_Spring[Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Reactive programming, Spring Boot, Spring 5, Kotlin, Spring Cloud
+Par *Himanshu Arora* et *Nitya Nand YADAV*. +
+https://cfp.devoxx.fr/2019/talk/JPJ-2087/10_choses_que_j'aurais_aime_savoir_avant_d'utiliser_Spark_en_production[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Apache Spark, Big Data, optimisations
 
 ifdef::env-github[]
-https://www.youtube.com/watch?v=RJpbuqsoLPo[vidéo de la présentation sur YouTube]
+https://www.youtube.com/watch?v=1fEXmuaEGjQ&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
 endif::[]
 ifdef::env-browser[]
-video::RJpbuqsoLPo[youtube, width=640, height=480]
+video::1fEXmuaEGjQ[youtube, width=640, height=480]
 endif::[]
 
 == Overview
 
 ====
-Spring Framework 5 is here ! +
-It introduces the Spring developer to a growing world of support for reactive programming across the Spring portfolio, starting with a new Netty-based web runtime, component model and module called Spring WebFlux, and then continuing to Spring Data Kay, Spring Security 5.0, Spring Boot 2.0 and Spring Cloud Finchley.
+Vous avez récemment commencé à travailler sur Spark et vos jobs prennent une éternité pour se terminer? Ce talk est pour vous!
 
-Sure, it sounds like a lot, but don't worry! join us, your guides, Spring co-founder and Spring Framework lead Juergen Hoeller and Spring developer advocate Josh Long, and we'll explore the wacky world of Reactive Spring together.
+Nous avons rassemblé de nombreuses bonnes pratiques, optimisations et ajustements que nous avons appliqués au fil des années en production pour rendre nos jobs plus rapides et moins consommateurs de ressources. Dans ce talk, nous allons apprendre les techniques avancées d'optimisation de spark tuning, les formats de serialisation des données, les formats de stockage, les optimisations hardware, contrôle sur la parallélisme, paramétrages de resource manager, meilleur data localité et l'optimisation du GC etc.
+
+Nous découvrirons également l'utilisation appropriée de RDD, DataFrame et Dataset afin de bénéficier pleinement des optimisations internes apportées par Spark.
 ====
 
 == Notes
 
+.L'architecture de Spark
+image::10-choses-sur-spark_01.jpg[width=600]
+
+=== RDD vs Dataframe vs Dataset
+
+* *RDD* permet d'opérer directement sur les partitions
+	** programmation fonctionnelle préconisée
+	** Attention ! *aucune optimisation appliquée par Spark avec les RDD*
+
+* *DataFrame*
+	** optimisations appliquées par Spark
+	** à chaque calcul, Spark essaye de réduire le data shuffle
+	** pas de remontée d'erreurs à la compil, tout au runtime (hélas ! donc compliqué à débugger)
+
+* *DataSet*
+
+=== Data sérialisation Format
+
+* Par défaut, avec les *RDD*, c'est la *sérialisation de Java* qui est utilisée -> *il est préférable d'utiliser Kryo*
+	** plus compact et plus rapide (x10) avec Kryo
+	** pas la peine si on utilise des DataFrame et DataSet (sérialisation avec Tungsten)
+
+=== Storage formats
+
+image::10-choses-sur-spark_02.jpg[]
+
+* *éviter les formats text* (csv, json), mais *préférer les binaires* (Parquet, Avro, Protobuf)
+	** à choisir en fonction de son use case

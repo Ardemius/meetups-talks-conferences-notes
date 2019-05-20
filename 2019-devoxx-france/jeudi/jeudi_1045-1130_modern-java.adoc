@@ -1,4 +1,4 @@
-= Jeudi 10:45 / 11:30 - Modern Java: Change is the Only Constan
+= Jeudi 10:45 / 11:30 - Modern Java: Change is the Only Constant
 tThomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
