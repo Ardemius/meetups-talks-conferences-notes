@@ -26,7 +26,14 @@ toc::[]
 
 == La Keynote de Devoxx France
 
-Voir https://cfp.devoxx.fr/2019/talk/SQE-0977/La_Keynote_de_Devoxx_France
+https://cfp.devoxx.fr/2019/talk/SQE-0977/La_Keynote_de_Devoxx_France[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=lId4GLeTmHc&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::lId4GLeTmHc[youtube, width=640, height=480]
+endif::[]
 
 Par Nicolas Martignole, Antonio Goncalves, Zouheir Cadi.
 
@@ -48,6 +55,13 @@ image:keynote-devoxx-france_01.jpg[width=600]
 == Le Bonheur au travail : au delà du bullshit.
 
 https://cfp.devoxx.fr/2019/talk/ZGF-7420/Le_Bonheur_au_travail_%3A_au_dela_du_bullshit[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=500HjU_4xeo&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::500HjU_4xeo[youtube, width=640, height=480]
+endif::[]
 
 Par *Christian Fauré*, ingénieur et philosophe. +
 Il est Directeur Scientifique chez OCTO Technology, ancien Président de l’Institut de Recherche et d’Innovation au Centre Pompidou, et membre du Conseil d’Administration de l’association Ars Industrialis, fondée par le philosophe Bernard Stiegler.
@@ -90,6 +104,13 @@ Super talk ! Très inspirant, à regarder plus tard.
 == La bienveillance en entreprise
 
 https://cfp.devoxx.fr/2019/talk/YMT-2000/La_bienveillance_en_entreprise[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=p0X_m7_ExRY&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::p0X_m7_ExRY[youtube, width=640, height=480]
+endif::[]
 
 Par l'amiral *Olivier Lajous* +
 Il a été marin de l'État pendant 38 ans, 17 ans de navigation, commandant de 3 navires de combat, directeur de la communication, du centre d'enseignement supérieur et des richesses humaines (DRH) de la marine nationale, conférencier et consultant, créateur de deux sociétés.
