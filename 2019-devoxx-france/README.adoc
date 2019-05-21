@@ -17,11 +17,11 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 [cols="1,1,1,1,4", options="header"] 
 |===
 |Date				|Salle				|Type				|Avis				|Description
-|09:30 / 12:30		|Neuilly 252 AB		|University			|					|link:mercredi/mercredi_0930-1230_xxx.adoc[Microservices: Infinity War! Spring vs MicroProfile]
-|13:30 / 16:30		|Amphi bleu 		|University			|					|link:mercredi/mercredi_1330-1630_xxx.adoc[Quarkus: Pourquoi & Comment faire une appli Java Cloud Native avec Graal VM]
-|17:00 / 17:30		|Neuilly 251		|Tools-in-Action	|Bien				|link:mercredi/mercredi_1700-1730_xxx.adoc[Quarkus: du live reload à la compilation native]
-|17:45 / 18:15		|Amphi Bleu 		|Tools-in-Action	|					|link:mercredi/mercredi_1745-1815_xxx.adoc[Micronaut, le framework JVM ultra-light du futur]
-|18:30 / 19:00		|Neuilly 253		|Tools-in-Action	|					|link:mercredi/mercredi_1830-1900_xxx.adoc[Ansible dans la vraie vie avec AWX]
+|09:30 / 12:30		|Neuilly 252 AB		|University			|					|Microservices: Infinity War! Spring vs MicroProfile -> *Notre talk !*
+|13:30 / 16:30		|Amphi bleu 		|University			|					|link:mercredi/mercredi_1330-1630_quarkus-deep-dive.adoc[Quarkus: Pourquoi & Comment faire une appli Java Cloud Native avec Graal VM]
+|17:00 / 17:30		|Neuilly 251		|Tools-in-Action	|Bien				|link:mercredi/mercredi_1700-1730_quarkus-du-live-reload.adoc[Quarkus: du live reload à la compilation native]
+|17:45 / 18:15		|Amphi Bleu 		|Tools-in-Action	|					|link:mercredi/mercredi_1745-1815_micronaut.adoc[Micronaut, le framework JVM ultra-light du futur]
+|18:30 / 19:00		|Neuilly 253		|Tools-in-Action	|					|link:mercredi/mercredi_1830-1900_ansible.adoc[Ansible dans la vraie vie avec AWX]
 |===
 
 == Jeudi
@@ -30,14 +30,12 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 |===
 |Date				|Salle				|Type				|Avis				|Description
 |09:00 / 09:20		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1010_keynotes.adoc#la-keynote-de-devoxx-france[La Keynote de Devoxx France]
-|09:25 / 09:45		|Amphi Bleu			|Keynote			| 					|link:jeudi/jeudi_0900-1010_keynotes.adoc#xxx[Le Bonheur au travail : au delà du bullshit.]
-|09:50 / 10:10		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1010_keynotes.adoc#xxx[La bienveillance en entreprise]
-|10:45 / 11:30		|Amphi Bleu			|Conference			|					|link:jeudi/jeudi_1045-1130_xxx.adoc[Modern Java: Change is the Only Constant]
-|11:45 / 12:30		|Neuilly 253		|Conference			|					|link:jeudi/jeudi_1145-1230_xxx.adoc[10 choses que j'aurais aimé savoir avant d'utiliser Spark en production]
-|13:30 / 14:15		|Amphi Bleu			|Conference			|					|link:jeudi/jeudi_1145-1230_xxx.adoc[De Java 8 à Java 11 sur un gros projet : les pièges à éviter]
-|14:30 / 15:15		|Amphi Bleu			|Conference			| 					|link:jeudi/jeudi_1430-1515_xxx.adoc[De Java à un exécutable natif : GraalVM et Quarkus changent la donne]
-|15:30 / 16:15		|Maillot			|Conference			|					|link:jeudi/jeudi_1530-1615_xxx<.adoc[La gestion de l'authentification et de l'autorisation dans une architecture microservices ? Pas de soucis !]
-|16:45 / 17:30		|Paris 241 			|Conference			| 					|link:jeudi/jeudi_1645-1730_xxx.adoc[Comment nous avons construit un Data Lake AWS de 700 To, performant et scalable]
+|09:25 / 09:45		|Amphi Bleu			|Keynote			| 					|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fle_bonheur_au_travail_au_delà_du_bullshit[Le Bonheur au travail : au delà du bullshit.]
+|09:50 / 10:10		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fla_bienveillance_en_entreprise[La bienveillance en entreprise]
+|10:45 / 11:30		|Amphi Bleu			|Conference			|					|link:jeudi/jeudi_1045-1130_modern-java.adoc[Modern Java: Change is the Only Constant]
+|11:45 / 12:30		|Neuilly 253		|Conference			|					|link:jeudi/jeudi_1145-1230_10-choses-spark.adoc[10 choses que j'aurais aimé savoir avant d'utiliser Spark en production]
+|15:30 / 16:15		|Maillot			|Conference			|					|link:jeudi/jeudi_1530-1615_authentification-autorisation-microservices.adoc[La gestion de l'authentification et de l'autorisation dans une architecture microservices ? Pas de soucis !]
+|16:45 / 17:30		|Paris 241 			|Conference			| 					|link:jeudi/jeudi_1645-1730_datalake-700to.adoc[Comment nous avons construit un Data Lake AWS de 700 To, performant et scalable]
 |===
 
 == Vendredi
