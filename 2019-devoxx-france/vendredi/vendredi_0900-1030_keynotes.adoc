@@ -26,7 +26,14 @@ toc::[]
 
 == Accessibilité
 
-Voir https://cfp.devoxx.fr/2019/talk/CKW-8744/Accessibilite
+https://cfp.devoxx.fr/2019/talk/CKW-8744/Accessibilite[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=fhu7ZBfRw4A&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::fhu7ZBfRw4A[youtube, width=640, height=480]
+endif::[]
 
 Par *Valerie Haccart*.
 
@@ -48,9 +55,9 @@ Ouvrez les yeux et oeuvrons ensemble !
 
 === Notes
 
-Valérie a présenté toutes une série de lunettes permettant de tester les différentes pathologies et déficiences visuelles que l'on peut rencontrer.
+Valérie a présenté toutes une série de lunettes permettant de tester les différentes *pathologies* et *déficiences visuelles* que l'on peut rencontrer.
 
-Elle a insisté sur quelques impératifs trop souvent oublié lorsque l'on code le front d'un site :
+Elle a insisté sur quelques impératifs trop souvent oubliés lorsque l'on code le front d'un site :
 
 * Utiliser les hiérarchies de titres *dans l'ordre* : H1, H2, H3, H4 et non H1 PUIS h4
 * ne pas oublier d'utiliser l'attribut `alt` sur les images, quitte à le déclarer à vide (`""`). +
@@ -61,7 +68,14 @@ Ces informations sont très importantes pour les lecteurs de sites pour malvoyan
 
 == Philosophy of HumanOps
 
-Voir https://cfp.devoxx.fr/2019/talk/YLK-5268/Philosophy_of_HumanOps
+https://cfp.devoxx.fr/2019/talk/YLK-5268/Philosophy_of_HumanOps[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=jKwfgtGyrpk&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::jKwfgtGyrpk[youtube, width=640, height=480]
+endif::[]
 
 Par *David Mytton*.
 
@@ -84,7 +98,14 @@ Il ne faut pas que vos procédures ne prennent en compte *QUE* le côté techniq
 
 == Le refactoring le plus difficile de ma carrière
 
-https://cfp.devoxx.fr/2019/talk/UPW-7883/Le_refactoring_le_plus_difficile_de_ma_carriere
+https://cfp.devoxx.fr/2019/talk/UPW-7883/Le_refactoring_le_plus_difficile_de_ma_carriere[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=TiRoge93H0o&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::TiRoge93H0o[youtube, width=640, height=480]
+endif::[]
 
 Par *Jérôme Petazzoni*.
 
@@ -96,16 +117,22 @@ Il possède un nombre indéterminé d'instruments de musique, et sait massacrer 
 === Overview
 
 ====
-Quand je suis arrivé aux États-Unis en 2011, je ne connaissais pas grand-chose à la santé mentale. Au fil des années, j'ai découvert via des présentations et des témoignages que c'était pourtant un des plus gros risques dans nos métiers. Ça n'a pas suffi à m'épargner, et j'ai passé plusieurs années à me battre avec une dépression qui a grandement affecté ma vie personelle, mais aussi ma productivité. Aujourd'hui, ça va mieux (merci!), et je voudrais partager ce que j'ai appris ainsi que quelques techniques qui m'ont aidé à faire face à ce challenge personnel.
+Quand je suis arrivé aux États-Unis en 2011, je ne connaissais pas grand-chose à la santé mentale. +
+Au fil des années, j'ai découvert via des présentations et des témoignages que c'était pourtant un des plus gros risques dans nos métiers. Ça n'a pas suffi à m'épargner, et j'ai passé plusieurs années à me battre avec une dépression qui a grandement affecté ma vie personelle, mais aussi ma productivité. +
+Aujourd'hui, ça va mieux (merci!), et je voudrais partager ce que j'ai appris ainsi que quelques techniques qui m'ont aidé à faire face à ce challenge personnel.
 ====
 
 === Notes
 
-On va parler de dépression et de burnout (vécus par Jérôme)
+NOTE: Les slides sont disponibles sur Google Doc : https://docs.google.com/presentation/d/1Ne6hOywPWxrj5e4VNZEtwkrsJGvOEKGwGBNxlBhuJ-E/edit#slide=id.p
+
+On va parler de *dépression* et de *burnout* (vécus par Jérôme)
 
 * 1 personne sur 5 souffre en ce moment d'un trouble mental
 
-Faire le test dont parle Jérôme, pour savoir si l'on est en burnout.
+-> Faire le test dont parle Jérôme, le http://www.masef.com/scores/burnoutsyndromeechellembi.htm[*Maslach Burn Out Inventory*], pour savoir si l'on est en burnout.
+
+-> Lire l'article de Jérôme sur son expérience : http://jpetazzo.github.io/2018/02/17/seven-years-at-docker/[Seven years at Docker]
 
 [IMPORTANT]
 ====
@@ -113,8 +140,6 @@ Faire le test dont parle Jérôme, pour savoir si l'on est en burnout.
 Un super retour d'expérience, de nombreux conseils, à revoir et à diffuser !
 ====
 
-.le QR code avec les ressources dont parle Jérôme
-image:photo1.jpg[]
 
 
 
