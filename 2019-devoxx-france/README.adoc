@@ -18,10 +18,10 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 |===
 |Date				|Salle				|Type				|Avis				|Description
 |09:30 / 12:30		|Neuilly 252 AB		|University			|					|Microservices: Infinity War! Spring vs MicroProfile -> *Notre talk !*
-|13:30 / 16:30		|Amphi bleu 		|University			|					|link:mercredi/mercredi_1330-1630_quarkus-deep-dive.adoc[Quarkus: Pourquoi & Comment faire une appli Java Cloud Native avec Graal VM]
-|17:00 / 17:30		|Neuilly 251		|Tools-in-Action	|Bien				|link:mercredi/mercredi_1700-1730_quarkus-du-live-reload.adoc[Quarkus: du live reload à la compilation native]
+|13:30 / 16:30		|Amphi bleu 		|University			|Bien				|link:mercredi/mercredi_1330-1630_quarkus-deep-dive.adoc[Quarkus: Pourquoi & Comment faire une appli Java Cloud Native avec Graal VM]
+|17:00 / 17:30		|Neuilly 251		|Tools-in-Action	|					|link:mercredi/mercredi_1700-1730_quarkus-du-live-reload.adoc[Quarkus: du live reload à la compilation native]
 |17:45 / 18:15		|Amphi Bleu 		|Tools-in-Action	|					|link:mercredi/mercredi_1745-1815_micronaut.adoc[Micronaut, le framework JVM ultra-light du futur]
-|18:30 / 19:00		|Neuilly 253		|Tools-in-Action	|					|link:mercredi/mercredi_1830-1900_ansible.adoc[Ansible dans la vraie vie avec AWX]
+|18:30 / 19:00		|Neuilly 253		|Tools-in-Action	|Bien				|link:mercredi/mercredi_1830-1900_ansible.adoc[Ansible dans la vraie vie avec AWX]
 |===
 
 == Jeudi
@@ -30,8 +30,8 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 |===
 |Date				|Salle				|Type				|Avis				|Description
 |09:00 / 09:20		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1010_keynotes.adoc#la-keynote-de-devoxx-france[La Keynote de Devoxx France]
-|09:25 / 09:45		|Amphi Bleu			|Keynote			| 					|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fle_bonheur_au_travail_au_delà_du_bullshit[Le Bonheur au travail : au delà du bullshit.]
-|09:50 / 10:10		|Amphi Bleu			|Keynote			|					|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fla_bienveillance_en_entreprise[La bienveillance en entreprise]
+|09:25 / 09:45		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fle_bonheur_au_travail_au_delà_du_bullshit[Le Bonheur au travail : au delà du bullshit.]
+|09:50 / 10:10		|Amphi Bleu			|Keynote			|TOP !				|link:jeudi/jeudi_0900-1010_keynotes.adoc#%5Fla_bienveillance_en_entreprise[La bienveillance en entreprise]
 |10:45 / 11:30		|Amphi Bleu			|Conference			|					|link:jeudi/jeudi_1045-1130_modern-java.adoc[Modern Java: Change is the Only Constant]
 |11:45 / 12:30		|Neuilly 253		|Conference			|					|link:jeudi/jeudi_1145-1230_10-choses-spark.adoc[10 choses que j'aurais aimé savoir avant d'utiliser Spark en production]
 |15:30 / 16:15		|Maillot			|Conference			|					|link:jeudi/jeudi_1530-1615_authentification-autorisation-microservices.adoc[La gestion de l'authentification et de l'autorisation dans une architecture microservices ? Pas de soucis !]
@@ -45,10 +45,10 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 |Date				|Salle				|Type				|Avis				|Description
 |09:00 / 09:20		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Accessibilité]
 |09:25 / 09:45		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Le refactoring le plus difficile de ma carrière]
-|09:50 / 10:10		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Philosophy of HumanOps]
-|10:45 / 11:30		|Amphi Bleu			|Conference 		| 					|link:vendredi/vendredi_1045-1130_xxx.adoc[La JVM et Docker, vers une symbiose parfaite !]
+|09:50 / 10:10		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Philosophy of HumanOps]
+|10:45 / 11:30		|Amphi Bleu			|Conference 		|Bien				|link:vendredi/vendredi_1045-1130_xxx.adoc[La JVM et Docker, vers une symbiose parfaite !]
 |11:45 / 12:30		|Neuilly 251 		|Conference 		| 					|link:vendredi/vendredi_1045-1130_xxx.adoc[Kata Retrospective en Java 11]
-|13:30 / 14:15		|Maillot			|Conference 		|Bien				|link:vendredi/vendredi_1330-1415_xxx.adoc[Micro Frontend: le casse tête des micro services étendu au FrontEnd !]
+|13:30 / 14:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1330-1415_xxx.adoc[Micro Frontend: le casse tête des micro services étendu au FrontEnd !]
 |15:30 / 16:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1530-1615_xxx.adoc[Migrer ses APIs vers GraphQL: pourquoi? comment!]
 |16:45 / 17:30		|Neuilly 251 		|Conference 		|					|link:vendredi/vendredi_1645-1730_xxx.adoc[Consul@Criteo: Des services un peu, des machines beaucoup, du ServiceMesh bientôt]
 |17:45 / 18:30		|Paris 241 			|Conference 		|					|link:vendredivendredi_1745-1830_xxx.adoc[Oubliez Java EE, voilà Jakarta EE !]
