@@ -27,8 +27,20 @@ toc::[]
 Par *Audrey Neveu*.
 
 ====
-Audrey est développeur full-stack. Passionnée par son métier, Audrey a toujours été fortement engagée dans la communauté Java au travers de plusieurs JUGs et conférences (Duchess France, Paris JUG, Devoxx France, Devoxx UK) mais aussi au sein d’initiatives visant à faire découvrir la programmation aux plus jeunes (Programatoo, Devoxx4Kids). Plus récemment elle a également rejoint l’équipe des Cast Codeurs.
+Audrey est développeur full-stack. +
+Passionnée par son métier, Audrey a toujours été fortement engagée dans la communauté Java au travers de plusieurs JUGs et conférences (Duchess France, Paris JUG, Devoxx France, Devoxx UK) mais aussi au sein d’initiatives visant à faire découvrir la programmation aux plus jeunes (Programatoo, Devoxx4Kids). +
+Plus récemment elle a également rejoint l’équipe des Cast Codeurs.
 ====
+
+https://cfp.devoxx.fr/2019/talk/GXO-0317/Micro_Frontend:_le_casse_tete_des_micro_services_etendu_au_FrontEnd_![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Web, JS, HTML5 et UX
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=f6_99ExOvWs&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::f6_99ExOvWs[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
@@ -42,63 +54,71 @@ C’est le principe du micro frontend et c’est que nous avons fait chez Saagie
 
 == Notes
 
-image:photo1.jpg[]
+image:micro-frontend_01.jpg[width=600]
 
 On a donc toujours un monolithe, au niveau du frontend ! +
 -> on va donc casser le front :
 
-image:photo2.jpg[]
+image:micro-frontend_02.jpg[width=600]
 
 Notre petstore en micro-frontend pourrait donc donner le découpage suivant :
 
-image:photo3.jpg[]
+image:micro-frontend_03.jpg[width=600]
 
 -> chaque équipe est en charge d'une seule partie (et pourrait utiliser une techno différente : Angular pour l'une, Vue pour l'autre, etc.)
 
-image:photo4.jpg[]
+image:micro-frontend_04.jpg[width=600]
 
 Les avantages des micro-frontends :
 
-image:photo5.jpg[]
+image:micro-frontend_05.jpg[width=600]
 
 *Design System* : catalogue de styles CSS permettant de proposer une UX homogène +
 -> OBLIGATOIRE quand on est en micro-frontend avec n frontend différents !
 
 Les *Web Components*, 4 attributs :
 
-* xxx
+* *custom elements* : define your own tags
+* *shadow Dom* : whose styles are encapsulated and isolated
+* *ES Modules* : and have a consistent way of being integrated into applications
+* *HTML templates* : that can go unused at page load but can instantiated later on
 
-image:photo7.jpg[]
+Principales méthodes permettant de gérer le *cycle de vie de vos composants* :
 
-(voir slide plus loin...)
+image:micro-frontend_06.jpg[]
 
-image:photo6.jpg[]
+-> la plus importante : `attributeChangedCallback`, appelée quand la valeur d'un attribut de votre composant est modifiée. +
+-> la méthode `render` ne fait pas partie de la spec, mais permet de factoriser les opérations de rendering, et de ne pas surcharger la méthode `attributeChangedCallback`
 
-*1er Pros & Cons*
+image:micro-frontend_07.jpg[]
 
-image:photo7.jpg[]
+Le support des 4 attributs par les navigateurs :
+
+image:micro-frontend_08.jpg[]
+
+.1er Pros & Cons
+image:micro-frontend_09.jpg[width=600]
 
 Considérant tous ces problèmes, nouvelle architecture : *Galaxy*
 
-IMPORTANT: Galaxy n'est pas une agrégation de micro-frontend, mais une agrégation de *fragments React*
+IMPORTANT: Galaxy n'est plus une agrégation de micro-frontend (web components), mais une agrégation de *fragments React*
 
-*Nouveaux Pros & Cons*
-
-image:photo8.jpg[]
+.Nouveaux Pros & Cons
+image:micro-frontend_10.jpg[width=600]
 
 Toujours trop de problèmes -> re-nouvelle architecture
 
 *Layout-as-Lib* : librairie Javascrip
 
-image:photo9.jpg[]
+image:micro-frontend_11.jpg[]
 
-*Pros & Cons*
+.Pros & Cons
+image:micro-frontend_12.jpg[width=600]
 
-image:photo10.jpg[]
+Rappel sur *Data Fabric v2* :
 
-Rappel sur Data Fabric v2 :
-
-image:photo11.jpg[]
+image:micro-frontend_13.jpg[]
+image:micro-frontend_14.jpg[]
 
 === Conseils et best practises
 
@@ -107,16 +127,17 @@ Réfléchir avant tout à ses Use Cases :
 * Soft navigation ou Hard navigation ?
 * Optimistic UI : même si l'écran ne fait RIEN, on informe l'utilisateur que tout va bien !
 
-image:photo12.jpg[]
+image:micro-frontend_15.jpg[]
 
 === Ressources
 
-image:photo13.jpg[]
+image:micro-frontend_16.jpg[]
 
 === Avis
 
-Bon cas pratique de codage de micro-frontend, sur la base d'un REX de ce qui a été fait avec la suite logicielle de *Saagie*.
+Bon cas pratique de codage de micro-frontend, sur la base d'un REX de ce qui a été fait avec la suite logicielle de *Saagie* :
 
+image:micro-frontend_17.jpg[]
 
 
 
