@@ -24,12 +24,23 @@ endif::[]
 
 toc::[]
 
-Par *Guillaume Scheibel*. +
-icon:tags[] Key words : GraphQL, Kotlin, APIs
+Par *Guillaume Scheibel*.
 
 ====
-Guillaume est développeur chez Expedia à Londres et a travaillé durant quelques années en France pour une grosse société de services. Il a également co-créé le JUG pour la région de Strasbourg (ElsassJUG) et contribue à 2 projets open-sources (Hibernate OGM et Infinispan). De temps en temps, il parle à différentes conférences (Soft-Shake, Devoxx FR, MA et BE, CodeMotion ES) ou JUGs.
+Guillaume est développeur chez Expedia à Londres et a travaillé durant quelques années en France pour une grosse société de services. +
+Il a également co-créé le JUG pour la région de Strasbourg (ElsassJUG) et contribue à 2 projets open-sources (Hibernate OGM et Infinispan). +
+De temps en temps, il parle à différentes conférences (Soft-Shake, Devoxx FR, MA et BE, CodeMotion ES) ou JUGs.
 ====
+
+https://cfp.devoxx.fr/2019/talk/USP-7583/Migrer_ses_APIs_vers_GraphQL%3A_pourquoi%3F_comment![Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : GraphQL, Kotlin, APIs
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=IRIkpvJo95s&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::IRIkpvJo95s[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
@@ -48,19 +59,6 @@ Durant cette présentation nous verrons comment Expedia utilise GraphQL (schéma
 REX de ce qui s'est passé chez *Expedia* (qui était chez Microsoft il y a 25 ans)
 
 *BFF* (Backend For Frontend) : Pour simplifier le front, on va leur demander d'intégrer *1 seule API*
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

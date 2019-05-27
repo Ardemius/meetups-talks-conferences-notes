@@ -26,7 +26,7 @@ toc::[]
 
 Par *Emmanuel Bernard* (RedHat). +
 https://cfp.devoxx.fr/2019/talk/HRS-0291/Quarkus%2c_du_live_reload_a_la_compilation_native[Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Java, JVM, Javas SE/EE
+icon:tags[] Key words : Cloud Native Java, Graal, Containers, Java
 
 ifdef::env-github[]
 https://www.youtube.com/watch?v=JhAYfP99agc&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]

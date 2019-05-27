@@ -24,17 +24,23 @@ endif::[]
 
 toc::[]
 
-Par *Pierre Souchay*
+Par *Pierre Souchay*.
 
 ====
-SRE working on PaaS and Discovery @Criteo, 1st external Contributor to Consul
-
-Previously Software Architect in a Cloud Provider, loving auth*
-
+SRE working on PaaS and Discovery @Criteo, 1st external Contributor to Consul +
+Previously Software Architect in a Cloud Provider, loving auth* +
 Was entrepreneur in another life, building Software audio/video encoders in Java
 ====
 
+https://cfp.devoxx.fr/2019/talk/QAF-5196/Consul@Criteo:%5FDes_services_un_peu%2C_des_machines_beaucoup%2C_du_ServiceMesh_bientot[Descriptif de la conférence sur le site du CFP de Devoxx] +
 icon:tags[] Key words : service mesh, architecture, Hashicorps Consul, Network endpoints, Service Discovery
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=aQb2_WrmED0&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::aQb2_WrmED0[youtube, width=640, height=480]
+endif::[]
 
 == Overview
 
@@ -54,58 +60,51 @@ Nous expliquerons également comment Criteo est devenu premier contributeur exte
 
 *Stratégie 1, avec une VIP*
 
-image:photo1.jpg[]
+image:consul-criteo_01.jpg[width=600]
 
 -> On doit déclarer une VIP (HAproxy) par microservice, pour gérer toutes ses instances
 
 *Stratégie 2, avec un service mesh*
 
-image:photo2.jpg[]
+image:consul-criteo_02.jpg[width=600]
 
 *Stratégie 3, Consul (2014)*
 
-image:photo3.jpg[]
+image:consul-criteo_03.jpg[width=600]
 
 Consul : équivalent d'une BDD répartie
 
 .Qu'apporte Consul ?
-image:photo4.jpg[]
+image:consul-criteo_04.jpg[width=600]
 
-Le gros intérêt de Consul est que tout est déjà prêt, et utilisable depuis le début (contrairement à la configuration d'un Zookeeper)
+Le gros *intérêt de Consul* est que *tout est déjà prêt*, et *utilisable depuis le début* (contrairement à la configuration d'un Zookeeper)
 
 Consul est utilisé chez Criteo depuis 2016
 
 .L'usage de Consul chez Criteo
-image:photo5.jpg[]
+image:consul-criteo_05.jpg[width=600]
 
 -> Consul a commencé à montrer ses limites
 
 DONC, Consul a commencé à patcher Consul. +
 -> Plus de 100 PRs, plus gros contributeur de Consul
 
-image:photo6.jpg[]
+image:consul-criteo_06.jpg[width=600]
 
 Les avantages des modifications apportées :
 
-image:photo7.jpg[]
+image:consul-criteo_07.jpg[width=600]
 
 Criteo a ajouté la *notion de poids* aux services :
 
 * poids élevé (10) quand le Health Check renvoie que service va bien (peu utilisé)
 * poids faible ou nul quand le HC indique que le service est à 90%, voire est mort
 
+.Investion de contrôle via Consul
+image:consul-criteo_08.jpg[width=600]
 
+.architecture service mesh
+image:consul-criteo_09.jpg[width=600]
 
-
-
-
-
-
-
-
-
-
-
-
-
+-> les "C" correspondent biensûr à Consul
 

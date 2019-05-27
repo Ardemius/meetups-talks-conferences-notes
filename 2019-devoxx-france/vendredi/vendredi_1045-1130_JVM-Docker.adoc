@@ -35,7 +35,7 @@ He blogs at https://delabassee.com and has authored many technical articles for 
 ====
 
 https://cfp.devoxx.fr/2019/talk/TZS-1436/La_JVM_et_Docker%2C_vers_une_symbiose_parfaite_![Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Cloud, Containers et Infrastructure, DevOps
+icon:tags[] Key words : Docker, Container deployment, JVM, Graal
 
 ifdef::env-github[]
 https://www.youtube.com/watch?v=scqMQ6bfHCo&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]

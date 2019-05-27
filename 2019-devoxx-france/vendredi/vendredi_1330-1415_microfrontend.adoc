@@ -33,7 +33,7 @@ Plus récemment elle a également rejoint l’équipe des Cast Codeurs.
 ====
 
 https://cfp.devoxx.fr/2019/talk/GXO-0317/Micro_Frontend:_le_casse_tete_des_micro_services_etendu_au_FrontEnd_![Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Web, JS, HTML5 et UX
+icon:tags[] Key words : MicroServices, frontend development
 
 ifdef::env-github[]
 https://www.youtube.com/watch?v=f6_99ExOvWs&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]

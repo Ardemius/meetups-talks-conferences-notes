@@ -26,7 +26,7 @@ toc::[]
 
 Par *Alexandre Kolacz*. +
 https://cfp.devoxx.fr/2019/talk/SHY-6819/Ansible_dans_la_vraie_vie_avec_AWX[Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Cloud, Containers et Infrastructure, DevOps
+icon:tags[] Key words : orchestration, automation, tooling, open source, monitoring
 
 ifdef::env-github[]
 https://www.youtube.com/watch?v=1-bzgTKHX-s&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]

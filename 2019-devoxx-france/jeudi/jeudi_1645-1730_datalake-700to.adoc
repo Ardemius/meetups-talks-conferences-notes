@@ -26,7 +26,7 @@ toc::[]
 
 Par Arnaud Milleker et Simon Cocula, tous deux travaillant chez Ogury. +
 https://cfp.devoxx.fr/2019/talk/OYU-8905/Comment_nous_avons_construit_un_Data_Lake_AWS_de_700_To%2C_performant_et_scalable[Descriptif de la conférence sur le site du CFP de Devoxx] +
-icon:tags[] Key words : Big Data, Machine Learning, Analytics
+icon:tags[] Key words : Amazon Web Services, Big Data
 
 ifdef::env-github[]
 https://www.youtube.com/watch?v=cJE8ihPGB74&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
