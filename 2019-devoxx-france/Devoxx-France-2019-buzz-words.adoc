@@ -78,5 +78,5 @@ On va terminer sur 2 clins d'oeil :
 image:gantelet-infini.jpg[width=300]
 
 * une de notre groupe Softeam lors de la session de clôture : +
-image:softeam-cast-codeurs.jpg[width=300]
+image:softeam-cast-codeurs.jpg[width=600]
 
