@@ -43,15 +43,14 @@ IMPORTANT: link:Devoxx-France-2019-buzz-words.adoc[*Buzz words* et *synthèse* d
 [cols="1,1,1,1,4", options="header"] 
 |===
 |Date				|Salle				|Type				|Avis				|Description
-|09:00 / 09:20		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Accessibilité]
-|09:25 / 09:45		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Le refactoring le plus difficile de ma carrière]
-|09:50 / 10:10		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1010_keynotes.adoc#xxx[Philosophy of HumanOps]
-|10:45 / 11:30		|Amphi Bleu			|Conference 		|Bien				|link:vendredi/vendredi_1045-1130_xxx.adoc[La JVM et Docker, vers une symbiose parfaite !]
-|11:45 / 12:30		|Neuilly 251 		|Conference 		| 					|link:vendredi/vendredi_1045-1130_xxx.adoc[Kata Retrospective en Java 11]
-|13:30 / 14:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1330-1415_xxx.adoc[Micro Frontend: le casse tête des micro services étendu au FrontEnd !]
-|15:30 / 16:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1530-1615_xxx.adoc[Migrer ses APIs vers GraphQL: pourquoi? comment!]
-|16:45 / 17:30		|Neuilly 251 		|Conference 		|					|link:vendredi/vendredi_1645-1730_xxx.adoc[Consul@Criteo: Des services un peu, des machines beaucoup, du ServiceMesh bientôt]
-|17:45 / 18:30		|Paris 241 			|Conference 		|					|link:vendredivendredi_1745-1830_xxx.adoc[Oubliez Java EE, voilà Jakarta EE !]
-|18:45 / 19:30		|Neuilly 252 AB		|Conference 		|					|https://lescastcodeurs.com/2019/xxx]
+|09:00 / 09:20		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1030_keynotes.adoc#%5Faccessibilité[Accessibilité]
+|09:25 / 09:45		|Amphi Bleu			|Keynote 			|TOP !				|link:vendredi/vendredi_0900-1030_keynotes.adoc#%5Fphilosophy_of_humanops[Le refactoring le plus difficile de ma carrière]
+|09:50 / 10:10		|Amphi Bleu			|Keynote 			|					|link:vendredi/vendredi_0900-1030_keynotes.adoc#%5Fle_refactoring_le_plus_difficile_de_ma_carrière[Philosophy of HumanOps]
+|10:45 / 11:30		|Amphi Bleu			|Conference 		|Bien				|link:vendredi/vendredi_1045-1130_JVM-Docker.adoc[La JVM et Docker, vers une symbiose parfaite !]
+|11:45 / 12:30		|Neuilly 251 		|Conference 		| 					|link:vendredi/vendredi_1145-1230_kata-java11.adoc[Kata Retrospective en Java 11]
+|13:30 / 14:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1330-1415_microfrontend.adoc[Micro Frontend: le casse tête des micro services étendu au FrontEnd !]
+|15:30 / 16:15		|Maillot			|Conference 		|					|link:vendredi/vendredi_1530-1615_GraphQL-migration.adoc[Migrer ses APIs vers GraphQL: pourquoi? comment!]
+|16:45 / 17:30		|Neuilly 251 		|Conference 		|					|link:vendredi/vendredi_1645-1730_consul-criteo.adoc[Consul@Criteo: Des services un peu, des machines beaucoup, du ServiceMesh bientôt]
+|17:45 / 18:30		|Paris 241 			|Conference 		|					|link:vendredi/vendredi_1745-1830_java-jakartaee.adoc[Oubliez Java EE, voilà Jakarta EE !]
 |===
 

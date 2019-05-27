@@ -72,6 +72,11 @@ Ce dernier regroupe les (très) nombreuses implémentations d'une même API web,
 {lb}
 * On a de nouveau un sac qui déchire en goodies ! 😍
 
-On va quand même ajouter une chtite photo avec le Gantelet de l'Infini ! (Utiliser lors de notre université du mercredi : *Microservices Infinity War! Spring vs MicroProfile*)
+On va terminer sur 2 clins d'oeil :
 
-image::gantelet-infini.jpg[width=300]
+* une chtite photo avec le Gantelet de l'Infini ! (Utiliser lors de notre université du mercredi : *Microservices Infinity War! Spring vs MicroProfile*) +
+image:gantelet-infini.jpg[width=300]
+
+* une de notre groupe Softeam lors de la session de clôture : +
+image:softeam-cast-codeurs.jpg[width=300]
+
