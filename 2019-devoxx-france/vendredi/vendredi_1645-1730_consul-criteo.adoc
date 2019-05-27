@@ -72,7 +72,7 @@ image:consul-criteo_02.jpg[width=600]
 
 image:consul-criteo_03.jpg[width=600]
 
-Consul : équivalent d'une BDD répartie
+-> *Consul : équivalent d'une BDD répartie*
 
 .Qu'apporte Consul ?
 image:consul-criteo_04.jpg[width=600]
@@ -86,7 +86,7 @@ image:consul-criteo_05.jpg[width=600]
 
 -> Consul a commencé à montrer ses limites
 
-DONC, Consul a commencé à patcher Consul. +
+DONC, *Criteo a commencé à patcher Consul*. +
 -> Plus de 100 PRs, plus gros contributeur de Consul
 
 image:consul-criteo_06.jpg[width=600]
@@ -102,6 +102,10 @@ Criteo a ajouté la *notion de poids* aux services :
 
 .Investion de contrôle via Consul
 image:consul-criteo_08.jpg[width=600]
+
+-> *VAAS* = "Vip As A Service" : scrute Consul en permanence, et qui regarde tous les services Consul qui exposent un tag HTTP. +
+Dès qu'il voit un nouveau service avec le tag HTTP, il va créer une VIP, instantanément.
+
 
 .architecture service mesh
 image:consul-criteo_09.jpg[width=600]
