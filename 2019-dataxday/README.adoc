@@ -1,0 +1,650 @@
+= DataXDay 2019
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Site du salon : https://dataxday.fr/
+
+== Keynote 1 : La confiance entre les humains et les données
+
+Par Caroline Goulard, CEO Dataveyes
+
+Sites intéressants de visualisation de données :
+
+* architectureofradio.com
+* Ville vivante
+* Behind the Banner
+
+-> Il faut rendre "visible" et compréhensible la data à tout un chacun.
+C'est également valable pour *l'algorithmie* qui génère certaines données / stats.
+
+Cas du sulfureux compteur Linky, qui est un gros collecteur de data (consommation, présence chez soi, etc.), pour lequel très peu de comm est faite sur ce que l'on pourrait faire avec ces données. +
+Avec plus d'infos sur les possibilités, réelles et utiles, de l'usage de ces data, le consommateur / client serait sans doute moins méfiant sur le produit.
+
+== Keynote 2 : Database infrastructure at Instagram scale
+
+Par Michaël Figuière, software engineer, Facebook
+
+== From Jupyter notebooks to Machine Learning in production
+
+By Pauline Nicolas / Théo Bontempelli, Data Scientist / Data Engineer - Deezer
+
+=== Abstract
+
+----
+Chez Deezer, le Machine Learning (apprentissage automatisé) est au cœur de nombreux aspects de l’application. Au sein de l’équipe analytics, nous travaillons sur différentes tâches telles que la prédiction et la prévision d’évènements, dans le but de fournir des retours utiles pour les équipes produit et business. Au cours des discussions avec ces équipes, nous avons réalisé que pour beaucoup de projets, l’accès en temps réel aux prédictions de nos modèles représentait un réel intérêt. Ce constat nous a donc amenés à exploiter l’ensemble des analyses réalisées dans nos notebooks afin de déployer nos algorithmes en production sous Spark.
+
+Afin de réussir au mieux ces migrations, nous avons mis en œuvre un certain nombre de procédés, de la data architecture review à l’implémentation des modèles en Scala Spark. Pour illustrer cela, nous vous parlerons de notre retour d’expérience sur la prédiction du churn à Deezer et nous vous présenterons comment les data scientists et les data engineers ont travaillé ensemble à la réussite de ce projet.
+----
+
+=== Notes
+
+2 évènements importants concernant un user chez Deezer :
+
+* conversion : quand un user décide de s'abonner (payer) pour accéder au contenu premium
+* *churn* : quand un user décide d'arrêter son abonnement
+
+Ont cherché à modéliser le churn via apprentissage supervisé.
+
+.modélisation du churn
+image:jupyter-to-ml-in-prod_01.jpg[]
+
+.mise en place d'un process / organisation pour la détermination du modèle de machine learning du churn
+image:jupyter-to-ml-in-prod_02.jpg[]
+
+-> travail en commun entre data scientist, data engineer ET un avis extérieur à l'équipe (data engineer d'une autre équipe)
+
+TODO : récupérer le workflow de la mise en prod
+
+Ils sont passés de Scikits Learn, en Python, à Spark ML, ce qui n'est pas, de leur expérience, une migration des plus faciles.
+
+.conclusion
+image:jupyter-to-ml-in-prod_03.jpg[]
+
+-> Conclusion : la marche est haute entre exploration et mise en production +
+Une bonne organisation (humaine est essentielle)
+
+== Confident Data migration: automatic regression testing
+
+Par Thomas Franquelin, Staff Software Engineer - Contentsquare
+
+=== Abstract
+
+----
+In the course of 3 years, ContentSquare changed its main data store twice! We first moved from Redshift to Elasticsearch, then to Clickhouse. +
+During this time, we had to deal with a vast increase in data volume, and support more and more features. How did we ensure that we didn’t break our application in the process? +
+We’ll talk about a simple way to achieve this by replaying production load to legacy and new systems at the same time, and studying statistical differences between the two in order to pinpoint regressions. We’ll see that this method also makes from a coarse-grained, but fairly realistic load testing.
+----
+
+=== Notes
+
+ContentSquare migrated twice in a row: Amazon Redshift -> Elastic -> ClickHouse
+
+image::confident-data-migration_01.jpg[]
+
+* Amazon Redshift : great flexibility, but poor performances
+* Elastic : good performances, but very expensive
+* CLickHouse :
+
+.Tools at our disposal to test our migration
+image:confident-data-migration_02.jpg[]
+
+-> in orange, 2 comparators
+
+.focus on the comparators
+image:confident-data-migration_03.jpg[]
+
+.Prod Request Comparator
+.image:confident-data-migration_04.jpg[]
+
+What if the legacy system is wrong ?
+
+* best solution is to fix the problem in the legacy system
+* other approach, sad but realistic: keep the bug, do the migration, and fix the bug later +
+-> it allows to avoid differences during the comparison legacy <> new system
+
+.The way to iterate until everything is good
+image:confident-data-migration_05.jpg[]
+
+== How to leverage the Apache Kafka Ecosystem to productionize Machine Learning
+
+By Kai Waehner, Technology Evangelist - Confluent
+
+=== Abstract
+
+----
+This talk shows how to productionize Machine Learning models in mission-critical and scalable real time applications by leveraging Apache Kafka as streaming platform. The talk discusses the relation between Machine Learning frameworks such as TensorFlow, DeepLearning4J or H2O and the Apache Kafka ecosystem. A live demo shows how to build a mission-critical Machine Learning environment leveraging different Kafka components: Kafka messaging and Kafka Connect for data movement from and into different sources and sinks, Kafka Streams for model deployment and inference in real time, and KSQL for real time analytics of predictions, alerts and model accuracy.
+----
+
+=== Notes
+
+.some Use Cases
+image:kafka-to-productionize-ml_01.jpg[]
+
+.What does allow Machine Learning here?
+image:kafka-to-productionize-ml_02.jpg[]
+
+.Hidden Technical Debt in Machine Learning systems
+image:kafka-to-productionize-ml_03.jpg[]
+
+Several (famous) companies already solved this kind of problematics through *custom ML frameworks*: Netflix / Uber / PayPal +
+TODO: a good slide to retrieve at this point
+
+.Confluent Business value per Use Case
+image:kafka-to-productionize-ml_04.jpg[]
+
+.Infrastructure for ML using Kafka
+image:kafka-to-productionize-ml_05.jpg[]
+
+.Ingestion in the Data Store
+image:kafka-to-productionize-ml_06.jpg[]
+
+.Model training using a Data Store
+image:kafka-to-productionize-ml_07.jpg[]
+
+A log "never" forgets -> you can branch different consumers at differents points on the log
+
+== How to use Kafka to transform a batch pipeline into a real time one?
+
+Par Stéphane Mareek, CEO - DataCumulus
+
+=== Abstract
+
+----
+Apache Kafka has real-time capability and everyone knows that! The real challenge facing engineers comes from re-designing the existing data pipelines from batch to real-time. In this talk, we will do a case study on how to build an end-to-end real-time data pipeline by building four micro-services on top of Apache Kafka. It will give you insights into the Kafka Producer API, Avro and the Confluent Schema Registry, the Kafka Streams High-Level DSL, and Kafka Connect Sinks.
+----
+
+=== Notes
+
+Stéphane est un expert sur Kafka, auteur de plusieurs articles sur le sujet, et d'un cours sur Udemy
+
+Tout le code du talk et de la démo est disponible sur GitHub
+
+.New Real Time pipeline using Kafka
+image:kafka-batch-to-tr_01.jpg[]
+
+-> démo complète et très intéressante (Kafka Connect + Streams + schema registry)
+
+[NOTE]
+====
+* Kafka "Conduktor" to have a look at
+====
+
+image::kafka-batch-to-tr_02.jpg[]
+
+== L'incroyable efficacité de l'unification des logs !
+
+Par Jonathan Winandy, Dirigeant fondateur - Univalence
+
+=== Abstract
+
+----
+Avez-vous déjà rencontré un bug vraiment prise de tête ? Avez-vous souhaité pouvoir juste faire un ctrl-Z ?
+
+Bien que les micro-services soient plus complexes à exploiter que leurs homologues monolithiques, ils laissent place à des architectures qui nous permettent d'analyser et de corriger les erreurs du passé et nous évitent des surprises dans le futur.
+
+Après un rappel rapide sur le tracing distribué, nous verrons comment avec un Kafka récent et Jaeger on peut construire un système complet avec:
+
+- l'unification et la compression des données,
+- l'analyse de la cause et de la source des bugs et des effets,
+- le ``voyage dans le temps``.
+
+Aucune connaissance préalable de ``Dapper`` et du fonctionnement des cabines téléphoniques sont requises ! 😉
+----
+
+=== Notes
+
+Jonathan a créé Univalence pour "s'y retrouver" dans toutes les briques technologiques des stack "Big Data" actuelles. +
+(Jonathan a été dev web, avant de passer sur la Data à une époque où il y avait beaucoup moins de technos à connaître)
+
+Leur job : rattraper les structures applicatives pas adaptées à la collecte de la Data +
+image:unification-logs_01.jpg[]
+
+.Evolution of concurrency
+image::unification-logs_02.jpg[]
+
+-> On a jamais eu *vraiment* de concurrence jusqu'il y a peu... +
+Et en très très peu de temps, ça nous est tombé dessus du fait de l'évolution des technos pour gérer la "Big" Data.
+
+image::unification-logs_03.jpg[]
+
+-> en graphique sur le screen précédent, la carto d'une request Uber rebondissant de service en service.
+
+image::unification-logs_04.jpg[]
+
+-> Le "classique" :
+
+* Quand on a un problème, il y a des chances que Google l'ait aussi
+* Google met ses chercheurs dessus, et publie un papier
+* 2 ans plus tard, on a une implémentation Open Source
+
+-> Cas de Dapper (Google), qui va donner naissance à *Zipkin*, qui va dernièrement *être supplanté par Jaeger*
+
+NOTE: On ne parle plus de traçabilité, mais "d'observabilité"
+
+Dernièrement, annonce à la KubeCon, OpenCensus et OpenTracking vont fusionner et devenir *OpenTelemetry*.
+
+.Qu'est-ce qu'une trace ?
+image:unification-logs_05.jpg[]
+image:unification-logs_06.jpg[]
+
+.Logging vs tracing
+image:unification-logs_07.jpg[]
+
+.Architecture de tracing
+image:unification-logs_08.jpg[]
+
+.Architecture de tracing avec Kakka
+image:unification-logs_09.jpg[]
+
+.Jaeger UI
+image:unification-logs_10.jpg[]
+image:unification-logs_11.jpg[]
+
+image::unification-logs_12.jpg[]
+
+-> *Cas de monétisation de la data* (un classique) : en exposant la data sous forme d'API, on peut dire via le tracing combien de fois le service A a appelé le service B
+
+Le graphe des appels inter-services permet de créer une *documentation du runtime*.
+
+.Unification des logs
+image:unification-logs_13.jpg[]
+
+-> soyons clairs, le *bus async* du screen précédent est bien entendu Kafka.
+
+image::unification-logs_14.jpg[]
+
+-> Le passage en async via Kafka des logs posent quelques problèmes à OpenTracing, mais on s'en sort quand même.
+
+.Avantages de joindre les évènements et les traces
+image::unification-logs_15.jpg[]
+
+-> joindre les 2 va permettre de créer des logs beaucoup plus courts. +
+Ex : pour un problème de mail invalide, plutôt que de logger "nous avons rencontré blabla, un problème de blabla avec le mail blabla", on peut se contenter de logger "mail invalide" car on a le mail dans l'évènement
+
+.Principe 3 : identifier les places de calculs (on lie le log avec le code associé)
+image:unification-logs_16.jpg[]
+image:unification-logs_17.jpg[]
+
+.Conclusion
+image:unification-logs_18.jpg[]
+
+-> TRES BONNE CONF ! +
+A garder sous le coude en cas de problème de logging / tracing
+
+=== Q&A :
+
+Un rappel : une BDD a 3 caractéristiques :
+
+* un système de persistence
+* un moteur d'indexation
+* un système de requêtage
+
+== Incremental Data Architecture
+
+Par Walid Haouari, Data Engineer - Xebia
+
+=== Abstract
+
+----
+Le design d'architecture data n'a jamais été chose facile. On rencontre souvent des risques d'inadaptation au besoin, des faibles performances, des blocages paresseux voir un accomplissement partiel des objectifs de départ. Dans la plupart du temps, ces problématiques sont directement liées à un manque ou une mauvaise gestion des resources.
+
+L'Incremental Software Architecture est une méthode de conception avancée qui va permettre d'outrepasser ces risques tout en garantissant des systèmes élastiques, efficaces et rentables.
+
+Nous allons voir ensemble comment adopter cette approche favorisant la productivité, étape par étape, le tout dans un contexte Data.
+----
+
+=== Notes
+
+.Le talk se concentre sur la gestion des *ressources* :
+image:incremental-architecture_01.jpg[width=600]
+
+-> et généralement pas de budget...
+
+.Définition de l'architecture incrémentale
+image:incremental-architecture_02.jpg[width=600]
+image:incremental-architecture_03.jpg[width=600]
+
+.Côté infrastructure
+image:incremental-architecture_04.jpg[width=800]
+
+.Côté Dev
+image:incremental-architecture_05.jpg[width=800]
+
+.Problématique des architectures Data
+image:incremental-architecture_06.jpg[width=800]
+
+-> La *complexité des architectures Data* vient principalement de la multiplicité des technos de la stack, et du couplage fort souvent existant entre ces derniers. +
+-> De plus, on a *souvent des problèmes avec le modèle de données*, qui est rarement pensé pour être incrémental.
+
+.Méthode d'architecture incrémentale : l'itération
+image:incremental-architecture_07.jpg[width=800]
+
+-> on cherche à *minimiser la perte d'une itération* à l'autre
+
+.step "état des lieux"
+image:incremental-architecture_08.jpg[width=800]
+
+.step "Design"
+image:incremental-architecture_09.jpg[width=800]
+image:incremental-architecture_10.jpg[width=800]
+
+==== Démo
+
+* tout est dans un environnement AWS
+	** Kinesis : messaging système
+
+.Besoin et contraintes
+image:incremental-architecture_11.jpg[width=800]
+
+.Architecture cible
+image:incremental-architecture_12.jpg[]
+
+.Itération 1
+image:incremental-architecture_13.jpg[]
+
+.Itération 2 : on forme à Spark nos 2 devs Python
+image:incremental-architecture_14.jpg[width=800] +
+image:incremental-architecture_15.jpg[]
+
+.Itération 3 : on peut maintenant introduire Spark
+image:incremental-architecture_16.jpg[width=800] +
+image:incremental-architecture_17.jpg[]
+
+.Itération 4
+image:incremental-architecture_18.jpg[]
+
+.Itération finale
+image:incremental-architecture_19.jpg[]
+
+==== Conseils / take away
+
+* éviter les "mutations" d'architecture -> ce qui pourrait casser de précédents incréments
+	** garder à l'esprit que l'architecture "cible" de laquelle nous partons n'est *PAS* une architecture finale, immuable
+* don't mess with security !
+* mettre des indicateurs et les monitorer : dimension coûts, charges, scalabilité +
+Ex : mise en place d'un scanner de vulnérabilité
+* connaître la valeur de l'incrément avant l'implémentation
+* utiliser la puissance des outils scalables *seulement quand il le faut !*
+* prendre la qualité en considération
+
+-> Le talk avait vraiment trait sur la mise en place d'un *process* d'architecture incrémentale.
+
+== Quelle stratégie de test pour vos applicatifs de machine learning ?
+
+Par Victor Landeau, ingénieur Machine Learning - OUI.sncf
+
+=== Abstract
+
+----
+Chez Oui.sncf, cela fait maintenant plusieurs années que nous utilisons des algorithmes de Machine Learning dans certains de nos applicatifs en production. Mais cela n'est pas sans poser de problème, notamment du fait du caractère non-déterministe de ces approches.
+
+En effet, comment peut-on développer sereinement des applicatifs dont les sorties attendues ne sont pas connues par avance ?
+
+Pour répondre à cette problématique, nous avons développé notre propre stratégie de test, adaptée au monde incertain du Machine Learning. Cette approche se base sur trois grandes couches de tests que nous vous détaillerons dans ce Talk.
+----
+
+=== Notes
+
+Oui.sncf est le 1er site de e-commerce en France
+
+* Prédire le futur en fonction du passé
+
+.Les phases de l'apprentissage supervisé
+image::strategie-tests-ml_01.jpg[]
+
+-> Ce Machine Learning ne tient pas sur 1 seul ordinateur !
+
+.Tests unitaires avec Given / When / Then
+image:strategie-tests-ml_02.jpg[]
+
+.Et TDD pour bien le faire
+image:strategie-tests-ml_03.jpg[]
+
+.Tests d'intégration
+image:strategie-tests-ml_04.jpg[]
+
+.Il y a aussi les tests dit "black-box"
+image:strategie-tests-ml_05.jpg[]
+
+Attention ! Lancez tous les tests de bout en bout *prend du temps* ! +
+-> besoin d'optimisation
+
+.En conclusion sur les tests
+image:strategie-tests-ml_06.jpg[]
+
+Gardez en mémoire que l'environnement est changeant ! +
+A l'arrivée d'un nouvel acteur (ou autre), notre comportement peut changer. +
+-> Dans ces cas, un ré-entraînement est nécessaire
+
+Pour conclure :
+
+image:strategie-tests-ml_07.jpg[] +
+image:strategie-tests-ml_08.jpg[]
+
+== Give meaning to 100 billion analytics events a day, analytics at Teads
+
+Par Alban Perillat-Merceroz, Software Engineering Manager - Teads
+
+=== Abstract
+
+----
+This talk showcases how we built a platform that is capable of ingesting and transforming a stream of Billions of events a day using BigQuery, and how we use and abuse Redshift to deliver self-served, tailored views to many data visualisation clients and web apps.
+----
+
+=== Notes
+
+.Teads and its global media platform
+image:analytics-at-teads_01.jpg[]
+
+image::analytics-at-teads_02.jpg[]
+
+-> Only 10 people to handle the data pipeline
+
+Again, a solution using *Kafka* !
+
+.Teads "quick" architecture
+image:analytics-at-teads_03.jpg[]
+
+Tracker split into 2:
+
+* *tracker collector*: very straight forward, with no dependency on any database
+* *tracker hydrator*: dependencies on databases are here +
+*Flink* is used here to perform *stateful processes*.
+
+image::analytics-at-teads_04.jpg[]
+
+.The rollup job (Data Warehouse part, using *BigQuery SQL*) is as easy as this
+image:analytics-at-teads_05.jpg[]
+
+For their Datamart, they *move from BigQuery to IBM Redshift*.
+
+.Redshift (option 3) chosen instead BigQuery
+image:analytics-at-teads_06.jpg[]
+
+* *BigQuery*: minimum latency of 5 sec per query +
+-> they wanted *subsecond* latency
+* *BigQuery*: concurrency limits
+
+[NOTE]
+====
+IEE is a proprietary fork of MySQL, modified for analytics (column-oriented). +
+Although it was fine to use IEE to serve dashboards with Chartio (SaaS visualization app, that we use internally for Business Intelligence), we were reaching its limits, in terms of pricing and scalability.
+====
+
+For the Internal Data Visualisation, they chose *ChartIO*
+
+.Redshift as a solution
+image:analytics-at-teads_07.jpg[]
+
+.Redshift key learnings
+image:analytics-at-teads_08.jpg[]
+
+.For orchestration and scheduling
+image:analytics-at-teads_09.jpg[]
+
+-> Not Airflow, but "just" Jenkins plus an internal tool ("JobHistory")
+
+.Final architecture for Teads Data pipeline
+image:analytics-at-teads_10.jpg[]
+
+-> But that's still not enough to handle 100 billion events
+
+.90% percent of the data is trashed ! (*sampling*)
+image::analytics-at-teads_11.jpg[]
+
+[NOTE]
+====
+* they replaced nearly all their Scala / Spark code by BigQuery SQL one
+* They mainly moved from AWS to GCP (but not totally)
+====
+
+-> Interesting talk for the description of their complete stack
+
+.Ressources
+image:analytics-at-teads_1.2jpg[]
+
+=== Q&A
+
+* For the datamart, everything is denormalized
+	** a datamart is immutable
+* all the tracker process is less than 1 sec long (? for what ? But it seems to be fast)
+
+=== Resources
+
+J'ai trouvé 2 articles de blog des speakers décrivant ce talk :
+
+* https://medium.com/teads-engineering/give-meaning-to-100-billion-analytics-events-a-day-d6ba09aa8f44 : +
+2018/04/03, ce "vieil" article décrit leur pipeline d'ingestion, centré sur BigQuery comme data warehouse. +
+Comme il est expliqué :
+____
+[...] we described our *Analytics data ingestion pipeline*, with BigQuery sitting as our data warehouse. However, having our analytics events in BigQuery is not enough. Most importantly, data needs to be served to our end-users.
+____
+
+* https://medium.com/teads-engineering/give-meaning-to-100-billion-events-a-day-part-ii-how-we-use-and-abuse-redshift-to-serve-our-data-bc23d2ed3e07 : +
+2019/02/26, cet article plus récent explique leur passage à Redshift pour stocker leur data marts.
+
+== The internals of stateful stream processing in Spark Structured Streaming
+
+Par Jacek Laskowski, Freelance IT Consultant +
+-> Jacek est un expert international reconnu sur *Spark* et *Kafka*.
+
+=== Abstract
+
+----
+Let's talk about state management in Spark Structured Streaming. During this talk you will learn the streaming concepts that are particularly relevant for stateful stream processing in Structured Streaming, e.g. watermark and output modes, but also GroupState and GroupStateTimeout. We will be exploring simple stateful processing (with groupBy operator) and more advanced use cases with KeyValueGroupedDataset.mapGroupsWithState and the most advanced KeyValueGroupedDataset.flatMapGroupsWithState operator. In other words, you will learn how to use the stateful streaming API and understand the internals.
+----
+
+=== Notes
+
+All the *slides* are in https://github.com/jaceklaskowski/spark-workshop
+
+Jacek est l'auteur de plusieurs eBooks sur *Apache Spark*, *Spark SQL*, *Spark Structured Streaming*, *Kafka*. +
+Tous sont disponibles librement sur *GitBook* : https://legacy.gitbook.com/@jaceklaskowski
+
+TIP: Franchement, Jacek est très bon pédagogue, donc n'hésitez pas à aller voir ses livres !
+
+This talk is about *Apache Spark 2.4.3* and *Structured Streaming*
+
+.About Jacek (Famous Spark, Kafka expert)
+image:spark-structured-streaming_01.jpg[]
+
+-> *Jacek is also a trainer*
+
+.Agenda that we will NOT have to the time to fully complete...
+image:spark-structured-streaming_02.jpg[]
+
+.Structured Streaming
+image:spark-structured-streaming_03.jpg[]
+
+-> *Structured Streaming*, aka *Spark Streams* which introduces *streaming queries* +
+-> some kind of similar to *batch queries in Spark SQL executed continuously*
+
+.Stateful Stream Processing
+image:spark-structured-streaming_04.jpg[]
+
+Spark Structured Streaming can operate on 0, 1 or many rows at the same time. +
+-> Whereas Kafka streams and Flink can only operate on *exactly* 1 row
+
+image::spark-structured-streaming_05.jpg[]
+
+.Streaming aggregation
+image:spark-structured-streaming_06.jpg[]
+
+*checkpoint locations*: the place where Spark Structured Streaming saves your states. +
+Those info are saved as files.
+
+.Physical plan
+image:spark-structured-streaming_07.jpg[]
+
+.Streaming watermark
+image:spark-structured-streaming_08.jpg[]
+
+-> To keep state for ever means that we will end with an Out Of Memory error. +
+We have to do something for this problematic, which is *applying watermark to my state*.
+
+-> Have a (big) look at Jacek demo code (URL available in his slides)
+
+=== Q&A
+
+.To control the number of partitions
+image:spark-structured-streaming_09.jpg[]
+
+-> The "good" number of partitions can only be found through *fine tuning*
+
+== Conclusion et avis sur le salon
+
+* Python devient réellement un incontournable
+* Et Kafka est absolument incontournable
+* importance du *monitoring*
+* les notebooks sont *TOUS* sur Jupyter, et sont tous remplacés par des solutions plus robustes lors du passage en PROD
+
+Mes conférences préférées ont été :
+
+* link:dataxday-2019.adoc#_lincroyable_efficacit%C3%A9_de_lunification_des_logs[L’incroyable efficacité de l’unification des logs !]
+* link:dataxday-2019.adoc#_give_meaning_to_100_billion_analytics_events_a_day_analytics_at_teads[Give meaning to 100 billion analytics events a day, analytics at Teads]
+
+Mention spéciale au talk de Jacek, link:dataxday-2019.adoc#_the_internals_of_stateful_stream_processing_in_spark_structured_streaming[The internals of stateful stream processing in Spark Structured Streaming], rien que pour lui (et les *références*, *eBooks* donnés), jetez-y un oeil 😉
+
+.Hadoop, la chute
+[IMPORTANT]
+====
+Un constat s'est encore confirmé lors de ce salon : *la chute du framework Hadoop*. +
+En lieu et place de ce dernier, on passe maintenant sur les stacks techniques des Cloud providers.
+
+Je ne pense pas avoir 1 fois attendu parler de HDFS de tout le salon. +
+Spark est bien sûr toujours là, mais car le framework a réussi à évoluer et à gérer d'autres systèmes de stockage de données.
+====
+
+== Ressources
+
+* Toutes les vidéos sont sur le site du salon : https://dataxday.fr/videos-slides-2019/
+
+
+
+
+
+
+
+
