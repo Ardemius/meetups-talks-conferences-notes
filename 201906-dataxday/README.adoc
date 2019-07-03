@@ -52,11 +52,15 @@ By Pauline Nicolas / Théo Bontempelli, Data Scientist / Data Engineer - Deezer
 
 === Abstract
 
-----
-Chez Deezer, le Machine Learning (apprentissage automatisé) est au cœur de nombreux aspects de l’application. Au sein de l’équipe analytics, nous travaillons sur différentes tâches telles que la prédiction et la prévision d’évènements, dans le but de fournir des retours utiles pour les équipes produit et business. Au cours des discussions avec ces équipes, nous avons réalisé que pour beaucoup de projets, l’accès en temps réel aux prédictions de nos modèles représentait un réel intérêt. Ce constat nous a donc amenés à exploiter l’ensemble des analyses réalisées dans nos notebooks afin de déployer nos algorithmes en production sous Spark.
+====
+Chez Deezer, le Machine Learning (apprentissage automatisé) est au cœur de nombreux aspects de l’application. +
+Au sein de l’équipe analytics, nous travaillons sur différentes tâches telles que la prédiction et la prévision d’évènements, dans le but de fournir des retours utiles pour les équipes produit et business. +
+Au cours des discussions avec ces équipes, nous avons réalisé que pour beaucoup de projets, l’accès en temps réel aux prédictions de nos modèles représentait un réel intérêt. +
+Ce constat nous a donc amenés à exploiter l’ensemble des analyses réalisées dans nos notebooks afin de déployer nos algorithmes en production sous Spark.
 
-Afin de réussir au mieux ces migrations, nous avons mis en œuvre un certain nombre de procédés, de la data architecture review à l’implémentation des modèles en Scala Spark. Pour illustrer cela, nous vous parlerons de notre retour d’expérience sur la prédiction du churn à Deezer et nous vous présenterons comment les data scientists et les data engineers ont travaillé ensemble à la réussite de ce projet.
-----
+Afin de réussir au mieux ces migrations, nous avons mis en œuvre un certain nombre de procédés, de la data architecture review à l’implémentation des modèles en Scala Spark. +
+Pour illustrer cela, nous vous parlerons de notre retour d’expérience sur la prédiction du churn à Deezer et nous vous présenterons comment les data scientists et les data engineers ont travaillé ensemble à la réussite de ce projet.
+====
 
 === Notes
 
@@ -91,11 +95,12 @@ Par Thomas Franquelin, Staff Software Engineer - Contentsquare
 
 === Abstract
 
-----
+====
 In the course of 3 years, ContentSquare changed its main data store twice! We first moved from Redshift to Elasticsearch, then to Clickhouse. +
 During this time, we had to deal with a vast increase in data volume, and support more and more features. How did we ensure that we didn’t break our application in the process? +
-We’ll talk about a simple way to achieve this by replaying production load to legacy and new systems at the same time, and studying statistical differences between the two in order to pinpoint regressions. We’ll see that this method also makes from a coarse-grained, but fairly realistic load testing.
-----
+We’ll talk about a simple way to achieve this by replaying production load to legacy and new systems at the same time, and studying statistical differences between the two in order to pinpoint regressions. +
+We’ll see that this method also makes from a coarse-grained, but fairly realistic load testing.
+====
 
 === Notes
 
@@ -133,9 +138,12 @@ By Kai Waehner, Technology Evangelist - Confluent
 
 === Abstract
 
-----
-This talk shows how to productionize Machine Learning models in mission-critical and scalable real time applications by leveraging Apache Kafka as streaming platform. The talk discusses the relation between Machine Learning frameworks such as TensorFlow, DeepLearning4J or H2O and the Apache Kafka ecosystem. A live demo shows how to build a mission-critical Machine Learning environment leveraging different Kafka components: Kafka messaging and Kafka Connect for data movement from and into different sources and sinks, Kafka Streams for model deployment and inference in real time, and KSQL for real time analytics of predictions, alerts and model accuracy.
-----
+====
+This talk shows how to productionize Machine Learning models in mission-critical and scalable real time applications by leveraging Apache Kafka as streaming platform. +
+The talk discusses the relation between Machine Learning frameworks such as TensorFlow, DeepLearning4J or H2O and the Apache Kafka ecosystem.
+
+A live demo shows how to build a mission-critical Machine Learning environment leveraging different Kafka components: Kafka messaging and Kafka Connect for data movement from and into different sources and sinks, Kafka Streams for model deployment and inference in real time, and KSQL for real time analytics of predictions, alerts and model accuracy.
+====
 
 === Notes
 
@@ -171,9 +179,12 @@ Par Stéphane Mareek, CEO - DataCumulus
 
 === Abstract
 
-----
-Apache Kafka has real-time capability and everyone knows that! The real challenge facing engineers comes from re-designing the existing data pipelines from batch to real-time. In this talk, we will do a case study on how to build an end-to-end real-time data pipeline by building four micro-services on top of Apache Kafka. It will give you insights into the Kafka Producer API, Avro and the Confluent Schema Registry, the Kafka Streams High-Level DSL, and Kafka Connect Sinks.
-----
+====
+Apache Kafka has real-time capability and everyone knows that! The real challenge facing engineers comes from re-designing the existing data pipelines from batch to real-time.
+
+In this talk, we will do a case study on how to build an end-to-end real-time data pipeline by building four micro-services on top of Apache Kafka. +
+It will give you insights into the Kafka Producer API, Avro and the Confluent Schema Registry, the Kafka Streams High-Level DSL, and Kafka Connect Sinks.
+====
 
 === Notes
 
@@ -199,7 +210,7 @@ Par Jonathan Winandy, Dirigeant fondateur - Univalence
 
 === Abstract
 
-----
+====
 Avez-vous déjà rencontré un bug vraiment prise de tête ? Avez-vous souhaité pouvoir juste faire un ctrl-Z ?
 
 Bien que les micro-services soient plus complexes à exploiter que leurs homologues monolithiques, ils laissent place à des architectures qui nous permettent d'analyser et de corriger les erreurs du passé et nous évitent des surprises dans le futur.
@@ -211,7 +222,7 @@ Après un rappel rapide sur le tracing distribué, nous verrons comment avec un 
 - le ``voyage dans le temps``.
 
 Aucune connaissance préalable de ``Dapper`` et du fonctionnement des cabines téléphoniques sont requises ! 😉
-----
+====
 
 === Notes
 
@@ -307,13 +318,15 @@ Par Walid Haouari, Data Engineer - Xebia
 
 === Abstract
 
-----
-Le design d'architecture data n'a jamais été chose facile. On rencontre souvent des risques d'inadaptation au besoin, des faibles performances, des blocages paresseux voir un accomplissement partiel des objectifs de départ. Dans la plupart du temps, ces problématiques sont directement liées à un manque ou une mauvaise gestion des resources.
+====
+Le design d'architecture data n'a jamais été chose facile. +
+On rencontre souvent des risques d'inadaptation au besoin, des faibles performances, des blocages paresseux voir un accomplissement partiel des objectifs de départ. +
+Dans la plupart du temps, ces problématiques sont directement liées à un manque ou une mauvaise gestion des resources.
 
 L'Incremental Software Architecture est une méthode de conception avancée qui va permettre d'outrepasser ces risques tout en garantissant des systèmes élastiques, efficaces et rentables.
 
 Nous allons voir ensemble comment adopter cette approche favorisant la productivité, étape par étape, le tout dans un contexte Data.
-----
+====
 
 === Notes
 
@@ -397,13 +410,13 @@ Par Victor Landeau, ingénieur Machine Learning - OUI.sncf
 
 === Abstract
 
-----
+====
 Chez Oui.sncf, cela fait maintenant plusieurs années que nous utilisons des algorithmes de Machine Learning dans certains de nos applicatifs en production. Mais cela n'est pas sans poser de problème, notamment du fait du caractère non-déterministe de ces approches.
 
 En effet, comment peut-on développer sereinement des applicatifs dont les sorties attendues ne sont pas connues par avance ?
 
 Pour répondre à cette problématique, nous avons développé notre propre stratégie de test, adaptée au monde incertain du Machine Learning. Cette approche se base sur trois grandes couches de tests que nous vous détaillerons dans ce Talk.
-----
+====
 
 === Notes
 
@@ -449,9 +462,9 @@ Par Alban Perillat-Merceroz, Software Engineering Manager - Teads
 
 === Abstract
 
-----
+====
 This talk showcases how we built a platform that is capable of ingesting and transforming a stream of Billions of events a day using BigQuery, and how we use and abuse Redshift to deliver self-served, tailored views to many data visualisation clients and web apps.
-----
+====
 
 === Notes
 
@@ -552,9 +565,13 @@ Par Jacek Laskowski, Freelance IT Consultant +
 
 === Abstract
 
-----
-Let's talk about state management in Spark Structured Streaming. During this talk you will learn the streaming concepts that are particularly relevant for stateful stream processing in Structured Streaming, e.g. watermark and output modes, but also GroupState and GroupStateTimeout. We will be exploring simple stateful processing (with groupBy operator) and more advanced use cases with KeyValueGroupedDataset.mapGroupsWithState and the most advanced KeyValueGroupedDataset.flatMapGroupsWithState operator. In other words, you will learn how to use the stateful streaming API and understand the internals.
-----
+====
+Let's talk about state management in Spark Structured Streaming.
+
+During this talk you will learn the streaming concepts that are particularly relevant for stateful stream processing in Structured Streaming, e.g. watermark and output modes, but also GroupState and GroupStateTimeout. +
+We will be exploring simple stateful processing (with groupBy operator) and more advanced use cases with KeyValueGroupedDataset.mapGroupsWithState and the most advanced KeyValueGroupedDataset.flatMapGroupsWithState operator. +
+In other words, you will learn how to use the stateful streaming API and understand the internals.
+====
 
 === Notes
 
