@@ -536,7 +536,7 @@ image::analytics-at-teads_11.jpg[]
 -> Interesting talk for the description of their complete stack
 
 .Ressources
-image:analytics-at-teads_1.2jpg[]
+image:analytics-at-teads_12.jpg[]
 
 === Q&A
 
