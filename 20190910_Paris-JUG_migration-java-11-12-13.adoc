@@ -1,0 +1,146 @@
+= Java 11, 12 sont sortis et bientôt le 13, c'est le moment de remplacer son JDK 8 - 2019/01/08
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Présenté dans les locaux de https://www.parisjug.org/xwiki/wiki/oldversion/view/Location/RenaultDigital[Renault Digital] +
+Site : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20190910
+
+== Java 11, 12 sont sortis et bientôt le 13, c'est le moment de remplacer son JDK 8
+
+Présenté par *Lilian Benoit*. +
+(J'avais longuement discuté avec Lilian au dîner des speakers de Devoxx France 2019)
+
+Lilian a 19 ans d'expérience. Tech Leader dans une ESN Bordelaise. +
+Il est passionné par l'informatique depuis bien plus longtemps. Il aime travailler sur la plateforme Java : JVM et JavaEE, notamment sur sa distribution préférée : Debian.
+
+Depuis 2014, Lilian est membre de l'équipe d'organisation du BordeauxJUG.
+
+=== Abstract
+
+Java 11 est sorti en septembre dernier, estampillé LTS (Long Term Support), +
+Java 12 est sorti en mars dernier, +
+Java 13 va sortir la semaine prochaine, soit le 17 septembre 2019
+
+Que de changement depuis Java 8 ?
+
+* Nouvelle sortie de Java tous les 6 mois
+* Notion de LTS
+* Java 9 et ses fameux modules
+* Changement de licence d'Oracle
+
+Après la sortie de Java 9, 10, 11, 12 et bientôt 13, c'est le moment de franchir le cap et de changer de JDK. Nous aborderons les nouveautés et nous verrons les points d'attention.
+
+En clair, tout ce que vous devez savoir pour commencer ou migrer votre projet en Java 11+ en douceur.
+
+=== Notes
+
+Pour les versions LTS de Java comparées aux autres, Lilian cite Mark Reinhold : on peut prendre la "blue pill" qui correspond aux versions LTS, ou prendre la "red pill" qui correspond au passage plus aggressif aux autres versions (durée de mise à disposition des updates plus courte)
+
+[quote, Mark Reinhold]
+____
+[...] You can take the blue pill or the red.
+
+You take the blue pill you wake up in your bed and continue to develop and deploy uncomfortable conservatively managed, and slow-moving long-term support releases with an update release every quarter and a major migration every three years.
+
+You take the red pill you go down the rabbit hole where you can enjoy the latest language features API enhancements performance improvements and bug fixes, with a minor migration every six months [...]
+____
+
+IMPORTANT: A partir de la version 8.211 de Java, il faut avoir une licence pour pouvoir aller en PROD.
+
+NOTE: `java -version` permet de savoir quel est le vendor de son JDK
+
+Rappel : RedHat a annoncé qu'il prenait le leadership sur OpenJDK 8 et 11. +
+-> Il l'avait déjà fait pour OpenJDK 6 et OpenJDK 7 +
+Par leadership, on attend la continuité en terme de maintenance (updates et support)
+
+*Java 9* :
+
+* Oracle, du fait de *JLink*, a fait le choix de ne *plus fournir de JRE*. +
+JLink permettant de s'en créer un adapté à ses propres besoins.
+* JEP-295 : *Ahead-of-Time compilation* +
+Utilisé par exemple dans *GraalVM*
+
+*Java 10* :
+
+* JEP-310 : *Class data sharing* +
+Un exemple de spécification reversée de l'Oracle JDK dans OpenJDK
+* JEP-317 : avoir un JIT Compiler en Java (et non en C++)
+
+*Java 11* :
+
+* JEP-318 : Epsilon - A No-Op Garbage Collector
+* JEP-321 : HTTP Client (Standard)
+* JEP-333 : ZGC +
+Une autre JEP reversée d'Oracle JDK dans Oracle OpenJDK
+
+Suppression de JavaFX, les applets, Java Web Start (SNIFFFF !!!! Mais, apparemment, RedHat a un projet pour le reprendre ???)
+
+.Taille des différentes versions du JDK
+image::20190910_parisjug_mig-java-11-12-13_01.jpg[]
+
+*Java 12* :
+
+* JEP-189 : Shenendoah
+* JEP-230 : Microbenchmark Suite +
+Dépend de JMH (Java Microbenchmark Harness) v1.12
+* JEP-325 : Switch Expressions +
+Nouvelle notion de "preview" pour une fonctionnalité (qui ne doit pas être obligatoire)
+
+*Java 13* :
+
+* JEP-353 : Reimplement the legacy socket API +
+Project Loom, introduction des *Fiber*
+* JEP-354 : Switch Expressions (Preview)
+
+image::20190910_parisjug_mig-java-11-12-13_02.jpg[]
+image::20190910_parisjug_mig-java-11-12-13_03.jpg[]
+image::20190910_parisjug_mig-java-11-12-13_04.jpg[]
+image::20190910_parisjug_mig-java-11-12-13_05.jpg[]
+
+Pour activer les fonctionnalités "preview", il faut le préciser à la *compilation* ET à l'*exécution*. +
+-> Dans le cas de la compilation, il est nécessaire d'indiquer la version de Java ciblée.
+
+Attention aux *librairies de manipulation du bytecode*, dont voici une petite liste :
+
+image::20190910_parisjug_mig-java-11-12-13_06.jpg[]
+
+Librairies non compatibles :
+
+* JaCoCo : utilisez Cobertura à la place
+* Log4j v1.x : à remplacer par Log4j2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
