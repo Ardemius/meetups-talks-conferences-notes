@@ -1,0 +1,553 @@
+= Workshop Couchbase - 20191003
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Présenté dans les locaux du Hilton de la Défense, par *Cécile LEPAPE*, Stéphane LANG (ancien de l'EISTI ! Promo 2003 comme moi 😉), et Olivier xxx.
+
+== Présentation de Couchbase
+
+.Prérequis
+NOTE: suivre le procédure d'installation de l'environnement décrite dans link:resources/Environment-Setup_Prerequisite-Steps.pdf[]
+
+* *Application de démo montée par Cécile* : http://54.154.147.159:8080/
+* *support de présentation* : https://tinyurl.com/y4u8sjzq
+
+.UNNEST clause
+[NOTE]
+====
+Une spécificité de Couchbase, la clause *UNNEST* dans un *FROM*. +
+Elle est utilisée pour requêter les objets avec structure arborescente (les documents JSON par exemple) +
+Voir https://docs.couchbase.com/server/current/n1ql/n1ql-language-reference/unnest.html :
+
+----
+The UNNEST clause is used within the FROM clause. If a document or object contains a nested array, UNNEST conceptually performs a join of the nested array with its parent object. Each resulting joined object becomes an output of the query. Unnests can be chained.
+----
+====
+
+Cécile rappelle que Couchbase a su évoluer d'un "simple" cache distribué clé / valeur très performant, vers la solution actuelle (base NoSQL, moteur de query, etc.)
+
+Couchbase semble bien se développer chez ses clients (plusieurs grands comptes : EBay, Amadeus, Louis Vitton, etc.)
+
+.Rappels générique
+[NOTE]
+====
+* dès que possible, ajouter des index secondaires en plus des primaires (lents)
+* La promesse de l'analytics est de pouvoir fonctionner *SANS* index. +
+Effectivement, son objectif est la recherche de données (donc sans axe de recherche connu à l'avance)
+====
+
+* Présence d'un "protocole interne" apparenté à un simili Kafka.
+* gestion des données *géo-spatiales*
+* intégration avec les outils de BI classiques (plusieurs connecteurs, mais on peut également tout simplement utiliser les API REST)
+* Il faut limiter la taille des documents stockés dans les buckets Couchbase. +
+Ces derniers peuvent contenir des objets de max 20 Mo (taille maximale en JSON), mais il est fortement conseillé de limiter leur taille à quelques Ko pour avoir les meilleures performances. +
+-> Pour rappel, quel est l'intérêt de mettre des docs de très grandes tailles en mémoire ? +
+Il n'y en a pas ! Mieux vaut mettre des meta-data dedans (l'intérêt de Couchbase) +
+Stocker des fichiers de grandes tailles n'est donc PAS recommandé par Couchbase (ils ne sont pas fait pour ça)
+* la politique de cache (quand il est trop plein) est unique, et non fonction du type de document
+
+== Lab 0 - Environment Setup
+
+.Prérequis et mises en garde
+[NOTE]
+====
+* Pour chaque nouveau lab, ouvrir une nouvelle fenêtre pour exécuter les commandes
+* Le nom du cluster Kubernetes à utiliser : *ckclusterparis*
+* Mon namespace unique pour Kubernetes : _"peter"_
+* Pour l'édition dans les fichiers yaml et les python, *PAS de tabulations*, QUE des espaces.
+====
+
+L'opérateur (*Couchbase Autonomous Operator*), créé en 2016, actuellement en version 1.2.x est capable de piloter plusieurs cluster Couchbase :
+
+.Module 3 slide 4
+----
+*Couchbase Autonomous Operator* is an application-specific controller that extends the
+Kubernetes API to create, configure and manage instances of complex stateful applications
+on behalf of a Kubernetes user. It builds upon the basic Kubernetes resource and controller
+concepts, but also includes domain or application-specific knowledge to automate
+common tasks better managed by computers.
+----
+
+Il ne faut pas activer la *réplication de volume* sur les _persistent volume_ de Kubernetes.
+
+WARNING: pour le lab 0, ne *PAS* faire l'étape 10
+
+On commence (à partir du step 9) :
+
+[source,bash]
+----
+# STEP 9: Configure kubectl to communicate with the EKS cluster
+aws eks update-kubeconfig --name ckclusterparis
+kubectl get nodes
+
+NAME                                            STATUS     ROLES    AGE   VERSION
+ip-192-168-107-40.eu-west-1.compute.internal    Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-131-230.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-150-72.eu-west-1.compute.internal    Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-184-66.eu-west-1.compute.internal    Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-187-135.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-198-184.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-203-174.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-217-250.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-229-253.eu-west-1.compute.internal   Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-64-123.eu-west-1.compute.internal    Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-84-17.eu-west-1.compute.internal     Ready      <none>   20h   v1.14.6-eks-5047ed
+ip-192-168-98-133.eu-west-1.compute.internal    NotReady   <none>   20h   v1.14.6-eks-5047ed
+
+# STEP 10: Create unique namespace, deploy the Operator and CouchMart pods
+# script à lancer dans le répertoire couchbasesummit
+# A NE PAS FAIRE !!!! DEJA FAITE PAR L'EQUIPE COUCHBASE
+
+# STEP 11: Deploy a Couchbase cluster with the Couchbase Autonomous Operator
+kubectl create -f resources/couchbase-cluster.yaml --namespace peter
+# ce fichier est un fichier crd "Custom Resources Definition"
+
+couchbasecluster.couchbase.com/cb-example created
+
+# STEP 12: Monitor the status of the pod creation
+kubectl get pods --namespace peter -w
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          4m52s
+cb-example-0001                       1/1     Running   0          3m49s
+cb-example-0002                       1/1     Running   0          3m13s
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          19h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          19h
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          19h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          19h
+
+# STEP 13: Map a port to access the Couchbase Web Console
+kubectl port-forward cb-example-0000 8091:8091 --namespace peter &
+
+Forwarding from 127.0.0.1:8091 -> 8091
+Forwarding from [::1]:8091 -> 8091
+
+# STEP 14: Navigate to the Couchbase Web Console
+# check console at http://localhost:8091, with username "Administrator" and password "password"
+----
+
+image::lab0-step14.jpg[]
+
+[source,bash]
+----
+# STEP 15: Load the product dataset required by the CouchMart application
+# from step 12, the name of my CouchMart pod is couchmart-7bd4cf649f-bg5ml
+
+kubectl exec -it couchmart-7bd4cf649f-bg5ml bash --namespace peter
+
+d:\dev\couchbasesummit (master -> origin)
+λ kubectl exec -it couchmart-7bd4cf649f-bg5ml bash --namespace peter
+root@couchmart-7bd4cf649f-bg5ml:/# pwd
+/
+root@couchmart-7bd4cf649f-bg5ml:/# ls -al
+total 12
+drwxr-xr-x   1 root root   34 Oct  2 13:32 .
+drwxr-xr-x   1 root root   34 Oct  2 13:32 ..
+-rwxr-xr-x   1 root root    0 Oct  2 13:32 .dockerenv
+drwxr-xr-x   1 root root   19 Feb 12  2019 bin
+drwxr-xr-x   2 root root    6 Jun 14  2018 boot
+-rw-r--r--   1 root root 4858 Oct 25  2017 couchbase-release-1.0-4-amd64.deb
+drwxrwxrwx   1 root root   49 Oct  2 13:32 couchmart
+drwxr-xr-x   5 root root  360 Oct  2 13:32 dev
+drwxr-xr-x   1 root root   66 Oct  2 13:32 etc
+drwxr-xr-x   2 root root    6 Jun 14  2018 home
+drwxr-xr-x   1 root root   21 Dec 29  2018 lib
+drwxr-xr-x   2 root root   34 Dec 26  2018 lib64
+drwxr-xr-x   2 root root    6 Dec 26  2018 media
+drwxr-xr-x   2 root root    6 Dec 26  2018 mnt
+drwxr-xr-x   2 root root    6 Dec 26  2018 opt
+dr-xr-xr-x 290 root root    0 Oct  2 13:32 proc
+drwx------   1 root root   20 Feb 12  2019 root
+drwxr-xr-x   1 root root   21 Oct  2 13:32 run
+drwxr-xr-x   2 root root 4096 Dec 26  2018 sbin
+drwxr-xr-x   2 root root    6 Dec 26  2018 srv
+dr-xr-xr-x  13 root root    0 Oct  2 13:32 sys
+drwxrwxrwt   1 root root    6 Feb 12  2019 tmp
+drwxr-xr-x   1 root root   19 Dec 26  2018 usr
+drwxr-xr-x   1 root root   41 Dec 26  2018 var
+root@couchmart-7bd4cf649f-bg5ml:/# python couchmart/create_dataset.py
+Successfully populated dataset
+root@couchmart-7bd4cf649f-bg5ml:/# exit
+exit
+
+# STEP 16: Verify that the data has been loaded into the bucket
+----
+
+image::lab0-step16.jpg[]
+
+== Lab 1 - Failover XDCR (Cross Data Center Replication)
+
+In this lab, we will perform the following steps:
+
+* Failover a Couchbase node.
+* Watch Couchbase Autonomous Operator recover from the failover.
+* Set up XDCR (Cross Data Center Replication) between two Couchbase clusters.
+
+Dans un cluster Couchbase, pas de notion de _"master / slave"_. +
+Cette notion est remplacée par la *Cluster Map*, qui permet à chaque noeud d'être indépendant.
+
+Via la configuration du _couchbase-cluster.yaml_ je peux facilement faire du scale up or down via le paramètre _server.size_
+
+.Step 1: Failover a Couchbase Node (prefer choose node 2)
+image::lab1-step01.jpg[]
+
+* *Step 2: Automatic Recovery from Failover*
+* *Step 3: Set up Cross Data Center Replication (XDCR)*
+	** Create a copy of couchbase-cluster.yaml file, name it couchbase-cluster2.yaml
+
+----
+kubectl create -f resources/couchbase-cluster2.yaml --namespace peter
+
+couchbasecluster.couchbase.com/cb-example-xdcr created
+
+kubectl get pods --namespace peter -w
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          52m
+cb-example-0001                       1/1     Running   0          51m
+cb-example-0002                       1/1     Running   0          51m
+cb-example-xdcr-0000                  1/1     Running   0          <invalid>
+cb-example-xdcr-0001                  1/1     Running   0          <invalid>
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          20h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          20h
+cb-example-0001                       1/1     Running   0          51m
+cb-example-xdcr-0000                  1/1     Running   0          8s
+
+# step 3.5: run the following kubectl port-forward command to map local port 8092 to remote port 8091 of one of the pod’s of this new cluster
+kubectl port-forward cb-example-xdcr-0000 8092:8091 --namespace peter &
+
+Forwarding from 127.0.0.1:8092 -> 8091
+Forwarding from [::1]:8092 -> 8091
+
+# step 3.6: Determine the IP address of the pod cb-example-xdcr-0000
+kubectl get pods --namespace peter -o wide
+
+NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
+cb-example-0000                       1/1     Running   0          59m     192.168.71.181    ip-192-168-98-133.eu-west-1.compute.internal    <none>           <none>
+cb-example-0001                       1/1     Running   0          58m     192.168.147.172   ip-192-168-131-230.eu-west-1.compute.internal   <none>           <none>
+cb-example-0002                       1/1     Running   0          57m     192.168.241.67    ip-192-168-198-184.eu-west-1.compute.internal   <none>           <none>
+cb-example-xdcr-0000                  1/1     Running   0          6m12s   192.168.250.26    ip-192-168-203-174.eu-west-1.compute.internal   <none>           <none>
+cb-example-xdcr-0001                  1/1     Running   0          5m25s   192.168.163.105   ip-192-168-150-72.eu-west-1.compute.internal    <none>           <none>
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          20h     192.168.133.217   ip-192-168-187-135.eu-west-1.compute.internal   <none>           <none>
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          20h     192.168.159.61    ip-192-168-187-135.eu-west-1.compute.internal   <none>           <none>
+
+# so my IP is 192.168.250.26
+----
+
+* step 3.7: navigate to the new cluster at http://localhost:8092 (Couchbase Web Console, "Administrator" / "password")
+* step 3.13: You can see the status of this replication is Replicating
+
+image::lab1-step03.13.jpg[]
+
+* J'ai testé l'ajout de 2 documents dans le 1er cluster (passage à 28 documents à la place de 26), ces derniers sont bien automatiquement copiés dans le cluster 2.
+
+== Lab 2 - SDK Read
+
+In this lab, we will learn how to use the Couchbase Python SDK (also known as “client library”) to connect to a Couchbase bucket and retrieve a list of products. The list of products is stored inside an array within a single JSON document with key = items.
+
+[source,bash]
+----
+# Step 1: Switch to the working branch of the couchmart application
+kubectl get pods --namespace peter
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          158m
+cb-example-0001                       1/1     Running   0          157m
+cb-example-0002                       1/1     Running   0          157m
+cb-example-xdcr-0000                  1/1     Running   0          105m
+cb-example-xdcr-0001                  1/1     Running   0          105m
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          22h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          22h
+
+kubectl exec -it couchmart-7bd4cf649f-bg5ml bash --namespace peter
+
+cd /couchmart
+git clean -fdx && git checkout -f couchbasesummit
+
+Removing settings.py.bkup
+Removing settings.pyc
+Branch couchbasesummit set up to track remote branch couchbasesummit from origin.
+Switched to a new branch 'couchbasesummit'
+
+root@couchmart-7bd4cf649f-bg5ml:/couchmart# python web-server.py &
+[1] 45
+root@couchmart-7bd4cf649f-bg5ml:/couchmart#  * Serving Flask app "web-server" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+ * Running on http://0.0.0.0:8080/ (Press CTRL+C to quit)
+
+# Step 2: Forward port 8080 and try the CouchMart application
+
+kubectl port-forward couchmart-7bd4cf649f-bg5ml 8080 --namespace peter &
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+
+# Then connect to http://localhost:8080/
+
+# Step 3: Stop the running CouchMart application
+
+cd /couchmart
+killall -9 python
+
+# To transfer the file from the couchmart pod to your local computer:
+kubectl cp peter/couchmart-7bd4cf649f-bg5ml:/couchmart/web-server.py web-server.py
+
+[plusieurs modifs à faire...]
+
+# To transfer the file from your local computer to the couchmart pod:
+kubectl cp web-server.py  peter/couchmart-7bd4cf649f-bg5ml:/couchmart/web-server.py
+
+# on redémarre l'application :
+python web-server.py &
+
+# et on checke que tout a bien été pris en compte en allant sur http://localhost:8080
+----
+
+NOTE: N1QL* is a database query language that extends SQL for JSON
+
+Les *fragments* permettent d'accéder de façon concurrente à différentes parties d'un même document, dès lors que celles-ci sont distinctes.
+
+== Lab 3 - SDK Write
+
+In this lab, we will learn how to use Couchbase Python SDK (also known as “client library”) to insert (or upsert – update if exists or insert if does not) a JSON document with a unique ID, when a user submits an order.
+
+[source,bash]
+----
+# Step 1: Stop the CouchMart application
+
+kubectl get pods --namespace peter
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          3h31m
+cb-example-0001                       1/1     Running   0          3h30m
+cb-example-0002                       1/1     Running   0          3h29m
+cb-example-xdcr-0000                  1/1     Running   0          158m
+cb-example-xdcr-0001                  1/1     Running   0          157m
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          23h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          23h
+
+kubectl exec -it couchmart-7bd4cf649f-bg5ml bash --namespace peter
+
+# on kill notre server
+killall -9 python
+
+root@couchmart-7bd4cf649f-bg5ml:/# ps -aux | grep python
+root         97  0.0  0.0 552816 27376 pts/0    S    12:45   0:00 python web-server.py
+root        134  0.0  0.0  12820   996 pts/1    S+   12:58   0:00 grep python
+root@couchmart-7bd4cf649f-bg5ml:/# killall -9 python
+root@couchmart-7bd4cf649f-bg5ml:/# ps -aux | grep python
+root        137  0.0  0.0  12820  1048 pts/1    S+   13:00   0:00 grep python
+
+# Step 2: Add code to insert the order document into the bucket
+# once web-server.py is updated with the new code, upload it to the container
+kubectl cp web-server.py  peter/couchmart-7bd4cf649f-bg5ml:/couchmart/web-server.py
+
+# restart web-serser
+cd /couchmart
+python web-server.py &
+
+# test the application at http://localhost:8080
+# -> j'obtiens bien le "order submitted!"
+----
+
+* Step 4: View the inserted document inside the couchmart bucket +
+-> En allant dans le bucket du cluster sur le 8091, dans _Buckets_ > _Documents_, je constate bien que j'ai un doc de plus (29 docs)
+
+image::lab3b-step04.jpg[]
+
+[NOTE]
+====
+Le doc ajouté à l'instant est le _"Order::Ardemius::xxx"_ du screenshot. +
+Son contenu est le suivant :
+
+----
+{
+  "order": [
+    "product:red wine",
+    "product:chocolate",
+    "product:baked beans",
+    "product:scotch egg",
+    "product:bread"
+  ],
+  "type": "order",
+  "name": "Ardemius",
+  "ts": 1570108279
+}
+----
+====
+
+== Lab 4 - N1QL
+
+You may have noticed that the category buttons to filter the products in CouchMart do not work. +
+In this lab, we will use the *N1QL query language* to search the bucket for products by category.
+
+We will perform the following steps:
+
+. Add a pod/node with Index and Query services to the cluster using *Couchbase Autonomous Operator*.
+. Create an index using the Query Workbench (in the Couchbase Web Console).
+. Run a N1QL query in the Query Workbench.
+. Execute a N1QL query using the Python SDK.
+
+Stéphane rappelle (comme on l'entend si souvent depuis plusieurs mois) que la possibilité de requêter en SQL est très appréciée des clients de Couchbase.
+
+image::lab4-N1QL-examples.jpg[]
+
+* Step 1: Deploy a node for Index and Query services
+
+[source,bash]
+----
+kubectl apply -f resources/couchbase-cluster.yaml --namespace peter
+
+Warning: kubectl apply should be used on resource created by either kubectl create --save-config or kubectl apply
+couchbasecluster.couchbase.com/cb-example configured
+
+kubectl get pods --namespace peter -w
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          4h8m
+cb-example-0001                       1/1     Running   0          4h7m
+cb-example-0002                       1/1     Running   0          4h6m
+cb-example-0003                       1/1     Running   0          <invalid>
+cb-example-xdcr-0000                  1/1     Running   0          3h15m
+cb-example-xdcr-0001                  1/1     Running   0          3h14m
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          24h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          24h
+cb-example-0002                       1/1     Running   0          4h6m
+cb-example-0001                       1/1     Running   0          4h7m
+cb-example-0000                       1/1     Running   0          4h8m
+
+# on voit bien qu'un nouveau pod "cb-example-0003" est apparu
+
+kubectl port-forward cb-example-0003 8093:8091 --namespace peter &
+Forwarding from 127.0.0.1:8093 -> 8091
+Forwarding from [::1]:8093 -> 8091
+----
+
+*To create indexes and run N1QL queries*, your Couchbase cluster must have at least *one node running index service* and *one node running query service*. +
+We can now create indexes and run N1QL queries in our current cluster.
+
+On vérifie que tout va bien en se connectant à l'URL http://localhost:8093
+
+* Step 2: Create an index using the Query Workbench
+
+image::lab4-step02.jpg[]
+
+* Step 4: Execute a N1QL query using the Python SDK
+* Step 5: Test your changes
+
+== Lab 5 - FTS (Full Text Search)
+
+Now let’s get that search box working in CouchMart. +
+This is where we’ll use Couchbase https://docs.couchbase.com/server/6.0/fts/full-text-intro.html[Full Text Search] to perform *natural-language querying* of the products.
+
+In this lab, we’ll learn how to:
+
+. Add a pod/node with FTS service enabled to the cluster using Couchbase Autonomous Operator
+. Create a Full Text Search (FTS) index using the Couchbase Web Console
+. Run an FTS query using the Couchbase Web Console
+. Run an FTS query using the Python SDK by adding search capability to the CouchMart application
+
+Search service uses inverted indexes and lets you perform text analysis for performing full text search. +
+While N1QL is great for secondary look-ups when you need to search by alternate key in the JSON document, full text search is apt for use cases where natural language processing is required.
+
+[NOTE]
+====
+* Olivier informe que l'on ne peut pas à l'heure actuelle créer son propre *algo de priorisation*.
+* *Boosting* : possibilité de donner un poids particulier à un mot
+* *TF/IDF* : Le TF-IDF (de l'anglais _term frequency-inverse document frequency_) est une méthode de pondération souvent utilisée en recherche d'information et en particulier dans la fouille de textes. +
+Cette mesure statistique permet d'*évaluer l'importance d'un terme contenu dans un document*, relativement à une collection ou un corpus.
+* AppDynamics remplace ses MySQL en Couchbase pour améliorer la diversité d'accès à ses données (pour avoir N1QL, FTS, etc.)
+====
+
+* Step 1: Deploy a node for the Full Text Search service
+
+----
+kubectl apply -f resources/couchbase-cluster.yaml --namespace peter
+couchbasecluster.couchbase.com/cb-example configured
+
+kubectl get pods --namespace peter -w
+
+NAME                                  READY   STATUS    RESTARTS   AGE
+cb-example-0000                       1/1     Running   0          4h53m
+cb-example-0001                       1/1     Running   0          4h52m
+cb-example-0002                       1/1     Running   0          4h51m
+cb-example-0003                       1/1     Running   0          44m
+cb-example-0004                       0/1     Pending   0          <invalid>
+cb-example-xdcr-0000                  1/1     Running   0          4h
+cb-example-xdcr-0001                  1/1     Running   0          3h59m
+couchbase-operator-746ddd7fc9-v68n2   1/1     Running   0          24h
+couchmart-7bd4cf649f-bg5ml            1/1     Running   0          24h
+cb-example-0004                       0/1     ContainerCreating   0          <invalid>
+cb-example-0004                       0/1     Running             0          <invalid>
+cb-example-0001                       1/1     Running             0          4h52m
+cb-example-0003                       1/1     Running             0          44m
+cb-example-0004                       1/1     Running             0          <invalid>
+cb-example-0002                       1/1     Running             0          4h51m
+cb-example-0001                       1/1     Running             0          4h52m
+
+kubectl port-forward cb-example-0004 8094:8091 --namespace peter &
+Forwarding from 127.0.0.1:8094 -> 8091
+Forwarding from [::1]:8094 -> 8091
+----
+
+* Step 2: Create a full text search index
+
+FIN DU WORKSHOP HERE !
+
+== Lab 6 - Analytics
+
+image::lab6-analytics.jpg[]
+
+* "Bringing NoETL to NoSQL"
+* Utilisation de la base https://asterixdb.apache.org/[*Apache AsterixDB*] par Couchbase
+
+NOTE: Slide 9 de ce module 8, on présente les éléments permettant de choisir entre un *service de query* et un *service analytics*.
+
+Info d'Olivier : avec l'analytics, on est sûr de le PAS impacter l'opérationnel (les données étant répliquées dans une base distincte). +
+Un exemple de Use Case : permet de faire tourner un gros requête (prend la journée) sur 2 noeuds d'analytics "à part" permettant ainsi d'obtenir au final des donnes fraîches, sans impact sur les données "classiques" (opérationnelles)
+
+== Lab 9 - eventing
+
+== Roadmap et features à venir
+
+* version 6.5 de Couchbase actuellement en beta
+* introduction de Scala dans le SDK 3.0
+* capacité accrue de gérer des buckets (jusqu'à 30 par cluster) pour une meilleure gestion du multitenant
+
+=== DB as a Service
+
+== Resources
+
+* Le point d'entrée de la doc : http://developer.couchbase.com
+
+
+
+
+
+
+
+
