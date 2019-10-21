@@ -41,12 +41,12 @@ Du 21 au 23/10/2019, à l'espace Charenton à Paris.
 
 Presented by Antonio GONCALVES.
 
-image::voxxed_few_numbers.jpg[]
+image:voxxed_few_numbers.jpg[]
 
 Pour les tables rondes (panel), on peut poser des questions aux panelistes via les hashtages `&#35;MicroServices` and `&#35;panel`
 
 .Plan de lieux et sponsors
-image::voxxed_place_map.jpg[]
+image:voxxed_place_map.jpg[]
 
 *Wifi* : SSID "Espace Charenton Fibre" : / mdp : CharentonfibreFibre#Paris12
 
@@ -75,17 +75,17 @@ After this session, you will be armed with a better understanding of your gaps a
 ==== Notes
 
 .What is Cloud Native?
-image::voxxed_01.jpg[]
+image:voxxed_01.jpg[]
 
 .Une tentative de réponse
-image::voxxed_02.jpg[]
+image:voxxed_02.jpg[]
 
 *Multi clouds* is a real concern: either for multi zones, or real multi clouds.
 
 Comme d'habitude : 1 monotith ~20 microservices ~200 functions
 
 .Why go through this pain? (advantages)
-image::voxxed_03.jpg[]
+image:voxxed_03.jpg[]
 
 Data isolation concern. +
 Each microservice must have its own storage, but how to share the data?
@@ -93,13 +93,13 @@ Each microservice must have its own storage, but how to share the data?
 When you swith from one microservice to another, how do you also "swith the data" (associated with the microservice switched off)
 
 .Message-Driven & Reactive Microservices
-image::voxxed_04.jpg[]
+image:voxxed_04.jpg[]
 
 .Reactive Systems (slightly different from reactive programming)
-image::voxxed_05.jpg[]
+image:voxxed_05.jpg[]
 
 .Density issue: Java at its disavantage
-image::voxxed_06.jpg[]
+image:voxxed_06.jpg[]
 
 -> Java consumes quite a lot of memory when compared to other recent technologies (NodeJS, Go, etc.). +
 It was created to handle few big systems.
@@ -125,7 +125,7 @@ Let's debate lessons learned and experiment to meet expectations!
 ==== Notes
 
 .A brief history around containerization
-image::voxxed_07.jpg[]
+image:voxxed_07.jpg[]
 
 _"We love containers"_, because of their benefits:
 
@@ -144,19 +144,19 @@ Container *run time* principles:
 * high obervability principle
 
 .Slimming big docker image
-image::voxxed_08.jpg[]
+image:voxxed_08.jpg[]
 
 * Ana-Maria reminds us of the classic hack of `&&` in Dockerfile to reduce the number of layers.
 * She also recommends the use of multi-stages Docker builds.
 
 .Security observations
-image::voxxed_09.jpg[]
+image:voxxed_09.jpg[]
 
 Same kind of advise for Kubernetes: set security context as non root to true.
 
 *Resource management*: CPU / memory / ephemeral storage
 
-image::voxxed_10.jpg[]
+image:voxxed_10.jpg[]
 
 For Kubernetes and its pods, you can't have at the same time VPA (Vertical Pod Autoscaler) and HPA (Horizontal Pod Autoscaler)
 
@@ -187,7 +187,7 @@ What is a Microservice?
 * single team
 
 .Amazon microservices map
-image::voxxed_11.jpg[]
+image:voxxed_11.jpg[]
 
 -> main point is Amazon main page
 
@@ -197,7 +197,7 @@ Sebastien's advise for microservices (a classic one): _Think big, BUT start *rea
 That was the case for Amazon S3: it starts with only 8 microservices, and now has more than 200.
 
 .Communication styles: synchronous or asynchronous
-image::voxxed_12.jpg[]
+image:voxxed_12.jpg[]
 
 -> We are moving more and more towards *asynchronous communication*
 
@@ -214,7 +214,7 @@ _"Let's risk a peak of the future"_:
 
 As a conclusion:
 
-image::voxxed_13.jpg[]
+image:voxxed_13.jpg[]
 
 -> on pourrait résumer ça en : "Développer du code métier, PAS de la plomberie (c'est le boulot d'autres personnes !)"
 
@@ -222,13 +222,75 @@ image::voxxed_13.jpg[]
 
 Presentedy by *Alain Regnier* - Alto Labs.
 
-Alain Regnier is a Technical Architect and Entrepreneur passionate about innovation and new technologies. He has spent 10 years in Silicon Valley working for startups and large companies, where he co-authored various standards about Web Services and Connected Devices. With Alto Labs he provides consulting services around Kubernetes, Google Cloud and Web Applications architecture. He also helps startups develop prototypes and POCs. He is a GDE Cloud (Google Developer Expert) and certified Google Cloud Architect. He is the founder of the GDG Cloud Paris (Google Developer Group) and StartupVillage.
+Alain Regnier is a Technical Architect and Entrepreneur passionate about innovation and new technologies. +
+He has spent 10 years in Silicon Valley working for startups and large companies, where he co-authored various standards about Web Services and Connected Devices.
+
+With Alto Labs he provides consulting services around Kubernetes, Google Cloud and Web Applications architecture. +
+He also helps startups develop prototypes and POCs. +
+He is a GDE Cloud (Google Developer Expert) and certified Google Cloud Architect. +
+He is the founder of the GDG Cloud Paris (Google Developer Group) and StartupVillage.
 
 ==== Abstract
 
+This presentation will explain how to build a microservices based application on kubernetes.
+
+After covering the basic concepts and the various kubernetes resources required for our architecture, we will go through the creation and deployment of a concrete example. +
+We will also look at common tasks such as component update and issues investigation. +
+Finally we will discuss various features of the architecture such as service discovery, redundancy, scaling and autohealing... +
+The presentation will include tips and feedback from real life examples.
+
 ==== Notes
 
-TO BE COMPLETED
+.Why use containers?
+image:voxxed_14.jpg[]
+
+.And now why Kubernetes?
+image:voxxed_15.jpg[]
+
+Google has used containers (internally) since *2004*.
+
+*GKE*: Google Kubernetes Engine
+
+*Pod*: group of containers deployed together
+
+.Kubernetes resource: *pod*
+image:voxxed_16.jpg[]
+
+.Kubernetes resource: *deployment*
+image:voxxed_17.jpg[]
+
+.Kubernetes resource: *service*
+image:voxxed_18.jpg[]
+
+.Kubernetes resource: *Ingress*
+image:voxxed_19.jpg[]
+
+* *Ingress*: Collection of rules *allowing external connections* to reach services on the cluster
+
+.Kubernetes resource: *Secret and ConfigMap*
+image:voxxed_20.jpg[]
+
+.La démo d'Alain
+image:voxxed_21.jpg[] +
+image:voxxed_22.jpg[]
+
+* Front service with a replica factor of 3.
+
+.Command line to create the Kubernetes cluster
+image:voxxed_23.jpg[]
+
+Alain advise: _"Don't put your password in your images, attach them instead..."_
+
+.Conclusion
+image:voxxed_24.jpg[]
+
+.Service Mesh and Istio
+image:voxxed_25.jpg[]
+
+* *Istio*: with too many microservices, it's difficult to know which microservice is talking to which microservice. Istio, as a *service mesh*, makes it easier to understand what is happening and control what is happening.
+
+.Resources from Alain
+image:voxxed_26.jpg[]
 
 === Jakarta EE - Not just for Servers
 
@@ -336,7 +398,9 @@ On this panel you will be able to ask questions on Microservices to our keynote 
 
 TO BE COMPLETED
 
-== Buzz words, tools, etc.
+== Buzz words, tools, notes, etc.
+
+Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels sont leurs avantages, leurs faiblesses, etc.
 
 
 
