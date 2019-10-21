@@ -572,13 +572,50 @@ A garder sous le coude.
 
 Presentedy by *Rudy De Busscher* - *Payara Services*.
 
+I love to create (web) applications with the Java EE platform and MicroProfile implementations. +
+I have spent the last 10 years implementing various projects in a team for customers, helped various Open Source projects (MicroProfile, DeltaSpike, PrimeFaces, Apache Myfaces, ...), and do support for Payara Server customers. +
+I'm also already working 4 years around Web Application Security using OAuth2, OpenId Connect, and JWT.
+
 ==== Abstract
 
-How can you make different pieces of your unit of work consistent in the distributed setup of your micro-service application? You associate the term transaction probably with a database, but the data source can be anything including a database in the micro-service world. The MicroProfile Long Running Actions specification is based on sagas and the OASIS LRA transaction model specification. It defines the framework to guarantee the eventual consistency requirement using compensating actions for example. This session will explain you the challenges and concepts of the MP LRA framework. And of course, you can see it in action with various demos.
+How can you make different pieces of your unit of work consistent in the distributed setup of your micro-service application? +
+You associate the term transaction probably with a database, but the data source can be anything including a database in the micro-service world.
+
+The MicroProfile Long Running Actions specification is based on sagas and the OASIS LRA transaction model specification. +
+It defines the framework to guarantee the eventual consistency requirement using compensating actions for example.
+
+This session will explain you the challenges and concepts of the MP LRA framework. And of course, you can see it in action with various demos.
 
 ==== Notes
 
-TO BE COMPLETED
+.To be ACID or not?
+image:voxxed_59.jpg[]
+
+-> Most companies choose to *give up consistency* (and to have eventually consistency)
+
+.MicroService world
+image:voxxed_60.jpg[]
+
+.Saga pattern
+image:voxxed_61.jpg[]
+
+-> *Saga pattern*: ensures that each step of the business process has a *compensating action* to undo the work completerd in the case of partial failures.
+
+MicroProfile Long Running action:
+
+* based on the *Saga pattern*
+* *still work in progress*
+* features
+	** loose coupling
+	** guaranteed a globally consistent outcome
+	** compensable actions
+
+.LRA Components
+image:voxxed_62.jpg[]
+
+*Resources*:
+* Slides can be found there: https://www.slideshare.net/rdebusscher/transactions-in-microservices
+* Code on GitHub: https://github.com/eclipse/microprofile-lra
 
 === Event-Driven Microservices, the Sense, the Non-sense and a Way Forward
 
