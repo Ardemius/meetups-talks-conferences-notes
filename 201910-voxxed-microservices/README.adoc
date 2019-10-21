@@ -1,0 +1,342 @@
+= Voxxed days Microservices 2019
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Du 21 au 23/10/2019, à l'espace Charenton à Paris.
+
+* *Site* : https://voxxeddays.com/microservices/
+* *Schedule* : https://voxxeddays.com/microservices/talks-per-session/
+
+== MONDAY
+
+*Schedule* : https://voxxeddays.com/microservices/monday-schedule/
+
+=== Welcome to Voxxed Days Microservices
+
+Presented by Antonio GONCALVES.
+
+image::voxxed_few_numbers.jpg[]
+
+Pour les tables rondes (panel), on peut poser des questions aux panelistes via les hashtages `&#35;MicroServices` and `&#35;panel`
+
+.Plan de lieux et sponsors
+image::voxxed_place_map.jpg[]
+
+*Wifi* : SSID "Espace Charenton Fibre" : / mdp : CharentonfibreFibre#Paris12
+
+*Twitter* : @vxdmicroservice
+
+=== Cloud Native: why, oh why?
+
+Presentedy by *Emmanuel Bernard* - *Red Hat*.
+
+Emmanuel is Java Champion, Distinguished Engineer and Chief Architect Data at Red Hat (middleware).
+
+His work is Open Source. He is most well known for his contributions and lead of the Hibernate projects as well as his contribution to Java standards. +
+His most recent endeavour is [Quarkus](https://quarkus.io) (A Kubernetes Native Java stack tailored for GraalVM & OpenJDK HotSpot, crafted from the best of breed Java libraries and standards).
+
+You can follow him on twitter at [@emmanuelbernard](http://twitter.com/emmanuelbernard). &#35;quarkus &#35;debezium &#35;infinispan &#35;hibernate-orm &#35;hibernate-search &#35;hibernate-validator &#35;hibernate-ogm &#35;ceylon &#35;JPA &#35;bean-validation &#35;lescastcodeurs
+
+==== Abstract
+
+People are going Cloud Native, are going for microservices. But why?
+
+In this session, we will discuss what made these new architecture style possible, why and with which objective should we embrace them. +
+And last but not least, let's explore some of the key problems you will encounter: are you resilient and responsive in a systemic manner, why not? Communication, how to handle the explosion? etc.
+
+After this session, you will be armed with a better understanding of your gaps and what are the next steps in your Cloud Native and microservices journey.
+
+==== Notes
+
+.What is Cloud Native?
+image::voxxed_01.jpg[]
+
+.Une tentative de réponse
+image::voxxed_02.jpg[]
+
+*Multi clouds* is a real concern: either for multi zones, or real multi clouds.
+
+Comme d'habitude : 1 monotith ~20 microservices ~200 functions
+
+.Why go through this pain? (advantages)
+image::voxxed_03.jpg[]
+
+Data isolation concern. +
+Each microservice must have its own storage, but how to share the data?
+
+When you swith from one microservice to another, how do you also "swith the data" (associated with the microservice switched off)
+
+.Message-Driven & Reactive Microservices
+image::voxxed_04.jpg[]
+
+.Reactive Systems (slightly different from reactive programming)
+image::voxxed_05.jpg[]
+
+.Density issue: Java at its disavantage
+image::voxxed_06.jpg[]
+
+-> Java consumes quite a lot of memory when compared to other recent technologies (NodeJS, Go, etc.). +
+It was created to handle few big systems.
+
+=== Containerization crossroads: Experiences-Experiments-Expectations
+
+Presentedy by *Ana-Maria Mihalceanu* - *IBM*.
+
+Ana-Maria Mihalceanu is a custom application development enthusiast, co-founder of Bucharest Software Craftsmanship Community and a constant adopter of challenging technical scenarios. Some of her older experiments are available on Dzone.
+
+In 2016, as tech passionate of cloud application development she achieved IBM Certified Application Developer - Cloud Platform v1. +
+Since then, she has enriched her cloud expertise by learning and certifying as a Salesforce Developer and attained a better understanding on how to integrate different types of cloud offerings.
+
+Other passions? The knowledge hunt through reading and growing fashion skills through shopping.
+
+==== Abstract
+
+Containers seem like a technology that came out of nowhere to improve application development, yet the idea dates since the 1970s when the concept was first employed on Unix systems to better isolate application code. +
+Containers evolved, bringing forth abstraction capabilities that are broadly applied within enterprise IT. +
+However, expectations grow regardless if you just started your quest for flexible application development or juggling expertly with Microservices, Docker, Kubernetes. +
+Let's debate lessons learned and experiment to meet expectations!
+
+==== Notes
+
+.A brief history around containerization
+image::voxxed_07.jpg[]
+
+_"We love containers"_, because of their benefits:
+
+* instant boot
+* portability
+* modularity
+
+Container *build time* principles:
+
+* single concern principle
+* self-containment principle
+* image immutability principle
+
+Container *run time* principles:
+
+* high obervability principle
+
+.Slimming big docker image
+image::voxxed_08.jpg[]
+
+* Ana-Maria reminds us of the classic hack of `&&` in Dockerfile to reduce the number of layers.
+* She also recommends the use of multi-stages Docker builds.
+
+.Security observations
+image::voxxed_09.jpg[]
+
+Same kind of advise for Kubernetes: set security context as non root to true.
+
+*Resource management*: CPU / memory / ephemeral storage
+
+image::voxxed_10.jpg[]
+
+For Kubernetes and its pods, you can't have at the same time VPA (Vertical Pod Autoscaler) and HPA (Horizontal Pod Autoscaler)
+
+When developping with Kubernetes, Ana-Maria advise: _share your experience (with your colleagues), and experiment more_
+
+=== Past, Present and Future of Microservices
+
+Presentedy by *Sebastien Stormacq* (@sebsto) - *Amazon Web Services*.
+
+Seb is writing code since he first touched a Commodore 64 in the mid-eighties. +
+He is inspiring builders to unlock the value of the AWS cloud, using his secret blend of passion, enthusiasm, customer advocacy, curiosity and creativity. +
+His interests are about software architectures, developer tools and mobile computing. +
+If you want to sell him something, be sure it has an API.
+
+==== Abstract
+
+Let's reflect on the Microservices architectural pattern, how the industry came there, what are today's challenges and what can we expect in the future?
+
+Seb uses is 25+ year of experience in the industry and key position as observer of cloud infrastructure, talking with many customers in different industries and geographies to identify our industry's trends.
+
+==== Notes
+
+What is a Microservice?
+
+* independent
+* autonomous
+* specialized
+* single team
+
+.Amazon microservices map
+image::voxxed_11.jpg[]
+
+-> main point is Amazon main page
+
+2010: Amazon monolithic application -> services -> microservices
+
+Sebastien's advise for microservices (a classic one): _Think big, BUT start *really* small_ +
+That was the case for Amazon S3: it starts with only 8 microservices, and now has more than 200.
+
+.Communication styles: synchronous or asynchronous
+image::voxxed_12.jpg[]
+
+-> We are moving more and more towards *asynchronous communication*
+
+_"If you build it, you run it"_
+
+Keep the dev team quite small: ideal team at Amazon -> a "2 pizza" team.
+
+_"Let's risk a peak of the future"_:
+
+* All the code you ever write is business logic
+
+*Code deployment vs code activation*. +
+-> At amazon, code is deployed several months (???) before being used.
+
+As a conclusion:
+
+image::voxxed_13.jpg[]
+
+-> on pourrait résumer ça en : "Développer du code métier, PAS de la plomberie (c'est le boulot d'autres personnes !)"
+
+=== All you need to know to get started with microservices on Kubernetes
+
+Presentedy by *Alain Regnier* - Alto Labs.
+
+Alain Regnier is a Technical Architect and Entrepreneur passionate about innovation and new technologies. He has spent 10 years in Silicon Valley working for startups and large companies, where he co-authored various standards about Web Services and Connected Devices. With Alto Labs he provides consulting services around Kubernetes, Google Cloud and Web Applications architecture. He also helps startups develop prototypes and POCs. He is a GDE Cloud (Google Developer Expert) and certified Google Cloud Architect. He is the founder of the GDG Cloud Paris (Google Developer Group) and StartupVillage.
+
+==== Abstract
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Jakarta EE - Not just for Servers
+
+Presentedy by *Chris Bailey* - *IBM*.
+
+Chris is the Chief Architect for Cloud Native Runtimes at IBM, leading teams that contributing to open source communities for the Node.js, Java and Swift runtimes. Chris has worked on runtimes, programming languages, and application frameworks for almost 20 years, and has most recently been focussed on enhancing frameworks and providing modules to make it easier to build best-practice cloud native applications.
+
+==== Abstract
+
+Function-as-a-service (FaaS) and serverless platforms increase productivity, enabling you to focus on application code, with the platform taking care of how to deploy, configure, run, and scale the code. They do however require you to adopt a new programming model, creating generic handlers or actions that lack the expressive APIs that you get from frameworks and standards such as Jakarta EE. In this session, you’ll learn how it’s now possible to create FaaS- and serverless-based applications using the same APIs you use today such as JAX-RS and you’ll see a live demo of an application being built and deployed as a cloud native application on Kubernetes using a combination of open source tools and Knative serving.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 7 Reasons why your microservices should use Event Sourcing & CQRS
+
+Presentedy by *Hugh McKee* - *Lightbend*.
+
+Hugh McKee is a developer advocate at Lightbend. He has had a long career building applications that evolved slowly, that inefficiently utilized their infrastructure, and were brittle and prone to failure. Hugh has learned from his past mistakes, battle scars, and a few wins. And the learning never stops. Now his focus is on helping other developers and architects build resilient, scalable, reactive, distributed systems.
+
+==== Abstract
+
+Event Sourcing & CQRS offers a compelling and often controversial alternative for persisting data in microservice systems environments. This alternate approach is new for most of us, and it is justified to have a healthy level of skepticism towards any shiny new and often over-hyped solution. However, what is interesting is that this is so new that even the champions and evangelists often overlook the real benefits provided by this new way of capturing and storing data. In this talk, we will look at 7 of the top reasons for using Event Sourcing & CQRS. These reasons covered go beyond the often referenced benefits, such as event stores are natural audit logs, or offering the ability to go back in history to replay past events. The primary goal of this talk is to flip your view from limited to no use of ES & CQRS to an alternate perspective of what you give up when you elect to not use it as the go-to persistence strategy.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Supercharge product development with cloud best practices
+
+Presentedy by *Sebastien Stormacq* - *Amazon Web Services*.
+
+==== Abstract
+
+Continuous Integration (CI) and Continuous Delivery (CD) help developers automate the software release process. The faster you can release new features and fix bugs, the quicker you can innovate and respond to customer needs. AWS provides developer tools that help you automate the end-to-end lifecycle of your serverless applications. In this session, we will discuss methods for automating the deployment of serverless or containerised applications, using services such as AWS CodePipeline and AWS CodeBuild, and techniques such as canary deployments and automatic rollbacks.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== From Zero to Hero with Kafka Connect
+
+Presentedy by *Robin Moffatt* - *Confluent*.
+
+Robin is a Developer Advocate at Confluent, the company founded by the original creators of Apache Kafka, as well as an Oracle Groundbreaker Ambassador and ACE Director (Alumnus). His career has always involved data, from the old worlds of COBOL and DB2, through the worlds of Oracle and Hadoop, and into the current world with Kafka. His particular interests are analytics, systems architecture, performance testing and optimization. He blogs at http://cnfl.io/rmoff and http://rmoff.net/ (and previously http://ritt.md/rmoff) and can be found tweeting grumpy geek thoughts as @rmoff. Outside of work he enjoys drinking good beer and eating fried breakfasts, although generally not at the same time.
+
+==== Abstract
+
+Integrating Apache Kafka with other systems in a reliable and scalable way is often a key part of a streaming platform. Fortunately, Apache Kafka includes the Connect API that enables streaming integration both in and out of Kafka. Like any technology, understanding its architecture and deployment patterns is key to successful use, as is knowing where to go looking when things aren't working. This talk will discuss the key design concepts within Kafka Connect and the pros and cons of standalone vs distributed deployment modes. We'll do a live demo of building pipelines with Kafka Connect for streaming data in from databases, and out to targets including Elasticsearch. With some gremlins along the way, we'll go hands-on in methodically diagnosing and resolving common issues encountered with Kafka Connect. The talk will finish off by discussing more advanced topics including Single Message Transforms, and deployment of Kafka Connect in containers.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Kubernetes Native JHipster microservices
+
+Presentedy by *Pierre Besson* - *Liquidshare*.
+
+Currently working as Site Reliability Engineer at Liquidshare, I contribute to JHipster since 2016. My contribution to the project have focused on integrating the Spring Cloud stack, docker and kubernetes support as well as monitoring.
+
+==== Abstract
+
+Kubernetes is eating the world. Teams around the world are realizing that Kubernetes is the answer to achieve immutable and declarative container based deployments. The JHipster project was quick to jump on the hype, starting work on the Kubernetes sub-generator back in 2016. However, in the meantime Kubernetes has evolved continuously and is now much more than simply a runtime for your microservices. Many projects such as Istio and custom Operators plug directly into the Kubernetes platform and offer solutions to microservices concerns (discovery, resiliency, monitoring, ...). This talk will show how to fully utilize Kubernetes as a platform for a Java microservices architecture generated by JHipster.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Transactions in your micro-services architecture
+
+Presentedy by *Rudy De Busscher* - *Payara Services*.
+
+==== Abstract
+
+How can you make different pieces of your unit of work consistent in the distributed setup of your micro-service application? You associate the term transaction probably with a database, but the data source can be anything including a database in the micro-service world. The MicroProfile Long Running Actions specification is based on sagas and the OASIS LRA transaction model specification. It defines the framework to guarantee the eventual consistency requirement using compensating actions for example. This session will explain you the challenges and concepts of the MP LRA framework. And of course, you can see it in action with various demos.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Event-Driven Microservices, the Sense, the Non-sense and a Way Forward
+
+Presentedy by *Allard Buijze* - *AxonIQ*.
+
+Allard Buijze is Founder and CTO at AxonIQ with a solid software development background. Starting at the age of 6, he has developed a great passion for programming and has guided both large and small organizations in building performant and scalable applications. Allard likes to help customers make appropriate future-proof, technical decisions. As a former software architect specializing within the field of "scalability" and "high performance" computing, he has worked on several small and large projects, where performance and complexity were recurring themes. Allard is convinced that a good domain model is the beginning of contributing to the overall performance of an application. From this conviction, he has developed the Axon Framework. Allard has given several trainings in the areas of scalable architectures, test driven development, application design and clean coding. He strongly believes that good craftsmanship can only be achieved through continuous and intensive exchange of experience with others. The last years, he has been investigating and applying CQRS to a number of projects. As a result, he created the Axon Framework, an open source Java framework that helps developers create scalable and extensible applications. Axon has a growing community and has already been successfully introduced in several high-profile projects around the world.
+
+==== Abstract
+
+Microservices, and especially their Event-Driven variants, are at the very peak of the hype cycle and, according to some, on their way down. Meanwhile, a large number of success stories and failures have been shared about this architectural style. How do we ensure that we don't throw away the baby with the bathwater and end up re-inventing the same concepts again a decade from now? In this talk, I want to zoom in on different aspects around microservices. What are the promises made and how did it deliver on those? How did technology surrounding microservices evolve and impact our decisions? Lastly, I will look forward. How can we be pragmatic about microservices, avoiding some of the common pitfalls and helping ensure ourselves that we get the promised benefits, but without the pain.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Panel on Microservices
+
+Presentedy by *Mathilde Rigabert Lemée*, *Emmanuel Bernard*, *Sebastien Stormacq*, *Ana-Maria Mihalceanu*.
+
+==== Abstract
+
+On this panel you will be able to ask questions on Microservices to our keynote speakers.
+
+==== Notes
+
+TO BE COMPLETED
+
+== Buzz words, tools, etc.
+
+
+
