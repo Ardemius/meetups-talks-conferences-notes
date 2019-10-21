@@ -412,25 +412,95 @@ Presentedy by *Sebastien Stormacq* - *Amazon Web Services*.
 
 ==== Abstract
 
-Continuous Integration (CI) and Continuous Delivery (CD) help developers automate the software release process. The faster you can release new features and fix bugs, the quicker you can innovate and respond to customer needs. AWS provides developer tools that help you automate the end-to-end lifecycle of your serverless applications. In this session, we will discuss methods for automating the deployment of serverless or containerised applications, using services such as AWS CodePipeline and AWS CodeBuild, and techniques such as canary deployments and automatic rollbacks.
+Continuous Integration (CI) and Continuous Delivery (CD) help developers automate the software release process. +
+The faster you can release new features and fix bugs, the quicker you can innovate and respond to customer needs.
+
+AWS provides developer tools that help you automate the end-to-end lifecycle of your serverless applications.
+
+In this session, we will discuss methods for automating the deployment of serverless or containerised applications, using services such as *AWS CodePipeline* and *AWS CodeBuild*, and techniques such as *canary deployments* and *automatic rollbacks*.
 
 ==== Notes
 
-TO BE COMPLETED
+Subtitle for the talk: CI/CD for Modern Applications
+
+.Infrastructure as code goals
+image:voxxed_43.jpg[]
+
+.Continuous integration goals, use of AWS CodeBuild
+image:voxxed_44.jpg[]
+
+.Continuous deployment, use of AWS CodeDeploy
+image:voxxed_45.jpg[]
+
+Going to production must be a *non event*
+
+.Recap
+image:voxxed_46.jpg[]
+
+-> Do not forget to collect both *technical* AND *business logs*!
 
 === From Zero to Hero with Kafka Connect
 
 Presentedy by *Robin Moffatt* - *Confluent*.
 
-Robin is a Developer Advocate at Confluent, the company founded by the original creators of Apache Kafka, as well as an Oracle Groundbreaker Ambassador and ACE Director (Alumnus). His career has always involved data, from the old worlds of COBOL and DB2, through the worlds of Oracle and Hadoop, and into the current world with Kafka. His particular interests are analytics, systems architecture, performance testing and optimization. He blogs at http://cnfl.io/rmoff and http://rmoff.net/ (and previously http://ritt.md/rmoff) and can be found tweeting grumpy geek thoughts as @rmoff. Outside of work he enjoys drinking good beer and eating fried breakfasts, although generally not at the same time.
+Robin is a Developer Advocate at Confluent, the company founded by the original creators of Apache Kafka, as well as an Oracle Groundbreaker Ambassador and ACE Director (Alumnus). +
+His career has always involved data, from the old worlds of COBOL and DB2, through the worlds of Oracle and Hadoop, and into the current world with Kafka. +
+His particular interests are analytics, systems architecture, performance testing and optimization. +
+He blogs at http://cnfl.io/rmoff and http://rmoff.net/ (and previously http://ritt.md/rmoff) and can be found tweeting grumpy geek thoughts as @rmoff.
+
+Outside of work he enjoys drinking good beer and eating fried breakfasts, although generally not at the same time.
 
 ==== Abstract
 
-Integrating Apache Kafka with other systems in a reliable and scalable way is often a key part of a streaming platform. Fortunately, Apache Kafka includes the Connect API that enables streaming integration both in and out of Kafka. Like any technology, understanding its architecture and deployment patterns is key to successful use, as is knowing where to go looking when things aren't working. This talk will discuss the key design concepts within Kafka Connect and the pros and cons of standalone vs distributed deployment modes. We'll do a live demo of building pipelines with Kafka Connect for streaming data in from databases, and out to targets including Elasticsearch. With some gremlins along the way, we'll go hands-on in methodically diagnosing and resolving common issues encountered with Kafka Connect. The talk will finish off by discussing more advanced topics including Single Message Transforms, and deployment of Kafka Connect in containers.
+Integrating Apache Kafka with other systems in a reliable and scalable way is often a key part of a streaming platform. +
+Fortunately, Apache Kafka includes the Connect API that enables streaming integration both in and out of Kafka. Like any technology, understanding its architecture and deployment patterns is key to successful use, as is knowing where to go looking when things aren't working.
+
+This talk will discuss the key design concepts within Kafka Connect and the pros and cons of standalone vs distributed deployment modes.
+
+We'll do a live demo of building pipelines with Kafka Connect for streaming data in from databases, and out to targets including Elasticsearch. +
+With some gremlins along the way, we'll go hands-on in methodically diagnosing and resolving common issues encountered with Kafka Connect.
+
+The talk will finish off by discussing more advanced topics including Single Message Transforms, and deployment of Kafka Connect in containers.
 
 ==== Notes
 
-TO BE COMPLETED
+image:voxxed_47.jpg[]
+
+In the demo from Robin, *Kafka Connect* *pulls the data from the source*, and *pushes it to the sink*.
+
+image:voxxed_48.jpg[]
+
+[IMPORTANT]
+====
+schema MATTERS! +
+If you "just" use JSON, you need to enforce the schema somewhere else (meaning using Confluence Schema Registry)
+====
+
+image:voxxed_49.jpg[]
+
+.*Workers* are JVM process
+image:voxxed_50.jpg[]
+
+The best choice is nearly always to go for *distributed* deployment, and *NOT* standalone one :
+
+* standalone deployment is NOT fault tolerant
+* standalone deployment does NOT scale
+
+Distributed deployment also starts with 1 JVM, but has the possibility to scale to others.
+
+image:voxxed_51.jpg[]
+
+A classic error, when expected Avro message is NOT actually Avro:
+
+image::voxxed_52.jpg[]
+
+Tout un système de monitoring de Kafka Connect est mis à disposition par Confluent.
+
+Confluent met également à disposition une version "fully managed" de Kafka in the cloud.
+
+*Ressources* :
+
+* *repo GitHub* : cela semble être celui-ci https://github.com/confluentinc/demo-scene/blob/master/kafka-connect-zero-to-hero/demo_extended_zero-to-hero-with-kafka-connect.adoc
 
 === Kubernetes Native JHipster microservices
 
@@ -490,4 +560,8 @@ Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels
 
 * *Kubernetes* en force, devient vraiment *la norme pour les microservices*.
 * *Visual Studio Code* est de plus en plus utilisé, même pour des applications Java.
+* *Quarkus* la montée en puissance
+
+
+
 
