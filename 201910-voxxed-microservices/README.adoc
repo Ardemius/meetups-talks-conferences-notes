@@ -292,33 +292,119 @@ image:voxxed_25.jpg[]
 .Resources from Alain
 image:voxxed_26.jpg[]
 
-=== Jakarta EE - Not just for Servers
+=== Jakarta EE - Not just for Servers (JAX-RS comes to FaaS)
 
 Presentedy by *Chris Bailey* - *IBM*.
 
-Chris is the Chief Architect for Cloud Native Runtimes at IBM, leading teams that contributing to open source communities for the Node.js, Java and Swift runtimes. Chris has worked on runtimes, programming languages, and application frameworks for almost 20 years, and has most recently been focussed on enhancing frameworks and providing modules to make it easier to build best-practice cloud native applications.
+Chris is the Chief Architect for Cloud Native Runtimes at IBM, leading teams that contributing to open source communities for the Node.js, Java and Swift runtimes. +
+Chris has worked on runtimes, programming languages, and application frameworks for almost 20 years, and has most recently been focussed on enhancing frameworks and providing modules to make it easier to build best-practice cloud native applications.
 
 ==== Abstract
 
-Function-as-a-service (FaaS) and serverless platforms increase productivity, enabling you to focus on application code, with the platform taking care of how to deploy, configure, run, and scale the code. They do however require you to adopt a new programming model, creating generic handlers or actions that lack the expressive APIs that you get from frameworks and standards such as Jakarta EE. In this session, you’ll learn how it’s now possible to create FaaS- and serverless-based applications using the same APIs you use today such as JAX-RS and you’ll see a live demo of an application being built and deployed as a cloud native application on Kubernetes using a combination of open source tools and Knative serving.
+Function-as-a-service (FaaS) and serverless platforms increase productivity, enabling you to focus on application code, with the platform taking care of how to deploy, configure, run, and scale the code. +
+They do however require you to adopt a new programming model, creating generic handlers or actions that lack the expressive APIs that you get from frameworks and standards such as Jakarta EE.
+
+In this session, you’ll learn how it’s now possible to create FaaS- and serverless-based applications using the same APIs you use today such as JAX-RS and you’ll see a live demo of an application being built and deployed as a cloud native application on Kubernetes using a combination of open source tools and Knative serving.
 
 ==== Notes
 
-TO BE COMPLETED
+.Classic app
+image:voxxed_27.jpg[]
+
+.with Kubernetes
+image:voxxed_28.jpg[]
+
+.with CloudFoundry
+image:voxxed_29.jpg[]
+
+-> With *FaaS*, the only stack you need is a *lone JavaEE application*.
+
+IMPORTANT: *FaaS* is for functions AND serverless.
+
+.nearly 60% usage of AWS lambda is Node
+image:voxxed_30.jpg[]
+
+With express (NodeJS front main tech): Startup, handles a request and get the result to the user -> 0,532 sec
+
+.framework statup times
+image:voxxed_31.jpg[]
+
+-> Les applications Spring Boot classiques sont beaucoup plus lentes à démarrer que celles basées sur Express. +
+PAR CONTRE, quand on commence à utiliser des frameworks comme *Quarkus*, on arrive à des temps de démarrage équivalents, voire plus rapides !
+
+*Knative* will add containers based on usage, and remove ones based on the same usage.
+
+Donc, functions and Knative ?
+
+With Apache OpenWhisk :
+
+image::voxxed_32.jpg[]
+
+-> On voit qu'on prend un `JsonObject` en param, et qu'on renvoie un objet similaire en retour.
+
+Appsody stacks (se renseigner !)
+
+image:voxxed_33.jpg[]
+
+Et quand on utilise Appsody pour du FaaS, cela devient :
+
+image:voxxed_34.jpg[]
+
+https://appsody.dev/[Appsody] (https://github.com/appsody[GitHub]) : _Appsody enables you to quickly build and deploy cloud-native applications._
+
+Chris nous fait une déma basée sur Appsody, à l'aide de Visual Studio Code, et nous montre de belles fonctionnalités de debug de la solution (break point dans VS Code et interaction directe avec le code déployé)
+
+Nobody is doing FaaS with Java today, this mainly because of startup time. +
+To correct this: *Quarkus* / *Knative* / *Appsody*
+
+image::voxxed_35.jpg[]
 
 === 7 Reasons why your microservices should use Event Sourcing & CQRS
 
 Presentedy by *Hugh McKee* - *Lightbend*.
 
-Hugh McKee is a developer advocate at Lightbend. He has had a long career building applications that evolved slowly, that inefficiently utilized their infrastructure, and were brittle and prone to failure. Hugh has learned from his past mistakes, battle scars, and a few wins. And the learning never stops. Now his focus is on helping other developers and architects build resilient, scalable, reactive, distributed systems.
+Hugh McKee is a developer advocate at Lightbend. He has had a long career building applications that evolved slowly, that inefficiently utilized their infrastructure, and were brittle and prone to failure. +
+Hugh has learned from his past mistakes, battle scars, and a few wins. And the learning never stops. +
+Now his focus is on helping other developers and architects build resilient, scalable, reactive, distributed systems.
 
 ==== Abstract
 
-Event Sourcing & CQRS offers a compelling and often controversial alternative for persisting data in microservice systems environments. This alternate approach is new for most of us, and it is justified to have a healthy level of skepticism towards any shiny new and often over-hyped solution. However, what is interesting is that this is so new that even the champions and evangelists often overlook the real benefits provided by this new way of capturing and storing data. In this talk, we will look at 7 of the top reasons for using Event Sourcing & CQRS. These reasons covered go beyond the often referenced benefits, such as event stores are natural audit logs, or offering the ability to go back in history to replay past events. The primary goal of this talk is to flip your view from limited to no use of ES & CQRS to an alternate perspective of what you give up when you elect to not use it as the go-to persistence strategy.
+Event Sourcing & CQRS offers a compelling and often controversial alternative for persisting data in microservice systems environments.
+
+This alternate approach is new for most of us, and it is justified to have a healthy level of skepticism towards any shiny new and often over-hyped solution. +
+However, what is interesting is that this is so new that even the champions and evangelists often overlook the real benefits provided by this new way of capturing and storing data.
+
+In this talk, we will look at 7 of the top reasons for using Event Sourcing & CQRS. +
+These reasons covered go beyond the often referenced benefits, such as event stores are natural audit logs, or offering the ability to go back in history to replay past events.
+
+The primary goal of this talk is to flip your view from limited to no use of ES & CQRS to an alternate perspective of what you give up when you elect to not use it as the go-to persistence strategy.
 
 ==== Notes
 
-TO BE COMPLETED
+.break the read versus write performance bottleneck
+image:voxxed_36.jpg[]
+image:voxxed_37.jpg[]
+
+-> at *the end*, we get *eventually consistent*.
+
+.semantics of delivery
+image:voxxed_38.jpg[]
+
+* *at-most-once* meaning maybe-once
+* *at-least-once* meaning once-or-more
+* *exactly-once* meaning essentially-once
+
+.at-least-once push
+image:voxxed_39.jpg[]
+
+.at-most-once push
+image:voxxed_40.jpg[]
+
+.at-least-once pull
+image:voxxed_41.jpg[]
+
+.To recap
+image:voxxed_42.jpg[]
 
 === Supercharge product development with cloud best practices
 
@@ -402,5 +488,6 @@ TO BE COMPLETED
 
 Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels sont leurs avantages, leurs faiblesses, etc.
 
-
+* *Kubernetes* en force, devient vraiment *la norme pour les microservices*.
+* *Visual Studio Code* est de plus en plus utilisé, même pour des applications Java.
 
