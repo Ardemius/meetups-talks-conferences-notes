@@ -1190,7 +1190,39 @@ I will be explaining the principles of reactive systems (including the key point
 
 ==== Notes
 
-TO BE COMPLETED
+For Grace, *Reactive architecture* is the future for Application architecture.
+
+Reactive Manifesto:
+
+* Responsive
+* Elastic
+* Resilient
+* Message-driven
+
+Differences between Reactive programming vs Reactive systems?
+
+Grace fait l'analogie avec une équipe de foot composée uniquement de Messi. +
+Individuellement, ils sont très forts, mais ne savent pas jouer ensemble. +
+-> Pour devenir un *Reactive system*, il faut rajouter cette cohésion manquante.
+
+Donc, des applications individuellement réactives ne s'assemblent pas naturellement en 1 système réactif.
+
+Pour rajouter cette cohésion manquante et obtenir un système réactif, il faut ajouter :
+
+* DDD
+* asynchronous communication
+* Event-sourcing / CQRS
+* High availability / Eventual Consistency (CA of the CAP theorem)
+* sharding
+* back Pressure
+* bulkheading : "the publisher determines how many bees should go to the flower" +
+La fleur étant ici la ressource dont il faut protéger l'usage
+* Circuit breaking
+
+.Exemples de frameworks réactifs
+image:tuesday_53.jpg[]
+
+Avis : je ne suis pas totalement d'accord avec l'analyse de Grace, que j'avais trouvée trop "bunch of tools and features oriented" ("il faut avoir ça ça ça et ça...", mais il y avait de bonnes choses dans sa présentation basée sur les abeilles 😉
 
 == Buzz words, tools, notes, etc.
 
