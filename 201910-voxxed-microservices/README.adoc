@@ -1154,7 +1154,21 @@ We’ll also look at what we need to do to maintain a healthy micro(services)bio
 
 ==== Notes
 
-TO BE COMPLETED
+Pour résumer le début de la conf (Nate a beaucoup d'humour) : "beaucoup (trop) de buzz sur le cloud et les microservices, mais en avons-nous vraiment besoin?"
+
+d'où : "Please Microservice Responsibly" ! 😁
+
+* In a monolith, everything has to move at the same rate +
+-> Because that is when ALL the changes were ready.
+
+A good reference to keep (not to read from cover to cover): *Site Reliability Engineering* (O'Reilly)
+
+Nate advises:
+
+* small = which can be rewritten in 2 weeks (in 1 sprint)
+* "you build it, you run it"
+
+TIP: Jetez un oeil à l'eBook (free) que Nate a écrit : _"Thinking architecturally"_
 
 === Reacting to the future of application architecture
 
@@ -1189,6 +1203,7 @@ Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels
 Quasiment tous les conférenciers étaient dessus !
 * *Quarkus* la montée en puissance
 * *Serverless* de plus en plus
+* et quand même un peu de raison : raisonner l'usage des microservices
 
 IBM était très représenté parmi les speakers.
 
