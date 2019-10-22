@@ -973,7 +973,8 @@ Let’s see how to handle all your services (AWS, Azure, on-premise, …) and ca
 
 ==== Notes
 
-
+45 min de présentation de produit. +
+Personnellement, je n'ai pas accroché.
 
 === Looking back on migrating 30 microservices to a monorepository
 
@@ -1005,9 +1006,68 @@ This talk will give you the plan to painlessly migrate your microservices to a m
 
 ==== Notes
 
-TO BE COMPLETED
+.The initial state for a first website
+image:tuesday_29.jpg[]
 
-=== riffing on Kubernetes
+After the development of another website, it grows up to 30 microservices.
+
+How do handle that with source management ?
+
+image:tuesday_30.jpg[width=400]
+image:tuesday_31.jpg[width=400]
+
+This last schema implies 2 Pull Requests are necessary, which is all the problem.
+
+image:tuesday_32.jpg[]
+
+Other problem, to enforce coding style rules on all code base:
+
+image:tuesday_33.jpg[]
+
+-> this enforcing takes several hours...
+
+Other problem, the use of Git submodule to handle the share logic:
+
+image:tuesday_34.jpg[]
+
+Conclusion: *multi-repository* code organisation causes too many issues!
+
+image:tuesday_35.jpg[]
+
+-> They decided to migrate to a *monorepo*
+
+As a prerequisite, they had to answer the following problematics:
+
+* Preserve git history
+* keep CI fast
+* adjust deployment
+* have visibility of your progress
+* zero bugs ruging migration
+
+.1 Preserve git history
+image:tuesday_36.jpg[]
+image:tuesday_37.jpg[]
+
+-> This process was industrialize to go faster
+
+.2 keep CI fast
+image:tuesday_38.jpg[]
+
+1 microservice = 5 min, so 31 microservices was 2h30... Not possible... +
+-> Answer was a homemade tool, inspired on some features of other, too complicated tools (like Lerna, or Google tool, etc.)
+
+image:tuesday_39.jpg[]
+image:tuesday_40.jpg[]
+image:tuesday_41.jpg[]
+
+Team feedback with monorepo:
+
+* 1 PR is better than having to do n PRs
+* instead of 3 hours to enforce coding style rules, that's only 10 min, far better
+
+Un bon retour d'XP, très pragmatique, à revoir au calme, il y a de la matière.
+
+=== Riffing on Kubernetes
 
 Presented by *Florent Biville* - *Pivotal*.
 
