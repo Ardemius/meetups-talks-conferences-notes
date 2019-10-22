@@ -597,7 +597,7 @@ image:voxxed_59.jpg[]
 image:voxxed_60.jpg[]
 
 .Saga pattern
-image:voxxed_61.jpg[]
+image:voxxed_61.jpg[width=600]
 
 -> *Saga pattern*: ensures that each step of the business process has a *compensating action* to undo the work completerd in the case of partial failures.
 
@@ -621,15 +621,76 @@ image:voxxed_62.jpg[]
 
 Presentedy by *Allard Buijze* - *AxonIQ*.
 
-Allard Buijze is Founder and CTO at AxonIQ with a solid software development background. Starting at the age of 6, he has developed a great passion for programming and has guided both large and small organizations in building performant and scalable applications. Allard likes to help customers make appropriate future-proof, technical decisions. As a former software architect specializing within the field of "scalability" and "high performance" computing, he has worked on several small and large projects, where performance and complexity were recurring themes. Allard is convinced that a good domain model is the beginning of contributing to the overall performance of an application. From this conviction, he has developed the Axon Framework. Allard has given several trainings in the areas of scalable architectures, test driven development, application design and clean coding. He strongly believes that good craftsmanship can only be achieved through continuous and intensive exchange of experience with others. The last years, he has been investigating and applying CQRS to a number of projects. As a result, he created the Axon Framework, an open source Java framework that helps developers create scalable and extensible applications. Axon has a growing community and has already been successfully introduced in several high-profile projects around the world.
+Allard Buijze is Founder and CTO at AxonIQ with a solid software development background. +
+Starting at the age of 6, he has developed a great passion for programming and has guided both large and small organizations in building performant and scalable applications. +
+Allard likes to help customers make appropriate future-proof, technical decisions. +
+As a former software architect specializing within the field of "scalability" and "high performance" computing, he has worked on several small and large projects, where performance and complexity were recurring themes. +
+Allard is convinced that a good domain model is the beginning of contributing to the overall performance of an application. +
+From this conviction, he has developed the Axon Framework. +
+Allard has given several trainings in the areas of scalable architectures, test driven development, application design and clean coding. +
+He strongly believes that good craftsmanship can only be achieved through continuous and intensive exchange of experience with others. +
+The last years, he has been investigating and applying CQRS to a number of projects. +
+As a result, he created the Axon Framework, an open source Java framework that helps developers create scalable and extensible applications. +
+Axon has a growing community and has already been successfully introduced in several high-profile projects around the world.
 
 ==== Abstract
 
-Microservices, and especially their Event-Driven variants, are at the very peak of the hype cycle and, according to some, on their way down. Meanwhile, a large number of success stories and failures have been shared about this architectural style. How do we ensure that we don't throw away the baby with the bathwater and end up re-inventing the same concepts again a decade from now? In this talk, I want to zoom in on different aspects around microservices. What are the promises made and how did it deliver on those? How did technology surrounding microservices evolve and impact our decisions? Lastly, I will look forward. How can we be pragmatic about microservices, avoiding some of the common pitfalls and helping ensure ourselves that we get the promised benefits, but without the pain.
+Microservices, and especially their Event-Driven variants, are at the very peak of the hype cycle and, according to some, on their way down. +
+Meanwhile, a large number of success stories and failures have been shared about this architectural style. How do we ensure that we don't throw away the baby with the bathwater and end up re-inventing the same concepts again a decade from now?
+
+In this talk, I want to zoom in on different aspects around microservices. +
+What are the promises made and how did it deliver on those? +
+How did technology surrounding microservices evolve and impact our decisions? +
+Lastly, I will look forward how can we be pragmatic about microservices, avoiding some of the common pitfalls and helping ensure ourselves that we get the promised benefits, but without the pain.
 
 ==== Notes
 
-TO BE COMPLETED
+Allard est un bon orateur, avec de l'humour 😄 +
+Pour preuve son exemple de l'architecture BBC (Box -> Box -> Cylinder), qui vire par moment au Big Ball of Mud (le bousier sur son oeuvre comparé à l'architecte défendant sa "création")
+
+image:voxxed_63.jpg[]
+
+.Tellement vrai !
+image:voxxed_64.jpg[]
+
+.Location transparency
+image:voxxed_65.jpg[]
+
+.Event hell ???
+image:voxxed_66.jpg[]
+
+IMPORTANT: *NOT everything is an event!*
+
+-> Other things exist: *commands* and *queries*
+
+.Command AND events AND queries
+image:voxxed_67.jpg[]
+
+IMPORTANT: An event is a message, but not every message is an event
+
+*Event Sourcing*:
+
+* Every that happened is represented by an Event
+
+.Why use event sourcing?
+image:voxxed_68.jpg[]
+
+The challenges for Event Sourcing, yesterday and today:
+
+* Dealing with increasing storage size: NO MORE AN ISSUE
+* Complex ...
+
+.CQRS
+image:voxxed_69.jpg[]
+
+Be careful with communication, because *communication is a contract*. +
+A contract but you don't with whom you are married...
+
+To conclude:
+
+* consider commands and queries as much as events
+* sharing is caring
+* beware coupling across bounded contexts
 
 === Panel on Microservices
 
@@ -641,7 +702,15 @@ On this panel you will be able to ask questions on Microservices to our keynote 
 
 ==== Notes
 
-TO BE COMPLETED
+Je n'ai pas assisté au talk 😜
+
+== TUESDAY
+
+=== Deploying Spring Boot microservices on Azure
+
+==== Abstract
+
+==== Notes
 
 == Buzz words, tools, notes, etc.
 
