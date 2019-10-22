@@ -978,7 +978,7 @@ Personnellement, je n'ai pas accroché.
 
 === Looking back on migrating 30 microservices to a monorepository
 
-Presented by *Darya Talanina* - *Theodo*.
+Presented by *Darya Talanina* (dtalanina@gmail.com) - *Theodo*.
 
 Lead developer at Theodo, Darya loves creating products that improve the everyday life of people. +
 In her free time, she likes hiking and exploring France.
@@ -1092,7 +1092,42 @@ If you want to learn more about the next-gen open source serverless platform and
 
 ==== Notes
 
-TO BE COMPLETED
+Riff is a still on development tool, FaaS on Kubernetes.
+
+image:tuesday_42.jpg[]
+
+.How do we create a function?
+image:tuesday_43.jpg[]
+
+.Under the hood
+image:tuesday_44.jpg[]
+
+Now that we have an image, how to deploy it?
+
+.Avec Riff core
+image:tuesday_45.jpg[]
+
+.Avec Knative
+image:tuesday_46.jpg[]
+
+New runtime after Riff core and Knative: *riff streaming* (still not released yet)
+
+image:tuesday_47.jpg[]
+image:tuesday_48.jpg[]
+
+.More complex functions
+image:tuesday_49.jpg[]
+
+-> On the right, uses *Java with Reactor*.
+
+.Which runtime should we choose?
+image:tuesday_50.jpg[]
+
+.Riff a Serverless on Premise
+image:tuesday_51.jpg[]
+
+.Resources and going further
+image:tuesday_52.jpg[]
 
 === Responsible Microservices
 
@@ -1149,6 +1184,7 @@ Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels
 
 * *Kubernetes* en force, devient vraiment *la norme pour les microservices*. +
 -> C'est également devenu LE moyen de *faire tourner Docker en production*.
+	** Avec lui on parle beaucoup de *Knative* (qui utilise *Istio* si je ne dis pas de bêtise)
 * *Visual Studio Code* est de plus en plus utilisé, même pour des applications Java. +
 Quasiment tous les conférenciers étaient dessus !
 * *Quarkus* la montée en puissance
@@ -1167,7 +1203,12 @@ Un ami m'a également conseillé :
 
 * _Event Sourcing - You are doing it wrong_ : David Schmitz - Senacor Technologies
 
+Voir également *Kogito*, un moteur de règle pour Quarkus qui boot en moins d'1 sec. +
+Cela permet de créer son microservice à partir de règles. +
+Voir :
 
+* https://quarkus.io/guides/kogito-guide
+* https://kogito.kie.org/
 
 
 
