@@ -778,12 +778,12 @@ Even if better than monolith, we are only moving the problem a bit further. +
 Whereas for *FaaS* (serverless), this time, *the design is made to only use what is required*.
 
 .FaaS / serverless
-image:tuesday_08.jpg[]
+image:tuesday_08.jpg[width=600]
 
 Breaking the monolith is OK, but breaking the related database is a much harder challenge. +
 You need to loosely couple your microservices so as to be able to break the database.
 
-image:tuesday_09.jpg[]
+image:tuesday_09.jpg[width=600]
 
 Pour éviter le couple direct d'un microservice avec plusieurs autres, on passe par un message bus (et donc une communication asynchrone) :
 
@@ -793,7 +793,7 @@ D'après Hugh, on commence les microservices avec de la communication synchrone,
 -> Et après cela on passe au serverless.
 
 .request / response serverless function
-image:tuesday_11.jpg[]
+image:tuesday_11.jpg[width=600]
 
 .request / response and publish / subscribe functions linked by a message bus
 image:tuesday_12.jpg[]
@@ -825,7 +825,12 @@ I will talk about different architectural strategies that we have tried and how 
 
 ==== Notes
 
-TO BE COMPLETED
+* Ania conseille l'utilisation de l'usine de build GitLab CI plutôt que Jenkins.
+* Ania conseille également l'utilisation du *feature toggling* (*feature flags*)
+
+Retour d'expérience d'Ania : avant de partir sur un refacto from scratch *"respect the original authors"* -> ce qu'ils ont fait a marché (au moins un peu) à l'époque, plutôt que de refaire, il est souvent préférable de chercher à le réutiliser / transformer.
+
+Ania est sympa et une bonne oratrice, mais j'aurais aimé plus de matière dans le talk.
 
 === Pact tests: how we split up the monolithic deploy
 
@@ -850,7 +855,38 @@ You should come away with a head start in understanding contracts and how it cou
 
 ==== Notes
 
-TO BE COMPLETED
+image:tuesday_15.jpg[]
+
+* PACT is for HTTP communication.
+* PACT is *consumer driven*
+
+PACT test flow:
+
+image:tuesday_16.jpg[width=400]
+image:tuesday_17.jpg[width=400]
+image:tuesday_18.jpg[width=400]
+image:tuesday_19.jpg[width=400]
+image:tuesday_20.jpg[width=400]
+
+IMPORTANT: PACT allows to validate the compatibility between the evolutions of versions between consumer and provider.
+
+* PACT should be used for tests when you own BOTH parts of the interactions +
+-> meaning NOT when there is an external 3rd party tool on one part
+
+Conclusion:
+
+* make the services independently deployable and testable
+* set up pact infrastrcuture in CI, including a brocker
+* write consumer tests and then provider tests
+* enables gates to stop deployment if there's no verified version match
+
+Main downsides of PACT:
+
+* *quite complicated*: share knowledge as much as you can
+
+So:
+
+* make sure the whole team is involved
 
 === An introduction to Apache Kafka - this is Event Streaming, not just Messaging
 
@@ -875,7 +911,46 @@ Finally, learn about more advanced concepts such as stream processing using the 
 
 ==== Notes
 
-TO BE COMPLETED
+IMPORTANT: Kafka is *event streaming* system and NOT a *message queueing* one.
+
+image:tuesday_21.jpg[]
+
+Kafka is *publish / subscribe*
+
+image:tuesday_22.jpg[]
+
+image:tuesday_23.jpg[]
+image:tuesday_24.jpg[]
+
+To start well with Kafka: https://kafka.apache.org/quickstart
+
+IMPORTANT: An event in Kafka is a key / value pair, with the key being optional.
+
+.Sending an event
+image:tuesday_25.jpg[]
+
+. choose topic
+. decide whether to use a key
+. choose acks level
+. choose whether to retry
+
+.Receiving an event
+image:tuesday_26.jpg[]
+
+. choose a topic
+. decide where to start
+. choose how to manage commit offsets
+. pick a consumer group: make sure to route you only the events of your group
+
+.Partitions
+image:tuesday_27.jpg[]
+
+.Replication
+image:tuesday_28.jpg[]
+
+-> You only talk to a *leader*
+
+Avis : super talk, très synthétique
 
 === Building a platform to integrate serverless and on-premise services
 
@@ -898,7 +973,7 @@ Let’s see how to handle all your services (AWS, Azure, on-premise, …) and ca
 
 ==== Notes
 
-TO BE COMPLETED
+
 
 === Looking back on migrating 30 microservices to a monorepository
 
@@ -1027,4 +1102,22 @@ Les conférences que j'aurais également souhaité voir :
 * _Building a Customer Facing Analytics Platform_ : Laura Kirby - IBM
 * _Speedy build for your java application images with JIB!_ : Mohammed Aboullaite - xHUB
 * _Complex event flows in distributed systems_ : Bernd Rücker - Camunda
+
+Un ami m'a également conseillé :
+
+* _Event Sourcing - You are doing it wrong_ : David Schmitz - Senacor Technologies
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
