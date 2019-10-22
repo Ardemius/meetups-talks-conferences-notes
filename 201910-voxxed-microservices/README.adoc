@@ -75,17 +75,17 @@ After this session, you will be armed with a better understanding of your gaps a
 ==== Notes
 
 .What is Cloud Native?
-image:voxxed_01.jpg[]
+image:monday_01.jpg[]
 
 .Une tentative de réponse
-image:voxxed_02.jpg[]
+image:monday_02.jpg[]
 
 *Multi clouds* is a real concern: either for multi zones, or real multi clouds.
 
 Comme d'habitude : 1 monotith ~20 microservices ~200 functions
 
 .Why go through this pain? (advantages)
-image:voxxed_03.jpg[]
+image:monday_03.jpg[]
 
 Data isolation concern. +
 Each microservice must have its own storage, but how to share the data?
@@ -93,13 +93,13 @@ Each microservice must have its own storage, but how to share the data?
 When you swith from one microservice to another, how do you also "swith the data" (associated with the microservice switched off)
 
 .Message-Driven & Reactive Microservices
-image:voxxed_04.jpg[]
+image:monday_04.jpg[]
 
 .Reactive Systems (slightly different from reactive programming)
-image:voxxed_05.jpg[]
+image:monday_05.jpg[]
 
 .Density issue: Java at its disavantage
-image:voxxed_06.jpg[]
+image:monday_06.jpg[]
 
 -> Java consumes quite a lot of memory when compared to other recent technologies (NodeJS, Go, etc.). +
 It was created to handle few big systems.
@@ -125,7 +125,7 @@ Let's debate lessons learned and experiment to meet expectations!
 ==== Notes
 
 .A brief history around containerization
-image:voxxed_07.jpg[]
+image:monday_07.jpg[]
 
 _"We love containers"_, because of their benefits:
 
@@ -144,19 +144,19 @@ Container *run time* principles:
 * high obervability principle
 
 .Slimming big docker image
-image:voxxed_08.jpg[]
+image:monday_08.jpg[]
 
 * Ana-Maria reminds us of the classic hack of `&&` in Dockerfile to reduce the number of layers.
 * She also recommends the use of multi-stages Docker builds.
 
 .Security observations
-image:voxxed_09.jpg[]
+image:monday_09.jpg[]
 
 Same kind of advise for Kubernetes: set security context as non root to true.
 
 *Resource management*: CPU / memory / ephemeral storage
 
-image:voxxed_10.jpg[]
+image:monday_10.jpg[]
 
 For Kubernetes and its pods, you can't have at the same time VPA (Vertical Pod Autoscaler) and HPA (Horizontal Pod Autoscaler)
 
@@ -187,7 +187,7 @@ What is a Microservice?
 * single team
 
 .Amazon microservices map
-image:voxxed_11.jpg[]
+image:monday_11.jpg[]
 
 -> main point is Amazon main page
 
@@ -197,7 +197,7 @@ Sebastien's advise for microservices (a classic one): _Think big, BUT start *rea
 That was the case for Amazon S3: it starts with only 8 microservices, and now has more than 200.
 
 .Communication styles: synchronous or asynchronous
-image:voxxed_12.jpg[]
+image:monday_12.jpg[]
 
 -> We are moving more and more towards *asynchronous communication*
 
@@ -214,7 +214,7 @@ _"Let's risk a peak of the future"_:
 
 As a conclusion:
 
-image:voxxed_13.jpg[]
+image:monday_13.jpg[]
 
 -> on pourrait résumer ça en : "Développer du code métier, PAS de la plomberie (c'est le boulot d'autres personnes !)"
 
@@ -242,10 +242,10 @@ The presentation will include tips and feedback from real life examples.
 ==== Notes
 
 .Why use containers?
-image:voxxed_14.jpg[]
+image:monday_14.jpg[]
 
 .And now why Kubernetes?
-image:voxxed_15.jpg[]
+image:monday_15.jpg[]
 
 Google has used containers (internally) since *2004*.
 
@@ -254,43 +254,43 @@ Google has used containers (internally) since *2004*.
 *Pod*: group of containers deployed together
 
 .Kubernetes resource: *pod*
-image:voxxed_16.jpg[]
+image:monday_16.jpg[]
 
 .Kubernetes resource: *deployment*
-image:voxxed_17.jpg[]
+image:monday_17.jpg[]
 
 .Kubernetes resource: *service*
-image:voxxed_18.jpg[]
+image:monday_18.jpg[]
 
 .Kubernetes resource: *Ingress*
-image:voxxed_19.jpg[]
+image:monday_19.jpg[]
 
 * *Ingress*: Collection of rules *allowing external connections* to reach services on the cluster
 
 .Kubernetes resource: *Secret and ConfigMap*
-image:voxxed_20.jpg[]
+image:monday_20.jpg[]
 
 .La démo d'Alain
-image:voxxed_21.jpg[] +
-image:voxxed_22.jpg[]
+image:monday_21.jpg[] +
+image:monday_22.jpg[]
 
 * Front service with a replica factor of 3.
 
 .Command line to create the Kubernetes cluster
-image:voxxed_23.jpg[]
+image:monday_23.jpg[]
 
 Alain advise: _"Don't put your password in your images, attach them instead..."_
 
 .Conclusion
-image:voxxed_24.jpg[]
+image:monday_24.jpg[]
 
 .Service Mesh and Istio
-image:voxxed_25.jpg[]
+image:monday_25.jpg[]
 
 * *Istio*: with too many microservices, it's difficult to know which microservice is talking to which microservice. Istio, as a *service mesh*, makes it easier to understand what is happening and control what is happening.
 
 .Resources from Alain
-image:voxxed_26.jpg[]
+image:monday_26.jpg[]
 
 === Jakarta EE - Not just for Servers (JAX-RS comes to FaaS)
 
@@ -309,25 +309,25 @@ In this session, you’ll learn how it’s now possible to create FaaS- and serv
 ==== Notes
 
 .Classic app
-image:voxxed_27.jpg[]
+image:monday_27.jpg[]
 
 .with Kubernetes
-image:voxxed_28.jpg[]
+image:monday_28.jpg[]
 
 .with CloudFoundry
-image:voxxed_29.jpg[]
+image:monday_29.jpg[]
 
 -> With *FaaS*, the only stack you need is a *lone JavaEE application*.
 
 IMPORTANT: *FaaS* is for functions AND serverless.
 
 .nearly 60% usage of AWS lambda is Node
-image:voxxed_30.jpg[]
+image:monday_30.jpg[]
 
 With express (NodeJS front main tech): Startup, handles a request and get the result to the user -> 0,532 sec
 
 .framework statup times
-image:voxxed_31.jpg[]
+image:monday_31.jpg[]
 
 -> Les applications Spring Boot classiques sont beaucoup plus lentes à démarrer que celles basées sur Express. +
 PAR CONTRE, quand on commence à utiliser des frameworks comme *Quarkus*, on arrive à des temps de démarrage équivalents, voire plus rapides !
@@ -338,17 +338,17 @@ Donc, functions and Knative ?
 
 With Apache OpenWhisk :
 
-image::voxxed_32.jpg[]
+image::monday_32.jpg[]
 
 -> On voit qu'on prend un `JsonObject` en param, et qu'on renvoie un objet similaire en retour.
 
 Appsody stacks (se renseigner !)
 
-image:voxxed_33.jpg[]
+image:monday_33.jpg[]
 
 Et quand on utilise Appsody pour du FaaS, cela devient :
 
-image:voxxed_34.jpg[]
+image:monday_34.jpg[]
 
 https://appsody.dev/[Appsody] (https://github.com/appsody[GitHub]) : _Appsody enables you to quickly build and deploy cloud-native applications._
 
@@ -357,7 +357,7 @@ Chris nous fait une déma basée sur Appsody, à l'aide de Visual Studio Code, e
 Nobody is doing FaaS with Java today, this mainly because of startup time. +
 To correct this: *Quarkus* / *Knative* / *Appsody*
 
-image::voxxed_35.jpg[]
+image::monday_35.jpg[]
 
 === 7 Reasons why your microservices should use Event Sourcing & CQRS
 
@@ -382,29 +382,29 @@ The primary goal of this talk is to flip your view from limited to no use of ES 
 ==== Notes
 
 .break the read versus write performance bottleneck
-image:voxxed_36.jpg[]
-image:voxxed_37.jpg[]
+image:monday_36.jpg[]
+image:monday_37.jpg[]
 
 -> at *the end*, we get *eventually consistent*.
 
 .semantics of delivery
-image:voxxed_38.jpg[]
+image:monday_38.jpg[]
 
 * *at-most-once* meaning maybe-once
 * *at-least-once* meaning once-or-more
 * *exactly-once* meaning essentially-once
 
 .at-least-once push
-image:voxxed_39.jpg[]
+image:monday_39.jpg[]
 
 .at-most-once push
-image:voxxed_40.jpg[]
+image:monday_40.jpg[]
 
 .at-least-once pull
-image:voxxed_41.jpg[]
+image:monday_41.jpg[]
 
 .To recap
-image:voxxed_42.jpg[]
+image:monday_42.jpg[]
 
 === Supercharge product development with cloud best practices
 
@@ -424,18 +424,18 @@ In this session, we will discuss methods for automating the deployment of server
 Subtitle for the talk: CI/CD for Modern Applications
 
 .Infrastructure as code goals
-image:voxxed_43.jpg[]
+image:monday_43.jpg[]
 
 .Continuous integration goals, use of AWS CodeBuild
-image:voxxed_44.jpg[]
+image:monday_44.jpg[]
 
 .Continuous deployment, use of AWS CodeDeploy
-image:voxxed_45.jpg[]
+image:monday_45.jpg[]
 
 Going to production must be a *non event*
 
 .Recap
-image:voxxed_46.jpg[]
+image:monday_46.jpg[]
 
 -> Do not forget to collect both *technical* AND *business logs*!
 
@@ -464,11 +464,11 @@ The talk will finish off by discussing more advanced topics including Single Mes
 
 ==== Notes
 
-image:voxxed_47.jpg[]
+image:monday_47.jpg[]
 
 In the demo from Robin, *Kafka Connect* *pulls the data from the source*, and *pushes it to the sink*.
 
-image:voxxed_48.jpg[]
+image:monday_48.jpg[]
 
 [IMPORTANT]
 ====
@@ -476,10 +476,10 @@ schema MATTERS! +
 If you "just" use JSON, you need to enforce the schema somewhere else (meaning using Confluence Schema Registry)
 ====
 
-image:voxxed_49.jpg[]
+image:monday_49.jpg[]
 
 .*Workers* are JVM process
-image:voxxed_50.jpg[]
+image:monday_50.jpg[]
 
 The best choice is nearly always to go for *distributed* deployment, and *NOT* standalone one :
 
@@ -488,11 +488,11 @@ The best choice is nearly always to go for *distributed* deployment, and *NOT* s
 
 Distributed deployment also starts with 1 JVM, but has the possibility to scale to others.
 
-image:voxxed_51.jpg[]
+image:monday_51.jpg[]
 
 A classic error, when expected Avro message is NOT actually Avro:
 
-image::voxxed_52.jpg[]
+image::monday_52.jpg[]
 
 Tout un système de monitoring de Kafka Connect est mis à disposition par Confluent.
 
@@ -525,30 +525,30 @@ This talk will show how to fully utilize Kubernetes as a platform for a Java mic
 The goal of JHipster is NOT to generate a "Hello world" application, but a full one implementing all best practises.
 
 .What does JHipster?
-image:voxxed_53.jpg[]
+image:monday_53.jpg[]
 
 .What does Kubernetes?
-image:voxxed_54.jpg[]
+image:monday_54.jpg[]
 
 Internally, everything in Kubernetes works thanks to Controllers.
 
 .How does Kubernetes work?
-image:voxxed_55.jpg[]
+image:monday_55.jpg[]
 
 Kubernetes: an *extensible* platform
 
 * *Operator*: Software extensions to Kubernetes based on custom Kubernetes resources
 * *Servise mesh*: a set of infrastructure services that imlement microservices patterns : +
-image:voxxed_56.jpg[]
+image:monday_56.jpg[]
 
 .JHipster supports 2 microservices platforms
-image:voxxed_57.jpg[]
+image:monday_57.jpg[]
 
 * *Spring CLoud*: Java only
 * *Istio*: Polyglot
 
 .Istio sidecar proxy mechanism
-image:voxxed_58.jpg[]
+image:monday_58.jpg[]
 
 .Database in Kubernetes
 NOTE: Pierre reminder: It is NOT recommended to run a database in Kubernetes all by yourself (tricky)
@@ -589,15 +589,15 @@ This session will explain you the challenges and concepts of the MP LRA framewor
 ==== Notes
 
 .To be ACID or not?
-image:voxxed_59.jpg[]
+image:monday_59.jpg[]
 
 -> Most companies choose to *give up consistency* (and to have eventually consistency)
 
 .MicroService world
-image:voxxed_60.jpg[]
+image:monday_60.jpg[]
 
 .Saga pattern
-image:voxxed_61.jpg[width=600]
+image:monday_61.jpg[width=600]
 
 -> *Saga pattern*: ensures that each step of the business process has a *compensating action* to undo the work completerd in the case of partial failures.
 
@@ -611,7 +611,7 @@ MicroProfile Long Running action:
 	** compensable actions
 
 .LRA Components
-image:voxxed_62.jpg[]
+image:monday_62.jpg[]
 
 *Resources*:
 * Slides can be found there: https://www.slideshare.net/rdebusscher/transactions-in-microservices
@@ -648,23 +648,23 @@ Lastly, I will look forward how can we be pragmatic about microservices, avoidin
 Allard est un bon orateur, avec de l'humour 😄 +
 Pour preuve son exemple de l'architecture BBC (Box -> Box -> Cylinder), qui vire par moment au Big Ball of Mud (le bousier sur son oeuvre comparé à l'architecte défendant sa "création")
 
-image:voxxed_63.jpg[]
+image:monday_63.jpg[]
 
 .Tellement vrai !
-image:voxxed_64.jpg[]
+image:monday_64.jpg[]
 
 .Location transparency
-image:voxxed_65.jpg[]
+image:monday_65.jpg[]
 
 .Event hell ???
-image:voxxed_66.jpg[]
+image:monday_66.jpg[]
 
 IMPORTANT: *NOT everything is an event!*
 
 -> Other things exist: *commands* and *queries*
 
 .Command AND events AND queries
-image:voxxed_67.jpg[]
+image:monday_67.jpg[]
 
 IMPORTANT: An event is a message, but not every message is an event
 
@@ -673,7 +673,7 @@ IMPORTANT: An event is a message, but not every message is an event
 * Every that happened is represented by an Event
 
 .Why use event sourcing?
-image:voxxed_68.jpg[]
+image:monday_68.jpg[]
 
 The challenges for Event Sourcing, yesterday and today:
 
@@ -681,7 +681,7 @@ The challenges for Event Sourcing, yesterday and today:
 * Complex ...
 
 .CQRS
-image:voxxed_69.jpg[]
+image:monday_69.jpg[]
 
 Be careful with communication, because *communication is a contract*. +
 A contract but you don't with whom you are married...
@@ -708,9 +708,271 @@ Je n'ai pas assisté au talk 😜
 
 === Deploying Spring Boot microservices on Azure
 
+Presentedy by *Julien Dubois* - *Microsoft*.
+
+Julien is an Azure developer advocate at Microsoft, specialized on Java and Spring. +
+Julien is also the lead developer of JHipster and a Java Champion.
+
 ==== Abstract
 
+Did you know Microsoft has a whole engineering team dedicated to Spring Boot, and that for the last 3 years they have ensured that Spring Boot applications work great on Azure? +
+We'll see how Java's &#35;1 framework works on one of the world's top cloud provider, including many tips and news on our latest releases.
+
 ==== Notes
+
+* Spring Boot is designed to get you up and running as quickly as possible, with minimal upfront configuration
+* Spring Cloud
+
+.Common microservices challenges (ce que j'appelle le "capability model")
+image:tuesday_01.jpg[]
+
+.Azure Spring Cloud architecture
+image:tuesday_02.jpg[]
+image:tuesday_03.jpg[]
+
+* Azure Spring Cloud is a joint service between Pivotal and Microsoft.
+* Behind the scene there is obviously Kubernetes.
+
+.Life cycle management
+image:tuesday_04.jpg[]
+
+.Monitoring your apps
+image:tuesday_05.jpg[]
+
+[IMPORTANT]
+====
+Un workshop complet est disponible sur GitHub : https://github.com/microsoft/azure-spring-cloud-training
+
+Le workshop complet sera joué chez Microsoft jeudi et vendredi.
+====
+
+image:tuesday_06.jpg[]
+
+In Azure, you've autoscalability for most of services, transparently handled by the platform.
+
+Julien demo URL : https://spring-training.azureedge.net/
+
+-> problèmes techniques rencontrés durant la démo...
+
+=== The Evolution From Monolith to Microservices to Serverless and Beyond
+
+Presented by *Hugh McKee* - *Lightbend*.
+
+==== Abstract
+
+If you are a developer or an architect, the odds are that you grew up building systems that are now commonly known as monoliths. +
+In the last few years, we've seen a significant evolutionary shift to systems composed of microservices. +
+Today we are witnessing the birth of serverless.
+
+The rate of evolutionary change is accelerating. But what is changing and what remains the same?
+
+In this talk, we will look at the evolution from the monolith to serverless seeking to extract the variables and the constants. +
+We will also look at the progression from serverless to an inevitable future of frictionless computing.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== How I Learned to Stop Worrying and Love the Monolith
+
+Presented by *Ania Wyrwinska* - *OLX Group*.
+
+Java/PHP/Javascript Developer for more than 13 years, furiously splitting monoliths every day
+
+==== Abstract
+
+Nowadays most of the developers sooner or later would run into a fun but scary challenge: there is an ancient monolith that needs to be split into microservices, otherwise it would reach the critical mass and explode.
+
+It seems that everything was already said and done about it, so why we keep talking about it? +
+The journey is long and the road is bumpy.
+
+Is there a light at the end of the tunnel for the ones that started losing hope? Come to my talk if you want to learn how we approached this situation at OLX Group, one of the biggest online classifieds platforms in the world. +
+I will talk about different architectural strategies that we have tried and how did they work for us.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Pact tests: how we split up the monolithic deploy
+
+Presented by *Phil Hardwick* - *Mettle*.
+
+I'm a software developer at Mettle, a challenger business bank backed by Natwest, where I focus on customer onboarding and keeping us on the right side of the regulators! +
+I'm a java developer with over 7 years experience. I've been involved with a large variety of projects, from public to private clients, with different teams and different ideas of what microservices are. +
+I have a passion for quality and excelling at meeting non-functional requirements.
+
+==== Abstract
+
+At Mettle, we built our application as microservices from the start yet still fell into the trap of a monolithic deploy.
+
+We built the services independently but then deployed all the changes once a week. +
+The key problem was: how do we know that when we deploy this one service it won't break everything? +
+To fix this, we used consumer driven contract testing (using Pact) to make our services independently deployable and move towards flexible continuous delivery. +
+Now all changes are deployed straight to production with confidence.
+
+I'm going to share our learnings so you can get the most out of Pact and avoid the pitfalls we found along the way. +
+We will also spend time exploring the benefits of contract testing and how to implement it in your services and CI process. +
+You should come away with a head start in understanding contracts and how it could give you confidence to deliver more frequently.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== An introduction to Apache Kafka - this is Event Streaming, not just Messaging
+
+Presented by *Katherine Stanley* - *IBM*.
+
+Katherine Stanley is a Software Engineer in the IBM Event Streams team based in the UK. +
+Through her work on IBM Event Streams she has gained experience running Apache Kafka on Kubernetes and running enterprise Kafka applications.
+
+In her previous role she specialised in cloud native Java applications and microservices architectures. +
+Katherine has co-authored an IBM Redbook on Java microservices and has contributed to the open source microservice project Game On. +
+She enjoys sharing her experiences and has presented at conferences around the world, including the Kafka Summits in New York and London, JavaLand in Germany and JFokus in Sweden.
+
+==== Abstract
+
+The amount of data the world produces is growing exponentially every year and many companies are realising the potential of harnessing this data.
+
+A lot of this is generated in the form of a never ending stream of events, with publishers creating the events and subscribers consuming them in many different ways. +
+This is where Apache Kafka comes in, Kafka isn't just a messaging system - it's an event streaming platform.
+
+This session will introduce Kafka and explain concepts such as topic partitioning, consumer groups and exactly-once semantics. +
+Finally, learn about more advanced concepts such as stream processing using the Java Kafka Streams library, cross-datacenter replication and integration with other messaging systems.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Building a platform to integrate serverless and on-premise services
+
+Presented by *Marcos Almeida* - *INVIVOO Software*.
+
+Marcos ALMEIDA is a senior Software Engineer at INVIVOO Software where he develops its light microservices orchestration engine Koordinator. +
+He is also a senior consultant in INVIVOO's Front End expertise.
+
+After a PhD where he worked on software and business processes support tools, he worked as a researcher engineer in international industrial research projects on cloud and big data applications.
+
+==== Abstract
+
+Hybrid cloud services tend to move towards silos because of heterogeneous architectures (REST APIs, pub / sub message queues, functions, grids, ...). +
+The integration of these different worlds often involves rewriting code to overcome communication issues between services.
+
+XComponent Scenario is a platform designed for the hybrid cloud to solve this problem. +
+It provides a service catalogue and a set of standard connectors integrating serverless functions, REST APIs and other on-premise services in the same workflow.
+
+Let’s see how to handle all your services (AWS, Azure, on-premise, …) and capitalize on your Information System in one place without effort.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Looking back on migrating 30 microservices to a monorepository
+
+Presented by *Darya Talanina* - *Theodo*.
+
+Lead developer at Theodo, Darya loves creating products that improve the everyday life of people. +
+In her free time, she likes hiking and exploring France.
+
+==== Abstract
+
+Five years ago, my company decided to switch to microservices. +
+In five year, we grew our architecture to 30 microservices, organised in several repositories. +
+The growing number of microservices (and, thus, repositories) had a negative impact on our developer experience and productivity, including:
+
+* struggle to perform evolutions across several microservices (like updating dependencies versions)
+* time-consuming pull requests in several repositories for a single feature
+* difficulty to share best practices between teams
+* bugs in production due to partially merged code
+
+To solve this issues, we decided to migrate all 30 microservices to a monorepo. +
+Over the course of several weeks, we had a team dedicated to performing the migration. We migrated all the microservices while:
+
+* preserving git history of every single microservice
+* keeping the Continuous Integration flow fast
+* adding tools to further improve developer experience and productivity
+* and introducing zero bugs in production!
+
+This talk will give you the plan to painlessly migrate your microservices to a monorepo as well as solutions to address the major pitfalls of such a migration.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== riffing on Kubernetes
+
+Presented by *Florent Biville* - *Pivotal*.
+
+Software developer at Pivotal, working on https://projectriff.io/. +
+Spring Meetup Paris, Paris Hackergarten meetup organizer. hack.commit.push conference organizer.
+
+==== Abstract
+
+Kubernetes is a generic, extensible platform of platforms. +
+It has gained significant momentum: we are all talking about it, and some of us are even using it.
+
+However, the journey from vanilla Kubernetes to a production-ready environment may be long and perilous with so many competing choices in a growing ecosystem. Does it have to be that way? Not at all! +
+riff (https://projectriff.io/), combined with Knative, brings useful abstractions and a unified improved(1) user experience to the table:
+
+* Simplified installation process based on the recent Cloud Native Application Bundle standard * 0-N pod autoscaling (notice how scale-to-zero rhymes with pay-as-you-go?)
+* Polyglot function support with Buildpacks v3, building from source
+* Emergent stateful streaming support
+
+If you want to learn more about the next-gen open source serverless platform and have (work)loads of fun(ctions), join me!
+
+(1) This talk does not feature a gazillion lines of YAML, and no eyes were hurt in the making of this talk.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Responsible Microservices
+
+Presented by *Nate Schutta* - *Pivotal*.
+
+Nathaniel T. Schutta is a software architect focused on cloud computing and building usable applications. +
+A proponent of polyglot programming, Nate has written multiple books and appeared in various videos. +
+Nate is a seasoned speaker regularly presenting at conferences worldwide, No Fluff Just Stuff symposia, meetups, universities, and user groups.
+
+In addition to his day job, Nate is an adjunct professor at the University of Minnesota where he teaches students to embrace dynamic languages. +
+Driven to rid the world of bad presentations, Nate coauthored the book Presentation Patterns with Neal Ford and Matthew McCullough. +
+Nate recently published Thinking Architecturally available as a free download from Pivotal.
+
+==== Abstract
+
+These days, you can’t swing a dry erase marker without hitting someone talking about microservices. +
+Developers are studying Eric Evan’s prescient book Domain Driven Design. +
+Teams are refactoring monolithic apps, looking for bounded contexts and defining a ubiquitous language.
+
+And while there have been countless articles, videos, and talks to help you convert to microservices, few have spent any appreciable time asking if a given application should be a microservice.
+
+In this talk, I will show you a set of factors you can apply to help you decide if something deserves to be a microservice or not. +
+We’ll also look at what we need to do to maintain a healthy micro(services)biome.
+
+==== Notes
+
+TO BE COMPLETED
+
+=== Reacting to the future of application architecture
+
+Presented by *Grace Jansen* - *IBM*.
+
+Grace is a developer advocate at IBM, working with Open Liberty and Reactive Platform. +
+She has now been with IBM for a year, after graduating from Exeter University with a Degree in Biology.
+
+Moving to software engineering has been a challenging step for Grace, but she enjoys bringing a varied perspective to her projects and using her knowledge of biological systems to simplify complex software patterns and architectures. +
+As a developer advocate, Grace builds POC’s, demos and sample applications, and writes guides and tutorials to help guide users through technologies and products. +
+Grace also has a keen passion for encouraging more women into STEM and especially Technology careers.
+
+==== Abstract
+
+Ever wondered how honeybees have come to be some of the world's most efficient architects? +
+Learn how we can all use mother nature's expertise to better architect our software solutions to be more reactive, responsive and resilient through reactive architecture frameworks.
+
+I will be explaining the principles of reactive systems (including the key points behind the reactive manifesto) and using bee hives and the social behavior of bees to help visualize and understand the benefits of these principles.
+
+==== Notes
+
+TO BE COMPLETED
 
 == Buzz words, tools, notes, etc.
 
@@ -721,7 +983,14 @@ Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels
 * *Visual Studio Code* est de plus en plus utilisé, même pour des applications Java. +
 Quasiment tous les conférenciers étaient dessus !
 * *Quarkus* la montée en puissance
+* *Serverless* de plus en plus
 
+IBM était très représenté parmi les speakers.
 
+Les conférences que j'aurais également souhaité voir :
 
+* _Transforming a monolith to an API platform_ : Philippe Anes et Abderrazak Bouadma - Kyriba
+* _Building a Customer Facing Analytics Platform_ : Laura Kirby - IBM
+* _Speedy build for your java application images with JIB!_ : Mohammed Aboullaite - xHUB
+* _Complex event flows in distributed systems_ : Bernd Rücker - Camunda
 
