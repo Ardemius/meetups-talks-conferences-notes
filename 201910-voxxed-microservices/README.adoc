@@ -771,7 +771,41 @@ We will also look at the progression from serverless to an inevitable future of 
 
 ==== Notes
 
-TO BE COMPLETED
+.Even with Kubernetes, we don't use all available resources
+image:tuesday_07.jpg[]
+
+Even if better than monolith, we are only moving the problem a bit further. +
+Whereas for *FaaS* (serverless), this time, *the design is made to only use what is required*.
+
+.FaaS / serverless
+image:tuesday_08.jpg[]
+
+Breaking the monolith is OK, but breaking the related database is a much harder challenge. +
+You need to loosely couple your microservices so as to be able to break the database.
+
+image:tuesday_09.jpg[]
+
+Pour éviter le couple direct d'un microservice avec plusieurs autres, on passe par un message bus (et donc une communication asynchrone) :
+
+image::tuesday_10.jpg[]
+
+D'après Hugh, on commence les microservices avec de la communication synchrone, et lorsqu'on se rend compte de ses limites, on passe à de l'asynchrone. +
+-> Et après cela on passe au serverless.
+
+.request / response serverless function
+image:tuesday_11.jpg[]
+
+.request / response and publish / subscribe functions linked by a message bus
+image:tuesday_12.jpg[]
+
+Which could lead to the following chain flow using publish / subscribe:
+
+image:tuesday_13.jpg[]
+
+We are now moving towards some new serverless features, like *stateful functions* but with a cost.
+
+.Resources
+image:tuesday_14.jpg[]
 
 === How I Learned to Stop Worrying and Love the Monolith
 
