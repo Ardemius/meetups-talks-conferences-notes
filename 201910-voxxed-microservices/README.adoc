@@ -1222,6 +1222,8 @@ La fleur étant ici la ressource dont il faut protéger l'usage
 .Exemples de frameworks réactifs
 image:tuesday_53.jpg[]
 
+TIP: Grace conseille le cours sur la *programmation réactive par Lightbend sur Cousera*
+
 Avis : je ne suis pas totalement d'accord avec l'analyse de Grace, que j'avais trouvée trop "bunch of tools and features oriented" ("il faut avoir ça ça ça et ça...", mais il y avait de bonnes choses dans sa présentation basée sur les abeilles 😉
 
 == Buzz words, tools, notes, etc.
