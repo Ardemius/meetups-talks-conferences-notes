@@ -1,4 +1,4 @@
-= Workshop - Deploy Microservices on Kubernetes and Istio
+= Workshop - Building Supersonic, Subatomic, Cloud Native Applications with Quarkus and GraalVM
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -28,447 +28,231 @@ endif::[]
 
 toc::[]
 
-Workshop du Voxxed Days Microservices, le mercredi 31/10/2018
+Workshop du Voxxed Days Microservices, le mercredi 23/10/2019
 
 == Description
 
-The workshop will be done on *GKE* (https://cloud.google.com/kubernetes-engine/[Google Kubernetes Engine])
+Presented by Emmanuel Bernard, Antonio Goncalves, Clément Escoffier
 
-*To register for the Sfeir demos*: https://goo.gl/forms/cY9HxHvsjLouF9LG3 +
--> This will allow you to benefit from SFEIR's subscription to GKE. +
-This other option is to register to GKE 1 year trial period (or free 300$ of use)
+Cloud native applications in Java are great, but... Despite a fantastic ecosystem around Java, it falls short in containers, in comparison to Go or Node.js. +
+The initial memory consumption, the startup time, and the optimizations for long-running processes are killer criteria in the cloud.
 
-The *GitHub repo* of the demos is: https://github.com/Sfeir/kubernetes-istio-workshop +
+Quarkus is a Kubernetes native Java stack tailored for GraalVM and OpenJDK. +
+With Quarkus you can compile your application into a native executable, reduce the startup time to a few milliseconds, reduce the memory consumption to a few MB, and make applications ideally suited to run in containers. This workshop explores why it matters and how you can leverage Quarkus and GraalVM to build supersonic, subatomic, cloud-native applications.
 
-For the *explanations and instructions*, go the associated GitHub Pages: https://sfeir.github.io/kubernetes-istio-workshop/kubernetes-istio-workshop/1.0.0/index.html
+In this workshop, you will learn how to:
 
-NOTE: My following notes are to be read in parallel with this statement
+* build Web applications with Quarkus
+* use Hibernate and Hibernate with Panache
+* build event-driven microservices with Apache Kafka
+* monitor your applications All the applications built in this workshop are run on top of the JVM but also compiled as native executables.
 
 === Setup environment
 
-Let's go! Informations from the *Google Cloud Platform Console*:
+Instructions for the setup and the whole workshop are here: https://quarkus.io/quarkus-workshops/super-heros/
 
-----
-Informations sur le projet
+.GraalVM Updater not present on Windows and `native-image` already installed
+[IMPORTANT]
+====
+The GraalVM Updater tool is NOT available on Windows! +
+Check https://github.com/oracle/graal/issues/1512
 
-Nom du projet
-Workshop istio ardemius
+-> `native-image` is *already* installed with Windows distribution.
+====
 
-ID du projet
-workshop-istio-ardemius
-
-Numéro du projet
-856831673950
-----
-
-image::workshop_01.jpg[]
-
-NOTE: I do also add my favorite https://github.com/Ardemius/personal-wiki/wiki/git-tips#useful-git-aliases[`git log` aliases]
-
--> Setup finished for GCP et Cloud Shell, and I'm ready to start "Part1: Kubernetes"
-
-image::workshop_02.jpg[]
-
-=== Part 1: Kubernetes
-
-WARNING: Main folder for the doc is `~/kubernetes-istio-workshop`. +
-You will NOT be in that folder after opening a new Cloud Shell!
-
-TIP: Add `source <(kubectl completion bash)` at the end of your `.bashrc` to benefit from *kubectl completion* in all Cloud Shell.
-
-==== Create cluster
-
-===== Create Kubernetes cluster on GKE
-
-image:workshop_03.jpg[]
-image:workshop_04.jpg[]
-
-===== Configure Kubernetes command-line client
-
-image:workshop_05.jpg[]
-image:workshop_06.jpg[]
-image:workshop_07.jpg[]
-
-==== Creating and managing pods
-
-===== Tutorial: Creating Pods
-===== Exercise: View Pod details
-
-image:workshop_08.jpg[]
-image:workshop_09.jpg[]
-image:workshop_10.jpg[]
-
-*Quiz*
-
-* _What is the IP address of the monolith Pod?_
-	** `IP:           10.24.0.7`
-* _What node is the monolith Pod running on?_
-	** `Node:         gke-kube-cluster-default-pool-a6f79a8f-snmf/10.132.0.3`
-* _What containers are running in the monolith Pod?_
-	** only "monolith" container:
-+
-----
-Containers:
-  monolith:
-    Container ID:  docker://df71f70933285c5549f7f209a5780022c1ca6dc4a8cb9932d244b1d6cbc2905c
-    Image:         kelseyhightower/monolith:1.0.0
-    Image ID:      docker-pullable://kelseyhightower/monolith@sha256:72c3f41b6b01c21d9fdd2f45a89c6e5d59b8299b52d7dd0c9491745e73db3a35
-
-[...]
-----
-+
-* _What are the labels attached to the monolith Pod?_
-	** `Labels:       app=monolith`
-* _What arguments are set on the monolith container?_
-+
-----
-Args:
-      -http=0.0.0.0:80
-      -health=0.0.0.0:81
-      -secret=secret
-----
-
-===== Exercise: Interact with a Pod remotely
-
-image:workshop_11.jpg[]
-image:workshop_12.jpg[]
-
-===== Exercise: View the logs of a Pod
-
-on se met en écoute avec l'option `-f` sur le pod, et on spamme sur une autre console quelques `curl` sur le pod au travers du port que nous avons forwardé avant :
-
-image:workshop_15.jpg[]
-image:workshop_16.jpg[]
-
-===== Exercise: Run an interactive shell inside a Pod
-
-image:workshop_13.jpg[]
-image:workshop_14.jpg[]
-
-==== Monitoring and Health Checks
-
-Kubernetes supports monitoring applications in the form of readiness and liveness probes. +
-Health checks can be performed on each container in a Pod. 
-
-* *Readiness* probes indicate when a Pod is *"ready" to serve traffic*.
-	** If a readiness check fails the container will be marked as not ready and will be removed from any load balancers.
-* *Liveness* probes indicate a *container is "alive"*. 
-	** If a liveness probe fails multiple times the container will be restarted. Liveness probes that continue to fail will cause a Pod to enter a crash loop.
-
-*Tutorial: Creating Pods with Liveness and Readiness Probes*
-
-image:workshop_17.jpg[]
-
-*Exercise: View Pod details*
-
-image:workshop_18.jpg[]
-
-*Quiz*
-
-* How is the readiness of the healthy-monolith Pod determined?
-	** *readiness* check in the following logs
-* How is the liveness of the healthy-monolith Pod determined?
-	** *healthz* check in the following logs
-* How often is the readiness probe checked?
-	** in _healthy-monolith.yaml_: `readinessProbe` section: `timeoutSeconds: 1` -> mais semble être 10 sec dans les logs ?! +
-	-> Parce que c'est le param  `periodSeconds` qui devrait être utilisé, et comme ce n'est pas le cas dans le yaml, c'est qu'il est utilisé implicitement, avec sa valeur par défaut, qui doit donc être 10 CQFD 😉
-* How often is the liveness probe checked?
-	** in _healthy-monolith.yaml_: `livenessProbe` section: `periodSeconds: 15`
-
-NOTE: The healthy-monolith Pod logs each health check. Use the kubectl logs command to view them.
-
-image:workshop_19.jpg[]
-
-*Tutorial: Experiment with Readiness Probes*
-
-image:workshop_20.jpg[]
-image:workshop_21.jpg[]
-
-And now forcing the monolith container readiness probe to pass again:
-
-image:workshop_22.jpg[]
-
-*Exercise: Experiment with Liveness Probes*
-
-image:workshop_23.jpg[]
-
-*Quiz*
-
-* What happened when the liveness probe failed?
-	** A *restart* is launched to get back to the initial state (what is shown is the previous `RESTART` column)
-* What events where created when the liveness probe failed?
-	** Given by `kubectl describe pods healthy-monolith`: 
-+
-----
-Warning  Unhealthy              1m (x2 over 1m)     kubelet, gke-kube-cluster-default-pool-a6f79a8f-snmf  Liveness probe failed: HTTP probe failed with statuscode: 503
-----
-
+.Checking Ports
 [NOTE]
 ====
-* *Readiness* : notion métier, la tâche ne peut pas rendre le service attendu car un service tiers (par exemple) ne répond pas (comme la BDD toujours par exemple)
+Plutôt que `lsof -i`, il faut utiliser `netstat -b` sur Windows +
+L'outil `resmon` (Resources monitoring) permet également d'y accéder.
 
-* *liveness* : cette fois, c'est le pod lui-même qui a un problème (ou un souci de config), ce qui va entraîner son *redémarrage*
+Voici comment trouver le process utilisant un port avec `netstat` :
+
+----
+# Find the pid of the process running in the port number (e.g., 8080)
+netstat -ano | findStr "8080"
+
+# Find the process name by pid
+tasklist /fi "pid eq 2216"
+----
+
+Voir https://stackoverflow.com/a/48414545/1809195
 ====
 
-==== Managing Application Configurations and Secrets
 
-*Tutorial: Creating Secrets*
+== Notes
 
-image:workshop_24.jpg[]
-image:workshop_25.jpg[]
+image:quarkus_01.jpg[]
+image:quarkus_02.jpg[]
+image:quarkus_03.jpg[]
+image:quarkus_04.jpg[]
 
-*Quiz*
+Quarkus is a framework to run other frameworks, but *AT BUILD TIME*.
 
-* How many items are stored under the tls-certs secret?
-	** `cert.pem:    1545 bytes`
-	** `key.pem:     1704 bytes`
-	** `ca-key.pem:  2484 bytes`
-	** `ca.pem:      1712 bytes`
-* What are key the names?
+image:quarkus_05.jpg[]
+image:quarkus_06.jpg[]
 
-*Tutorial: Creating Configmaps*
+=== Extensions
 
-image:workshop_27.jpg[]
+image:quarkus_07.jpg[]
 
-*Quiz*
+== Workshop
 
-* How many items are stored under the nginx-proxy-conf configmap?
-* What are the key names?
+Pour toutes les issues créées durant le workshop, voir le projet GitHub de Quarkus : https://github.com/quarkusio/quarkus/issues
 
-*Tutorial: Use Configmaps and Secrets*
+=== Hero Microservice
 
-image:workshop_26.jpg[]
+Après les commandes :
 
-*Quiz*
+----
+# If not already created, create the structure:
+mkdir -p quarkus-workshop-super-heroes/super-heroes/rest-hero
 
-* How are secrets exposed to the secure-monolith Pod?
-* How are configmaps exposed to the secure-monolith Pod?
+cd quarkus-workshop-super-heroes/super-heroes/rest-hero
+mvn io.quarkus:quarkus-maven-plugin:0.25.0:create \
+    -DprojectGroupId=io.quarkus.workshop.super-heroes \
+    -DprojectArtifactId=rest-hero \
+    -DclassName="io.quarkus.workshop.superheroes.hero.HeroResource" \
+    -Dpath="/api/heroes"
+----
 
-image:workshop_28.jpg[]
+La commande `mvn install` ne marchait pas sur ma machine, une machine d'entreprise, parce que le port 8081 était déjà utilisé !
 
-==== Creating and Managing Services
+----
+[ERROR] Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 2.642 s <<< FAILURE! - in io.quarkus.workshop.superheroes.hero.HeroResourceTest
+[ERROR] testHelloEndpoint  Time elapsed: 0.001 s  <<< ERROR!
+org.junit.jupiter.api.extension.TestInstantiationException: TestInstanceFactory [io.quarkus.test.junit.QuarkusTestExtension] failed to instantiate test class [io.quarkus.workshop.superheroes.hero.HeroResourceTest]: Failed to start quarkus
+Caused by: java.lang.RuntimeException: Failed to start quarkus
+Caused by: java.lang.RuntimeException: Unable to start HTTP server
+Caused by: java.util.concurrent.ExecutionException: java.net.BindException: Address already in use: bind
+Caused by: java.net.BindException: Address already in use: bind
+----
 
-*Tutorial: Create a Service*
+Effectivement, en utilisant l'utilitaire Windows `resmon`, j'ai pu voir qu'il était déjà utilisé par l'antivirus. +
+Pour corriger le problème, il a fallu changer le port utilisé par Quarkus pour ses tests (8081 par défaut). +
+Pour ce faire, il faut éditer le fichier `application.properties` :
 
-image:workshop_29.jpg[]
+.application.properties
+----
+# Configuration file
+# key = value
 
-* *Exercise: Interact with the Monolith Service Remotely*
-* *Exercise: Explore the monolith Service*
+# port for Quarkus tests (8081 by default)
+quarkus.http.test-port=8090
+----
 
-image:workshop_30.jpg[]
+==== Running the application
 
-* *Exercise: Interact with the Monolith Service Remotely*
-* *Tutorial: Remove Labels from Pods*
+`./mvnw compile quarkus:dev`
 
-image:workshop_31.jpg[]
+----
+[INFO] Scanning for projects...
+[INFO]
+[INFO] -------------< io.quarkus.workshop.super-heroes:rest-hero >-------------
+[INFO] Building rest-hero 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ rest-hero ---
+[INFO] Using 'UTF-8' encoding to copy filtered resources.
+[INFO] Copying 2 resources
+[INFO]
+[INFO] --- maven-compiler-plugin:3.8.1:compile (default-compile) @ rest-hero ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO]
+[INFO] --- quarkus-maven-plugin:0.25.0:dev (default-cli) @ rest-hero ---
+Listening for transport dt_socket at address: 5005
+2019-10-23 12:05:39,908 INFO  [io.qua.dep.QuarkusAugmentor] (main) Beginning quarkus augmentation
+2019-10-23 12:05:40,388 INFO  [io.qua.resteasy] (build-6) Resteasy running without servlet container.
+2019-10-23 12:05:40,388 INFO  [io.qua.resteasy] (build-6) - Add quarkus-undertow to run Resteasy within a servlet container
+2019-10-23 12:05:40,424 INFO  [io.qua.dep.QuarkusAugmentor] (main) Quarkus augmentation completed in 516ms
+2019-10-23 12:05:42,136 INFO  [io.quarkus] (main) Quarkus 0.25.0 started in 2.379s. Listening on: http://0.0.0.0:8080
+2019-10-23 12:05:42,140 INFO  [io.quarkus] (main) Profile dev activated. Live Coding activated.
+2019-10-23 12:05:42,142 INFO  [io.quarkus] (main) Installed features: [cdi, resteasy]
+----
 
-==== Creating and Managing Deployments
+Puis `curl http://localhost:8080/api/heroes` qui renvoie bien `hello` +
+Idem avec `http://localhost:8080/api/heroes`.
 
-*Create and Expose the Auth Deployment*
+==== Development Mode
 
-image:workshop_32.jpg[]
+Après une modif de `HeroResource.hello()` et une refresh de l'URL, je vois bien les modifications prises en compte en quasi temps réel.
 
-Samething to be done for the other Deployments Hello and Frontend
+==== Testing the Application
 
-* *Create and Expose the Hello Deployment*
-* *Create and Expose the Frontend Deployment*
+OK
 
-*Tutorial: Scaling Deployments*
+==== Packaging and Running the Application
 
-image:workshop_33.jpg[]
-image:workshop_34.jpg[]
+OK
 
-*Exercise: Scaling Deployments*
+=== Transactions and ORM
 
-image:workshop_35.jpg[]
-image:workshop_36.jpg[]
+==== Hero Entity
 
-*Exercise: Interact with the Frontend Service*
+----
+./mvnw quarkus:add-extension -Dextensions="hibernate-orm-panache"
+./mvnw quarkus:add-extension -Dextensions="hibernate-validator"
+----
 
-image:workshop_37.jpg[]
+NOTE: When you change your POM, don’t forget to restart the `quarkus:dev` mode.
 
-==== Rolling out Updates
+Je pense que l'import :
 
-*Tutorial: Rollout a new version of the Auth service*
+----
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
+----
 
-image:workshop_38.jpg[]
-image:workshop_39.jpg[]
-image:workshop_40.jpg[]
+est une coquille, et devrait être supprimé.
 
-*Tutorial: Pause and Resume an Active Rollout*
+==== HeroResource Endpoint
 
-image:workshop_41.jpg[]
-image:workshop_42.jpg[]
+----
+./mvnw quarkus:add-extension -Dextensions="resteasy-jsonb"
+----
 
-=== Part 2: Istio
+==== CRUD Tests in HeroResourceTest
 
-==== Setup Istio
+On utilise *TestContainers* pour avoir une instance de PostgreSQL jetable dans un container
 
-image:workshop_43.jpg[]
+==== Running the Application
 
-==== Deploy Microservices
+J'ai une erreur lors du `./mvnw compile quarkus:dev` :
 
-image:workshop_44.jpg[]
-image:workshop_45.jpg[]
+----
+Caused by: org.postgresql.util.PSQLException: Connection to localhost:5432 refused. Check that the hostname and port are correct and that the postmaster is accepting TCP/IP connections.
+----
 
-*Deploy preference*
+-> Apparemment, on ne peut pas utiliser `localhost` avec Windows dans la conf Quarkus (dans `application.properties`)
 
-image:workshop_46.jpg[]
+NON ! C'est juste que j'avais oublié de relancé mon infrastructure avec `docker-compose`...
 
-*Deploy recommendation*
+Par contre, avec *Docker toolbox* (et *PAS* Docker for Windows), il y a bien un plantage si on utilise `localhost`. +
+Il faut à la place utiliser `192.168.99.100`
 
-image:workshop_47.jpg[]
+Au final, `curl http://localhost:8080/api/heroes` fonctionne bien.
 
-==== Monitoring and Tracing
+=== Configuring the Hero Microservice
 
-image:workshop_48.jpg[]
-image:workshop_49.jpg[]
-image:workshop_50.jpg[]
-image:workshop_51.jpg[]
-image:workshop_52.jpg[]
-image:workshop_53.jpg[]
-image:workshop_54.jpg[]
+==== Running and Testing the Application
 
-==== Simple Route Rules
+Pour l'installation de `jq` (tool for processing JSON inputs), voir https://stedolan.github.io/jq/download/
 
-*Deploy recommendation:v2*
+=== Open API
 
-image:workshop_55.jpg[]
+=== Quarkus
 
-*Changing Istio Routings*
+==== Application Lifecycle
 
-image:workshop_56.jpg[]
+ OK, mais seulement après un gros plantage de Docker qui m'a forcé a tué le service Docker lui-même (`com.docker.service`)...
 
-[NOTE]
-====
-Pour débugger les *virtualservices* (ou d'autres composants), utiliser l'option `-o yaml`, pour avoir un output détaillé au format yaml :
 
-image:workshop_57.jpg[]
-====
 
-image:workshop_58.jpg[]
 
-==== Advanced Route Rules
 
-*Traffic Steering*
 
-image:workshop_59.jpg[]
 
-*Load Balancer*
 
-image:workshop_60.jpg[]
 
-*Rate Limiting*
 
-image:workshop_61.jpg[]
-image:workshop_62.jpg[]
-image:workshop_63.jpg[]
 
-[NOTE]
-====
-Confirmé avec l'équipe SFEIR, il y a un petit bug dans le script de rate limiting. +
-Ce dernier ne fonctionne pas, en relançant la bouche `while` de monitoring, on ne voit aucune erreur 429 apparaître, contrairement à ce qu'indique l'énoncé.
 
-Pour le moment, la cause du bug n'a pas été trouvée
-====
-
-==== Fault Injection
-
-*HTTP Error 503*
-
-image:workshop_64.jpg[]
-
-*Delay*
-
-image:workshop_65.jpg[]
-
-NOTE: We see in the `while` loop than a 7sec delay now sometimes (50%) happens *before* the service is called.
-
-*Retry*
-
-image:workshop_66.jpg[]
-
-* We see in the *first* `while` loop that 1 service call on 2 (1 on 2 because of the round robbin), is failing with a 503 error because targeting *recommendation-v2* pod, which we configured to fail systematically using the `127.0.0.1:8080/misbehave` special endpoint.
-
-And now back to normal:
-
-image:workshop_67.jpg[]
-
-*Timeout*
-
-image:workshop_68.jpg[]
-
-* Just a quick watch to the way the new pod _recommendation v2_ "slow version" (777598bdc4) is replacing the old "classic" one (7bc4f7f696) +
-We can simply do it by successive calls to `kubectl get pots` command
-
-image:workshop_69.jpg[]
-
-* In the first `while` loop, we see that there is a delay in the call to _recommendation v2_. +
-But once the *timeout* is applied, we see this slowness is replaced by a: +
-`customer => 503 preference => 504 upstream request timeout`
-
-Here is the final clean up (including the deletion of the timeout rule):
-
-image:workshop_70.jpg[]
-
-==== Circuit Breaker
-
-*Fail Fast with Max Connections and Max Pending Requests*
-
-image:workshop_71.jpg[]
-
-*Test 1: Load test without circuit breaker*
-
-image:workshop_71.jpg[]
-
-[NOTE]
-====
-There is an error in the initial command of the workshop, which uses the _lonelyplanet/siege_ Docker image: +
-`docker run lonelyplanet/siege siege -r 2 -c 20 -v $CUSTOMER_URL`
-
-This last runs a Siege v2.7.0, which is bugged (check here: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=610420) +
-I made a PR (https://github.com/Sfeir/kubernetes-istio-workshop/pull/11) to replace it by a new image, running a v4.0.4 Siege version, which works:
-
-`docker run --rm funkygibbon/siege siege --version` +
-`docker run --rm funkygibbon/siege siege -r 2 -c 20 -v $CUSTOMER_URL`
-====
-
-*Test 2: Load test with circuit breaker*
-
-*Pool Ejection*
-
-image:workshop_74.jpg[]
-
-*Test 1: Load test without failing instances*
-
-image:workshop_75.jpg[]
-
-*Test 2: Load test with failing instance*
-
-image:workshop_76.jpg[]
-
-* Here we clearly see that, as set, only the pod _recommendation-v2-7bc4f7f696-8pntk_ is misbeaving and returns a 503 (hence, 25% of the traffic)
-
-*Test 3: Load test with failing instance and with pool ejection*
-
-image:workshop_77.jpg[]
-
-*Test 4: Ultimate resilience with retries, circuit breaker, and pool ejection*
-
-image:workshop_78.jpg[]
-
-* Thanks to our new configuration using *circuit breaker*, *pool ejection* and *retries*, there is no more any request done to the misbehaving _recommendation-v2-7bc4f7f696-8pntk_ pod, even the initial one. +
-This last is still circuit broken and pool ejected, but now a retry immediately happens to redirect the traffic to a live and ready pod.
-
-*Clean up*
-
-image:workshop_79.jpg[]
-
-==== Mutual TLS
-
-NOTE: For a quick reminder of what is *mutual authentication*, check https://en.wikipedia.org/wiki/Mutual_authentication[Wikipedia].
-
-NOTE: I didn't have time to practice this part 😜
-
-.A good best practice about Mutual TLS in Istio
-NOTE: As best practice, use a *separate port for health check* and enable mutual TLS only on the regular service port.
