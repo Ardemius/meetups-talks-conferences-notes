@@ -1229,17 +1229,25 @@ image:tuesday_54.jpg[]
 
 *Avis* : je ne suis pas totalement d'accord avec l'analyse de Grace, que j'avais trouvée trop "bunch of tools and features oriented" ("il faut avoir ça ça ça et ça...", mais il y avait de bonnes choses dans sa présentation basée sur les abeilles 😉
 
-== Buzz words, tools, notes, etc.
+== Synthèse, buzz words & Co
 
-Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels sont leurs avantages, leurs faiblesses, etc.
+Beaucoup de conf redonnent les bases sur les microservices : que sont-ils, quels sont leurs avantages, leurs faiblesses, etc. +
+-> Comme quoi c'est encore nécessaire, nous ne sommes pas arrivés à un point ou tout le monde sait vraiment ce que sont des microservices.
+
+Côté *buzz words* :
 
 * *Kubernetes* en force, devient vraiment *la norme pour les microservices*. +
 -> C'est également devenu LE moyen de *faire tourner Docker en production*.
-	** Avec lui on parle beaucoup de *Knative* (qui utilise *Istio* si je ne dis pas de bêtise)
 * *Visual Studio Code* est de plus en plus utilisé, même pour des applications Java. +
 Quasiment tous les conférenciers étaient dessus !
 * *Quarkus* la montée en puissance
 * *Serverless* de plus en plus
+	** En particulier *Knative* revient très souvent (qui utilise *Istio* si je ne dis pas de bêtise)
+.Knative
+[NOTE]
+====
+Pour rappel, https://cloud.google.com/knative[Knative] (Google) "offre un ensemble essentiel de composants pour créer et exécuter des applications sans serveur sur Kubernetes".
+====
 * et quand même un peu de raison : raisonner l'usage des microservices
 
 IBM était très représenté parmi les speakers.
