@@ -1,0 +1,146 @@
+= SGCIB Tech Week 2019
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Présenté dans les locaux de la SGCIB, les Dunes, à Val de Fontenay.
+
+== Le Design Thinking - vers une conception en mode 100% Agile
+
+=== Ressources
+
+Présentation donné par Rémi Rivas, designer consultant, cofondateur de Ignited Kingdom. +
+remi@ignited-kingdom.com, 06 85 50 75 45
+
+Travaille beaucoup avec l'X, Station F, HEC Paris +
+A créé la formation Design Thinking utilisée par plusieurs filiales de la SGCIB
+
+Slides sur https://frama.link/designthinking[]
+
+https://www.designthinkingalumni.com : une newsletter qui paraît tous les mardis
+
+=== Notes
+
+Le design est une notion de conception.
+
+image::20191113_techweek_01.jpg[]
+
+Le Design Thinking intervient au moment de la conception. +
+L'agilité intervient au moment de la production.
+
+NOTE: Jetez un oeil aux LEAN UX
+
+L'objectif : *effort minimum pour valeur maximum* +
+Ne développer que des fonctionnalités dont la valeur est validée pour l'utilisateur.
+
+NOTE: La valeur d'un produit n'est PAS égale à la somme de ses fonctionnalités !
+
+Exemple : Captain Train vs Voyages SNCF +
+-> Captain fait *MOINS* de choses, pour fournir plus rapidement et simplement le même service à l'utilisateur.
+
+image::20191113_techweek_02.jpg[]
+
+1. phase de découverte
+	** très utile : remonter tous les tickets incidents
+2. phase de définition
+	** définition des obstacles majeurs
+3. phase de développement *créatif*
+	** si on veut "diverger", aller chercher de la "rupture", c'est ici que cela se fait
+	** tester la solution "pour de faux" avec des maquettes papier et / ou "photoréaliste" (fausse tablette, faux champs en papier, etc.) +
+	-> LA PHASE LA PLUS IMPORTANTE (donc ne pas lésiner sur le papier pour faire de multiples versions de la maquette)
+4. formation et tests pour être sûr que l'on *délivre* de la valeur
+
+image::20191113_techweek_03.jpg[]
+
+.Le role du BRIEF
+image::20191113_techweek_04.jpg[]
+
+image::20191113_techweek_05.jpg[width=600]
+
+* change / transformation : passer d'un état A à un état B
+* répondre aux besoins utilisateurs : rendre l'utilisateur satisfait du produit
+* et finalement réaliser le produit
+
+== OpenSource Java Technologies
+
+Distributions adoptées par SG Assurances (ASSU) :
+
+* AdoptOpenJDK
+* Amazon Correto : pour ceux qui allaient aller sur le Cloud Amazon
+
+Pour vérifier que tous les projets compilaient bien avec cette nouvelle version de Java, ils se sont tout simplement servis de Jenkins.
+
+[quote, Thierry BOURDON, CTO Middleware Services]
+____
+Not managing licenses in the Cloud is a major risk for SG Group. In particular, we know that Oracle has aggressive practices.
+____
+
+== Programme Agile Orange France
+
+Pilier de la stratégie d'Orange dans leur secteur TRES concurrentiel (peu ou pas de marge de croissance) :
+
+* se différencier : NPS de 10 à 40
+* se diversifier : de 10 à 20% du CA facturé hors Telco
+
+Circuit "long" de l'organisation d'Orange *par construction*, qui rend "lent" tout changement. +
+Le passage à un circuit "court" est une de leur grande tache du moment.
+
+-> Pour ce faire, Orange se sert du framework SAFe (pour son passage en circuit court)
+
+Très important : les *PI plannings* (*Program Increment*) +
+-> car les retours des "anciens" Agilistes sont généralement négatifs sur SAFe
+
+Et les gens dedans, après 2 ou 3 PI planning sont d'accord pour dire "OK, il y a plein de problèmes, mais il est hors de question de revenir en arrière..."
+
+En résumé :
+
+1. raccourcir les cycles
+2. penser à ne pas exclure
+3. adopter les principes, adapter le reste
+
+*Design Thinking* : "NON, on ne part pas tout de suite sur la solution, on va commencer par prendre le temps de réfléchir au problème" +
+-> Chez Orange, une des notions fortes du Design Thinking est la *pluridisciplinarité* qu'il implique.
+
+Désirabilité + Faisabilité + Viabilité -> INNOVATION
+
+Chez Orange, *12 "trains" donc 12 coachs*.
+
+*Value Thinking* :
+
+* foisonnement d'idées
+* priorisation des idées par la valeur
+* formalisation des idées en fiches EPICs
+
+Un "train" = plusieurs équipes Agile qui travaillent ensemble
+
+*RTE* = Release Train Engineer
+
+=== Questions / Réponses
+
+Passage de la pyramide / as de pique au rateau -> capital de communiquer sur le *taux d'encadrement* (pour expliquer la situation au gestionnaires de projets qui vont devoir)
+
+-> discussion hyper intéressante avec Yves Christol (VP Software Development at Orange), l'un des 2 speakers d'Orange. +
+Il est disponible pour des présentations, BBL, formations données chez le client.
+
+
