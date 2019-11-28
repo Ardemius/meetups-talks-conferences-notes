@@ -56,8 +56,316 @@ Enrico La Cava, Infrastructure Unreliability Engineer - JobTeaser
 Olivier Cloirec, Consultant SRE
 ====
 
-==
+=== Notes
 
+image:xebicon_01.jpg[]
+
+.DBLoader (part of the Data pipeline)
+image:xebicon_02.jpg[]
+
+.The Data pipeline
+image:xebicon_03.jpg[]
+
+-> The full DBLoader chain takes 15 hours to run (12 without the anonymized stuff)
+
+* *Spinnaker* as a *deployment* tool.
+* *CRD* : Custom Resource Definition in Kubernetes
+
+== Spark On K8S with S3? How we made it work!
+
+https://xebicon.fr/programme-xebicon-2019/#event-85[]
+
+====
+Fast Track
+
+Spark, couplé à des solutions de type Object Storage, offre désormais la possibilité d'exécuter des traitements sur un Kubernetes managé sans passer par une distribution lourde à mettre en oeuvre.
+
+Ce talk vous présentera les méthodes que l'on a expérimentées pour y parvenir et vous présentera les pièges à éviter mais surtout les solutions qui ont fonctionné dans notre cas.
+
+On vous présentera :
+
+- les possibilités pour déclencher un job (opérateurs Kubernetes, spark-submit, etc.)
+- les ressources Kubernetes générées par Spark
+- les paramètres utiles à l'exécution des Jobs
+- la configuration de la connexion avec l'object storage
+- une méthode pour suivre l'exécution de ses Jobs
+
+Sergio Dos Santos, Consultant
+Guillaume Albini, Consultant
+====
+
+=== Notes
+
+*Data post Hadoop*
+
+.Spark sur Hadoop
+image::xebicon_04.jpg[]
+
+.Spark sur Kubernetes
+image::xebicon_05.jpg[]
+
+.Le contexte
+image::xebicon_06.jpg[]
+
+Pour faire du Spark *dans K8S*
+
+* `spark-submit`
++
+image:xebicon_07.jpg[]
+
+* Spark Operator (Custom Resource Definition de K8S)
+	** s'appuie également sur `spark-submit`
+	** toujours en beta (provient de Google, mais pas encore officiellement supporté par Google)
+
+.Spark Operator
+image:xebicon_08.jpg[]
+
+.spark-submit vs Spark Operator
+image:xebicon_09.jpg[]
+
+-> ils ont choisi spark-submit (car le plus classique)
+
+* *Airflow* pour le triggering et de worflow des jobs
+
+.Airflow en mode cluster
+image:xebicon_10.jpg[]
+
+.jars à intégrer à Docker pour pouvoir accéer à S3
+image:xebicon_11.jpg[]
+
+.Stack de monitoring avec Prometheus / Grafana
+image:xebicon_12.jpg[]
+
+.Spark peut consommer plus que normalement alloué
+image:xebicon_13.jpg[]
+
+-> il faut donc configurer un *oversize*
+
+Penser également à un petit *cleanup* pour éviter l'accumulation sur K8S.
+
+.Conclusion
+image:xebicon_14.jpg[]
+
+=== Avis
+
+Des infos utiles, on rentre tout de suite dans le "cambouis". +
+A garder sous le coude pour un projet similaire.
+
+Q&A : Voir *Kudo* (passé côté CNCF) pour automatiser bien des choses à destination de K8S (pourrait remplacer une partie du développement custom présénté ici)
+
+== Un datalake serverless sans Hadoop, oui c'est possible !
+
+https://xebicon.fr/programme-xebicon-2019/#event-93[]
+
+====
+Conférence
+
+Le Cloud a transformé ces dernières années l’approche du Big Data : Stockage de la donnée et capacité de traitement sont désormais séparés, capacité à la demande ou encore utilisation de cluster en mode éphémère sont maintenant la norme et permettent de s’abstraire de problématiques d’exploitation qu’on ne souhaite pas avoir à gérer. Dans ce slot, à travers notre expérience d'un projet de la vraie vie, nous vous présenterons comment mettre en place un datalake sans Hadoop en utilisant au maximum les nouvelles possibilités qu'offre AWS.
+
+Edern Hotte, Consultant
+Jérémy Pinsolle, Développeur
+====
+
+=== Notes
+
+* S3 : object storage de AWS
+	** très bonne durabilité
+	** organisation des data :
+		*** /raw-data
+		*** /prepared-data
+		*** /business-data
+
+.Plusieurs types de stockage avec S3
+image:xebicon_15.jpg[]
+
+-> pourquoi payer la même chose pour un usage différent ? La raison d'être de ces différents types de storage. +
+Par exemple, en 30j les données vont passer automatiquement, si non utilisées (à vérifier !), en S3 IA.
+
+* *EMR* : Elastic Map Reduce, un Hadoop managé
++
+image:xebicon_16.jpg[]
+
+-> en mode éphémère, gaffe au temps de démarrage qui peut atteindre une 10 de minutes
+
+* *GLUE* : Spark serverless
++
+image:xebicon_17.jpg[]
+
+-> idem, temps de démarrage long (\~10 minutes)
+
+* *Athena* : du SQL sur S3
++
+image:xebicon_18.jpg[]
+
+-> permet au business (qui connaît généralement le SQL) de pouvoir créer lui-même ses jeux de données
+
+* Orchestration avec des *Step-Functions* (machine à état)
++
+image:xebicon_19.jpg[]
+
+.Schéma global de l'architecture
+image:xebicon_20.jpg[]
+
+Maintenant, *comment exposer les data ?*
+
+* Application cliente du lake
+	** donner un accès à S3
+	** donner accès au Data Catalog GLUE
+* Application data scientist
+
+Quels usges pour qui ?
+
+* *Data scientists*
+	** explorer la donnée (notebooks)
+	** partages des résultats
+	** ordonnancer des notebooks
+* *Data owner*
+	** documenter la donnée
+	** mettre à disposition des jeux de données métier
+* *Dev d'appli cliente*
+	** se documenter sur la data
+	** s'interface avec le lake de manière industrialisée
+* *équipe de dev*
+	** monitorer le lake
+	** configuer l'ingestion de nouvelles ressources
+
+Ils ont créé un portail (React pour le Front) pour répondre à ces différents use cases. +
+image:xebicon_21.jpg[]
+
+Combien de personnes pour tout ça ?
+
+* *équipe Datalake*
+	** 1 PO
+	** 3 data engineer
+* *équipe portail*
+	** 1 PO
+	** 1 dev fullstark
+	** 1 dev front
+	** 1 dev back
+* Un architecte en transverse qui apporte sa vision sur le Cloud
+* et il m'en manque 1...
+
+.Combien coûte l'infra
+image:xebicon_22.jpg[]
+
+En conclusion :
+
+* oui, un datalake serverless sur AWS, c'est possible
+* BEAUCOUP de connaissances Cloud requises
+* coût d'infra/run très inférieur à celui d'un Hadoop on premise
+* avoir la main sur tout / capacité virtuellement illimitée
+
+== UX > craft
+
+https://xebicon.fr/programme-xebicon-2019/#event-104[]
+
+====
+Fast Track
+
+Le craft, je n'y comprends rien. Venez découvrir comment l'UX de par ses principes simples va vous permettre de faire un code encore plus propre que les meilleurs crafteux.
+
+Romain Sagean, Software Engineer
+====
+
+== Veille technologique et side-project
+
+https://xebicon.fr/programme-xebicon-2019/#event-47[]
+
+====
+Fast Track
+
+Veiller, c'est bien, mais faire, c'est mieux ! Et si vous codiez des sides projects pour tester tous ce que vous avez appris ? Comment choisir le sujet ? les technos ? Comment s'organiser ? Comment terminer ces projets ? D'ailleurs, doit-on les terminer ? A quel moment considérer que vous maitrisez une technologie ? Et surtout, comment en tirer de l'experience ?
+
+Toutes ces réponses dans mon talk !
+
+Sarah Buisson, Ingénieur
+====
+
+== FaaS sur K8s : quelles possibilités ?
+
+https://xebicon.fr/programme-xebicon-2019/#event-14[]
+
+====
+Conférence
+
+AWS Lambda est l'implémentation de référence quand on parle de FaaS.
+
+Est-il possible d'en faire en dehors d'AWS Lambda (ou de Google Cloud Functions) ? Quels sont les outils à disposition pour en faire, que proposent-ils et quels sont leurs avantages et inconvénients ? Comment déployer ce type d'outil et quelles sont les contraintes qu'ils imposent ?
+
+Dmytro Podyachiy, Consultant
+Ludovic Ladeu, Consultant
+====
+
+== Qu'attendre de votre outil de CI/CD en 2019 ?
+
+https://xebicon.fr/programme-xebicon-2019/#event-82[]
+
+====
+Conférence
+
+Tu aimes développer des applications serverless dans ton cloud provider favori et/ou lancer des containers dans Kubernetes, mais continue de traîner une grosse VM de CI/CD à côté de toute cette modernité ? Tu es un héros de l’ombre qui travaille sur des projets legacy et qui souhaite donner un coup de jeune à ta CI/CD. Ne cherche pas plus loin, c’est le talk qu’il te faut. Nous verrons ce que l'on peut attendre d'un pipeline de CI/CD moderne : des concepts jusqu'aux outils.
+
+Vincent Arrocena, Développeur Full-Stack
+====
+
+== XebiKart Infrastructure : de nos laptops à Kubernetes dans le Cloud
+
+https://xebicon.fr/programme-xebicon-2019/#event-108[]
+
+====
+Code as a Passion
+
+Pour la démo présentée en Keynote et durant le reste de la journée, il a bien fallu monter l'infrastructure qui fait tourner le tout. Naturellement, nous nous sommes tournés vers Kubernetes et le Cloud ; c'est le moment de faire le bilan de ce que nous avons monté, des obstacles que nous avons eus à surmonter, et la manière dont nous avons créé une plateforme multi-cloud, résiliente, entièrement dynamique et qui nous permet de déployer nos applications en continu. Parlons de Kubernetes, parlons de GCP, d'AWS, de génération de certificats TLS automatique, de création d'enregistrements DNS automatique, de Service Mesh, et de bien d'autres choses encore !
+
+Alexis Chotard, SRE
+====
+
+== Architecture & Documentation : les ADRs en 5 minutes
+
+https://xebicon.fr/programme-xebicon-2019/#event-95[]
+
+====
+Lightning Talk
+
+La documentation des décisions d'architecture n'est généralement pas quelque chose d'évident. En l'espace de 5 minutes, je vous propose de vous présenter une solution efficace et légère : les ADRs.
+
+Sylvain Decout, Ingénieur logiciel
+====
+
+== Docker est mort, vive Docker
+
+https://xebicon.fr/programme-xebicon-2019/#event-57[]
+
+====
+Lightning Talk
+
+Docker est désormais partout. Mais que fait réellement Docker ? Y a-t-il encore un sens à parler de Docker maintenant qu'il s'agit du simple packaging du projet Moby, qui lui-même n'est qu'une interface vers containerd et runc ? Le sujet de "build des conteneurs Docker sans Docker" est sur toutes les lèvres de l'écosystème Kubernetes. Côté runtime, Docker en vient de plus en plus a être remplacé. Faisons le point sur cette situation et l'avenir potentiel de Docker.
+
+Alexis Chotard, SRE
+====
+
+== REX Galeries Lafayette - Le portail, le visage de notre datalake
+
+https://xebicon.fr/programme-xebicon-2019/#event-62[]
+
+====
+Retour d'Expérience Client (REX)
+
+La data est un monde abstrait, difficile à se représenter, avec pléthore d'outils. Notre solution : proposer un portail pour regrouper tous ces outils et ainsi fournir une vision globale... Le thème principal sera : montrer comment notre portail a été un vecteur d'innovation sur notre projet Datalake.
+
+Pourquoi en sommes-nous venus à créer un portail "boîte à outils"? Quels sont les métiers utilisateurs du portail? Comment la collaboration des équipes a-t-elle été impactée? Quelles sont les technos choisies?
+
+Ce portail est principalement destiné aux :
+
+- aux data ingénieurs /devops : des outils pour superviser et suivre l'exploitation,
+- aux data scientists/business analysts/PO : des outils de restitution de la donnée, de data lineage,
+- aux gouverneurs/métiers financiers : des outils de maîtrise des budgets,
+Mais surtout des outils à destination des métiers du commerce, d'analyse et de data visualisation (Simulastor).
+
+Dina Baddaje, Data Scientist - Galeries Lafayette
+Enguerand Acquarone, Responsable DataScience - Galeries Lafayette
+Nicolas Dechandon - Consultant - Xebia
+====
 
 == Buzz words
 
