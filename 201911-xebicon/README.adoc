@@ -267,6 +267,20 @@ Le craft, je n'y comprends rien. Venez découvrir comment l'UX de par ses princi
 Romain Sagean, Software Engineer
 ====
 
+=== Notes
+
+Repo GitHub de la prez : https://github.com/scauglog/prez/blob/master/XebiCon%2019%20-%20UX%20vs%20Craft.pdf[UX vs Craft]
+
+L'UX existait avant le craftership
+
+L'UX en 3 mots : *utilisation* / *situation* / *usage*
+
+* Concept de *personae* (1999, Alan Cooper)
+* Concept d'*analyse heuristique* (Bastien et Scapan)
+* Concept de *contrôle explicite* : tout action du système correspond à une demande explicite de l'utilisateur
+
+Beaucoup de conseils utiles, conf à garder sous le coude pour avoir rapidement les grands principes de l'UX à disposition
+
 == Veille technologique et side-project
 
 https://xebicon.fr/programme-xebicon-2019/#event-47[]
@@ -280,6 +294,25 @@ Toutes ces réponses dans mon talk !
 
 Sarah Buisson, Ingénieur
 ====
+
+=== Notes
+
+* Temps, motivation et énergie
+	** la perte de motivation est la principale raison d'abandon d'un side project : ce dernier doit donc toujours être un *plaisir* !
+* les side projects, les gros, ne sont pas le mieux pour réaliser une veille techno efficace, mieux vaut priviligier de *petits projets*
+	** plus facile, plus motivant
+	** forte capitalisation
+	** à chaque tech son projet idéal
+	** bootstrap or not bootstrap ? En gros, plutôt que de perdre du temps à installer la techno, mieux vaut prendre un bootstrapper qui vous permettra de rapidement *pratiquer* la techno qui vous intéressait
+
+* Les bonnes pratiques à conserver quoi qu'il arrive :
+	** tests
+	** versionning
+	** refactoring
+	** UNE CHOSE A LA FOIS
+	** et se poser des *deadlines* : en nombre d'heures, de sessions
+
+-> Garder en tête qu'on fait des side projects pour apprendre, l'important n'est pas de terminer le projet, ce qui sera rarement le cas
 
 == FaaS sur K8s : quelles possibilités ?
 
@@ -296,6 +329,43 @@ Dmytro Podyachiy, Consultant
 Ludovic Ladeu, Consultant
 ====
 
+=== Notes
+
+image:xebicon_23.jpg[]
+image:xebicon_24.jpg[]
+image:xebicon_25.jpg[]
+
+-> le *context* sert généralement à la communication de *metadata*.
+
+Pourquoi FaaS sur Kubernetes ?
+
+* Sécurités de bout en bout
+* Cluster existant
+* Enfermement propriétaire
+
+.landscape de FaaS sur Kubernetes
+image:xebicon_26.jpg[]
+
+.OpenFaaS
+image:xebicon_27.jpg[]
+
+.OpenFaaS, pattern "event connector"
+image:xebicon_28.jpg[]
+
+*OpenFaaS* :
+
+* très grande communauté
+* simplicité d'utilisation
+* documentation un peu incomplète
+
+.OpenWhisk
+image:xebicon_29.jpg[]
+
+-> On ne parle de functions, mais d'actions avec OpenWhisk
+
+.Architecture OpenWhisk
+image:xebion_30.jpg[]
+
 == Qu'attendre de votre outil de CI/CD en 2019 ?
 
 https://xebicon.fr/programme-xebicon-2019/#event-82[]
@@ -307,6 +377,16 @@ Tu aimes développer des applications serverless dans ton cloud provider favori 
 
 Vincent Arrocena, Développeur Full-Stack
 ====
+
+=== Notes
+
+.Quelques rappels sur les notions de CI / CD
+image:xebicon_31.jpg[]
+
+Une des caractéristiques importantes d'un pipeline est la *rapidité d'exécution*. +
+-> la présence d'un *cache de dépendances* est très appréciable dans ce cas.
+
+image:xebicon_32.jpg[]
 
 == XebiKart Infrastructure : de nos laptops à Kubernetes dans le Cloud
 
@@ -320,6 +400,21 @@ Pour la démo présentée en Keynote et durant le reste de la journée, il a bie
 Alexis Chotard, SRE
 ====
 
+=== Notes
+
+image:xebicon_33.jpg[]
+image:xebicon_34.jpg[]
+
+* la voiture va aller publier des events sur un RabbitMQ
+* le tout tourne sur du Kubernetes sur GCP
+* Préférer *Terraform* à GDP (Google Deploy Manager), même pour GCP. +
+-> Plus complet, plus facile à utiliser.
+* des GPU ont été absolument nécessaires pour le Machine Learning du cluster GKE.
++
+WARNING: Or toutes les zones d'une région ne fournissent pas obligatoirement de GPUs !
+
+* un des objectifs est de pouvoir déployer une application en *3 min*.
+
 == Architecture & Documentation : les ADRs en 5 minutes
 
 https://xebicon.fr/programme-xebicon-2019/#event-95[]
@@ -332,6 +427,10 @@ La documentation des décisions d'architecture n'est généralement pas quelque 
 Sylvain Decout, Ingénieur logiciel
 ====
 
+=== Notes
+
+https://blog.xebia.fr/2019/03/05/architecture-et-documentation-les-adrs/[]
+
 == Docker est mort, vive Docker
 
 https://xebicon.fr/programme-xebicon-2019/#event-57[]
@@ -343,6 +442,26 @@ Docker est désormais partout. Mais que fait réellement Docker ? Y a-t-il encor
 
 Alexis Chotard, SRE
 ====
+
+=== Notes
+
+image::xebicon_35.jpg[]
+
+* Docker n'est finalement que la version "packagé" du projet *Moby*
+
+.Alternatives pour créer une image "pas" Docker, mais OCI-compliant
+image:xebicon_36.jpg[]
+
+On peut citer :
+
+* Kaniko
+* buildah
+* Makisu
+
+.Running containers from images
+image:xebicon_37.jpg[]
+
+*Conclusion* : tout cet écosystème autour des containers repose sur la coopération de plusieurs technos, autres que Docker, même si Docker a grandement contribué au développement des containers.
 
 == REX Galeries Lafayette - Le portail, le visage de notre datalake
 
@@ -369,7 +488,11 @@ Nicolas Dechandon - Consultant - Xebia
 
 == Buzz words
 
-
+* On Commence à entendre parler de *CircleCI* comme outil de CI/CD. +
+CircleCI est maintenant facturé à l'usage, ce qui semble intéressant (financièrement) d'après les différents retours de la conférence. +
+*GitLab CI/CD* est également très bien implanté dans ce secteur
+* Quasiment tous les Front étaient en *React*
+* *Prometheus* comme outil de monitoring
 
 == Divers
 
