@@ -431,6 +431,8 @@ Sylvain Decout, Ingénieur logiciel
 
 https://blog.xebia.fr/2019/03/05/architecture-et-documentation-les-adrs/[]
 
+*ADR* = Architecture Decision Record
+
 == Docker est mort, vive Docker
 
 https://xebicon.fr/programme-xebicon-2019/#event-57[]
@@ -486,6 +488,21 @@ Enguerand Acquarone, Responsable DataScience - Galeries Lafayette
 Nicolas Dechandon - Consultant - Xebia
 ====
 
+=== Notes
+
+Initialement un datalake on premise sur Cloudera, maintenant sur GCP "orienté event"
+
+image:xebicon_38.jpg[]
+
+Portail pour agréger en un même lieu les informations nécessaires aux différentes populations.
+
+.Data lineage et Data catalog +
+image:xebicon_39.jpg[]
+
+* orchestration avec Airflow
+* sécurité avec des groupes Google Cloud
+* avoir une vue centralisée du billing, de la facturation
+
 == Buzz words
 
 * On Commence à entendre parler de *CircleCI* comme outil de CI/CD. +
@@ -493,8 +510,8 @@ CircleCI est maintenant facturé à l'usage, ce qui semble intéressant (financi
 *GitLab CI/CD* est également très bien implanté dans ce secteur
 * Quasiment tous les Front étaient en *React*
 * *Prometheus* comme outil de monitoring
+* *Airflow* pour l'orchestration sur le Cloud
 
-== Divers
 
 
 
