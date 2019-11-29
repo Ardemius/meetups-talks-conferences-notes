@@ -512,9 +512,33 @@ CircleCI est maintenant facturé à l'usage, ce qui semble intéressant (financi
 * *Prometheus* comme outil de monitoring
 * *Airflow* pour l'orchestration sur le Cloud
 
+== Autres
 
+=== Rétrospectives Agile : idéation sous contrainte
 
+J'ai discuté avec l'un des Scrum Master de Xebia, qui m'a fait un demo d'*idéation sous contrainte*, dans le cadre des *rétrospectives Agile*.
 
+Le principe est simple, mais bien pensé : proposer à l'équipe de réfléchir aux solutions des problèmes remontés lors de la retro au travers d'un prisme particulier (en gros, avec une contraintes comme "si vous deviez répondre à ce problème avec une vieille techno", ou au contraire "si vous deviez répondre à ce problème avec une techno bleeding edge")
+
+2 thèmes de retro sont proposés sur ce concept :
+
+* Alien : https://blog.xebia.fr/2019/11/12/alien-la-8eme-retrospective/[]
+* Jurassic Park : https://blog.xebia.fr/2019/10/28/38316/[]
+
+=== la SaintePaire
+
+Il s'agit de l'agency des graphistes qui ont réalisé les fresques murales dans les locaux de Xebia, et qui sont derrière toute la déco de la Xebicon.
+
+Adrien et son collègue ont monté cette agency, plus d'infos ici :
+
+* http://lasaintepaire.com/
+* https://fr-fr.facebook.com/lasaintepaire/
+* https://www.linkedin.com/company/la-sainte-paire/
+* https://www.youtube.com/watch?v=MIV67glWMpg[fresque murale de Xebia]
+
+On peut les contacter à mailto:lasaintepaire@gmail.com[], ou sur twitter https://twitter.com/adrien_franceskini[@adrien_franceskini]
+
+J'ai bien discuté avec Adrien, au sujet de leur différentes prestations (fresque murale, \~3000€, en 3x2m, suivant la complexité du travail demandé)
 
 
 
