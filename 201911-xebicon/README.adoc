@@ -505,6 +505,8 @@ image:xebicon_39.jpg[]
 
 == Buzz words
 
+* Une conférence très orientée Data (et c'était la Xebicon, et pas la DataXDay)
+* Kubernetes comme une évidence... Et de plus en plus de serverless (Knative)
 * On Commence à entendre parler de *CircleCI* comme outil de CI/CD. +
 CircleCI est maintenant facturé à l'usage, ce qui semble intéressant (financièrement) d'après les différents retours de la conférence. +
 *GitLab CI/CD* est également très bien implanté dans ce secteur
