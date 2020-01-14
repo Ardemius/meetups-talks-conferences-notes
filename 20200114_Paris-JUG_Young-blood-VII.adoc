@@ -1,0 +1,178 @@
+= Paris JUG - Young Blood VII - 2020/01/20
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté dans les locaux de https://www.parisjug.org/xwiki/wiki/oldversion/view/Location/Datadog[Datadog] +
+Site : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20200114
+
+== 19h30 - Transcendez la rhétorique
+
+----
+Les basiques de la communication non verbale. Les todo et les don't, des exemples ludiques pour apprendre à l'utiliser et ses limites. Tout en démolissant les mythes de la culture populaire et du cinéma.
+----
+
+par Valentin Meyne
+
+=== Notes
+
+* le visage est la très mauvaise chose à regarder pour savoir
+* les pieds et les jambes sont la partie du corps la plus révélatrice
+	** mains sur les genoux et on gigote en réunion -> on a envie de partir !
+
+[IMPORTANT]
+====
+L'important est d'arriver à détecter le changement dans l'apparence de son interlocuteur. +
+On peut avoir l'air "naturellement triste", et changer d'attitude quand quelque chose nous plaît.
+====
+
+== 19h50 - Un retour sur la productivité
+
+----
+On a tous des objectifs à atteindre. Le plus difficile c’est de démarrer et d’être consistant. Je vais pitcher des astuces, règles, histoires pour nous aider à se mettre en mouvements et se rapprocher de notre but.
+----
+
+par Emmanuel Conrardy
+
+=== Notes
+
+* *loi de l'inertie* : Au sein d'une équipe projet, avec le temps s'installe une certaine inertie. +
+Pour améliorer une organisation, si on introduit du changement, le conférencier nous explique que généralement, on constate une baisse de la performance. +
+Cette baisse signifie que les personnes cherchent à nouveau de la "maturité". +
+L'équipe sort alors de ce qu'on appelle sa "zone de confort" pour faire face à de nouveaux défis.
+* *Loi de Parkinson* : _Le travail s’étale de façon à occuper le temps disponible pour son achèvement_ (source Wikipédia)
+* *Syndrome de l'étudiant* : pic de stress du dernier moment, quand "il faut rendre son travail", qui nous rend plus productif
+
+Emmanuel insiste sur l'intérêt de créer plusieurs phases d'attention dans la journée (pour pallier les lois précédentes). +
+Pour cela il se fait des notes pour la journée, comme autant d'objectifs à atteindre.
+
+IMPORTANT: dernier point à revérifier avec la vidéo !
+
+.Les 3 lois précédentes ne sont pas les seules du domaine
+image:20200114_ParisJUG_YoungBloodVII_01.jpg[]
+
+-> A revoir, j'ai loupé une partie 😭
+
+== 20h10 - La confiance en soi : une compétence à la portée de tous
+
+----
+Ce talk parle de la confiance en soi, qui est un capital indispensable pour accomplir ce qu'on entreprend peu importe le domaine. Dans ce talk nous parlerons de la définition de la confiance, des origines et des causess du manque de confiance en soi, du fait qu'il s'agit d'une compétence comme une autre, et surtout de que faire pour acquérir cette compétence.
+----
+
+par Patrick Tchomte
+
+=== Notes
+
+Patrick explique que la confiance en soi est une compétence, et qu'en tant que telle, elle peut s'apprendre.
+
+Pour la développer, il faut vaincre la peur. +
+Après la mort, *ce que l'on redoute le plus c'est le regard de l'autre*.
+
+Il faut faire preuve de *courage* pour l'affronter, et *il ne peut y avoir de courage sans vulnérabilité*. +
+En effet, on ne peut être courageux que s'il y a le *risque* de "perdre quelque chose".
+
+Il faut affronter ses peurs pour gagner en confiance.
+
+De bons moyens outils pour développer sa confiance en soi :
+
+* méditation
+* répétition
+
+A force de répétitions de pensées positives, on peut réussir à se changer soi-même (effet Placebo ?)
+
+image::20200114_ParisJUG_YoungBloodVII_02.jpg[]
+
+Dr Ivan Joseph : "Si vous ne croyez pas en vous, personne ne le fera" (ou pas loin)
+
+== 21h00 - Les experts JVM saison 1 : profiling
+
+----
+Un crime a eu lieu en prod ! Sur la scène de crime, un message ensanglanté : "java.lang.OutOfMemoryError: Java heap space". Ensemble, nous allons mener l'enquête et ausculter une application Java sous différents angles : CPU, mémoire, threads, requêtes SQL… Comme toute bonne police scientifique, nous aurons de bons outils : JVisualVM, Glowroot et Arthas.
+----
+
+par Olivier Levitt
+
+=== Notes
+
+Lors d'une investigation (le "crime"), il faut commencer par aller voir la scène de crime, et non pas foncer interroger les suspects *sans preuve* (cad se jeter "bêtement" sur le code...)
+
+* Pour le profiling, Olivier se sert de *VisualVM* (outil bien connu fourni avec le JDK, ici en version 1.4.4)
+	** avec le module *JDBCProfiler*
+* il se sert également de *Glowroot*. +
+Outil capable de savoir à quoi correspond ce qui est exécuté (web, back, etc.)
+* le truc qui va plus loin : *arthas* (outil créé par Alibaba) +
+Il s'agit d'un outil en ligne de commande. +
+Arthas intègre également *jad* (JAva Decompiler)
+
+== 21h20 - Why hire a junior software engineer, according to a junior software engineer
+
+----
+Moi, recruter un développeur junior ? Mais c'est un risque de casser ma belle équipe qui marche si bien ? Dans ce talk nous allons vous montrer que non, et que quand on s'y prend bien, c'est même plutôt une chance de faire mieux.
+----
+
+par Lorena Rangel Hernández
+
+=== Notes
+
+Conf en anglais
+
+Lorena explique qu'accueillir un junior permet de :
+
+* généralement découvrir une nouvelle façon de pensée (gap de génération, et donc de culture)
+* possibilité de pratiquer le mentoring
+* possibilité de pairer avec quelqu'un de "complétement neutre" quant à des pratiques que l'on ne remet même plus en cause
+
+-> qualité préférée de Lorena pour un senior dev : *la patience !*, et être capable d'expliquer autant de fois que nécessaire à un junior 😉
+
+== 21h40 - Tekton, Tekton, Tekton...
+
+----
+Jenkins a été une pièce maitresse dans la conception des processus CI/CD au sein des organisations. Ceci a été de grande utilité pour la mise en place et la promotion des pouvoirs d'un DevOps. Merci Jenkins. En revanche, certains reprochent à Jenkins sa lourdeur typique d'un progiciel, et Kubernetes est arrivé pour bouleverser les tendances. Par conséquent, il devient moins pertinent de faire tourner un "progiciel" aussi lourd dans un cluster censé être cloud native pour faire du simple CI/CD. Tekton est la solution, léger, simple et ça marche !
+----
+
+par Salahddine Aberkan
+
+=== Notes
+
+Salahddine travaille pour RedHat, côté OpenShift. +
+Il va nous faire une démo de Tekton à l'aide de ce produit.
+
+*CI/CD* : introducing automation in an application lifecycle.
+
+* Tekton permet de réaliser l'automation précédente en s'abstrayant de l'infrastructure sous-jacente.
+* c'est un outil *léger* (ce que n'est pas / plus Jenkins)
+
+*Ressources* : code de la démo sur GitHub, saberkan, "tekton-tutorial"
+
+Salahddine nous a fait un hello world en démo, j'aurais aimé un peu plus de détails, et le détail de ses avantages et inconvénients par rapport à Jenkins 😉
+
+== 22h00 - résultats
+
+-> Mon préféré : "Les experts JVM saison 1 : profiling" par Olivier Levitt 😉
+
+
