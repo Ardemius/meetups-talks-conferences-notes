@@ -31,23 +31,65 @@ toc::[]
 Présenté au Palais des Congrés d'Issy, https://goo.gl/maps/xYdir7CWMTnyeHt46[25 Avenue Victor Cresson, 92130 Issy-les-Moulineaux]
 Site : https://devfest.gdgparis.com/
 
-== 11h50 - RGPD avec apache BEAM et BigQuery
+== 15h30 - REX : de criminologue à developpeuse
 
-Par Mehdi BEN HAJ ABBES
-
-.abstract
-----
-Je vous propose une live démo d’implémentation du droit à l’oubli avec l’anonymisation/dé anonymisation sélective de vos données personnelles en batch et en streaming, le tout en moins de 15 min :)
-----
-
-== 12h15 - Kubernetes enfin ultra simple et léger avec K3S
-
-Par Sébastien Moreno (Ippon Bordeaux)
+Par Caroline Chuong
 
 .abstract
 ----
-L’installation d’un cluster Kubernetes a longtemps été une tâche lourde pour l’Ops ou le Dev. Mais on arrive maintenant dans une ère de maturité dans les distributions Kubernetes, avec notamment Rancher, Openshift… mais aussi les installeurs du cloud comme EKS de AWS. Ici je propose d’explorer dans un Quickie une autre distribution issue de Rancher, ultra-légère, ultra simple, prête pour la prod et l’IOT. K3S débarrasse Kubernetes de sa complexité de ses plugins superflus et change Kubernetes en simple binaire à lancer sur vos machines. Au programme: explication de ce que ça cache sous le capot et de la démo !
+Comment je suis passée d’Horatio Caine à développeuse, histoire d’un parcours en ~36 chapitres et 72 points~ 15 minutes.
+
+De nos jours, la pénurie de développeur·se dans le monde du travail créé une floppée de nouvelles écoles et formations courtes.
+La promesse d’un emploi stable, au salaire attractif, avec LE fun ultime des tournois de baby-foot encourage de plus en plus de personnes à se reconvertir dans le métier de développeur·se. Ces personnes sont un atout, ont une expérience riche, un regard différent, cependant la première expérience professionnelle peut faire douter sur les choix, capacités et l’envie de continuer.
+
+Je vais vous parler de ma reconversion, comment j’ai échoué, appris et quelques conseils pour intégrer cette nouvelle classe de développeur·euses qui ont un parcours atypique.
 ----
+
+== 14h00 - CTF 101 : retour sur le challenge Richelieu de la DGSE
+
+Par Charles-Henri Guérin et Pierre-Yves Aillet (Zenika)
+
+----
+Fin mai 2019, la DGSE a lancé sur le site https://challengecybersec.fr/ le challenge Richelieu. Le cardinal était friand de cryptographie à tel point que les archives diplomatiques de la France de cette période sont longtemps restées inaccessibles. Il s’agissait donc d’un CTF (Capture The Flag), un challenge de sécurité comportant différentes énigmes ou défis à relever, tous en lien avec la sécurité informatique.
+
+Challenge accepted! Nous avons relevé le défi. Ainsi jusqu’au 14 juin 2019, date limite du challenge, nous avons sorti nos outils et nous nous sommes mis au travail !
+
+Dans ce talk, nous vous proposons un retour sur cette expérience : - les choses que nous avons (ré-)apprises - les erreurs, les fausses pistes - les outils que nous avons découverts
+----
+
+Génial ! +
+Un super retour sur un challenge CTF (Capture The Flag)
+
+* inspecter la source
+* récupérer le PDF
+* en extraire le texte (outil spécifique)
+	** c'est du base 64, et c'est un JPEG noir et blanc, beaucoup plus gros qu'il ne devrait
+* *stéganopgraphie* sur le JPEG, on va utiliser l'utilitaire *binwalk* pour savoir ce qu'il contient
+	** il contient tout une série de zip, protégés par mot de passe
+* on liste les zip, leurs noms contient le mot de passe
+* recréation de clé privée avec l'utilitaire *RSATools*
+* XXX
+* après découverte de la 2nd image en couleur (LSD et RGB), on va utiliser l'utilitaire *zsteg* pour trouver d'autres trucs de stégano...
+* utilitaire *xxd* ???
+* autre zip protégé par mdp
+	** on va utiliser l'utilitaire *strings* pour afficher toutes les chaînes statiques de l'archive +
+	-> on découvre que le zip est "packé"
+* on va lancer l'utilitaire *upx* qui permet de packer / dépacker
+	** l'utilitaire renvoie une erreur...
+* on va utiliser l'utilitaire *bbe*, l'équivalent de sed mais pour les fichiers binaires, pour remplacer la chaîne "ALD" par "UPX"
+* upx peut unpack le fichier
+* on utilise l'image Docker (ou l'utilitaire ?) *radare*, qui va afficher le "workflow" de l'exécutable
+* on réplique l'algo en C, et on trouve le nouveau mot de passe caché
+* on trouve l'URL d'une machine de la DGSE...
+* dessus 2 fichiers, executable "prog" et drapeau1.txt qui ne peut être lu que par l'utilisateur drapeau1
+
+Ressources utiles pour ce type de challenge :
+
+* ctftime.org/event/list
+* www.root-me.org
+* ropemporium.com/
+
+A regarder de nouveau rien que pour se marrer ! Top !
 
 == 15h00 - Dockerfile - Les bonnes pratiques
 
@@ -56,17 +98,31 @@ Par Guillaume LOURS et Jérémie DROUET (Docker tous les deux)
 .abstract
 ----
 A partir d’un Dockerfile pris “au hasard” sur Github, comme un bon vieux monolithe, nous allons, en appliquant les bonnes pratiques, transformer cette application en un ensemble de microservices réutilisables et compréhensibles
-
 On commencera par externaliser les services utilisés par notre application en utilisant des images existantes et les associant dans un fichier Compose.
-
 Nous allons optimiser notre premier jet en vidant les caches et en supprimant les layers inutiles générés lors du build de notre application.
-
 On découpera les différentes étapes de build pour ne pas avoir à conserver les dépendances de développement dans l’image finale
-
 Nous améliorerons la maintenabilité en utilisant des images officielles plutôt qu’en installant à la main nos dépendances.
-
 Nous allons voir comment éviter de faire tourner notre application en tant que root.
 ----
+
+* dans un dockerfile, bonne pratique, ce qui change le moins "en haut", et ce qui change le plus "en bas"
+* on respecte 1 container par process (1 container pour mongo, 1 container pour NGinx, etc.)
+* il est recommandé de faire l'update ET l'install d'apt dans le même layer, pour éviter des problèmes de cache amenant à des dépendances absentes :
++
+----
+RUN apt-get update -y \
+	&& apt-get install -y --no-intall-recommends openjdk-11-jdk \
+	&& rm -rf /var/lib/apt/lists/*
+----
+	** la dernière ligne supprime les fichiers temporaires non nécessaires après install
+	** `--no-intall-recommends` permet d'installer l'OpenJDK sans certaines ressources non nécessaires (font et autres)
+* TODO : *multistage build*, revoir son utilité !
+
+* Ressources disponibles dans leurs repo GitHub
+
+IMPORTANT: De manière générale, le stage final ne doit plus avoir les dépendances des stages précédents (la PROD ne doit pas avoir les dépendances de DEV)
+
+-> Ils rappellent que Jezzie Frazer est une ancienne de Docker.
 
 == 16h00 - Spinnaker - Continuous Delivery on Kubernetes
 
@@ -80,4 +136,21 @@ Spinnaker est un outil open source de déploiement continu multi-region, multi-c
 
 Durant cet atelier nous mettrons en place un environnement de déploiement sur Kubernetes, automatisé et fiabilisé grâce à Spinnaker. Venez découvrir comment déployer sereinement vos applications grâce à Spinnaker !
 ----
+
+* Spinnaker : outil de Continuous Delivery
+	** déployé sur du Iaas Amazon (EC2)
+
+Slides : https://chakch007.gitbook.io/spinnaker
+
+
+
+
+
+
+
+
+
+
+
+
 
