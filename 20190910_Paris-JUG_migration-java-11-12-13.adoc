@@ -1,4 +1,4 @@
-= Java 11, 12 sont sortis et bientôt le 13, c'est le moment de remplacer son JDK 8 - 2019/01/08
+= Java 11, 12 sont sortis et bientôt le 13, c'est le moment de remplacer son JDK 8 - 2019/09/10
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
