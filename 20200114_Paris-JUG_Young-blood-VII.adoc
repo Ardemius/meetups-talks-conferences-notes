@@ -1,4 +1,4 @@
-= Paris JUG - Young Blood VII - 2020/01/20
+= Paris JUG - Young Blood VII - 2020/01/14
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
