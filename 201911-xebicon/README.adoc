@@ -364,7 +364,7 @@ image:xebicon_29.jpg[]
 -> On ne parle de functions, mais d'actions avec OpenWhisk
 
 .Architecture OpenWhisk
-image:xebion_30.jpg[]
+image:xebicon_30.jpg[]
 
 == Qu'attendre de votre outil de CI/CD en 2019 ?
 
