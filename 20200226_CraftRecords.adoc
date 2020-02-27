@@ -1,0 +1,103 @@
+= CraftsRecords - 2020/02/26
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Notes
+
+Donné par Tim Carry, @pixelastic
+
+* Ce n'est pas l'outil qui compte en soi, on prend celui avec lequel on est le plus à l'aise
+* Les 3 slides les plus importants : le 1er, le 2e et le dernier
+	** 1er : on s'y présente
+		*** où on peut vous trouver (Twitter & Co)
+	** 2e : pourquoi vous êtes légitime
+	** dernier :
+		*** on y dit merci
+		*** on donne les liens importants
+		*** c'est le slide qui va rester affiché le plus longtemps
+			**** si sa boîte recrute, on met un bandeau ici
+
+* Nombre de slides : base de *1 par minute* (à plus ou moins 20%)
+	** les contraintes inamovibles : *temps* / *public*
+
+Ce n'est pas en ajoutant mais en enlevant des slides qu'on l'améliore (cf une citation d'Antoine de Saint-Exupéry sur la perfection)
+
+Si l'audience ne devait retenir qu'un seul message, qu'est-ce que ce serait ? -> une bonne piste pour le titre du talk
+
+=== Conseils et points d'attention
+
+* ne pas écrire trop petit
+	** écrire GROS !
+* avoir un conseil suffisamment élevé (pas de jaune sur blanc par exemple)
+	** si salle sombre, privilégier un fond sombre (pas blanc pour ne pas aveugler)
+* ne pas tout écrire dans les slides
+* une idée par slide
+	** les slides représente un *2nd canal de comm*
+	** c'est également un *moyen de rattraper le speaker quand on l'a perdu*
+* éviter les gifs qui détournent l'attention (commes les gifs de chats)
+* ne pas parler avec un ton monotone (éviter la monotonie)
+* *casser la monotonie* des slides : varier le thème d'un slide à l'autre
+* *NE PAS HÉSITER À RÉPÉTER*, jusqu'à 3 fois, de façon différente, le message important
+* numéroter les slides est une bonne pratique (MAIS bien indiquer 2/30, le "sur 30" est important)
+* préciser la source de ses images
+* Pour de petits talks (jusqu'à 30 min), Tim n'est pas pour un sommaire
+
+== Questions
+
+* le problème du "pixel perfect" ?
+* slides poussés ("où tout est écrit") ? Permet au public d'avoir un doc de ref après coup (mon avis)
+* animation d'un schéma d'architecture -> préférer un statique ? Mais si on explique le schéma en même temps
+	** par exemple avec une animation step by step
+	** je ne suis pas pour tout afficher d'un coup
+		*** le progressif permet la découverte et favorise l'attention
+* répétition bonne pratique, cf les séries O'Reilly "in a Nutshell"
+	** importance de la variété des moyens de comm -> pour toujours capter l'attention
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -139,6 +139,7 @@ Durant cet atelier nous mettrons en place un environnement de déploiement sur K
 
 * Spinnaker : outil de Continuous Delivery
 	** déployé sur du Iaas Amazon (EC2)
+	** très lié à Kubernetes
 
 Slides : https://chakch007.gitbook.io/spinnaker
 
