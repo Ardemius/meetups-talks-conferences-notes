@@ -49,7 +49,7 @@ image::20200312_jchateau-marketplace.jpg[]
 
 Pas le temps de finir le sujet, on a dérivé sur le métier de développeur avec un focus sur la France
 
-== Java 14 Record (Rémi FORAX)
+=== Java 14 Record (Rémi FORAX)
 
 * github de Rémi : https://github.com/forax/do-synthetic-methods-dream-of-electric-switch-expressions
 
