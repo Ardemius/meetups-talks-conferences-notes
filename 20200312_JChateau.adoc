@@ -1,0 +1,171 @@
+= JChateau - 2020/03/12
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Thursday
+
+.Marketplace screenshot
+image::20200312_jchateau-marketplace.jpg[]
+
+=== Are we actually developpers anymore ? (Maurice / Thomas)
+
+* Fused with my _bye bye fundamentals, I am a "only tools" user_
+* Intro and pitch by Maurice: "are we just AWS users?"
+
+{lb}
+
+* base de code AWS trop importante, personne ne pourrait la redévelopper
+	** tout le monde l'utilise donc sans se poser de question...
+
+* José : conseille de lire l'avis d'Uncle Bob sur le métier d'architecte (voir son livre _Clean Architecture_)
+
+=== Dev / Expert / Architecture (Thomas)
+
+Pas le temps de finir le sujet, on a dérivé sur le métier de développeur avec un focus sur la France
+
+== Java 14 Record (Rémi FORAX)
+
+* github de Rémi : https://github.com/forax/do-synthetic-methods-dream-of-electric-switch-expressions
+
+{lb}
+
+* Record components are not modifiable
+* You cannot have more fields (that initially decided) in a Record
+	** Contrary to Beans, Records do have constructors
+* pas de field initializer dans un Record, tout vient du constructor
+	** field assignments is done by the compiler
+* Records are always *static* (like enums)
+
+== Friday
+
+.Marketplace screenshot
+image::20200313_jchateau-marketplace.jpg[]
+
+=== JFR (Java Flight Recorder)
+
+* JFR marche avec Mission Control
+* libéré (Open Source) par Oracle avec Java 11
+
+* Jean-Philippe : designer pour éviter les overhead
+	** n'arrête pas les threads comme c'est le cas pour YourKit, JProfiler ou VisualVM
+		*** la techno est directement intégrée dans la JVM, ce n'est pas rajouté "à côté"
+		*** on peut ajouter ses propres évènements
+	** limitations du sampling à 5 threads (4 Java et 1 natif)
+	** les évènements sont déclenchés par la JVM à des moments bien précis (plus précis que JMX)
+
+* DataDog (Jean-Philippe bosse pour eux) se base sur JFR pour le profiling
+* Jean (Bisutti) s'en sert pour le produit QuickPerf auquel il participe
+
+-> la doc sur les évènements de JFR n'est encore très fournie, ni très facile à trouver. +
+Il y aurait matière à communiquer sur le produit pour améliorer tout ça.
+
+* Voir InfoQ : monitoring-jdk-jfr (@MikaelVidstedt) +
+-> La vidéo montre comment créer les évènements
+* Présentation du même style au Fosdem : Jie Kang (JMC & JFR)
+
+* Jean-Philippe : Zulu a déjà backporté le support de JFR dans sa version (JDK) 8 (et, rappel, Zulu peut être utilisée librement en DEV comme en PROD)
+
+* José : Marcus a fait dernièrement une prez très complète de Java Mission Control (JMC) à CodeOne.
+
+* Jean-Philippe : JFR démarre après le "pre-main", il ne permet donc pas de profiler les agents (ce que permet par contre `async-profiler`)
+
+=== Pattern matching (Rémi)
+
+NOTE: Jupyter avec JShell ? (à checker)
+
+* Rémi : the VM does NOT trust the compiler (in Java)...
+* Closed hierarchy : still need some changes to be able to allow extending for test purposes (meaning mock dynamically added)
+
+== Saturday
+
+.Marketplace screenshot
+image::20200314_jchateau-marketplace.jpg[]
+
+=== How to start contributing to OpenJDK (Flo)
+
+* Rémi : actuellement, l'OpenJDK est en train de passer sur GitHub
+	** actuellement, les sources sont sur Mercurial
+	** Cf Rémi : extrêmement facile à builder (2 commandes à lancer, marche aussi bien sur Mac, Windows, Linux)
+		*** tout est expliqué dans un répertoire "doc"
+			**** C'était très compliqué à builder jusqu'à la version 8 comprise (après un suédois a réécrit le script de build, et depuis ça marche)
+		*** José : a fait un tool in action au dernier Devoxx France et Belgium sur comment builder l'OpenJDK en 10 étapes
+		*** Rémi : a sur son GitHub un builder en Travis pour builder plusieurs versions de l'OpenJDK
+* Rémi : il y a bugs.openjdk.net qui est un Jira permettant d'accéder aux bugs ouverts
+	** par contre, la catégorisation des bugs "pour débutant" n'est pas faite très souvent (tous les 1,5 ans quelqu'un râle sur "il n'y a pas assez de JEUNES contributeurs" et catégorisent les issues pour débutants)
+	** quand on souhaite commencer à contribuer, il faut tout d'abord signer un clause côté Oracle (voir "openjdk wiki" (wiki.openjdk.xxx))
+* Dalybor TOPIC : pour obtenir les droits de créer une issue (quand on a un outil qui ne marche pas suite à un bug de l'OpenJDK)
+
+* Rémi : le plus simple pour contribuer au début : aller dans le Jira, trouver un bug le plus petit possible
+	** pour que son code soit accepté, il faut soit :
+		*** un sponsor et 2 reviewers
+			**** Conseil de Rémi : *avant de se lancer dans le code du patch*, *dire que l'on souhaite s'attaquer au pb*, et obtenir les conseils des anciens ("c'est plus compliqué qu'il n'y paraît, fais gaffe...")
+		*** commencer par un sujet autour de l'OpenJDK (comme Loom)
+	** *JTREG* : pour les tests de non régression (\~300 000), très long à faire tourner (de 40 min à 1h sur Travis)
+		*** les tests sont organisés commes les mailing lists (associés à 1 sujet)
+		*** les tests sont plus faciles à faire tourner sur sa machine que sur 1 CI (à cause des tests Swing qui nécessitent un environnement graphique)
+		*** finalement, peu de diff entre les tests de JTREG et les tests du TCK, mais seul ce dernier permet d'appeler son code "Java"
+			**** si on dérive les sources de l'OpenJDK, pas besoin de payer le TCK (c'est ce qui se passe pour Zuul, Coretto, etc. Ils ne payent pas)
+* "CSR" dans le Jira des bugs : groupe qui s'occupe de la compatibilité des API (en fait le CSR est un doc garant de la backward compatibility)
+	** s'assurer que les signatures restent les mêmes, que la javadoc soit correcte, etc.
+	** derrière le CSR il y a un groupe de personnes qui ne sont PAS d'Oracle
+* les gens qui sont partis et ne contribuent plus sont marqués "inactive"
+	** Paul SANDOZ, de retour récémment chez Oracle (après passage éclair chez Amazon et Netflix), a écrit 80% de Stream
+* José : *le JDK n'est pas du tout un exemple de Clean Code*
+	** Rémi : une raison pour laquelle les patchs sont rejetés sont les perfs (pas mal de tests JMH, mais ce n'est pas nous qui les lançons)
+
+* Rémi : c'est simple de contribuer, mais c'est "hyper dur" de modifier un algo
+	** du fait des intrinsèques, comme c'est le cas pour la classe String par exemple
+		*** Donc, pour des pbs de perfs, ce n'est pas la peine de chercher à modifier String, ArrayList, etc. (le code que l'on écrit ne correspond pas à celui exécuté du fait de l'intrinsèque)
+
+* Rémi :
+	** 1) s'inscrire à la mailing list (voir openJDK.net, les mailing list sont les "groups" dans le menu de gauche)
+	** 2) dire à la mailing que l'on souhaite s'attaquer à telle ou telle issue
+
+=== Software Craftsmanship (José)
+
+* José : à lister certaines ressources (livres) sur le software craftsmanship sur son GitHub
+* importance des harckergarten pour passer la porte de certains projets (à savoir comment commencer à contribuer sur ces derniers)
+* José : unconf "Hack Commit Push", journée dédiée aux contributions Open Source
+	** Thomas : siou plaît, mettez à jour le site d'Aurélie Vache sur GitHub (liste des conférences techniques : https://github.com/scraly/developers-conferences-agenda)
+
+=== Future IDE (Sun)
+
+* Voir sur son GitHub (ou un de RedHat) _The Cloud Ready Postit application_
+
+
+
+
+
+
+
+
+
+
+
+
