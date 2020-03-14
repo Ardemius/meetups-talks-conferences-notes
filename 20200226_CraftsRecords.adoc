@@ -68,6 +68,8 @@ Si l'audience ne devait retenir qu'un seul message, qu'est-ce que ce serait ? ->
 * préciser la source de ses images
 * Pour de petits talks (jusqu'à 30 min), Tim n'est pas pour un sommaire
 
+-> Slides : https://talks.pixelastic.com/slides/craftsrecords-slides/
+
 == Questions
 
 * le problème du "pixel perfect" ?
@@ -78,14 +80,6 @@ Si l'audience ne devait retenir qu'un seul message, qu'est-ce que ce serait ? ->
 		*** le progressif permet la découverte et favorise l'attention
 * répétition bonne pratique, cf les séries O'Reilly "in a Nutshell"
 	** importance de la variété des moyens de comm -> pour toujours capter l'attention
-
-
-
-
-
-
-
-
 
 
 
