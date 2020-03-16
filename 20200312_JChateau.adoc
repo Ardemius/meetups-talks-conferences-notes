@@ -28,6 +28,9 @@ endif::[]
 
 toc::[]
 
+Google Doc de l'unconference, avec les sujets abordés : +
+https://docs.google.com/spreadsheets/d/1cp8posM1qQhnEFAQZlZHhnLb_XcspdprLiMlu8LQ2YA/edit#gid=619580251
+
 == Thursday
 
 .Marketplace screenshot
@@ -157,9 +160,84 @@ image::20200314_jchateau-marketplace.jpg[]
 === Future IDE (Sun)
 
 * Voir sur son GitHub (ou un de RedHat) _The Cloud Ready Postit application_
+* Sun : en 1) relance de la version libre pour avoir des retours sur le produit, puis 2) release new version de la version RedHat Enterprise de Eclipse CHE
 
+* Via le fichier de conf de l'IDE, on définit quels containers on va utiliser (qu'ils tournent en local ou sur un Cloud)
 
+* je rattrape mon retard : RedHat soutient maintenant le projet *Theia*, qui est l'une des interfaces graphiques pouvant être utilisée par Eclipse CHE
+	** au début de CHE, il y avait un frontend spécifique, fait en GWT, qui a fini par poser problème (long à rebuilder / mettre à jour) et être abandonné. +
+	-> c'est la version que j'avais testée
 
+* Dans CHE, on a, en même temps, les containers de l'environnement CHE, ET ceux de l'application que l'on développe / fait tourner.
+* CHE adresse la problématique de "comment développer correctement pour Kubernetes". +
+-> Réponse : "en commençant par développer *DANS* Kubernetes", ce que permet CHE
+* fonctionne avec OpenShift, ET bien d'autres solution Cloud
+	** dont des solutions locales comme MiniKube
+
+* par défaut, pour 1 workspace, tous les containers sont dans le même pod
+
+NOTE: Jean Christophe confirme que le mode collaboratif (édition à plusieurs d'un même code) de VS code marche vraiment très bien. +
+Par contre, cf la licence Microsoft, il y a une limitation à ce niveau, qui limite son usage aux seuls produits Microsoft (???)
+
+=== How to keep up with technologies trends? (Thomas)
+
+* Twitter
+	** faire gaffe à ne pas suivre trop de personnes
+	** utiliser les listes pour faire des catégories
+* sites web
+	** blogs des SSII / ESN "sérieuses" (Xebia, Octo, SFEIR, Ippon, etc.)
+	** grands sites d'infos (DZone, InfoQ, Dev.to, Medium, etc.)
+	** les organiser via Feedly (ou autres même si pas trop d'alternatives)
+* YouTube
+	** toutes les grandes conf publient maintenant les vidéos de leurs talks sur la plateforme
+	** tellement de tutos dessus maintenant
+* podcast
+	** permettent d'être consultés en "off"
+	** Cast Codeurs, BigData Hebdo, Tech Café
+	** mais aussi BFM Tech & Co (le côté politique / économique étant également bon à connaître : exemple avec MapR qui met la clé sous la porte, gaffe si on utilise la techno pour le support à venir par exemple)
+* MOOC
+	** Coursera, Udemy, Pluralsight
+
+{lb}
+
+* de manière générale, importance de cibler ses combats
+	** regarder les stars du GitHub
+	** jeter un oeil à Google Trends de temps en temps
+
+=== Conseils pour organiser un évènement tech
+
+* Jean Christophe : côté finance, le coût de la place ne paye que "le café", le reste (locaux & Co) vient des sponsors
+* penser aux personnes à mobilité réduite
+	** question à poser dès le début
+	** José : marge de manoeuvre limité à ce niveau pour une petite asso
+		*** c'est malheureux, mais cela reste du "best effort"
+* Agathe : pour le Commit Push
+	** Google Doc pour le partage
+	** point toutes les semaines (surtout, importance de la régularité)
+* Jean-Christophe
+	** Hang-out pour la comm
+
+* José : Paris JUG : budget était de 15 à 20 000€ / an
+* José : importance de la "neutralité" de l'asso, la liste des membres est figée -> aucune grosse SSII qui la sponsoriserait ne doit pouvoir la fagociter
+	** le contenu éditorial ne peut PAS être décidé par les sponsors
+
+* Devoxx France : salle 250 000€ (je ne sais pas si Mariott ou Paais des Congrès), fiscalement les choses changent
+	** à partir d'un certain budget, il est bon de prendre un expert comptable
+
+* José : penser au coût du package pour les sponsors
+	** que le prix d'un stand avec places offertes
+
+* Pour le problème épineux des repas, on ne peut pas satisfaire tous les différents (et nombreux) régimes alimentaires
+	** comme compromis, les plats végétariens semblent un bon choix (en tout cas, le "moins pire")
+		*** il n'y a pas de solution parfaite, mais montrer que l'on y a pensé, et que l'on a fait un effort, doit aider à satisfaire le plus grand nombre.
+
+* Assurance
+	** José : assurance responsabilité civile obligatoire
+		*** Jean-Christophe : en fait non, obligatoire que pour les asso sportives ou d'utilité publique
+		*** José : l'ESIEA l'avait demandé pour le ParisJUG pour les locaux, et Jean-Christophe indique que Station F l'a également demandé
+	** José : on peut prendre des assurances spécifiques pour 1 évènement
+	** José : consultation chez l'expert comptable \~150€
+	** José : cabinet d'expert comptable pour Devoxx, 500 à 600€ à l'année
 
 
 
