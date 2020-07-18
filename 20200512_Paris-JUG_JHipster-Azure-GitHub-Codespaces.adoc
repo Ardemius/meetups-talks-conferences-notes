@@ -1,4 +1,4 @@
-= Paris JUG - 2020/05/12
+= Paris JUG - 2020/05/12 - JHipster, Azure, GitHub, Codespaces
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
