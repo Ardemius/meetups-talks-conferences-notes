@@ -37,17 +37,110 @@ Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, 
 
 == Notes
 
+* 1er client est également le fondateur d'Indexima
+	** "Benoît", qui est maintenant un CxO d'Indexima
 
+* 1er gros client a été Mappy (récemment racheté par RATP)
+	** initialement était en Dataviz avec Tableau et Spark SQL In Memory comme processing
+	** solution pas satisfaisante en termes de perf
+		*** entre 10 et 20 sec pour 1 milliards de lignes
+		*** on savait à l'époque que cela allait passer à 30 milliards
+	** Mappy est toujours client d'Indexima actuellement
+* Natixis a été le 2e "beta testeur"
+	** système plus complexe que chez Mappy, avec plusieurs solutions de dataviz, et plusieurs sources de données à gérer
 
+* Indexima adresse principalement le domaine bancaire et l'assurance
+* L'outil est dédié à l'accélération de la BI dans un contexte "big" Data
 
+La 1ere question que va poser Indexima chez le client : "En combien de temps voulez-vous que la donnée traitée soit disponible dans votre dataviz ?"
 
+.les nouveaux workflows de Data Analytics
+image::20201103_startech_indexima_01.jpg[]
 
+Sabina explique que les solutions Data basées sur un Datamart en sortie du lake et alimentant la Dataviz sont au final lentes.
 
+* Snowflake, Hive LLAP, Impala, Presto, Big Query sont les nouveaux outils pour le workflow "2 / expensive"
+	** plus de datamart et SQL direct sur les données du lake
+	** *QUESTION* : à mes yeux, dépend énormément de la puissance de l'infra pour avoir de bonnes perf
+	** possible avec passage sur le Cloud, où les ressources et le temps de réponse vont dépendre de ce que vous êtes prêt à payer
 
+* Indexima marche sur des Datasets jusqu'à 100 TB
+	** *QUESTION* : et au-delà ?
 
+* Annnonce 500x plus rapide qu'un Snowflake !
 
+image:20201103_startech_indexima_02.jpg[]
+image:20201103_startech_indexima_03.jpg[]
 
+NOTE: Snowflake, datawarehouse élastique dans le cloud (donc avec une partie compute)
 
+Indexima annonce de meilleures perf, pour un coût (matériel) bien moindre (cf dernière image)
+
+* Indexima aime bien Snowflake
+	** Ils poussent la solution Tableau PLUS Snowflake et Indexima en surcouche régulièrement chez leurs clients
+		*** et là c'est Indexima et plus Snowflake qui s'occupe du compute
+		*** *QUESTION* : dans ce cas, que fait Snowflake ?
+
+* Indexima is data source agnostic, it can speed up any data source with a JDBC driver
+
+Architecture technique, comment Indexima fait pour être plus rapide et moins cher ?
+
+image::20201103_startech_indexima_04.JPG[]
+
+	* *Hyper Index* : ces derniers sont créés non pas par des humains *mais des algos*
+		** ce sont eux qui permettent d'avoir le gap de x1000 par rapport à un Spark SQL
+		** donc on vient créer ces hyper index par calcul qui sont comme des datamarts
+		** on a l'impression qu'on fait des requêtes sur des milliards de lignes, alors qu'en fait on requêtes un subset particulièrement adapté à nos requêtes
+		** ces hyper index sont montés en mémoire (correspond à 5% de la data qui est montée en mémoire)
+		** ils sont distribués
+		** C'est du Java !
+
+image:20201103_startech_indexima_05.JPG[]
+image:20201103_startech_indexima_06.JPG[]
+image:20201103_startech_indexima_07.JPG[]
+image:20201103_startech_indexima_08.JPG[]
+image:20201103_startech_indexima_09.JPG[]
+
+=== Demo
+
+* itinéraires des taxies de New York : ~5 milliards de lignes
+* dashboard avec Tableau
+	** initialement les sélections et manip via Tableau et Snowflake, prennent 10 à 20 sec
+		*** et pourtant c'est du Snowflake à 32$ de l'heure
+
+* Indexima va venir "attraper" les requêtes de Snowflake
+	** après une phase de "chauffe" ?
+		*** pour comprendre le pattern d'usage de mon utilisation de Tableau
+
+* Indexima utilise le CDC (Change Data Capture) de Snowflake pour être tenu au courant des mises à jour de la Data
+
+[IMPORTANT]
+====
+Indexima ressemble à la solution de création de cubes custom en mémoire que nous avions mis en place à la SGCIB.
+
+	* on va donc créer à la volée des cubes optimisé à nos besoins
+====
+
+La "magie" d'Indexima vient de ses algos permettant de créer les hyper indexes / datamart adaptés à nos besoins. 
+
+revue de l'optim possible ?
+temps de chauffe nécessaire
+
+=== Séance de questions / réponses
+
+* des limites sont définissables pour killer automatiquement certaines requêtes trop extrêmes
+* si pas de data capture au niveau de la source, une synchro autre est configurable dans Indexima
+	** va correspondre à une requête d'update au final, mais sans avoir besoin d'écrire cette dernière
+* lors de ses optimisations, Indexima va automatiquement détruire les hyper indexes qui ne sont plus pertinants, ou qui sont réutilisés dans d'autres.
+
+* Esteban nous confirme que le principal use case d'Indexima est *l'optimisation de requêtes BI*
+	** un use case secondaire est qu'Indexima peut également servir de couche d'abstraction pour accéder aux systèmes de persistance sous-jacent.
+
+* Indexima regarde les requêtes qui passent par le proxy ET demande aussi des infos au système de stockage sous-jacent (comme snowflake dans la démo)
+
+* Indexima peut fonctionner aussi bien avec tables internes qu'externes, le use case via les tables externes étant privilégié la plupart du temps (ce qui est généralement le cas pour ce que j'ai toujours constaté)
+
+* Si Indexima ne fonctionne plus pour une raison X ou Y, il arrête de faire proxy, devient passe-plat et la requête est de nouveau exécutée par le système de processing initial (Snowflake dans l'exemple)
 
 
 
