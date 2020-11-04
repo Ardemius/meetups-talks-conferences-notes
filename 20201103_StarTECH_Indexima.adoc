@@ -12,6 +12,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 :imagesdir: images
+:resourcesdir: resources
 :source-highlighter: highlightjs
 // Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
 :lb: pass:[<br> +]
@@ -36,6 +37,8 @@ Indexima est une boîte que je suis depuis plusieurs années, et qui propose une
 Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, un peu comme un cube OLAP derrière le lake (les données chargées dans Indexima vont faire l'objet de pré-traitements).
 
 == Notes
+
+link:{resourcesdir}/20201103_présentation-INDEXIMA.pdf[Slides de la présentation]
 
 * Speakers côté Indexima :
 	** Alexandre SCHWOB : team sales
