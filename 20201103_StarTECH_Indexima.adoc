@@ -18,7 +18,7 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 1
+:toclevels: 2
 // To turn off figure caption labels and numbers
 //:figure-caption!:
 // Same for examples
@@ -28,7 +28,7 @@ endif::[]
 
 toc::[]
 
-Présentation technique de la solution de Data Analytics Indexima durant la réunion mensuelle StarTECH de novembre
+Présentation technique de la solution de *Data Analytics Indexima* durant la réunion mensuelle StarTECH de novembre
 
 == Abstract
 
@@ -37,8 +37,15 @@ Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, 
 
 == Notes
 
+* Speakers côté Indexima :
+	** Alexandre SCHWOB : team sales
+	** Esteban Gonzalez : team avant-vente
+	** Sabina SIEDER : team sales et account manager
+
+* Indexima : éditeur français
+
 * 1er client est également le fondateur d'Indexima
-	** "Benoît", qui est maintenant un CxO d'Indexima
+	** Florent (VOIGNIER), qui est maintenant un CTO d'Indexima
 
 * 1er gros client a été Mappy (récemment racheté par RATP)
 	** initialement était en Dataviz avec Tableau et Spark SQL In Memory comme processing
@@ -50,7 +57,7 @@ Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, 
 	** système plus complexe que chez Mappy, avec plusieurs solutions de dataviz, et plusieurs sources de données à gérer
 
 * Indexima adresse principalement le domaine bancaire et l'assurance
-* L'outil est dédié à l'accélération de la BI dans un contexte "big" Data
+* *L'outil est dédié à l'accélération de la BI dans un contexte "big" Data*
 
 La 1ere question que va poser Indexima chez le client : "En combien de temps voulez-vous que la donnée traitée soit disponible dans votre dataviz ?"
 
@@ -80,51 +87,49 @@ Indexima annonce de meilleures perf, pour un coût (matériel) bien moindre (cf 
 	** Ils poussent la solution Tableau PLUS Snowflake et Indexima en surcouche régulièrement chez leurs clients
 		*** et là c'est Indexima et plus Snowflake qui s'occupe du compute
 		*** *QUESTION* : dans ce cas, que fait Snowflake ?
+			**** gère le stockage (comme datahouse), ainsi que tout ce qui n'est pas requêtage
 
-* Indexima is data source agnostic, it can speed up any data source with a JDBC driver
+* *Indexima is data source agnostic*, it can speed up any data source with a *JDBC driver*
 
-Architecture technique, comment Indexima fait pour être plus rapide et moins cher ?
+=== Architecture technique, comment Indexima fait pour être plus rapide et moins cher ?
 
 image::20201103_startech_indexima_04.JPG[]
 
 	* *Hyper Index* : ces derniers sont créés non pas par des humains *mais des algos*
 		** ce sont eux qui permettent d'avoir le gap de x1000 par rapport à un Spark SQL
 		** donc on vient créer ces hyper index par calcul qui sont comme des datamarts
-		** on a l'impression qu'on fait des requêtes sur des milliards de lignes, alors qu'en fait on requêtes un subset particulièrement adapté à nos requêtes
+		** *on a l'impression qu'on fait des requêtes sur des milliards de lignes, alors qu'en fait on requête un subset particulièrement adapté à nos requêtes*
 		** ces hyper index sont montés en mémoire (correspond à 5% de la data qui est montée en mémoire)
 		** ils sont distribués
 		** C'est du Java !
 
-image:20201103_startech_indexima_05.JPG[]
-image:20201103_startech_indexima_06.JPG[]
-image:20201103_startech_indexima_07.JPG[]
+image:20201103_startech_indexima_05.JPG[] 
+image:20201103_startech_indexima_06.JPG[width=450]
+image:20201103_startech_indexima_07.JPG[width=450]
 image:20201103_startech_indexima_08.JPG[]
 image:20201103_startech_indexima_09.JPG[]
 
 === Demo
 
-* itinéraires des taxies de New York : ~5 milliards de lignes
+* itinéraires des taxis de New York : *~5 milliards de lignes*
 * dashboard avec Tableau
 	** initialement les sélections et manip via Tableau et Snowflake, prennent 10 à 20 sec
 		*** et pourtant c'est du Snowflake à 32$ de l'heure
 
 * Indexima va venir "attraper" les requêtes de Snowflake
 	** après une phase de "chauffe" ?
-		*** pour comprendre le pattern d'usage de mon utilisation de Tableau
+		*** pour comprendre le pattern d'usage de l'utilisation de Tableau
 
-* Indexima utilise le CDC (Change Data Capture) de Snowflake pour être tenu au courant des mises à jour de la Data
+* *Indexima utilise le CDC (Change Data Capture) de Snowflake pour être tenu au courant des mises à jour de la Data*
 
-[IMPORTANT]
+
+[NOTE]
 ====
-Indexima ressemble à la solution de création de cubes custom en mémoire que nous avions mis en place à la SGCIB.
-
-	* on va donc créer à la volée des cubes optimisé à nos besoins
+Indexima ressemble en partie à la solution de création de cubes custom en mémoire que nous avions mis en place à la SGCIB (création de cubes ActivePivot à la volée). +
+Par contre, elle va plus loin que celle-ci du fait de ses algos qui créés automatiquement des cubes optimisés, adaptés aux requêtes réellement effectuées.
 ====
 
-La "magie" d'Indexima vient de ses algos permettant de créer les hyper indexes / datamart adaptés à nos besoins. 
-
-revue de l'optim possible ?
-temps de chauffe nécessaire
+*La "magie" d'Indexima vient de ses algos permettant de créer les hyper indexes / datamart adaptés à nos besoins.* 
 
 === Séance de questions / réponses
 
@@ -134,14 +139,12 @@ temps de chauffe nécessaire
 * lors de ses optimisations, Indexima va automatiquement détruire les hyper indexes qui ne sont plus pertinants, ou qui sont réutilisés dans d'autres.
 
 * Esteban nous confirme que le principal use case d'Indexima est *l'optimisation de requêtes BI*
-	** un use case secondaire est qu'Indexima peut également servir de couche d'abstraction pour accéder aux systèmes de persistance sous-jacent.
+	** un use case secondaire est qu'Indexima peut également servir de *couche d'abstraction pour accéder aux systèmes de persistance sous-jacents*.
 
 * Indexima regarde les requêtes qui passent par le proxy ET demande aussi des infos au système de stockage sous-jacent (comme snowflake dans la démo)
 
 * Indexima peut fonctionner aussi bien avec tables internes qu'externes, le use case via les tables externes étant privilégié la plupart du temps (ce qui est généralement le cas pour ce que j'ai toujours constaté)
 
 * Si Indexima ne fonctionne plus pour une raison X ou Y, il arrête de faire proxy, devient passe-plat et la requête est de nouveau exécutée par le système de processing initial (Snowflake dans l'exemple)
-
-
 
 
