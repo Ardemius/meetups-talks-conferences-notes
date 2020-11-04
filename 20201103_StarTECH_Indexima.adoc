@@ -96,7 +96,7 @@ Indexima annonce de meilleures perf, pour un coût (matériel) bien moindre (cf 
 
 === Architecture technique, comment Indexima fait pour être plus rapide et moins cher ?
 
-image::20201103_startech_indexima_04.JPG[]
+image::20201103_startech_indexima_04.jpg[]
 
 	* *Hyper Index* : ces derniers sont créés non pas par des humains *mais des algos*
 		** ce sont eux qui permettent d'avoir le gap de x1000 par rapport à un Spark SQL
@@ -106,11 +106,11 @@ image::20201103_startech_indexima_04.JPG[]
 		** ils sont distribués
 		** C'est du Java !
 
-image:20201103_startech_indexima_05.JPG[] 
-image:20201103_startech_indexima_06.JPG[width=450]
-image:20201103_startech_indexima_07.JPG[width=450]
-image:20201103_startech_indexima_08.JPG[]
-image:20201103_startech_indexima_09.JPG[]
+image:20201103_startech_indexima_05.jpg[] 
+image:20201103_startech_indexima_06.jpg[width=450]
+image:20201103_startech_indexima_07.jpg[width=450]
+image:20201103_startech_indexima_08.jpg[]
+image:20201103_startech_indexima_09.jpg[]
 
 === Demo
 
