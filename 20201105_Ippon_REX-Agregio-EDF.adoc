@@ -1,0 +1,112 @@
+= 2020/11/05 - Ippon Technologie : REX sur Agregio EDF, les clés du passage à l'échelle d'une startup désormais leader de son marché
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:resourcesdir: resources
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+
+
+== Abstract
+
+https://www.edf.fr/groupe-edf/espaces-dedies/journalistes/tous-les-communiques-de-presse/le-groupe-edf-lance-agregio-un-agregateur-au-service-des-producteurs-d-electricite-et-des-entreprises[Présentation de l'activité d'Agregio]
+
+.2017/09/17
+----
+Le groupe EDF lance sa nouvelle filiale Agregio, au service des producteurs d’électricité qui disposent de capacités de production renouvelables, et des entreprises qui disposent de capacités d’effacement. Grâce à Agregio, les clients peuvent valoriser au mieux ces actifs sur les marchés de l’électricité.
+
+Agregio est un agrégateur qui s’adresse à deux types de clients : les producteurs d’électricité renouvelable (éolien, solaire…) et les clients consommateurs d’électricité (industriels, entreprises…).
+
+Pour les producteurs d’électricité, Agregio propose des offres sur-mesure pour optimiser et vendre leur production sur les marchés, en leur sécurisant des revenus dans la durée. C’est une attente forte des producteurs d’électricité renouvelable ne bénéficiant plus des obligations d’achat. Agregio contribue ainsi au développement des énergies renouvelables, en accompagnant les producteurs sur les marchés, et en donnant de la visibilité aux investisseurs.
+
+Agregio s’adresse également aux consommateurs industriels et tertiaires, qui sont prêts à réduire ou à déplacer leur consommation contre rémunération, en fonction des besoins du système électrique.
+
+Agregio se positionnera enfin comme une plateforme d’optimisation locale dans le cadre de projets régionaux pour optimiser la production et la consommation sur un territoire.
+
+L’équipe d’Agregio est constituée d’experts dans les marchés de l’énergie, la réglementation, la gestion des énergies renouvelables, ainsi que dans les méthodes et algorithmes de prévision et d’optimisation.
+
+Agregio souhaite être l’acteur de référence dans ce secteur, et vise une part de marché de 20 à 30% à l’horizon 2020.
+----
+
+Agregio était donc une startup en 2017
+
+== Notes
+
+* Speaker côté Agregio :
+	** Sylvain GUEDON : Directeur Général
+
+* Côté Ippon :
+	** François PROT : Cloud & DevOps Practice Manager / Deputy CTO at Ippon Technologies
+	** Coach Agile (ou Scrum master) : Victoria PEDRON (vérifier si bien Ippon)
+	** Maïlys Levasseur
+
+Info clés :
+
+* Utilisation d'*AWS* qui a bien simplifier l'infra, et cela *même avec une équipe peu formée à cette techno*
+* Faire très attention au coût du RUN et à son augmentation, qui joue beaucoup dans la démotivation de l'équipe et la baisse de productivité
+
+=== Le passage à l'échelle suite au succès (le Scale Up)
+
+.ce qui a aidé le Scale Up
+image::20201105_ippon_agregio_01.jpg[]
+
+Il a été nécessaire de "scaler" aux alentours de 12 dev (~2 pizza teams). +
+A partir de là, plus moyen de gérer avec une orga avec 1 équipe +
+-> passage sur de l'Agile @ Scale à partir de là
+
+* Dès lors qu'on a des enjeux de synchronisation, il faut réorganiser
+	** attention, car cela ne saute pas aux yeux de prime abord
+	** et à partie d'une certaine taille, ajouter des ressources (des devs) n'augmente plus la productivité, il faut faire un état des lieux et faire une ré-org
+		*** mais au début, plus de devs, ça marche. Mais au début seulement
+
+Ippon est la boîte qui a fait l'audit pour l'état des lieux.
+
+* Il y a également une partie de l'audit qui portait sur les pratiques DevOps
+	** qui a fait remonter qu'il n'y avait pas d'expert DevOps ou de personne expérimentée dans ce domaine dans l'équipe
+
+* Sylvain : maintenant (phase de maturité ?), Agregio souhaite ré-internaliser certaines maîtrises.
+	** reprendre en interne la maîtrise sur ses outils
+
+Au final, cela fait 3.5 ans de collaboration entre Agregio et Ippon jusqu'à maintenant.
+
+image::20201105_ippon_agregio_02.jpg[]
+
+* *l'onboarding* était un gros challenge du projet
+* le passage en 100% télétravail s'est fait, mais avec quelques difficultés au début
+* l'Agilité a été mise en place uniquement pour les équipes IT. C'est actuellement à l'étude pour les autres équipes
+* Pour l'agilité à l'échelle, SAFe était trop compliqué (grosse machinerie) pour Agregio
+	** Agregio a surtout pris ce qui gravitait autour de la cérémonie de PI Planning
+
+== Ressources
+
+* Article plus détaillé d'Ippon sur Agregio : https://blog.ippon.fr/2020/10/26/agregio-et-ma-donnee-prend-toute-sa-puissance-maximale-sur-aws/
+
+* *Livestorm*, très bon outil pour faire des webinar, avec gestion des questions / réponses, possibilités de faire un sondage (pour le ROTI) par exemple
+	** apparemment, possibilité d'enregistrement également
+	** voir https://livestorm.co/
+		*** Pour les tarifs, voir https://livestorm.co/fr/tarifs/
+
