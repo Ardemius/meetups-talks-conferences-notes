@@ -103,6 +103,8 @@ image::20201105_ippon_agregio_02.jpg[]
 
 == Ressources
 
+* Video du talk : https://app.livestorm.co/ippon-technologies/accelerator-tour-agregio/live?s=d318145e-43ec-4d05-8a93-cbb8c6dd6ebe
+
 * Article plus détaillé d'Ippon sur Agregio : https://blog.ippon.fr/2020/10/26/agregio-et-ma-donnee-prend-toute-sa-puissance-maximale-sur-aws/
 
 * *Livestorm*, très bon outil pour faire des webinar, avec gestion des questions / réponses, possibilités de faire un sondage (pour le ROTI) par exemple
