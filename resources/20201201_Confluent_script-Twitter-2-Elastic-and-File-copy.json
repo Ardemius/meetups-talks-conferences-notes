@@ -112,7 +112,7 @@ tail -f /Users/olaplace/Confluent/ouput-files/C19-french-messages.txt
 # For Elastic I use http://bonsai.io (olaplace@confluent.io / Sylvie1984!)
 CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
     "connector.class"='io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
-    "connection.url"='https://4q7srda77y:cl2otkee9o@elastic-poc-5026767428.us-east-1.bonsaisearch.net:443',
+    "connection.url"='https://xxxxxxxxxxxxx.us-east-1.bonsaisearch.net:443',
     "connection.username"='olaplace@confluent.io',
     "connection.password"='your-password!',
     "tasks.max"='1',
