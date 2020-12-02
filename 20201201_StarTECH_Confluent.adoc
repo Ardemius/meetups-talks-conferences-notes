@@ -1,0 +1,263 @@
+= 2020/12/01 - Confluent : architectures Event Driven sur base de Kafka par Confluent
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:resourcesdir: resources
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présentation technique des *architectures Event Driven* par *Confluent* durant la réunion mensuelle StarTECH de décembre
+
+== Teaser
+
+--
+Pour la réunion StarTECH de décembre, nous accueillerons Confluent (https://www.confluent.fr/), qui viendra nous parler d'*architectures Event Driven* (philosophie, use cases), et de comment leur stack, basée sur *Kafka*, nous permet de les implémenter.
+
+Depuis maintenant plusieurs années, Apache Kafka règne en maître dans la catégorie des messages brokers, à laquelle appartiennent également ActiveMQ et RabbitMQ. +
+Cela est d'autant plus vrai dans le monde de la Data, du fait de ses excellentes performances en termes de vélocité. +
+Confluent a développé tout un écosystème autour de ce dernier (Kafka Connect, Kafka Streams, Schema Registry, etc.) afin d'en étendre le scope et les usages. +
+Cette stack est de plus en plus utilisée, en connaître les briques et le fonctionnement est un vrai plus, et sera d'ici peu une obligation (si ce n'est pas déjà le cas 😉)
+
+La présentation aura lieu le mardi 01/12, de 19h à 20h30 (créneau habituel de réunion de la communauté StarTECH).
+
+Nous aurons la chance de recevoir 3 experts Confluent pour nous en parler : Florent RAMIERE, Olivier LAPLACE et Rémi FOREST. +
+Les contributeurs StarTECH doivent se souvenir de Rémi, qui était venu nous présenter mi-2018 la distro Hadoop MapR (éditeur chez qui il travaillait à l'époque). +
+Après une 1ere partie théorique, nous enchaînerons sur une démo, suivie d'une séance de questions / réponses.
+
+De nouveau, c'est une belle occasion de faire sa veille techno directement avec l'éditeur, donc VENEZ NOMBREUX ! 😃
+--
+
+== Draft notes
+
+* Eric ORTIZ: 2 ans chez Confluent, Partners Manager SEMEA
+* Olivier LAPLACE : architecte avant-vente chez Confluent, va nous faire la prez
+* Florent RAMIERE : architecte, répondra aux questions du chat
+* Rémi FOREST : manage les pré-sales côté SEMEA
+
+2 démos de prévues : Confluent platform et Concluent Cloud
+
+Titre du talk par Confluent : *Event Driven 101 & Demo*
+
+IMPORTANT: De nos jours, l'importance est donnée aux *données fraîches*, à l'*immédiateté*.
+
+Plan du talk :
+
+	* Event
+	* Event Driven
+	* Event Driven architecture
+	* Evens streaming plateforme
+	* Points d'attention
+	* Demo CP & CC
+
+* *Events vs State* : analogie à une partie d'échecs, séquence de coups joués (events) vs état "simple" de la partie à l'instant "t" (state)
+* Gartner : en 2020 80% des besoins digitaux seront traités en event driven avec pour cible le temps réel
+
+Real time with historical context : Contextual
+
+	* Event-Driven App : pizza acheté le 15/10
+	* CONTEXTUAL Event-Driven App : vous avez acheté 2 pizzas la journée du 15/10. 2 pizza ?! Est-ce normal ?
+		** permet donc la détection de *comportements anormaux*
+
+image::20201201_startech_confluent-kafka_01.png[]
+
+Kafka, quels intérêts :
+
+	* lets you publish and subscribe to events
+	* lets you store events for as long as you want
+	* let your process and analyse events
+
+Kafka facilite le *découplage des technos*.
+
+.Anatomy of a Kafka Topic
+image:20201201_startech_confluent-kafka_02.png[]
+
+.Rappels rapides sur Kafka lui-même
+[NOTE]
+====
+
+	* notion de Producteur -> Topic -> Partition -> Consumer dans Kafka
+		** garantie de l'ordre par partition
+	* Kafka : *commit log*, *immutable*, *append-only*
+====
+
+.Push vs Pull queries
+image:20201201_startech_confluent-kafka_03.png[]
+
+.Kafka + Kafka Connect + Kafka Streams
+image:20201201_startech_confluent-kafka_04.png[]
+
+.La plateforme Confluent
+image:20201201_startech_confluent-kafka_05.png[]
+
+* Confluent (pas Kafka, Confluent) comme un *backbone d'évènements*, le système nerveux de transfert d'évènements
+	** passer du spaghetti aux lasagnes -> ce que permet ce backbone unifié
+
+.Confluent platform 6.0
+image:20201201_startech_confluent-kafka_06.png[]
+
+.Quelles sont les questions qui font sens pour passer sur à une *architecture Event Driven* ?
+image:20201201_startech_confluent-kafka_07.png[]
+
+.Est-ce facile de passer à ce type d'architecture ?
+image:20201201_startech_confluent-kafka_08.png[]
+
+-> Pas si simple que cela, comme pour tout *système distribué* au final.
+
+* Mise en place de la gouvernance dès le début du projet : bien penser au *Schema Registry*
+
+.Ressource conseillée : _Designing Event-Driven Systems_ de Ben Stopford (ancien de Confluent ?)
+image:20201201_startech_confluent-kafka_09.png[width=600]
+
+=== DEMO
+
+image:20201201_startech_confluent-kafka_10.png[]
+image:20201201_startech_confluent-kafka_11.png[]
+
+* Florent nous conseille de regarder https://github.com/confluentinc/cp-demo/ pour une démo de la plateforme. 
+	** et de regarder le docker-compose.yml
+	** TOUTE la sécurité a été settée cf Florent
+
+image::20201201_startech_confluent-kafka_12.png[]
+
+* développement d'un *petit canon à Tweets* pour les besoins de la démo
+	** pour le code voir https://www.confluent.io/hub/jcustenborder/kafka-connect-twitter
+
+* Florent : *KSQLDB* est une *surcouche de Kafka Stream*
+	** si vous n'arrivez pas a exprimer votre métier dans ksqldb, *il ne faut pas hesiter a utiliser un outil de plus bas niveau* ... en l'occurence kafka Streams
+
+* de multiples connecteurs disponibles : 
+	** Snowflake pour de l'analytics
+	** Couchbase pour du In Memory
+	** MongoDB
+
+Florent : Au final, cette démo :
+
+	* choper de la data en live
+	* la transformer en live
+	* la dépiler en live dans ES
+	* le tout dans un seul déploiement
+
+Voir https://github.com/confluentinc/demo-scene
+
+* Florent : vous voulez découvrir chacun des composants ... mais sans pourrir tout votre setup, je vous conseille : +
+https://github.com/vdesabou/kafka-docker-playground/
+	** c'est un collègue de Florent
+
+=== Chat
+
+[NOTE]
+====
+Le chat a été très actif, et on y a tapé à toute vitesse... +
+Ne prêtez donc attention ni style ni aux fautes 😁😅
+====
+
+* différences entre Kafka et RabbitMQ / ActiveMQ
+	** Florent : en somme, rabbit est un excellent pub/sub, kafka est une plateforme de streaming
+
+* Alessandro pose une question sur le max de partitions
+	** Florent : bon, en gros il y a 2 règles : pas plus de 5000 partitions par broker, et moins de 200 000 partition par cluster
+
+* Florent : ajouter un element dans un consumer group pour aller plus vite, ne demande AUCUNE config. +
+c'est natif a kafka, ca s'appelle le consumer group protocol +
+en revanche, le vecteur de scalabilité est lié au nombre de partitions
+
+* Florent : ouaip, agréger les logs dans kafka c'est un super cas d'usage pour débuter +
+j'ai commencé kafka chez BNP en faisant ca +
+J'avais plus de 4To compressé avec un cluster ES d'un PETA (la misère) +
+grosso modo, ca permet de gérer la *back pressure* +
+-> sans kafka cela aurait explosé
+
+* Florent : à l'arrache, tu vas sortir les données de Kafka quasi à la vitesse de ton réseau
+
+* tiens, concernant le KSQL, il se situe comment par rapport au SQL ANSI ?
+	** Florent : 
++
+----
+good question
+non c'est PAS du sql
+ksqldb n'est PAS une base de données
+c'est pour processer au fil de l'eau les évènements
+l'usage du dsl sql est pour l'utilisabilité
+si t'as besoin de trucs plus riches --> utilise une vraie base 
+----
+
+* Florent : sur le terrain, si on enlève le marketing, on fait des choses souvent très simples +
+3 joins, 2 aggregate, et un 1 agrégat temporel, et t'es déjà MEGA HYPER avancé :)
+
+* Florent : Le clien confluent .Net est moins riche que celui de java (surtout sur le K-streams) les aggregations sont possibles avec le client java mais pas le client .Net
+
+* Florent : pour ksql, j'ai l'habitude de dire, si c'est trivial, et que t'as testé et que t'as pas galéré 3h, c'est good. +
+Sinon c'est Kafka Streams 
++
+IMPORTANT: on fera probablement jamais le port de Kafka Stream sur .Net, ni sur python, ni sur Go, ni sur C++, etc etc.
+
+* quel est le meilleur moyen pour tester le fonctionnement/perfs de kafka?
+	** Florent : kafka-producer-perf.sh et kafka-consumer-perf.sh, c'est dans la distribution
+		*** voir https://gist.github.com/framiere/b64d3a1897f764128793e1de20950742
+
+* Florent : il y a des certifications "officielles" sur Kafka Confluent : https://www.confluent.io/certification/
+
+* Pour "apprendre Kafka" : voir https://developer.confluent.io/
+
+* FLorent : NE LAISSEZ JAMAIS PARTIR VOS CLIENTS EN PROD SANS SUPERVISION BO***EL!
+	** Control Center est l'interface de supervision
+	** *compression native dans le protocol !* -> UTILISEZ LA
+		*** moins de réseau pour envoyer, moins de stockage, moins de réseau pour répliquer, moins de réseau pour consommer
+
+* Florent : on peut avoir un cluster on premise, et un cluster dans le cloud, et les faire communiquer
+
+=== Séance de questions / réponses
+
+* Voir le Chat !
+
+* Pourrons-nous avoir les slides de la présentation ?
+
+== ROTI du talk
+
+Pouvez-vous donner votre retour sur cette présentation ?
+
+5. Excellente : Ça valait bien plus que le temps qu'on y a passé
+4. Bonne : J'ai gagné plus que le temps que j'y ai passé
+3. Juste Moyenne : Je n'ai pas perdu mon temps, sans plus
+2. Utile mais... :  ça ne valait pas à 100% le temps que j'y ai passé
+1. Inutile : Je n'ai rien gagné, rien appris
+
+image::20201201_startech_confluent-kafka_14.png[]
+
+-> ROTI très positif ! Minimum 4, moyenne 4.6 👍
+
+== Ressources
+
+* Video du talk sur notre chaîne YouTube : https://www.youtube.com/watch?v=uqKG9qQpA4w&list=PLbd6jztIXBjn-_ZY53Id6zOiO3uJ-8IQu
+
+Ressources par Confluent :
+
+image::20201201_startech_confluent-kafka_13.png[]
+
+* https://developer.confluent.io/ pour toutes les ressources techniques
+* https://www.confluent.io/blog/ pour le blog, très fourni, de Confluent
+* livre _Designing Event-Driven Systems_ de Ben Stopford
+
