@@ -1,0 +1,131 @@
+# Create the twitter-tweets topic
+kafka-topics --bootstrap-server localhost:9092 --create --partitions 3 --replication-factor 1 --topic twitter-tweets
+
+# Start the Java twitter-producer class: in ConfluentBasics project: kafka-producer-twitter: TwitterProducer
+
+################################################
+#####    For KSQLDB in Confluent Cloud.    #####
+################################################
+// See: https://docs.confluent.io/current/cloud/cp-component/ksql-cloud-config.html#create-acls-for-ksql-to-access-a-specific-topic-in-ccloud
+// ccloud login
+// ccloud ksql app list => To ge tthe ksqldb cluster id
+// ccloud ksql app configure-acls lksqlc-jz0zm twitter-tweets --dry-run => To get ACLs rights
+// => Assign ACLs to full access to all topics:
+// ccloud kafka acl create --allow --service-account 108878 --operation READ --operation WRITE --topic '*'
+################################################
+
+# In C3, twitter-tweets topic, messages, KSQL query: add lang/STRING
+# Then run the query for french languages: SELECT * from TWITTER_TWEETS WHERE LANG='fr' EMIT CHANGES;
+
+# Install the Elastic Sink connector (check the latest version):
+confluent-hub install confluentinc/kafka-connect-elasticsearch:10.0.2
+
+# 1: filter appropriate fields 
+# No EMIT CHANGES
+CREATE STREAM C19_TWEETS (user STRUCT<name VARCHAR, location VARCHAR>,
+id_str VARCHAR, text VARCHAR, source VARCHAR, lang VARCHAR, created_at VARCHAR) WITH 
+(KAFKA_TOPIC='twitter-tweets', VALUE_FORMAT='JSON');  
+
+# 2: create a topic with those fields for EN, FR and other languages 
+# Create a Topic for fr, en and other languages
+CREATE STREAM C19_TWEETS_T  
+   WITH (PARTITIONS=3, VALUE_FORMAT='JSON') 
+   AS SELECT user->name AS USER_NAME, 
+             user->location AS USER_LOCATION,
+             text, 
+             source, 
+             lang, 
+             created_at 
+   FROM C19_TWEETS WHERE lang='fr' OR lang='en' OR lang='it' OR lang='sp' OR lang='de'; 
+// To partition by lang: FROM C19_TWEETS WHERE lang='fr' OR lang='en' PARTITION BY lang; 
+
+# 3: Count number of messages per LANG in 60 seconds window
+SELECT lang, text, COUNT(*) FROM C19_TWEETS
+  WINDOW SESSION (60 SECONDS)
+  GROUP BY lang
+  EMIT CHANGES;
+
+# 4-1: STORE Window session in a TABLE
+CREATE TABLE messages_per_lang AS
+SELECT lang, COUNT(*) FROM C19_TWEETS
+  WINDOW SESSION (60 SECONDS, RETENTION 1 DAYS)
+  GROUP BY lang
+  EMIT CHANGES;
+
+# 4-2: STORE Window tumbling in a TABLE
+CREATE TABLE messages_per_lang AS
+SELECT lang, COUNT(*) FROM C19_TWEETS
+  WINDOW TUMBLING (SIZE 30 SECONDS)
+  GROUP BY lang
+  EMIT CHANGES;
+
+# 5: Query the TABLE
+select * from MESSAGES_PER_LANG where LANG='fr';
+
+########### TO COME IN A NEAR FUTURE ............
+# 6: Keep only FINAL results
+CREATE TABLE final_messages_per_lang AS
+SELECT lang, COUNT(*) FROM C19_TWEETS
+  WINDOW SESSION (20 SECONDS, RETENTION 1 DAYS)
+  GROUP BY lang
+  EMIT FINAL;
+#################################################
+
+
+# 10: create a topic with those fields for FR messages
+# Create a Topic for fr messages
+CREATE STREAM C19_TWEETS_FR  
+   WITH (PARTITIONS=3, VALUE_FORMAT='JSON') 
+   AS SELECT user->name AS USER_NAME, 
+             text, 
+             source, 
+             created_at 
+   FROM C19_TWEETS WHERE lang='fr'; 
+
+# 11: create a topic with those fields for EN messages
+# Create a Topic for en messages
+CREATE STREAM C19_TWEETS_EN  
+   WITH (PARTITIONS=3, VALUE_FORMAT='JSON') 
+   AS SELECT user->name AS USER_NAME, 
+             user->location AS USER_LOCATION,
+             text, 
+             source, 
+             lang, 
+             created_at 
+   FROM C19_TWEETS WHERE lang='en'; 
+
+# 12: create the File sink connector with KSQLDB
+CREATE SINK CONNECTOR `file-sink-connector` WITH(
+    "connector.class"='org.apache.kafka.connect.file.FileStreamSinkConnector',
+    "tasks.max"='1',
+    "key.converter"='org.apache.kafka.connect.storage.StringConverter',
+    "value.converter"='org.apache.kafka.connect.json.JsonConverter',
+    "topics"='C19_TWEETS_FR',
+    "file"='/Users/olaplace/Confluent/output-files/C19-french-messages.txt',
+    "value.converter.schemas.enable"='false');
+
+# 13: View file content
+tail -f /Users/olaplace/Confluent/ouput-files/C19-french-messages.txt
+
+# 14: Create the ELASTIC connector with KSQLDB
+# See also: https://www.confluent.io/blog/kafka-elasticsearch-connector-tutorial/
+# For Elastic I use http://bonsai.io (olaplace@confluent.io / Sylvie1984!)
+CREATE SINK CONNECTOR `elastic-sink-connector` WITH(
+    "connector.class"='io.confluent.connect.elasticsearch.ElasticsearchSinkConnector',
+    "connection.url"='https://4q7srda77y:cl2otkee9o@elastic-poc-5026767428.us-east-1.bonsaisearch.net:443',
+    "connection.username"='olaplace@confluent.io',
+    "connection.password"='your-password!',
+    "tasks.max"='1',
+    "topics"='C19_TWEETS_EN',
+    "type.name"='_doc',
+    "value.converter"='org.apache.kafka.connect.json.JsonConverter',
+    "value.converter.schemas.enable"='false',
+    "schema.ignore"='true',
+    "key.ignore"='true');
+
+
+
+
+##############################################
+##############################################
+##############################################

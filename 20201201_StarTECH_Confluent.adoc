@@ -252,6 +252,8 @@ image::20201201_startech_confluent-kafka_14.png[]
 == Ressources
 
 * Video du talk sur notre chaîne YouTube : https://www.youtube.com/watch?v=uqKG9qQpA4w&list=PLbd6jztIXBjn-_ZY53Id6zOiO3uJ-8IQu
+* Slides du talk : link:{resourcesdir}/20201201_Confluent_Event-Driven-101.pdf[Confluent Event Driven 101]
+* Script / commandes de la démo : link:{resourcesdir}/20201201_Confluent_script-Twitter-2-Elastic-and-File-copy.json[Twitter 2 Elastic and file copy]
 
 Ressources par Confluent :
 
