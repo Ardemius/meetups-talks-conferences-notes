@@ -150,4 +150,6 @@ Par contre, elle va plus loin que celle-ci du fait de ses algos qui créés auto
 
 * Si Indexima ne fonctionne plus pour une raison X ou Y, il arrête de faire proxy, devient passe-plat et la requête est de nouveau exécutée par le système de processing initial (Snowflake dans l'exemple)
 
+== Ressources
 
+* Video du talk sur notre chaîne YouTube : https://www.youtube.com/watch?v=PQTVSWzoBM0&list=PLbd6jztIXBjn-_ZY53Id6zOiO3uJ-8IQu
