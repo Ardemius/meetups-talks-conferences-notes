@@ -1,0 +1,430 @@
+= 2020/12/04 - jLove conference
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:resourcesdir: resources
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Totally virtualized conference on 2 days, 04 and 05/12/2020 +
+Main site: https://jlove.konfy.care/
+
+== Life beyond Java 8
+
+Presented by Trisha Gee
+
+=== Teaser
+
+----
+Wasn't Java 8 a fantastic update to the language? Lambdas and streams were a huge change and have helped to improve Java developers' productivity and introduce some functional ideas to the language. Then came Java 9... and although the module system is really interesting for certain types of applications, the lack of exciting language features and uncertainty around how painful it might be to migrate to Java 9 left many applications taking a wait-and-see approach, happy with Java 8.
+
+But now Java has a new version every six months, and suddenly Java 15 is here. We're all still on Java 8, wondering
+
+whether we should move to a later version, which one to choose, and how painful it might be to upgrade.
+
+In this session we'll look at:
+
+- Language features from Java 9-15
+
+- Why upgrade from Java 8
+
+- How the support and license changes that came in with Java 11 might impact us.
+----
+
+=== Notes
+
+Trisha présente la plupart des principales nouveautés arrivées après Java 8. +
+Voir l'article de Trisha sur InfoQ "Upgrading from Java 8 to Java 12" (https://www.infoq.com/articles/upgrading-java-8-to-12/)
+
+Slides du talk : https://bit.ly/love-beyond-8
+
+https://bit.ly/97-love
+
+== Building Data Pipelines With Java And Open Source
+
+Presented by Rustam Mehmandarov
+
+=== Teaser
+
+----
+A few years ago, moving data between applications and data stores included expensive monolithic stacks from large software vendors with little flexibility. Now, with frameworks such as Apache Beam and Apache Airflow, we can schedule and run data processing jobs for both streaming and batch with the same underlying code. This presentation demonstrates the concepts of how this can glue your applications together and shows how we can run data pipelines as Java code, the use cases for such pipelines, and how we can move them from local machines to the cloud solutions by changing just a few lines of Java in our Apache Beam code.
+----
+
+=== Notes
+
+image::jlove_01.png[]
+
+Ce talk met en avant l'usage de Apache Beam
+
+Tout le code du talk est disponible sur GitHub : https://github.com/mehmandarov/oslocitybike-beam
+
+== JobRunr - distributed background processing using only Java 8 lambda's
+
+Presented by Ronald Dehuysser
+
+=== Teaser
+
+----
+```java
+BackgroundJob.enqueue(() -> System.out.println("Distributed processing should not be harder than this!"));
+```
+
+Do you have a lot of jobs to process? Are you doing to much in your web-requests, stalling your end-users? Do your jobs take long to complete?
+
+Presenting [JobRunr](https://www.jobrunr.io) - easy to set up, easy to use: add the jar from Maven Central and create jobs using only Java 8 lambda's. If you need to process more jobs than your current server can handle, just add extra nodes - no extra configuration is necessary - JobRunr will automatically share the load over the different nodes.
+
+Are you talking to external webservices that sometimes fail? No worries, JobRunr is fault-tolerant and will automatically retry your jobs with a smart back-off policy.
+
+Oh yeah, one more thing: it comes with a built-in dashboard that allows you to follow up on all your jobs.
+----
+
+== Reacting to an Event-Driven World
+
+Presented by Grace Jansen, Kate Stanley
+
+=== Teaser
+
+----
+In this session explore how Kafka and Reactive application architecture can be combined in applications to better handle our modern data needs.
+
+Outline:
+
+The need for event-driven architecture with example
+
+Correcting the incorrect assumption that using Kafka give you complete Reactivity and what this really means (i.e. reactive programming, reactive architecture, reactive manifesto)
+
+How to configure Kafka to best enable the cornerstones of the reactive manifesto (with analogies to original example)
+
+How to get started with Kafka
+
+Reactive Kafka frameworks available
+
+Demo application built using Kafka and Vert.x Kafka client and significant changes made when re-architecting this application
+
+Useful resources and helpful links
+----
+
+=== Notes
+
+Code disponible sur GitHub : https://github.com/cesoffier/quarkus-coffeeshop
+
+.Kafka gère des streams de records
+image:jlove_02.png[]
+
+-> Il est davantage question de streams de records que d'events.
+
+image:jlove_03.png[]
+
+Reactive manifesto
+
+	* Elastic
+	* Message-Driven
+	* Resilient
+	* Responsive
+
+.Reactive Programming Patterns
+image:jlove_04.png[]
+
+.Resilient producers management when working with Kafka
+image:jlove_05.png[]
+
+Grace et Kate font un très bon retour sur Vert.X pour la création d'applications Réactives.
+
+image:jlove_06.png[]
+
+Démo avec Kafka et Vert.X
+
+	* code : https://github.com/ibm-messaging/kafka-java-vertx-starter
+	* appli -> websockets -> Vert.X -> Kafka (??? à vérifier !)
+
+.Pour d'autre labs, voir :
+image:jlove_07.png[]
+
+Grace a écrit un livre : ibm.biz/reactivereport
+
+.Ressources conseillées sur le sujet Reactive
+image:jlove_08.png[]
+
+== In-Memory Computing Essentials for Java Developers and Architects
+
+Presented by Denis Magda.
+
+=== Teaser
+
+----
+Distributed, in-memory computing technologies such as caches, data grids, and databases boost application performance and solve scalability problems by storing and processing large datasets across a cluster of interconnected machines.
+
+This session is for software engineers and architects who build data-intensive applications and want practical experience with in-memory computing. You will be introduced to the fundamental capabilities of distributed, in-memory systems and will learn how to tap into your cluster's resources.
+
+Join Denis as he describes and demonstrates three essential capabilities of in-memory computing—with code samples based on Apache Ignite:
+
+- Data partitioning: to use all of a cluster's memory and CPU resources.
+
+- Affinity co-location: to avoid data shuffling and use highly performant, distributed SQL queries
+
+- Co-located processing: to perform compute and data-intensive calculations at high speeds straight on the cluster nodes
+----
+
+=== Notes
+
+Agenda
+
+	* Introduction
+		** Why In-memory computing ?
+		** Apache Ignite, brief overview
+
+	* Essentials
+		** Data Partitioning
+		** Affinity Co-location
+		** Co-located computations
+
+Apache Ignite is a CP system following CAP.
+
+.Memory vs Disk Latency
+image:jlove_09.png[]
+
+.Apache Ignite In-Memory Computing Platform
+image:jlove_10.png[]
+
+.Apache Ignite as a Cache or as a Database
+image:jlove_11.png[]
+
+NOTE: Apache Ignite is one of the top 5 Apache projects
+
+Depending on the system, partition or shards can be used interchangeably 
+
+.Ignite partitioning
+image:jlove_12.png[]
+
+Record -> Partition -> Node mapping
+
+*Affinity co-location*: reducing network utilization for complex requests
+
+.Data shuffling is Evil!
+image:jlove_13.png[]
+
+ (4) is "Data reducing") +
+-> *Shuffling* is often done in case of *Join*
+
+To avoid it, you can co-locate data by key:
+
+image:jlove_14.png[]
+
+It requires a special Ignite configuration "Allow non-coll"
+
+*Co-located Computations*: executing data-intensive logic on cluster nodes
+
+== Java Functional Programming Idioms
+
+Presented by Venkat Subramaniam
+
+=== Teaser
+
+----
+A number of developers and organizations are beginning to make use of Functional Programming in Java. With anything that's new, we often learn it the hard way. By stepping back and taking a look at programming style as idioms, we can quickly gravitate towards a better coding style and also avoid some common traps that we often get drawn towards.
+----
+
+=== Notes
+
+Le code fonctionnel doit toujours rester cohérent. +
+Il ne faut donc pas chercher à faire de l'inlining forcé juste pour "gagner des lignes" ET perdre de la cohérence.
+
+Exemple :
+
+[source,java]
+----
+.map(person -> person.getName())
+.map(name -> name.toUpperCase())
+
+// Ne doivent pas être transformées en
+
+.map(person -> person.getName().toUpperCase())
+----
+
+-> De plus, dans ce dernier cas, la lambda n'est plus "passthrough", car nous appliquons un traitement au paramètre (on lui applique le `.toUpperCase()`).
+
+.L'humour de Venkat 😉 
+image:jlove_15.png[]
+
+Conseil de Venkat : utiliser des *méthodes références* dès que possible. +
+-> *ce qui implique que cela soit des passthrough*.
+
+Venkat : _Lambda expressions should be glue code. 2 lines may be too many._ +
+Voir son article sur le sujet : http://blog.agiledeveloper.com/2015/06/lambdas-are-glue-code.html
+
+.Ne PAS code l'abominable lambda multilines "filter" de cet exemple !
+image:jlove_15.png[]
+
+-> Lui préférer l'utilisation d'une méthode custom "check"
+
+Venkat : "s'il vous plaît, n'utiliser pas de lambda multilignes" (comme dans l'exemple précédent) +
+-> c'est un terrible *code smell* 🙂 
+
+Un talk au top, à revoir, et encore merci Venkat 🙂 
+
+== Great Software architecture: clean, scalabre, maintanable
+
+Presented by Eberhard Wolf
+
+=== Teaser
+
+----
+Great software architecture is clean, scalable, and maintainable. Software architects design it and are responsible for it. Seems reasonable? It's not. This talk shows how teams can design truly successful architectures. It is based on the experience with numerous architecture designs and reviews.
+----
+
+=== Notes
+
+A great Software is a Software that at least goes to PROD...
+
+."Traditional" architect has issues...
+image:jlove_17.png[]
+
+-> They just can't know everything...
+
+* Un bon architecture doit être capable d'exploiter au mieux les capacités et *expertises des équipes*.
+* il doit diffuser la connaissance
+* et *la faire utiliser par les équipes*
+* il doit fédérer et faire travailler ensemble plusieurs profils : Qualité, DevOps, etc.
+
+.Pour former les équipes et transmettre la connaissance, l'architecture doit former les équipes
+image:jlove_18.png[]
+
+En conclusion :
+
+image:jlove_19.png[]
+image:jlove_20.png[]
+
+Cette conclusion est tellement vraie à mes yeux :
+
+----
+With self-organization, architects can't juste do architecture.
+Therefore: architects shouldn't do architecture
+
+	* but must empower
+	* convince
+	* or find other solutions
+----
+
+.send mail to jlove2020@ewolff.com to get the slides and other ressources
+image:jlove_21.png[]
+
+*Resources*:
+
+	* *Slides of the talk* as a pdf just link:{resourcesdir}/SoftwareArchitecture-WhyIDoItDifferently.pdf[here]
+	* and an extra eBook from Eberhard on *Service Mesh and Microservices* (he is an expert on the subject) link:{resourcesdir}/service-mesh-primer.pdf[here] (again a pdf from the Dropbox)
+
+== A Change-Data-Capture use-case: designing an evergreen cache
+
+Presenter by Nicolas Frankel, from Hazelcast
+
+=== Teaser
+
+----
+When one's app is challenged with poor performances, it's easy to set up a cache in front of one's SQL database. It doesn't fix the root cause (_e.g._ bad schema design, bad SQL query, etc.) but it gets the job done. If the app is the only component that writes to the underlying database, it's a no-brainer to update the cache accordingly, so the cache is always up-to-date with the data in the database.
+
+Things start to go sour when the app is not the only component writing to the DB. Among other sources of writes, there are batches, other apps (shared databases exist unfortunately), etc. One might think about a couple of ways to keep data in sync _i.e._ polling the DB every now and then, DB triggers, etc. Unfortunately, they all have issues that make them unreliable and/or fragile.
+
+You might have read about Change-Data-Capture before. It's been described by Martin Kleppmann as turning the database inside out: it means the DB can send change events (`SELECT`, `DELETE` and `UPDATE`) that one can register to. Just opposite to Event Sourcing that aggregates events to produce state, CDC is about getting events out of states. Once CDC is implemented, one can subscribe to its events and update the cache accordingly. However, CDC is quite in its early stage, and implementations are quite specific.
+
+In this talk, I'll describe an easy-to-setup architecture that leverages CDC to have an evergreen cache.
+----
+
+=== Notes
+
+.Plan
+image:jlove_22.png[]
+
+To set-up a cache is doing a *trade-off*
+
+	* improved performances
+	* but stale state possible
+
+.Change Data Capture implementation options
+image:jlove_23.png[]
+
+A good resource to read : https://www.confluent.io/blog/turning-the-database-inside-out-with-apache-samza, from Martin KLEPPMANN.
+
+*Debezium* :
+
+	* originated as a Kafka connector
+	* Debezium records all row-level changes with each database table in a change event stream
+
+image::jlove_24.png[]
+
+Again the same warning: it's NOT that simple to install and configure a Kafka system (Zookeeper and all other parts of the solution)
+
+.Hazelcast JET is a Stream Processor
+image:jlove_25.png[]
+
+.2 modes de déploiement
+image:jlove_26.png[]
+
+* Client/Server mode is more advanced than Embedded one.
+	** Once you're are used to the product, use this deployment mode!
+
+image:jlove_27.png[]
+
+Every time there is change, JET will be aware of it and be able to update the cache.
+
+.Resources
+image:jlove_28.png[]
+
+== Jakarta NoSQL: One API to many NoSQL databases into Cloud Native age
+
+Presented by Otavio Santana, Java Champion
+
+=== Teaser
+
+----
+The next generation Database Management Systems do their best to be non-relational, distributed, open-source, and horizontally scalable.
+
+These banks are very easy and make any software engineer's job more comfortable, but the number of NoSQL databases are enormous! There are currently about three hundred non-relational databases, and that number keeps growing. The first question is: how to deal with so many databases? After all, there are several issues with this; there's a learning curve for each new API, not to mention the vendor-lockin impact.
+
+Know more about the API that makes your life more comfortable to use NoSQL with Java at cloud-native age.
+
+## Topics:
+
+* NoSQL
+
+* Cloud
+
+* Cloud Native
+
+* Jakarta EE
+
+* Eclipse MicroProfile
+
+* Jakarta NoSQL
+----
+
+=== Notes
+
+Un nouvel exemple d'utilisation de Jakarta NoSQL pour se connecter en Java à une base NoSQL.
+
+
+
+
+
