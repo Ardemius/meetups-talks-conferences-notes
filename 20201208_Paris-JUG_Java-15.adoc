@@ -1,0 +1,88 @@
+= Paris JUG - 2020/12/08 - Le Java nouveau est arrivé : Java SE 15
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+MeetUp virtuel du ParisJUG. +
+https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20201208
+
+== Abstract
+
+Sur la chaîne Twitch du ParisJUG : https://www.twitch.tv/parisjug
+
+----
+Java a fêté ses 25 ans cette année. En application du rythme de releases semestrielles, Java 15 a été diffusé le 15 septembre 2020.
+Le but de cette session est de faire un tour détaillé des dernières nouveautés :
+
+	* les nouvelles fonctionnalités
+	* les fonctionnalités mises à jour
+	* les fonctionnalités qui deviennent standard ou production ready
+	* les fonctionnalités qui restent en preview ou en incubator
+	* les fonctionnalités qui sont dépréciées ou supprimées
+
+par Jean-Michel Doudoux
+----
+
+== Notes
+
+.Liste des JEP de Java 15
+image:20201208_ParisJUG-Java15_01.png[]
+
+* JEP 360 : *Sealed classes* (preview)
+	** parfois on veut modéliser les différentes possibilités qui existent dans une hiérarchie (contrôle de l'héritage)
+	** l'idée des types scellés (classes ou interfaces) : restreindre les autres classes ou interfaces pouvant les étendre ou les implémenter
+	** une fois scellé, une classe ne peut pas avoir d'autres classes filles directes que celles explicitement ou implicitement définies.
+	** un des intérêts est de connaître *à l'avance* toutes les classes de la hiérarchie
+	** `sealed`, `non-sealed` et `permits` : `non-sealed` est le 1er mot clé à utiliser un nom composé avec un trait d'union
+	** on ne peut pas sceller une classe sans qu'elle ait au moins une classe fille
+
+* JEP 371 : *Hidden classes*
+	** elle ne peuvent pas être accédées par d'autres classes
+		*** même par réflexion
+		*** et elles sont non visibles dans la stack
+	** les classes et les interfaces peuvent être cachées
+	** cette fonctionnalité doit en remplacer une plus ou moins analogue dans sun.misc.Unsafe.
+		*** pour rappel, on travaille sur le remplacement de Unsafe depuis Java 9
+
+* *ZGC*
+	** la heap peut maintenant atteindre 16 To (de 8 Mo à 16 To)
+
+* *Text Blocks* !
+
+* JEP 375 : *Pattern Matching for instanceof*
+
+* JEP 384 : *Records (second preview)*
+	** rappel : le record est final
+
+
+
+
+
+
+
+
