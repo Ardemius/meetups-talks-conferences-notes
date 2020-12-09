@@ -1,0 +1,109 @@
+= 2020/12/08 - Red Hat Cloud Hybrid Connection
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:resourcesdir: resources
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Cloud Hybride ouvert : l'approche de Red habilitation
+
+Le problème avec le Cloud : la migration pour en sortir après y être entré... +
+Red Hat répond à cela via OpenShift.
+
+Red Hat OpenShift est la seule solution certifiée par Cloudera, qui est un grand partenaire.
+Renforcement de ce partenariat dans le cadre du Cloud hybride et du Cloud privé
+
+image:20201208_RedHat-OpenHybridConnection_01.png[]
+
+== Open Discussion client et partenaires
+
+* Sébastien Claude : Internal Cloud PO pour la Banque de France
+	** Pour lui, importance du multi-tenant pour l'hybride Cloud
+
+* Jan Nicolas Myklebust : Red Hat TPP EMEA Technology Lead, Manager Accenture
+	** Attention au changement de culture et de paradigme qu'impose le Cloud
+		*** donc également de gros changements organisationnels
+	** Le Cloud, comme bien d'autres domaines, nécessite une forte standardisation, pour éviter que chaque équipe gère le Cloud "à sa façon" (OpenShift sur bare metal, Kubernetes dans le Cloud, etc etc.)
+
+* Denis FRAVAL-OLIVIER : SE Director EMEA South pour Cloudera
+	** "Open Hybrid Cloud"
+	** "Expérience Cloud" : facilité d'accès aux outils, compréhensibilité de la facturation, au final toute l'expérience utilisateur autour du Cloud doit être repensée
+		*** Le Cloud ne peut pas être le domaine des seuls experts (comme cela l'a été pour bien des domaines jusqu'à maintenant), des utilisateurs "classiques“ doivent également pouvoir y accéder.
+
+== OpenShift Virtualisation : moderniser les VMs avec Kubernetes
+
+Présenté par David Szegedi, Principal cloud Solution Architect, Red Hat
+
+Problématique : Migration d'une VM vers OpenShift +
+Pourquoi ?
+
+	* pour réduire les coûts, en rendant le SI plus homogène
+		** éviter les VMs d'un côté et Kubernetes de l'autre
+
+On passe souvent les composants stateless (comme un NGinx) sur containers, mais on laisse les stateful (comme les persistances et BDD) sur VMs.
+
+Nouvelle dénomination de "GitOPS" : on va effectuer des modifs de la conf via PR sur Git
+
+== Red Hat Advanced Cluster Management : simplifier la gestion la gestion et le cycle de vie des clusters et des applications Kubernetes
+
+Présenté par David Szegedi.
+
+Cible de Red Hat ACM: les OPS qui ont en charge le maintien en condition opérationnelle de la plateforme, avec un point d'attention particulier sur la sicurité. +
+On reparlera donc des DevSecOps.
+
+Un Use Case classique actuellement chez les clients : Kubernetes managé sur cloud public
+
+Red Hat ACM :
+
+	* Multi-cluster Observability
+		** via Prometheus et Thanos (??? checker ce dernier)
+	* Policy Driven Governance Risk and Compliance
+	* pour gérer certaines actions pre et post installations, HORS de Kubernetes, Ansible est parfaitement adapté.
+
+NOTE : Tekton poussé par Red Hat pour la CI/CD du Cloud
+
+== Découvrez le Java supersonic avec Quarkus et minimisez encore votre empreinte avec Knative
+
+Quarkus, l'évolution de Java pour se mettre à la page des nouvelles pratiques et applications Cloud Native.
+
+Quarkus : plus que "container ready", "container first"
+
+Kubernetes est l'OS de demain sur lequel s'exécuteront toutes les applications
+
+== Séance de Questions / Réponses
+
+*RHV* (Red Hat Virtualization) est sur le déclin, et est en cours de remplacement par *OpenShift KNative*.
+
+
+
+
+
+
+
+
+
+
