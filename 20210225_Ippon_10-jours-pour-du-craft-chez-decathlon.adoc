@@ -1,0 +1,98 @@
+= 2021/02/25 - Ippon - 10 jours pour faire du Craft une habitude chez un leader de la distribution (Décathlon)
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Abstract
+
+Intervenants :
+
+    * Nicolas Zago : Ippon -  (directeur de l'agence Ippon de Lille)
+    * Marina Martin : Décathlon - Quality & Supply Production leader
+    * Adrien Bassery : Décathlon - PO 
+    * Grégory Elhaimer : Ippon - Coach Craft & Manager Technique
+
+Ippon : 500+, 7 sites en France
+
+== Notes
+
+* Cette *phase de coaching* et de level Up a, au final, duré *10 jours avec 2 coachs*, avec pour objectif de construire une 1ere victoire.
+    ** 10 jours est le package classique vendu par Ippon
+    ** 10 jours et pas 3 mois où l'on remet tout en cause
+    ** ces 10 jours ont été étalés sur 2 mois à 2 mois 1/2
+        *** il y a des boîtes pour lesquelles c'est 10 jours consécutifs, tout est très dépendant du contexte client
+
+Déroulé du Level Up Craft :
+
+    1. *Assessment* : Comprendre le contexte et identifier les objectifs
+    2. *warm-up* : Un échauffement pour s'approprier les concepts
+        ** 1 journée de formation sur les aspects pratiques de ce qui va être mis en place
+        ** exercice : définir ensemble les règles du service au tennis
+    3. *Hands On* : Mise en pratique sur des cas concrets et la base de code du projet
+
+Comme d'habitude et bien des clients, les problèmes remontés par Décathlon concernent l'onboarding et la documentation (l'accès à la connaissance)
+
+* 1er conseil : mettre en place des objectifs atteignables, et itératifs
+* mettre en place des katas d'1 ou 2 jours
+
+Quand Ippon a poussé le BDD (1ere session de 2h), le client (Marina) ne savait même pas ce que voulait dire "BDD"
+
+Décathlon : avec ces ateliers, on a fait émerger via les devs de nombreux aspects (tech) auxquels nous n'aurions jamais pensé +
+Exemple : seul 1 aspect d'une fonctionnalité avait été préparé, et 9 autres ont été amenés par les ateliers avec les DEVs
+
+Décathlon : il y a vraiment un intérêt à définir un *"ubiquitous language" commun*
+
+Décathlon est en Kanban
+
+Le clavier tournait bien dans l'équipe pour la rédaction des BDDs
+
+* Exemple : fonctionnalité "brider une commande"
+    ** seules quelques règles avaient été établies
+    ** grâce aux ateliers BDDs avec les devs, des questions non posées sont remontées : "Ok, mais les quotas, quand sont-ils calculés ?"
+        *** "non mais en fait, le calcul du quota, c'est au final une feature à part entière"
+
+* Il y a des questions remontées en session pour lesquelles il n'y aura pas de réponse immédiate
+    ** pas grave, on les note, et on les garde pour plus tard
+
+* Ce que voulait Marina (définition de la "victoire")
+    ** de nouveau un contact avec les devs
+    ** avoir un soft qui tourne bien dès sa livraison
+* Ce que voulait Adrien
+    ** une 1ere livraison d'une feature qui se passe "bien"
+
+== Ressources
+
+Sûrement un replay sur la chaîne YouTube d'Ippon
+
+
+
+
+
+
+
+

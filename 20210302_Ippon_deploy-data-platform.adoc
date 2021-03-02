@@ -1,0 +1,85 @@
+= 2021/03/02 - Ippon - Déploiement d'une plateforme Data complète en quelques jours
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+Présenté par Thomas THIRIET (IPPON) durant le Data Young Blood
+
+== Notes
+
+Composants de la Data Platform : *AWS*, *Terraform* (pour l'infra as code), *Matillion* (pour l'ELT) ou *DBT*, *Snowflake* pour le DWH ou le compute, et *Metabase* pour la partie visualisation
+
+image:20210302_ippon_data-young-blood_01.png[]
+image:20210302_ippon_data-young-blood_02.png[]
+
+* *Terraform, gestion du state*
+    ** utilisation de la fonctionnalité "backend", qui permet de mettre le state directement sur un bucket S3
+    ** le state sous Terraform permet de savoir ce qui a été déployé par rapport à ce qui est décrit dans les fichiers de déploiement
+
+* en Terraform, comment passer d'un env DEV à PROD sans tout recommencer ?
+    ** avoir des ressources globales et des ressources spécifiques à l'environnement
+    ** bien penser à faire, au minimum, des Terraform plan pour vérifier que Terraform arrive bien à lire les instructions données
+
+NOTE: A garder dans un coin de sa tête, quand on arrive aux limites de Terraform, on peut envisager le passage à https://terragrunt.gruntwork.io/[Terragrunt] +
+Par contre, ce n'est pas un outil à utiliser de prime abord, mais uniquement quand on arrive aux limites de Terraform
+
+* *Séparation Infrastructure et Code* : séparer le projet en 2 repo GitLab différents +
+Cette partie se base massivement sur GitLab CI/CD
+    ** projet-infra :
+        *** déploiement de lambdas vides
+        *** déploiement de cluster ECS
+    ** projet-code
+        *** déploiement du code des lambdas
+        *** déploiement du code à exécuter dans les tâches fargate
+            **** AWS Fargate est un moteur de calcul sans serveur pour les conteneurs
+
+image::20210302_ippon_data-young-blood_03.png[]
+
+NOTE: L'équipe de Thomas avait essayé d'utiliser les submodules de Git plutôt que 2 repo séparés, mais cela s'est révélé compliqué d'usage.
+
+Pour plus d'infos sur AWS Fargate, voir https://docs.aws.amazon.com/fr_fr/AmazonECS/latest/userguide/what-is-fargate.html
+
+----
+AWS Fargate est une technologie que vous pouvez utiliser avec Amazon ECS pour exécuter conteneurs sans avoir à gérer de serveurs ou de clusters de Amazon EC2 instances. 
+Avec Fargate, vous n’avez plus besoin de provisionner, configurer ou dimensionner des clusters de machines virtuelles pour exécuter des conteneurs. 
+Cela élimine le besoin de choisissez les types de serveur, décidez quand dimensionner vos clusters ou optimisez l’empaquetage du cluster.
+
+Lorsque vous exécutez votre Amazon ECS avec le Fargate type de lancement ou un Fargate fournisseur de capacité, vous empaquetez votre application dans des conteneurs, spécifiez l’UC et la mémoire des exigences, définissez la mise en réseau et IAM et lancez l’application. 
+Chaque Fargate a sa propre limite d’isolation et ne partage pas le noyau sous-jacent, le CPU aux ressources , aux ressources de mémoire ou à l’interface réseau Elastic avec une autre tâche.
+----
+
+.Terraform : astuce pour toujours avoir la dernière version d'une ressource
+image:20210302_ippon_data-young-blood_04.png[]
+
+
+
+
+
+
+
+
