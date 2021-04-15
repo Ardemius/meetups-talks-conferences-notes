@@ -1,0 +1,82 @@
+= 2021/03/16 - Ippon - Gouvernance Snowflake avancée et Data preparation avec Matillion
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+12@13 virtuel sur Teams, organisé par Softeam, et présenté par Darren (BOUTROS, ex Softeam StarTECH et maintenant chez Dassault)
+
+== Abstract
+
+NiFi, est un logiciel Open Source qui permet de transporter des données d’un point A jusqu'à un point B de manière sécurisée, robuste,.. 
+
+Grâce à l'IHM graphique de NiFi pas besoin de savoir programmer pour créer notre flux de développement. Cette présentation s’adresse à tout développeur. 
+
+== Notes
+
+.what is NiFi NOT for?
+image:20210415_softeam-NiFi_01.png[]
+
+* NiFi n'a pas été conçu par être un ETL
+    ** il peut néanmoins réaliser quelques transformations *basiques* (mais pas plus, il n'a pas le "T" de l'ETL)
+
+.Concepts principaux de NiFi
+image:20210415_softeam-NiFi_02.png[]
+
+`JoltTransformRecord` pour gérer les problèmes de noms de variables non compatibles entre la source et le target
+
+.Architecture de NiFi
+image:20210415_softeam-NiFi_03.png[]
+
+== Questions / réponses
+
+* NiFi semble bien stable à partir de la version 11
+* Pas de problème de leak mémoire dernièrement avec NiFi
+* NiFi peut lire un csv, détecter les groupes dedans, et les agréger en 1 seule data en sortie
+
+* comparaison NiFi vs DataStage
+    ** beaucoup de transfo spécifiques / complexes avec DataStage dont Darren n'avait pas besoin
+* comparaison NiFi vs AirFlow : ???
+
+* NiFi serait-il adapté pour une ingestion de n BDDs en source vers 1 BDD en target ?
+    ** cet usage existe chez Dassault, mais l'équipe de Darren n'utilise pas un workflow "Plusieurs BDD -> NiFi -> 1 seule base", mais "Plusieurs BDDs -> NiFi -> Kafka" PUIS, pour le feed de la BDD target "Kafka -> NiFi -> BDD target"
+    ** ils passent par un Kafka intermédiaire pour pouvoir contrôle l'usage des ressources lors du feed de la BDD target. +
+    En effet, en passant directement par NiFi, ce dernier consommerait un max (cad toutes) de connexions de la BDD target, qui deviendrait un goulet d'étranglement, et ne serait plus accessible pour d'autres usages le temps que l'ingestion se termine. +
+    Comme NiFi parallélise l'ingestion des différentes tables sources, on se pourrait vite se retrouver avec un paquet volumineux de data à intégrer dans l'unique BDD target. +
+    Passer par un Kafka et des consumers dédiés permet d'étaler dans le temps, en fonction des ressources dispo, l'ingestion des data dans la BDD target. 
+
+
+
+
+
+
+
+
+
+
+
+

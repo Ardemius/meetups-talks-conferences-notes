@@ -1,0 +1,176 @@
+= 2021/03/16 - Ippon - Gouvernance Snowflake avancée et Data preparation avec Matillion
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Abstract
+
+Nos experts Data vous partagent leurs retours d'expérience sur la mise en place d'une gouvernance avancée des objets *Snowflake*, ainsi que les bonnes pratiques de Data preparation et les gains de temps générés avec *Matillion*
+
+== Notes
+
+Avec Eric Poilvet (Snowflake) et Ian Funnell (Matillion, director of Solution Architecture), Arnaud Col (Ippon), Jeen-Baptiste Leblanc (Ippon, data engineer)
+
+* Snowflake : disponible sur tous les Cloud providers, et aide au partage de données global sur le Cloud
+    ** Donc Snowflake fait maintenant plus qu'un simple DWH on Cloud
+    ** C'est devenu une data platform complète
+
+* Ian Funnel - Matillion
+    ** plein essor
+    ** surtout présent aux US
+    ** et maintenant en France, principalement via Ippon
+
+image::20210316_Ippon_snowflake-matillion_01.png[]
+
+* Ippon a bâti une plateforme Data basée sur Snowflake, Matillion, le tout TerraFormé
+    ** avec Metabase également
+    ** Ippon a maintenant une bonne expérience sur cette plateforme
+
+image::20210316_Ippon_snowflake-matillion_02.png[]
+
+Ippon, en termes de gouvernance pour cette plateforme
+
+    * 1 seul compte Snowflake
+    * 1 compte admin par BDD
+        ** 1 compte admin par schéma plus 1 rôle en lecture
+
+image::20210316_Ippon_snowflake-matillion_03.png[]
+
+* Quand on veut être plus précis dans le degré d'isolation des données
+
+image::20210316_Ippon_snowflake-matillion_04.png[]
+
+* Eric : d'ici peu une nouvelle fonctionnalité pour gérer ce besoin concernant le dégré d'isolation
+    ** Dynamic data masking : cette fonctionnalité marchera de la même façon, mais au row level
+
+* Arnaud : le *versioning de Snowflake* (et ses clônes) permet de stocker sur du long terme les états de la data (time travel de 1 à 90 jours) pour *faciliter le machine learning* et la *data science*, car permet de *comprendre plus facilement le passé*.
+    ** permet de gérer du versioning sans avoir à rajouter plein de metadata
+
+* Concernant les datasets qu'on a besoin d'avoir en dev à partir de la prod, voir le Zero-copy cloning
+    ** avec ce dernier, on va pouvoir demander un clone de la PROD en quelques milli-secondes
+
+image::20210316_Ippon_snowflake-matillion_05.png[]
+image::20210316_Ippon_snowflake-matillion_06.png[]
+
+Jean-Baptiste sur les usages des data comme data engineer : 
+
+.CTAS Create Table As Select
+image::20210316_Ippon_snowflake-matillion_07.png[]
+
+* Matillion utilise implicitement les CTAS pour créer des tables ou des vues en fin de traitement (TODO vérifier phrase)
+* bonne pratique : pousser des data vers des traitements est meilleur que tirer les data vers les traitements (on limite les I/O)
+
+.CTE Common Table Expression
+image::20210316_Ippon_snowflake-matillion_08.png[]
+
+* permet de mieux s'y retrouver dans sa requête, et d'*éviter trop de SELECT imbriqués*
+* meilleure maintenabilité du code
+
+.gouvernance des Data Python vs SQL
+image:20210316_Ippon_snowflake-matillion_09.png[]
+image:20210316_Ippon_snowflake-matillion_10.png[]
+
+(avec l'usage de Panda dans le tableau)
+
+* Cette comparaison est juste là pour montrer qu'on peut faire la même chose en SQL qu'en Python (comme beaucoup de Data engineer et data scientist se servent de Python)
+
+* Eric : l'usage de *Java* arrive dans *Snowflake* pour la *couche de compute*
+
+* Ian
+    ** facilité d'usage de Matillion
+
+image:20210316_Ippon_snowflake-matillion_11.png[]
+image:20210316_Ippon_snowflake-matillion_12.png[]
+
+* Les versions de droite sont plus difficiles à maintenir
+
+IMPORTANT: Pour une fois, avec Matillion, on constate qu'un outil graphique permet de facilité la maintenance
+
+* Beaucoup de contrôles et de feedback sont accessibles via Matillion
+    ** contrôle du nom des colonnes, etc.
+    ** possibilité de récup des data on prem, les charger sur un bucket S3
+    ** etc.
+
+* Au final, on peut *aller beaucoup plus vite avec Matillion*
+* et il est plus facile de s'y retrouver quand on revient plus tard sur son code (retour d'XP d'Arnaud)
+
+questions :
+
+    * Si l'on a besoin d'anonymiser dans TEST ou DEV les données de PRD, que peut-on faire pour ces Snapshots ?
+        ** Eric : via le Dynamic Data Masking qui se fait à la volée via la définition de règles (il y aura obfuscation en fonction du rôle)
+        ** si pas possible, on peut faire des CTAS (Arnaud)
+
+    * SnowPipe vs put/copy ?
+        ** put/copy fichier entre 150 et 200 Mo
+            *** pas bon d'avoir trop de petits fichiers, ou des trop gros
+            *** parallélisation sur les différents DCPU du DWH
+        ** SnowPipe
+            *** TO BE COMPLETED
+            *** si énormément de petits fichiers, il faut les agréger pour réduire la facturation
+
+    * Comment gérez vous la mise à jour incrémentale des données dans Snowflake ? Ou faites vous de l'annule et remplace de toutes les données à chaque fois ?
+        ** par moment, on peut même faire du full tellement c'est rapide
+        ** en gros, on commencera toujours par du full
+        ** PUIS, on passera sur de l'incrémental
+            *** via du CDC (Change Data Capture)
+            *** sinon option empirique, quand on est sûr d'avoir un timestamp technique sur la data
+
+    * Comment migrer vers Snowflake une base on Prem ? (réponses ci-dessous par Arnaud)
+        ** outils HVR, ou Matillion Data Loader (qui ne nécessite même pas )
+        ** mais passer par des buckets S3 (stockage object, et de préférence du même storage provider que Snowflake) a un intérêt en termes de performances
+        ** on pourrait faire des inserts depuis le on prem sur Snowflake, mais les perfs ne seraient pas bonnes
+
+    * pourrais-tu expliquer à nouveau pourquoi c'est mieux d'avoir un seul compte pour TEST, DEV et PROD en lieu d'utiliser de comptes différents?
+        ** Arnaud : on parle bien de compte Snowflake
+        ** on ne peut pas faire de clône si on a des comptes Snowflake différents
+            *** on devra faire du data sharing, et on ne pourra pas utiliser de lien / clône symbolique (vérifier ce point !)
+
+    * Ian : il existe 2 connecteurs de Matillion vers Google Drive
+
+* Arnaud : Matillion est un ELT
+    ** Matillion a besoin que les données soient chargées dans Snowflake, car il se sert du compute de Snowflake
+    ** REVOIR CETTE REPONSE d'Arnaud
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
