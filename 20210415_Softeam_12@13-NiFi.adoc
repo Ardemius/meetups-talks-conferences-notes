@@ -62,8 +62,8 @@ image:20210415_softeam-NiFi_03.png[]
     ** beaucoup de transfo spécifiques / complexes avec DataStage dont Darren n'avait pas besoin
 * comparaison NiFi vs AirFlow : ???
 
-* NiFi serait-il adapté pour une ingestion de n BDDs en source vers 1 BDD en target ?
-    ** cet usage existe chez Dassault, mais l'équipe de Darren n'utilise pas un workflow "Plusieurs BDD -> NiFi -> 1 seule base", mais "Plusieurs BDDs -> NiFi -> Kafka" PUIS, pour le feed de la BDD target "Kafka -> NiFi -> BDD target"
+* NiFi serait-il adapté pour une *ingestion de n BDDs en source vers 1 BDD en target* ?
+    ** cet usage existe chez Dassault, mais l'équipe de Darren n'utilise pas un workflow "Plusieurs BDD -> NiFi -> 1 seule base", mais *"Plusieurs BDDs -> NiFi -> Kafka"* PUIS, pour le feed de la BDD target *"Kafka -> NiFi -> BDD target"*
     ** ils passent par un Kafka intermédiaire pour pouvoir contrôle l'usage des ressources lors du feed de la BDD target. +
     En effet, en passant directement par NiFi, ce dernier consommerait un max (cad toutes) de connexions de la BDD target, qui deviendrait un goulet d'étranglement, et ne serait plus accessible pour d'autres usages le temps que l'ingestion se termine. +
     Comme NiFi parallélise l'ingestion des différentes tables sources, on se pourrait vite se retrouver avec un paquet volumineux de data à intégrer dans l'unique BDD target. +

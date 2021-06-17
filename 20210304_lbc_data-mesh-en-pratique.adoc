@@ -1,0 +1,113 @@
+= 2021/03/04 - LeBonCoin (lbc²) - Le Data Mesh en pratique
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk donné durant la conférence virtuelle lbc² de LeBonCoin, le 04/03/2021
+
+== Abstract
+
+== Notes
+
+Presented by Max Schultze (Zalando - lead data engineer) et Arif Wider (professor for software engineering at HTW Berlin) pendant la conférence lbc² de LeBonCoin.
+
+Quand on arrive aux *limites du modèle centralisé* (avec un "bon vieux" datalake ou data warehouse centralisé) le *Data Mesh apporte des solutions*.
+
+Le modèle centralisé legacy comporte généralement 3 typologie d'utilisateurs : producteur de data à gauche, data et ML engineer au centre, puis consommateur (Data scientists).
+
+Les principaux problèmes de ce modèle centralisé sont : 
+    * *perte de responsabilité* et *perte d'ownership* sur les data
+    * l'équipe d'infrastructure devient vite un bottleneck
+
+Les 3 concepts derrière le "Data Mesh" :
+
+    * Product Thinking
+    * Domain Driven Distributed Architecture
+    * Infrastructure as a platform
+
+La 1ere utilisatrice du terme "Data Mesh" est Zhamak Dehghani (ThoughtWorks) dans un article sur le blog de Martin Fowler (2019) : +
+https://martinfowler.com/articles/data-monolith-to-mesh.html
+
+Le passage vers le Data Mesh est avant tout un changement d'état d'esprit (mindset shift) :
+
+    * FROM Centralized ownership TO Decentralized ownership
+    * FROM Pipelines as first class concern TO Domain Data as first class concern
+    * FROM Data as a by-product (sous-produit) TO Data as a Product
+    * FROM Siloed Data Engineering Team TO Cross-functional Domain-Data teams
+    * FROM Centralized Data Lake / Warehouse TO Ecosystem of Data Products
+
+image::20210304_lbc2_datamesh-en-pratique_01.png[]
+
+Max : a lot of all this data mesh thing is a matter of process, and NOT a technical matter
+
+* BYOD process : *Bring Your Own Bucket*
+    ** At Zalando they set up things so that *people can share data that they stored by themselves*.
+    ** Ces données sont partagées avec la plateforme (technique) centrale.
+        *** il est ici question de plateforme dite "centrale" car, à coté de cela, les équipes de Zalando utilisent de très nombreux comptes AWS différents.
+
+.Decentralized ownership does not imply decentralized infrastructure
+image::20210304_lbc2_datamesh-en-pratique_02.png[]
+
+-> We indeed need a central infrastructure (with a *central infrastructure team*) and a central governance.
+
+Importance de la *classification de l'usage* des données : on doit savoir quels datasets sont fréquemment utilisés ; ce sont eux qui ont le plus d'importance.
+
+Pour éviter que l'équipe centrale d'infra ne devienne un bottleneck, de nombreux data pipelines et parties d'infrastructure ont été déclinés dans un mode *self service*.
+
+== Q&A
+
+* *How to initiate a data mesh approach ?*
+    ** starts small, be iterative : start with 1 team that products data, and 1 team to consume data the way that was described
+
+* Max insiste sur le fait qu'ils choisissent maintenant chez Zalando quelles data sont rendues accessibles pour de l'analytique ou du machine learning. +
+Tout n'est PAS mis à disposition par défaut.
+
+* Data mesh is much more about how you organize and how people collaborate than technical matter
+
+== Resources
+
+* Vidéo via la conférence lbc² : https://www.lbc2.fr/evenement/replay/3_5s1rjzbUEA/
+* Le même talk sur YouTube (et donc avec la possibilité d'accélérer la vitesse de la vidéo !) : https://www.youtube.com/watch?v=UrM8yCjmzzw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
