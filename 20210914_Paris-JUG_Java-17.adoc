@@ -1,0 +1,70 @@
+= Paris JUG - 2021/09/14 - Java 17
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+MeetUp virtuel du ParisJUG. +
+https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20210914
+
+== Abstract
+
+Sur la chaîne Twitch du ParisJUG : https://www.twitch.tv/parisjug
+
+== Notes
+
+Talk donné d'abord par José sur la JEP 361 des Switch Expressions, puis par Rémi FORAX pour un récapitulatif de Java 17 ("Java 17 for the impatients")
+
+*Record* : 
+
+    * juste modéliser des data
+    * non modifiable
+    * pas de notions d'encapsulation : on accède donc à toutes les infos du Record, on ne peut rien cacher par encapsulation
+    * pas de checked exception dans le constructor
+        ** si on en veut, on fait une factory qui les lance et qui délègue au canonical constructor
+    * pas d'héritage dans les Record (mais on peut bien entendu implémenter une Interface)
+    * pas de Record anonymes (le but d'un Record étant de *nommer* des data)
+
+*Sealed Types* :
+
+    * pour restreindre les subtypes possibles. +
+    Exemple : si je vais la caisse, je ne peux payer qu'en CB ou en espèces, ET RIEN D'AUTRE +
+    Ce n'était pas possible avant (ou il fallait passer par une classe abstraite et un constructeur privé)
+    * le "permits" utilise des NOMS, donc tout ce qui est anonyme est interdit
+    * sceller une hiérarchie scelle aussi tous les sous-types
+
+*Pattern Matching* : 
+
+	* le pattern matching permet à des utilisateurs et non des créateurs de rajouter des opérations à des types déjà existants
+	En fait, on a déjà le pattern matching avec le design pattern Visitor, mais la chose est maintenant rendue plus simple (sa complexité est souvent reprochée au dp Visitor)
+	* par contre, le pattern matching n'est pas fait pour ajouter un nouveau sous-type
+
+NOTE: Tous les slides de Rémi sont disponibles sur GitHub : https://github.com/forax/do-synthetic-methods-dream-of-electric-switch-expressions
+
+

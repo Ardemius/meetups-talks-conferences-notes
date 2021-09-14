@@ -1,0 +1,79 @@
+= JChateau / JAlba - 2021/07/28
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To turn off figure caption labels and numbers
+//:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+:caption:
+
+toc::[]
+
+== Intro (Wednesday)
+
+Cette année JChateau est purement virtuel, et a fusionné avec JAlba.
+
+* L'outil utilisé pour la conf call est *SpatialChat* : https://spatial.chat/s/jauld
+	** Il permet de créer des salles virtuelles en déplaçant son icône. Seules les personnes dont les icônes sont proches peuvent s'entendre
+	** SAUF si l'on utilise le mégaphone, dans ce cas tout le monde va vous entendre
+
+* L'outil utilisé pour les post-it est Miro
+	** le board Miro pour s'entraîner à utiliser l'outil : https://miro.com/app/board/o9J_l4s7Wvo=/
+	** Et voici notre "vrai" board : https://miro.com/app/board/o9J_l4xvQwA=/
+
+Google Doc de l'unconference, avec les sujets abordés : +
+https://docs.google.com/spreadsheets/d/1bASAIqNkBObnXTaBOx4jcfa2eUQOH435Wu4hLeShn2c/edit#gid=970636173
+
+== Thursday
+
+.Marketplace screenshot
+image::20210729_JChateau-JAlba_01.png[]
+
+=== Remote working, Conference Community: Current & Future challenges and lessons learned
+
+=== Development Productivity
+
+https://docs.google.com/document/d/14XoEMNiBcAHNP4jqSXlF5c12lphJT5SGJX3vZtsdxWU/edit#
+
+== Friday
+
+.Marketplace screenshot
+image::20210729_JChateau-JAlba_02.png[]
+
+.J'ai participé en 2e session à "Is programming doomed?"
+image::20210729_JChateau-JAlba_03.png[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
