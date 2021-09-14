@@ -33,9 +33,21 @@ toc::[]
 MeetUp virtuel du ParisJUG. +
 https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20210914
 
+A eu lieu sur la chaîne Twitch du ParisJUG : https://www.twitch.tv/parisjug
+
 == Abstract
 
-Sur la chaîne Twitch du ParisJUG : https://www.twitch.tv/parisjug
+----
+19h00 à 20h00 : Java 17 for the impatients
+
+Et non, tout n’est pas morose, Java 17, la LTS sort aujourd’hui (le 14 septembre 2021). Donc promis, on ne parle pas de COVID (ah raté), on s’aère la tête en parlant de trucs que de toute façon vous ne pourrez pas utiliser dans vos boîtes avant mathusalem (ah, on a dit pas morose). Java 17 continue sa mutation vers un langage moins mutable (on a le droit aux jeux de mots ?), plus haut niveau, plus fonctionnel, en essayant de ne pas trahir ses origines OOP.
+
+Je ne parlerais que du langage, pas du runtime, pas du fait que Shenandoah et ZGC annoncent des latences en dessous de la milliseconde (crazy !), du fait que je peux utiliser les instructions vectorisés (SIMD) de façon portable, du fait que JNI ou le SecurityManager vivent leurs dernières heures.
+
+J’en dit pas plus, pour la suite, il faut se déplacer, enfin l’équivalent virtuel.
+
+par Rémi Forax
+----
 
 == Notes
 
