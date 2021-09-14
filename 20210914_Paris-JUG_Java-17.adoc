@@ -33,11 +33,11 @@ toc::[]
 MeetUp virtuel du ParisJUG. +
 https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20210914
 
-A eu lieu sur la chaîne Twitch du ParisJUG : https://www.twitch.tv/parisjug
+A eu lieu sur la chaîne *Twitch* du ParisJUG : https://www.twitch.tv/parisjug
 
 == Abstract
 
-----
+====
 19h00 à 20h00 : Java 17 for the impatients
 
 Et non, tout n’est pas morose, Java 17, la LTS sort aujourd’hui (le 14 septembre 2021). Donc promis, on ne parle pas de COVID (ah raté), on s’aère la tête en parlant de trucs que de toute façon vous ne pourrez pas utiliser dans vos boîtes avant mathusalem (ah, on a dit pas morose). Java 17 continue sa mutation vers un langage moins mutable (on a le droit aux jeux de mots ?), plus haut niveau, plus fonctionnel, en essayant de ne pas trahir ses origines OOP.
@@ -47,7 +47,7 @@ Je ne parlerais que du langage, pas du runtime, pas du fait que Shenandoah et ZG
 J’en dit pas plus, pour la suite, il faut se déplacer, enfin l’équivalent virtuel.
 
 par Rémi Forax
-----
+====
 
 == Notes
 
@@ -77,6 +77,8 @@ Talk donné d'abord par José sur la JEP 361 des Switch Expressions, puis par R�
 	En fait, on a déjà le pattern matching avec le design pattern Visitor, mais la chose est maintenant rendue plus simple (sa complexité est souvent reprochée au dp Visitor)
 	* par contre, le pattern matching n'est pas fait pour ajouter un nouveau sous-type
 
-NOTE: Tous les slides de Rémi sont disponibles sur GitHub : https://github.com/forax/do-synthetic-methods-dream-of-electric-switch-expressions
+== Ressources
+
+Tous les slides de Rémi sont disponibles sur GitHub : https://github.com/forax/do-synthetic-methods-dream-of-electric-switch-expressions
 
 
