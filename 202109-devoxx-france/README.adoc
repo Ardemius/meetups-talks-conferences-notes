@@ -432,8 +432,11 @@ Outils et pratiques recommandées :
 
 === MakAir
 
-image:MakAir_01.jpg[width=500]
+.Un des 1ers prototypes
 image:MakAir_02.jpg[]
+
+.Un prototype plus avancé
+image:MakAir_01.jpg[width=500]
 
 video::MakAir_03.mp4[width=800]
 
@@ -443,6 +446,8 @@ video::MakAir_03.mp4[width=800]
 
 * Ce qui a vraiment débloqué les choses et fait la différence avec les autres projets de respirateurs qui n'ont pas réussi à avancer : ils ont été contacté par une boîte médicale en train de travailler à la certification d'un produit (?) dans le domaine du cancer du pancréas. +
 Cette dernière a pu bien les aider à préparer leur propre dossier de certification.
+
+* Ils ont été bien été aidé par le chef d'un infirmier réanimateur, spécialiste de ce type d'appareils (et écrivant des publications sur le sujet si j'ai bien compris).
 
 * Actuellement, le projet MakAir cherche comment se réorganiser, peut-être se transformer en fondation, comme Apache, afin de pouvoir héberger d'autres projets que le MakAir lui-même
 * Une fois ce nouveau statut / cette nouvelle organisation trouvée, ils verront quelles prochaines étapes donner au projet.
