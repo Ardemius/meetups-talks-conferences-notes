@@ -280,6 +280,9 @@ Cas pratique : ouverture des réservations pour le concert de Justin Biber un je
     ** avec Google, puis Azure bien devant Amazon
     ** on veut de plus en plus une infrastructure immuable
 
+.CaaS in a nutshell
+image:devoxx-france-2021_14.jpg[]
+
 ==== PaaS
 
 * Sur un PaaS, on va consommer un service de type *middleware* ou *runtime*
@@ -288,9 +291,45 @@ Cas pratique : ouverture des réservations pour le concert de Justin Biber un je
     ** Ce qui n'est pas dit avec un SQL Server, du fait du coût de licence
 * Le PaaS permet de libérer les OPS, comme beaucoup plus de choses sont gérées par le Cloud provider (patch management, network, upgrades, etc.)
 
-* Azure propose un AppService, avec derrière, en gros, une ferme de IIS.
+* *Azure* propose un AppService, avec derrière, en gros, une ferme de IIS.
     ** service très demandé chez les clients
     ** la notion de Resource Group n'est valable QUE pour Azure
+
+* *GCP* et *AppEngine*
+    ** Google s'amuse à réécrire Java pour supprimer certains problèmes de sécurité, ce qui peut poser quelques soucis dans certaines applications
+
+.PaaS in a nutshell
+image:devoxx-france-2021_15.jpg[]
+
+==== Serverless
+
+* AWS Lambda
+* Azure Cloud functions
+* GCP Cloud functions
+
+Avantages : 
+
+    * scaling complet à la charge du Cloud provider
+
+* *GraphQL* est uniquement proposé nativement par *AWS*, via *Amplify* / *Appsync*
+    ** pour les 2 autres, on peut passer par des APIs comme Apollo ou Hasura
+    ** Comptez ~1 heure pour déployer une stack "classique" basée sur Amplify / Appsync
+
+image:devoxx-france-2021_16.jpg[]
+image:devoxx-france-2021_17.jpg[]
+
+Cf les speakers, il reste la moitié des slides prévus à passer en revue... 😅
+
+==== Conclusion
+
+* IaaS : AWS très fort
+* Container et ML : Google devant, car c'est son métier historique
+* PaaS : Azure très très bon de par leur intégration
+
+==== Q&A
+
+* GreenIT : Google 1er, Azure juste derrière, et AWS loin derrière
+    ** Depuis déjà un moment, les datacenter Google sont neutral carbon
 
 == Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
 
