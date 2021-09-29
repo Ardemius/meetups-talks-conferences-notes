@@ -18,7 +18,7 @@ endif::[]
 :sb: pass:[<br>]
 // check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
 :toc: macro
-:toclevels: 1
+:toclevels: 2
 // To number the sections of the table of contents
 :sectnums:
 // To turn off figure caption labels and numbers
@@ -30,16 +30,19 @@ endif::[]
 
 toc::[]
 
-== Keynote du mercredi
+== Mercredi
+
+=== Keynote
 
 * Et c'est parti pour Devoxx France 2021 édition "9 3/4" 😉 !
 
 image:devoxx-france-2021_01.jpg[]
+
 image:devoxx-france-2021_02.jpg[]
 
-== Projet MakAir, comment et pourquoi construire un respirateur open source ?
+=== Projet MakAir, comment et pourquoi construire un respirateur open source ?
 
-=== Abstract
+==== Abstract
 
 .Speaker : Quentin Adams
 ----
@@ -50,7 +53,7 @@ Quentin ADAM is the CEO of Clever Cloud : a Platform as a Service company allowi
 Les crises agissent comme des catalyseurs, et la crise du COVID19 n'a pas échappée à la règle sur les technologies de la santé. Au début de la pandémie, avec quelques amis nous avons lancé le projet MakAir, un respirateur artificiel open source pour répondre à l'urgence. C'est désormais devenu un projet de 300 contributeurs financé par l'Armée et le CEA, une folle course d'intense travail scientifique pour livrer un dispositif médical industriel et open source. Au final, sur la centaine de projet mondiaux, il est le seul qui a été utilisé sur des patients. Dans cette keynote, après une présentation rapide du projet, on évoquera sa construction passée mais surtout future. Nous répondrons aussi à ces questions : Qu’est-ce que des ingénieurs en informatique ont apporté à cet écosystème ? Pourquoi est-ce que le projet est né dans l’informatique, qu’est-ce qui a fait la spécificité de notre écosystème et comment il peux aider les autres écosystèmes ? Pourquoi l'open source médical est un sujet pertinent et majeur ? Comment peut on le déployer ? Est ce que tout le monde peut aider ?
 ----
 
-=== Notes
+==== Notes
 
 * Quentin a commencé par rassembler 3 copains : 2 "électroniciens" et le directeur de la Data de l'hôpital de Nantes
 * Au bout de 3 jours, 1er montage électronique sur base de... capote... (apparemment ce qui ressemble le plus à un poumon)
@@ -86,11 +89,9 @@ Conclusion : MakAir c'est l'illustration qu'on a tout intérêt à pousser le mo
 
 Aller voir le stand MakAir !
 
-image:MakAir_01.jpg[]
+=== Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
 
-== Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
-
-=== Abstract
+==== Abstract
 
 .Speaker : François Armand
 ----
@@ -105,7 +106,7 @@ Sous l’apparente simplicité de cette vérité générale se cache une réalit
 Cette présentation cherche à analyser ce que sont les erreurs dans une application et leur rôle fondamental dans la transmission d’informations pour ceux qui les reçoivent: les utilisateurs finaux, les développeurs via d’autres programmes ou d’autres composantes de l’application, ou encore les administrateurs système. Elle propose une méthode qui permet de rechercher et gérer systématiquement les cas non nominaux des applications et qui s’adapte aussi bien au microservice vite fait qu’à l’application de gestion vieille de 10 ans. Enfin, elle montre comment un nouveau framework de programmation fonctionnelle écrit en Scala, ZIO, accompagne parfaitement la méthode décrite et comment il a été utilisé dans Rudder, un logiciel libre de configuration et d’audit de serveurs en continu.
 ----
 
-=== Notes
+==== Notes
 
 * Qu'est-ce qu'un développeur ?
     ** *Model the world into code* (and try to make it useful !)
@@ -157,12 +158,12 @@ NOTE: Une conférence très intéressante sur une bonne gestion, se voulant *exh
 * Cette façon de faire va potentiellement rendre le code plus verbeux (très)
     ** Et avec Java qui est historiquement verbeux (malgré les améliorations de ces dernières années), c'est un point à surveiller pour ne pas rendre le code trop lourd, et perdre en visibilité
 
-== AWS vs GCP vs Azure
+=== AWS vs GCP vs Azure
 
 Université. +
 Speakers : Laurent Grangeau, Tony Jarriault, Olivier Dupré
 
-=== Abstract
+==== Abstract
 
 ----
 Tout le monde connaît ces 3 clouders publics majeurs. Mais... qu'ont-ils réellement en commun ? Quelles sont leurs différences profondes ? Le choix pour l'un des 3 est-il une question de coeur, de compétences disponibles ou capacités techniques ?
@@ -170,7 +171,7 @@ Tout le monde connaît ces 3 clouders publics majeurs. Mais... qu'ont-ils réell
 Faire le tour complet de chacune de ces plateformes prend déjà plus d'une journée. Alors faire le tour des 3 de manière exhaustive lors d'un talk est utopique. Nous irons donc droit au but et nous focaliserons sur les services majeurs, les plus utilisés et ceux pour lesquels la comparaison est la plus intéressante.
 ----
 
-=== Notes
+==== Notes
 
 * Actuellement, Google n'est pas encore présent sur le territoire français
     ** bien le garder en tête en termes de latence
@@ -223,7 +224,7 @@ image:devoxx-france-2021_13.jpg[]
     ** Le "Lift & Shift" est très coûteux
     ** côté "davantage de valeur ajoutée", il est ici question de *containers* ou de *managed service*
 
-==== CaaS : Container as a Service
+===== CaaS : Container as a Service
 
 * Côté *CaaS* : Container as a Service
     ** *AWS* : micro-VM qui démarre en moins d'1 sec
@@ -283,7 +284,7 @@ Cas pratique : ouverture des réservations pour le concert de Justin Biber un je
 .CaaS in a nutshell
 image:devoxx-france-2021_14.jpg[]
 
-==== PaaS
+===== PaaS
 
 * Sur un PaaS, on va consommer un service de type *middleware* ou *runtime*
 * Coûte généralement plus cher que le CaaS, avec certains éléments à prendre en compte 
@@ -301,7 +302,7 @@ image:devoxx-france-2021_14.jpg[]
 .PaaS in a nutshell
 image:devoxx-france-2021_15.jpg[]
 
-==== Serverless
+===== Serverless
 
 * AWS Lambda
 * Azure Cloud functions
@@ -320,20 +321,20 @@ image:devoxx-france-2021_17.jpg[]
 
 Cf les speakers, il reste la moitié des slides prévus à passer en revue... 😅
 
-==== Conclusion
+===== Conclusion
 
 * IaaS : AWS très fort
 * Container et ML : Google devant, car c'est son métier historique
 * PaaS : Azure très très bon de par leur intégration
 
-==== Q&A
+===== Q&A
 
 * GreenIT : Google 1er, Azure juste derrière, et AWS loin derrière
     ** Depuis déjà un moment, les datacenter Google sont neutral carbon
 
-== Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
+=== Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
 
-=== Abstract
+==== Abstract
 
 .Speaker : Clément Stenac
 ----
@@ -350,7 +351,7 @@ Cependant, même si le changement est en train de se produire, la réalité des 
 Dans cet exposé, nous discuterons des raisons pour lesquelles les éditeurs de logiciels d'entreprise peuvent choisir de supporter les déploiements "on-premises", les différentes variantes de ces déploiements, les défis supplémentaires qu'ils créent et comment nous avons trouvé des solutions à la plupart de ces défis.
 ----
 
-=== Notes
+==== Notes
 
 * Dataiku fait un logiciel, qu'on doit télécharger et installer ("nostalgie ?")
 
@@ -403,9 +404,9 @@ image:devoxx-france-2021_21.jpg[]
             *** le client a encore souvent peur de Kubernetes
             *** les compétences sont très rares (ceux qui maîtrisent *vraiment*)
 
-== Bash, couteau suisse du développeur
+=== Bash, couteau suisse du développeur
 
-=== Abstract
+==== Abstract
 
 Speaker : Laurent Callarec
 
@@ -413,7 +414,7 @@ Speaker : Laurent Callarec
 Si vous demandez à un développeur quels langages sont utilisés dans son projet, Bash ne ressortira pas forcément. Et pourtant, s’il y a du Linux, il y a de grande chance qu’il y ait du Bash. Et s’il n’y en a pas encore, il pourrait être avantageux d’en ajouter. Lors de cette session, je vous propose de démystifier Bash - ainsi que certaines commandes GNU fort utiles - pour en faire un véritable allié dans votre quotidien. Au travers des exemples de code et de live coding, je vous montrerai comment il peut vous aider, à moindre coût, à industrialiser vos process. Préparer une machine de développement, construire vos pipelines de build, gérer vos déploiements, assurer le monitoring de vos services ? Bash peut satisfaire nombreux besoins d’automatisation. Cerise sur le gâteau, à l’aide d’une approche TDD avec bats et de l‘analyseur de code statique shellcheck, je vous montrerai - tout au long de cette présentation - comment écrire du “vrai” code afin de briser l’idée reçue que coder en Bash, ce n’est que du bricolage.
 ----
 
-=== Notes
+==== Notes
 
 Outils et pratiques recommandées : 
 
@@ -424,4 +425,45 @@ Outils et pratiques recommandées :
 
 * Slides : https://github.com/lcallarec/devoxx-bash-2021
 * Twitter : @CallarecLaurent
+
+== Jeudi
+
+== Stand
+
+=== MakAir
+
+image:MakAir_01.jpg[width=500]
+image:MakAir_02.jpg[]
+
+video::MakAir_03.mp4[width=800]
+
+* 3 ou 4 mois pour la réalisation du projet depuis son 1er jour
+    ** Apparemment, une boîte médicale aurait annoncé qu'il lui faudrait 3 à 4 ans pour arriver à ajouter un nouveau respirateur à sa gamme
+    ** pour la production d'un appareil coûtant 8x le prix du MakAir
+
+* Ce qui a vraiment débloqué les choses et fait la différence avec les autres projets de respirateurs qui n'ont pas réussi à avancer : ils ont été contacté par une boîte médicale en train de travailler à la certification d'un produit (?) dans le domaine du cancer du pancréas. +
+Cette dernière a pu bien les aider à préparer leur propre dossier de certification.
+
+* Actuellement, le projet MakAir cherche comment se réorganiser, peut-être se transformer en fondation, comme Apache, afin de pouvoir héberger d'autres projets que le MakAir lui-même
+* Une fois ce nouveau statut / cette nouvelle organisation trouvée, ils verront quelles prochaines étapes donner au projet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
