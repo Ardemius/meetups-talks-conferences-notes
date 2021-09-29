@@ -352,7 +352,56 @@ Dans cet exposé, nous discuterons des raisons pour lesquelles les éditeurs de 
 
 === Notes
 
-XXX
+* Dataiku fait un logiciel, qu'on doit télécharger et installer ("nostalgie ?")
+
+* A l'époque, 2013, tout ce qui était l'analyse de données, la "vraie", était encore réservé aux experts "purs et durs". Experts que seuls les éditeurs avaient.
+
+.Technoslavia en 2016
+image:devoxx-france-2021_18.jpg[]
+
+.SaaS vs On-premise, où cela "frotte-t-il" ?
+image:devoxx-france-2021_19.jpg[]
+
+* Clément : *Snowflake* est une grande réussite en termes d'analytique
+    ** ils ont réussi à convaincre les clients de laisser leurs données chez eux, ce qui constituait un peu un miracle, rendu possible par la valeur réellement disruptive du produit.
+
+Donc les constats pour Dataiku, application on-premise : 
+
+    * des *releases suivant une fréquence donnée* (et non "quand on en a besoin" plusieurs fois par jour)
+        ** une fois que c'est déployé, on ne peut plus le modifier
+        ** et le constat est que *les clients ont PEUR des upgrades*...
+            *** il faut donc faire particulièrement attention à ce que les upgrades soient le plus "painless" possible, afin de ne pas perdre la confiance du client.
+            *** on va donc rarement "supprimer des choses", afin d'éviter tout breaking change, et faire en sorte que même les vieilles de plusieurs années marchent le plus longtemps possible.
+        ** donc le mot d'ordre c'est *quality first*, on privilégie la qualité à la fréquence des releases.
+
+    * il faut *s'adapter aux infrastructures du client*
+        ** il faut donc prévoir une énorme batterie de tests, pour essayer de s'adapter, à l'avance, au plus de cas possibles
+        ** et il faut que votre équipe support sont de grande qualité
+        ** une installation client peut par moment prendre des semaines du fait de problèmes de droits à obtenir, de problèmes de configuration du matériel, etc.
+
+    * on *oublie l'A/B testing*
+
+    * on ne peut *pas débugger ou profiler la PROD*
+        ** par contre, on log *massivement* : tous les install clients sont en mode "DEBUG"
+            *** et pas grave si cela bave plusieurs Go de log par jour, "l'espace disque ne coûte pas cher", et les logs se compressent très bien.
+
+    * on peut *difficilement tracer l'usage du produit par les utilisateurs*
+
+Bon, tout ça c'est bien beau, MAIS depuis 2 ans le *Cloud*, et surtout *son usage par toutes et tous*, a juste explosé...
+
+.Donc Technoslavia en 2017
+image:devoxx-france-2021_20.jpg[]
+
+*Passage au Cloud de Dataiku :*
+
+    * ils managent pour le client "leur dataiku" auquel ils n'ont pas accès
++
+image:devoxx-france-2021_21.jpg[]
+    * mais cela devient vraiment une application SaaS "classique", avec tous les avantages ET inconvénients associés.
+    * Côté container, beaucoup de clients parlent de Kubernetes, mais ne savent pas l'utiliser, ou tout simplement ne veulent pas l'utiliser
+        ** donc, il est *difficile de faire une migration SaaS vers on-premise sur Kubernetes via du Lift and Shift*
+            *** le client a encore souvent peur de Kubernetes
+            *** les compétences sont très rares (ceux qui maîtrisent *vraiment*)
 
 == Bash, couteau suisse du développeur
 
