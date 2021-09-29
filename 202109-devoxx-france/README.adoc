@@ -86,6 +86,8 @@ Conclusion : MakAir c'est l'illustration qu'on a tout intérêt à pousser le mo
 
 Aller voir le stand MakAir !
 
+image:MakAir_01.jpg[]
+
 == Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
 
 === Abstract
@@ -170,9 +172,148 @@ Faire le tour complet de chacune de ces plateformes prend déjà plus d'une jour
 
 === Notes
 
-//image::devoxx-france-2021_12.jpg[]
 * Actuellement, Google n'est pas encore présent sur le territoire français
     ** bien le garder en tête en termes de latence
+
+* Côté *compute IaaS*
+    ** les 3 plateformes se valent pour les CPUs et les GPUs, les différences apparaissent quand on commence à parler de FPGAs et d'ASICs
+    ** Le TPU de Google est un ASICs dédié au Tensorflow. Google est le plus avancé à ce niveau
+    ** Côté Azure, Corsica est le seul ASIC disponible, dédié à la compression et à la xxx
+
+* Côté *network IaaS* +
+image:devoxx-france-2021_13.jpg[]
+    ** Avantage côté Azure pour la communication
+    ** Azure est le seul à proposer la communication VPC à VPC à plat (chercher cette notion de "daisy VPC")
+        *** c'est un point capital pour le design d'une landing zone
+
+* Côté *IaaS QoS et availability*
+    ** les 3 clouds se valent à peu près, avec un petit avantage pour GCP, dont le SLA est à 99,99% pour les VM, contre 99,9% pour Azure et 99,5% pour Amazon
+        *** jusqu'à très récemment AWS n'avait pas de SLA sur les VMs, mais seulement sur les AZ (Availability Zones)
+        *** Azure et AWS cherche à combler cette différence via divers options de résilience
+    ** l'Availability Set est le gros plus d'Azure : c'est natif sur Azure, c'est à vous de le mettre en place avec AWS et GCP
+
+* Mettre en place des *RTO* et *RPO* "parfaits", à 0, est EXTREMEMENT coûteux
+    ** RPO : Recovery Point Objective
+    ** RTO : Recovery Time Objective
+    ** Si mon data center brûle que se passe-t-il ? Et même si j'ai fait des backups sur bande, à quelle fréquence fais-je ces backups ? On ne peut jamais TOUT garantir à 100%
+
+* *IaC* : Infrastructure as Code
+    ** l'approche principale quand on fait du Cloud
+    ** *Azure Resource Manager* : les speakers ne sont PAS FANS DU TOUT ! (du JSON au kilomètre)
+        *** la nouvelle syntaxe *Bicep*, bâtie sur Azure ARM, est apparemment bien plus propre
+            **** Bicep serait une espèce de "ARM 2.0"
+            **** et ressemblerait beaucoup plus à du TerraForm
+    ** même problème avec AWS, mieux vaut maintenant utiliser *CDK* (Cloud Development Kit)
+        *** CDK est plus puissant que l'ancien CloudFormation. Check présents à la compilation contre seulement au runtime pour Cloudformation.
+
+    ** Mais évidemment Bicep et CDK ne sont pas compatibles, idem avec l'équivalent chez Google. DONC, côté *Hashicorp*, on va créer un langage, un HCL (Hashicorp Configuration Language), *Terraform*, agnostique du Cloud provider.
+        *** mais le *code n'est PAS réutilisable* d'un Cloud provider à l'autre.
+        *** l'intérêt est si l'on veut être *multi-cloud* : on a la *même syntaxe* et la *même logique*.
+
+    ** *Pulumi* : une tentative de créer un framework d'IaC réellement agnostique, mais cela n'a pas fonctionné, les Cloud providers étant trop différents.
+
+.Rapidité d'instanciation d'un VM
+[NOTE]
+====
+* AWS est le plus rapide, avec 20 à 30 sec pour démarrer une VM
+* C'est plus "aléatoire" sur Azure (parfois rapide, parfois long, on ne sait pas réellement pourquoi...)
+====
+
+* Actuellement, la tendance chez les clients n'est plus à faire du "Lift & Shift" (je prends mon on-premise et je le dépose en l'état dans le Cloud), mais à chercher davantage de valeur ajoutée
+    ** Le "Lift & Shift" est très coûteux
+    ** côté "davantage de valeur ajoutée", il est ici question de *containers* ou de *managed service*
+
+==== CaaS : Container as a Service
+
+* Côté *CaaS* : Container as a Service
+    ** *AWS* : micro-VM qui démarre en moins d'1 sec
+        *** multi-tenant
+        *** assez éloigné de Kubernetes (scaling automatique difficile)
+        *** taille du pool limité à 100 noeuds
+        *** via AKS, on peut automatiser le shuting-down
+            **** Les 2 autres n'ont pas cette fonctionnalité qui permet de faire baisser la facture (comme on est la plupart du temps sur du "pay as you go")
+        *** Point noir : difficile de faire grossir les pools via un scaling automatique
+            **** ça se fait, mais dans la douleur (là où c'est très simple via Azure)
+    ** *Azure* : 
+        *** toute l'intégration avec des outils tiers est très bien faite
+        *** taille du pool limité également
+        *** Gros avantage d'Azure : *Azure Active Directory*
+            **** Cette techno, centrale, n'est pas présente dans les 2 autres stacks Cloud
+            **** Azure est le seul à la proposer nativement
+    ** *GCP* :
+        *** déjà avec Borg pour les besoins internes, ensuite avec Kubernetes
+        *** jusqu'à 15 000 nodes par pool, le plus avancé des Cloud providers à ce niveau (mais en a-t-on réellement besoin ?) 
+        *** la meilleure intégration native avec Kubernetes
+
+    ** *Service Mesh* 
+        *** pour gérer tout ce *qui* est comm inter-noeuds
+        *** Enorme avantageuse côté Google : il s ont 
+        *** Azure est un peu en retard sur les Data Mesh
+
+.YAML que pour les petites fichiers
+[TIP]
+====
+YAML pour des fichiers "longs" ce n'est guère pratique, car perd énormément en lisibilité. +
+D'où l'intérêt d'un CDK, qui propose des structures conditionnelles et une meilleure lisibilité
+====
+
+* Autre info : l'auto-scaling doit se prévoir un minimum à l'avance. +
+Cas pratique : ouverture des réservations pour le concert de Justin Biber un jeudi matin
+    ** gros pic de charge le jeudi matin
+    ** l'auto-scaling PREND du temps, trop de temps, si ce n'est pas prévu à l'avance
+        *** le temps de s'enregistrer dans Ansible, Puppet ou autre, et de déployer les composants, on va mettre plusieurs dizaines de minutes, ce qui est trop
+        *** pour gagner du temps, on peut *templatiser des images* (via https://www.packer.io/docs/templates/legacy_json_templates/engine[Packer] par exemple). +
+        En gros, *avoir déjà préparé ce dont on va avoir besoin, et non commencer à l'installer au moment où on se rend compte qu'on en a besoin*.
+
+* *Chaos engineering* disponible par défaut chez Amazon
+    ** Chaos monkey : disparition de VMs
+    ** Chaos gorilla : disparation d'une AZ
+    ** Chaos Kong : disparition d'une région
+
+* *eksctl* est réellement l'outil à privilégier pour gérer Kubernetes avec Amazon
+    ** Amazon est très en retard sur la gestion de Kubernetes. +
+    Ils ont choisi de mettre le paquet sur leur propre techno Fargate
+    ** Leur support indique lui-même qu'il ne faut pas se servir de leur CLI, mais passer à eksctl (qui est meilleur, mais pas parfait).
+    ** Alors qu'à côté de ça, tout est très simple avec GKE
+
+* Le CaaS est clairement le *main stream* actuel
+    ** avec Google, puis Azure bien devant Amazon
+    ** on veut de plus en plus une infrastructure immuable
+
+==== PaaS
+
+* Sur un PaaS, on va consommer un service de type *middleware* ou *runtime*
+* Coûte généralement plus cher que le CaaS, avec certains éléments à prendre en compte 
+    ** Un MySQL managé va coûter plus cher qu'une VM sur laquelle on installe soi-même son MySQL qui est gratuit
+    ** Ce qui n'est pas dit avec un SQL Server, du fait du coût de licence
+* Le PaaS permet de libérer les OPS, comme beaucoup plus de choses sont gérées par le Cloud provider (patch management, network, upgrades, etc.)
+
+* Azure propose un AppService, avec derrière, en gros, une ferme de IIS.
+    ** service très demandé chez les clients
+    ** la notion de Resource Group n'est valable QUE pour Azure
+
+== Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
+
+=== Abstract
+
+.Speaker : Clément Stenac
+----
+Clément Stenac is a passionate software engineer, CTO and co-founder at Dataiku. He oversees the design, development of the Dataiku DSS Entreprise AI Platform. Clément was previously head of product development at Exalead, leading the design and implementation of web-scale search engine software. He also has extended experience with open source software, as a former developer of the VideoLAN (VLC) and Debian projects.
+----
+
+----
+"Comment ça, vous n'êtes pas SaaS ? Je ne comprends pas"
+
+Il n'est pas exagéré de dire que le monde est passé au SaaS, ou, du moins, celui des startups logicielles. Il semble presque incongru de nos jours de lancer une startup avec un modèle "on-premises" legacy, que ce soit en termes techniques ou commerciaux.
+
+Cependant, même si le changement est en train de se produire, la réalité des logiciels d'entreprise est que le "on-premises" est toujours vivant et est là pour rester. Les raisons techniques, sécuritaires et politiques font du logiciel SaaS un choix difficile pour de nombreuses grandes entreprises, ce qui offre des opportunités pour les startups qui supportent encore ce modèle. Bien sûr, il y a des raisons pour cette volonté de faire du SaaS, ce qui se traduit naturellement par des contraintes pour ceux qui ne font pas ce choix, comme l'a fait Dataiku.
+
+Dans cet exposé, nous discuterons des raisons pour lesquelles les éditeurs de logiciels d'entreprise peuvent choisir de supporter les déploiements "on-premises", les différentes variantes de ces déploiements, les défis supplémentaires qu'ils créent et comment nous avons trouvé des solutions à la plupart de ces défis.
+----
+
+=== Notes
+
+XXX
 
 == Bash, couteau suisse du développeur
 
