@@ -1,0 +1,168 @@
+= Devoxx France 2021
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 1
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Keynote du mercredi
+
+* Et c'est parti pour Devoxx France 2021 édition "9 3/4" 😉 !
+
+image:devoxx-france-2021_01.jpg[]
+image:devoxx-france-2021_02.jpg[]
+
+== Projet MakAir, comment et pourquoi construire un respirateur open source ?
+
+=== Abstract
+
+.Speaker : Quentin Adams
+----
+Quentin ADAM is the CEO of Clever Cloud : a Platform as a Service company allowing you to run java, scala, ruby, node.js, php, python or go applications, with auto scaling and auto healing features. This position allow him to study lots of applications, code, practice, and extract some talks and advises. Regular speaker at various tech conference, he’s focused to help developers to deliver quickly and happily good applications.
+----
+
+----
+Les crises agissent comme des catalyseurs, et la crise du COVID19 n'a pas échappée à la règle sur les technologies de la santé. Au début de la pandémie, avec quelques amis nous avons lancé le projet MakAir, un respirateur artificiel open source pour répondre à l'urgence. C'est désormais devenu un projet de 300 contributeurs financé par l'Armée et le CEA, une folle course d'intense travail scientifique pour livrer un dispositif médical industriel et open source. Au final, sur la centaine de projet mondiaux, il est le seul qui a été utilisé sur des patients. Dans cette keynote, après une présentation rapide du projet, on évoquera sa construction passée mais surtout future. Nous répondrons aussi à ces questions : Qu’est-ce que des ingénieurs en informatique ont apporté à cet écosystème ? Pourquoi est-ce que le projet est né dans l’informatique, qu’est-ce qui a fait la spécificité de notre écosystème et comment il peux aider les autres écosystèmes ? Pourquoi l'open source médical est un sujet pertinent et majeur ? Comment peut on le déployer ? Est ce que tout le monde peut aider ?
+----
+
+=== Notes
+
+* Quentin a commencé par rassembler 3 copains : 2 "électroniciens" et le directeur de la Data de l'hôpital de Nantes
+* Au bout de 3 jours, 1er montage électronique sur base de... capote... (apparemment ce qui ressemble le plus à un poumon)
+
+image::devoxx-france-2021_03.jpg[]
+
+* 300 contributeurs au final, 30 contributeurs à plein temps
+* le seul respirateur au monde qui ait fini branché sur un humain, tout en respectant les certifications en vigueur
+
+*POURQUOI CA A MARCHE ?*
+
+    * *bienveillance* bienveillance bienveillance ("a-xénophobie") : on écoute et respecte ce que chacun dit, même si on ne partage pas le même langage, le même vocabulaire
+    * Philosophie de l'*itération rapide* très répandue dans l'IT : usage massif d'impression 3D, etc.
+    * acceptation de l'ignorance : "on sait pas, pas grave, on va chercher l'info..."
+
+{lb}
+
+* Le MakAir aura coûté 4x moins cher qu'un autre respirateur d'un grand industriel
+* Faire de l'électronique n'a jamais coûté aussi peu cher
+* idem pour la bio-électronique, les coûts chutent drastiquement
+    ** ce qui rend possible de faire de la bio-électronique en hobby dans son garage
+* Aujourd'hui un respirateur coûte ~40 K€, et un MakAir ~4K€
+
+NOTE: Au final, l'Arduino a été remplacé par le STM32 (Quentin en parle souvent en podcast) 
+
+* Actuellement, on récupère très peu de data des outils médicaux autour du lit du patient. 
+    ** Et c'est bien dommage, car, finalement, il serait assez facile de faire un "Dis Siri, il a quoi ce patient ?"
+
+.Volontariat pour aider MakAir
+image::devoxx-france-2021_04.jpg[]
+
+Conclusion : MakAir c'est l'illustration qu'on a tout intérêt à pousser le modèle OpenSource ailleurs que simplement dans l'IT !
+
+Aller voir le stand MakAir !
+
+== Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
+
+=== Abstract
+
+.Speaker : François Armand
+----
+François Armand, papa x3, développeur passionné, est persuadé que les logiciels libres et les développement soutenable sont notre avenir, Scala depuis 2006, fan de FP (je suis tombé dans OCaml et COQ lorsque j’étais petit) et de ZIO, co-fondateur & CTO de Rudder, continuous audit & configuration.
+----
+
+----
+«Notre métier de développeur consiste essentiellement à découvrir et gérer les cas non nominaux d’une application».
+
+Sous l’apparente simplicité de cette vérité générale se cache une réalité complexe qui embête les développeurs du monde entier au quotidien. Vous aussi, vous vous êtes demandé : “mais ce comportement, c’est une erreur que je dois modéliser, ou c’est une exception ?”
+
+Cette présentation cherche à analyser ce que sont les erreurs dans une application et leur rôle fondamental dans la transmission d’informations pour ceux qui les reçoivent: les utilisateurs finaux, les développeurs via d’autres programmes ou d’autres composantes de l’application, ou encore les administrateurs système. Elle propose une méthode qui permet de rechercher et gérer systématiquement les cas non nominaux des applications et qui s’adapte aussi bien au microservice vite fait qu’à l’application de gestion vieille de 10 ans. Enfin, elle montre comment un nouveau framework de programmation fonctionnelle écrit en Scala, ZIO, accompagne parfaitement la méthode décrite et comment il a été utilisé dans Rudder, un logiciel libre de configuration et d’audit de serveurs en continu.
+----
+
+=== Notes
+
+XXX
+
+== Construire et partager un Data Lake propre, transactionnel et performant avec Delta Lake & Delta Sharing
+
+=== Abstract
+
+.Speaker : Quentin Ambard
+----
+Solution Architect chez Databricks. J'aide les entreprises à mettre en production leur projet data dans un environnement cloud sur la plateforme Databricks (Spark, Delta, Streaming, MLFlow, ML & IA).
+
+Précédemment @Datastax, Passionné par le Machine Learning, les systèmes distribués, systèmes à faibles latences et problèmatiques d'optimisation.
+----
+
+----
+Vous avez toujours rêvé de concevoir un Data Lake aussi simple à opérer qu'une base SQL transactionnelle et de pouvoir partager vos tables en toute sécurité via Delta Sharing ? Pouvoir lancer des DELETE sur les tables parquet de votre Data Lake sans vous préoccuper de vos pipelines d'ingestion ? Garantir le schema de vos tables ? Accélérer vos requêtes spark ? Simplifier vos flux de données en unifiant batch et stream ? Ce Tools In Action est pour vous !
+
+Open-sourcé en 2019 par Databricks (à l'origine d'Apache Spark), Delta Lake offre un nouveau standard pour gérer les transactions ACID, un support DML complet (DELETE, UPDATE, MERGE), du Time Travel, garantir la qualité de vos données et offrir une gestion scalable de vos metadata.
+
+Delta Sharing a été ajouté récemment à l'écosystème Delta Lake pour vous permettre de partager vos tables en toutes sécurité (https://delta.io/sharing)
+
+Rejoignez ce Tools In Action pour découvrir tout le bien que Delta Lake OSS peut apporter à votre Data Lake via les API d'Apache Spark!
+----
+
+=== Notes
+
+XXX
+
+== AWS vs GCP vs Azure
+
+Université. +
+Speakers : Laurent Grangeau, Tony Jarriault, Olivier Dupré
+
+=== Abstract
+
+----
+Tout le monde connaît ces 3 clouders publics majeurs. Mais... qu'ont-ils réellement en commun ? Quelles sont leurs différences profondes ? Le choix pour l'un des 3 est-il une question de coeur, de compétences disponibles ou capacités techniques ?
+
+Faire le tour complet de chacune de ces plateformes prend déjà plus d'une journée. Alors faire le tour des 3 de manière exhaustive lors d'un talk est utopique. Nous irons donc droit au but et nous focaliserons sur les services majeurs, les plus utilisés et ceux pour lesquels la comparaison est la plus intéressante.
+----
+
+=== Notes
+
+XXX
+
+== Bash, couteau suisse du développeur
+
+=== Abstract
+
+Speaker : Laurent Callarec
+
+----
+Si vous demandez à un développeur quels langages sont utilisés dans son projet, Bash ne ressortira pas forcément. Et pourtant, s’il y a du Linux, il y a de grande chance qu’il y ait du Bash. Et s’il n’y en a pas encore, il pourrait être avantageux d’en ajouter. Lors de cette session, je vous propose de démystifier Bash - ainsi que certaines commandes GNU fort utiles - pour en faire un véritable allié dans votre quotidien. Au travers des exemples de code et de live coding, je vous montrerai comment il peut vous aider, à moindre coût, à industrialiser vos process. Préparer une machine de développement, construire vos pipelines de build, gérer vos déploiements, assurer le monitoring de vos services ? Bash peut satisfaire nombreux besoins d’automatisation. Cerise sur le gâteau, à l’aide d’une approche TDD avec bats et de l‘analyseur de code statique shellcheck, je vous montrerai - tout au long de cette présentation - comment écrire du “vrai” code afin de briser l’idée reçue que coder en Bash, ce n’est que du bricolage.
+----
+
+=== Notes
+
+XXX
+
+
+
+

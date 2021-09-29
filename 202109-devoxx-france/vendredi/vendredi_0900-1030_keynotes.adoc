@@ -1,0 +1,148 @@
+= Vendredi 09:00 / 10:30 - Keynotes
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+== Accessibilité
+
+https://cfp.devoxx.fr/2019/talk/CKW-8744/Accessibilite[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=fhu7ZBfRw4A&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::fhu7ZBfRw4A[youtube, width=640, height=480]
+endif::[]
+
+Par *Valerie Haccart*.
+
+Fondatrice de AlphaSens. +
+Sensibilisation à la déficience visuelle en vous permettant d’« Essayer pour voir ! », différentes lunettes simulant diverses pathologies du handicap visuel. +
+Et sensibilisation à l’Accessibilité numérique : « Web pour tous ! »
+
+=== Overview
+
+====
+Comment travailler sur la même appli métier que son collègue, naviguer sur la toile… quand on n’y voit pas ?
+
+Ôtons les différences par l'accessibilité, une égalité pour tous !
+
+Adoptons les bonnes pratiques pour le numérique
+
+Ouvrez les yeux et oeuvrons ensemble !
+====
+
+=== Notes
+
+Valérie a présenté toutes une série de lunettes permettant de tester les différentes *pathologies* et *déficiences visuelles* que l'on peut rencontrer.
+
+Elle a insisté sur quelques impératifs trop souvent oubliés lorsque l'on code le front d'un site :
+
+* Utiliser les hiérarchies de titres *dans l'ordre* : H1, H2, H3, H4 et non H1 PUIS h4
+* ne pas oublier d'utiliser l'attribut `alt` sur les images, quitte à le déclarer à vide (`""`). +
+Cela permet au lecteur de site pour malvoyant de ne pas lire l'URL de l'image... 
+* ne pas oublier de déclarer la balise du langage en début de document (`lang="fr"`)
+
+Ces informations sont très importantes pour les lecteurs de sites pour malvoyants, qui "lisent" réellement le contenu des sites, en utilisant certaines meta-informations.
+
+== Philosophy of HumanOps
+
+https://cfp.devoxx.fr/2019/talk/YLK-5268/Philosophy_of_HumanOps[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=jKwfgtGyrpk&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::jKwfgtGyrpk[youtube, width=640, height=480]
+endif::[]
+
+Par *David Mytton*.
+
+David Mytton is VP, Product Engineering at StackPath, an edge security software startup based in Dallas, USA. David was previously the Co-Founder & CEO at Server Density, a London based SaaS infrastructure monitoring startup founded in 2009 and acquired by StackPath in 2018. +
+David built the original version of Server Density, including the open source monitoring agent and custom time series database. +
+He also started the HumanOps community which runs a series of events around the world aimed at discussing how to deal with the human side of system operations: on-call, incident response, stress, fatigue, post-mortems and human process design.
+
+=== Overview
+
+====
+Humans are a critical part of operating systems at scale, yet we rarely pay much attention to them. Most of the time, energy and investment goes into picking the right technologies, the right hardware, the right APIs. But what about the people actually building and scaling those systems? How can you reach your high availability goals without a team that is able to build reliable systems, and respond when things go wrong? How does sleep and fatigue affect system uptime? System errors are tracked, but what about human error? Can it be measured, and mitigated? How does work get prioritised?
+
+This talk will consider the principles and philosophy of HumanOps - focusing on the human side of running infrastructure. It is crucial to consider human system and process design as part of any large scale software, hardware and infrastructure project. This talk will explain how.
+====
+
+=== Notes
+
+En gros, l'important dans cette keynote est "n'oubliez pas l'humain dans vos procédures de gestion de PROD" (crash, procédure de reprise, etc.). +
+Il ne faut pas que vos procédures ne prennent en compte *QUE* le côté technique.
+
+== Le refactoring le plus difficile de ma carrière
+
+https://cfp.devoxx.fr/2019/talk/UPW-7883/Le_refactoring_le_plus_difficile_de_ma_carriere[Description du CFP]
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=TiRoge93H0o&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::TiRoge93H0o[youtube, width=640, height=480]
+endif::[]
+
+Par *Jérôme Petazzoni*.
+
+Jérôme fait partie de l'équipe qui a conçu et popularisé Docker. +
+Il a passé 7 années au service de la fameuse startup Californienne, durant lesquelles il a fait tourner des containers en production avant que ça ne soit à la mode, et formé plusieurs milliers de personnes sur les conteneurs et l'orchestration. +
+Avant Docker, il a co-fondé l'hébergeur Enix, et il a porté diverses casquettes dans les domaines de l'encodage et le streaming vidéo, les systèmes géographiques, la fibre optique, et la voix sur IP. +
+Il possède un nombre indéterminé d'instruments de musique, et sait massacrer le thème de Zelda sur la plupart d'entre eux.
+
+=== Overview
+
+====
+Quand je suis arrivé aux États-Unis en 2011, je ne connaissais pas grand-chose à la santé mentale. +
+Au fil des années, j'ai découvert via des présentations et des témoignages que c'était pourtant un des plus gros risques dans nos métiers. Ça n'a pas suffi à m'épargner, et j'ai passé plusieurs années à me battre avec une dépression qui a grandement affecté ma vie personelle, mais aussi ma productivité. +
+Aujourd'hui, ça va mieux (merci!), et je voudrais partager ce que j'ai appris ainsi que quelques techniques qui m'ont aidé à faire face à ce challenge personnel.
+====
+
+=== Notes
+
+NOTE: Les slides sont disponibles sur Google Doc : https://docs.google.com/presentation/d/1Ne6hOywPWxrj5e4VNZEtwkrsJGvOEKGwGBNxlBhuJ-E/edit#slide=id.p
+
+On va parler de *dépression* et de *burnout* (vécus par Jérôme)
+
+* 1 personne sur 5 souffre en ce moment d'un trouble mental
+
+-> Faire le test dont parle Jérôme, le http://www.masef.com/scores/burnoutsyndromeechellembi.htm[*Maslach Burn Out Inventory*], pour savoir si l'on est en burnout.
+
+-> Lire l'article de Jérôme sur son expérience : http://jpetazzo.github.io/2018/02/17/seven-years-at-docker/[Seven years at Docker]
+
+[IMPORTANT]
+====
+*Fantastique conf*, avec de nombreuses sources et références à revoir plus tard ! +
+Un super retour d'expérience, de nombreux conseils, à revoir et à diffuser !
+====
+
+
+
+
+
+
+

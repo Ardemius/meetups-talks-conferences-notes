@@ -1,0 +1,114 @@
+= Vendredi 16:45 / 17:30 - Consul@Criteo: Des services un peu, des machines beaucoup, du ServiceMesh bientôt
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Pierre Souchay*.
+
+====
+SRE working on PaaS and Discovery @Criteo, 1st external Contributor to Consul +
+Previously Software Architect in a Cloud Provider, loving auth* +
+Was entrepreneur in another life, building Software audio/video encoders in Java
+====
+
+https://cfp.devoxx.fr/2019/talk/QAF-5196/Consul@Criteo:%5FDes_services_un_peu%2C_des_machines_beaucoup%2C_du_ServiceMesh_bientot[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : service mesh, architecture, Hashicorps Consul, Network endpoints, Service Discovery
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=aQb2_WrmED0&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::aQb2_WrmED0[youtube, width=640, height=480]
+endif::[]
+
+== Overview
+
+====
+Nommer les choses est difficile, les trouver encore plus, surtout dans une infrastructure comme Criteo constituée de plus de plus de 1500 types de services fonctionnant sur 30 000 nœuds répartis sur 8 DCs !
+
+HashiCorp Consul et son système de découverte de services permet de mélanger conteneurs et machines physiques, de passer d'un système de machine dédiées à une architecture de services dynamiques, d'une topologie physique à une topologie virtuelle dynamique.
+
+Nous verrons comment Criteo réparti la charge sur son infrastructure avec des mécanismes variés: HaProxy, F5 (matériels) ou des bibliothèques côté client (Client Side Load Balancing) et de basculer à terme vers du ServiceMesh - que nous expliquerons - en utilisant Consul.
+
+Cette présentation est à destination de développeurs ou d'Ops qui pourrons découvrir une vision d'architecture au delà d'une simple présentation du produit.
+
+Nous expliquerons également comment Criteo est devenu premier contributeur externe à Consul, et quelques unes de nombreuses optimisations que nous avons dû y apporter de manière à en faire un des fondements de notre infrastructure.
+====
+
+== Notes
+
+*Stratégie 1, avec une VIP*
+
+image:consul-criteo_01.jpg[width=600]
+
+-> On doit déclarer une VIP (HAproxy) par microservice, pour gérer toutes ses instances
+
+*Stratégie 2, avec un service mesh*
+
+image:consul-criteo_02.jpg[width=600]
+
+*Stratégie 3, Consul (2014)*
+
+image:consul-criteo_03.jpg[width=600]
+
+-> *Consul : équivalent d'une BDD répartie*
+
+.Qu'apporte Consul ?
+image:consul-criteo_04.jpg[width=600]
+
+Le gros *intérêt de Consul* est que *tout est déjà prêt*, et *utilisable depuis le début* (contrairement à la configuration d'un Zookeeper)
+
+Consul est utilisé chez Criteo depuis 2016
+
+.L'usage de Consul chez Criteo
+image:consul-criteo_05.jpg[width=600]
+
+-> Consul a commencé à montrer ses limites
+
+DONC, *Criteo a commencé à patcher Consul*. +
+-> Plus de 100 PRs, plus gros contributeur de Consul
+
+image:consul-criteo_06.jpg[width=600]
+
+Les avantages des modifications apportées :
+
+image:consul-criteo_07.jpg[width=600]
+
+Criteo a ajouté la *notion de poids* aux services :
+
+* poids élevé (10) quand le Health Check renvoie que service va bien (peu utilisé)
+* poids faible ou nul quand le HC indique que le service est à 90%, voire est mort
+
+.Investion de contrôle via Consul
+image:consul-criteo_08.jpg[width=600]
+
+-> *VAAS* = "Vip As A Service" : scrute Consul en permanence, et qui regarde tous les services Consul qui exposent un tag HTTP. +
+Dès qu'il voit un nouveau service avec le tag HTTP, il va créer une VIP, instantanément.
+
+
+.architecture service mesh
+image:consul-criteo_09.jpg[width=600]
+
+-> les "C" correspondent biensûr à Consul
+

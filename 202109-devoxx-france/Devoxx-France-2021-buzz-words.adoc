@@ -1,0 +1,73 @@
+= Devoxx France 2021 - Buzz words and synthesis
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+.2021/10/XX - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=XXX[Devoxx France 2021] de la chaîne Devoxx Fr
+
+== Buzz words & Technos qui ont le vent en poupe
+
+* azer
+
+== Technos dont on parle moins (ou plus !)
+
+* aezr
+
+== Conf à voir sur YouTube
+
+* azer
+
+== Divers
+
+* Voir *Manager* de Saagie pour l'organisation des jobs Big Data (outil à destination des Data Engineer)
+	** se renseigner également sur *DataFabric* de Saagie
+
+* L'excellent projet http://todobackend.com/[Todo-Backend], découvert durant l'université sur Quarkus d'Emmanuel et Clément. +
+Ce dernier regroupe les (très) nombreuses implémentations d'une même API web, représentant une simple TODO liste, à l'aide d'une vaste combinaison de technologies.
+
+* Les super T-shirts de Takima ont été réalisés par mistertee.fr[Mister Tee]
+
+== Avis sur le salon
+
+* Beaucoup de talks sur *Quarkus*, et les moyens de rendre Java "moins lourd", et aussi pratique d'utilisation (expérience développeur / *"developer joy"*) que des langages comme Node ou Go.
+* On continue de beaucoup parler des microservices, surtout de tout l'environnement qui gravite autour (*capability model*), et des meilleurs façons de le mettre en place / gérer au quotidien.
+	** On note un petit buzz autour de *MicroProfile*, dont il a été question plusieurs fois 🙂
+{lb}
+* On a de nouveau un sac qui déchire en goodies ! 😍
+
+On va terminer sur 2 clins d'oeil :
+
+* une chtite photo avec le Gantelet de l'Infini ! (Utiliser lors de notre université du mercredi : *Microservices Infinity War! Spring vs MicroProfile*) +
+image:gantelet-infini.jpg[width=300]
+
+* une de notre groupe Softeam lors de la session de clôture : +
+image:softeam-cast-codeurs.jpg[width=600]
+

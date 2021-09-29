@@ -1,0 +1,77 @@
+= Jeudi 11:45 / 12:30 - 10 choses que j'aurais aimé savoir avant d'utiliser Spark en production
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ../images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+//:toclevels: 3
+// To turn off figure caption labels and numbers
+:figure-caption!:
+
+toc::[]
+
+Par *Himanshu Arora* et *Nitya Nand YADAV*. +
+https://cfp.devoxx.fr/2019/talk/JPJ-2087/10_choses_que_j'aurais_aime_savoir_avant_d'utiliser_Spark_en_production[Descriptif de la conférence sur le site du CFP de Devoxx] +
+icon:tags[] Key words : Apache Spark, Big Data, optimisations
+
+ifdef::env-github[]
+https://www.youtube.com/watch?v=1fEXmuaEGjQ&list=PLTbQvx84FrARfJQtnw7AXIw1bARCSjXEI[vidéo de la présentation sur YouTube]
+endif::[]
+ifdef::env-browser[]
+video::1fEXmuaEGjQ[youtube, width=640, height=480]
+endif::[]
+
+== Overview
+
+====
+Vous avez récemment commencé à travailler sur Spark et vos jobs prennent une éternité pour se terminer? Ce talk est pour vous!
+
+Nous avons rassemblé de nombreuses bonnes pratiques, optimisations et ajustements que nous avons appliqués au fil des années en production pour rendre nos jobs plus rapides et moins consommateurs de ressources. Dans ce talk, nous allons apprendre les techniques avancées d'optimisation de spark tuning, les formats de serialisation des données, les formats de stockage, les optimisations hardware, contrôle sur la parallélisme, paramétrages de resource manager, meilleur data localité et l'optimisation du GC etc.
+
+Nous découvrirons également l'utilisation appropriée de RDD, DataFrame et Dataset afin de bénéficier pleinement des optimisations internes apportées par Spark.
+====
+
+== Notes
+
+.L'architecture de Spark
+image::10-choses-sur-spark_01.jpg[width=600]
+
+=== RDD vs Dataframe vs Dataset
+
+* *RDD* permet d'opérer directement sur les partitions
+	** programmation fonctionnelle préconisée
+	** Attention ! *aucune optimisation appliquée par Spark avec les RDD*
+
+* *DataFrame*
+	** optimisations appliquées par Spark
+	** à chaque calcul, Spark essaye de réduire le data shuffle
+	** pas de remontée d'erreurs à la compil, tout au runtime (hélas ! donc compliqué à débugger)
+
+* *DataSet*
+
+=== Data sérialisation Format
+
+* Par défaut, avec les *RDD*, c'est la *sérialisation de Java* qui est utilisée -> *il est préférable d'utiliser Kryo*
+	** plus compact et plus rapide (x10) avec Kryo
+	** pas la peine si on utilise des DataFrame et DataSet (sérialisation avec Tungsten)
+
+=== Storage formats
+
+image::10-choses-sur-spark_02.jpg[]
+
+* *éviter les formats text* (csv, json), mais *préférer les binaires* (Parquet, Avro, Protobuf)
+	** à choisir en fonction de son use case
