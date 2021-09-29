@@ -105,32 +105,55 @@ Cette présentation cherche à analyser ce que sont les erreurs dans une applica
 
 === Notes
 
-XXX
+* Qu'est-ce qu'un développeur ?
+    ** *Model the world into code* (and try to make it useful !)
 
-== Construire et partager un Data Lake propre, transactionnel et performant avec Delta Lake & Delta Sharing
+Gestion des erreurs dans les programmes : 
 
-=== Abstract
+    * *Inventaire des erreurs* : avoir un contrat clair sur ce que fait notre code +
+    Les choses ont tout intérêt à être *naïvement* explicitent (et donc, verbeuses) +
+    -> J'AIME ce constat ! 🙂
+    {lb}
+    Prenons l'exemple de `getUserFromDB(id: UserID): User` +
+    C'est plein de "mensonges" +
+    image:devoxx-france-2021_05.jpg[]
 
-.Speaker : Quentin Ambard
-----
-Solution Architect chez Databricks. J'aide les entreprises à mettre en production leur projet data dans un environnement cloud sur la plateforme Databricks (Spark, Delta, Streaming, MLFlow, ML & IA).
+    * *Model everything*
 
-Précédemment @Datastax, Passionné par le Machine Learning, les systèmes distribués, systèmes à faibles latences et problèmatiques d'optimisation.
-----
+.1er Take away
+image:devoxx-france-2021_06.jpg[]
 
-----
-Vous avez toujours rêvé de concevoir un Data Lake aussi simple à opérer qu'une base SQL transactionnelle et de pouvoir partager vos tables en toute sécurité via Delta Sharing ? Pouvoir lancer des DELETE sur les tables parquet de votre Data Lake sans vous préoccuper de vos pipelines d'ingestion ? Garantir le schema de vos tables ? Accélérer vos requêtes spark ? Simplifier vos flux de données en unifiant batch et stream ? Ce Tools In Action est pour vous !
+    * ne pas mentir dans son code
+    * modéliser son code via un système de types
 
-Open-sourcé en 2019 par Databricks (à l'origine d'Apache Spark), Delta Lake offre un nouveau standard pour gérer les transactions ACID, un support DML complet (DELETE, UPDATE, MERGE), du Time Travel, garantir la qualité de vos données et offrir une gestion scalable de vos metadata.
+*2e Take away* : gros progrès ces dernières années des compilateurs qui sont devenus capables de gérer la plupart des erreurs
 
-Delta Sharing a été ajouté récemment à l'écosystème Delta Lake pour vous permettre de partager vos tables en toutes sécurité (https://delta.io/sharing)
+image::devoxx-france-2021_07.jpg[]
 
-Rejoignez ce Tools In Action pour découvrir tout le bien que Delta Lake OSS peut apporter à votre Data Lake via les API d'Apache Spark!
-----
+.Make promises, keep them
+image:devoxx-france-2021_08.jpg[]
 
-=== Notes
+* plus les promesses sont importantes, plus on doit être stricte sur les contrats et API
 
-XXX
+.3e Take away
+image:devoxx-france-2021_09.jpg[]
+
+* *4e Take away* : rendre les signaux les plus clairs possibles
+    ** ce n'est pas un souci de ne pas savoir (on peut ne pas savoir traiter un cas), mais il faut juste l'indiquer
+
+.Conclusion
+image:devoxx-france-2021_10.jpg[]
+
+.Ressources
+image:devoxx-france-2021_11.jpg[]
+
+.Synthèse
+image:devoxx-france-2021_12.jpg[]
+
+NOTE: Une conférence très intéressante sur une bonne gestion, se voulant *exhaustive* (c'est le mot clé), des erreurs, MAIS, qui nécessite absolument une relecture pour rentrer dans le détail en prenant son temps.
+
+* Cette façon de faire va potentiellement rendre le code plus verbeux (très)
+    ** Et avec Java qui est historiquement verbeux (malgré les améliorations de ces dernières années), c'est un point à surveiller pour ne pas rendre le code trop lourd, et perdre en visibilité
 
 == AWS vs GCP vs Azure
 
@@ -147,7 +170,9 @@ Faire le tour complet de chacune de ces plateformes prend déjà plus d'une jour
 
 === Notes
 
-XXX
+//image::devoxx-france-2021_12.jpg[]
+* Actuellement, Google n'est pas encore présent sur le territoire français
+    ** bien le garder en tête en termes de latence
 
 == Bash, couteau suisse du développeur
 
