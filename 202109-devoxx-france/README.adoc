@@ -415,8 +415,13 @@ Si vous demandez à un développeur quels langages sont utilisés dans son proje
 
 === Notes
 
-XXX
+Outils et pratiques recommandées : 
 
+    1. *ShellCheck* : analyseur syntaxique de code
+        ** disponible comme extension / plugin sur beaucoup d'IDE, et comme exécutable dans votre CI/CD
+    2. *explainshell.com* : un analyseur de commande, bien plus simple à comprendre que la page de `man` de base
+    3. *Tester vos scripts bash* : https://github.com/bats-core/bats-core
 
-
+* Slides : https://github.com/lcallarec/devoxx-bash-2021
+* Twitter : @CallarecLaurent
 
