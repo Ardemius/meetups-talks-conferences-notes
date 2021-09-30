@@ -794,6 +794,9 @@ image:devoxx-france-2021_53.jpg[]
 
 NOTE: On peut contacter Alexis pour de l'aménagement de Creative Room dans une ESN
 
+.Coordonnées des speakers
+image:devoxx-france-2021_54.jpg[]
+
 === Choreography vs Orchestration in serverless microservices
 
 .Speaker : Guillaume LAFORGE
@@ -805,29 +808,50 @@ Guillaume Laforge est Developer Advocate chez Google et se focalise en particuli
 We went from a single monolith to a set of microservices that are small, lightweight, and easy to implement. Microservices enable reusability, make it easier to change and scale apps on demand but they also introduce new problems. How do microservices interact with each other toward a common goal? How do you figure out what went wrong when a business process composed of several microservices fails? Should there be a central orchestrator controlling all interactions between services or should each service work independently, in a loosely coupled way, and only interact through shared events? In this talk, we’ll explore the Choreography vs Orchestration question and see demos of some of the tools that can help.
 ----
 
-=== Accélérez vos traitements de données Spark avec un GPU
+==== Notes
 
-.Speaker : Raphaël LUTA
-----
-Raphaël est un consultant technique indépendant, spécialiste des aspects opérationnels (sécurité et performance) des systèmes et applications.
+Imaginons un service REST simple :
 
-Passionné par les données, il développe également pour ses clients des systèmes de traitement et de visualisation de données en s'appuyant sur les outils tels que Spark, Vert.x ou D3.js/Vega.js.
+image:devoxx-france-2021_55.jpg[]
+image:devoxx-france-2021_56.jpg[]
 
-Javaiste depuis les premières bétas et membre de la fondation Apache depuis plus de 10 ans, il a contribué à plusieurs projets Apache Jakarta.
-----
+A la place, imaginons maintenant une approche basée sur les events (*choreography*), et un pub/sub, message broker :
 
-----
-Les cartes graphiques sont connues pour être très utiles dans l'apprentissage des réseaux de neurones et le minage de crypto-monnaies mais saviez-vous que vous pouvez également les utiliser pour accélérer vos traitements ETL classiques ?
+image:devoxx-france-2021_57.jpg[]
 
-Spark RAPIDS est un plugin Spark développé par Nvidia et disponible sur les principales plate-formes de cloud public comme AWS EMR, permettant d'utiliser une carte graphique pour accélérer tous les traitements s'appuyant sur les Dataframes.
+* Par contre, il n'y a pas écrit "en dur" que chacun fait ça. C'est un juste un comportement émergent de l'envoi / réception des events
 
-Dans cette présentation, nous répondrons aux questions suivantes:
+Et si on imagine maintenant un cas plus complexe : 
 
-Quelles sont les fonctionnalités de ce plugin ?
-Comment l'intégrer dans vos jobs Spark ?
-Quels gains peut-on obtenir sur des traitements ETL de production ?
-Quelles difficultés d'exploitation peut-on rencontrer ?
-----
+image:devoxx-france-2021_58.jpg[]
+
+* Ce cas géré par le système précédent va donner lieu a une belle cacophonie de messages...
+
+.Choreography : Pros and Cons
+image:devoxx-france-2021_59.jpg[]
+
+Et maintenant une proposition d'*orchestration* :
+
+image:devoxx-france-2021_60.jpg[]
+image:devoxx-france-2021_61.jpg[]
+
+* Guillaume cite Camunda parmi les orchestrateurs
+    ** et quand on est dans le Cloud, l'orchestrateur est géré par le provider
+
+.Choreography vs orchestration
+image:devoxx-france-2021_62.jpg[]
+
+* Dans l'absolu, ce n'est pas si mal d'avoir du REST, qui reste très portable (plus que des events)
+
+NOTE: Une approche hybride est également possible
+
+.Outils proposés par les Cloud providers
+image:devoxx-france-2021_63.jpg[]
+
+Et ne pas oublier de jeter un oeil à la spécification *CNCF Serverless Workflow* : https://serverlessworkflow.io/[]
+
+.Ressources de la présentation et demo de Guillaume
+image:devoxx-france-2021_64.jpg[]
 
 === Probot : créer son assistant pour se faciliter la vie sur GitHub
 
@@ -846,8 +870,15 @@ L'une de ses forces est l'intégration des Github Apps, parmi lesquelles des "ro
 Ces Apps sont déjà nombreuses, mais pour autant elles ne répondent pas toujours à vos attentes. Au cours de ce Tools In Action, nous allons vous montrer qu'il est très simple de créer votre propre robot grâce au framework Probot de Github. Ce framework offre un environnement de développement extrêmement simple pour interagir avec Github.
 ----
 
+==== Notes
 
+* https://probot.github.io
+* *Probot* est un *framework permettant de créer des Git Apps*
+* *Smee.io* fait le lien entre GitHub et localhost
+    ** Smee.io a été créé spécifiquement pour Probot
 
+* Pour passer en PROD, plutôt qu'héberger Probot sur sa machine, on va l'héberger sur *Glitch*
+    ** Glitch va prendre un repo GitHub, le cloner, puis faire un `npm install` puis un `npm start`
 
 
 
