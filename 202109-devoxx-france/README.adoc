@@ -437,7 +437,7 @@ Speaker : Guillaume ROZIER, Sacha GUILHAUMOU
 Le projet CovidTracker et les outils qui en ont découlé ont nécessité de manipuler un très grand nombre de chiffres. L'OpenData est une grande réussite française (cororico) qui a permis la mise à disposition de données récentes, assurant un suivi en temps réel de l'épidémie et de son évolution. Cependant, l'interprétation de ces chiffres nécessite de prendre de nombreuses précautions, puisque les conclusions obtenues peuvent parfois être biaisées voire complètement fausses à cause de certains paradoxes statistiques. Le but de cette présentation est de soulever plus en détails le problème au travers d'exemples sur des paradoxes statistiques parfois incongrus que nous subissons régulièrement.
 ----
 
-=== Notes
+==== Notes
 
 * plus de 150 contributeurs sur CovidTracker et les autres initiatives gravitant autour
 * l'OpenData n'est pas qu'une politique française, MAIS elle s'est énormément développée chez nous dernièrement
@@ -502,6 +502,53 @@ Nous ferons le tour de l'outillage actuel (émanant de la stack Netflix principa
 Ensuite, nous ouvrirons le capot afin de voir comment fonctionne Istio et comment nous pouvons potentiellement étendre son modèle #DoItYourSelf !
 ----
 
+==== Notes
+
+* Stack Labs boîte de tech fondée par des techs, avec du temps de donné pour faire de la veille, être speaker à une conf, etc.
+
+* On prend un solution parce qu'elle répond à des problèmes, et non parce qu'elle est hype !
+    ** -> je ne dirais jamais à quel point j'aime cette phrase depuis des années...
+
+* Istio est la pour simplifier la vie, et améliorer les performances
+* Istio est assez jeune, 4 ans, mais "a plus de la moitié de l'âge de Kubernetes"
+
+Fonctionnement : 
+
+    * Istio gère le network au niveau 7 de la couche OSI, là où Kubernetes le gère aussi, mais au niveau 4
+    * Data plane vs Control plane
+        ** Istio Data Plane +
+        image:devoxx-france-2021_26.jpg[]
+        ** istiod : le control plane (1 node, seul et unique)    
+
+La killer feature d'Istio : *l'observabilité*
+
+    * Jaeger
+    * Kiali (RedHat) : une console pouvant remplacer celle des Cloud provider
+        ** Génial d'après Kevin 
+    +
+    image:devoxx-france-2021_27.jpg[]
+    * Grafana
+
+Eléments d'Istio : 
+
+    * *VirtualService* : la manière dont sort une requête HTTP quand votre appli fait un appel
+    * *DestinationRule* : le complément du précédent
+
+Kévin indique également que le *mirroring d'Istio* est très puissant, et permet (ce qui peut faire un peu "peur") du *test en prod*.
+
+Ce que Istio permet donc : *mirroring*, *canary*, *trafic splitting* -> *release without downtime* !
+
+Istio simplifie également la gestion des certificats (pki), et permet de les faire facilement tourner (un certificat ne se gère pas avec une livraison "one shot")
+
+On peut faire tourner plusieurs Istio en parallèle
+
+* Comment démarrer avec Istio ? Avec istioctl, et en faisant attention à sa liste de 400 paramètres.
+    ** et si on se trouve dans un environnement Cloud, on a directement accès à *Cloud Monitoring* qui est extrêmement puissant
+
+Constat : il y a beaucoup de progrès à ce niveau dernièrement, MAIS Istio reste complexe, avec un coût en ressources
+
+*Avis* : une conférence pouvant servir de référence sur l'utilisation d'Istio, avec de nombreux cas pratiques et conseils utiles.
+
 === Full-remote : comment réussir à travailler en équipe ?
 
 .Speaker : Lise QUESNEL
@@ -516,6 +563,24 @@ Je vous propose de passer en revue quelques clés pour réussir à travailler en
 
 Vous verrez que la communication est au cœur du sujet et découvrirez quelques conseils, que l'on travaille en télétravail ponctuel ou de longue durée.
 ----
+
+==== Notes
+
+image:devoxx-france-2021_28.jpg[]
+
+Quelques pratiques pour éviter la solitude, et combattre le manque de motivation en télé-travail :
+
+* compartimenter ses activités : perso / pro
+* compartimenter vos outils : idem sur son PC
+* se déplacer dans un espace de co-working
+* pairer pour ne pas être seul
+* importance de se déconnecter en fin de journée
+* se déplacer sur site de temps en temps, les journées que l'on sait être riches en interactions
+* préparer un séminaire d'onboarding pour les nouveaux
+
+Importance d'*avoir le bon matériel* pour permettre une *bonne communication* (cf la pyramide précédente)
+
+On ne peut pas vous reprocher de trop communiquer
 
 === La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
 

@@ -35,7 +35,8 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 == Buzz words & Technos qui ont le vent en poupe
 
-* azer
+* *Kubernetes* : même s'il fait toujours peur aux clients, on se rapproche encore un peu plus de "l'âge de la maturité"
+	** Istio dans la foulée, comme le compagnon, maintenant obligatoire, de Kubernetes
 
 == Technos dont on parle moins (ou plus !)
 
