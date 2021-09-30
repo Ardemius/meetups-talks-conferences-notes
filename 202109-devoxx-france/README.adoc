@@ -428,6 +428,144 @@ Outils et pratiques recommandées :
 
 == Jeudi
 
+=== Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques
+
+Speaker : Guillaume ROZIER, Sacha GUILHAUMOU
+
+----
+Le projet CovidTracker et les outils qui en ont découlé ont nécessité de manipuler un très grand nombre de chiffres. L'OpenData est une grande réussite française (cororico) qui a permis la mise à disposition de données récentes, assurant un suivi en temps réel de l'épidémie et de son évolution. Cependant, l'interprétation de ces chiffres nécessite de prendre de nombreuses précautions, puisque les conclusions obtenues peuvent parfois être biaisées voire complètement fausses à cause de certains paradoxes statistiques. Le but de cette présentation est de soulever plus en détails le problème au travers d'exemples sur des paradoxes statistiques parfois incongrus que nous subissons régulièrement.
+----
+
+=== Istio, le meilleur ami de votre cluster K8S
+
+.Speaker : Kevin DAVIN
+----
+Google Developer Expert on GCP, I am above all passionate about tech, languages, infrastructure, and automation.
+
+Java, Kotlin, Go, Javascript or TypeScript are my day-to-day languages. I deploy all of those on the Google Kubernetes Engine with the Continuous Integration of Gitlab 🚀.
+
+I'm involved in the GDG Toulouse, DevFest Toulouse. I'm currently CTO (and one of the founder) of Stack Labs, a company specialized in architecture and development of cloud solution.
+----
+
+----
+Dans un monde distribué, nous sommes confrontés à de nouveaux problèmes. Les notions de circuit-breaker, de retry, de timeout, de blue-green deployment, A/B testing, pool-ejection… viennent remplacer nos anciens problèmes de monolithe 🙁.
+
+Istio ⛵ est là pour nous aider sur tous ces points... et même plus ! 🥰
+
+Nous ferons le tour de l'outillage actuel (émanant de la stack Netflix principalement) dans un environnement micro-services et nous le comparerons avec ce que nous met à disposition Istio à T0 👍!
+
+Ensuite, nous ouvrirons le capot afin de voir comment fonctionne Istio et comment nous pouvons potentiellement étendre son modèle #DoItYourSelf !
+----
+
+=== Full-remote : comment réussir à travailler en équipe ?
+
+.Speaker : Lise QUESNEL
+----
+Consultante chez Zenika, Lise a déménagé il y a quelques mois de Paris vers les contrées nantaises. Elle travaille en tant que développeuse web en full-remote pour son client, Pix. Grande curieuse, elle aime découvrir sans cesse de nouvelles choses et a tout particulièrement une appétence pour les technologies front-end.
+----
+
+----
+Dans un contexte où de plus en plus d’entreprises ont à cœur le bien-être de leurs employés, le télétravail se développe. Lorsque cela reste ponctuel, tout va pour le mieux. Mais lorsqu’une personne décide de partir à l’autre bout du pays parce qu’elle en a marre de Paris, c’est une autre histoire !
+
+Je vous propose de passer en revue quelques clés pour réussir à travailler en équipe tout en étant dans des villes différentes.
+
+Vous verrez que la communication est au cœur du sujet et découvrirez quelques conseils, que l'on travaille en télétravail ponctuel ou de longue durée.
+----
+
+=== La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
+
+.Speaker : Anne-Sophie GIRAULT LE MAULT, Alexis LA MAULT
+----
+Après avoir travaillé pendant 10 ans dans les jeux vidéo en tant que productrice de jeux et business developper avec la casquette scrum master, Anne-Sophie Girault le Mault s’est orientée vers la finance et l’énergie en tant que product owner, avant de devenir coach agile. Passionnée, formée et supervisée en analyse transactionnelle, coach professionnelle RNCP, elle intervient aujourd'hui pour le compte de Xebia Publicis Sapient Engineering auprès de clients dans des secteurs divers, sur des périmètres allant de plusieurs équipes à des programmes d'envergure à l'échelle.
+
+Architecte et Architecte d’intérieur, Alexis le Mault est diplômé de l’École Nationale Supérieure d’Architecture de Paris Malaquais dont il sortira major en 2007. En 2017, à l’occasion d’une vaste mission d’accompagnement pour le compte d’une Administration d’État, il constate une incohérence forte entre les propositions d’aménagements des espaces de travail et les valeurs portées par les clients dans le cadre de leur transformation, notamment Agile. C’est fort de ce constat qu’il crée en 2018 l’entité Agile Concrete afin d’étudier, de développer et de tester le potentiel de l’Architecture comme catalyseur de changement, de communication, de liens, d’amélioration continue et d’innovation.
+----
+
+----
+Qu’ont en commun l’architecture, l’agilité et l’analyse transactionnelle organisationnelle ? D’être des outils au service de l’humain.
+
+Rarement vulgarisée et rendue accessible, l’Analyse Transactionnelle propose de formidables clefs pour mieux travailler ensemble.
+Trop souvent réduite à de l’aménagement de bureau, l’architecture souffre elle aussi d’une méconnaissance quant à son potentiel lorsqu’il s’agit de comprendre la dynamique de groupe.
+L’agilité enfin, illustrée par de nombreuses méthodes, peine de plus en plus à conserver son intégrité d’origine.
+
+Dans le cadre de ce sujet autour de la cohésion et du leadership, nous nous intéresserons au groupe et aux principes de frontières visibles et invisibles qui influent sur la cohésion, elle-même fonction du leadership.
+- Quelles forces menacent ces frontières?
+- Quels rôles le leader devrait-il alors tenir ?
+- Quelles conduites devrait-il adopter ?
+- Quelles dérives peut-on observer en cas de défaillance ?
+- Comment gérer ces flux d’énergies individuels et collectifs pour réagir?
+
+Agilité, AT et architecture envisagées ensemble pour proposer des solutions pragmatiques face à ces constats d’échec du quotidien.
+----
+
+=== Choreography vs Orchestration in serverless microservices
+
+.Speaker : Guillaume LAFORGE
+----
+Guillaume Laforge est Developer Advocate chez Google et se focalise en particulier sur l'offre Google Cloud Platform. Et la nuit, il enfile sa casquette Apache Groovy !
+----
+
+----
+We went from a single monolith to a set of microservices that are small, lightweight, and easy to implement. Microservices enable reusability, make it easier to change and scale apps on demand but they also introduce new problems. How do microservices interact with each other toward a common goal? How do you figure out what went wrong when a business process composed of several microservices fails? Should there be a central orchestrator controlling all interactions between services or should each service work independently, in a loosely coupled way, and only interact through shared events? In this talk, we’ll explore the Choreography vs Orchestration question and see demos of some of the tools that can help.
+----
+
+=== Accélérez vos traitements de données Spark avec un GPU
+
+.Speaker : Raphaël LUTA
+----
+Raphaël est un consultant technique indépendant, spécialiste des aspects opérationnels (sécurité et performance) des systèmes et applications.
+
+Passionné par les données, il développe également pour ses clients des systèmes de traitement et de visualisation de données en s'appuyant sur les outils tels que Spark, Vert.x ou D3.js/Vega.js.
+
+Javaiste depuis les premières bétas et membre de la fondation Apache depuis plus de 10 ans, il a contribué à plusieurs projets Apache Jakarta.
+----
+
+----
+Les cartes graphiques sont connues pour être très utiles dans l'apprentissage des réseaux de neurones et le minage de crypto-monnaies mais saviez-vous que vous pouvez également les utiliser pour accélérer vos traitements ETL classiques ?
+
+Spark RAPIDS est un plugin Spark développé par Nvidia et disponible sur les principales plate-formes de cloud public comme AWS EMR, permettant d'utiliser une carte graphique pour accélérer tous les traitements s'appuyant sur les Dataframes.
+
+Dans cette présentation, nous répondrons aux questions suivantes:
+
+Quelles sont les fonctionnalités de ce plugin ?
+Comment l'intégrer dans vos jobs Spark ?
+Quels gains peut-on obtenir sur des traitements ETL de production ?
+Quelles difficultés d'exploitation peut-on rencontrer ?
+----
+
+=== Probot : créer son assistant pour se faciliter la vie sur GitHub
+
+.Speaker : Romain LINSOLAS, Alicia STOTZ
+----
+Ancien développeur Java, Romain a viré petit à petit du côté obscur du développement web, au point de devenir aujourd'hui le leader technique de l'équipe Web de la Société Générale.
+
+Ayant débuté ma carrière en tant que bio-informaticienne j’ai ensuite été aspirée du bon côté de la Force. Aujourd’hui développeuse front-end chez Société Générale, je suis fan de design et d’amigurumis.
+----
+
+----
+Vous faites sans doute partie des 40 millions de développeurs utilisant la plateforme Github. C'est devenu aujourd'hui un service incontournable pour vos développements.
+
+L'une de ses forces est l'intégration des Github Apps, parmi lesquelles des "robots" qui fournissent une aide précieuse à la maintenance de vos dépôts de code : analyse des Pull Requests, vérifications automatiques de code, triage des Issues, etc.
+
+Ces Apps sont déjà nombreuses, mais pour autant elles ne répondent pas toujours à vos attentes. Au cours de ce Tools In Action, nous allons vous montrer qu'il est très simple de créer votre propre robot grâce au framework Probot de Github. Ce framework offre un environnement de développement extrêmement simple pour interagir avec Github.
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+== Vendredi
+
 == Stand
 
 === MakAir
