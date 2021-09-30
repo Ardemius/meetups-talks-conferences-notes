@@ -582,6 +582,13 @@ Importance d'*avoir le bon matériel* pour permettre une *bonne communication* (
 
 On ne peut pas vous reprocher de trop communiquer
 
+.Attention au travail hybride !
+[IMPORTANT]
+====
+De grosses difficultés peuvent arriver quand une partie de l'équipe a choisi le télé-travail, et l'autre reste sur site. +
+Ces derniers pouvant être exclus d'une partie de la communication (mauvais outils, ou autre raison), il faut apporter un soin tout particulier à conserver le lien avec eux (via des points réguliers, un équipement qu'on leur pousse également, etc.)
+====
+
 === La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
 
 .Speaker : Anne-Sophie GIRAULT LE MAULT, Alexis LA MAULT
@@ -607,6 +614,185 @@ Dans le cadre de ce sujet autour de la cohésion et du leadership, nous nous int
 
 Agilité, AT et architecture envisagées ensemble pour proposer des solutions pragmatiques face à ces constats d’échec du quotidien.
 ----
+
+==== Notes
+
+.plan du talk
+image:devoxx-france-2021_29.jpg[]
+image:devoxx-france-2021_30.jpg[]
+
+===== Partie I : l'espace et la cohésion
+
+.notion de groupe
+image:devoxx-france-2021_31.jpg[]
+
+    * une masse : pas de lien entre les gens
+    * une foule : un but commun (veulent prendre le métro)
+    * MAIS un *groupe* : des individus en interaction qui oeuvrent en commun pour produite une activité dans un environnement. +
+
+2 frontières dans un groupe : 
+
+    * frontière externe : zone de membership, où les décisions sont suivies
+    * frontière interne : zone de leadership, où se prennent les décisions
+
+image:devoxx-france-2021_32.jpg[]
+
+Et Xebia donné en exemple par Anne-Sophie comme une société avec une frontière externe extrêmement fermée, pour un système réellement clanique.
+
+===== Partie I.2 : Open space
+
+* a été créé dans les années 50 par les frères Schnell
+* FUN : faire une recherche de casque anti-bruit pour open space. +
+On tombe sur *ça*, et on se dit qu'il doit y avoir un problème avec la vocation première de l'open space (coopération et cohésion d'équipe) +
+image:casque-anti-bruit.jpg[]
+
+* Anne-Sophie et Alexis sont réservés quant à l'intérêt pour le plus grand nombre du flex office : ce n'est pas ce qui facilite la cohésion et la coopération (c'est même plutôt l'inverse) +
+*Pourquoi ?*
+    ** on doit chercher et trouver une place : "je cherche ma place" ce n'est pas une bonne question pour la cohésion d'équipe
+    ** où puis-je mettre la photo de mes enfants ?
+    ** quid des personnes qui arrivent très tôt afin de "locker" les postes ?
+    ** tous les systèmes de réservations d'une salle ou d'un bureau ne sont que des *compensations* d'un système auquel on a créé des carences
+
+* Le télé-travail ne doit pas être vu comme une compensation.
+* Le télé-travail a renforcé plusieurs inégalités : 
+    ** mâle cadre dirigeant avec maison et bureau individuel à Maison-Lafitte : lui aime le télé-travail (pas besoin de prendre les transports, grand confort à la maison)
+    ** femme faible revenu avec enfant lâché à 16h30
+    ** et souvent la 1ere catégorie a décidé le télé-travail dont la 2e catégorie est victime.
+
+.Les désavantagés du télétravail
+image:devoxx-france-2021_33.jpg[]
+
+Etude récente réalisée par l'ESSEC : le flex Office semble au final peu aimé, la majorité souhaite en revenir
+
+===== Partie I.3 : Les dérives et la cohésion
+
+.Le processus relationnel en analyse transactionnelle
+image:devoxx-france-2021_34.jpg[]
+
+Le processus relationnel repose sur la *regulation* et la *facilitation*.
+
+.L'interaction entre les individus
+image:devoxx-france-2021_35.jpg[]
+
+* faire circuler les salariés N'EST PAS faire cirucler l'inforamtion
+* casser les murs N'EST PAS casser les silos
+* open space N'EST PAS open management
+
+L'*aménagement* doit permettre des *interactions optimisées* à l'échelle de l'individu, de l'équipe et du programme.
+
+Donc, si rien ne va et que "l'open space s'est nul" que peut-on faire ?
+
+    * La règle des 2 pizzas est bonne : si on est plus, on est sûrement trop
+    * importance de la présence des seuils.
+        ** exemple avec l'estrade des speakers. Elle est petite, mais tout le monde la voit, et personne n'irait y monter
+
+.Certains problèmes avec les frontières
+image:devoxx-france-2021_36.jpg[]
+
+===== Partie I.5 : Communication & cohésion
+
+.bureaux de Spotify à New York
+image:devoxx-france-2021_37.jpg[]
+
+* les seuils sont bien visibles
+* avec une belle porosité
+
+.Quelques conseils d'agencement pour une bonne communication
+image:devoxx-france-2021_38.jpg[]
+
+* *communication osmotique* : si on met les personnes au même endroit pour travailler, la communication se fait naturellement, instinctivement.
+
+Avis : une super conf à revoir ! Des analyses pertinentes et utiles, réellement bonnes à connaître 👍 
+
+.Les transactions en analyse transactionnelle
+image:devoxx-france-2021_39.jpg[]
+
+===== Partie II : Le leader et la cohésion
+
+* Le leader est une personne dont le rôle peut tourner
+* Le leadership est une fonction stable
+* Le leader ou 3 rôles d'ordre symbolique qui jouent sur la cohésion
+    ** besoin de structure
+    ** anxiétés individuelles
+    ** surface de projection pour les perceptions
+
+{sb}
+
+* Il y a des jobs dont l'objectif n'est PAS de mettre les mains dans le cambouis, et cela a tout de même de l'utilité
+    ** ces jobs servent à soutenir le leadership. +
+    Exemple : les RH
+
+.le leadership et les protections de frontières
+image:devoxx-france-2021_40.jpg[]
+
+.La puissance de l'idéologie sur la cohésion
+image:devoxx-france-2021_41.jpg[]
+
+Pour un leader, il est beaucoup plus facile de jouer le rôle d'un ambassadeur quand les frontières sont claires.
+
+.Les écueils du leader pour ne pas jouer son rôle
+image:devoxx-france-2021_42.jpg[]
+
+.Ce que l'on attend d'un leader
+image:devoxx-france-2021_43.jpg[]
+
+.Protections, permissions et sanctions attendues de la part du leader
+image:devoxx-france-2021_44.jpg[]
+
+Gradation : *erreur* > *faute* > *trahison*
+
+===== Partie III : Les dérives et la cohésion
+
+*Les hommes en dérive*
+
+Techniques pour assurer la cohésion quand le leader ne s'en occupe pas : 
+
+    * technique 1 : *le bouc émissaire* : un moyen de faire cohésion est de se trouver un ennemi, une victime, commun.
+        ** A lire sur le sujet "La violence et le sacré"
+
+    * technique 2 : *secret et loyauté* : le secret partagé est d'importance vitale.
+        ** Pour rester loyaux envers une partie de l'idéologie du groupe, les membres ne trahissent pas et gardent le secret.
+
+    * technique 3 : *céder à la peur et se replier sur soi*
+        ** exemple quand SAFe arrive sur un groupe qui n'a pas connaît l'Agilité : "mais non, votre truc c'est trop compliqué, ça marche pas si mal chez nous, c'est du brainwashing, etc etc." On se soude tous derrière une peur commune partagée
+
+*Les espaces en dérive*
+
+    * les frontières n'existent pas, et, pour se protéger, chacun va essayer de se recréer son espace à soi +
+    image:devoxx-france-2021_45.jpg[]
+    
+*Les flux énergétiques*
+
+.Activité + FME + FMI est une constante (100%)
+image:devoxx-france-2021_46.jpg[]
+
+* Le leader ne doit PAS passer tout son temps sur la seule activité.
+
+.Conseils pour garantir la cohésion
+image:devoxx-france-2021_47.jpg[]
+
+.Une approche pour agir, via le comportement et l'espace, sur la cohésion
+image:devoxx-france-2021_48.jpg[]
+image:devoxx-france-2021_49.jpg[]
+image:devoxx-france-2021_50.jpg[]
+
+    * conseil : prévoir *de quoi prendre des notes à côté de la machine à café*, afin de persister l'info née de façon impromptue lors du brainstorming autour d'un café
+    * tous ces conseils (revoir les slides en détails) visent à agir sur la FME, la FMI et l'activité pour améliorer la cohésion
+
+===== Conclusion
+
+.Take away
+image:devoxx-france-2021_51.jpg[]
+image:devoxx-france-2021_52.jpg[]
+
+* C'est à l'espace de s'adapter à vous et vos objectifs, et pas à vous de vous adapter à l'espace 
+* "Aucun changement ne peut se faire sans protection... Nous ne sommes que des apprentis"
+    ** Donc, en cas de difficultés sur le sujet, faites-vous accompagner par un "maître"
+
+.Ressources
+image:devoxx-france-2021_53.jpg[]
+
+NOTE: On peut contacter Alexis pour de l'aménagement de Creative Room dans une ESN
 
 === Choreography vs Orchestration in serverless microservices
 
