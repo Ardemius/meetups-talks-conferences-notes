@@ -30,7 +30,7 @@ endif::[]
 
 toc::[]
 
-== Mercredi
+== MERCREDI
 
 === Keynote
 
@@ -46,7 +46,8 @@ image:devoxx-france-2021_02.jpg[]
 
 .Speaker : Quentin Adams
 ----
-Quentin ADAM is the CEO of Clever Cloud : a Platform as a Service company allowing you to run java, scala, ruby, node.js, php, python or go applications, with auto scaling and auto healing features. This position allow him to study lots of applications, code, practice, and extract some talks and advises. Regular speaker at various tech conference, he’s focused to help developers to deliver quickly and happily good applications.
+Quentin ADAM is the CEO of Clever Cloud : a Platform as a Service company allowing you to run java, scala, ruby, node.js, php, python or go applications, with auto scaling and auto healing features.
+This position allow him to study lots of applications, code, practice, and extract some talks and advises. Regular speaker at various tech conference, he’s focused to help developers to deliver quickly and happily good applications.
 ----
 
 ----
@@ -426,7 +427,7 @@ Outils et pratiques recommandées :
 * Slides : https://github.com/lcallarec/devoxx-bash-2021
 * Twitter : @CallarecLaurent
 
-== Jeudi
+== JEUDI
 
 === Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques
 
@@ -435,6 +436,50 @@ Speaker : Guillaume ROZIER, Sacha GUILHAUMOU
 ----
 Le projet CovidTracker et les outils qui en ont découlé ont nécessité de manipuler un très grand nombre de chiffres. L'OpenData est une grande réussite française (cororico) qui a permis la mise à disposition de données récentes, assurant un suivi en temps réel de l'épidémie et de son évolution. Cependant, l'interprétation de ces chiffres nécessite de prendre de nombreuses précautions, puisque les conclusions obtenues peuvent parfois être biaisées voire complètement fausses à cause de certains paradoxes statistiques. Le but de cette présentation est de soulever plus en détails le problème au travers d'exemples sur des paradoxes statistiques parfois incongrus que nous subissons régulièrement.
 ----
+
+=== Notes
+
+* plus de 150 contributeurs sur CovidTracker et les autres initiatives gravitant autour
+* l'OpenData n'est pas qu'une politique française, MAIS elle s'est énormément développée chez nous dernièrement
+
+2 points principaux pour cette présentation : 
+
+    * *visualisation des data*
+    * *interprétation des statistiques*
+
+Listes des biais et autres points d'attention : 
+
+    1. *Biais lié aux échelles* +
+    Attention aux échelles tronquées, qui ne débutent pas à 0
+
+    2. *Biais lié aux perspectives* +
+    image:devoxx-france-2021_22.jpg[] +
+    Attention ! ils peuvent entraîner des illusions d'optique, cf le "8%" précédent
+
+Listes d'erreurs statistiques : 
+
+    1. *corrélation vs causalité* : le taux de divorce est-il lié à la consommation de margarine ? +
+    image:devoxx-france-2021_23.jpg[]
+
+    2. *Probabilité d'intersection* et *probabilité conditionnelle* +
+    image:devoxx-france-2021_24.jpg[]
+
+    3. *Biais de confirmation* (argument d'autorité) +
+    Attention à la véracité des hypothèses, surtout quand ils sont annoncées par "quelqu'un de connu"
+
+    4. *Paradoxe de Simpson* +
+    image:devoxx-france-2021_25.jpg[] +
+    On a oublié de prendre en compte un facteur qui change le résultat.
+        ** Un classique, oublier de prendre l'âge en compte
++
+NOTE: TODO : il y a un super slide sur le paradoxe de Simpson à récupérer !
+
+    5. *Biais du faible effectif*
+
+Q&A : 
+
+    * *Ne pas oublier de vérifier les infos !*
+        ** D'où l'intérêt, par exemple, d'avoir des résultats départementaux plutôt que directement agrégés nationalement, car derrière, on peut humainement appeler les départements pour vérifier les chiffres, ce qui est beaucoup plus difficile à faire au niveau national.
 
 === Istio, le meilleur ami de votre cluster K8S
 
