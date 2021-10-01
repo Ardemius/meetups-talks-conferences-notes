@@ -1105,9 +1105,125 @@ La “Limite Cognitive 4”, indique qu'une personne peut conserver jusqu'à qua
 Avec ce talk, je vais me concentrer sur des règles et concepts de la psychologie avec des exemples concrets sur le code, pour trouver les paramètres généraux, qui nous aident à identifier le code qui est lisible par rapport au code qui ne l'est pas.
 ----
 
+==== Notes
+
+* 2013 : ~1 trillion de lignes de code existantes
+* 90% du travail d'un développeur consiste à lire du code
+
+* *nombre magique* : Georges Miller 1956 +
+"D'après les recherches, la quantité d'information à laquelle le cerveau peut faire face avant que la confusion ne s'installe, est connue comme le nombre magique."
+    ** et cela vaut 4 actuellement
+
+* En termes de lisibilité, les *espaces* sont aussi du code.
+
+* Kent Beck : "make it work, make it right, make it fast"
+
 === Grosses bases de données, beaucoup de serveurs, data center ou cloud - tout est là !
 
-Speaker : Flavio GURGEL
+.Speaker : Flavio GURGEL
+----
+DBA since 1995, knew PostgreSQL in 1999 and became professional PostgreSQL DBA in 2009. Worked in consulting services for 4Linux in Brazil, moved to France in 2014 to join several startup companies as DBA and DevOps, works today as DBA and Lead Infrastructure at leboncoin (Adevinta Group) since 2017.
+----
+
+----
+Cette présentation est un extrait de l'infrastructure réelle leboncoin, comment on gère PostgreSQL, notre choix de système de base de données, pour qu'il soit webscale au sein du 5ème site web le plus accédé en France.
+
+manipuler des dizaines de bases de données et serveurs avec automation
+assurer la disponibilité au niveau du réseau et de la base de données
+distribuer la charge entre les serveurs
+faire des sauvegardes de bases de données de quelques téraoctets
+outils de surveillance et alarme
+bouger les données entre bases de données
+faible ou presque zéro temps d'interruption de service pour mises à jour de version de binaires
+déploiement de modifications de schéma
+aller vers le cloud ? Quand, quoi et pour quoi.
+l'impact de la RGPD sur les opérations de base de données.
+l'impact des fonctionnalités récentes de PostgreSQL comme la réplication logique et parallel query
+incidents ? Oui, ça arrive...
+quand on parle de NoSQL dans le couloir
+----
+
+==== Notes
+
+* 2009 chez LeBonCoin, comme pas de réplication native sur PostGre, il avait utilisé "Slony" (l'éléphant gris ci-dessous) qui offrait une réplication basée sur les triggers de la BDD +
+image:devoxx-france-2021_79.jpg[]
+
+* 2013 : la scallabilité de PostGre était surtout vertical, et il fallait distribuer la charge +
+image:devoxx-france-2021_80.jpg[]
+
+* 2013 juste après, il a fallu ajouter un rien d'analyse des données utilisateurs (via ETL et outils de BI)
+    ** à cette époque, "Slony" a eu des soucis, et tout est tombé durant 3 jours...
+
+* LeBonCoin aujourd'hui : 29 000 000 d'utilisateurs uniques par mois, 800 000 nouvelles annonces par jour. +
+Ce qui donne l'architecture suivante... +
+image:devoxx-france-2021_81.jpg[]
+    ** avec la plupart des éléments qui *tournent dans le Cloud*.
+    ** en 2019, la moitié des éléments de l'image précédente étaient encore on-premise
+
+.Comment ça marche aujourd'hui ?
+image:devoxx-france-2021_82.jpg[]
+
+    * toutes les bases sont du PostGre, même les bases de BI
+    * la plus grosse base transactionnelle fait ~6 To, mais certaines bases analytiques en font 20 ou 30.
+    * stack technique : 
+        ** netbox
+        ** Collins
+        ** Puppet
+        ** Terraform : pour toute la conf Cloud
+        ** Ansible : configuration interne, OS, services dans les instances
+
+* Avant, avec les data center "classiques", on prenait du hardware "Top Gun", avec le support du constructeur (car trop compliqué, il faut le constructeur)
+    ** machines à 1 000 000 $, 2 To de RAM, 4 cartes réseaux 2 Go/s, etc etc.
+    ** monitoring de chaque composant
+
+* Aujourd'hui dans le Cloud
+    ** RDS : le PostGre managé d'AWS
+    ** importance critique des *Availability Zones*
+
+image:devoxx-france-2021_83.jpg[]
+
+* Importance de faire des *dumps* (`pg_dump` avec PostGre)
+    ** toutes les nuits chez LeBonCoin
+    ** on ne fait pas de pg_dump sur les bases d'archivage (il y a déjà plus sauvegarde, donc on sait gérer les éventuels problèmes)
+
+.Illustration de la latence vs le débit
+TIP: Le pigeon voyageur ! +
+Tu lui mets une carte SD 1 To à la patte, et il l'améne à destination... +
+La latence est nulle, mais le débit est top... 😛 
+
+*Gestion des dumps*
+
+image:devoxx-france-2021_84.jpg[]
+
+    * le dump server est super sécurisé car il accède à toutes les BDD
+        ** et il encrypte tout
+    * Une sauvegarde ne sert à RIEN si elle n'est pas testée
+        ** il faut absolument tester la validité des clés
+    * Une information très importante : le *Time to restore*
+        ** et ce Time to restore ne peut être connu qu'avec des tests !
+
+    * *Physical backups* (différent des pg_dump) : la copie matérielle (données chaudes et journal de transactions)
+        ** toutes les BDDR ont cette fonctionnalité
+        ** *Barman* est un outil de physical backup pour les datacenter
+        ** *WAL-G* est l'équivalent pour le Cloud
+        ** le "basebackup" est la copie *initiale*
+
+* Pour le *monitoring*
+
+    ** *DataDog* un peu comme tout le monde
+    ** CyberTech, pour le monitoring de PostGre, qui push directement sur Grafana
+
+LeBonCoin aujourd'hui :
+
+    * Kubernetes : microservices en Go
+    * PHP
+    * Un peu de Java
+    * DWH de 2 Po
+    * Un Redshift Amazon pour du columnar storage
+    * Files Kafka pour alimenter le DWH
+    * tout est automatisé avec Ansible
+
+*Sqitch* (Gerrit Code Review) pour les *migrations de schémas de BDD*
 
 === De l’instinct à la décision informée : lancer la data dans sa startup
 
