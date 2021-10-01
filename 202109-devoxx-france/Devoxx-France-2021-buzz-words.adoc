@@ -44,7 +44,7 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 == Conf à voir sur YouTube
 
-* azer
+* "J'aime le Big-O mais il me trompe"
 
 == Divers
 

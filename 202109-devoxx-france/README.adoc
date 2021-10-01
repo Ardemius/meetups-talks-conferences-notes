@@ -880,18 +880,150 @@ Ces Apps sont déjà nombreuses, mais pour autant elles ne répondent pas toujou
 * Pour passer en PROD, plutôt qu'héberger Probot sur sa machine, on va l'héberger sur *Glitch*
     ** Glitch va prendre un repo GitHub, le cloner, puis faire un `npm install` puis un `npm start`
 
-
-
-
-
-
-
-
-
-
-
-
 == Vendredi
+
+.Le meilleur des masques...
+image:masque-et-tuba.jpg[]
+
+=== Comment le COVID a révolutionné Doctolib
+
+.Speaker : David GAGEOT, Nicolas DE NAYER
+----
+David Gageot
+I used to be Java Champion then Go Noob at Docker and Google. Now, I code in Ruby at Doctolib.
+
+Nicolas De Nayer
+From the beginning of my career I have been exposed to efficient methodologies and I have often acted as an agile coach. My career has allowed me to discover many large (French) web players (PagesJaunes, Médiamétrie, Canal+, Viadeo, Doctolib) and a lot of tough challenges have helped me to gain the necessary experience to become a VP of Engineering.
+
+I like to compare myself to the motor oil in a running engine; tech people can get trapped in their tech world, and forget to communicate — which is absolutely vital for a team to function.
+
+My main defining characteristic is pragmatism; it allows me to think of IT as an instrument of business value.
+----
+
+----
+Chez Doctolib, nous travaillons à révolutionner la santé. Et pour ce faire, nous faisons confiance à notre architecture simple et monolithique, nommée affectueusement la "Boring Architecture".
+
+En 2020 et 2021, c'est le COVID qui nous a révolutionné.
+
+Nous allons vous raconter 3 courtes histoires avec de l'humain, de la technique et plein de chiffres ! Comment démocratiser la télé-consultation en 1 week-end ? Quelles amélioration techniques et produits pour absorber la campagne de vaccination ? En particulier, comment avons-nous géré l'immense vague du 12 juillet ?
+----
+
+==== Notes
+
+* Doctolib : applique la *boring architecture*
+    ** il faut que ce soit *simple*
+    ** Exemple : un cache c'est bien MAIS c'est compliqué... +
+    Donc chez Doctolib, on en a quasiment pas
+
+* Avec le confinement, on est passé d'une demande d'onboarding de 300 médecins par mois à plus de 30 000...
+
+    1. il a fallu trouvé des devs. Mais comme le sujet est d'intérêt public reconnu, il a été finalement simple de recruter des devs passionnés.
+    2. On a choisi les praticiens les plus facilement accessibles : ceux qui sont seuls en cabinet.
+    3. Tous les jours, un point avait lieu avec le CxO pour savoir quelles étaient les fonctionnalités attendues les plus importantes.
+        ** Ce "top-down" a été très puissant
+    4. Passage à 3 mises en PROD par jour. Ce qui a donné lieu avec une automatisation du process de livraison, qui a été conservé aujourd'hui
+
+Les soucis : 
+
+    1. la fatigue des équipes
+    2. il a fallu faire du *"quick & dirty"* ("Crapid") pour aller plus vite, MAIS vu le contexte, c'était vraiment la bonne chose à faire
+        ** MAIS, tous les raccourcis pris ont été notés pour plus tard, afin de pouvoir être nettoyés
+        ** L'objectif était vraiment de répondre au besoin, qui changeait tous les jours
+
+Ensuite, il y a eu la campagne de vaccination : 
+
+    * il a fallu développer la "petite" fonctionnalité de prise de rendez-vous de vaccination en 2 fois. 
+    * Suite à l'annonce du président ("à partir du 12 mai tout le monde peut prendre un rdv...") +
+    image:devoxx-france-2021_65.jpg[]
+    * à ce moment, on s'est reposé la question de "cache ou pas ?"
+        ** Ce qui a été pensé : quand il n'y a plus de dose, pas besoin de gérer des rdv... Donc on a mis en place un 1er cache de *non disponibilité*
+
+12 juillet 2021, tout le monde "doit" se faire vacciner, et nouvelle vague...
+
+    * Doctolib était un partenaire important du dispositif, et était en lien direct avec l'Elysée
+    * Doctolib sur Kubernetes avec 400 noeuds (à vérifier)
+        ** Et de l'Aurora
+
+.L'usage de Doctolib en France et en Allemagne
+image:devoxx-france-2021_66.jpg[]
+image:devoxx-france-2021_67.jpg[]
+
+*Q&A* : 
+
+    * Doctolib était prêt à l'heure pour la *GDPR*
+        ** ils sont *très à jour sur tous les sujets de sécurité*
+    * Beaucoup de scrappers, qui essayaient de scripter la prise de rdv (surtout en Allemagne)
+
+NOTE: Doctolib utilise NewRelic pour le monitoring et les stats
+
+=== Patterns pour des architectures résilientes et hautement disponibles dans le cloud
+
+.Speaker : Sébastien STORMACQ
+----
+Seb is writing code since he first touched a Commodore 64 in the mid-eighties. He is inspiring builders to unlock the value of the AWS cloud, using his secret blend of passion, enthusiasm, customer advocacy, curiosity and creativity. His interests are about software architectures, developer tools and mobile computing.
+
+Seb is a blogger on AWS News Blog (aka Jeff’s blog), a regular speaker at conferences and the host of the AWS Podcast in french.
+
+Before joining the AWS Evangelist team, Seb built & lead the AWS technical training team in EMEA, and the Alexa solution architecture team in UK, France, Italy and Spain.
+
+If you want to sell him something, be sure it has an API.
+----
+
+----
+Nous avons traditionnellement construit des architectures robustes en essayant d'éviter des erreurs ou des défaillances de la production, ou en testant des parties du système isolément. Cependant, les techniques modernes adoptent une approche très différente : embrasser l'échec au lieu d'essayer de l'éviter. Les architectures résilientes améliorent l'observabilité, tirent parti de modèles bien connus tels que la dégradation partielle, les délais d'expiration et les disjoncteurs, mais aussi de nouveaux modèles comme l'architecture à base de cellules et le partage aléatoire des requêtes. Dans cette session, j'examinerai les modèles les plus utiles pour la construction de systèmes logiciels résilients et montrera particulièrement au public comment ils peuvent bénéficier des modèles.
+----
+
+=== L'invisible impact d'internet sur l'environnement
+
+.Speaker : Geoffroy PERRIN
+----
+Après avoir fondé une agence de développement éco-responsable en 2010, j’ai ensuite intégré Erès comme Lead Dev. Mon parcours m'a amené à divers expériences dans mon travail tant au niveau des formations pour les professionnels que la technique pure de développement. Militant actif pour le logiciel libre et des problématiques de la vie privée numérique je suis également attaché à l'écologie et aux enjeux de la transition écologique par le numérique.
+----
+
+----
+Le calepin, le botin, l'encyclopédie ou encore la carte routière ça vous parle? Alors vous faites partie des dinosaures de "l'ère pré-internet". Car en 2020, nous leur préférons la suite Google, wikipedia et le GPS. Mais ce virage vers le tout-numérique en moins de 20 ans a des lourdes conséquences sur notre environnement. De la production des terminaux mobiles en passant par la consommation énergétique des serveurs, nous verrons ce qui se cache derrière nos écrans et notre utilisation des outils numériques pour tenter de répondre à la question: comment limiter l’impact d'Internet sur notre planète?
+----
+
+=== Lis mon code, ou pourquoi c’est important d’écrire du code lisible
+
+.Speaker : Diana ORTEGA
+----
+Consultante chez Publicis Sapient (France) avec plusieurs années d'expérience dans l'écosystème JVM et le langage Go. Vécu des nombreux projets cloud et data et passionnée par le développement logiciel et le craftsmanship.
+----
+
+----
+Si vous êtes un développeur, peut-être que vous vous demandez comment mieux écrire le code pour qu'il soit fonctionnel, efficace, correct et plus facile à comprendre.
+
+Cependant, l'expérience m’aidé a constater que plus vous utilisez des langages différents, moins vous pouvez appliquer des généralités. Ainsi, la réponse à la question si mon code est lisible ou pas, commence par "cela dépend...".
+
+La “Limite Cognitive 4”, indique qu'une personne peut conserver jusqu'à quatre idées (plus ou moins une) dans la mémoire à court terme. Mais, peut-on extrapoler cela au code ? Et si en générale, certains concepts psychologiques étaient applicables au code pour améliorer sa lisibilité ?
+
+Avec ce talk, je vais me concentrer sur des règles et concepts de la psychologie avec des exemples concrets sur le code, pour trouver les paramètres généraux, qui nous aident à identifier le code qui est lisible par rapport au code qui ne l'est pas.
+----
+
+=== Grosses bases de données, beaucoup de serveurs, data center ou cloud - tout est là !
+
+Speaker : Flavio GURGEL
+
+=== Live-Refactoring de Legacy Code avec la technique du Golden Master
+
+Speaker : Philippe BOURGAU
+
+=== De l’instinct à la décision informée : lancer la data dans sa startup
+
+Speaker : Arnaud MILLEKER
+
+=== Podcast Les Cast Codeurs : enregistrement en public
+
+
+
+
+
+
+
+
+
+
 
 == Stand
 
