@@ -880,7 +880,7 @@ Ces Apps sont déjà nombreuses, mais pour autant elles ne répondent pas toujou
 * Pour passer en PROD, plutôt qu'héberger Probot sur sa machine, on va l'héberger sur *Glitch*
     ** Glitch va prendre un repo GitHub, le cloner, puis faire un `npm install` puis un `npm start`
 
-== Vendredi
+== VENDREDI
 
 .Le meilleur des masques...
 image:masque-et-tuba.jpg[]
@@ -973,6 +973,81 @@ If you want to sell him something, be sure it has an API.
 Nous avons traditionnellement construit des architectures robustes en essayant d'éviter des erreurs ou des défaillances de la production, ou en testant des parties du système isolément. Cependant, les techniques modernes adoptent une approche très différente : embrasser l'échec au lieu d'essayer de l'éviter. Les architectures résilientes améliorent l'observabilité, tirent parti de modèles bien connus tels que la dégradation partielle, les délais d'expiration et les disjoncteurs, mais aussi de nouveaux modèles comme l'architecture à base de cellules et le partage aléatoire des requêtes. Dans cette session, j'examinerai les modèles les plus utiles pour la construction de systèmes logiciels résilients et montrera particulièrement au public comment ils peuvent bénéficier des modèles.
 ----
 
+==== Notes
+
+* Un rappel : les systèmes distribués c'est dans tous les cas *compliqué*
+* *Résilience* : la capacité à pouvoir continuer à travailler, même en environnement dégradé
+
+Ensemble de patterns pour faciliter la résilience (utiliser par exemple chez leur gros client Amazon Retail)
+
+WARNING: les DP présentés ne sont pas spécifiques à Amazon
+
+Les "thèmes" à prendre en compte pour la résilience : *People*, *Application*, *Network & Data*, *Infrastructure*
+
+    * ne pas mettre tous ses oeufs dans le même panier : *répartissez vos données*, déployez-les dans plusieurs data centers, dans plusieurs zones de disponibilités (*Availability Zones*)
+
+    * *autoscaling* : qui va maintenir votre flotte d'instances à l'état initial en fonction du besoin
+
+    * Découpler avec des patterns *asynchrones*
+        ** Ce qui implique souvent des systèmes de queues et d'évènements
+        ** Dégrader et *prioriser le traffic* avec des queues
+            *** les clients gratuits avec une queue, les payants avec une *autre* queue
+
+    * *Read / write separation* : supports degradation through Read-Only mode
+
+    * *Database federation* : une BDD pour les clients, une autre pour une autre typologie d'utilisateurs
+        ** Rend l'architecture plus compliquée, mais a son intérêt
+
+    * *Gestion des timeouts* : trop souvent, on se fit aux valeurs par défaut des timeouts
+        ** il arrive que côté client le driver BDD ait un timeout infini... (cas de MySQL) +
+        image:devoxx-france-2021_68.jpg[]
+        ** On peut également mettre en place des *exponential backoff* pour *espacer les tentatives de retry* +
+        image:devoxx-france-2021_69.jpg[]
+            *** Par contre, si les durées d'exponential backoffs sont les mêmes, on peut avoir des problèmes d'engorgements aux moments de retry. +
+            La solution est d'ajouter du "sel" (*jitter*), de l'aléatoire, à la planification des retry
+
+    * Importance de l'*idempotence* des demandes : no additional effect if it is called more than once with the same input parameters.
+
+    * *Circuit breaker* : le "grand-père" des circuit breaker est Hystric de Netflix, et n'est plus maintenu aujourd'hui. D'autres existent aujourd'hui.
+
+    * *Health checking*
+
+        ** question à se poser (pas de bonne ou de mauvaise réponse) : va-t-on checker le frontend seul, ou le frontend ET tous les services dont il dépend ? (heath check de surface ou plus profond)
+
+        ** penser à *prioriser* les health checks
+        ** penser aux *caches qui peuvent cacher le véritable état* d'un check 
+        
+    * *Latency vs Throughput* +
+        image:devoxx-france-2021_70.jpg[]
+
+    * *Load shedding* : refuser certaines requêtes valides (avec un file d'attente comme Doctolib par exemple)
+        ** et proposer une réponse humaine et claire aux refusés (et pas une erreur 500...) +
+        image:devoxx-france-2021_71.jpg[]
+
+    * *Sharding* : l'idée est de faire des *unités d'isolation de fautes*
+        ** Pour éviter qu'une même erreur n'impacte tout le monde. Pour éviter qu'une même requête "empoisonnée" ne contamine tous les clients +
+        image:devoxx-france-2021_72.jpg[]
+        ** et on peut assigner les clients de façon aléatoire aux cellules avec du *shuffle sharding*. +
+        image:devoxx-france-2021_73.jpg[]
+        ** Comment assigner un client à une cellule spécifique ? C'est un problème de routing pour lequel il n'y pas de magie, c'est à vous de le faire avec une flotte de proxies (HAProxy, NGInx & Co)
+
+    * *Chaos engineering* : tester le système en y introduisant des erreurs
+        ** Voir Netflix avec sa *Simian Army* : d'après Sébastien, Netflix sont vraiment les plus avancés à ce niveau.
+        ** *Test "green to green"* : il faut être capable de revenir à l'état vert au final (c'est pas tout de tout casser, il faut être capable de revenir à l'état initial)
+        ** AWS Fault Injection Simulator : service d'injection de pannes dans une application, pour expérimenter (d'abord sur vos systèmes de test) la résilience de vos apps +
+        image:devoxx-france-2021_74.jpg[]
+
+.Tout ce talk est inspiré du travail d'Adrien HORN
+image:devoxx-france-2021_75.jpg[]
+
+.Voir également l'audit proposé par *Amazon wellarchitected*
+image:devoxx-france-2021_76.jpg[]
+
+.Faites-moi un retour
+image:devoxx-france-2021_77.jpg[]
+
+IMPORTANT: Conclusion : la panne VA arriver, et pas par là où vous le pensez...
+
 === L'invisible impact d'internet sur l'environnement
 
 .Speaker : Geoffroy PERRIN
@@ -1004,10 +1079,6 @@ Avec ce talk, je vais me concentrer sur des règles et concepts de la psychologi
 === Grosses bases de données, beaucoup de serveurs, data center ou cloud - tout est là !
 
 Speaker : Flavio GURGEL
-
-=== Live-Refactoring de Legacy Code avec la technique du Golden Master
-
-Speaker : Philippe BOURGAU
 
 === De l’instinct à la décision informée : lancer la data dans sa startup
 
