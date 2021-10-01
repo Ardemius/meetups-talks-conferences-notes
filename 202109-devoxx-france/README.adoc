@@ -1059,6 +1059,35 @@ Après avoir fondé une agence de développement éco-responsable en 2010, j’a
 Le calepin, le botin, l'encyclopédie ou encore la carte routière ça vous parle? Alors vous faites partie des dinosaures de "l'ère pré-internet". Car en 2020, nous leur préférons la suite Google, wikipedia et le GPS. Mais ce virage vers le tout-numérique en moins de 20 ans a des lourdes conséquences sur notre environnement. De la production des terminaux mobiles en passant par la consommation énergétique des serveurs, nous verrons ce qui se cache derrière nos écrans et notre utilisation des outils numériques pour tenter de répondre à la question: comment limiter l’impact d'Internet sur notre planète?
 ----
 
+==== Notes
+
+* Internet c'est 473 câbles sur 1,2 millions de km
+    ** Et 20 à 30 nouveaux posés (remplacement ?) chaque année +
+    image:devoxx-france-2021_78.jpg[]
+
+* 2,8 quintillions de data produites par jour par l'humanité
+
+* 9 milliards d'objects connectés qui consomment 1500 TWh/an
+
+* 2020 : un smartphone contient 40 métaux et terres rares
+    ** contre 15 dans les années 2000
+    * 1500L d'eau sont nécessaires pour la fabrication d'un portable, dont 16L/g de puce informatique (ce dernier chiffre baisse du fait de procédé de fabrication plus efficaces)
+    ** 250 millions de tonnes plastique utilisé en 2015 pour l'emballage, le packaging des téléphones
+        *** Et il y a peu d'études de disponibles sur ces données (dont ces chiffres datant de 2015)
+    ** à peine 12,5% des déchets électroniques sont recyclés
+    ** il y a plus d'or dans *1kg de portable* que dans 1kg de terres rares...
+
+Ce qu'on peut faire : 
+
+    * ne pas mettre la terre entière en copie d'un mail
+    * éteindre son téléphone et son ordinateur
+    * DEV : rendre le code moins lourd
+        ** en cherchant à alléger le DOM
+        ** réduire la taille et le poids des images
+    * alimentation des data centers en électricité verte
+        ** problématique du refroidissement de ces data centers
+    * Attention ! Diminuer l'efficacité n'est pas une solution, car peut augmenter la consommation
+
 === Lis mon code, ou pourquoi c’est important d’écrire du code lisible
 
 .Speaker : Diana ORTEGA
