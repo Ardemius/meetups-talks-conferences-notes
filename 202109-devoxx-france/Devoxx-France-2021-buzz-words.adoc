@@ -30,8 +30,8 @@ endif::[]
 
 toc::[]
 
-.2021/10/XX - Vidéos disponibles sur YouTube
-IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube, via la playlist https://www.youtube.com/playlist?list=XXX[Devoxx France 2021] de la chaîne Devoxx Fr
+.2021/xx/yy - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur https://www.youtube.com/channel/UCsVPQfo5RZErDL41LoWvk0A[chaîne YouTube de Devoxx France].
 
 == Buzz words & Technos qui ont le vent en poupe
 
@@ -40,6 +40,9 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 * Importance critique des *Availability Zones* dans le Cloud
 * *DataDog* et *Grafana* pour le monitoring
 * *Ansible* pour la configuration
+* *PostGre* comme BDD en force
+* *Redis* pour du cache
+* *Quarkus* dont l'adoption s'amplifie
 
 == Technos dont on parle moins (ou plus !)
 
@@ -49,29 +52,14 @@ IMPORTANT: Les vidéos des conférences sont maintenant disponibles sur YouTube,
 
 * "J'aime le Big-O mais il me trompe"
 
-== Divers
-
-* Voir *Manager* de Saagie pour l'organisation des jobs Big Data (outil à destination des Data Engineer)
-	** se renseigner également sur *DataFabric* de Saagie
-
-* L'excellent projet http://todobackend.com/[Todo-Backend], découvert durant l'université sur Quarkus d'Emmanuel et Clément. +
-Ce dernier regroupe les (très) nombreuses implémentations d'une même API web, représentant une simple TODO liste, à l'aide d'une vaste combinaison de technologies.
-
-* Les super T-shirts de Takima ont été réalisés par mistertee.fr[Mister Tee]
-
 == Avis sur le salon
 
-* Beaucoup de talks sur *Quarkus*, et les moyens de rendre Java "moins lourd", et aussi pratique d'utilisation (expérience développeur / *"developer joy"*) que des langages comme Node ou Go.
-* On continue de beaucoup parler des microservices, surtout de tout l'environnement qui gravite autour (*capability model*), et des meilleurs façons de le mettre en place / gérer au quotidien.
-	** On note un petit buzz autour de *MicroProfile*, dont il a été question plusieurs fois 🙂
-{lb}
-* On a de nouveau un sac qui déchire en goodies ! 😍
+Evidemment, du fait du COVID et des mesures sanitaires, ce Devoxx était bien différent des autres : pas de goodies, pas de Meet & Greet, pas de dîner des speakers, moins de conférences et moins d'exposants d'où son nom : édition "9 3/4" +
+MAIS, ce Devoxx a eu le mérite d'exister, et nous a quand même permis de passer un bon moment, avec quelques très bons talks.
 
-On va terminer sur 2 clins d'oeil :
+Ma conférence préférée du salon : "La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture" d'Anne-Sophie et Alexis LE MAULT. +
+Un talk de référence sur le leadership et la cohésion d'équipe à mettre entre les mains de tous les managers et leaders.
 
-* une chtite photo avec le Gantelet de l'Infini ! (Utiliser lors de notre université du mercredi : *Microservices Infinity War! Spring vs MicroProfile*) +
-image:gantelet-infini.jpg[width=300]
-
-* une de notre groupe Softeam lors de la session de clôture : +
-image:softeam-cast-codeurs.jpg[width=600]
+Le projet https://makair.life/[MakAir], présenté dans une Keynote de Quentin ADAM et dans un stand, était également renversant. +
+Ce projet est l'illustration de la vélocité de nos méthodes de conception dans "l'informatique", où en 3 4 mois, un groupe a pu développer et produire un produit qui aurait mis 3 ou 4 ans et 8x le coût à sortir dans une boîte médicale "classique".
 

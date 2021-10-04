@@ -591,7 +591,7 @@ Ces derniers pouvant être exclus d'une partie de la communication (mauvais outi
 
 === La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
 
-.Speaker : Anne-Sophie GIRAULT LE MAULT, Alexis LA MAULT
+.Speaker : Anne-Sophie GIRAULT LE MAULT, Alexis LE MAULT
 ----
 Après avoir travaillé pendant 10 ans dans les jeux vidéo en tant que productrice de jeux et business developper avec la casquette scrum master, Anne-Sophie Girault le Mault s’est orientée vers la finance et l’énergie en tant que product owner, avant de devenir coach agile. Passionnée, formée et supervisée en analyse transactionnelle, coach professionnelle RNCP, elle intervient aujourd'hui pour le compte de Xebia Publicis Sapient Engineering auprès de clients dans des secteurs divers, sur des périmètres allant de plusieurs équipes à des programmes d'envergure à l'échelle.
 
@@ -796,6 +796,9 @@ NOTE: On peut contacter Alexis pour de l'aménagement de Creative Room dans une 
 
 .Coordonnées des speakers
 image:devoxx-france-2021_54.jpg[]
+
+*Mon avis* : ma conférence préférée de ce Devoxx France 2021. +
+Une ressource de référence, pragmatique sur le leadership, à mettre entre les mains de tous les leaders et managers 🙂 
 
 === Choreography vs Orchestration in serverless microservices
 
@@ -1223,23 +1226,12 @@ LeBonCoin aujourd'hui :
     * Files Kafka pour alimenter le DWH
     * tout est automatisé avec Ansible
 
-*Sqitch* (Gerrit Code Review) pour les *migrations de schémas de BDD*
+{lb}
 
-=== De l’instinct à la décision informée : lancer la data dans sa startup
+* *Sqitch* (Gerrit Code Review) pour les *migrations de schémas de BDD*
+    ** attention aux problèmes de locks avec Sqitch
 
-Speaker : Arnaud MILLEKER
-
-=== Podcast Les Cast Codeurs : enregistrement en public
-
-
-
-
-
-
-
-
-
-
+NOTE: Attention aux vendor locking, surtout avec Aurora
 
 == Stand
 
