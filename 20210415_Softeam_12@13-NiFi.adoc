@@ -1,4 +1,4 @@
-= 2021/03/16 - Ippon - Gouvernance Snowflake avancée et Data preparation avec Matillion
+= 2021/04/15 - 12@13 Softeam - Présentation de NiFi
 Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
