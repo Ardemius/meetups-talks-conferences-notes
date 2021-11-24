@@ -1,0 +1,132 @@
+= 2021/09/14 - Software Crafters UG - anniversaire des 10 ans
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+MeetUp Software Crafters, soirée anniversaire des 10 ans à l'Hôtel des Arts et Métiers. +
+https://www.eventbrite.com/e/billets-10-ans-de-la-communaute-software-crafters-de-paris-198305616437
+
+== Notes
+
+.Déjà, le lieu, l'Hôtel des Arts et Métiers, est "classe"
+image:20211123_software-crafters-group_anniversaire-10-ans_01.jpg[]
+
+On commence par un récapitulatif de ces 1O ans de SC MeetUp par son fondateur Cyrille Martraire 😉 
+
+    * revoir le talk de Simon sur _"comment parler au middle management"_, un des préférés de Cyrille
+    * on liste certaines conférences également dédiées au craft : *Newcraft* et *Socrates France*
+
+On passe ensuite à plusieurs lightning talks de 10 min :
+
+=== McKinsey : comment les boss voient le craft et son intérêt ?
+
+* La rentabilité et la croissance des entreprises qui *maîtrisent leurs technologies* sont BIEN meilleures
+* voir l'étude _"Developer velocity index"_ chez McKinsey
+* tous *les grands du Digital travaillent maintenant à croiser des data* (GitHub, Jira, etc.) pour créer plus d'analytiques sur l'usage du code et de l'ingénierie logicielle
+* l'étude de McKinsey se place en dessous de _"Accelerate"_ de Google (qui traite de finalement peu d'indicateurs cf le directeur associé de McKinsey)
+
+image:20211123_software-crafters-group_anniversaire-10-ans_02.jpg[]
+image:20211123_software-crafters-group_anniversaire-10-ans_03.jpg[]
+image:20211123_software-crafters-group_anniversaire-10-ans_04.jpg[]
+image:20211123_software-crafters-group_anniversaire-10-ans_05.jpg[]
+image:20211123_software-crafters-group_anniversaire-10-ans_06.jpg[]
+
+=== Jean-Laurent de Morlhon, VP engineering at Docker
+
+* rappel : l'agilité ce n'est pas QUE des process
+* place de l'ingénieur dans l'entreprise, où le manager est toujours mieux considéré et payé
+* au bout d'un moment il faut bien *"faire avec le clavier" et non avec des post-it*...
+* JL a beaucoup contributé à SAFe, mais ne le considère pas très bien... Faut pas parler de son XP SAFe à JL lors d'un entretien chez Docker 😜 
+* il faut *se détacher de toute la partie endoctrinement et mouvement*, mais à la place aller *picorer ce dont on a besoin*.
+* de plus en plus de "product late team", avec peu d'ingénieurs et beaucoup d'UX, où on est de plus en plus proche du produit
+* chez les "Big Tech", Facebook, Google & Co, quand on demande si quelqu'un fait du craft à l'heure actuelle, aucune main ne se lève.
+* *le craft est un des outils de l'ingénieur, mais il ne doit surtout pas être le seul !*
+* le craft englobe l'XP
+* équipes chez Docker très petites, 4 5 personnes, très axées "produit"
+* toujours 1 ingé avec 1 mec produit
+
+=== Patrice Fricard et le craft à la SGCIB
+
+* GBSU a maintenant sa propre ligue de crafter _"#gbiscraftleague"_, dont la devise est "raise the bar"
+* *3500 devs* à la SGCIB, *600 FTs*, *50 practices* (pas que de code !), *50 events / an* (bbl & co), *1 communauté* avec 250+ membres et 30 représentants
+
+* le *top management* a été *bienveillant*, et a écouté les devs quand ils sont venus parler du craft
+* l'*aire des plateformes* (composition de services) à la SGCIB : pour faire des plateformes, il faut des pratiques
+* et ce sont *les développeurs qui recrutent les développeurs*
+* *les régulateurs financiers ont aidé l'instauration du craft* : ils demandent des preuves, des pratiques, de tester, comment le cycle de développement est géré, est-ce qu'on fait du stress testing, etc.
+* du *story telling* a été fait avec le *top management*
+* et beaucoup, beaucoup de coachs, longtemps, à chaque transformation
+* la SGCIB a maintenant des embedded coachs qu'elle a créé dans ses effectifs
+* prochaines années : *40% des budgets ITs vont être là pour gérer de la dette*.
+* DONC *tous les nouveaux projets à la SGCIB sont en craft*
+
+image:20211123_software-crafters-group_anniversaire-10-ans_07.jpg[]
+
+=== Dorra Bartaguiz : les clés du succès d'un régime minceur, & TDD
+
+* livre sur le craftsmanship en cours de rédaction avec Cyrille et 2 autres. Parution probable en mars 2022
+{lb}
+* a) Le TDD qui dégoute ? Faite des baby steps !
+* b) go easy on portions
+* c) quand refactorer (article de Dorra à ce sujet)
+* d) confondre frustration et faim : mesurer la complexité du code
+* e) la flemmeeee : demain c'est jamais... +
+Non, 1 petit kata par jour pour s'entraîner !
+
+Montrer l'exemple pour inciter les autres à vous imiter (pair prog et katas)
+
+image:20211123_software-crafters-group_anniversaire-10-ans_08.jpg[]
+
+.Donc, pour résumer les 5 points précédents :
+image:20211123_software-crafters-group_anniversaire-10-ans_09.jpg[]
+
+=== Sandro Mancuso pour une Q&A
+
+* do we need another name ? NO ! (What problem would solve a new name)
+* Le contraire de dogmatique = "catmatique" (merci pour cette bonne blague Cyrille 😉)
+* pas d'accord avec uncle bob qui dit que quand on ne fait pas de clean code, on n'est pas un bon pro
+* "clean code is a thing that the team defines as its own agreement"
+
+=== Discussions au cocktail
+
+* J'ai pu échanger avec Patrice (Fricard, Head of technical architecture à la SGCIB), avec qui j'avais directement travaillé en 2017 / 2018. +
+La SGCIB continue d'être très motrice côté IT et pratiques (voir mes notes de l'intervention de Patrice), le sujet du moment étant la *Living Architecture* (un point qui devrait également intéresser Cyrille 😉)
+* Nous avons également échangé avec Dorra au sujet de comment gérer les différents types d'ITs : les passionnés, ceux qui veulent simplement bien faire leur travail, etc.
+
+
+
+
+
+
+
+
+
+
+
