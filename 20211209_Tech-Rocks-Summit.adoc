@@ -1,0 +1,232 @@
+= 2021/12/09 - Tech Rocks Summit
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Le mot des fondateurs de Tech.Rocks
+
+Présentation du salon par Meriem Berkane, CTO OCTO Technology, et Sébastien Chauffray, VP Engineering & Product chez Veepee, tous deux membres du staff Tech.Rocks ("comité contenu")
+
+== La Terre vue de l'Espace - Une vision pour changer le monde
+
+Présenté par Jean-Pierre GOUX, président OneHome et auteur Siècle bleu
+
+* 1er travail sur les limites de population de la planète : MIT, "the limits to growth" 1972
+    ** Ce travail a été ignoré à l'époque
+    ** on parle de "limites planétaires"
+
+.Evolution de la population et de la biodiversité
+image:20211209_tech-rocks-summit_01.jpg[]
+
+L'Humanité était un peu moins d'1 million à la sortie du dernier âge glacière, et nous ne sommes pas loin des 8 milliards en 2021.
+
+* La 1ere photo de la Terre, "Blue Marble", lors des missions Apollo, a donné lieu à une 1ere prise de conscience au niveau mondial, d'où a résulté la création de bon nombre de ministère de l'écologie.
+    ** Cette photo est la plus reproduite au monde
+
+* La photo "Blue Marble 2" a été obtenue en 2015, suite au lancement d'une mission spatiale (par SpaceX déjà à l'époque) poussée par Obama, et qui devait remplacer le programme Triana souhaité par Al Gore, mais annulé par Bush.
+    ** Ce programme remplaçant Triana est le *Deep Space Climate Observatory* (DSCOVR ou "Discover")
+
+* La Terre est un peu un vaisseau spatial (se déplaçant au total à ~2 000 000 de km/h (à vérifier))
+
+* Ces photos ont donné lieu à un phénomène qu'on pourrait qualifier "d'extatique" sur la population humaine (c'est bô et poétique !), et qui a été appelé "overview effect"
+
+Le moto de Jean-Pierre : "Notre planète n'a pas besoin d'être sauvée, elle a juste besoin d'être aimée"
+
+== Devenir une entreprise Agile
+
+Par Ludovic CINQUIN, CEO et cofondateur d'OCTO
+
+.OCTO aujourd'hui
+image:20211209_tech-rocks-summit_02.jpg[]
+
+* OCTO a 22 ans, et a aujourd'hui 760 collaborateurs
+* OCTO vient d'acquérir BeNext
+* OCTO organise 2 conférences : USI et la Duck Conf
+
+Thomas S.Kuhnx : on ne change de paradigme QUE quand le dernier pilier du précédent paradigme est tombé...
+
+Ludovic fait un parallèle entre la transformation Agile et arrêter de fumer.
+
+.Les 6 phases de la transformation par la professeur de psychologie Prochaska
+image:20211209_tech-rocks-summit_03.jpg[]
+
+* Ludovic pense que pour se transformer, et devenir Agile, la taille de la société ne joue pas forcément, et qu'il faut *~5 ans*.
+    ** Le temps nécessaire pour "reprogrammer" des habitudes
+    ** mais de bons ensembles pour initier le changement pourraient être autour de la limite de Dunbar ~150 personnes
+
+.vision personnelle de Ludovic de la courbe de la "hype" du Gartner
+image:20211209_tech-rocks-summit_04.jpg[]
+
+* Pour une transformation d'entreprise, il faut : 
+    ** accepter qu'il y ait des conflits.
+        *** pour y faire face : techniques de communication non violente, coachs
+        *** apprendre à donner et recevoir du feedback : il s'agit d'une formation obligatoire donner à tous les nouveaux arrivants chez OCTO
+            **** la formation est disponible sur l'OCTO Academy
+    ** accepter qu'il y ait des erreurs
+
+.Importance de la gestion de la pression des pairs
+image:20211209_tech-rocks-summit_05.jpg[]
+
+L'image précédente se réfère à l'expérience de Asch. +
+Il faut à un moment réussir à utiliser la pression des gens déjà convaincus pour faire changer d'avis ceux qui ne le sont pas.
+
+* De nouveau, une conclusion que l'on retrouve souvent : plus on fait d'erreurs, plus on apprend, plus on se rapproche du succès.
+
+* Pour la transformation, le chemin parcouru est plus important que le but final.
+
+* OCTO a publié un ebook sur la transformation Agile des entreprises
+
+== Le rôle du CTO
+
+Par Patrick CHANEZON
+
+.Les grands aspects du rôle de CTO
+image:20211209_tech-rocks-summit_06.jpg[]
+
+* technologie
+* humains
+* communication
+
+* L'un des rôles du CTO est de réfléchir à la possibilité de créer une plateforme autour de son produit.
+* Un autre rôle est d'aider le CEO à trouver de nouveaux business models.
+* le CTO doit avoir un rôle d'architecte avec une vision à long terme sur l'évolution des produits de la société
+
+Fantastique conf à revoir en replay (je n'ai pas tout vu) +
+Patrick y parle de Moby et de containerd
+
+== The Architect Elevator
+
+Présenté par Gregor HOHPE, Enterprise Strategist chez AWS. +
+Voir le site ArchitectElevator.com
+
+.Economies of Scale vs Economies of Speed
+image:20211209_tech-rocks-summit_07.jpg[]
+image:20211209_tech-rocks-summit_08.jpg[]
+
+* "Architects live in the First Derivative"
+* "Without change... You don't need much architecture"
+* "Don't just look at the cost to run a system. Also look at the cost to start a system. That cost will define your MTTR". Martin Thompson
+
+* *Architects Sell Options* : you defer the decision when it is the good time
+
+.Layering
+image:20211209_tech-rocks-summit_09.jpg[]
+
+.Architects are at the intersection of organizations and technical systems
+image:20211209_tech-rocks-summit_10.jpg
+
+* *Architect Elevator* : organization have many layers you have to travel
+    ** Architect are the best adapted to do these travels
+    ** "the value of a modern architect is measured by how many floors they can cover" +
+    How many layers they can connect
+        *** et des architects différents peuvent apporter de la valeur à différents layers
+    *** they must also be able to zoom in and out
+
+.Architects must see MORE dimensions
+image:20211209_tech-rocks-summit_11.jpg
+
+* Architects need to use different representations
+
+.Disablement and Enablement
+image:20211209_tech-rocks-summit_12.jpg[]
+
+* Ressources conseillées par Gregor : https://architectelevator.com/architecture/architect-bookshelf/
+    ** Pour suivre "l'Architect's Path"
+
+== The Unicorn Project, and The Structure and Dynamics of Great Organizations
+
+Présenté par Gene KIM, Author (The Phoenix Project: A Novel About IT,...), Researcher
+
+----
+"I’ve spent 22 years studying high-performing technology organizations. In The Unicorn Project, I attempt to frame what I’ve learned studying technology leaders adopting DevOps principles and patterns in large, complex organizations, often having to fight deeply entrenched orthodoxies. And yet, despite huge obstacles, they create incredibly effective and innovative teams that create beacons of greatness that inspire us all.
+
+In my previous books, I’ve focused on principles and practices (e.g., Three Ways, Four Types of Work). However, I’ve always wanted to describe the spectrum of cultural, experiential and value decisions we make that either enable greatness, or create chronic suffering and underperformance. They are currently as follows:
+•    The First Ideal — Locality and Simplicity
+•    The Second Ideal — Focus, Flow and Joy
+•    The Third Ideal — Improvement of Daily Work
+•    The Fourth Ideal — Psychological Safety
+•    The Fifth Ideal —  Customer Focus
+
+In this talk, I’ll share with you my goals and aspirations for The Unicorn Project, describe in detail the Five Ideals, along with my favorite case studies of both ideal and non-ideal, and why I believe more than ever that DevOps will be one of the most potent economic forces for decades to come."
+----
+
+Il est question du dernier livre de Gene "The Unicorn Project"
+
+* "To what degree do we fear deployments?"
+
+* Bill Gates 2002 : entre ajouter une feature et corriger un pb de sécurité, il faut absolument corriger le problème de sécurité.
+    ** get *technical debt low* as you go
+
+.The Unicorn Project : the 5 deals
+image:20211209_tech-rocks-summit_13.jpg[]
+
+== La DevX pour accélérer et engager votre équipe technique
+
+Présenté par Aurore Malherbes, CTO & co-fondatrice et PADOK (groupe Theodo)
+
+* La chaîne de CI/CD est un gros morceau de votre usine logicielle : au bout d'un moment, il faut accepter d'y consacrer plus de ressources (RAM, CPU, etc.)
+* Intérêt des journées Kaizen à planifier régulièrement
+
+.Le triptyque DevX
+image:20211209_tech-rocks-summit_14.jpg[]
+
+* A revoir, un très bon REX et de bons conseils pratiques (yokoten, kaizen, etc.)
+* Idée pour sensibiliser un COMEX aux contraintes techniques, leur faire lire "sit at the table"
+
+== From 90 to 2000 employees in one night, tale of an acquisition
+
+Présenté par Jean-Baptiste AVIAT, Staff Engineer APM & AppSec chez Datadog, et fondateur de Sqreen
+
+Jean-Baptiste présente l'histoire de Sqreen, et pourquoi ils ont choisi le rachat par Datadog
+
+.2020, les compagnies d'APM investissent massivement sur la sécurité
+image:20211209_tech-rocks-summit_15.jpg[]
+
+== What humans need at work ?
+
+Présenté par Lara HOGAN, Wherewithall - Founder and Leadership Coach, former VP at KickStarter
+
+All this talk is about the *"core needs"* of people.
+
+.Those 6 core needs are perceived differently depending on the people
+image:20211209_tech-rocks-summit_16.jpg[]
+
+== Synthèse et à côtés des talks
+
+* *Cloudflare* de plus en plus utilisé pour tout ce qui est *sécurité dans le Cloud*
+
+* Importance des *plateformes* : revoir les talks de Patrick (CHANEZON), Gene (KIM), Jean-Baptiste (AVIAT, dans les Q&A de son talk)
+    ** lire également "Flow" de Dr. Mihaly Csíkszentmihályi et le mettre en lien avec le concept de plateforme : +
+    https://www.amazon.fr/Flow-Psychology-Experience-Mihaly-Csikszentmihalyi/dp/0061339202
+
+
+
+
+
