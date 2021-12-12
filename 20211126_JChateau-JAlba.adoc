@@ -1,0 +1,78 @@
+= 2021/11/24 - 26 - JChateau / JAlba
+Thomas SCHWENDER <https://github.com/ardemius[@ardemius]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+:sectnums:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== (Wednesday)
+
+Rappel : JChateau et JAlba ont fusionné l'année dernière pour (re ?)former la Auld Alliance (JAuld).
+
+* L'outil utilisé pour la conf call est *SpatialChat* : https://spatial.chat/s/jauld
+	** Il permet de créer des salles virtuelles en déplaçant son icône. Seules les personnes dont les icônes sont proches peuvent s'entendre
+	** SAUF si l'on utilise le mégaphone, dans ce cas tout le monde va vous entendre
+
+* L'outil utilisé pour les post-it est Miro
+	** le board Miro est disponible ici : https://miro.com/app/board/o9J_lhDojoo=/
+
+Google Doc de l'unconference, avec les sujets abordés : +
+https://docs.google.com/spreadsheets/d/1VpzFOTnBAMptBXXg2j05yydLFQ8Rs3qg-FiP4SFyKmo/edit#gid=970636173
+
+== 2021/11/26
+
+.marketplace du vendredi
+image:20211126_jchateau-jalba_marketplace[]
+
+.participants
+image:20211126_jchateau-jalba_participants.jpg[]
+
+* Super ressource pour comparer les différentes version de Java : https://javaalmanac.io/[The Java Version Alamanac]
+    ** L'un des participants, Cay Horstmann, y participe
+
+=== Ma conf 1 : Moving from 3 years LTS release cadence to 2 years. (Fragmentations, distributions, etc.)
+
+* le coût (dans l'absolu) d'une migration à une nouvelle version est le principal frein à une mise à jour plus régulière
+    ** et, actuellement, la sécurité est un sujet qui peut coûter TRES cher (avec les régulateurs et le RGPD pas loin derrière...)
+    ** l'autre considération a bien garder en tête est le risque opérationnel : en proposant des technos et des versions vieillissantes, vu la pénurie d'ITs actuelle (depuis plus de 10 ans en fait...), on arrivera jamais à recruter. Et sans développeur, pas de nouveaux projets, donc probablement une perte de clients et donc d'argent.
+
+=== Ma conf 2 : Teaching Java as if it was 1996 or 2021 ?
+
+* Kirk Pepperdine : switch (whatever the version) are a bad usage for polymorphism
+    ** Et Kirk a bien insisté là-dessus (en débat avec Cay Horstmann), et ils n'aiment pas les switch dans l'absolu 😉 
+
+* Le Google Doc de la session est disponible ici : https://docs.google.com/document/d/1tbVV9bOSbdPeO7LA45_45dtST_EccBTiwF4NGXUzeNs/edit#heading=h.s2ary328578a
+
+
+
+
+
+
+
+
+
