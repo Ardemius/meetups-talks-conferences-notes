@@ -40,7 +40,7 @@ image:devoxx-france-2021_01.jpg[]
 
 image:devoxx-france-2021_02.jpg[]
 
-=== Projet MakAir, comment et pourquoi construire un respirateur open source ?
+=== 09h30 - 09h50 (AB) : Projet MakAir, comment et pourquoi construire un respirateur open source ?
 
 ==== Abstract
 
@@ -90,7 +90,7 @@ Conclusion : MakAir c'est l'illustration qu'on a tout intérêt à pousser le mo
 
 Aller voir le stand MakAir !
 
-=== Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
+=== 10h30 - 11h15 (AB) : Gérer systématiquement les erreurs dans votre code pour le(s) rendre utile(s)
 
 ==== Abstract
 
@@ -159,7 +159,7 @@ NOTE: Une conférence très intéressante sur une bonne gestion, se voulant *exh
 * Cette façon de faire va potentiellement rendre le code plus verbeux (très)
     ** Et avec Java qui est historiquement verbeux (malgré les améliorations de ces dernières années), c'est un point à surveiller pour ne pas rendre le code trop lourd, et perdre en visibilité
 
-=== AWS vs GCP vs Azure
+=== 13:00 - 16h00 (242AB) : AWS vs GCP vs Azure
 
 Université. +
 Speakers : Laurent Grangeau, Tony Jarriault, Olivier Dupré
@@ -333,7 +333,7 @@ Cf les speakers, il reste la moitié des slides prévus à passer en revue... �
 * GreenIT : Google 1er, Azure juste derrière, et AWS loin derrière
     ** Depuis déjà un moment, les datacenter Google sont neutral carbon
 
-=== Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
+=== 16h30 - 17h15 (242AB) : Rebelles au SaaS - Le "on-premises" est encore là pour longtemps
 
 ==== Abstract
 
@@ -405,7 +405,7 @@ image:devoxx-france-2021_21.jpg[]
             *** le client a encore souvent peur de Kubernetes
             *** les compétences sont très rares (ceux qui maîtrisent *vraiment*)
 
-=== Bash, couteau suisse du développeur
+=== 18h15 - 18h45 (AM) : Bash, couteau suisse du développeur
 
 ==== Abstract
 
@@ -429,7 +429,7 @@ Outils et pratiques recommandées :
 
 == JEUDI
 
-=== Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques
+=== 09h30 - 09h50 (AB) : Pourquoi l'OpenData ne dispense pas de quelques notions de statistiques
 
 Speaker : Guillaume ROZIER, Sacha GUILHAUMOU
 
@@ -481,7 +481,7 @@ Q&A :
     * *Ne pas oublier de vérifier les infos !*
         ** D'où l'intérêt, par exemple, d'avoir des résultats départementaux plutôt que directement agrégés nationalement, car derrière, on peut humainement appeler les départements pour vérifier les chiffres, ce qui est beaucoup plus difficile à faire au niveau national.
 
-=== Istio, le meilleur ami de votre cluster K8S
+=== 10h30 - 11h15 (AB) : Istio, le meilleur ami de votre cluster K8S
 
 .Speaker : Kevin DAVIN
 ----
@@ -549,7 +549,7 @@ Constat : il y a beaucoup de progrès à ce niveau dernièrement, MAIS Istio res
 
 *Avis* : une conférence pouvant servir de référence sur l'utilisation d'Istio, avec de nombreux cas pratiques et conseils utiles.
 
-=== Full-remote : comment réussir à travailler en équipe ?
+=== 12h00 - 12h15 (AM) : Full-remote : comment réussir à travailler en équipe ?
 
 .Speaker : Lise QUESNEL
 ----
@@ -589,7 +589,7 @@ De grosses difficultés peuvent arriver quand une partie de l'équipe a choisi l
 Ces derniers pouvant être exclus d'une partie de la communication (mauvais outils, ou autre raison), il faut apporter un soin tout particulier à conserver le lien avec eux (via des points réguliers, un équipement qu'on leur pousse également, etc.)
 ====
 
-=== La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
+=== 13h00 - 16h00 (252AB) : La cohésion de groupe en analyse transactionelle : une clef du leadership mise en perspective pratique par l'architecture
 
 .Speaker : Anne-Sophie GIRAULT LE MAULT, Alexis LE MAULT
 ----
@@ -800,7 +800,7 @@ image:devoxx-france-2021_54.jpg[]
 *Mon avis* : ma conférence préférée de ce Devoxx France 2021. +
 Une ressource de référence, pragmatique sur le leadership, à mettre entre les mains de tous les leaders et managers 🙂 
 
-=== Choreography vs Orchestration in serverless microservices
+=== 16h30 - 17h15 (252AB) : Choreography vs Orchestration in serverless microservices
 
 .Speaker : Guillaume LAFORGE
 ----
@@ -856,7 +856,7 @@ Et ne pas oublier de jeter un oeil à la spécification *CNCF Serverless Workflo
 .Ressources de la présentation et demo de Guillaume
 image:devoxx-france-2021_64.jpg[]
 
-=== Probot : créer son assistant pour se faciliter la vie sur GitHub
+=== 18h15 - 18h45 (242AB) : Probot : créer son assistant pour se faciliter la vie sur GitHub
 
 .Speaker : Romain LINSOLAS, Alicia STOTZ
 ----
@@ -888,7 +888,7 @@ Ces Apps sont déjà nombreuses, mais pour autant elles ne répondent pas toujou
 .Le meilleur des masques...
 image:masque-et-tuba.jpg[]
 
-=== Comment le COVID a révolutionné Doctolib
+=== 09h30 - 09h50 (AB) : Comment le COVID a révolutionné Doctolib
 
 .Speaker : David GAGEOT, Nicolas DE NAYER
 ----
@@ -959,7 +959,7 @@ image:devoxx-france-2021_67.jpg[]
 
 NOTE: Doctolib utilise NewRelic pour le monitoring et les stats
 
-=== Patterns pour des architectures résilientes et hautement disponibles dans le cloud
+=== 10h30 - 11h15 (AB) : Patterns pour des architectures résilientes et hautement disponibles dans le cloud
 
 .Speaker : Sébastien STORMACQ
 ----
@@ -1051,7 +1051,7 @@ image:devoxx-france-2021_77.jpg[]
 
 IMPORTANT: Conclusion : la panne VA arriver, et pas par là où vous le pensez...
 
-=== L'invisible impact d'internet sur l'environnement
+=== 12h00 - 12h15 (252AB) : L'invisible impact d'internet sur l'environnement
 
 .Speaker : Geoffroy PERRIN
 ----
@@ -1091,7 +1091,7 @@ Ce qu'on peut faire :
         ** problématique du refroidissement de ces data centers
     * Attention ! Diminuer l'efficacité n'est pas une solution, car peut augmenter la consommation
 
-=== Lis mon code, ou pourquoi c’est important d’écrire du code lisible
+=== 13h00 - 13h45 (AB) : Lis mon code, ou pourquoi c’est important d’écrire du code lisible
 
 .Speaker : Diana ORTEGA
 ----
@@ -1121,7 +1121,7 @@ Avec ce talk, je vais me concentrer sur des règles et concepts de la psychologi
 
 * Kent Beck : "make it work, make it right, make it fast"
 
-=== Grosses bases de données, beaucoup de serveurs, data center ou cloud - tout est là !
+=== 14h00 - 14h45 (AM) : Grosses bases de données, beaucoup de serveurs, data center ou cloud - tout est là !
 
 .Speaker : Flavio GURGEL
 ----
