@@ -1,0 +1,71 @@
+= 2015/01/27 - Softeam BBL - Elasticsearch
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présenté par David Pilato @dadoonet
+
+* C'est un moteur / NoSQL / Lucene
+	** Scalable, distribué
+	** API Rest
+	** Écrit en Java
+		*** Seule une JVM est nécessaire
+	** Query DSL pour requêter, on passe en critères du JSON
+	** ES répond également en JSON
+
+Projet en dev pour intégration de data dans Elasticsearch (et autres !) : *Logstash*
+
+* ES : *Near real time search engine*
+	** Check the https://onemilliontweetmap.com/[One Million Tweet map], that runs ES
+
+* *Marvel* comme outil de monitoring des clusters ES.
+	** Gratuit pour les développeurs, licence requise dans les autres cas.
+
+* Appli web *Kibana*, en AngularJS, pour bâtir des interfaces de visualisation sur ES. +
+	** beau rendu ! Nombreux modèles de graphes.
+
+* 1 index -> 5 partitions (shards) qui sont autant d'instances Lucene physiques
+
+* *Percolation* = recherche inversée, c'est-à-dire la possibilité de rechercher les requêtes correspondant à un document.
+
+* *Analyser = tokenizer + filtres* (asciifolding, French stemmer, etc.)
+	** French stemmer : Le French stemmer nous permet de ramener le mot à sa racine et, par conséquent, de retrouver la forme féminine lors d'une recherche de la forme masculine et vice-versa.
+	** La recherche du bon analyser est la partie la plus difficile (il y a toujours du "bruit" à gérer, à savoir des résultats non renvoyés car filtrés à tord)
+
+
+
+

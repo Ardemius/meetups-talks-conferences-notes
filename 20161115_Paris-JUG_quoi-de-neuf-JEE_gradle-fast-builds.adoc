@@ -1,0 +1,145 @@
+= 2016/11/15 - Paris JUG - Quoi de neuf JEE et autres & des builds incroyablement rapides avec Gradle
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Des builds incroyablement rapides avec Gradle
+
+Présenté par Cédric CHAMPEAU.
+
+image::20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_01.jpg[width=600]
+
+Nouveautés :
+
+	* Gradle 3
+	* Gradle 4 : début 2017
+
+News Gradle 3 :
+
+	* a build tool
+	* des services en ligne (faut bien manger !)
+
+Les forces de Gradle :
+
+* Gradle Daemon
+    * beaucoup plus stable depuis la version 3 (plus de lock sur le rep build ! Enfin on peut le supprimer sans avoir besoin de redémarrer)
+    * après quelques run (merci le JIT), on gagne plus de 50% de temps de build.
+* outils de profiling :
+    * `gradle --profile` : l'historique, avec déjà quelques infos, limitées et difficilement partageables
+    * service en ligne : *build scans* +
+	image:20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_02.jpg[width=600] +
+    Le nouvel outil, cloud, bien plus performant. +
+	Voir https://scans.gradle.com/s/ly5tnqtuoqlwe pour un exemple de build scan.
+    Pour l'utiliser, un plugin à ajouter, et builder avec `-Dscan`
+    	** Data collectées au cours du build PUIS envoyées en 1 shot dans le cloud
+    	** Possibilité de l'installer en LAN
+
+* *builds incremental*
+	** Gradle permet de redéfinir les entrées sorties de toutes les tâches (`@InputFile` et `@OutputFile`). +
+	Si pas encore d'output, il faut relancer le build. Si on l'a, et que les entrées sont les mêmes, on ne relance pas le build.
+* *compilation incrémentale* (comme sous Eclipse). 
+	** Gradle connaît les dep entre classes, et peut donc le faire, ce qui n'est pas le cas de `javac`. 
+	** Peut complètement être utilisé, même si expérimentale. +
+	image:20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_03.jpg[width=600]
+* *continuous build*
+	** Avec l'option "-t". +
+	Exemple :
+
+	gradle -t Asciidoctor
+
+* *composite build* : la *killer feature* de Gradle
+	** Permet de gérer le mono ou multi repo (1 seul repo Git contenant 36 000 sous-projets)
+	** Peut remplacer une dépendance binaire par une dépendance source !!!!
+	** Pour *débugger une dep problématique*, c'est juste énorme.
+		*** Valable aussi pour les dep transitives, via le graphe de dépendances.
+	** Se sert du fichier `settings.gradle` pour déclarer les builds multi-modules, ou utilise le flag `--includeBuild`
+	** Permet d'exploser les monolith en multi-modules
+* *task output cache* (pour Gradle 4)
+	** Pour partager le résultat d'un build sur le réseau (comme ça le voisin ne perdra pas 25 min sur son build si vous l'avez déjà fait !) +
+	Moins de compilation, meilleur pour la planète (GreenIT à communiquer)
+* la perf est une des priorités de Gradle +
+image:20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_04.jpg[]
+* sources sur GitHub
+
+Voir *"detached configuration"* pour éviter la résolution de la configuration.
+
+image::20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_05.jpg[width=600]
+
+== JEE quoi de neuf ? 
+
+Présenté par José PAUMARD.
+
+.Rappels Java EE 7
+image::20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_06.jpg[]
+
+.Etat des lieux Java EE 8
+image::20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_07.jpg[]
+
+
+Retour sur les annonces de *JavaOne* et *Devoxx BE*
+
+* Actuellement, on peut faire du JEE 7 avec une JVM 8
+* Voir les graphes : https://javaee-guardians.io/lack-of-java-ee-8-progress/
+	** Mais, gaffe, tous viennent du fondateur de Java EE guardians, un ancien évangéliste JEE
+
+JEE semble quand même toujours très suivi, avec beaucoup de refs, de docs et de livres associés.
+
+JavaOne : sur 450 prez, 50+ sur JEE
+
+.Java EE 8 : le New Deal
+image:20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_08.jpg[]
+image:20161115_ParisJUG_quoi2neuf-JEE-fast-builds-gradle_09.jpg[]
+
+Java EE 8 :
+	
+	* *JCache* n'avance pas des masses (tout une histoire)
+	* *JSONB* : binding pour Json fortement demandé
+
+//-
+
+* On va avoir dans la foulée les sorties de JEE 8 et 9 (en quelques mois)
+* On commence à avoir un grand écart entre les JEE et les JSE (grosse désynchronisation)
+
+-> Java EE : regrouper ce qui marche bien, pour proposer un standard (exemple avec Hibernate et CDI), dans cet ordre.
+
+
+
+
+
+
+
+
+
+

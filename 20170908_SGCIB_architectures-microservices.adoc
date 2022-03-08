@@ -1,0 +1,67 @@
+= 2017/09/08 - SGCIB MeetUp - Architectures microservices
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+L'histoire de l'aventure https://ogury.com/[Ogury].
+
+* Société spécialisée dans la publicité sur mobile. VA : *cibler au mieux les publicités*.
+* Plusieurs milliards de requêtes maintenant.
+
+Au début, *Couchbase comme BDD* 
+	** BDD NoSQL clé / valeur avec temps de réponse très bas
+	** Permet un pseudo map / reduce sur les data, mais limité.
+
+Temps de réponse monde de la pub mobile : *< 50ms*
+
+* Passage à Kafka pour la mise en place de l'asynchronisme. 
+	** On répond de suite, sans avoir aucun traitement de lancé.
+	** Les consumer vont stocker les infos du Kafka dans Amazon S3
+
+* *Remplacement de Couchbase par ELK*.
+	** Dashboard avec Kibana pour avoir accès à toutes les infos.
+
+* Optimisation trafic réseau : utilisation de *gRPC*, protocole de Google implémentant HTTP/2
+* Utilisation cluster *EMR*.
+* Sonde Graphite pour auditer le code.
+* Utilisation de *Chef*
+* *Stockage JSON à plat*, sinon trop pénible pour Hive.
+
+*Criteo*, contrairement à Ogury, fait du *retargeting* (analyse la navigation de l'utilisateur).
+
+Pour le recrutement des devs : plateforme de tests *Codility*.
+

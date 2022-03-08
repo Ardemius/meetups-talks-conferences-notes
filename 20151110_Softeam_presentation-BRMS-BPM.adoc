@@ -1,0 +1,102 @@
+= 2015/11/17 - Softeam 12@13 - Présentation BRMS / BPM
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présenté par Emmanuel BONNET
+
+Renouveau de l'IA, avec l'émergence du Deep Learning.
+
+4 groupes :
+
+	* *BPM* : Business Process Management
+	* *BRMS* : Business Rules Management Systems
+	* *Optimisation* : "problématique du voyageur de commerce " (algo plus court chemin), comment faire rentrer au mieux les pièces dans un Airbus Béluga
+	** *Predictive Analytics*
+
+.Différence entre BPM et BRMS
+[NOTE]
+====
+* Un BRMS est un système permettant de définir, d'exécuter et de gérer des règles de gestion. 
+* Un système BPM, en revanche, est une solution logicielle qui aide les organisations à optimiser leurs processus de gestion afin d'accroître leur efficacité et leur productivité.
+
+Exemple : Des règles commerciales clairement définies précisent comment, quand et par qui les tâches sont effectuées. Avec un SGBR, une organisation peut mettre en oeuvre et gérer des règles de gestion pour former la base de processus efficaces. Les processus sont ensuite optimisés grâce à la BPM, ce qui permet aux organisations d'améliorer leur productivité, de réduire les coûts et d'améliorer la conformité.
+====
+
+*Moteurs de règles* :
+
+	* Exemple : composant de calcul d'une facture amenée à changer continuellement. +
+	Il va falloir gérer une liste de règles de calcul métier. +
+	Ces règles sont indépendantes du reste de l'architecture technique.
+	* Autres exemples classique : moteurs de pricing
+
+	* Cas d'utilisation intéressant : *métier très compliqué*. 
+		** On délègue, via un *DSL*, l'*élaboration des règles aux experts métier*.
+			*** Cela car il est impossible pour nous de comprendre ces règles.
+
+	* Autre cas d'utilisation : *IOT* (Internet Of Things) et sa *gestion d'évènements* sous-jacente (cascade d'évènements)
+
+BPM -> 2 composants :
+ 
+ * *édition*
+	** Ex d'outils d'édition : *Drools* de RedHat, *PEGA*, outil ODM d'IBM 
+ * *exécution*
+
+*BOM* : *Business Object Model*
+
+	* Contient la définition du langage métier
+	* Mapping entre attributs / méthodes et "bouts de phrases"
+		** Une fois ce mapping réalisé, on peut écrire les règles à proprement parler.
+
+Outil d'exécution / moteur, 3 grands composants :
+
+	* *Ruleset* : les règles à exécuter
+	* *working memory* : ce sur quoi portent les règles
+	* *agenda* : état des règles à un instant t
+
+-> Suivant l'ordre d'exécution des règles, certaines peuvent devenir fausses (= sortie de l'agenda), ou vraies (= réentrée / entrée dans l'agenda)
+
+* Apparemment, étonnamment, les perfs sont rarement un problème.
+
+TIP: Jamais d'appel à la BDD dans les conditions.
+
+* *Règle de la réfraction* : quand j'ai exécuté une règle sur un ensemble d'objets, je ne peux pas la reexécuter sur les mêmes objets (évite les boucles infinies)
+
+
+
+
+ 

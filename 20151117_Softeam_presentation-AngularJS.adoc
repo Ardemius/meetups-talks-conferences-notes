@@ -1,0 +1,99 @@
+= 2015/11/17 - Softeam 12@13 - Présentation de AngularJS
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présenté par Lanto
+
+* SPA : single page application
+	** Le serveur ne fait que renvoyer des data, tout le métier, la logique est côté client, sur le navigateur.
+
+* Framework *MVW* (Model View Whatever), open-source, créé par Google (mi chemin *MVC / MVVM* (Model View ViewModel))
+	** Développement SPA Restful
+	** Injection de dépendances
+	** contrôleur côté client
+
+TIP: Site https://plnkr.co/[Plunker] pour démarrer très vite un projet JavaScript.
+
+* `{{::maVariable}}` les "::" sont là pour ne plus watcher la variable, qui ne sera donc pas réévaluée. +
+Sans ces "::" maVariable aurait un watcher d'associé.
+
+* Les blocs AngularJS sont déclarés via des *div avec attribut `ng-controller`*.
+	** Ces blocs div délimitent également le scope des variables.
+	** Pour partager des variables entre bloc, il faut utiliser une *factory*
+		*** bien *plus performant qu'un broadcast* de toute la page qui va toucher tous les contrôleurs
+		*** Le *broadcast* est vraiment la *solution de dernier recours* (car relance toute la boucle événementielle)
+
+* `{{ maVariable }}` : évaluation de maVariable par mapping bidirectionnel
+
+* Directive `ng-repeat` pour *répéter des éléments*, MAIS avec un *scope différent* à chaque itération.
+	** Ex : <tr ng-repeat="p in personnes...
+	** `ng-repeat` est un attribut de la balise "tr" (mais peut être un attribut de n'importe quelle balise)
+
+* De manière générale, `ng-*` pour les *directives prédéfinies*.
+
+TIP: utiliser `'use strict';` pour un *contrôle fort du typage*.
+
+* Promise ~ Future de Java 8
+	** Les *promise* sont l'apanage d'un *langage asynchrone* (comme AngularJS)
+
+[WARNING]
+====
+* On ne fait pas d'application AngularJS pour remplacer un tableur Excel.
+* gaffe aux grosses appli (= masse de contrôleur)
+* ne pas hésiter à abuser du CTRL+F5 pour ne pas être victime du cache du navigateur.
+====
+
+* Pour les tests unitaires : *Karma*, *Mocha*
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

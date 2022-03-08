@@ -1,0 +1,121 @@
+= 2022/03/08 - Microsoft - REX Criteo move to Cloud (Azure)
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+image::20220308_Microsoft_REX-Criteo-move-to-Cloud_01.jpg[]
+
+.Microsoft Cloud Adoption Framework (CAF)
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_02.jpg[]
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_03.jpg[]
+
+Cette approche a été utilisée par Criteo pour leur passage au Cloud
+
+* "Motivations" de Criteo
+    ** fermeture de leur Data Center
+
+.Cloud Adoption Motivations
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_04.jpg[]
+
+.Azure Landing Zones
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_05.jpg[]
+
+Présentation de Criteo : 
+
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_06.jpg[]
+
+* Criteo a été créé en 2006, et son IT a été créé en 2012
+* ~3000 employés, dont ~150 à l'IT
+* Criteo a été créé sur l'ancien modèle Spotify (que ces derniers n'utilisent plus depuis bien longtemps)
+    ** et Criteo change apparemment souvent d'organisation
+
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_07.jpg[]
+
+.Pourquoi un passage au Cloud pour Criteo ? (motivations)
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_08.jpg[]
+
+* Il y avait une envie de fermer les data centers on-premise
+* Il faut juguler la fuite des talents, et donc leur proposer des techno sympas (gestion du risque opérationnel)
+
+.Program "Move to Cloud" de Criteo
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_09.jpg[]
+
+* 9 mois pour ce passage au Cloud
+    ** pas le choix, avait arrêté de payer pour son Data Center après cette date
+* Considère que *la vraie puissance du Cloud est dans le PaaS* et NON le IaaS
+* avait prévu 80% de Lift & Shift
+
+.Target IaaS architecture
+image:20220308_Microsoft_REX-Criteo-move-to-Cloud_10.jpg[]
+
+* l'un des drivers : rendre les équipes autonomes
+    ** et réduire le Time To Market (en ne dépendant pas d'une autre équipe pour shipper)
+
+.Next Steps 2022 & Feedbacks
+image::20220308_Microsoft_REX-Criteo-move-to-Cloud_11.jpg[]
+
+* *Tous les workflows Criteo sont maintenant sur Azure*
+* *Azure migrate tool* est apparemment vraiment un bon outil pour migrer 👍 
+* Le Cost governance marche très bien
+* *Security managed by Azure* for hosting : un MUST, Criteo explique qu'ils ne seraient pas sûrs de ne pas oublier une maj par moment, aussi se reposent-ils sur Microsoft pour cela
+* L'*Assessment tool* sous-estime souvent la taille des ressources à allouer à son workflow (Microsoft est donc "gentil" avec ses ressources)
+* RBAC for reservations est assez mal géré (en tout cas à l'époque)
+* le *DHCP n'est PAS supporté sur Azure*
+    ** donc Criteo est en mode non supporté pour le DHCP
+
+== Q&A
+
+* Pourquoi vouloir quitter leurs data centers on-premise ?
+    ** Criteo : parce que ça leur coûtait très cher
+        *** On commence à entendre de plus en plus cette raison, ce qui n'était pas le cas il y a quelques années (c'était même une vraie *mauvaise* raison)
+
+* Criteo utilise *Ansible* pour déployer sa partie IaaS
+
+* Pour toute la partie *SAP*, accompagnement "quasi-obligatoire" de Microsoft (tricky)
+
+== Ressources
+
+Informations communiquées par Microsoft durant le talk : +
+"Merci à toutes et à tous pour votre participation ! Si vous souhaitez aller plus loin, rendez vous le 24 Mars pour le prochain témoignage du Club avec AXA : https://mktoevents.com/Microsoft+Event/305715/157-GQE-382 +
+N'oubliez pas de rejoindre le Club Azure Insiders pour retrouver toutes nos ressources et cafés deep dive : https://aka.ms/jerejoinsleclub Merci encore et très bonne fin de journée"
+
+
+
+
+
+
+

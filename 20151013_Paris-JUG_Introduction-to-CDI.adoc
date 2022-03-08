@@ -1,0 +1,105 @@
+= 2015/10/13 - Paris JUG - Introduction to CDI
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== 1ere partie
+
+Présenté par Antoine Sabot-Durand.
+
+* *CDI* : modern programming model
+	** Bonnes pratiques
+	** Intégration de frameworks 3rd
+
+* *Container is the heart of CDI*
+* A bean supports lifecycle callbacks.
+
+Actuellement, on peut déjà utiliser CDI dans J2SE (oui, SE) +
+Ce sera officiel dans la version 2.0 (1.2 dans JEE 7)
+
+* `Qualifier` pour préciser un bean injectable (`@inject`)
+* `Producer` : permet de créer un bean à partir d'un champ / méthode d'un autre bean.
+* `Disposer` pour libérer les ressources une fois le producer détruit.
+* Interface `Instance` permet de faire une résolution d'instance de bean au RUNTIME (et pas au déploiement)
+* All jeans have a scope, which is associated to a context.
+
+Une instance de bean est créé à la 1ere demande, et détruite à la destruction du contexte. +
+Une instance de bean est un singleton dans son context.
+
+Mécanisme de bus d'évènements.
+
+	* CDI 1.x : event synchrones
+	* CDI 2.0 : asynchrone possible
+
+//- 
+
+* Notion de priorité pour les interceptors.
+	** Cette priorité est obligatoire.
+	** Même chose pour les decorator.
+
+* `Interceptor` : pour les evts techniques transverses (on a que l'invocation context)
+* `Decorator` : pour ce qui est métier
+
+Ressources : 
+
+	* Présentation : https://docs.jboss.org/cdi/learn/introduction/slides.html
+		** Slides en asciidoctor avec DZSlides
+		** Source : https://github.com/antoinesd/introduction-to-cdi
+
+== 2e partie - going further with CDI 1.2
+
+-> Actuellement, *pas de bonnes raisons de migrer une appli Spring sur CDI*.
+
+Pour un projet from scratch, avantages de CDI :
+
+	* fortement typé
+	* Mécanisme d'évènements
+	* Intégration de frameworks tier
+
+//- 
+
+* *Apache DeltaSpike* : création CDI toolbox
+* *Arquillian* : integration test platform with a container
+
+SPI : Service Programming Interface (bcp d'interface à implémenter)
+
+*Portable extension* :
+
+	* pour pouvoir intégrer des composants non CDI
+	* Changer la conf actuelle
+	* Étendre CDI et JEE
+	* va permettre à JEE d'évoluer PLUS VITE !
+
+
