@@ -1,0 +1,125 @@
+= 2015/11/17 - Paris JUG - Présentation Hazelcast
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Emrah Kocaman (Hazelcast integration team depuis 1,5 an)
+
+image::20151117_ParisJUG_presentation-Hazelcast_01.jpg[]
+
+* *Hazelcast* = In memory data grid solution
+	** IM data storage + IM data messaging + IM data computing
+	** Les data sont stockés *dans la heap* (PAS de stockage off heap)
+
+* Business Model = entreprise version + training + support
+
+* Hazelcast is a *Java library* ~6Mo
+	** Just 1 dependency in the pom.xml
+
+image::20151117_ParisJUG_presentation-Hazelcast_02.jpg[]
+
+Distributed application main features:
+ 
+ * speed
+ * scalability
+ * simplicité
+ 
+//- 
+
+* *Mécanisme de listeners* pour partager / écrire les data entre les nodes.
+	** Un algo consistant de hash des clés (pas vraiment un round robin) permet ce partage.
+	** Keys et data sont sérialisés.
+	** La table de partitions est présente sur chaque node.
+
+* *Mécanisme de backup* : chaque node à un node de backup (possibilité d'avoir plusieurs backup, max 6) pour la restauration des data en cas de crash.
+	** La restauration est une opération bloquante.
+	** Un noeud -> plusieurs partitions
+	** Le node de backup sauvegarde bien sûr les données des autres noeuds (pas celles de son noeud "maître")
+	** Avoir plusieurs nodes de backup pour 1 node permet de pouvoir supporter le crash de plusieurs nodes en même temps.
+	** Le nombre de partitions est fixé une fois Hazelcast démarré (défaut 271. Notre précédent hash prend donc une valeur dans cette plage).
+
+//- 
+
+* Embedded Hazelcast pour le développement
+* Client server mode pour la prod (facilite la scalability)
+
+//- 
+
+* Multicast par défaut pour le networking.
+	** TCP/IP et AWS également possibles.
+
+* Hazelcast features : portage pour d'autres frameworks, ex Hibernate 2nd level cache
+
+image::20151117_ParisJUG_presentation-Hazelcast_03.jpg[]
+
+IMPORTANT: Aucun intérêt d'utiliser Hazelcast avec *1 seul node*.
+
+Belle *interface de monitoring* :
+
+ * monitoring de la heap
+ * répartition des data dans les partitions
+ * utilisation des backups
+
+image::20151117_ParisJUG_presentation-Hazelcast_04.jpg[]
+
+3 types de configuration :
+ 
+ * XML
+ * programmatic
+ * Spring configuration
+
+On peut stocker les data off heap, mais c'est une fonctionnalité de la version entreprise.
+
+*Hazelcast serialization* :
+
+ * either `java.io.serializable`: not SO performant, but standard
+ * or `Java.io.externalizable`: far more efficient, but you have to implement the logic yourself
+ * Hazelcast `DataSerializable`: perf ~ externalizable, don't use reflection for deserialization, but Hazelcast specific.
+ * `IdentifiedDataSeralizable`: utilise des IDs, empreinte mémoire plus faible (conseillé par Emrah pour la prod) 
+ * `Portable`: again Hazelcast specific
+ * `Pluggable` (ex: Kryo)
+
+-> Compression possible avec Serializable et externalizable, MAIS *plombe les perfs*.
+
+.Hazelcast architecture
+image:20151117_ParisJUG_presentation-Hazelcast_05.jpg[]
+
+
+
+
+
+
