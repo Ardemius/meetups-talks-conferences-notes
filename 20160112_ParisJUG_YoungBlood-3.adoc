@@ -1,0 +1,193 @@
+= 2016/01/12 - Paris JUG - Young Blood III
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* Description de l'évènement et des sujets sur le *site du Paris JUG* : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160112
+* Toutes les *vidéos des talks* sont disponibles sur la chaîne YouTube du Paris JUG : https://www.youtube.com/channel/UCPNEu33xtYpKjQKcn9E5m0Q/search?query=ybl16
+
+== Comment réaliser une bonne recette avec Cucumber
+
+Par Shoun Ichida
+
+* Confère la présentation BDD softeam pour plus de détails. 
+	** RAPPEL : L'idéal est de faire travailler les devs directement avec le client.
+
+* Insiste sur la syntaxe Gherkin :
+	** possibilité de gérer l'i18n (60 langues supportées)
+
+** L'utilisation d'un IDE est un plus (disponible sous IntelliJ, et certainement Eclipse)
+
+WARNING: Tests assez lents !
+
+Sujet trop vaste pour le format à mes yeux 😅
+
+== Spock, un framework de test venu d'une autre planète 
+
+Par Xavier Detant - Zenika
+
+* Écrit en *Groovy*, MAIS peut *tester du Java*
+* Pour tests de bas niveau (par rapport au BDD précédent)
+
+* Basé sur le même given / when / then que d'habitude.
+	** Mais la syntaxe associé est agréable (division en 3 catégories)
+
+* Spock fait apparaître l'arbre des valeurs dans son affichage de résultat  (dans la console, sous la ligne de l'assertion)
+
+NOTE: on peut utiliser une string avec des blancs et des tokens pouvant être extrapolés comme nom de fonction.
+
+* *Given / when* peuvent être remplacés par *"expect"*
+
+* Bonne *boîte à outils pour les TU*, plus apparemment un *bon framework de mock*
+	** Surtout du sucre syntaxique (dont il faut éviter les excès selon moi)
+
+image::20160112_ParisJUG_youngblood3_01.jpg[]
+
+Bonne présentation, de la matière 👍 
+
+== Une stack de géolocalisation et geofencing à faible consommation pour app mobile
+
+Par Romain Vernoux - Zenika
+
+* *Geofencing* : on franchit une zone (portée), et on est notifié 
+
+* Présentation vidéo via https://screencast-o-matic.com/[Screencast O Matic] 
+
+stack logicielle :
+
+	* Android et son API Location pour le client mobile
+	* Google Cloud Messaging pour le système de notifications push
+	* Tomcat pour le backend serveur
+	* PostgreSQL / https://postgis.net/[PostGIS] pour la manipulation des données géographiques.
+	* Communication JSON classique avec le serveur Google pour le push.
+
+Présentation dense : beaucoup de code, parle vite. +
+Plus un "cours de référence" qu'une pres user friendly  (selon moi)
+
+* Repo disponible sur GitHub : https://github.com/RomainVernoux/GeoStack
+* Romain maîtrise bien son suje 👍 
+
+== Pour un front plus digeste, saupoudrez de feuilles de thym !!
+
+Par Patrick Alain - So@t
+
+Présentation de *Thymeleaf*
+
+* Permet d'avoir des JSP propres et de bénéficier d'un moteur de template facile à  utiliser ?
+	** Après vérification, c'est un *moteur de template* écrit en Java traitant les fichiers XML, XHTML et HTML5.
+  	** Peut même être vu comme un framework de template
+
+S'intègre avec plusieurs frameworks :
+
+	* Spark
+	* Play
+
+Les templates HTML Thymeleaf sont directement interprétables par les navigateurs (pas de préprocesseur nécessaire)
+
+Repose sur le *concept de "dialecte"* : +
+Les caractéristiques d'un dialecte (par exemple : évaluation, itération, etc.) s'appliquent comme des attributs du template HTML
+
+Patrick est sympa mais on voit qu'il débute pour les prez 😉 
+
+== La recette pour déployer des applications microservice avec Ansible
+
+Par walid Chergui
+
+*Ansible* : 
+
+	* même type d'outil que *Chef* et *Puppet*, mais *agentless*
+	* descriptif : on ne lui dit pas quoi installer, mais ce que l'on souhaite au final (si apache est déjà là, pas besoin de le réinstaller)
+	* repose sur les notions de *playbook* et de *rôles* (contenus dans les playbook)
+	* rôles : Roles are ways of automatically loading certain vars_files, tasks, and handlers based on a known file structure. 
+
+Malheureusement, Walid n'a pas pu nous faire la démonstration prévue du fait d'un souci de poste (projecteur en vga et poste en hdmi...)
+
+== Java Agent en Action
+
+Par Yoann Buch
+
+On parle des *agents Java* 🙂 +
+*agent* : intercepte le chargement des classes, et transforme le bytecode.
+
+Outils utilisant des agents Java :
+
+	* JRebel
+	* NewRelic 
+	* etc.
+
+Exemple : on va créer un agent pour afficher les dépendances utilisés par un container +
+Comment faire ? En cherchant les @inject gérés par le container. +
+Notre agent va intercepter les appels aux méthodes annotées de la sorte, et ajouter notre propre logique (création de l'arbre de dépendances)
+
+Voir l'outil https://bytebuddy.net/#/[Byte Buddy] pour aider à l'*analyse du bytecode*.
+
+Voir l'outil édité par la boîte qu'il a créé : http://findtheflow.io[Flow]
+
+image::20160112_ParisJUG_youngblood3_02.jpg[]
+
+-> Très bonne présentation ! 👍 
+
+IMPORTANT: Yoan a gagné le Young Blood avec cette présentation 😀
+
+== Maven, c'est bien, SBT c'est mieux!
+
+Par Fabrice Sznajderman - Zenika +
+Speaker BBL sur Scala, Java et SBT
+
+* *SBT* (*Simple Build Tool*) vient de *Scala*.
+* Par rapport aux autres outils du même style (ant, maven, gradle) ajoute la *notion d'interactivité*
+	** Fabrice veut en fait dire qu'il y a un *retour quasi immédiat de la console SBT suite à une command*e (contrairement à Maven qui a toujours un temps de chargement)
+
+* Avec l'opérateur "~" (`~macommande`), la console SBT se met en attente de modification sur le script de build.
+
+Présentation sympa, mais il faudrait un format plus long pour ce type de sujet.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
