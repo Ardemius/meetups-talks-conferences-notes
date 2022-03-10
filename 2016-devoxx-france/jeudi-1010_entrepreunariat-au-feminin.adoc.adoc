@@ -1,4 +1,4 @@
-= 2016/02/09 - Paris JUG - Software Craftsmanship
+= Jeudi 10:10 - Keynote - L'entrepreunariat au féminin
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -37,37 +37,22 @@ toc::[]
 
 == Notes
 
-* Lire *The pragmatic programmer*. +
-Très très bon à lire absolument.
+Par Natacha Quester-Séméon
 
-* Commiter dès que passe au vert. 
+* Aie ! La seule keynote pour laquelle je vois des personnes quitter la salle... 😅 +
+La tranche de vie de Natacha ne passionne les foules... +
+Peut être aussi car c'est la keynote avant le repas ? 
 
-Techniques de refactoring
+//-
 
-	* Extraction & override call
-	* *introduce instance delegator*
-	* *parametrized constructor* : plutôt pour les classes techniques (injection par le constructeur)
-	* *feature envy*
-	* *parametrized method* plutôt pour les classes fonctionnelles
+* Exemple de la fille du poète George Byron, https://fr.wikipedia.org/wiki/Ada_Lovelace[Ada Lovelace], qui *a inventé le 1er programme informatique*.
+* Autre exemple : https://fr.wikipedia.org/wiki/Margaret_Hamilton_(scientifique)[Margaret Hamilton], la *programmeuse du programme Apollo 11*. +
+A son époque (elle est toujours vivante et a sa boîte), le software n'était pas considéré comme une discipline "noble". + 
+Elle s'est bien faite vanner, mais a donné ses lettres de noblesse à la discipline (son boulot était considéré comme tellement bon qu'on lui attribue une grande partie du succès de la mission) 
 
-//- 
+Plus la keynote avance, plus le rythme est soutenu et l'humour présent 👍 
 
-* *A A A* = *Arrange Act Assert* +
-L'équivalent de *given / when / then*
-
-* Sandro Mancuso démarche craft Devoxx France (l'un des apôtres du Craft)
-	** Meetup software craftsmanship
-
-."Working effectively with legacy code" pour casser les dépendances dans du code legacy
-image:20160209_ParisJUG_software-craftsmanship_01.jpg[]
-
-
-
-
-
-
-
-
+Président du Syntec : ne participe plus à une table ronde si pas au moins 1 femme présente. 
 
 
 

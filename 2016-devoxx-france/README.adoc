@@ -1,5 +1,9 @@
 = devoxx-france-2016-presentation
 
+* https://cfp.devoxx.fr/2016/byday/thu.html[Programme complet du salon]
+
+//-
+
 * link:Devoxx-France-2016-buzz-words.adoc[Buzz words et synthèse du salon]
 
 == Mercredi
@@ -11,8 +15,18 @@
 |mercredi 13:30 / 16:30	|University			|link:mercredi-1330_La-Blockchain-en-détail.adoc[La blockchain en détail]
 |mercredi 17:10 / 17:40	|Tools-in-Action	|link:mercredi-1710_Feign(ant)-in-action.adoc[Feign(ant) in action]
 |mercredi 17:55 / 18:25	|Tools-in-Action	|link:mercredi-1755_maven-java9-jigsaw.adoc[Apache Maven, Java 9 et le projet Jigsaw]
+|mercredi 18:40 /   	|Tools-in-Action	|link:mercredi-1840_dropwizard-services-rest.adoc[Dropwizard : création de services REST]
 |===
 
 == Jeudi
+
+[cols="3,2,8", options="header"] 
+|===
+|Date					|Type				|Description
+|jeudi 09:00 / 09:15    |Keynote			|link:jeudi-0900_keynote-staff-devoxx-france.adoc[Keynote de l'équipe Devoxx France]
+|jeudi 09:20 / 09:40	|Keynote        	|link:jeudi-0920_medecine-de-demain.adoc[La médecine de demain]
+|jeudi 09:45 / 10:05   	|Keynote			|link:jeudi-0945_impact-of-code-in-society.adoc[The impact of code in society]
+|jeudi 10:10 / 10:30	|Keynote        	|link:jeudi-1010_entrepreunariat-au-feminin.adoc[L'entrepreunariat au féminin]
+|===
 
 == Vendredi

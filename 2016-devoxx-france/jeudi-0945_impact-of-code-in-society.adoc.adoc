@@ -1,4 +1,4 @@
-= 2016/02/09 - Paris JUG - Software Craftsmanship
+= Jeudi 09:45 - Keynote - The impact of code in society
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -37,29 +37,22 @@ toc::[]
 
 == Notes
 
-* Lire *The pragmatic programmer*. +
-Très très bon à lire absolument.
+Par Joël Spolsky
 
-* Commiter dès que passe au vert. 
+Comme le dit très bien le récapitulatif de la conf :
 
-Techniques de refactoring
+____
+There’s an elite group of people in this world, who are the people who are responsible for creating the apps that define how we lead our lives - even how we feel.
 
-	* Extraction & override call
-	* *introduce instance delegator*
-	* *parametrized constructor* : plutôt pour les classes techniques (injection par le constructeur)
-	* *feature envy*
-	* *parametrized method* plutôt pour les classes fonctionnelles
+But for years they’ve not been recognised, and they’ve been treated badly. Joel Spolsky, founder and CEO of Stack Overflow wants the world to wake up to the fact that are writing the code that literally informs the way we lead our lives.
+____
 
-//- 
+-> nous, *développeurs*, *codons le futur*, *la façon dans le monde va vivre*.
 
-* *A A A* = *Arrange Act Assert* +
-L'équivalent de *given / when / then*
+* *Fullstack developper = ridiculous*
+	** les développeurs ne sont pas interchangeables, il faut savoir ce qu'on veut.
 
-* Sandro Mancuso démarche craft Devoxx France (l'un des apôtres du Craft)
-	** Meetup software craftsmanship
-
-."Working effectively with legacy code" pour casser les dépendances dans du code legacy
-image:20160209_ParisJUG_software-craftsmanship_01.jpg[]
+Our life is infused with software, and it's going to be more and more the case.
 
 
 

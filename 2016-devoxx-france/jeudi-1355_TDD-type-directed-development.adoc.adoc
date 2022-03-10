@@ -1,0 +1,81 @@
+= Jeudi 13:55 - TDD, as in Type-Directed Development
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Clément Delafargue
+
+* Clément est passer de PHP à Scala pour éviter les étourderies (besoin d'un truc carré pour l'encadrer)
+
+* Souvent notre code est pourri par de la *complexité accidentelle* (toute une flopée de try / catch pour gérer les cas d'erreur)
+    ** Pour éviter cela : *code obviously correct* -> faire en sorte de *vérifier son code dès la compilation*. 
+    ** Avec les types on vient prouver des choses PAR CONSTRUCTION. 
+    ** Dans ce cas, plus besoin de tests, on a une preuve mathématique du résultat. 
+
+Facile à mettre en place en langage fonctionnel comme Scala :
+
+    * tagged type
+    * structures conditionnelles typées (tout est expression)
+    * parametricity = *paramétrisation polymorphique* = generics -> LE PLUS IMPORTANT DES MOYENS DONNES ICI
+    * les `???` de Scala qui permettent de déclarer la signature sans connaître encore l'implémentation. 
+
+Voir le moteur de recherche de type d'haskell : https://hoogle.haskell.org/[Hoogle]
+
+image:20160421-1355_tdd.jpg[]
+
+* D'où : *Types -> then Property based tests -> then Unit tests*
+* Au final : *opérations sur des types + des règles = vous avez une algèbre *
+
+Présentation très mathématique, logique et finalement très théorique (quand même dur pour quasi tout le monde j'ai l'impression)
+
+Read this : (si vous êtes un barbu matheux)
+
+    * TaPL : https://www.cis.upenn.edu/~bcpierce/tapl/[Types and Programming Languages] (Benjamin C. Pierce)
+    * PFPL : http://www.cs.cmu.edu/~rwh/pfpl.html[Practical Foundations for Programming Languages] (Robert Harper)
+
+Plus "humain" :
+
+    * Functional programming in Scala
+
+
+
+
+
+
+
+
+

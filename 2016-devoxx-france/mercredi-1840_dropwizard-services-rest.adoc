@@ -1,4 +1,4 @@
-= 2016/02/09 - Paris JUG - Software Craftsmanship
+= Mercredi 18:40 - Dropwizard : création de services REST "production-ready" en 25mn
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -37,37 +37,20 @@ toc::[]
 
 == Notes
 
-* Lire *The pragmatic programmer*. +
-Très très bon à lire absolument.
+Par Alexander DEJANOVSKI
 
-* Commiter dès que passe au vert. 
+* *Netflix Hystrix* = *circuit breaker* pour gérer les erreurs de dépendances qui ne répondent pas (fusible)
+	** S'intègre très facilement à https://www.dropwizard.io/en/latest/[Dropwizard ]
 
-Techniques de refactoring
+Dropwizard :
 
-	* Extraction & override call
-	* *introduce instance delegator*
-	* *parametrized constructor* : plutôt pour les classes techniques (injection par le constructeur)
-	* *feature envy*
-	* *parametrized method* plutôt pour les classes fonctionnelles
+	* pour création de services Rest
+	* très léger 
+	* métriques présents 
+	* health check présent 
 
-//- 
+* Beau dashboard avec Graphana (~Kibana)
 
-* *A A A* = *Arrange Act Assert* +
-L'équivalent de *given / when / then*
+* Plus gros thread pool chez Netflix pour Hystrix = 25 (donc pas la peine d'aller plus haut)
 
-* Sandro Mancuso démarche craft Devoxx France (l'un des apôtres du Craft)
-	** Meetup software craftsmanship
-
-."Working effectively with legacy code" pour casser les dépendances dans du code legacy
-image:20160209_ParisJUG_software-craftsmanship_01.jpg[]
-
-
-
-
-
-
-
-
-
-
-
+Github du live coding : https://github.com/adejanovski/Devoxx2016

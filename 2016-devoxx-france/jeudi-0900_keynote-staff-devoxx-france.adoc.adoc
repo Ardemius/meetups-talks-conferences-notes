@@ -1,4 +1,4 @@
-= 2016/02/09 - Paris JUG - Software Craftsmanship
+= Jeudi 09:00 - Keynote de l'équipe Devoxx France
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -37,29 +37,31 @@ toc::[]
 
 == Notes
 
-* Lire *The pragmatic programmer*. +
-Très très bon à lire absolument.
+Devoxx France 2016 : 
 
-* Commiter dès que passe au vert. 
+	* 2762 personnes
+	* 234 speakers
+	* 2336 conférenciers 
+	* 192 organisations et exposants 
 
-Techniques de refactoring
+CFP 2016 :
 
-	* Extraction & override call
-	* *introduce instance delegator*
-	* *parametrized constructor* : plutôt pour les classes techniques (injection par le constructeur)
-	* *feature envy*
-	* *parametrized method* plutôt pour les classes fonctionnelles
+	* 788 sujets proposés pour 230 retenus
+	* 9678 revues par 13 bénévoles
 
-//- 
+Par le passé : 
 
-* *A A A* = *Arrange Act Assert* +
-L'équivalent de *given / when / then*
+	* 2013 : 540 sujets
+	* 2014 : 671
+	* 2015 : 668
 
-* Sandro Mancuso démarche craft Devoxx France (l'un des apôtres du Craft)
-	** Meetup software craftsmanship
+//-
 
-."Working effectively with legacy code" pour casser les dépendances dans du code legacy
-image:20160209_ParisJUG_software-craftsmanship_01.jpg[]
+* Introducing TVOXX on Apple TV
+* Creation of apps *MyDevoxx* et *Devoxx Huntly*.
+
+-> *Devoxx France 2017* : 5 au 7 avril 2017 
+
 
 
 
