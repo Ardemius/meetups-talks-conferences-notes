@@ -1,0 +1,73 @@
+= 2016/02/09 - Paris JUG - Software Craftsmanship
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+* Lire *The pragmatic programmer*. +
+Très très bon à lire absolument.
+
+* Commiter dès que passe au vert. 
+
+Techniques de refactoring
+
+	* Extraction & override call
+	* introduce *instance delegator*
+	* *parametrized constructor* : plutôt pour les classes techniques (injection par le constructeur)
+	* *feature envy*
+	* *parametrized method* plutôt pour les classes fonctionnelles
+
+//- 
+
+* *A A A* = *Arrange Act Assert* +
+L'équivalent de *given / when / then*
+
+* Sandro Mancuso démarche craft Devoxx France (l'un des apôtres du Craft)
+	** Meetup software craftsmanship
+
+."Working effectively with legacy code" pour casser les dépendances dans du code legacy
+image:20160209_ParisJUG_software-craftsmanship_01.jpg[]
+
+
+
+
+
+
+
+
+
+
+

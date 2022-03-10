@@ -1,0 +1,131 @@
+= 2016/02/02 - Softeam 12@13 - Go & Docker
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présenté par Daniel CHAFFIOL
+
+	* Présentation disponible sur le https://fr.slideshare.net/dchaffiol/go-and-docker[slideshare de Daniel]
+	* Tous les liens sont disponibles sur le blog de la communauté Git de Softeam.
+	* Également disponible sur https://github.com/VonC/godemo[GitHub]
+
+=== Go (langage)
+
+* *GoSublime* : plugin pour Sublime Text
+* *gofmt* : permet de formater le code (en gros Go permet de formater Go)
+
+Fonctions commençant par :
+
+	* majuscule : fonction publique
+	* minuscule : fonction privée
+
+//- 
+
+Go auto-génére sa doc (dans *Godoc*). +
+On a donc systématiquement la doc du langage en local, même sans le net.
+
+* `go install` : pour lancer la compilation
+* `go xxx` : exécute cette fonction de façon asynchrone.
+* Le résultat de la compilation est stocké dans 1 SEUL .exe, autonome, qui contient tout ce qui est nécessaire pour faire tourner l'application.
+
+=== DOCKER
+
+	* *docker-machine* : pour la création des machines virtuelles nécessaire à la gestion des containers (car Docker ne tourne QUE sur Linux, même si Windows est en train de l'implémenter)
+
+[WARNING]
+====
+Un .exe compilé sur Windows sera, par défaut, incompatible avec Linux. +
+Il faut préciser `set GOOS=linux%% set GOARCH=amd64` lors de la compilation (*cross compilation* depuis Windows)
+====
+
+* *Ni classe, ni héritage en Go* 
+	** Ces fonctionnalités sont remplacées par celle de *handler* (possibilité de passer une fonction en paramètre)
+	** On va donc agir en wrappant des fonctions (on agit avant et après, principe de middleware)
+
+* *Partage de mémoire* par COMMUNICATION +
+image:20160202_Softeam_Go-et-Docker_01.jpg[]
+	** Une seule *go routine* manipule la mémoire à un moment donné.
+	** *Go routine = light thread*
+
+* Fin de la fonction main = fin de TOUTES les go routines
+
+.Ports non exposés par défaut avec Docker
+[WARNING]
+====
+Par défaut Docker n'expose pas ses ports : 
+
+	* Pour ce faire utiliser la commande `EXPOSE` dans le docker file
+	* ET pour qu'ils soient visibles par autre chose qu'un container, il faut *les publier lors du Docker run* (mapping dans la ligne de commande `-p port a:port b`).
+	* Plus *port forwarding à configurer au niveau de la vm*, pour rendre l'accès possible depuis Windows.
+====
+
+* Service d'authentification pour Docker : *PortUs*
+	** Car on veut pas forcément que tout le monde accède à tout type d'image.
+
+* Faire gaffe au *repo de stockage des images Docker pour les projets sensibles* (pas encore de réelle solution, autre que le cloud de Docker lui-même)
+
+* Voir l'installation de l'environnement de Dev avec display X11 sous linux et accéder depuis Windows.
+	** Seul hic : l'installation d'une vm sur le poste de dev qui pose problème côté équipe sécurité.
+
+* *Virtual box côté client* : conf vtx à activer dans le BIOS (souvent désactivée)
+	** Conf nat OK niveau sécurité, mais conf brigde permet de bypasser les contrôles du réseau.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

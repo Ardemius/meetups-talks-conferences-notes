@@ -1,0 +1,156 @@
+= 2015/12/08 - Paris JUG - Reactive et performance
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Philippe PRADOS d'OCTO, https://twitter.com/pprados[@pprados]
+
+image:20151208_ParisJUG_reactive-et-performance_01.jpg[width=400] image:20151208_ParisJUG_reactive-et-performance_02.jpg[width=400]
+
+Présents pour le StarTech :
+
+	* Pierre
+	* Alessandro
+	* Thomas
+	* Soufiane
+	* Nafia
+
+=== Nouvelles archi logicielles
+
+Remise en cause des archis actuelles : *des milliers de grosses requêtes deviennent des milliards de petites*.
+
+* Essence de la présentation : *maximiser l'utilisation du CPU* (éviter le gâchis)
+* On passe du mode texte au *mode binaire* (*HTTP 2.0*) -> augmentation nécessaire des perfs
+* La session représente maintenant l'individu devant L'ENSEMBLE de ses devices (et non plus un seul)
+
+
+.Gaffe au temps de transit des data sur le network ! 
+WARNING: Pendant ce temps (très long) le CPU ne fait rien (gâchis)
+
+*Approche Reactive* : Reactive Manifesto
+
+	* event driven
+	* résilient
+
+//- 
+
+* Besoin de *frameworks ASYNCHRONES* (framework JDBC synchrone = problème)
+* Grand principe : *pas plus de threads que de cores*
+
+.Gaffe aux context switch !
+[WARNING]
+====
+* Plus on multiplie les threads, plus on augmente ces derniers. 
+* De plus, toujours en multithread, on est hyper impactés par les wait (qui en plus font dormir le CPU)
+====
+
+-> En approche Reactive, asynchrone et event driven, avec 1 seul thread, on peut réagir plus vite qu'en bête et méchant multithread.
+
+* Il faut migrer vers l'asynchrone.
+* Avec `CompletableFuture` de Java 8, on peut maintenant travailler en Reactive.
+
+*1 thread par coeur CPU, pas plus !*
+
+* Importance des *data immuables*.
+	** Conséquence, on va manipuler des "versions" des data.
+
+*Persistance* :
+
+	* C'est pas l'état qui compte mais le *flux*. +
+	À savoir *la suite d'opérations permettant d'arriver à cet état final*.
+	* État initial + modifs -> état final
+	* *C'est l'histoire des data qui nous intéresse*, pas leur état.
+	* La persistance de l'état n'est pas importante, le flux de modification oui. +
+	La BDD n'est finalement qu'un simple cache.
+	* "Un logiciel sans passé n'a pas d'avenir"
+
+//- 
+
+* *Framework d'acteurs (ex Akka)* : chaque acteur à une boite aux lettres où l'on va mettre le taf.
+
+* Scala, c'est bien !
+	** Plébiscité par Philippe.
+	** Scala propose des drivers Reactive.
+	** Scala très bon langage Reactive.
+
+* *Code Reactive = code non bloquant*
+	** Choisissez une persistance orientée flux.
+
+-> Présentation hyper dense, ça fait rêver 👍 +
+Il en ressort que la performance "c'est maintenant" 😉 
+
+Voir https://github.com/octo-online/reactive-audit[Reactive Audit], outil créé par Philippe, pour *identifier les méthodes synchrones*.
+
+image::20151208_ParisJUG_reactive-et-performance_03.jpg[]
+
+=== Les secrets de la JVM pour les algorithmes à haute fréquence
+
+14 astuces en rapport avec l'optimisation de la JVM à bas niveau.
+
+* *Virtual cores* = on multiplie les registres.
+* *Softs threads* = partage du temps d'un CPU.
+* On va essayer d'*exploiter au max les registres*, et éviter de passer par la mémoire. 
+* Préférer instructions câblées (manipulation / déplacement de bits) que micro codées
+* Il existe des instructions assembleur spécialisées (plus efficace que code équivalent)
+
+image::20151208_ParisJUG_reactive-et-performance_05.jpg[]
+
+La conférence s'oriente sur l'*architecture physique des sockets*.
+
+image::20151208_ParisJUG_reactive-et-performance_04.jpg[]
+
+* On reparle de *volatile*.
+* Java ne permet pas de choisir le côté sur lequel un thread est exécuté.
+	** Mais des librairies le permettent (comme https://github.com/OpenHFT[OpenHFT] de Peter Lawrey).
+
+* Prise de pouvoir des *algorithmes lock-free*.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
