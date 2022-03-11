@@ -1,0 +1,126 @@
+= Jeudi 11:15 - Java SE 8 pour les développeurs Java EE
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par José Paumard et David Delabassée
+
+image::20160421-1115_javase8-dev-javaee_01.jpg[]
+
+* Java SE 8 : 2 ans maintenant
+* Java EE 7 app servers :
+    * GlassFish
+    * wildfly
+    * WebLogic
+    * etc
+
+José donne un https://www.pluralsight.com/authors/jose-paumard[cours de Java sur PluralSight].
+
+=== Yoda time enfin intégré à Java SE...
+
+Via Date & Time plutôt que le `java.util.Date`
+
+Actuellement JPA ne peut pas s'en servir nativement, mais peut le faire via un converter +
+(implémentation d'un AttributeConverter)
+
+Idem pour JSF, il faut utiliser un converter. 
+
+=== Repeatable annotations
+
+En Java 7 impossible (sauf à wrapper n annotations en 1). +
+-> Possible en Java 8
+
+Avec `BeanValidation`, on peut le faire via l'annotation `@repeatable(<mon annotation à répéter>)`
+
+=== Annotations sur les types paramétrés 
+
+=== String joiners enfin présents 
+
+    * `StringJoiner`
+    * `String.join(...)`
+    * avec les stream `Collectors.joining`
+
+=== Support du Base64
+
+Introduit dans Java SE 8, et dispose dans Java EE 7
+
+=== Stream
+
+image::20160421-1115_javase8-dev-javaee_02.jpg[]
+
+Ex sympa : *construction d'un stream à partir d'une regexp* :
+
+    * `Pattern.compile().splitAsStream`
+    * Bien plus efficace qu'un `Stream.of(split)`
+
+Tout ceci est intéressant pour Java EE et la gestion des JSON (JSON-P)
+
+-> Avec JSON-P 1.1 de nouveaux collector sont introduits (`JsonCollectors`)
+
+=== Parallelism
+
+* All parallel operations (streams, ConcurrentHashMap) take place in the common `ForkJoinPool`
+    ** The common one TAKES ALL the available cores. 
+
+[WARNING]
+====
+Pour *se préserver sur un server app*, hyper important, *setter la property `ForkJoinPool.common.parallelism` à 1*.
+Ce n'est plus trop du parallélisme (...), mais on évite de pourrir le server app.
+====
+
+WARNING: Retenir, *ne pas utiliser d'opérations stateful dans les stream parallel*.
+
+D'une façon générale, *ne PAS faire de parallel streams en app server*
+
+    * si vraiment besoin de le faire, dans des cas très spécifiques, bien se renseigner
+    * actuellement, les principaux app server ne supportent pas les parallel streams
+
+=== Completable Future 
+
+Pas si simple à résumer, le mieux est de voir les slides 😅 +
+En gros, l'exemple donné concerne les  mocks, et la façon de récupérer les `CompletableFuture` dans un runnable, dans le test. 
+
+== Ressources
+
+* Vidéo du talk : https://www.youtube.com/watch?v=qf_YluoHmaw
+
+
+
+
+
+
+

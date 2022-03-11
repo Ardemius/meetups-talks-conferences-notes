@@ -1,0 +1,108 @@
+= Jeudi 12:55 - Just enough app server
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Antonio Goncalves
+
+.3 types de *Java EE app server*
+image:20160421-1255_just-enough-app-server_01.jpg[]
+
+    * les "full" - bleu clair
+    * les Web profile - gris
+    * les containers de servlet - bleu foncé 
+
+."Your own app dependencies", voici ce qu'est une application Java EE aujourd'hui
+image:20160421-1255_just-enough-app-server_02.jpg[]
+
+-> Comme on peut le voir, cette application n'a rien de "monobloc". +
+Depuis le début, 1998, nous manipulons déjà "toutes les pièces du puzzle".
+
+.Comparaison des démarrages de server après ~5 démarrages
+image:20160421-1255_just-enough-app-server_03.jpg[]
+
+-> En gros, *les server d'apps ne sont PLUS lents* (sauf WebLo !) 
+
+A travers l'histoire, les servers d'app démarrent de plus en plus de services en moins en moins de temps.
+
+.Comparatif mémoire, idem, les servers d'app ne consomment plus tellement, surtout par rapport aux services rendus
+image:20160421-1255_just-enough-app-server_06.jpg[]
+
+.On ne déploie pas d'EAR mais des WAR !
+[IMPORTANT]
+====
+Il ne faut pas déployer d'ear, ils ne sont pas spécifiés. +
+*Il faut déployer des war* (et des jars aussi).
+====
+
+Opposition *skinny war* et *fat war* : 
+
+    * *skinny* : le monde Java EE, où mon server app fait déjà tout et embarque tout, donc mon jar peut être très petit (~2 ou 3 mo)
+    * *fat* : le monde Spring, où Spring va s'appuyer sur un container de servlets qui ne fait pas grand chose, mais où il faut tout packager, d'où un jar qui fait ~80 mo
+
+-> Très bonne demo de CD-BOOK store (disponible sur github)
+
+Actuellement, on peut packager du JEE dans des jars.
+
+La live demo tend à  prouver qu'on peut rendre tous ses services en Java EE sans passer par d'autres techno (dropwizard, springboot, etc) : 
+
+image::20160421-1255_just-enough-app-server_04.jpg[]
+
+    * utilisation de Wildfly Swarm
+    * les Uber jars créés, jusqu'à 125 Mo se lancent avec un simple `java -jar xxx`, rien de plus
+    * On peut extraire la fraction server d'app de cet Uber jar (mise dans le repo maven), pour réduire sa taille (quelques Mo)
+
+On finit par la même *demo Java EE tournant sur Raspberry Pi* !!!!! 🤩 
+
+image::20160421-1255_just-enough-app-server_05.jpg[]
+
+*Ressources* :
+
+    * Slides : https://www.slideshare.net/agoncal/just-enough-app-server
+    * GitHub : https://github.com/agoncal/agoncal-sample-javaee/tree/master/06-EnoughAppServer
+    * Vidéo du talk à Devoxx France 2016 : https://www.youtube.com/watch?v=cBEUnbX5YC8
+    * Les cours d'Antonio sont également sur Pluralsight
+
+Avis : une fantastique prez 👍 +
+Slides à récupérer absolument
+
+
+
+
+
+
+
