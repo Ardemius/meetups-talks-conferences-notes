@@ -1,6 +1,6 @@
 = Devoxx France 2017 - Buzz words and synthesis
 :lb: pass:[<br> +]
-:imagesdir: ../images
+:imagesdir: ./images
 :icons: font
 :source-highlighter: highlightjs
 
