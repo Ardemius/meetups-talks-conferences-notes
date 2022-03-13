@@ -27,10 +27,12 @@
 |jeudi 09:20 / 09:40	|Keynote        	|link:jeudi-0920_medecine-de-demain.adoc[La médecine de demain]
 |jeudi 09:45 / 10:05   	|Keynote			|link:jeudi-0945_impact-of-code-in-society.adoc[The impact of code in society]
 |jeudi 10:10 / 10:30	|Keynote        	|link:jeudi-1010_entrepreunariat-au-feminin.adoc[L'entrepreunariat au féminin]
-|jeudi 13:55 / 14:40	|Keynote        	|link:jeudi-1355_TDD-type-directed-development.adoc[TDD, as in Type-Directed Development]
-|jeudi 10:10 / 10:30	|Keynote        	|link:jeudi-1010_entrepreunariat-au-feminin.adoc[L'entrepreunariat au féminin]
-|jeudi 10:10 / 10:30	|Keynote        	|link:jeudi-1010_entrepreunariat-au-feminin.adoc[L'entrepreunariat au féminin]
-|jeudi 10:10 / 10:30	|Keynote        	|link:jeudi-1010_entrepreunariat-au-feminin.adoc[L'entrepreunariat au féminin]
+|jeudi 11:15 / 12:00	|Conference        	|link:jeudi-1115_javase8-dev-javaee.adoc[Java SE 8 pour les développeurs Java EE]
+|jeudi 12:55 / 13:40	|Conference        	|link:jeudi-1255_just-enough-app-server.adoc[Just enough app server]
+|jeudi 13:55 / 14:40	|Conference        	|link:jeudi-1355_TDD-type-directed-development.adoc[TDD, as in Type-Directed Development]
+|jeudi 14:55 / 15:40	|Conference        	|link:jeudi-1455_docker-jenkins-orchestrating-cd.adoc[(Docker, Jenkins) -> {Orchestrating ("Continuous Delivery")}]
+|jeudi 17:10 / 17:55	|Conference        	|link:jeudi-1710_modular-monoliths.adoc[Modular Monoliths]
+|jeudi 18:10 / 18:40	|Tools-in-Action   	|link:jeudi-1810_chronicle-queue.adoc[Débrider les performances de vos applications avec Chronicle Queue]
 |===
 
 == Vendredi

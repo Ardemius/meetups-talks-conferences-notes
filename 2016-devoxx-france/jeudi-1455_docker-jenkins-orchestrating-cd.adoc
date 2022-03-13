@@ -1,0 +1,84 @@
+= Jeudi 14:55 - (Docker, Jenkins) -> {Orchestrating ("Continuous Delivery")}
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Nicolas De Loof et Yoann Dubreuil
+
+image::20160421-1455_docker-jenkins-orchestrating-cd_01.jpg[]
+
+* Sortie de Jenkins 2.0 ce jour !
+* Pour la CD, ne pas oublier la *boucle de feedback*.
+
+image::20160421-1455_docker-jenkins-orchestrating-cd_02.jpg[]
+
+*Jenkins* est basé sur le *principe de compatibilité ascendante* : on accepte quasi-tout ! +
+-> La *grande force de Jenkins*.
+
+Plug-in *PIPELINE* :
+
+    * *langage DSL* (reposant sur Groovy) pour *décrire l'orchestration* du pipeline de CD
+    * *snippet generator* quand on ne connaît pas le DSL pour avoir une génération assistée 
+    * plus besoin d'une tartine de plug-ins pour arriver à ses fins, celui-ci en remplace un bon paquet !
+        * plus besoin du "promoted builds" plug-in pour passer en prod
+    * on peut mettre notre DSL dans son DSCM (gestionnaire de code source) (Jenkins file)
+        * Jenkins détecte les nouvelles branches dans le DSCM, et les gère automatiquement (plus besoin d'aller dans la console Jenkins)
+
+Avec *Docker* :
+
+    * permet de gérer la toolchain -> permet de reproduire l'environnement (versions des outils, de la jvm, etc.)
+    * toujours *gaffe aux problématiques de sécurité* 
+
+*Jenkins + Docker* :
+
+    * intégration complète, juste un onglet "environnement de build"
+    * instruction `maven.inside` pour exécuter des actions à l'intérieur du container.
+
+*Gestion des volumes* de Jenkins encore problématique :
+
+    * le build repart from scratch, avec 3 To de dép maven, cela peut être un pb...
+
+NOTE: Ne pas oublier qu'il existe des images docker pour Jenkins pour bien des cas, et qui évite une grosse dose de configuration (ex pour selenium)
+
+Toute la demo est un *docker compose* disponible sur github. 
+
+Ressources : 
+
+    * vidéo du talk : https://www.youtube.com/watch?v=ij1-MNcRBSQ
+    * repo GitHub : ???
+
+
