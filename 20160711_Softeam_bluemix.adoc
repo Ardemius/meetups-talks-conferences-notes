@@ -1,0 +1,76 @@
+= 2016/07/11 - Softeam 12@13 - Bluemix "Plus besoin de coder avec de la Patafix !"
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Yves Holvoet(@fr.ibm.com) - avant-vente Bluemix IBM
+
+image:20160711_Softeam_bluemix_01.jpg[]
+image:20160711_Softeam_bluemix_02.jpg[]
+
+* *Bluemix* : 30 jours gratuits (pas de seuil d'usage durant cette période, et ressources limitées, 2go RAM et 10 services), puis freemium (facturation à l'usage, on paye uniquement quand on dépasse le seuil d'usage)
+
+* *IBM SoftLayer* : (racheté il y a 5 ans par IBM) la solution de virtualisation d'IBM +
+45 datacenters dans le monde pour hébergé ses VMs.
+
+Côté Data : 3 niveaux
+
+    * un datacenter public (pour les POC)
+    * un datacenter en France (pour les raisons légales que l'on connaît)
+    * héberger un Bluemix local : attention doit être géré par une équipe IBM ! Il y a donc un forfait sous-jacent (et un coût d'entrée supplémentaire)
+
+Possibilité d'architecture hybride, en sortant certains modules du cloud.
+
+Bâti sur : CloudFoundry (PaaS), OpenStack (IaaS), Docker, https://openwhisk.apache.org/[OpenWhisk] (équivalent Lambda chez Amazon).
+
+De très nombreux services disponibles sur la plateforme :
+
+    * reconnaissance faciale (également impressionnant, backé par une BDD pour reconnaître les images)
+    * IoT
+    * reconnaissance vocale 
+    * synthèse vocale de texte (très bonne intonation lors de la démo)
+    * gestionnaire de réponse Git (simili GitHub)
+    * plus de 150 services par CloudFoundry 
+
+//-
+
+* Plugin Eclipse dispo, mais tout peut également être fait en ligne de commandes.
+* Eclipse "ORION" (IDE en ligne) intégré (voir qui a la paternité de l'IDE)
+* Depuis juin, intégration de https://github.com/open-toolchain[Open Toolchain].
+
+Pour publier un service sur la marketplace Bluemix, il faut être partenaire IBM (et suivre, comme d'habitude, un certain process)
+

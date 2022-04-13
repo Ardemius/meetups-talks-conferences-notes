@@ -1,4 +1,4 @@
-= 2016/07/05 - Paris JUG - Soirée Jenkins
+= 2016/06/07 - Paris JUG - Soirée Jenkins
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]

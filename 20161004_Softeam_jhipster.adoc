@@ -1,0 +1,85 @@
+= 2016/10/04 - Softeam 12@13 - JHipster
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présenté par Julien DUBOIS : Directeur de l'innovation chez Ippon Technologies, expert Spring et Java
+
+image::20161005_Softeam_jhipster_01.jpg[]
+
+* Conçu pour *réduire le time to market* (MEP sous 1 mois)
+* Gain de productivité (*gain général de 6 semaines sur le démarrage du projet*, cf plusieurs études)
+
+Créé chez *Ippon Tech*
+
+* *Très bon support des micro-services*. +
+On peut travailler comme sur un monolith, mais avec des micro-services.
+* Support d'AngularJS 1
+    ** Gros travail en cours pour supporter AngularJS 2
+    ** Problème : AngularJS 2 est maintenant stable, MAIS pas tous ses composants (pagination, calendrier, etc.) dont beaucoup sont encore en alpha (pas stable)
+
+NOTE: L'équipe est très efficace sur les correctifs, beaucoup moins sur les évolutions de 3 mois (quasiment pas de ressources à plein temps sur le développement de JHipster)
+
+* Image Docker et Vagrant dispo.
+* Complètement gratuit (pas de version entreprise payante)
+
+Fonctionne en *ligne de commande* : 
+
+    * à l'aide de https://github.com/yeoman[Yeoman]
+    * les stats d'utilisation sont réellement anonymes (répondre "oui" pour aider le dev de l'outil...)
+    * ensemble de questions à la création du projet pour cibler les technologies
+        ** Exemple : https://sass-lang.com/libsass[LibSass] très demandé pour le développement des CSS
+    * https://www.protractortest.org/#/[Protractor] (selenium like) buggé avec firefox (gaffe !)
+    * *responsive* via l'utilisation de https://getbootstrap.com/[Bootstrap]
+    * https://browsersync.io/[Browsersync] pour mise à jour en parallèle sur plusieurs navigateurs (bon outil de développement)
+    * *rechargement à chaud* via Spring Boot (juste besoin de recompiler les classes)
+    * on peut dessiner son UML dans Modelio, et JHipster le charge ! On peut également utiliser https://start.jhipster.tech/jdl-studio/[JDL-studio], outil web gratuit.
+    * documentation dans *Swagger*
+    * avant la mise en Prod, utiliser la fonctionnalité d'audit pour avoir des infos sur ce qui ne va pas (bonnes pratiques)
+    * conseil : prendre *MySQL* en BDD de dev (plutôt que H2), afin de bénéficier du *hot reload*
+    * uber jar exécutable créé pour le déploiement sur Heroku & co
+
+image::20161005_Softeam_jhipster_02.jpg[]
+
+* *Meetup JHipster* existe.
+* Très actif sur Twitter.
+
+
+
+
+
+

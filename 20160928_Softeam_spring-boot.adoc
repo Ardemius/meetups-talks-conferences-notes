@@ -1,0 +1,86 @@
+= 2016/09/28 - Softeam 12@13 - Spring Boot
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Julien ROY, architecte Java chez Ekino +
+https://github.com/VanRoy[Vanroy] sur GitHub
+
+* Jar ou war possibles
+    ** jar est un uber jar
+
+* Obtenir rapidement une application Java déjà configurée pour la production.
+
+Modules disponibles :
+
+    * logging 
+    * data
+    * messaging
+    * web
+    * container
+    * etc
+
+//-
+
+* Application *Spring Initializr* à la place de Maven ou Gradle pour initialiser un projet Spring Boot
+* *Ne pas hésiter à utiliser Lombok* pour améliorer la productivité (ajoute de multiples annotations utilitaires)
+
+* *Spring Boot starter actuator* :
+
+    ** permet d'avoir des *outils de diagnostic*, et des *métriques* sur l'application (statut, etc) -> mesures instantanées, nécessitent d'être collectées pour une bonne analyse
+    ** *thread dump* possible sans passer par un `jstack` sur le serveur
+
+* Possibilité d'ajouter des fichiers de profil pour surcharger les properties par défaut pour un environnement particulier (comme la PROD, ou un profil pour déployer sur Amazon)
+
+Démo d'un URLshortener
+
+Dépendance *spring-boot-devtools* :
+
+    * scan les classes générées et redémarre le context avec 2 classloaders (un avec toutes les classes, un seulement avec les nôtres -> gain de perf)
+    * live reload
+    * remote debug sans besoin d'ouvrir des ports particuliers
+    * *à désactiver sur le livrable de Prod*
+
+-> On ne créé pas un POC mais le début d'une vraie application de PROD.
+
+Voir également *Spring Boot Admin* pour une interface au-dessus de tous les précédents endpoints.
+
+
+
+
+
+

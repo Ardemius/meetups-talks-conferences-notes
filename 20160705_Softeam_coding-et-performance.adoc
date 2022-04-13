@@ -1,0 +1,129 @@
+= 2016/07/05 - Softeam 12@13 - Coding & Performance, an initiatory journey
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+* Par Jean-Philippe BEMPEL (archi perf chez Ullink)
+* Twitter technique donné : @jpbempel
+
+image::20160607_Softeam_coding-et-performance_01.jpg[]
+
+=== Rules of thumb
+
+*Règles empiriques* : gaffe ! On les applique sans savoir pourquoi, on les hérite des "anciens du projet"... +
+-> *Toujours les vérifier !*
+
+Le JIT permet à l'heure actuelle d'éviter bon nombre de ces vieilles règles.
+
+image::20160607_Softeam_coding-et-performance_02.jpg[]
+
+-> Exemple du `toArray()` : gaffe ! Malgré ce qu'on pourrait croire, entre les solutions 2 et 3, c'est la 2 la plus rapide (pas besoin d'initialiser les éléments du tableau à 0 dans ce cas)
+
+Le JIT marche beaucoup par *pattern matching* (reconnaissance de patterns de codage)
+
+Voir les *règles de codage de JRebel* : https://www.jrebel.com/resources/java-resources#Java-Cheat-Sheets
+
+=== Algo et complexité 
+
+De nouveau la comparaison entre *LinkedList* et *ArrayList*, en *o(k1 *n)* et *o(k2 * n)* MAIS avec *k1 > k2* du fait du cache de nos procs modernes (voir les conf de Forax et Paumard sur le sujet)
+
+-> En gros, morale de l'histoire : *les constantes COMPTENT* +
+(Et *utilisez des ArrayList !*)
+
+=== les ordres de grandeur
+
+image::20160607_Softeam_coding-et-performance_03.jpg[]
+
+.latences mémoire
+image::20160607_Softeam_coding-et-performance_04.jpg[]
+
+NOTE: La latence mémoire permet de catégoriser les problèmes de perf que l'on rencontre (30 ms ce n'est PAS un pb de cache...)
+
+.le classique "Double Check Locking"
+image:20160607_Softeam_coding-et-performance_05.jpg[]
+
+-> Mais on s'est fait piéger ! +
+Tout ça pour un exemple où on fait une *requête en base SANS index*, qui est *BIEN plus lente* (ordre de grandeur) qu'un pb de DCL.
+
+=== benchmark 
+
+Micro-benchmarks are really hard to make it correct.
+
+IMPORTANT: *Utilisez JMH* ! Toujours ! Et rien d'autre !
+
+-> Mais même avec, soyez prudents ! +
+Le micro-benchmark implique un *espace de travail TRES restreint*, qui *ne correspond PAS à la réalité* !
+
+.Conseil de JP
+TIP: : préférez des *macro benchmark* avec des données réelles.
+
+=== optimisation prématurée
+
+[quote, Donald E. Knuth]
+____
+Premature optimization is the root of all evil !
+____
+
+Measure, don't guess ! +
+Measure, don't premature !
+
+=== Conclusion 
+
+What is good performance engineer ? +
+*Est-ce que le coût du temps que je passe à mon optimisation en vaut la peine ?* (équation économique)
+
+.Ressources
+image:20160607_Softeam_coding-et-performance_06.jpg[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
