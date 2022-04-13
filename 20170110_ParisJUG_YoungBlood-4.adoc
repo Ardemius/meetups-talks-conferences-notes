@@ -1,0 +1,136 @@
+= 2017/01/10 - Paris JUG - Young Blood IV
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* Description de l'évènement et des sujets sur le *site du Paris JUG* : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20170110
+* Toutes les *vidéos des talks* sont disponibles sur la chaîne YouTube du Paris JUG : https://www.youtube.com/channel/UCPNEu33xtYpKjQKcn9E5m0Q/search?query=ybl17
+
+NOTE: La liste de tous les Young Blood du Paris JUG est également disponible sur leur site : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/YoungBlood
+
+== Tips de tuning d'Eclipse
+
+Par Thibaut LE OUAY - Ti
+
+* Bien penser à mettre les répertoires .m2 dans la white list de l'anti-virus ! (et j'ai déjà vécu ce problème)
+* désactiver le File Icons Base On Content Analysis
+* désactiver tous les validateurs
+* désactiver les updates automatiques
+* désactiver le spell checking
+* Charger le minimum au startup et shutdown
+
+C'était la première prez de Thibaut, qui était un peu impressionné. +
+Des tips et rappels sympas 
+
+== Différence entre Big Data et Machine learning
+
+2 speakers : Frédéric et Raphael
+
+* insiste sur les différences entre Big Data et Machine Learning
+* Cercle des corrélations
+* 1er exemple avec les caractéristiques de machine à laver
+* 2e exemple avec une classification documentaire
+* insiste sur des connaissances mathématiques à posséder afin d'être capable d'analyser les reports (opération qui reste humaine, même à notre époque)
+* certaines données particulières de l'échantillon gagnent à être exclues afin de ne pas noyer les autres
+
+Peu de slides, et beaucoup d'explications orales. +
+Aurait mérité plus de slides, quelques schémas de plus pour faciliter la compréhension 😅 
+
+== Est-ce que Java 9 nous apporte les collections immuables
+
+Par Andrei Dodon
+
+* Principalement du live coding, et de l'analyse du code Java 9
+
+Petit problème technique (pas de backup de la prez), il manquait une partie.
+
+== Continuous benchmarking
+
+Par Khaled HAMLAOUI
+
+3 grands types de benchmark :
+
+    * performance test : le focus du talk
+    * load test
+    * stress test
+
+J'avais vu sa préparation de prez chez Jean-Christophe (SIROT).
+
+* bien se souvenir de l'excellent *WireMock* pour le mocking des requêtes HTTP (GET et POST)
+* github : https://github.com/khamlaoui/continuous-benchmarking
+    ** image docker contenant tout le projet pour faire tourner la solution
+
+Une peu d'appréhension, mais pas mal du tout pour l'architecture proposée 🙂 
+
+== Sorcellerie en Java
+
+Par bibi ! (Thomas SCHWENDER)
+
+IMPORTANT: Et victoire au final ! 😄 
+
+image::20170110_ParisJUG_YoungBlood-04_resultats.jpg[]
+
+== Programmation réactive en Java
+
+Reactive Manifesto : https://www.reactivemanifesto.org
+
+L'application doit être :
+
+    * disponible
+    * résiliente
+    * souple
+    * orientée messages
+
+classe *Observable* (pour laquelle on retrouve notre flatmap)
+
+Une petite bibliographie sympa, qui redonne l'excellent http://reactivex.io/documentation
+
+Un peu court, mais plus de fluidité
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
