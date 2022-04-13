@@ -27,3 +27,18 @@ endif::[]
 |17:15 / 18:00	|link:architecture-microservices-avec-le-cloud-azure.adoc[Architecture Microservices avec le Cloud Azure]
 |===
 
+== Notes sur le salon
+
+Personnes vues :
+
+* Philippe Antoine : ex Xebia, futur Google
+* Renaud Chevalier : directeur pôle Agile Xebia
+* David Acremann : directeur client XebiaLabs (entreprise complètement différente et indépendante de Xebia)
+* Thibaud Cavin : CTO Xebia speaker keynote
+* Antoine Le Taxin & Jean-Pascal Thiery : Kodo Kojo, usine logicielle, envoyer un mail, se créer un compte (attention, stack très prisée actuellement) et communiquer sur les tests !
+
+//-
+
+* Xebia : 120 personnes
+* *Alliance Xebia France* (différent de Xebia Hollande) : ~ 500 personnes (avec XebiaLabs, UX-Republic, etc.)
+    ** Pour plus d'infos sur cette alliance, voir https://www.ux-republic.com/notre-alliance-sagrandit/

@@ -51,7 +51,6 @@
 |vendredi 14:55 / 15:40	|Conference        	|link:vendredi-1455_control-SQL-with-jOOQ.adoc[Get Back in Control of Your SQL with jOOQ]
 |vendredi 16:10 / 16:55	|Conference        	|link:vendredi-1610_jigsaw.adoc[Jigsaw est là pour nous sauver]
 |vendredi 17:10 / 17:55	|Conference        	|link:vendredi-1710_3-nuances-mom.adoc[3 nuances de MoM]
-|vendredi 18:55 / 19:25	|Tools-in-Action   	|link:vendredi-1855_flamegraph.adoc[Performance: Java vous déclare sa flamme]
 |===
 
 
