@@ -1,0 +1,100 @@
+= Vendredi 16:10 - Jigsaw est là pour nous sauver
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Remi Forax
+
+image::20160422-1610_jigsaw_01.jpg[]
+
+* 1st historic problem : *"jar hell"*, 2 versions in the same classpath... (because linear scan)
+    ** Compile time info is different from runtime info
+
+Autres pbs :
+
+    * *some libraries are too big*: OpenJDK rt.jar -> 66 Mo, Guava -> 2.3 mo, etc.
+        ** rt.jar, toutes ses classes sont privilégiées, pour un total de 66 Mo... +
+        En termes de sécurité, c'est n'importe quoi 😝 
+    * Actuellement, le JDK fait de la sécurité, mais si on perce cette défense, on a accès à tout derrière... (1 seul mur de défense)
+        ** Dès que le mur de défense est franchi, on va taper dans `sun.misc.Unsafe` et c'est fini, c'est la cata...
+
+-> Tout ça pourrait être *résolu par la modularité*. +
+-> On veut une sorte de *"fidélité" entre le monde de la compilation et celui du runtime*.
+
+Jigsaw DOIT être compatible avec Maven et Gradle.
+Ce soit être le truc le plus petit possible qui doit marcher avec tout : 
+
+image::20160422-1610_jigsaw_02.jpg[]
+
+`jdeps` : find package dependencies
+
+.création de module
+image:20160422-1610_jigsaw_03.jpg[]
+
+* on ne passe *pas de numéros de versions* à `javac`, *que des noms de module*.
+    ** C'est l'*outil de build qui gère les numéros de version*. 
+* modules in modulepath can't see classes in classpath +
+image:20160422-1610_jigsaw_04.jpg[]
+    ** solution à cela : les *modules automatiques* -> on met les jars dans le modulepath 
+    ** A n'utiliser que dans une phase de migration
+* "requires" is not transitive, "requires public" pour un début de solution (l'appelant et QUE l'appelant, pas ses parents, pourra voir le module)
+* "exports to" pour forcer qui pourra faire un "requires"
+
+//-
+
+* *Intérêt* : tout le monde ne pourra plus utiliser `sun.misc.Unsafe` (pas pleurer tout de suite, il a été divisé en 2...). 
+    ** Les `com.sun.machin` ne tourneront plus en java 9, même si ajoutés dans le classpath.
+    ** Il y a un contournement temporaire (mais en *java 10* ou *11* ce sera un *adieu définitif*)
+
+`jlink` : génère une image custom, avec uniquement les modules dont j'ai besoin, pour mon application.
+
+.Lancement avec le modulepath
+image:20160422-1610_jigsaw_05.jpg[]
+
+Les problèmes :
+
+    * *régression sur le startup time*, (en cours d'amélioration) +
+    image:20160422-1610_jigsaw_06.jpg[]
+    * *size on disc*, idem régression (temporaire)
+
+.Le but de Jigsaw
+image:20160422-1610_jigsaw_07.jpg[]
+
+AVIS : récupérer les slides pour avoir le détail de l'accès à `Unsafe`.
+
+
+

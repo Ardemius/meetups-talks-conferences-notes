@@ -1,0 +1,139 @@
+= Vendredi 13:55 - Microservices IRL: ça fonctionne chez un client, on vous dit comment !
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Stéphane Lagraulet, Olivier Revial (Ippon Bordeaux)
+
+image::20160422-1355_microservices_irl_01.jpg[]
+
+*Retour d'xp de leur mise en production de microservices* chez le client (site de e-commerce très connu).
+
+* A la base chez le client : techno MS, .Net, SQLServer +
+-> Depuis passage à de multiples briques Java (au sens très large)
+
+    ** Tout est passé en architecture REST
+    ** Mouvance DevOps en cours
+    ** Architecture Web et cloud
+    ** Conteneurs 
+    ** provisioning : utilisation des ressources au plus juste
+    ** agilité
+
+*Challenges pour les micro-services* :
+
+    * organisation de l'entreprise
+    * découverte des services
+    * surveillance : comment monitorer une flotte de microservices
+    * programmation distribuée : récupérer les ressources requises et bien  les libérer après coup pour les petits copains
+    * gestion des pannes
+    * stratégie de tests 
+    * versioning 
+
+*Anti-patterns* :
+
+    * nécessité ? bien se poser la question
+    * *monolith distribué* -> équipe front qui fait ses microservices, le middle qui fait de même, etc. Au final on a un monolithe distribué 
+    * transactions distribuées : non, faut pas faire
+    * tables partagées 
+    * découverte globale 
+    * DRY : *les microservices nous PERMETTENT de nous répéter* (durée de vie moins longue)  
+
+image::20160422-1355_microservices_irl_02.jpg[]
+
+.Modèle organisationnel de Spotify
+image:20160422-1355_microservices_irl_03.jpg[]
+
+.Cas d'utilisation : les cases bleues sont les microservices
+image:20160422-1355_microservices_irl_04.jpg[]
+
+Microservices avec Spring Boot
+
+*Zookeeper* pour la recherche (*service discovery*) :
+
+    * ressources dédiées requises car latences fatales
+    * doc obscure, utiliser apache curator pour faciliter l'utilisation
+    * système CAP
+    * bien nettoyer les logs zkCleanup, car quand full plus rien ne marche
+
+.Code custom pour gérer le multi-tenant
+image:20160422-1355_microservices_irl_05.jpg[]
+
+* Gestion des pannes avec *circuit breaker* (*Hystrix* encore) +
+image:20160422-1355_microservices_irl_06.jpg[]
+    ** ouverture du circuit quand service répond pas (10 appels délirent, allez on coupe. Dans 10 minutes on reteste)
+
+* Tests avec *WireMock* pour le HTTP
+
+.Continuous Delivery
+image:20160422-1355_microservices_irl_07.jpg[]
+
+Aller plus loin avec Spring Cloud et la stack Netflix
+
+.Multi tenant avec Spring Cloud
+image:20160422-1355_microservices_irl_08.jpg[]
+
+*Live demo* : basée sur des Open Data du gouvernement (cf keynote du matin) : vins AOP AOC 
+
+Avenir :
+
+    * remplacer https://www.ansible.com/[Ansible] par https://spinnaker.io/[Spinnaker] de Netflix
+    * déploiement blue or canary (déploiement progressif de la nouvelle version, sur quelques IP seulement) 
+
+Au final, *techno principales* :
+    
+    * *Spring Boot*
+    * *Zookeeper*, même si cherche à en changer (en tout cas la question se pose)
+
+*AVIS* : bon retour d'xp, de nombreux schémas utiles, voir les slides.
+
+*Ressources* : 
+
+    * slides : https://github.com/orevial/devoxx-microservices
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+= Vendredi 14:55 - Get Back in Control of Your SQL with jOOQ
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Lukas Eder
+
+image::20160422-1455_control-SQL-jOOQ_01.jpg[]
+
+JDBC :
+
+    * connection
+    * prepareStatement
+    * ResultSet
+
+.JDBC est sympa, mais plein de bugs pénibles existent
+image:20160422-1455_control-SQL-jOOQ_02.jpg[]
+
+.La même chose avec jOOQ
+image:20160422-1455_control-SQL-jOOQ_03.jpg[]
+
+-> se rapproche de la programmation fonctionnelle, avec un "tout est méthode" et de l'inlining.
+
+*Live demo* : 
+
+    * `dsl().selectOne().fetch()`
+    * "just does *typesafe SQL* for you"
+    * *every function in SQL is available in jOOQ DSL*
+    * la *vérification des types via le compilateur* (au travers de jOOQ) est un gros avantage. 
+
+L'outil à l'air très puissant : tout ce qui possible en SQL semble possible avec jOOQ.
+
+Outil à choisir quand :
+
+    * *database first* (si le schéma objet est le plus important prendre JPA)
+
+.What jOOQ means for developers
+image:20160422-1455_control-SQL-jOOQ_04.jpg[]
+
+.Coût / licence de jOOQ
+[WARNING]
+====
+* free pour base open-source 
+* licence pour les bases payantes
+====
+
+AVIS : de nouveau super talk de Lukas, prendre ses talks en exemple ! 👍 
+
+*Ressources* : 
+
+    * il y a plusieurs versions des *slides* de Lukas, récupérables en 1 recherche sur Google (et remontant à 2013) : 
+        ** https://www.jooq.org/why-jOOQ.pdf
+        ** 2015 : https://www.slideshare.net/LukasEder1/the-vjug-talk-about-jooq-get-back-in-control-of-your-sql
+        ** 2014 : https://www.slideshare.net/DataGeekery/get-back-in-control-of-your-sql-with-jooq
+        
+    * *vidéo* : https://www.youtube.com/watch?v=XRPWFoBWoDU
+
+
+
+

@@ -1,0 +1,71 @@
+= Vendredi 10:15 - Keynote - Le Service Public à l'heure d'internet
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Matti Schneider
+
+*Opposition action publique et numérique* : 
+
+    * administration : planification à 3, 4, 5 ans
+    * numérique : fonctionnement itératif, on s'adapte
+
+//-
+
+* *Estonie* : pays le plus avancé en termes numériques. 
+    ** Ce même type de changement commence à se répandre un peu partout.
+
+Gov.uk -> our strategy is delivery 
+
+.https://www.gov.uk/guidance/government-design-principles[Government Digital Service Design Principles (GOV.UK)]
+image:20160422-1015_service-public-heure-internet_01.jpg[]
+
+* https://beta.gouv.fr/[beta.gouv.fr] et notre *open data* : en moins de 6 mois, on a mis en place ce portail open data en France.
+    ** Franchement, SITE À ESSAYER ABSOLUMENT 👍  
+
+//-
+
+* Début des contributions via github pour améliorer un service public !
+    ** Se rapprocher de https://api.gouv.fr/ et https://twitter.com/betagouv[@BetaGouv] pour en apprendre plus sur la rénovation de notre action publique (voir Axel sur le sujet)
+
+AVIS : super keynote, récupérer les slides absolument !
+
+Ressources : 
+
+    * *Vidéo* : https://www.youtube.com/watch?v=qAFm3HhoZNI
+    * GitHub Administrateur général des données : https://github.com/SGMAP-AGD
+

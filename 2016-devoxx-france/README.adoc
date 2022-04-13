@@ -33,11 +33,26 @@
 |jeudi 14:55 / 15:40	|Conference        	|link:jeudi-1455_docker-jenkins-orchestrating-cd.adoc[(Docker, Jenkins) -> {Orchestrating ("Continuous Delivery")}]
 |jeudi 17:10 / 17:55	|Conference        	|link:jeudi-1710_modular-monoliths.adoc[Modular Monoliths]
 |jeudi 18:10 / 18:40	|Tools-in-Action   	|link:jeudi-1810_chronicle-queue.adoc[Débrider les performances de vos applications avec Chronicle Queue]
+|jeudi 18:55 / 19:25	|Tools-in-Action   	|link:jeudi-1855_flamegraph.adoc[Performance: Java vous déclare sa flamme]
 |===
 
 == Vendredi
 
-
+[cols="3,2,8", options="header"] 
+|===
+|Date					|Type				|Description
+|vendredi 09:00 / 09:20 |Keynote			|link:vendredi-0900_software-development-responsibility-ethics.adoc[Software development, responsibility and ethics: the coming crisis]
+|vendredi 09:25 / 09:45	|Keynote        	|link:vendredi-0925_utopie-digital-labour.adoc[De l'utopie de la fin du travail au digital labour]
+|vendredi 09:50 / 10:10 |Keynote			|link:vendredi-0950_algorithmes-nouveaux-pouvoirs.adoc[Algorithmes, les nouveaux pouvoirs du développeur]
+|vendredi 10:15 / 10:35 |Keynote			|link:vendredi-1015_service-public-heure-internet.adoc[Le Service Public à l'heure d'internet]
+|vendredi 11:15 / 12:00	|Conference        	|link:vendredi-1115_OutOfMemoryException.adoc[OutOfMemoryException : Quel est le coût des objets en Java ?]
+|vendredi 12:55 / 13:40	|Conference        	|link:vendredi-1255_ten-sql-tricks.adoc[Ten SQL Tricks that You Didn’t Think Were Possible]
+|vendredi 13:55 / 14:40	|Conference        	|link:vendredi-1355_microservices-irl.adoc[Microservices IRL: ça fonctionne chez un client, on vous dit comment!]
+|vendredi 14:55 / 15:40	|Conference        	|link:vendredi-1455_control-SQL-with-jOOQ.adoc[Get Back in Control of Your SQL with jOOQ]
+|vendredi 16:10 / 16:55	|Conference        	|link:vendredi-1610_jigsaw.adoc[Jigsaw est là pour nous sauver]
+|vendredi 17:10 / 17:55	|Conference        	|link:vendredi-1710_3-nuances-mom.adoc[3 nuances de MoM]
+|vendredi 18:55 / 19:25	|Tools-in-Action   	|link:vendredi-1855_flamegraph.adoc[Performance: Java vous déclare sa flamme]
+|===
 
 
 

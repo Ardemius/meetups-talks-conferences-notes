@@ -1,0 +1,113 @@
+= 2016/07/05 - Paris JUG - Soirée Jenkins
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Description de la soirée sur le site du Paris JUG : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20160607
+
+== Jenkins 2.0
+
+talk présenté par Arnaud HERITIER
+
+.Abstract
+----
+Né Hudson en 2004 le projet Jenkins est aujourd'hui omniprésent dans toutes les DSI. Avec plus de 600 releases, Jenkins a essayé (avec plus ou moins de succès) de conserver la compatibilité au fur et à mesure du temps que cela soit pour ses données (vos projets) ou son écosystème (ses plugins).
+
+En septembre dernier Kohsuke a lancé les développements de Jenkins 2.0 et une première version 2.x vient de voir le jour fin avril.
+
+Pourquoi après plus de 10 ans, franchir enfin le pas dans la création d'une nouvelle version majeure?
+Quels sont les changements et les nouveautés que les utilisateurs vont en tirer ?
+Quels vont être les impacts en terme de compatibilité pour les utilisateurs et son écosystème ?
+----
+
+* Session pleine !
+* Étaient présents :
+	** Soufiane
+	** Thomas
+
+image::20160607_ParisJUG_soiree-Jenkins_01.jpg[]
+
+Nouveau Jenkins version 2.0 après 11 ans en v1.x !
+
+	* Nouvelle doc, mieux organisée, plus accessible (l'ancienne était une horreur)
+	* On quitte Drupal pour passer à des technologies plus récentes (Asciidoc encore une fois !)
+	* Le definitive guide de Jenkins sera cette fois lié à la doc
+	* nouveau setup wizard
+    * *accent mis sur la sécurité* (cela pêchait beaucoup précédemment)
+	* nouvelle interface
+	* nouveau job *pipeline as code* :
+    	** Code un enchaînement d'étapes directement dans la description du job OU dans un *Jenkinsfile* (la grande mode du moment, pensez au Docker file) 
+    	** Apparition des "durable tasks" qui survivent au redémarrage du master
+    * Multibranch pipeline plug-in : scrute les branches du SCM et crée les jobs en fonction des commits sur les différentes branches (gros progrès, facilité de maintenance et gain de productivité)
+
+WARNING: Jenkins ne sera TRÈS bientôt plus maintenu, *il FAUT passer à Jenkins 2.0* !
+
+* Plutôt que d'être obligé d'aller chercher des informations sur les plug-ins dans la doc, le wiki ou le Jira (bref le bordel !), un *plug-in manager* est en cours de réalisation.
+
+* *Migration* : quasi indolore, sauf qu'il faut un container de servlet 3.1 (JEE 7)
+
+== Jenkins Pipeline 101
+
+Demo par Arnaud LECHARPENTIER
+
+.Abstract
+----
+Depuis Novembre 2014, Jenkins connait un nouveau type de job: Pipeline. Encore peu utilisé, j'essayerai de vous montrer à quoi il correspond et quelles problématiques il résout. Pour cela, je vous montrerai la migration d'un job type Maven classique vers un Pipeline et comment aller encore plus loin avec avec Pipeline-as-Code.
+----
+
+*Stash pour pipeline* ressemble au `stash` de Git : permet de disposer d'un espace temporaire (manipulation / dépôt de fichier) détruit à la fin du pipeline.
+
+TIP: Utiliser *pipeline as code* (les *Jenkinsfile*) le plus possible pour alléger la tâche de l'administrateur Jenkins 
+    
+== Jenkins & Docker
+
+Cette fois on a un job qui va exécuter un container Docker qui va lui exécuter un certain nombre d'actions. 
+
+* *Side container* : permet de disposer d'un 2nd container qui va partager les mêmes ressources.
+	** Rappel : un container docker est censé gérer un seul processus
+
+== Ansible & Jenkins
+
+* Rappel sur Ansible : permet la gestion et la configuration de machines à distances. 
+* Ansible fait de la *configuration à travers SSH*
+* *Ansible* = *pas d'agent* ! (Le GROS avantage)
+* Rien à installer sur les machines à administrer (il faut juste SSH)
+
+WARNING: Gaffe à la distribution des clés SSH !
+
+
+
+
+

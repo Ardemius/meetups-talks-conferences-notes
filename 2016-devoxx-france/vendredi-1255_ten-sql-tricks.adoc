@@ -1,0 +1,79 @@
+= Vendredi 12:55 - Ten SQL Tricks that You Didn’t Think Were Possible
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Par Lukas Eder
+
+image::20160422-1255_ten-sql-tricks_01.jpg[]
+
+____
+SQL is a device whose mystery is only exceeded by its power!
+____
+
+Le gars a de l'humour, génial ! 🙂👍  
+
+1. everything is a table +
+image:20160422-1255_ten-sql-tricks_02.jpg[]
+
+    ** Essayer https://www.jooq.org/[jOOQ] (de la société de Lukas)
+
+2. Data generation with recursive SQL
+
+3. Running total calculations +
+image:20160422-1255_ten-sql-tricks_03.jpg[]
+
+    ** *Window functions* very fast as run in memory
+    ** `ROW_NUMBER`, there is no gap in this function. 
+
+[start=9]
+9. pivoting and unpivoting
+
+    ** Mot clé PIVOT
+
+10. abusing XML and JSON
+
+AVIS :
+
+    * présentation qui va très vite (prévue pour 1 heure).
+    * Reprendre les slides après coup. 
+    * Mais *super conf avec beaucoup d'humour*, de bonnes infos, et une *super démystification de SQL* 👍 
+
+*Slides* et *vidéo* : https://blog.jooq.org/10-sql-tricks-that-you-didnt-think-were-possible/
+
+
+ 
