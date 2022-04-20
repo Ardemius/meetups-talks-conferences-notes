@@ -473,7 +473,33 @@ Parmi les schémas les plus utilisés avec Kafka :
 .Throttled Commit Strategy (poison pill)
 image:devoxx-france-2022_60.jpg[]
 
-*Avis* : super conf, très dense, décrivant très bien le fonctionnement des différentes fonctionnalités de Kafka 👍 
+.Rabalancing 
+image:devoxx-france-2022_61.jpg[]
+
+.Incremental cooperative balancing
+image:devoxx-france-2022_62.jpg[]
+
+    * La "nouvelle" façon de rebalancer est à droite
+
+Le problème le plus compliqué à aller corriger avec Kafka : *le disque full !*
+
+    * refuse to accept new messages (and offset)
+    * can crash
+    * can fail to restart
+
+Que faire si le disque est full ?
+
+    * don't get a disk full...
+    * increase disk until more permanent solution
+    * manually delete log segments
+
+Comment éviter un problème de disque full ?
+
+    * set quota limits
+    * add more brokers to spread volume
+    * if disk usage is unbalanced between brokers, use Cruise Control (qui va pouvoir vous proposer un plan de migration)
+
+*Avis* : conf très dense, décrivant très bien le fonctionnement des différentes fonctionnalités de Kafka 👍 (mais alors c'est long et dense ! Dur de tenir 😅) 
 
 === 17h00 - 17h30 (251) : Du Chaos Engineering avec Litmus et Jenkins
 
