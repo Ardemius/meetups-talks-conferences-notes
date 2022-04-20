@@ -43,6 +43,9 @@ toc::[]
 * Et c'est parti pour Devoxx France 2022, *les "vrais" 10 ans de Devoxx France* ! 😁😁😁
 * *Softeam* sera présent au stand 30 cette année
 
+image:devoxx-france-2022_001.jpg[width=450]
+image:devoxx-france-2022_002.jpg[width=450]
+
 === 09h30 - 12h30 (242AB) : Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM
 
 ==== Abstract
@@ -66,7 +69,89 @@ Au cours de cette université nous verrons comment diagnostiquer, comprendre et 
 
 ==== Notes
 
-TO BE COMPLETED
+image::devoxx-france-2022_01.jpg[]
+
+.oomkilled !
+image::devoxx-france-2022_02.jpg[]
+
+* 1ere action avant quoi que ce soit d'autre : *augmenter la mémoire*
+* ensuite, mettre en place du monitoring (Prometheus est ton ami)
+* *micrometer* pour exporter les métriques vers Kubernetes
+
+NOTE: Datadog n'utilise PAS Grafana
+
+.Attention à la différence entre MB, megabytes (1000^2 bytes), et MiB, mebibytes (1024^2 bytes)
+image:devoxx-france-2022_03.jpg[]
+
+.Les différents types d'espace de la JVM
+image:devoxx-france-2022_04.jpg[]
+
+* Conseil : stacker les pools (qui peuvent être unitairement proches de 0), et soustrayez la taille de la heap pour disposer d'un résultat plus facilement exploitable.
+
+.RSS : Resident Set Size
+[IMPORTANT]
+====
+La *Resident Set Size* (RSS, "taille du jeu résident") est la quantité de mémoire occupée par un processus contenue dans la RAM.
+*RSS* permet d'obtenir la taille réelle du conteneur Kubernetes.
+====
+
+.Différences entre RSS et Virtual Memory
+[NOTE]
+====
+RSS is the *Resident Set Size* and is used to show how much memory is allocated to that process and is in RAM. It does not include memory that is swapped out. It does include memory from shared libraries as long as the pages from those libraries are actually in memory. It does include all stack and heap memory.
+
+VSZ is the *Virtual Memory* Size. It includes all memory that the process can access, including memory that is swapped out, memory that is allocated, but not used, and memory that is from shared libraries.
+
+Pour plus de détails, voir https://softwareperformancenotes.github.io/rssvsz/
+====
+
+.`jcmd` : un couteau suisse permettant de tracker la mémoire native (native memory tracking)
+image:devoxx-france-2022_05.jpg[]
+
+* Les *threads* également occupent de l'espace mémoire
+
+NOTE: Activer le *Native Memory Tracking (NMT)* a un petit overhead dont il faut tenir compte.
+
+.Virtual memory, reserved memory, committed memory
+image:devoxx-france-2022_06.jpg[]
+
+.Et maintenant côté JVM (used heap, committed heap, max heap)
+image:devoxx-france-2022_07.jpg[]
+image:devoxx-france-2022_08.jpg[]
+
+.Qu'est-ce que la mémoire virtuelle ? (virtual memory)
+image:devoxx-france-2022_09.jpg[]
+image:devoxx-france-2022_10.jpg[]
+
+image:devoxx-france-2022_11.jpg[]
+image:devoxx-france-2022_12.jpg[]
+
+.pmap pour explorer finalement la mémoire
+image:devoxx-france-2022_13.jpg[]
+
+.oomkill car trop peu d'espace mémoire restant ! 
+image:devoxx-france-2022_14.jpg[]
+
+* Pour éviter cela, préférer faire varier le *XMS* et *XMX*.
+* et le mieux est de *TESTER*
+    ** commencez par définir une mémoire (très) conséquente pour votre conteneur
+    ** puis baisser progressivement sa taille
+
+* Attention à l'usage de Netty et son usage de *DirectByteBuffer* (avec la gestion des *EventLoop* et de leurs *ThreadLocal* )
+
+.Native allocator et malloc
+image:devoxx-france-2022_15.jpg[]
+
+* *glibc's malloc* is managing memory via technic called *Arena memory management*
+    ** unfortunately, there is no service ability tooling around glibc arena management 🙁
+    ** donc, ne pas hésiter à *changer* le native allocator (malloc) par un plus performant : tcmalloc, jemalloc et mini malloc (de Microsoft ce dernier)
+    ** tcmalloc et jemalloc disposent nativement d'analyseur graphique de la mémoire.
+
+Demo de Jean-Philippe sur base de *Netty* et *VisualVM*
+
+===== Nouvelle demo de Jean-Philippe, cette fois avec MiniKube et PetClinic (de Spring)
+
+* Ne pas hésiter à utiliser *Java Flight Recorder*, qui est maintenant Open Source, et a même été backporté sur Java 8
 
 === -------------------- REPAS --------------------
 
