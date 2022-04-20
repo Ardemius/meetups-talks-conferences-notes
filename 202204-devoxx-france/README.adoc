@@ -309,7 +309,171 @@ Pièges de devs, pièges de prod, ils seront découverts autour d'un format rece
 
 ==== Notes
 
-TO BE COMPLETED
+.Faites un retour sur Kafka !
+image:devoxx-france-2022_27.jpg[]
+
+.Fonctionnement global de Kafka
+image:devoxx-france-2022_28.jpg[]
+
+.Dans Kafka, les records sont centraux
+image:devoxx-france-2022_29.jpg[]
+
+.Les records sont écrits dans des partitions
+image:devoxx-france-2022_30.jpg[]
+
+.Les partitions sont regroupées dans des topics
+image:devoxx-france-2022_31.jpg[]
+
+.Sous le capot, comment fonctionne l'envoi de records
+image:devoxx-france-2022_32.jpg[]
+
+    * Les records ne sont pas envoyés initialement, mais accumulés (*Record Accumulator*)
+    * Netty est utilisé dans la chaîne d'envoi (à creuser)
+    * le *send* est complètement bloquant
+
+.Le producer est la cible d'un fonctionnement principalement bloquant
+image:devoxx-france-2022_33.jpg[]
+
+    * le producer peut être appelé de n'importe quel thread, tandis que le consumer ne peut être appelé que par 1 seul thread
+
+.Attention au partitioner dont l'algo peut varier en fonction du langage sous-jacent !
+image:devoxx-france-2022_34.jpg[]
+
+.Tombstone records
+[NOTE]
+====
+*Tombstone records* : records that contain a non-null key, and a null value
+
+When Kafka Streams sees a tombstone record, it deletes the corresponding key from the state store, thus freeing up space.
+====
+
+WARNING: Toujours bien vérifier que l'on a *ciblé une partition qui existe* avec le partitioner !
+
+* La gestion des metadata dans Kafka est assurée par *Zookeeper*.
+    ** d'ici (très) peu de temps, on pourra *se passer de Zookeeper* via *KRaft* et les Kafka Controllers. +
+    Pour plus de détails, voir https://developer.confluent.io/learn/kraft/ : +
+    "Apache Kafka Raft (KRaft) is the consensus protocol that was introduced to remove Apache Kafka’s dependency on ZooKeeper for metadata management. This greatly simplifies Kafka’s architecture by consolidating responsibility for metadata into Kafka itself, rather than splitting it between two different systems: ZooKeeper and Kafka."
+        *** Attention, si j'ai bien compris, *KRaft n'est (vraiment) PAS "production ready"*
+
+-> Deploying Kafka on Kubernetes via Strimzi (une distribution de Kafka)
+
+.What will the Strimzi operator do ?
+image:devoxx-france-2022_35.jpg[]
+
+Strimzi peut être utilisé pour une palanquée de fonctionnalités !
+
+.When you write a record
+image:devoxx-france-2022_36.jpg[]
+
+IMPORTANT: LA chose essentielle à configurer ici, le *delivery.timeout.ms*
+
+.Les acks
+image:devoxx-france-2022_37.jpg[]
+
+RedHat a utilisé "ToxyProxy" de Shopify pour créer des "toxic" qui permettent d'émuler un "vrai" comportement de PROD (c'est à dire avec des soucis) 
+
+.Les retries
+image:devoxx-france-2022_38.jpg[]
+
+* Dans Kafka l'*ordre est garanti par partition*, et PAS par topic
+
+.Problématiques d'ordering
+image:devoxx-france-2022_39.jpg[]
+
+-> Pour éviter ces soucis, il faut utiliser l'*idempotence*, qui est le défaut depuis Kafka 3.0.1
+
+.Concepts importants
+image:devoxx-france-2022_40.jpg[]
+
+.Kubernetes liveness et readiness
+[NOTE]
+====
+*Liveness* : The kubelet uses liveness probes *to know when to restart a container*. For example, liveness probes could catch a deadlock, where an application is running, but unable to make progress. Restarting a container in such a state can help to make the application more available despite bugs.
+
+*Readiness* : The kubelet uses readiness probes *to know when a container is ready to start accepting traffic*. A Pod is considered ready when all of its containers are ready. One use of this signal is to control which Pods are used as backends for Services. When a Pod is not ready, it is removed from Service load balancers.
+====
+
+.Non disruptive rolling update
+image:devoxx-france-2022_41.jpg[]
+
+.Strimzi rolling updates
+image:devoxx-france-2022_42.jpg[]
+
+.How is guaranteed availability and durability ?
+image:devoxx-france-2022_43.jpg[]
+
+.On Kubernetes node upgrades
+image:devoxx-france-2022_44.jpg[]
+image:devoxx-france-2022_45.jpg[]
+
+.The art of consuming from Kafka (et le boulot côté consumer)
+image:devoxx-france-2022_46.jpg[]
+
+*__consumer_offsets* est ce qu'on appelle un topic compacté
+
+.Le poll fait tout une tartine de choses...
+image:devoxx-france-2022_47.jpg[]
+
+* Le *rebalance* est ce qui fait faire des cauchemars à tous les dev Kafka
+
+.Le polling thread doit toujours être le même une fois choisi pour un consumer
+image:devoxx-france-2022_48.jpg[]
+
+image:devoxx-france-2022_49.jpg[]
+
+    * *ne PAS commiter après chaque écriture* : serait très très lent
+
+-> *Qu'est-ce qu'un Kafka qui marche ?* +
+Clients will be able to produce and consume records to/from Kafka ???
+
+.On va ici parler de SLO
+image:devoxx-france-2022_50.jpg[]
+
+Pour construire ce SLO, on va utiliser un *canary*
+
+image:devoxx-france-2022_51.jpg[]
+
+.Gestion des offsets
+image:devoxx-france-2022_52.jpg[]
+
+.CommitSync / CommitAsync
+image:devoxx-france-2022_53.jpg[]
+
+.__consumer_offsets
+image:devoxx-france-2022_54.jpg[]
+
+.Initial position (earliest ou latest)
+image:devoxx-france-2022_55.jpg[]
+
+Conseil de Guillaume : latest est le default, c'est dommage, *passez en earliest*.
+
+===== Reactive programming en Kafka
+
+.Event Driven microservices
+image:devoxx-france-2022_56.jpg[]
+
+.Acknowledgement
+image:devoxx-france-2022_57.jpg[]
+
+.NAck (Negative Acknowledgement)
+image:devoxx-france-2022_58.jpg[]
+
+.Emitter
+image:devoxx-france-2022_59.jpg[]
+
+    * Attention, *l'emitter est asynchrone*, et comme certains éléments de Kafka ne le sont pas, il y aura donc un mécanisme de *backpressure* à gérer.
+
+Parmi les schémas les plus utilisés avec Kafka : 
+
+    1. JSON sans schéma (eh oui, JSON en 1) d'après Clément)
+    2. AVRO
+
+*Poison pill* : le record qui ne peut pas être processé, la nemesis de Kafka
+
+.Throttled Commit Strategy (poison pill)
+image:devoxx-france-2022_60.jpg[]
+
+*Avis* : super conf, très dense, décrivant très bien le fonctionnement des différentes fonctionnalités de Kafka 👍 
 
 === 17h00 - 17h30 (251) : Du Chaos Engineering avec Litmus et Jenkins
 
