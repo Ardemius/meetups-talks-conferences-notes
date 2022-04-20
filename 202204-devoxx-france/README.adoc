@@ -499,6 +499,18 @@ Comment éviter un problème de disque full ?
     * add more brokers to spread volume
     * if disk usage is unbalanced between brokers, use Cruise Control (qui va pouvoir vous proposer un plan de migration)
 
+Nouvel operator (autre que Strimzi) : le *Service Binding Operator*
+
+image:devoxx-france-2022_63.jpg[]
+
+.Operating your OWN Kafka (is is NOT impossible)
+image:devoxx-france-2022_64.jpg[]
+
+-> C'est ce qu'offre RedHat 😉 
+
+image:devoxx-france-2022_65.jpg[]
+
+
 *Avis* : conf très dense, décrivant très bien le fonctionnement des différentes fonctionnalités de Kafka 👍 (mais alors c'est long et dense ! Dur de tenir 😅) 
 
 === 17h00 - 17h30 (251) : Du Chaos Engineering avec Litmus et Jenkins
