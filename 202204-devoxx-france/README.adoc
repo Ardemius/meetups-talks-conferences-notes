@@ -151,7 +151,138 @@ Demo de Jean-Philippe sur base de *Netty* et *VisualVM*
 
 ===== Nouvelle demo de Jean-Philippe, cette fois avec MiniKube et PetClinic (de Spring)
 
-* Ne pas hésiter à utiliser *Java Flight Recorder*, qui est maintenant Open Source, et a même été backporté sur Java 8
+* Ne pas hésiter à utiliser *Java Flight Recorder* (JFR), qui est maintenant Open Source, et a même été backporté sur Java 8
+    ** un fichier JFR peut se partager
+        *** faites gaffe aux secrets dans les varenv...
+    ** pour un overhead de seulement ~1%, vous avez vraiment des insights très poussés de l'état de la JVM
+* Voir également *Java Mission Control* (JMC)
+
+.Différences entre JMC et JFR
+[NOTE]
+====
+The problem with the *Java Mission Control* by itself is that the data there is being collected in real time and is not saved/archived anywhere. +
+[...]
+To solve this problem, we can use the *Java Flight Recorder to save all the data from the execution inside the JVM*. The JFR will save all the fine-grained information that we have in the JMC for a determined period that we can specify. After the execution of the specified window of time, the JFR will generate a simple and self contained file with all the information captured during the execution of the application. In this way, we can analyze the execution saved anytime we want, and conduct comparisons among executions of our application.
+
+Pour plus de détails, voir https://blog.avenuecode.com/java-mission-control-and-java-flight-recorder
+====
+
+.Exemple d'infos remontées par JFR durant la démo de JP
+image:devoxx-france-2022_16.jpg[]
+
+The JDK implementation by Oracle is based on the open-source OpenJDK project, which includes the HotSpot virtual machine. +
+It contains 2 *conventional JIT-compilers*: the *client compiler*, also called *C1* and the *server compiler*, called opto or *C2*.
+
+.Différences entre les usages avec compilateurs C1 et C2 
+image:devoxx-france-2022_17.jpg[]
+
+.Un petit mot sur GraalVM
+[NOTE]
+====
+The code in C2, written in a specific dialect of C++, has become difficult to maintain, so we couldn't expect new major enhancements with the current design. With that in mind, the new JIT compiler is being created in the project named *GraalVM*.
+
+Plus de détails dans https://www.baeldung.com/graal-java-jit-compiler
+====
+
+.Tiered compilation
+[NOTE]
+====
+Today, Java installation uses both JIT compilers during the normal program execution.
+
+As we mentioned in the previous section, our Java program, compiled by `javac`, starts its execution in an interpreted mode. The JVM tracks each *frequently called method* and compiles them. In order to do that, *it uses C1* for the compilation. But, the HotSpot still keeps an eye on the *future calls of those methods*. *If the number of calls increases*, the JVM will recompile these methods once more, but *this time using C2*.
+
+This is the *default strategy used by the HotSpot*, called *tiered compilation*.
+
+Pour plus de détails, voir https://www.baeldung.com/graal-java-jit-compiler
+====
+
+*5 niveaux d'exécution* possibles pour la *compilation* : 
+
+    * level 0 - interpreter
+    * level 1 - C1 with full optimization (no profiling)
+    * level 2 - C1 with invocation and backedge counters
+    * level 3 - C1 with full profiling (level 2 + MDO)
+    * level 4 - C2
+
+.TieredCompilation Heuristics (C1, C2)
+image:devoxx-france-2022_18.jpg[]
+
+.Measuring startup time
+image:devoxx-france-2022_19.jpg[]
+
+* commande utilisée : `docker run --cpus=<n> -ti spring-petclinic`
+    ** JVM Startup time `XX:TieredStopAtLevel=1` +
+    Explication : "To disable C2 compiler and to leave only C1 with no extra overhead, set -XX:TieredStopAtLevel=1"
+
+===== Optimisations et améliorations côté GC
+
+image:devoxx-france-2022_20.jpg[]
+
+.Sélection automatique du GC par la JVM (GC ergonomics)
+image:devoxx-france-2022_21.jpg[]
+
+* sélection automatique, sauf si vous forcez le GC via les flags
+
+===== Optimisations et améliorations côté CPU
+
+* `cpu.weight` : c'est du *cgroup v2*
+
+image:devoxx-france-2022_22.jpg[]
+
+* Shares / quotas : the lower bound of a CPU request is called *shares*
+    ** *shares* : a CPU is divided 1024 shares
+    ** *quotas* : CPU is split in periods of 100 ms (by default)
+
+.shares
+image:devoxx-france-2022_23.jpg[]
+
+*Kubernetes* utilise le nombre de *shares* comme *mécanisme de scheduling*.
+
+.Conclusions sur les shares et quotas
+image:devoxx-france-2022_24.jpg[]
+
+-> If the process *reaches its limit*, it will get throttled. +
+ie it *will have to wait for the next period*.
+
+.CPU throttling
+image:devoxx-france-2022_25.jpg[]
+
+* A partir du JDK 17, vous avez accès au `jdk.ContainerCPUThrottling`
+* Setting CPU shares / quotas have a direct impact on `Runtime.availableProcessors()` API + this API is used to : 
+    ** size some concurrent structures
+    ** `ForkJoinPool`, used for Parallel Streams, `CompletableFuture`, etc.
+
+*Trade-off CPU* needs for startup time VS request time : 
+
+    * adjust CPU shares / CPU quotas
+    * adjust *liveness timeout*
+    * use *readiness* / *startup probes*
+
+===== Conclusion
+
+*Memory* :
+
+    * JVM memory is not only Java heap
+    * Native parts are less known, and difficult to monitor and estimate
+    * yet they are important moving part ot account to avoid *OOMKills*
+    * Bonus revise virtual memory
+
+*Startup* : 
+
+    * containers with < 2 CPUs are an constraint environment for JVM
+    * need to keep in mind that JVM subsystems like JIT or GC need to be adjusted for requirements
+    * to be aware of these subsystems helps to find the balance between resources and requirements of your application
+
+TIP: *Laissez donc tourner JFR en permanence...* +
+Et mettez en place un système pour récupérer les fichiers de JFR en continu (c'est ce que fait Datadog)
+
+.References
+image:devoxx-france-2022_26.jpg[]
+
+*Q&A* : 
+
+    * JP et Brice sont très contents de la *JVM Hotspot*
+    * JDK 11 ne reconnaît que les cgroup v1 (PAS les v2)
 
 === -------------------- REPAS --------------------
 
