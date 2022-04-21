@@ -238,6 +238,9 @@ image:devoxx-france-2022_23.jpg[]
 
 *Kubernetes* utilise le nombre de *shares* comme *mécanisme de scheduling*.
 
+.quotas
+image:devoxx-france-2022_23b.jpg[]
+
 .Conclusions sur les shares et quotas
 image:devoxx-france-2022_24.jpg[]
 
@@ -528,7 +531,39 @@ Aujourd’hui, le Chaos Engineering est de plus en plus présent dans les esprit
 
 ==== Notes
 
-TO BE COMPLETED
+Akram, qui travaille chez WeScale, nous fait un REX de son travail de SRE chez son client Talend.
+
+image:devoxx-france-2022_66.jpg[]
+
+.https://principlesofchaos.org
+____
+Le Chaos Engineering is the discipline of experimenting on a system in order to build confidence in the system's capability to withstand turbulent conditions in production.
+____
+
+* importance des *outils de communications* (Slak) dans le Chaos engineering
+    ** pour la communication avec les équipes
+    ** pour l'alerting
+
+.Litmus
+image:devoxx-france-2022_67.jpg[]
+
+    * Chaos engineering in a Cloud native way
+        ** il s'agit de ressources Kubernetes
+    * C'est toujours un incubating project
+
+.fonctionnement de Litmus
+image:devoxx-france-2022_68.jpg[]
+
+Le code est disponible sur GitHub : "litmus-chaosworkflow"
+
+* On va injecter les différentes "expérimentations" du chaos dans le workflow
+* Litmus propose un dashboard "chaos center"
+    ** à partir duquel on va pouvoir modifier les workflows
+
+.chaos center de Litmus
+image:devoxx-france-2022_69.jpg[]
+
+* Présence d'un "chaos hub", sûrement pour partager les différentes expérimentations
 
 === 17h45 - 18h15 (241) : AssemblyScript : TypeScript sous stéroïdes grâce à WebAssembly ?
 
@@ -558,7 +593,7 @@ En support de cette session : des slides mais surtout beaucoup de code !
 
 ==== Notes
 
-TO BE COMPLETED
+image:devoxx-france-2022_70.jpg[]
 
 === 18h30 - 19h00 (AM) : Oubliez Docker, appelez moi Compose
 
@@ -577,7 +612,26 @@ Je vous propose de découvrir l'histoire de docker-compose et de comprendre pour
 
 ==== Notes
 
-TO BE COMPLETED
+* *Fig* : le grand départ des orchestrateurs avant que Kubernetes ne débarque
+* Et la société derrière Fig a été rachetée par Docker afin de créer *Docker Compose*
+
+//- 
+
+* La doc de Docker Compose est disponible à https://docs.docker.com/compose/
+
+*docker compose v2 et v3, tout un "bazar"*
+
+    * parce que la v3 a été pensée pour le Cloud et ne tolère plus certains "impairs" que l'on pouvait tolérer on-premise (tout ce qui est associé à la résilience aux coupures réseau par exemple...)
+    * mais quand on est "à l'ancienne", en local chez soi, on a PAS envie de s'embêter avec ça !
+
+-> Résultat : plusieurs personnes ont commencé à dire "on utilise la v2 pour le local, et la v3 pour le Cloud", alors qu'il n'était pas du tout prévu que cela fonctionne initialement comme cela...
+
+Dans les dernières versions de compose, ce dernier a été intégré à la ligne de commande docker. +
+Résultat, plus besoin d'utiliser un "-" entre le "docker" et le "compose", on peut directement écrire `docker compose`
+
+* *Docker secrets* a été introduit par Docker Swarm, et peut être utilisé dans Docker compose via une "astuce"
+
+* Suivre la *compose spec* pour être tenu au courant des évolutions à venir de Docker compose
 
 == JEUDI
 
@@ -601,7 +655,21 @@ Devoxx France a été créé en 2012, après 4 années d'aventure avec le Paris 
 
 ==== Notes
 
-TO BE COMPLETED
+image:devoxx-f70rance-2022_71.jpg[]
+
+Histoire du salon : 
+
+    * 2000 : Antonio a 30 ans, travaille à Londres, va rentrer en France où il n'existe aucun JUG là où il y en a plusieurs ailleurs (et surtout à Londres) +
+    Donc Antonio crée le Paris JUG
+    * Javapolis, fondé par Stéphane, devient avec le temps Devoxx (Belgique)
+    * Et voyant cela, Antonio se dit que plutôt que de continuer à faire 2 "grosses" réunions annuelles du Paris JUG, on va créer LA conf française : Devoxx France est née (2012) 
+
+* Devoxx France 2022 : 3249 participants
+* 2022 : 6 différents Devoxx partout dans le monde
+* 15 différents Voxxed Days
+
+image:devoxx-f70rance-2022_72.jpg[]
+image:devoxx-f70rance-2022_73.jpg[]
 
 === 09h25 - 09h45 (AB) : 10 ans de Tech à travers le podcast Niptech
 
@@ -620,10 +688,6 @@ TO BE COMPLETED
 Une keynote pour passer en revue les innovations qui ont secoué la tech depuis la naissance de Devoxx FR il y a dix ans. À travers les expériences du podcast Niptech et de sa communauté, nous partagerons des leçons apprises à la dure dans le but de nous aider à préparer ces dix prochaines années.
 ----
 
-==== Notes
-
-TO BE COMPLETED
-
 === 09h50 - 10h10 (AB) : Slow.tech : il est urgent de hacker le système !
 
 ==== Abstract
@@ -636,6 +700,52 @@ Ancien développeur et architecte logiciel, Frédéric Bordage conseille des org
 ----
 Selon le GIEC, il nous reste 3 ans pour léguer un monde « vivable » à nos enfants. Sacré challenge ! Alors comment agir vite et fort dans notre univers numérique ? Une seule solution : sortir du cadre et hacker le système. C’est que propose la démarche slow.tech. En associant low et high tech, elle permet de diviser par un facteur 4 à 10 nos impacts numériques. De l’usage ingénieux d’un smartphone pour remplacer un cabinet d’ophtalmologie en passant par l’association d’un chien et d’une IA pour détecter un cancer, les écoconcepteurs de la slow.tech détournent les codes et les patterns habituels pour faire mieux avec moins. Prêt.e à emprunter cette « voie du milieu » ? Le hacker qui est en toi doit se réveiller !
 ----
+
+==== Notes
+
+Quel est le point commun entre la mission Apollo 13 et l'avenir de l'humanité ?
+
+    * C02 / Hacker / Low tech
+
+Scientifiques du GIEC : "ce n'est plus objectif Lune, c'est objectif *seulement +1,5°C"
+
+image:devoxx-france-2022_74.jpg[]
+
+* 2021 / 2022 : records d'émissions de GES et de température
+* +5% d'émissions de GES depuis les accords de Paris (2015)
+* +60% d'émissions de GES depuis Rio / Kyoto (1992)
+
+-> Donc côté objectifs "Houston we have another problem..."
+
+image:devoxx-france-2022_75.jpg[]
+
+* L'*extraction des minerais* et leur *transformations en matériel numérique* a un énorme impact
+    ** il faut donc *fabriquer moins* et qui *dure plus lontemps*
+
+* en 2022 autant de puissance informatique pour envoyer un mail qu'il n'en a fallu pour la mission Apollo 13 dans les années 70's
+
+La démarche d'écoconception en 4 étapes : 
+
+    * niveau 1 : vise les techs (meilleure conception / architecture technique)
+    * niveau 2 : vise les UX (rendre le parcours plus ergonomique)
+    * niveau 3 : vise les products owner
+    * niveau 4 : "supprimer tout le numérique de nos services numériques"
+        ** exemple de la *startup weather force*, et de sa solution de transmission d'infos météo aux paysans au Nigéria. +
+        Là bas, pas de 4G, peu d'équipements, donc on repasse par un simple SMS en 2G. +
+        Mieux encore, car beaucoup d'illetrisme là-bas, on transmet uniquement l'info aux prof d'école, qui dessinent la météo au tableau, et les enfants transmettent l'info à leurs parents.
+
+Au rythme où on consomme les matériaux actuellement, il n'y aura *plus d'ordinateurs dans 30 ans*.
+
+Pour pouvoir transmettre un avenir à nos enfants -> *Low tech*
+
+.Comment participer au mouvement ?
+image:devoxx-france-2022_76.jpg[]
+
+Frédéric : le monde de demain (à l'échelle de quelques générations) sera forcément beaucoup plus low tech, il n'y a pas le choix, il n'y a pas d'autre possibilité.
+
+Q&A : 
+
+    * *effet rebond* : La 5G consomme moins que la 4G, MAIS nous allons nous en servir pour consommer beaucoup plus de données, DONC cela va peser plus au final 🙁 
 
 === 10h45 - 11h30 (252AB) : Comprendre les enjeux de consommation de ressource et d’énergie dans le secteur numérique
 
@@ -662,7 +772,106 @@ L’objectif de la présentation est de ressortir avec un panorama clair des enj
 
 ==== Notes
 
-TO BE COMPLETED
+image:devoxx-france-2022_77.jpg[]
+
+* Enorme problème : actuellement, modification chimique de notre atmosphère (émission de gaz à effet de serre)
+* 2e problème : disponibilité limitée des matières premières (plus de pétrole à terme)
+* 3e problème : pollution environnementale localisée (ex : mine à ciel ouvert, c'est pas très bucolique)
+
+Question : quelles sont les urgences ?
+
+    * "quels endroits peut-on rendre moins bucoliques pour résoudre certains problèmes..."
+
+.Rapport du shift project 2018
+image:devoxx-france-2022_78.jpg[]
+
+    * certaines conclusions et certains chiffres de ce rapport sont erronés...
+
+Les gens qui écrivent ce type de rapport ne sont pas forcément des experts des sujets traités...
+
+.La bêtise de "l'émission équivalente d'un mail"
+image:devoxx-france-2022_79.jpg[]
+
+-> C'est "faux" : comment ont-été obtenus ces résultats ???
+
+    * Quand on supprime 4 To de données sur Hadoop, on ne la supprime pas "physiquement", on se contente de la "marquer" (tombstone) comme plus utilisée
+
+Quantifier : 
+
+    * fab
+    * run
+    * end of life
+
+.Origine des émissions de CO2 dues à la combustion d'énergie en 2018
+image:devoxx-france-2022_80.jpg[]
+
+* Sans entrer dans le débat du nucléaire, on voit que la France émet peu de CO2 dans sa production d'électricité
+
+.éCO2mix
+image:devoxx-france-2022_81.jpg[]
+
+-> l'émission de CO2 dépend en plus du moment de la journée
+
+Avis : fantastique conf ! Quentin et Pierre maîtrisent le sujet, c'est captivant.
+
+La question du *pilotage* est essentielle, car gérer une grille électrique est très compliqué (voir les vidéos de "Monsieur Bidouille")
+
+    * *pilotage de la consommation* : vous dites que vous aurez besoin de votre Tesla demain à 08h, Tesla discute dès lors avec EDF pour savoir quel est le meilleur moment où la recharger.
+
+.Part du numérique dans l'électricité
+image:devoxx-france-2022_82.jpg[]
+
+-> numérique total en France (attention, que le RUN) représente ~3% de la production de CO2 : ce n'est pas "énorme" au final.
+
+.Arrêtez de croire qu'il faut arrêter votre box la nuit...
+[NOTE]
+====
+Quentin : Il ne FAUT pas arrêter sa box ! Certains matériel ne sont pas fait pour être redémarrés (baisse de température). +
+-> C'est comme un haut-fourneau, il ne faut pas l'arrêter, sinon il passe de 3000°C à 10°C, craquèle et ne redémarrera plus...
+====
+
+.Ordre de grandeur des consommations électriques de divers matériels, outils, etc.
+image:devoxx-france-2022_83.jpg[]
+
+.Consommation électrique finale par secteur en France
+image:devoxx-france-2022_84.jpg[]
+
+-> Le numérique n'apparaît même pas sur ce graphe tellement c'est petit... +
+Tout l'opposé du *transport* et du *chauffage*.
+
+Quentin : le réseau et le CO2 produits n'ont aucun lien entre eux (la comparaison n'a PAS de sens) +
+Ce calcul n'est PAS scientifique (passez une bonne journée...)
+
+*2) la FAB*
+
+* Produire coûte CHER (bien plus que le RUN)
+* Il est très difficile de côter la FAB
+* Côté terres rares : on a généralement des alternatives à l'usage de celles-ci dans l'électronique
+
+//-
+
+* Et si vous achetez un nouveau smartphone, mettez le précédent dans l'argus !
+* Et achetez un téléphone PERENNE, dont les mises à jour ne s'arrêteront pas dans 6 mois...
+
+Au final, c'est un *choix politique*
+
+    * vivre à 8 milliards sur la planète
+    * OU juste avoir peur du futur ?
+
+Il faut reprendre la consommation d'énergie d'un point de vue ingénieur.
+
+    * une mesure s'accompagne TOUJOURS de sa marge d'erreur, TOUJOURS (sinon ce n'est PAS une mesure)
+    * Capteur : il faut prendre en compte la marge d'erreur, la fréquence et la résolution +
+    Est-ce que le capteur dit la vérité ? Il faut toujours le réétalonner (régulièrement)
+
+Descartes a inventé le *réductionnisme* : réductionnisme vs complexité
+
+    * il faut chercher les bons critères
+    * combattre l'obsolescence des systèmes
+    * profiler !
+    * Recompiler vos softs pour coller au profil hardware de votre matériel RECENT (ce qui n'est pas le cas si vous utilisez le binaire d'il y a 30 ans)
+
+Et le *conseil final* : alignez votre boulot avec vos valeurs ! Il y a une petite tension sur le marché en ce moment, on peut se le permettre
 
 === 11h45 - 12h30 (AB) : Model-Driven Design
 
@@ -697,7 +906,13 @@ Après cette conférence, vous ne verrez plus le Domain-Driven Design tout à fa
 
 ==== Notes
 
-TO BE COMPLETED
+L'origine du DDD : le *Bounded Context*
+
+image:devoxx-france-2022_85.jpg[]
+
+* event storming
+
+J'ai sortir de la salle car complète et j'étais sur les marches 😢 
 
 === -------------------- REPAS --------------------
 

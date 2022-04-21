@@ -40,7 +40,8 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 == Buzz words & Technos qui ont le vent en poupe
 
-
+* *Kubernetes* partout pour tout ce qui est Cloud Native
+	** avec *Prometheus* et *Grafana* pour le monitoring et le dashboarding 
 
 == Technos dont on parle moins (ou plus !)
 
