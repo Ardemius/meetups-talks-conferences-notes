@@ -52,7 +52,24 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 == Conf à voir sur YouTube
 
+== Sociétés et personnes rencontrées
 
+* *COSIUM* : 100 milliards de capitalisation boursière, a dernièrement racheté Essilor
+	** présent dans de multiples domaines, mais surtout le milieu de l'optique médicale
+* *Michelin*
+	** 150 000 employés et 3000 ITs. Couvre tous les métiers de l'IT. +
+	J'ai discuté avec un DevOps qui leur a mis en place une CI/CD complète avec déploiement sur Kubernetes
+* *Harness* : CI/CD avec modules de Feature Flags, SRE, Security Test (OWASP)
+	** par contre boîte jeune avec modèle de licensing surprenant : par service pour le "core" CI/CD, puis par user pour les modules annexes (Feature Flags et autres) +
+	Donc quand on prend des modules en plus, on se retrouve vite à avoir une facturation "custom" directement discutée avec Harness
+
+* J'ai croisé *Medhi* maintenant chez Ippon, et nous avons parlé du programme Black Belt et de la stratégie que j'ai proposée chez Softeam
+	** Black Belt : par ceinture, 12 SLOs à atteindre
+	** ils ont développé une application Black Belt spécifique pour permettre aux Ippons de suivre leur avancement dans les parcours
+
+* *Miretis* : 
+	** 900 personnes
+	** tous les leaders de communautés sont au 4/5 pour gérer l'activité de leur communauté
 
 == Avis sur le salon
 

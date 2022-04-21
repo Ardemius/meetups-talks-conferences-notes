@@ -43,8 +43,8 @@ toc::[]
 * Et c'est parti pour Devoxx France 2022, *les "vrais" 10 ans de Devoxx France* ! 😁😁😁
 * *Softeam* sera présent au stand 30 cette année
 
-image:devoxx-france-2022_001.jpg[width=450]
-image:devoxx-france-2022_002.jpg[width=450]
+image:devoxx-france-2022_intro_1.jpg[width=450]
+image:devoxx-france-2022_intro_2.jpg[width=450]
 
 === 09h30 - 12h30 (242AB) : Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM
 
@@ -69,10 +69,10 @@ Au cours de cette université nous verrons comment diagnostiquer, comprendre et 
 
 ==== Notes
 
-image::devoxx-france-2022_01.jpg[]
+image::devoxx-france-2022_001.jpg[]
 
 .oomkilled !
-image:devoxx-france-2022_02.jpg[]
+image:devoxx-france-2022_002.jpg[]
 
 * 1ere action avant quoi que ce soit d'autre : *augmenter la mémoire*
 * ensuite, mettre en place du monitoring (Prometheus est ton ami)
@@ -81,10 +81,10 @@ image:devoxx-france-2022_02.jpg[]
 NOTE: Datadog n'utilise PAS Grafana
 
 .Attention à la différence entre MB, megabytes (1000^2 bytes), et MiB, mebibytes (1024^2 bytes)
-image:devoxx-france-2022_03.jpg[]
+image:devoxx-france-2022_003.jpg[]
 
 .Les différents types d'espace de la JVM
-image:devoxx-france-2022_04.jpg[]
+image:devoxx-france-2022_004.jpg[]
 
 * Conseil : stacker les pools (qui peuvent être unitairement proches de 0), et soustrayez la taille de la heap pour disposer d'un résultat plus facilement exploitable.
 
@@ -106,31 +106,31 @@ Pour plus de détails, voir https://softwareperformancenotes.github.io/rssvsz/
 ====
 
 .`jcmd` : un couteau suisse permettant de tracker la mémoire native (native memory tracking)
-image:devoxx-france-2022_05.jpg[]
+image:devoxx-france-2022_005.jpg[]
 
 * Les *threads* également occupent de l'espace mémoire
 
 NOTE: Activer le *Native Memory Tracking (NMT)* a un petit overhead dont il faut tenir compte.
 
 .Virtual memory, reserved memory, committed memory
-image:devoxx-france-2022_06.jpg[]
+image:devoxx-france-2022_006.jpg[]
 
 .Et maintenant côté JVM (used heap, committed heap, max heap)
-image:devoxx-france-2022_07.jpg[]
-image:devoxx-france-2022_08.jpg[]
+image:devoxx-france-2022_007.jpg[]
+image:devoxx-france-2022_008.jpg[]
 
 .Qu'est-ce que la mémoire virtuelle ? (virtual memory)
-image:devoxx-france-2022_09.jpg[]
-image:devoxx-france-2022_10.jpg[]
+image:devoxx-france-2022_009.jpg[]
+image:devoxx-france-2022_010.jpg[]
 
-image:devoxx-france-2022_11.jpg[]
-image:devoxx-france-2022_12.jpg[]
+image:devoxx-france-2022_011.jpg[]
+image:devoxx-france-2022_012.jpg[]
 
 .pmap pour explorer finalement la mémoire
-image:devoxx-france-2022_13.jpg[]
+image:devoxx-france-2022_013.jpg[]
 
 .oomkill car trop peu d'espace mémoire restant ! 
-image:devoxx-france-2022_14.jpg[]
+image:devoxx-france-2022_014.jpg[]
 
 * Pour éviter cela, préférer faire varier le *XMS* et *XMX*.
 * et le mieux est de *TESTER*
@@ -140,7 +140,7 @@ image:devoxx-france-2022_14.jpg[]
 * Attention à l'usage de Netty et son usage de *DirectByteBuffer* (avec la gestion des *EventLoop* et de leurs *ThreadLocal* )
 
 .Native allocator et malloc
-image:devoxx-france-2022_15.jpg[]
+image:devoxx-france-2022_015.jpg[]
 
 * *glibc's malloc* is managing memory via technic called *Arena memory management*
     ** unfortunately, there is no service ability tooling around glibc arena management 🙁
@@ -168,13 +168,13 @@ Pour plus de détails, voir https://blog.avenuecode.com/java-mission-control-and
 ====
 
 .Exemple d'infos remontées par JFR durant la démo de JP
-image:devoxx-france-2022_16.jpg[]
+image:devoxx-france-2022_016.jpg[]
 
 The JDK implementation by Oracle is based on the open-source OpenJDK project, which includes the HotSpot virtual machine. +
 It contains 2 *conventional JIT-compilers*: the *client compiler*, also called *C1* and the *server compiler*, called opto or *C2*.
 
 .Différences entre les usages avec compilateurs C1 et C2 
-image:devoxx-france-2022_17.jpg[]
+image:devoxx-france-2022_017.jpg[]
 
 .Un petit mot sur GraalVM
 [NOTE]
@@ -205,10 +205,10 @@ Pour plus de détails, voir https://www.baeldung.com/graal-java-jit-compiler
     * level 4 - C2
 
 .TieredCompilation Heuristics (C1, C2)
-image:devoxx-france-2022_18.jpg[]
+image:devoxx-france-2022_018.jpg[]
 
 .Measuring startup time
-image:devoxx-france-2022_19.jpg[]
+image:devoxx-france-2022_019.jpg[]
 
 * commande utilisée : `docker run --cpus=<n> -ti spring-petclinic`
     ** JVM Startup time `XX:TieredStopAtLevel=1` +
@@ -216,10 +216,10 @@ image:devoxx-france-2022_19.jpg[]
 
 ===== Optimisations et améliorations côté GC
 
-image:devoxx-france-2022_20.jpg[]
+image:devoxx-france-2022_020.jpg[]
 
 .Sélection automatique du GC par la JVM (GC ergonomics)
-image:devoxx-france-2022_21.jpg[]
+image:devoxx-france-2022_021.jpg[]
 
 * sélection automatique, sauf si vous forcez le GC via les flags
 
@@ -227,28 +227,28 @@ image:devoxx-france-2022_21.jpg[]
 
 * `cpu.weight` : c'est du *cgroup v2*
 
-image:devoxx-france-2022_22.jpg[]
+image:devoxx-france-2022_022.jpg[]
 
 * Shares / quotas : the lower bound of a CPU request is called *shares*
     ** *shares* : a CPU is divided 1024 shares
     ** *quotas* : CPU is split in periods of 100 ms (by default)
 
 .shares
-image:devoxx-france-2022_23.jpg[]
+image:devoxx-france-2022_023.jpg[]
 
 *Kubernetes* utilise le nombre de *shares* comme *mécanisme de scheduling*.
 
 .quotas
-image:devoxx-france-2022_23b.jpg[]
+image:devoxx-france-2022_023b.jpg[]
 
 .Conclusions sur les shares et quotas
-image:devoxx-france-2022_24.jpg[]
+image:devoxx-france-2022_024.jpg[]
 
 -> If the process *reaches its limit*, it will get throttled. +
 ie it *will have to wait for the next period*.
 
 .CPU throttling
-image:devoxx-france-2022_25.jpg[]
+image:devoxx-france-2022_025.jpg[]
 
 * A partir du JDK 17, vous avez accès au `jdk.ContainerCPUThrottling`
 * Setting CPU shares / quotas have a direct impact on `Runtime.availableProcessors()` API + this API is used to : 
@@ -280,7 +280,7 @@ TIP: *Laissez donc tourner JFR en permanence...* +
 Et mettez en place un système pour récupérer les fichiers de JFR en continu (c'est ce que fait Datadog)
 
 .References
-image:devoxx-france-2022_26.jpg[]
+image:devoxx-france-2022_026.jpg[]
 
 *Q&A* : 
 
@@ -313,34 +313,34 @@ Pièges de devs, pièges de prod, ils seront découverts autour d'un format rece
 ==== Notes
 
 .Faites un retour sur Kafka !
-image:devoxx-france-2022_27.jpg[]
+image:devoxx-france-2022_027.jpg[]
 
 .Fonctionnement global de Kafka
-image:devoxx-france-2022_28.jpg[]
+image:devoxx-france-2022_028.jpg[]
 
 .Dans Kafka, les records sont centraux
-image:devoxx-france-2022_29.jpg[]
+image:devoxx-france-2022_029.jpg[]
 
 .Les records sont écrits dans des partitions
-image:devoxx-france-2022_30.jpg[]
+image:devoxx-france-2022_030.jpg[]
 
 .Les partitions sont regroupées dans des topics
-image:devoxx-france-2022_31.jpg[]
+image:devoxx-france-2022_031.jpg[]
 
 .Sous le capot, comment fonctionne l'envoi de records
-image:devoxx-france-2022_32.jpg[]
+image:devoxx-france-2022_032.jpg[]
 
     * Les records ne sont pas envoyés initialement, mais accumulés (*Record Accumulator*)
     * Netty est utilisé dans la chaîne d'envoi (à creuser)
     * le *send* est complètement bloquant
 
 .Le producer est la cible d'un fonctionnement principalement bloquant
-image:devoxx-france-2022_33.jpg[]
+image:devoxx-france-2022_033.jpg[]
 
     * le producer peut être appelé de n'importe quel thread, tandis que le consumer ne peut être appelé que par 1 seul thread
 
 .Attention au partitioner dont l'algo peut varier en fonction du langage sous-jacent !
-image:devoxx-france-2022_34.jpg[]
+image:devoxx-france-2022_034.jpg[]
 
 .Tombstone records
 [NOTE]
@@ -361,32 +361,32 @@ WARNING: Toujours bien vérifier que l'on a *ciblé une partition qui existe* av
 -> Deploying Kafka on Kubernetes via Strimzi (une distribution de Kafka)
 
 .What will the Strimzi operator do ?
-image:devoxx-france-2022_35.jpg[]
+image:devoxx-france-2022_035.jpg[]
 
 Strimzi peut être utilisé pour une palanquée de fonctionnalités !
 
 .When you write a record
-image:devoxx-france-2022_36.jpg[]
+image:devoxx-france-2022_036.jpg[]
 
 IMPORTANT: LA chose essentielle à configurer ici, le *delivery.timeout.ms*
 
 .Les acks
-image:devoxx-france-2022_37.jpg[]
+image:devoxx-france-2022_037.jpg[]
 
 RedHat a utilisé "ToxyProxy" de Shopify pour créer des "toxic" qui permettent d'émuler un "vrai" comportement de PROD (c'est à dire avec des soucis) 
 
 .Les retries
-image:devoxx-france-2022_38.jpg[]
+image:devoxx-france-2022_038.jpg[]
 
 * Dans Kafka l'*ordre est garanti par partition*, et PAS par topic
 
 .Problématiques d'ordering
-image:devoxx-france-2022_39.jpg[]
+image:devoxx-france-2022_039.jpg[]
 
 -> Pour éviter ces soucis, il faut utiliser l'*idempotence*, qui est le défaut depuis Kafka 3.0.1
 
 .Concepts importants
-image:devoxx-france-2022_40.jpg[]
+image:devoxx-france-2022_040.jpg[]
 
 .Kubernetes liveness et readiness
 [NOTE]
@@ -397,32 +397,32 @@ image:devoxx-france-2022_40.jpg[]
 ====
 
 .Non disruptive rolling update
-image:devoxx-france-2022_41.jpg[]
+image:devoxx-france-2022_041.jpg[]
 
 .Strimzi rolling updates
-image:devoxx-france-2022_42.jpg[]
+image:devoxx-france-2022_042.jpg[]
 
 .How is guaranteed availability and durability ?
-image:devoxx-france-2022_43.jpg[]
+image:devoxx-france-2022_043.jpg[]
 
 .On Kubernetes node upgrades
-image:devoxx-france-2022_44.jpg[]
-image:devoxx-france-2022_45.jpg[]
+image:devoxx-france-2022_044.jpg[]
+image:devoxx-france-2022_045.jpg[]
 
 .The art of consuming from Kafka (et le boulot côté consumer)
-image:devoxx-france-2022_46.jpg[]
+image:devoxx-france-2022_046.jpg[]
 
 *__consumer_offsets* est ce qu'on appelle un topic compacté
 
 .Le poll fait tout une tartine de choses...
-image:devoxx-france-2022_47.jpg[]
+image:devoxx-france-2022_047.jpg[]
 
 * Le *rebalance* est ce qui fait faire des cauchemars à tous les dev Kafka
 
 .Le polling thread doit toujours être le même une fois choisi pour un consumer
-image:devoxx-france-2022_48.jpg[]
+image:devoxx-france-2022_048.jpg[]
 
-image:devoxx-france-2022_49.jpg[]
+image:devoxx-france-2022_049.jpg[]
 
     * *ne PAS commiter après chaque écriture* : serait très très lent
 
@@ -430,39 +430,39 @@ image:devoxx-france-2022_49.jpg[]
 Clients will be able to produce and consume records to/from Kafka ???
 
 .On va ici parler de SLO
-image:devoxx-france-2022_50.jpg[]
+image:devoxx-france-2022_050.jpg[]
 
 Pour construire ce SLO, on va utiliser un *canary*
 
-image:devoxx-france-2022_51.jpg[]
+image:devoxx-france-2022_051.jpg[]
 
 .Gestion des offsets
-image:devoxx-france-2022_52.jpg[]
+image:devoxx-france-2022_052.jpg[]
 
 .CommitSync / CommitAsync
-image:devoxx-france-2022_53.jpg[]
+image:devoxx-france-2022_053.jpg[]
 
 .__consumer_offsets
-image:devoxx-france-2022_54.jpg[]
+image:devoxx-france-2022_054.jpg[]
 
 .Initial position (earliest ou latest)
-image:devoxx-france-2022_55.jpg[]
+image:devoxx-france-2022_055.jpg[]
 
 Conseil de Guillaume : latest est le default, c'est dommage, *passez en earliest*.
 
 ===== Reactive programming en Kafka
 
 .Event Driven microservices
-image:devoxx-france-2022_56.jpg[]
+image:devoxx-france-2022_056.jpg[]
 
 .Acknowledgement
-image:devoxx-france-2022_57.jpg[]
+image:devoxx-france-2022_057.jpg[]
 
 .NAck (Negative Acknowledgement)
-image:devoxx-france-2022_58.jpg[]
+image:devoxx-france-2022_058.jpg[]
 
 .Emitter
-image:devoxx-france-2022_59.jpg[]
+image:devoxx-france-2022_059.jpg[]
 
     * Attention, *l'emitter est asynchrone*, et comme certains éléments de Kafka ne le sont pas, il y aura donc un mécanisme de *backpressure* à gérer.
 
@@ -474,13 +474,13 @@ Parmi les schémas les plus utilisés avec Kafka :
 *Poison pill* : le record qui ne peut pas être processé, la nemesis de Kafka
 
 .Throttled Commit Strategy (poison pill)
-image:devoxx-france-2022_60.jpg[]
+image:devoxx-france-2022_060.jpg[]
 
 .Rabalancing 
-image:devoxx-france-2022_61.jpg[]
+image:devoxx-france-2022_061.jpg[]
 
 .Incremental cooperative balancing
-image:devoxx-france-2022_62.jpg[]
+image:devoxx-france-2022_062.jpg[]
 
     * La "nouvelle" façon de rebalancer est à droite
 
@@ -504,14 +504,14 @@ Comment éviter un problème de disque full ?
 
 Nouvel operator (autre que Strimzi) : le *Service Binding Operator*
 
-image:devoxx-france-2022_63.jpg[]
+image:devoxx-france-2022_063.jpg[]
 
 .Operating your OWN Kafka (is is NOT impossible)
-image:devoxx-france-2022_64.jpg[]
+image:devoxx-france-2022_064.jpg[]
 
 -> C'est ce qu'offre RedHat 😉 
 
-image:devoxx-france-2022_65.jpg[]
+image:devoxx-france-2022_065.jpg[]
 
 
 *Avis* : conf très dense, décrivant très bien le fonctionnement des différentes fonctionnalités de Kafka 👍 (mais alors c'est long et dense ! Dur de tenir 😅) 
@@ -533,7 +533,7 @@ Aujourd’hui, le Chaos Engineering est de plus en plus présent dans les esprit
 
 Akram, qui travaille chez WeScale, nous fait un REX de son travail de SRE chez son client Talend.
 
-image:devoxx-france-2022_66.jpg[]
+image:devoxx-france-2022_066.jpg[]
 
 .https://principlesofchaos.org
 ____
@@ -545,14 +545,14 @@ ____
     ** pour l'alerting
 
 .Litmus
-image:devoxx-france-2022_67.jpg[]
+image:devoxx-france-2022_067.jpg[]
 
     * Chaos engineering in a Cloud native way
         ** il s'agit de ressources Kubernetes
     * C'est toujours un incubating project
 
 .fonctionnement de Litmus
-image:devoxx-france-2022_68.jpg[]
+image:devoxx-france-2022_068.jpg[]
 
 Le code est disponible sur GitHub : "litmus-chaosworkflow"
 
@@ -561,7 +561,7 @@ Le code est disponible sur GitHub : "litmus-chaosworkflow"
     ** à partir duquel on va pouvoir modifier les workflows
 
 .chaos center de Litmus
-image:devoxx-france-2022_69.jpg[]
+image:devoxx-france-2022_069.jpg[]
 
 * Présence d'un "chaos hub", sûrement pour partager les différentes expérimentations
 
@@ -593,7 +593,7 @@ En support de cette session : des slides mais surtout beaucoup de code !
 
 ==== Notes
 
-image:devoxx-france-2022_70.jpg[]
+image:devoxx-france-2022_070.jpg[]
 
 === 18h30 - 19h00 (AM) : Oubliez Docker, appelez moi Compose
 
@@ -655,7 +655,7 @@ Devoxx France a été créé en 2012, après 4 années d'aventure avec le Paris 
 
 ==== Notes
 
-image:devoxx-france-2022_71.jpg[]
+image:devoxx-france-2022_071.jpg[]
 
 Histoire du salon : 
 
@@ -668,8 +668,8 @@ Histoire du salon :
 * 2022 : 6 différents Devoxx partout dans le monde
 * 15 différents Voxxed Days
 
-image:devoxx-france-2022_72.jpg[]
-image:devoxx-france-2022_73.jpg[]
+image:devoxx-france-2022_072.jpg[]
+image:devoxx-france-2022_073.jpg[]
 
 === 09h25 - 09h45 (AB) : 10 ans de Tech à travers le podcast Niptech
 
@@ -709,7 +709,7 @@ Quel est le point commun entre la mission Apollo 13 et l'avenir de l'humanité ?
 
 Scientifiques du GIEC : "ce n'est plus objectif Lune, c'est objectif *seulement +1,5°C"
 
-image:devoxx-france-2022_74.jpg[]
+image:devoxx-france-2022_074.jpg[]
 
 * 2021 / 2022 : records d'émissions de GES et de température
 * +5% d'émissions de GES depuis les accords de Paris (2015)
@@ -717,7 +717,7 @@ image:devoxx-france-2022_74.jpg[]
 
 -> Donc côté objectifs "Houston we have another problem..."
 
-image:devoxx-france-2022_75.jpg[]
+image:devoxx-france-2022_075.jpg[]
 
 * L'*extraction des minerais* et leur *transformations en matériel numérique* a un énorme impact
     ** il faut donc *fabriquer moins* et qui *dure plus lontemps*
@@ -739,7 +739,7 @@ Au rythme où on consomme les matériaux actuellement, il n'y aura *plus d'ordin
 Pour pouvoir transmettre un avenir à nos enfants -> *Low tech*
 
 .Comment participer au mouvement ?
-image:devoxx-france-2022_76.jpg[]
+image:devoxx-france-2022_076.jpg[]
 
 Frédéric : le monde de demain (à l'échelle de quelques générations) sera forcément beaucoup plus low tech, il n'y a pas le choix, il n'y a pas d'autre possibilité.
 
@@ -772,7 +772,7 @@ L’objectif de la présentation est de ressortir avec un panorama clair des enj
 
 ==== Notes
 
-image:devoxx-france-2022_77.jpg[]
+image:devoxx-france-2022_077.jpg[]
 
 * Enorme problème : actuellement, modification chimique de notre atmosphère (émission de gaz à effet de serre)
 * 2e problème : disponibilité limitée des matières premières (plus de pétrole à terme)
@@ -783,14 +783,14 @@ Question : quelles sont les urgences ?
     * "quels endroits peut-on rendre moins bucoliques pour résoudre certains problèmes..."
 
 .Rapport du shift project 2018
-image:devoxx-france-2022_78.jpg[]
+image:devoxx-france-2022_078.jpg[]
 
     * certaines conclusions et certains chiffres de ce rapport sont erronés...
 
 Les gens qui écrivent ce type de rapport ne sont pas forcément des experts des sujets traités...
 
 .La bêtise de "l'émission équivalente d'un mail"
-image:devoxx-france-2022_79.jpg[]
+image:devoxx-france-2022_079.jpg[]
 
 -> C'est "faux" : comment ont-été obtenus ces résultats ???
 
@@ -803,12 +803,12 @@ Quantifier :
     * end of life
 
 .Origine des émissions de CO2 dues à la combustion d'énergie en 2018
-image:devoxx-france-2022_80.jpg[]
+image:devoxx-france-2022_080.jpg[]
 
 * Sans entrer dans le débat du nucléaire, on voit que la France émet peu de CO2 dans sa production d'électricité
 
 .éCO2mix
-image:devoxx-france-2022_81.jpg[]
+image:devoxx-france-2022_081.jpg[]
 
 -> l'émission de CO2 dépend en plus du moment de la journée
 
@@ -819,7 +819,7 @@ La question du *pilotage* est essentielle, car gérer une grille électrique est
     * *pilotage de la consommation* : vous dites que vous aurez besoin de votre Tesla demain à 08h, Tesla discute dès lors avec EDF pour savoir quel est le meilleur moment où la recharger.
 
 .Part du numérique dans l'électricité
-image:devoxx-france-2022_82.jpg[]
+image:devoxx-france-2022_082.jpg[]
 
 -> numérique total en France (attention, que le RUN) représente ~3% de la production de CO2 : ce n'est pas "énorme" au final.
 
@@ -831,10 +831,10 @@ Quentin : Il ne FAUT pas arrêter sa box ! Certains matériel ne sont pas fait p
 ====
 
 .Ordre de grandeur des consommations électriques de divers matériels, outils, etc.
-image:devoxx-france-2022_83.jpg[]
+image:devoxx-france-2022_083.jpg[]
 
 .Consommation électrique finale par secteur en France
-image:devoxx-france-2022_84.jpg[]
+image:devoxx-france-2022_084.jpg[]
 
 -> Le numérique n'apparaît même pas sur ce graphe tellement c'est petit... +
 Tout l'opposé du *transport* et du *chauffage*.
@@ -908,7 +908,7 @@ Après cette conférence, vous ne verrez plus le Domain-Driven Design tout à fa
 
 L'origine du DDD : le *Bounded Context*
 
-image:devoxx-france-2022_85.jpg[]
+image:devoxx-france-2022_085.jpg[]
 
 * event storming
 
@@ -933,7 +933,7 @@ Venez découvrir VCStream : la plateforme d'intégration de données créée par
 
 ==== Notes
 
-image::devoxx-france-2022_86.jpg[]
+image::devoxx-france-2022_086.jpg[]
 
 Une description du projet est disponible sur le blog de Quarkus : https://quarkus.io/blog/decathlon-user-story/
 
@@ -948,15 +948,15 @@ Les challenges :
 *Avro* choisi comme format des messages
 
 .architecture
-image:devoxx-france-2022_87.jpg[]
+image:devoxx-france-2022_087.jpg[]
 
 .technologies utilisées
-image:devoxx-france-2022_88.jpg[]
+image:devoxx-france-2022_088.jpg[]
 
 Utilisation de *Microprofile Reactive Messaging* côté Quarkus (à savoir *Smallrye*)
 
 .Code du routeur
-image:devoxx-france-2022_89.jpg[]
+image:devoxx-france-2022_089.jpg[]
 
 * on voit que rien n'est spécifique Kafka, c'est tout l'intérêt de Microprofile Reactive Messaging.
 * Les messages sont traités au fil de l'eau
@@ -964,7 +964,7 @@ image:devoxx-france-2022_89.jpg[]
     ** Les I/O sont non bloquants
 
 .Performances obtenues
-image:devoxx-france-2022_90.jpg[]
+image:devoxx-france-2022_090.jpg[]
 
 Les chiffres : 
 
@@ -973,7 +973,7 @@ Les chiffres :
 Utilisation de la fonctionnalité expérimentale de traitement batch (bulk) des messages offertes par Smallrye Reactive Messaging.
 
 .Usage de Kafka
-image:devoxx-france-2022_91.jpg[]
+image:devoxx-france-2022_091.jpg[]
 
 * "throttled" : permet de commit les offsets par lot
 
@@ -1032,10 +1032,10 @@ Après cette présentation, vous aurez des clés pour penser la transformation d
 * Penser services est différent de penser applications, et c'est un cheminement qui nécessite d'être vécu (et pas seulement lu dans des livres)
 
 .Start with what you want to offer
-image:devoxx-france-2022_92.jpg[]
+image:devoxx-france-2022_092.jpg[]
 
 .Les difficultés avec la conception, l'initiation d'un service
-image:devoxx-france-2022_93.jpg[]
+image:devoxx-france-2022_093.jpg[]
 
     * on fait une *"v0" du service* avec un client de test, un "cobaye" et on en tire les 1eres conclusions. 
         ** Il faut cette v0 afin de pouvoir avancer, et *d'éviter une "risk paralysis"*
@@ -1048,7 +1048,7 @@ Rappels :
     * *MTTD* : Mean Time To Detect
     * *MTTR* : Mean Time To Recover
 
-image:devoxx-france-2022_94.jpg[]
+image:devoxx-france-2022_094.jpg[]
 
     * bonnes pratiques : anticiper des *scénarios de "désastres"*
     * *blast radius* : "si tu fais une migration qui se passe pas bien, combien de personnes impactes-tu ? Ah ben beaucoup..."
@@ -1071,7 +1071,7 @@ On parle ici de SRE, tel que l'a décrit Google.
         ** OU rollforward, on ne peut PAS revenir en arrière, MAIS on met en place de suite une équipe dont le but sera de corriger les problèmes liés à la livraison
 
     * *Standard Operating Procedures* : si un pb arrive, pensez à la pauvre personne d'astreinte, seule, et qui aurait du être tranquille dans 1 heure... +
-    image:devoxx-france-2022_95.jpg[] 
+    image:devoxx-france-2022_095.jpg[] 
     +
     Donc, il faut faire son max pour créer des procédures, docs, clairs décrivant les problèmes pouvant arriver (afin d'aider le malheureux d'astreinte le moment venu)
 
@@ -1092,7 +1092,32 @@ YugabyteDB est open-source, et nous rentrerons dans les détails de l'architectu
 
 ==== Notes
 
-TO BE COMPLETED
+* A une époque on a eu besoin d'aller au-delà d'une seule machine hébergeant sa BDD.
+    ** Cela a été le début du NoSQL et des BDD distribuées qui se sont écartées de SQL.
+
+* Avec Google Spanner, on veut faire de la BDD distribuée MAIS avec le support du SQL
+    ** Par contre, il y a des contraintes, l'une d'entre elles étant que Spanner ne tourne QUE sur GCP.
+
+* L'idée de YugabyteDB, utiliser (passer) un Postgre en distribué pour répondre aux problématiques précédentes : *BDD distribuée ET support du SQL*
+
+*Fonctionnement de YugaByteDB* : 
+
+    * On passe les *tables* AM et les *indexes* AM (Access Method) en LSM Tree (Log Structured Merge Tree)
+        ** Le LSM tree va permettre de distribuer les données et est efficace avec les disques SSD
+            *** On va splitter les tables et indexes (en tablettes sur Yuga, et en shards sur Spanner (à vérifier dans ce dernier cas))
+            *** C'est Spanner qui a inspiré ce fonctionnement
+
+    * *Compatibilité Postgre* : on sera évidemment toujours plus lent qu'un appel local à Postgre. L'intérêt de YugaByteDB est de permettre de scaler cet usage de Postgre. 
+
+    * En lisant sur les *leaders*, on va être strongly consistent, et pas eventually consistent +
+    image:devoxx-france-2022_096.jpg[]
+    image:devoxx-france-2022_097.jpg[]
+    image:devoxx-france-2022_098.jpg[]
+
+    * l'idée derrière YugaByteDB : la haute dispo et la résilience.
+        ** On cherche à automatiser toute l'orchestration, complexe, nécessaire à la distribution des données.
+
+Présentation apparemment disponible sur Prezi 🙂 : https://prezi.com/p/im3wzs3pmcpx/anatomy-of-a-distributed-sql-database-yugabytedb/
 
 === 16h45 - 17h30 (AM) : Montée de version sans interruption
 
