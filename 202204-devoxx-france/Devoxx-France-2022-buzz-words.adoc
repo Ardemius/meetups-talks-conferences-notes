@@ -42,6 +42,9 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 * *Kubernetes* partout pour tout ce qui est Cloud Native
 	** avec *Prometheus* et *Grafana* pour le monitoring et le dashboarding 
+* *Quarkus* est de plus en plus adopté, et passe de plus en plus en PROD (Décathlon, etc.) 
+* *Kafka* encore et toujours partout
+* *Java Flight Recorder* pour le monitoring de la JVM (Hotspot)
 
 == Technos dont on parle moins (ou plus !)
 

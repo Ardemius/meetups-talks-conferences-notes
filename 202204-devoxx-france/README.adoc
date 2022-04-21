@@ -72,7 +72,7 @@ Au cours de cette université nous verrons comment diagnostiquer, comprendre et 
 image::devoxx-france-2022_01.jpg[]
 
 .oomkilled !
-image::devoxx-france-2022_02.jpg[]
+image:devoxx-france-2022_02.jpg[]
 
 * 1ere action avant quoi que ce soit d'autre : *augmenter la mémoire*
 * ensuite, mettre en place du monitoring (Prometheus est ton ami)
@@ -655,7 +655,7 @@ Devoxx France a été créé en 2012, après 4 années d'aventure avec le Paris 
 
 ==== Notes
 
-image:devoxx-f70rance-2022_71.jpg[]
+image:devoxx-france-2022_71.jpg[]
 
 Histoire du salon : 
 
@@ -668,8 +668,8 @@ Histoire du salon :
 * 2022 : 6 différents Devoxx partout dans le monde
 * 15 différents Voxxed Days
 
-image:devoxx-f70rance-2022_72.jpg[]
-image:devoxx-f70rance-2022_73.jpg[]
+image:devoxx-france-2022_72.jpg[]
+image:devoxx-france-2022_73.jpg[]
 
 === 09h25 - 09h45 (AB) : 10 ans de Tech à travers le podcast Niptech
 
@@ -933,7 +933,77 @@ Venez découvrir VCStream : la plateforme d'intégration de données créée par
 
 ==== Notes
 
-TO BE COMPLETED
+image::devoxx-france-2022_86.jpg[]
+
+Une description du projet est disponible sur le blog de Quarkus : https://quarkus.io/blog/decathlon-user-story/
+
+Les challenges : 
+
+    * Time to Market
+    * streaming vs batch
+    * data standardization
+    * scalability & resilience
+    * *Quarkus* !
+
+*Avro* choisi comme format des messages
+
+.architecture
+image:devoxx-france-2022_87.jpg[]
+
+.technologies utilisées
+image:devoxx-france-2022_88.jpg[]
+
+Utilisation de *Microprofile Reactive Messaging* côté Quarkus (à savoir *Smallrye*)
+
+.Code du routeur
+image:devoxx-france-2022_89.jpg[]
+
+* on voit que rien n'est spécifique Kafka, c'est tout l'intérêt de Microprofile Reactive Messaging.
+* Les messages sont traités au fil de l'eau
+    ** utilisation de la notion d'acknowledgement de Kafka
+    ** Les I/O sont non bloquants
+
+.Performances obtenues
+image:devoxx-france-2022_90.jpg[]
+
+Les chiffres : 
+
+    * 1 millions de messages / minutes / unité de CPU / GO de RAM !!!!
+
+Utilisation de la fonctionnalité expérimentale de traitement batch (bulk) des messages offertes par Smallrye Reactive Messaging.
+
+.Usage de Kafka
+image:devoxx-france-2022_91.jpg[]
+
+* "throttled" : permet de commit les offsets par lot
+
+*Quarkus* : 
+
+    * privilégie la génération du byteode au build à la réflexion au runtime
+    * un système d'extension qui sépare build time et runtime : une librairie uniquement nécessaire au build ne sera pas packagée pour le runtime.
+    * un effort est fait pour que chaque extension démarre le plus rapidement possible
+
+//-
+
+* Prometheus et Grafana pour le monitoring sur Kubernetes.
+* *OpenTracing* avec Jaeger, et utilisation d'ID de corrélation
+    ** OpenTracing va permettre de modifier les messages Kafka afin de pouvoir les tracer au travers de la plateforme
+
+* Kirk Pepperdine : "Measure, don't guess"
+    ** utilisation d'*async-profiler* et de *Java Flight Recorder*
+    ** L'intérêt d'async-profiler est qu'il sort des flame graphs
+
+Problématiques du *batching* (traitement par lot)
+
+    * problématique de supervision
+        ** refactoring des traces
+        ** impossible d'identifier unitairement un message
+    * etc.
+
+//-
+
+* VSStream est une vraie réussite chez Décathlon
+    ** Quarkus a intégré la stack logicielle de Décathlon
 
 === 14h30 - 15h15 (252AB) : Vers une culture où tout le monde est responsable de l'indisponibilité
 
@@ -959,7 +1029,51 @@ Après cette présentation, vous aurez des clés pour penser la transformation d
 
 ==== Notes
 
-TO BE COMPLETED
+* Penser services est différent de penser applications, et c'est un cheminement qui nécessite d'être vécu (et pas seulement lu dans des livres)
+
+.Start with what you want to offer
+image:devoxx-france-2022_92.jpg[]
+
+.Les difficultés avec la conception, l'initiation d'un service
+image:devoxx-france-2022_93.jpg[]
+
+    * on fait une *"v0" du service* avec un client de test, un "cobaye" et on en tire les 1eres conclusions. 
+        ** Il faut cette v0 afin de pouvoir avancer, et *d'éviter une "risk paralysis"*
+
+"*SLA* or *SLO* are never certain, because only tax and death are. They are nothing more than expectations".
+
+Rappels : 
+
+    * *MTBF* : Mean Time Between Failures
+    * *MTTD* : Mean Time To Detect
+    * *MTTR* : Mean Time To Recover
+
+image:devoxx-france-2022_94.jpg[]
+
+    * bonnes pratiques : anticiper des *scénarios de "désastres"*
+    * *blast radius* : "si tu fais une migration qui se passe pas bien, combien de personnes impactes-tu ? Ah ben beaucoup..."
+    * Intérêt de l'usage d'une *application canary*
+
+De nouveau ce conseil : livrer une version v0 de votre service le plus tôt possible.
+
+* "Il faut sauver les instances (les petits chats)" : il ne faut pas se dire qu'une instance de dev ne mérité pas d'être migrée, peut être killée (la considérer comme un petit chat à protéger ? 😉)
+    ** On se priverait d'un cheminement utile pour la PROD. +
+    C'est une question de philosophie, on "sauve les petits chats" et on apprend en le faisant.
+
+*What is the SLO you are aiming at?* +
+On parle ici de SRE, tel que l'a décrit Google.
+
+    * *observability* : commencer gros grain (vision OPS), "est-ce up ou pas ?"
+        ** et pas "avec un ring buffer à la place on pourrait avoir blablabla" (vision DEV), trop dans le détail *trop tôt*. On commence par un plus haut niveau de granularité ("est-ce up ou pas ?" par exemple)
+    
+    * *rollback / rollforward* : il faut être capable de revenir en arrière rapidement et facilement
+        ** mais cela peut être (très) difficile
+        ** OU rollforward, on ne peut PAS revenir en arrière, MAIS on met en place de suite une équipe dont le but sera de corriger les problèmes liés à la livraison
+
+    * *Standard Operating Procedures* : si un pb arrive, pensez à la pauvre personne d'astreinte, seule, et qui aurait du être tranquille dans 1 heure... +
+    image:devoxx-france-2022_95.jpg[] 
+    +
+    Donc, il faut faire son max pour créer des procédures, docs, clairs décrivant les problèmes pouvant arriver (afin d'aider le malheureux d'astreinte le moment venu)
 
 === 15h30 - 16h15 (253) : Anatomie d'une base SQL distribuée (YugabyteDB)
 
