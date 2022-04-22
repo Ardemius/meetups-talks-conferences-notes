@@ -1806,8 +1806,6 @@ En 2015, il rejoint en tant que responsable de l'équipe support CloudBees, Inc.
 Les Cast Codeurs, le papy des podcasts de développement francophones revient cette année à Devoxx pour clôturer cette belle conférence dans la relaxation, la joie et peut être la blague carambar. Venez partager avec le public vos impressions de cette cuvée Devoxx, des choses qui vous on surpris, des tendances qui se dessinent.
 ----
 
-==== Notes
 
-TO BE COMPLETED
 
 

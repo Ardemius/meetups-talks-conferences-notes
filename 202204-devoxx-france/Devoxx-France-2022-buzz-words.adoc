@@ -53,6 +53,9 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 == Conf à voir sur YouTube
 
+* architecture hexagonale
+* votre cerveau est nul !
+
 == Sociétés et personnes rencontrées
 
 * *COSIUM* : 100 milliards de capitalisation boursière, a dernièrement racheté Essilor
