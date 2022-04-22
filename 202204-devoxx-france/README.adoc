@@ -41,9 +41,13 @@ toc::[]
 
 * https://www.devoxx.fr/, du 20 au 22/04/2022
 * Et c'est parti pour Devoxx France 2022, *les "vrais" 10 ans de Devoxx France* ! 😁😁😁
-* *Softeam* sera présent au stand 30 cette année
 
 image:devoxx-france-2022_intro_1.jpg[width=450]
+image:devoxx-france-2022_intro_3.jpg[width=450]
+image:devoxx-france-2022_intro_4.jpg[width=450]
+
+* *Softeam* sera présent au stand 30 cette année
+
 image:devoxx-france-2022_intro_2.jpg[width=450]
 
 === 09h30 - 12h30 (242AB) : Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM
@@ -1515,6 +1519,75 @@ Des démonstrations illustreront le principe de bootstrapping des microservices.
 
 Environnement technique : Java, SpringBoot, Telosys
 ----
+
+==== Notes
+
+.Contexte du projet
+image:devoxx-france-2022_125.jpg[]
+image:devoxx-france-2022_126.jpg[]
+
+.Structure des microservices en DDD
+image:devoxx-france-2022_127.jpg[]
+
+.Socle technique
+image:devoxx-france-2022_128.jpg[]
+
+    * petite spécificité : pas d'Hibernate, mais *MyBatis*
+
+.Structuration Maven
+image:devoxx-france-2022_129.jpg[]
+
+Modules Maven : 
+
+    * tout ça pour chaque microservice ?
+    * comment bien démarrer ?
+        ** copier / coller ?
+        ** bootstrapping ?
+
+.Génération de code ?
+image:devoxx-france-2022_130.jpg[]
+
+    * c'est souvent lourd, c'est une black box...
+    * mais on va quand même essayer, MAIS en permettant un maximum de customisation (flexibilité) d'où *Telosys*
+
+.Templates Telosys 
+image:devoxx-france-2022_131.jpg[]
+
+    * Telosys va utiliser le *moteur de templating Velocity* (https://velocity.apache.org)
+
+.Modèle DDD - exemple avec un passage d'ordre
+image:devoxx-france-2022_132.jpg[]
+
+* Telosys est apparemment capable de générer ses diagrammes UML via PlantUML 
+
+.DDD : infrastructure
+image:devoxx-france-2022_133.jpg[]
+
+    * ORM : Spring Data JDBC *ne supporte pas les clés composites*, DONC essai de JPA / Hibernate, mais leur modèle était trop compliqué, ça n'a pas marché, DONC on passe plus bas niveau avec *MyBatis*
+
+.Articulation REST, choix d'une Factory
+image:devoxx-france-2022_134.jpg[]
+
+Telosys permet également : 
+
+    * de générer des TU
+    * de générer des tests d'intégration (Postman, SOAPUI, etc.)
+
+Les gains : 
+
+    * Productivité : en 20 min de démo on a généré des 100e de fichiers
+    * Simplication : certaines parties sont intégralement générées, et deviennent donc "invisibles" pour le développeur
+    * Standardisation
+    * Qualité
+
+*Générateur de code* : critères de choix
+
+    * *flexibilité & adaptibilité* : l'outil doit s'adapter à vos choix, et PAS le contraire
+        ** les templates doivent être facilement adaptables
+        ** possibilité de gérer les *clés primaires composites*
+
+Avis : une bonne conf sur le générateur de code Telosys (créé par Laurent) +
+Un outil intéressant, à garder en tête.
 
 === 11h45 - 12h30 (242AB) : La scale-up, l’autonomie et le sous-marin nucléaire
 

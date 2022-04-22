@@ -45,6 +45,7 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * *Quarkus* est de plus en plus adopté, et passe de plus en plus en PROD (Décathlon, etc.) 
 * *Kafka* encore et toujours partout
 * *Java Flight Recorder* pour le monitoring de la JVM (Hotspot)
+* on parle toujours de *microservices* (même si moins que les années passées), MAIS toujours en mentionnant le DDD (*Domain Driven Design*)
 
 == Technos dont on parle moins (ou plus !)
 
