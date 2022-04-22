@@ -1319,7 +1319,134 @@ Même si la prévision est un art difficile - surtout en ce qui concerne l’ave
 
 ==== Notes
 
-TO BE COMPLETED
+* Ludovic est l'ancien PDG d'Octo, et est maintenant le CTO d'Accenture France (qui a racheté Octo)
+* Octo : 1000 personnes en 2022
+    ** vient de racheter BeNext, un spécialiste du Product Management
+
+.Les mega-trends du digital
+image:devoxx-france-2022_110.jpg[]
+
+Ludovic quant à l'adoption du Cloud, qu'il pensait déjà utilisé par toutes et tous : "C'est quand la mer se retire qu'on voit ceux qui nagent sans maillot de bain..."
+
+Proposition de 3 scénarios : 
+
+    * World Tech Companies
+    * Digital Cold War
+    * Digital Detox
+
+.1 World Tech Companies
+image:devoxx-france-2022_111.jpg[]
+image:devoxx-france-2022_112.jpg[]
+
+* Ludovic : *GAFA* = grandes entreprises qui cherchent à vous "locker chez elles"
+    ** Leur objectif est que l'on puisse passer nos vies chez elles
+* L'*accumulation de données* est un "unfair avantage", il ne peut plus y avoir de concurrence après
+* Ces sociétés deviennent aussi puissantes que les états, à quand un GAFA qui "déclare son indépendance"
+
+.2 Digital Cold War
+image:devoxx-france-2022_113.jpg[]
+image:devoxx-france-2022_114.jpg[]
+
+* Correspond à la réaction des états face aux GAFA
+* Ces positions devraient se durcir dans les années à venir
+* Une *1ere cyber guerre mondiale* ?
+    ** la Chine a un avantage ici : plus peuplée, donc plus d'ingénieurs, plus de facilité à récupérer les data, et l'IA est meilleure avec plus de data
+
+.3 Digital Detox
+image:devoxx-france-2022_115.jpg[]
+image:devoxx-france-2022_116.jpg[]
+
+* Représente les composants requis 
+* retour en force du off-line, car déficit des sources de puissance (intermittence)
+    ** donc positionnement dans le Cloud va devenir compliqué
+* Ce scénario a peut-être déjà commencé : il faut de 6 mois à 1 an aujourd'hui pour équiper une entreprise en PC.
+
+.Coût des transactions en Bitcoin
+image:devoxx-france-2022_117.jpg[]
+
+* Ludovic a des doutes sur les chiffres avancés, mais la source serait fiable (à vérifier) : il semblerait qu'1 transaction en Bitcoin corresponde à 1 T d'émission de CO2. 
+    ** Donc avec 2 transactions, on a atteint notre émission max de CO2 / personne pour un monde durable...
+
+Vers les *right techs* ?
+
+    * respects des objects
+    * respects des xxx
+
+//-
+
+* Que va-t-il se passer ?
+    ** probablement un mix des 3 précédents scénarios
+
+.Conclusions
+image:devoxx-france-2022_118.jpg[]
+image:devoxx-france-2022_119.jpg[]
+
+Le monde va fonctionner dans les années à venir tel que les informaticiens l'auront "codé" : nous avons donc une *responsabilité énorme*. +
+-> A nous de faire en sorte qu'il *suivre des "right techs"*.
+
+Ludovic : l'*USI* d'OCTO aura lieu fin juin 😉 
+
+=== 09h25 - 09h45 (AB) : LesBonsclics, une plateforme pédagogique au service du 1er réseau européen d'aidants numériques.
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2022/speaker/thomas_vandriessche[Thomas Vandriessche]
+--
+Directeur des opérations chez WeTechCare
+--
+
+----
+Wetechcare est une association active en France et en Belgique dont la mission est de faire du numérique une opportunité pour tous.
+
+L'association est à l'origine d'un projet de plateforme digitale, Lesbonsclics, à destination de tout citoyen qui souhaite aider une personne en fragilité numérique sur l'acquisition des compétences numériques de base.
+
+Elle regroupe notamment des contenus pédagogiques et des éléments méthodologiques pour permettre un accompagnement ludique et efficace.
+
+Les utilisateurs bénéficient d'un programme d'animation en ligne permettant de développer ses compétences en fonction de leurs sujets d'intérêt et de leur temps disponible.
+
+En 2021, la plateforme a permis l'accompagnement de plus de 500000 personnes.
+
+Lesbonsclics connaît un succès permanent depuis sa création, chaque mois elle intègre plus de 2000 nouveaux aidants.
+
+L'association s'appuie notamment sur du mécénat de compétences de développeurs pour le développement de sa solution.
+----
+
+==== Notes
+
+Il est ici question de *fracture numérique*.
+
+    * Exemple de la mamy dans la salle d'attente du docteur, pour laquelle on se rend compte qu'elle pensait mais en fait n'a PAS validé son rdv (et donc n'en a pas) 
+
+image:devoxx-france-2022_120.jpg[]
+image:devoxx-france-2022_121.jpg[]
+
+Corrélation très forte entre précarité sociale et précarité numérique
+
+    * frein d'équipement : tout le monde n'est pas équipé. +
+    +20% des français n'ont ni PC ni tablette
+
+*Rapport WeTechCare* : _Monde social et numérique pendant le COVID-19 : de la défiance à l'adoption_
+
+    * transformation de l'offre de service aux usagers : amener vers l'autonomie à l'ère du numérique.
+    * transformation des pratiques : utiliser la technologie pour mieux accompagner.
+
+.Description de l'association WeTechCare
+image:devoxx-france-2022_122.jpg[]
+
+*Les Bons Clics* : plateforme pédagogique de référence pour accompagner & apprendre
+
+    * créée en 2017
+    * 45 000 aidants numériques (+650 / semaine)
+    * 11 000 organisations sociales
+    * 561 000 personnes touchées en 2021
+
+Leurs *perspectives* : s'appuyer sur la technologie pour résoudre des équations sociales.
+
+    * *inclusion numérique* dans 10 ans : quelles sont les connaissances et compétences indispensables pour être pleinement acteur à l'ère du numérique ?
+        ** Savoir (bien) utiliser un service
+        ** choisir un service en connaissance de cause
+
+*Contact* : contact@lesbonsclics.fr / @WeTechCareORG / wetechcare.org
 
 === 09h50 - 10h10 (AB) : La quête d'une gouvernance collaborative du web
 
@@ -1342,7 +1469,31 @@ J'essaierai de convaincre le public que la recherche et le développement de tel
 
 ==== Notes
 
-TO BE COMPLETED
+Chaîne YouTube de Lê : *Science 4 All*
+
+Description assez "crue" de la situation géopolitique actuelle, et des erreurs et biais des recommandations des sites, moteurs de recherches, etc.
+
+    * exemple du génocide actuel des Tigré en Ethiopie (complètement isolés à dessein afin qu'ils meurent de faim)
+
+*Tournesol* (https://tournesol.app/) est une *extension pour navigateur* permettant de "noter" une recommandation, et donc de créer une *base de données publique de recommandations*.
+
+* limite des *bases de données d'entraînement* en IA : *"plus on parle, plus on a de poids dans le résultat"* avec les algos actuels de ML
+    ** tous les algos de recommendations sont touchés par ce biais
+    ** ils sont donc très facilement la cible de *campagne de désinformation*
+    ** Facebook retire *chaque année* 7 milliards de faux comptes
+        *** autant que la population humaine...
+        *** ces faux comptes sont évidemment utilisés pour les campagnes de désinformation
+
+*Tournesol* : 
+
+    * utilisation d'une *médiane* : 3 personnes tirent à droite, 3 tirent à gauche, on a donc un équilibre
+    * dans une *vallée parabolique* : pour éviter que lorsque 1 seule personne tire, elle "décide seule" de la recommandation (la pente va l'empêcher de le faire *seule*) +
+    image:devoxx-france-2022_123.jpg[]
+
+Tournesol a besoin de *contributeurs* : we need you !
+
+.Ressources (les publications de Lê)
+image:devoxx-france-2022_124.jpg[]
 
 === 10h45 - 11h30 (242AB) : Microservices, DDD et bootstrapping pour faire un départ lancé.
 
