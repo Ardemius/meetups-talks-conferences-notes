@@ -1699,7 +1699,56 @@ Venez découvrir les outils qui nous ont permis d’absorber cette forte croissa
 
 ==== Notes
 
-TO BE COMPLETED
+* en 2016 2017, BetClic a failli faire faillite
+* Les actionnaires ont rappelé le fondateur, un IT, qui a dit "OK" mais avec des conditions : 
+    ** on regroupe tous les ITs dans un même lieu géographique
+    ** à savoir Bordeaux
+
+Principaux use cases :
+
+    * le login
+    * le paris en match (comme avant un penalty)
+    * la connexion pour le retrait des gains
+
+Outils utilisés par BetClic : 
+
+    * *AppDynamics* (un APM)
+    * *DataDog* : on va pouvoir mettre en place de l'alerting avec des seuils
+
+BetClic a opéré un découpage en microservices à l'aide de DDD
+
+* *Citrix NetScaler* : leur équivalent de load balancer (fait également d'autres choses)
+
+.Différentes améliorations ont été apportées à l'architecture (avant 2020)
+image:devoxx-france-2022_136.jpg[]
+
+* Mise en place d'un cache Redis devant la base
+* Côté Front, mise en place un cache Varnish
+* mise en place d'une API Gateway avec Kong
+
+2020 : *passage vers le Cloud*
+
+    * Choix du Cloud Amazon (AWS)
+    * mise en place d'une landing zone pour que chacun puisse jouer avec la data
+
+Problème : 
+
+    * pas d'environnement de pre-production bien sizée
+        ** souci, à quelques mois de l'Euro, pas le temps, ni le budget pour corriger cet environnement.
+    * DONC, ils ont eu l'idée de mettre en place leurs tests de charge *EN PROD*
+        ** *Gatling* utilisé pour leurs tests de charges
+            *** Gatling fonctionne avec des simulations et des workflows
+
+Et avec tout ça, tout a tenu durant le dernier Euro ! 🙂 +
+(Plus besoin de "war room" d'astreinte pour pallier les problèmes de la plateforme)
+
+Les prochaines étapes : 
+
+    * mise en place d'*auto-scaling en fonction du match* (pas la même chose entre Real / Paris et Lorient / Metz)
+    * BetClic regarde côté Azure ce qu'il y a de dispo chez un autre provider (pour simplement se tenir au courant)
+    * mise en place de *Chaos Engineering* (avec Chaos Monkey)
+
+Ouverture d'un blog technique à BetClic sur Medium : https://medium.com/betclic-tech
 
 === -------------------- RESEAUTAGE --------------------
 
@@ -1718,7 +1767,18 @@ Attention, cette conférence peut donner des envies de refactoring ! As-tu plein
 
 ==== Notes
 
-TO BE COMPLETED
+Rappels : *architecture 3 tiers*
+
+    * couche présentation
+    * couche services
+    * couche persistance
+
+Benjamin (Takima) : "Je vais vous parler de tout ce que j'aurais du savoir en commençant mon métier de dev"
+
+.Dans quel cas utiliser l'architecture hexagonale ?
+image:devoxx-france-2022_137.jpg[]
+
+Veille techno chez Takima : https://taki.news/go
 
 === 17h45 - 18h30 (252AB) : Les Cast Codeurs en 🪑 et en 🦴
 
