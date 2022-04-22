@@ -1138,7 +1138,86 @@ Ce talk est un retour d'expérience présentant les mécanismes que j'ai eu l'oc
 
 ==== Notes
 
-TO BE COMPLETED
+Il s'agit d'un REX de ce qui est fait chez Mirakl.
+
+* juin 2017 : Mirakl, on faisait des montées de versions AVEC interruptions de services
+    ** et ces interruptions coûtent chères
+    ** 1h d'interruption de service ~125 000€ de perte sèche pour leurs clients
+    ** il faut tenir à jour plusieurs versions suivant que le client accepte plus ou moins bien l'interruption de services (et c'est galère !)
+
+.Avant 2017
+image:devoxx-france-2022_099.jpg[]
+
+.Migration sans interruption
+image:devoxx-france-2022_100.jpg[]
+
+    * avec cette approche naïve, on plante complètement au début, puis à 50%, et ça finit par marcher : pas acceptable
+
+.La règle d'or
+[IMPORTANT]
+====
+La version n+1 de la BDD doit être retro-compatible avec la version n de l'application.
+
+image:devoxx-france-2022_101.jpg[]
+====
+
+.workflow pour supprimer une colonne (un exemple de migration) sans interruption de service
+image:devoxx-france-2022_102.jpg[]
+
+    * il faut 4 versions pour y parvenir
+
+image:devoxx-france-2022_103.jpg[]
+
+*Backfill* : remplacer les null par les valeurs finales.
+
+NOTE: L'idée capitale, *toujours rester retro-compatible*
+
+.Les select * sont une mauvaise pratique pour les migrations sans interruption de service
+image:devoxx-france-2022_104.jpg[]
+
+    * Avec un *prepared statement*, le plan d'exécution est calculé à l'avance. +
+    Si on change le nombre de colonnes (ou le type d'un champ), ce *plan d'exécution devient invalide*.
+
+En résumé : 
+
+    * importance de la *retro-compatibilité*
+    * avantages : 
+        ** pas d'interruption de service
+        ** possibilité de rollbacker vers la version applicative n en cas de problème
+    * inconvénients :
+        ** nécessite de livrer plusieurs versions
+
+Attention, la *gestion des locks* en BDD va poser problème pour nos migrations 
+
+    * il faut distinguer les *opérations rapides* des *opérations lentes* +
+    image:devoxx-france-2022_105.jpg[]
+
+.Bonnes pratiques pour l'ajout d'une colonne
+image:devoxx-france-2022_106.jpg[]
+
+.Bonnes pratiques pour la création d'un index
+image:devoxx-france-2022_107.jpg[]
+
+*Tips* : 
+
+    * toujours privilégier les *opérations rapides*
+        ** activer les logs avec `log_min_duration_statement` et `log_lock_waits` pour aider à l'analyse.
+
+    * ne pas créer de transactions inutiles (en READ_COMMITED, pas besoin, on peut éviter le `@Transactional`)
+
+    * *mieux vaut casser la migration que casser l'application*
+        ** il vaut mieux interrompre la migration que de locker toute l'application
+        ** Dans le process de migration, définir le paramètre `lock_timeout` à une valeur cohérente
+
+    * *Garder votre SGBD à jour*
+        ** la gestion des locks est souvent améliorée
+    
+    * *Pas de requêtes manuelles en production* durant la migration
+        ** même des `SELECT` peuvent bloquer un `ALTER TABLE`
+
+*Conclusion* : Ces migrations sans interruption sont un vrai challenge, mais ça vaut le coup 😉 
+
+*Avis* : de bons conseils, et un talk à garder sous le coude pour la gestion des migrations (surtout pour les erreurs à éviter et les tips associés)
 
 === 17h45 - 18h15 (251) : Comment Betclic utilise son datalake pour générer des tests de charge et simuler des évènements sportifs ?
 
@@ -1161,7 +1240,40 @@ Nous vous proposons une présentation de l’architecture mise en place et des o
 
 ==== Notes
 
-TO BE COMPLETED
+* Pour les *tests de charge*, BetClic utilise : 
+    ** *AppDynamics*
+    ** *Gatling*
+
+* milieu très exigeant, les parieurs parient par exemple en masse au moment d'un penalty...
+    ** donc plusieurs pics de charge à des moments non prévisibles
+
+.Les différents faits de jeu qui change la fréquentation du site
+image:devoxx-france-2022_108.jpg[]
+
+* Stockage objet dans Amazon S3
+* Outils d'observabilité à BetClic : *DataDog*
+* API Gateway : *Kong* (et des restes encore sur IIS de Microsoft)
+* Microservices chez BetClic
+* Tous les évènements (user events) sont sauvegardés dans *Snowflake*
+    ** Attention ! Il ne s'agit QUE de *données anonymisées*
+
+.architecture BetClic
+image:devoxx-france-2022_109.jpg[]
+
+    * Amazon Glue comme ETL
+        ** coût d'entrée élevé, écrit en PySpark
+    * Amazon Athena pour l'analyse de données
+    * Amazon Quicksight pour le dashboarding
+    * BetClic utilise les *Amazon Step Functions*
+        ** Amazon Step Functions : a *serverless orchestrater* that helps you create and manage complex workflows with *Lambda functions* (Low Code).
+
+Volumétrie par journée :
+
+    * 100 Go raw Data
+    * 40 Go clean data
+    * 35 Go processed data
+
+*Blog technique* : https://medium.com/betclic-tech
 
 === -------------------- RESEAUTAGE --------------------
 
@@ -1184,7 +1296,7 @@ Le but du BoF est de retrouver les faiseurs de solutions et ceux qui sont intér
 
 ==== Notes
 
-TO BE COMPLETED
+Des participants impliqués, des sujets variés (souveraineté, conséquence d'une direction non technique, GAIA-X, etc.), un super BOF 👍 
 
 == VENDREDI
 
