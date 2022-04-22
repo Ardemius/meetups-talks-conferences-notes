@@ -1614,7 +1614,70 @@ Au final, pleins de trucs et astuces pour arriver à mettre en place une Culture
 
 ==== Notes
 
-TO BE COMPLETED
+Pauline et Thomas sont des *fans de DDD* (Domain Drive Design), tout comme leur société Agicap.
+
+.Agicap
+NOTE: Agicap, la solution n°1 de gestion de trésorerie qui permet de piloter votre trésorerie, payez vos factures et relancez vos clients.
+
+Thomas propose de faire gagner un *"Turn the ship around"* durant le talk ! +
+-> On comprend mieux le titre du talk 😉 
+
+Il s'agit d'un talk sur l'*autonomie*.
+
+Pauline et Thomas s'appuie sur le livre pour le talk. +
+Quelques citations qui les ont marqués : 
+
+    * give responsability to make leaders
+    * fight your instincts to always want to take control
+    * whoever has the information has the authority to make decisions
+    * give goals not procedures
+    * default is YES ("mieux vaut dire pardon que demander la permission")
+    * create the space for thinking
+        ** le manager / leader ne doit pas s'exprimer trop tôt afin de donner la possibilité aux autres de s'exprimer
+    * it get worse before it gets better
+
+//- 
+
+* Agicap est une startup qui devient une scale-up, une mue est en cours.
+* Avec l'augmentation du recrutement, et d'une certaine distance entre les gens, il commençait à y avoir des voix disant "c'était mieux avant"
+
+.Le plan d'action de Thomas
+image:devoxx-france-2022_135.jpg[]
+
+* Mise en place d'un *DDD stratégique* (tel que décrit par Eric Evans)
+* *monolith modularization* : pour splitter, modulariser son monolithe (sans forcément le transformer en microservices)
+    ** plus la mise en place de *living documentation*
+
+* Thomas a eu des doutes quant à la résistance au changement
+    ** *XMAS refactoring* : réalisé via un dashboard Miro tout au long d'1 mois entier de travail
+* Agicap : 20% du temps de chaque DEV consacré à des sujets techniques
+
+Autre pratique en cours de mise en place chez Agicap: *OKR* (*Objectives & Key Results*)
+
+    * On donne un objectif MAIS on ne dit surtout pas comment faire pour l'atteindre
+    * sur les 3 mois à venir, c'est CA qu'il faut atteindre
+
+Autre pratique : les *guilds*
+
+    * La guilde permet à tout le monde d'avoir l'autonomie, et pas QUE le tech lead.
+        ** il arrive souvent que ce dernier ait du temps, et qu'il impose ses décisions aux autres.
+    * On peut donc investir ses 20% de temps dans une guilde différente de ses activités au sein de son équipe "classique" (sa squad)
+
+Autre démarche : *SRE* (Site Reliability Engineering) Initiative
+
+Autre pratique à l'étude / en cours de réflexion : 
+
+    * *chaos engineering d'équipe* : que se passe-t-il quand cette équipe n'est pas là 1 semaine ?
+
+TIP: Technique des 5 pourquoi à revoir
+
+*Conclusions* : 
+
+    * l'autonomie est obligatoire pour l'hyper-croissance
+    * ne brûlez pas les étapes
+    * travaillez votre lâcher-prise
+
+Agicap était en phase de stabilisation, et vont maintenant repartir dans une phase de fort recrutement.
 
 === -------------------- REPAS --------------------
 
