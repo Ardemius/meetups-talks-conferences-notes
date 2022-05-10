@@ -1,0 +1,276 @@
+= 2022/03/08 - Google Developer Group Cloud Paris - Soirée Google Cloud Workflows / BigQuery
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Opérations asynchrones dans votre UI avec Workflows et Firestore
+
+=== Abstract
+
+Présenté par Guillaume Laforge / Google
+
+----
+En combinant Google Cloud Firestore et Workflows, vous pouvez faire tourner et suivre le déroulement de vos longues opérations asynchrones. Une requête HTTP n’est pas l’idéal pour une opération métier qui prend du temps. Mais Workflows permet justement d’écrire et de diriger des process métiers multi-étapes. Un simple appel à Workflows ou l'utilisation d'une librairie cliente lance l’exécution du workflow. Mais comment suivre chaque étape de ce process en quasi temps réel ? En ajoutant dans la boucle l’utilisation de Firestore, grâce à sa fonctionnalité d’abonnement aux modifications de données en temps réel. Dès qu’une étape clé est franchie, stockez une mise à jour du statut de votre workflows dans Firestore. Côté client, votre UI sera notifiée à chaque changement des données associées, et vos utilisateurs pourront suivre clairement et facilement le statut de vos process métiers. Nous verrons cela ensemble dans cette présentation, avec deux exemples concrets illustrés avec de vrais morceaux de code dedans !
+
+Guillaume Laforge est Developer Advocate pour Google Cloud, et se focalise particulièrement sur les technologies serverless. Il est également un Java Champion, co-fondateur du podcast Les Cast Codeurs, et co-créateur du langage de programmation Apache Groovy.
+----
+
+=== Notes
+
+* C'est la 1ere de cette conf que Guillaume donnera également dès demain à *Google I/O*
+
+* *Workflows* permet d'orchestrer des appels à n'importe quelle API
+    ** Workflows permet de combiner n'importe quel APIS avec des services Google CLoud, afin de construire facilement des applications reliable ainsi que des process automations.
+* Ses caractéristiques : 
+    ** *serverless*
+    ** *long-running*
+    ** *low-latency*
+    ** boucles, branches (y compris parallèles), pauses, callback possibles
+    ** très adapté aux architectures microservices (dans le Cloud)
+    ** syntaxe en YAML (pourrait être en JSON)
+    ** authentification gérée de façon transparente, se sert d'OAuth2 / OpenID Connect
+    ** On ne peut pas appeler Workflows directement depuis le navigateur, il faut passer par des fonctions intermédiaires
+    ** L'exécution d'1 workflow peut durer (techniquement) jusqu'à 1 an !
+
+* *Firestore* : simply write to a NoSQL document database and see changes reflected  in your mobile and web apps.
+* Ses caractéristiques : 
+    ** serverless
+    ** offline support
+    ** global scale
+
+==== Demo avec une appli de commande de pizzas
+
+NOTE: Guillaume fait sa demo avec *VS Code*
+
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_01.jpg[]
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_02.jpg[]
+
+* usage de Cloud Functions qui vont créer une exécution du workflow
+
+NOTE: On pourrait coupler cette démo à un GPS pour savoir où se trouve le livreur 😉 
+
+.Architecture de la demo
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_03.jpg[]
+
+    * avant le "start", on commence par l'appel du *Cloud Function*
+    * on peut utiliser la BDD Firestore indépendamment de Firebase
+        ** "Firebase static hosting" permet de faire du hosting d'éléments statiques
+
+.Gestion de la corrélation
+[NOTE]
+====
+Question Thomas : Mais *comment est gérée la corrélation* dans les différentes étapes du workflow ? (en gros, y a-t-il un Sleuth de dispo la derrière) +
+Une question importante pour tout ce qui va être *agrégation des logs*. 
+
+    * Guillaume : il faut le faire à la main...
+    * Dans la demo, Guillaume se sert de "order_id", et des capacités de Firestore de pouvoir notifier de ses changements d'états. +
+    PAR CONTRE, Guillaume gère "émule" donc manuellement l'ID de corrélation via l'"order_id"
+        ** Il explique qu'on peut appeler via workflows des services extérieurs à Google, sur lesquels on ne pourra donc *PAS* ajouter la corrélation.
+
+    * Donc, dans cette démo, les logs de l'enchaînement des étapes du workflow sont finalement obtenus "après coup" via observation de la BDD Firestore (via notification de cette dernière)
+====
+
+* Utilisation de *Document AI* pour analyser le contenu d'une image, en l'occurrence un ticket de caisse.
+    ** Le connecteur de Workflows pour Document AI va s'occuper de cette "opération longue" d'analyse d'image (~1 min) +
+    Donc pas la peine de coder ce traitement, Workflows s'en occupe.
+
+.Workflow de la demo
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_04.jpg[]
+
+*Conclusion* : reliable (Workflows) + Reactive (Firestore) -> Trusted (your app)
+
+Questions : 
+
+    * Et si boum, comment se passe la reprise sur erreur ?
+    * Firestore est en fait la BDD technique de Workflows, donc, on pourrait se demander pourquoi en faire des produits séparés ?
+
+== BigQuery DeepDive : décortiquons le Data Warehouse made in Google
+
+=== Abstract
+
+Présenté par Clément Bosc / Stack Labs
+
+----
+OLTP ? Cubes OLAP ? Data Warehouse ? Data Lake ? base de données MPP dans le Cloud ? Ces termes vous sont étrangers ? Pas de panique ! Reprenons les bases de la Data Analytics pour mieux explorer les entrailles de BigQuery, le Data Warehouse serverless Cloud de Google ! Fonctionnalités avancées, optimisations de coût et de performances, bonnes pratiques, sécurité : BigQuery n'aura plus de secrets pour vous !
+
+Clément Bosc est Data Engineer @Stack Labs. GCP & Data Enthusiast
+----
+
+=== Notes
+
+NOTE: Clément travaille à *Stack Labs*, une société spécialisée dans la Data et qui recrute 😉 
+
+* BigQuery : le data warehouse serverless de Google
+
+On commence par une "bonne vieille" présentation de OLTP vs OLAP.
+
+.The rise of the data warehouse
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_05.jpg[]
+
+.Rappel
+NOTE: *MPP* = Massively Parallel Processing
+
+BigQuery est un DWH : 
+
+    * serverless
+    * disponible dans GCP
+
+.2 produits en 1 : on sépare compute et storage
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_06.jpg[]
+
+    * Et ces compute et storage peuvent être utilisés indépendamment
+    * mais c'est ensemble que ces 2 produits fonctionnent le mieux
+
+Toute création d'une nouvelle requête SQL : 
+
+    * va donner lieu à un job
+    * à un plan d'exécution
+    * xxx
+    * BigQuery va déplacer les petits bouts de data sur les noeuds du cluster
+    * sauvegarder le résultat dans une table temporaire
+        ** d'où une notion de cache : 5 min plus tard si on refait la même requête on tape directement dans cette table temporaire
+    * restituer le résultat
+
+.Les coûts
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_07.jpg[]
+
+    * storage : 100 To pour 5$ / mois
+    * compute : xxx
+
+.Possibilité de *nested structures*, à savoir des données imbriquées
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_08.jpg[]
+
+    * ajout dernièrement : recherche sur données nested semi-structurées (on peut donc faire une recherche sur du nested JSON)
+
+*Comment charger de la data ?*
+
+    * façon de faire conseillée et la plus courante : un *load job* (API / CLI)
+    * les *federated queries* : on déclare une connexion sur une BDD tierce
+        ** que en mode batch
+    * la méthode la plus avancée et la plus compliquée : *storage write API*
+        ** pour le temps réel et tout ce qui est *low-latency*
+
+*Comment accéder à la data ?* (accès à la dataviz)
+
+    * pas de frais d'ingress ici, on peut sortir de la data (du DWH) sans payer
+    * accès aux différentes dataviz via ODBC / JDBC
+
+*Coûts et optimisation des performances*
+
+.partition your tables !
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_09.jpg[]
+
+    * pas d'indexe sur BigQuery, ce qui est un classique pour les outils MPP
+    * pas d'indexe car trop coûteux pour de la lecture intensive ?!
+    * ne marche sur des dates, et pas des string
+        ** à creuser, je ne comprends pas
+        ** pour une explication voir https://www.quora.com/Why-do-shared-nothing-MPP-databases-like-Netezza-do-not-support-indexes +
+
+----
+I can't really comment on Netezza, but I can comment on implementing indexes for shared-nothing databases. Shared-nothing architectures typically partition data in some way based on a row identifier. Lookups based on row identifiers, therefore, are fast because the architecture knows exactly which node to fetch the data out of and manipulate it with.
+
+To me, having an index implies writing a lookup structure based on a field other than row identifier. This breaks the fundamental concept of a shared-nothing architecture, because there is no way to uniquely organize by non-identifier fields without having to hop over to another node to retrieve the row it is pointing to. You could always do something like write a second table containing the mapping of field to the row identifier of the first table and then do client-side lookups ... but, again, that'd be cheating the purpose of using a shared-nothing architecture, in which case I'd consider using a different database.
+
+Edit: Some shared-nothing database implementations can & do have indexes, but they implement them to the manner similar as what I described above. I’d still recommend using a different databases if the data model requires a large number of nonprimary field lookups.
+----
+
+.cluster your tables !
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_10.jpg[]
+
+    * le *clustering* peut être faire sur *plusieurs colonnes* contrairement au partitioning qui ne concerne qu'1 colonne
+        ** mais gaffe à l'ordre dans ce cas
+
+.shard your tables ! (if necessary)
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_11.jpg[]
+
+    * marche sur des string
+        ** et si on veut sharder sur des dates, mieux vaut passer au partitionnement
+    * meilleures perfs que le clustering mais seulement sur 1 colonne
+
+.materialized views
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_12.jpg[]
+
+    * va matérialiser sur disque une requête SQL : si les données évolue, la vue est actualisée
+        ** REX de Clément : ces mat views semblent fonctionner...
+        ** par contre pas les fonctions de fenêtrage analytics (`PARTITION BY` and co)
+        ** mais les jointures sont maintenant possibles
+    * *smart tuning* : si on conserve sa grosse table connectée à sa dataviz, MAIS qu'on a une mat view existante à côté, sans qu'on lui demande, BigQuery peut s'en servir pour améliorer les performances.
+
+*Quelques tips* : 
+
+    * only select the column you want : donc pas de `SELECT *`
+        ** il y a un mode preview qui existe si on veut un aperçu de toutes les colonnes
+    * use *INT64* pour les conditions de jointures : plus faciles de comparer des entiers que des chaînes de caractères
+
+.Use CTE (Common Table Expression)
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_13.jpg[]
+
+    * ça n'améliore pas les perf, MAIS rend le code plus lisible
+    * CTE are NOT pre compute, sometimes it's preferable to materialize results in temporary tables instead !
+
+.Which data modeling ?
+image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_14.jpg[]
+
+    * évitez les jointures avec BigQuery, il n'aime quand même pas trop ça...
+    * le data vault implique un grand nombre de jointures, donc pas conseillé avec BigQuery pour une grosse volumétrie
+    * très à la mode : le "one big table"
+        ** des études indiquent qu'on peut gagner jusqu'à 50% de perf
+        ** mais cela ajoute énormément de duplication, avec les problèmes de synchro associés
+            *** côté coût de l'espace de stockage qui augmente, cela coûte plus trop cher actuellement
+
+//-
+
+* BigQuery est très bien traité par *Terraform*
+    ** permet la CI / CD sur son workflow
+
+* *Security* : IAM and RLS (Record / Row Level Sharing)
+    ** set permissions for the least access privilege !
+    ** GCP resource hierarchy : +
+    *Organisation -> Folder -> Project -> Dataset -> Table -> Row*
+        *** dès qu'on peut, on met la sécurité le plus bas possible, au niveau Table, et même au niveau Row
+    ** avec *Data Catalog*, on peut ajouter la *sécurité* au *niveau de la colonne*.
+
+*Q&A :*
+
+    * Clément, philosophie de BigQuery : gérer la *déduplication au niveau de la lecture*
+
+
+
+
+
+
+
+
+
