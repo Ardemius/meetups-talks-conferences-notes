@@ -38,6 +38,8 @@ toc::[]
 .2022/xx/yy - Vidéos disponibles sur YouTube
 IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur https://www.youtube.com/channel/UCsVPQfo5RZErDL41LoWvk0A[chaîne YouTube de Devoxx France].
 
+* Les photos du salon sont visibles ici : https://www.devoxx.fr/2022/05/02/devoxx-france-2022-les-photos/
+
 == Buzz words & Technos qui ont le vent en poupe
 
 * *Kubernetes* partout pour tout ce qui est Cloud Native
@@ -66,6 +68,12 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * *Harness* : CI/CD avec modules de Feature Flags, SRE, Security Test (OWASP)
 	** par contre boîte jeune avec modèle de licensing surprenant : par service pour le "core" CI/CD, puis par user pour les modules annexes (Feature Flags et autres) +
 	Donc quand on prend des modules en plus, on se retrouve vite à avoir une facturation "custom" directement discutée avec Harness
+* *Promyse* : une plateforme de partage de bonnes pratiques de codage
+	** https://promyze.com/fr/
+	** J'ai échangé avec Cédric TEYTON (cedric.teyton@promyse.com), l'un des créateurs de l'outil
+	** Promyse permet de partager des bonnes pratiques au sein d'une équipe de développement
+	** Promyse permet échanger de mettre à jour une base de connaissance des bonnes pratiques
+		*** Base de connaissances publique mise à disposition par Promyse
 
 * J'ai croisé *Medhi* maintenant chez Ippon, et nous avons parlé du programme Black Belt et de la stratégie que j'ai proposée chez Softeam
 	** Black Belt : par ceinture, 12 SLOs à atteindre
