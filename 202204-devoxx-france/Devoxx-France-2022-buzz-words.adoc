@@ -51,15 +51,21 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 == Technos dont on parle moins (ou plus !)
 
-
-
 == Conf à voir sur YouTube
 
-* architecture hexagonale
-* votre cerveau est nul !
+* Architecture hexagonale
+* Votre cerveau est nul !
 
 == Sociétés et personnes rencontrées
 
+* *Astrachain*
+	** société spécialisée dans la sécurité, a créé une solution permettant de chiffrer vos données "sans clé".
+		*** Bon, dans les faits, il y a bien entendu une clé, mais cette dernière est gérée de façon complètement transparente côte Astrachain
+		*** et vos données sont en fait splittées, avec la clé, dans *différents* Cloud providers
+		*** Par contre, ce que je leur ai demandé, c'est dans quelle mesure cela ne faisait pas que "décaler le problème" ? +
+		Car, si la clé est gérée de leur côté, même si split, dès lors qu'un assaillant arrive à se faire passer pour vous et à se connecter à leur solution, il va pouvoir accéder à vos données... +
+			**** Et ils m'ont confirmé que c'était un aspect de leur solution sur lequel ils travaillaient actuellement pour le rendre plus secure.
+	** https://www.astrachain.com/fr/accueil/
 * *COSIUM* : 100 milliards de capitalisation boursière, a dernièrement racheté Essilor
 	** présent dans de multiples domaines, mais surtout le milieu de l'optique médicale
 * *Michelin*
@@ -84,4 +90,11 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 	** tous les leaders de communautés sont au 4/5 pour gérer l'activité de leur communauté
 
 == Avis sur le salon
+
+Au final, *pas de grosse annonce technologique* durant ce salon. +
+Les technos phares restent les mêmes (Kubernetes, Kafka, poussée de Quarkus), mais la proximité avec Devoxx France 2021 (début octobre dernier) et l'impact du COVID ont du freiner les développements chez bien des éditeurs.
+
+La chose très positive que je constate, c'est le *développement du craft* dont l'on entend maintenant parler partout. +
+*L'accent sur la qualité*, sur la méthodologie (DDD de plus en plus fréquent, surtout avec les microservices qui se rapprochent toujours un peu plus d'une phase de maturité) se sentait dans beaucoup de talks.
+
 
