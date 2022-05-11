@@ -111,10 +111,22 @@ image:20220510_GDG-Cloud-Paris_Workflows-BigQuery_04.jpg[]
 
 *Conclusion* : reliable (Workflows) + Reactive (Firestore) -> Trusted (your app)
 
-Questions : 
+*Q&A :*
+
+    * Firestore est en fait la BDD technique de Workflows, donc, on pourrait se demander pourquoi en faire des produits séparés ?
+        ** Guillaume : Workflows est un produit récent, et, après discussion avec Guillaume, il n'a pas été créé du fait d'un besoin précis côté Google ou client de Google, mais car le cloud Google devait posséder ce type de fonctionnalité déjà proposé côté AWS (AWS Step Functions) et Azure (Azure Logic Apps)
+        ** Donc Workflows a été créé dernièrement, bien après Firestore, et s'appuie grandement sur cette persistance.
 
     * Et si boum, comment se passe la reprise sur erreur ?
-    * Firestore est en fait la BDD technique de Workflows, donc, on pourrait se demander pourquoi en faire des produits séparés ?
+        ** Guillaume : difficilement... Toujours le même problème de l'ID de corrélation qui n'est pas nativement géré par Workflows.
+            *** Résultat, pas de fonctionnalité native de reprise sur erreur
+            *** Pour gérer ce besoin, il faut donc passer par une solution tierce, comme un pattern SAGA et donc une solution programmatique.
+            *** Cette solution programmatique va selon moi à l'encontre de la philosophie de l'outil, à savoir la facilité de mise en oeuvre d'une solution de ce type dans le Cloud. +
+            OK, la solution a le mérite d'exister et fonctionne, mais elle est incomplète à mes yeux. On ne va pas en PROD sans process de reprise sur erreur.
+                **** En encore moins en environnement microservices !
+                **** Guillaume confirme d'ailleurs que c'est pour le moment "un peu l'enfer" en matière d'agrégation des logs (de nouveau : pas de gestion de l'ID de corrélation à la Sleuth, il faut le faire "à la main" comme Guillaume l'a fait avec l'"order_id")
+
+Ma conclusion : cela existe, va sûrement encore s'améliorer, mais aller actuellement en PROD avec... Dans un environnement microservices, sans ID de corrélation facile à gérer, donc avec des galères certaines côté monitoring et agrégation des logs, ce n'est pas quelque chose que je ferais.
 
 == BigQuery DeepDive : décortiquons le Data Warehouse made in Google
 
