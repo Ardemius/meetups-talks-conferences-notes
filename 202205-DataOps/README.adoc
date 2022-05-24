@@ -153,6 +153,39 @@ by Jonathan Pivert (Saagie), Victor Leroux (Saagie), Leshanshui Yang (Saagie)
 A quoi faut-il s'attendre en 2022 sur le marché technos et data ? Leshansui Yang, Data Scientist & PhD Student, Victor Leroux, Product Marketing Manager et Jonathan Pivert, Product Manager chez Saagie feront un état des lieux des tendances technologiques et data émergentes à ne pas louper en 2022 !
 ----
 
+.common causes of data bias
+image:20220524_dataops_01.jpg[]
+
+.QU'est-ce qu'un biais en ML ?
+image:20220524_dataops_02.jpg[]
+
+* L'un des principaux travaux des *data scientists* consiste à *réduire ces biais*
+* les humains peuvent choisir d'ignorer un biais, mais ce n'est pas le cas des data
+
+Saagie : 
+
+    * 4 data scientists en R&D à temps plein
+    * et 3 thèses en cours
+
+.Choix des stacks : beaucoup (trop) de choix
+image:20220524_dataops_03.jpg[]
+
+* on voit bien l'augmentation du nombre de technos de 2014 à nos jours
+* On va donc utiliser de plus en plus de briques différentes qui vont devoir communiquer : le *besoin d'orchestration* devient de plus en plus critique.
+
+.Meta-orchestration en réponse à ces problématiques
+image:20220524_dataops_04.jpg[]
+
+* Saagie s'ouvre de plus en plus à l'utilisation d'outils externe (via l'usage d'API)
+
+Demo de la plateforme Saagie : 
+
+    * permet d'ouvrir ses pipelines à des systèmes hostés ailleurs (sans devoir changer son code)
+    * Saagie fait bien office d'orchestrateur, et permet de faire liens avec des outils tiers / externes.
+
+Techniquement très intéressant. +
+Les explications de Leshanshui sont très claires.
+
 == 11h20 -> 11h40 - Souveraineté : Souveraineté numérique et plan calcul, comment dépasser 55 ans d’échecs.
 
 By Jérôme Lecat (Scality)
