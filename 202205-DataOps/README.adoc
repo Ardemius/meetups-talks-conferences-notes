@@ -443,6 +443,13 @@ image:20220524_dataops_18.jpg[]
     * cluster *Spark*
     * gestion des dépendances avec *Poetry*
 
+3) "PlethoMAP: Real-time non-invasive hemodynamic monitoring for operating rooms"
+
+Niveau stratosphérique de la présentation ! +
+A revoir, rien que pour comprendre davantage, fantastique niveau technique
+
+-> Prochain rdv de ce Paris Data Ladies chez Octo le mois prochain si j'ai bien compris
+
 == 18h30 -> 22h30 - networking : 🍸🍹Cocktail de Clôture 🍸🍹
 
 == Demos
