@@ -383,9 +383,36 @@ Lifetime est une solution cloud de gestion de l’attrition pour les équipes ma
 .Churn : explainability over prediction
 image:20220524_dataops_15.jpg[]
 
+.Lifetime Analytics workflow
+image:20220524_dataops_15.jpg[]
+
+.Lifetime Analytics architecture
+image:20220524_dataops_15.jpg[]
+
+* Lifetime Analytics utilise également *Snowflake*
+    ** pour la partie staging & feature store
+* Sinon usage de briques Azure : 
+    ** Azure Container Instances : avec un pattern Command
+    ** Azurez Cosmos DB
+    ** Azure WebApp Node.js
+
 == 16h55 -> 17h40 - Souveraineté : Le Rôle du/de la CTO dans le Business - avec Tech.Rocks
 
-By Meriem Berkane (OCTO Technology), Nicolas Baron (Yousign,) Mathilde Lemée (Jolimoi), Sacha Morard (Le Monde)
+By Meriem Berkane (OCTO Technology, CTO), Nicolas Baron (Yousign, VP Engineering), Mathilde Lemée (Jolimoi, Co-fondatrice & CTO), Sacha Morard (Le Monde, CTO)
+
+* Nicolas : importance de la *mise en place d'OKR*
+    ** Exemple : aligner des OKR d'entreprise avec l'effort de R&D
+
+* De manière collective : pas de silver bullet concernant la *dette technique*
+    ** il faut déjà se mettre d'accord sur ce qu'est la dette technique
+
+* Nicolas : 1 journée par semaine chez YouSign "journée sans produit", où l'on va essayer d'améliorer l'existant (et donc de tacler la dette technique)
+
+* Mathilde : discuter et échanger avec le CODIR / COMEX non pas avec directement la technique (la "Data" en l'occurrence), mais avec des *use cases en décrivant l'usage*.
+
+* Nicolas : un conseil (ou une tentative de conseil) : *timeboxer l'effort de R&D*
+    ** Par moment chercher quelque chose de différenciant, qui sorte de l'ordinaire, pour trouver une nouvelle valeur ajoutée
+        *** Cas de MeilleurAgents qui faisait de la R&D à 3 4 ans, très prospective, avec des partenariats avec l'université, ou embauchant des élèves chercheurs.
 
 == 18h30 -> 19h30 - Business : Meetup by Paris Data Ladies - Computer Vision, NLP & Time Series en Santé
 
@@ -397,7 +424,7 @@ By Meriem Berkane (OCTO Technology), Nicolas Baron (Yousign,) Mathilde Lemée (J
 3) "PlethoMAP: Real-time non-invasive hemodynamic monitoring for operating rooms" par Jade PERDEREAU, Data Scientist @ Hôpital Lariboisière Fernand-Widal AP-HP.
 ----
 
-== 18h30 -> 22h30 - networking : 🍸​🍹​ Cocktail de Clôture 🍸​🍹​
+== 18h30 -> 22h30 - networking : 🍸🍹Cocktail de Clôture 🍸🍹
 
 == Demos
 
