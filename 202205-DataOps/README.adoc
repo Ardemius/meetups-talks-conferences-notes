@@ -57,7 +57,13 @@ Infos pratiques :
 
 == 09h30 -> 09h40 - Souveraineté : Introduction - DataOps.Rocks Summit 2022
 
-By Jérôme Trédan - Saagie
+By Jérôme Trédan (Saagie, CEO)
+
+* Présentation de Saagie : 
+    ** Les "data guys" ne travaillent pas facilement ensemble (Data scientists, data engineer, data stewart, etc.)
+    ** Initialement Saagie a voulu créer une plateforme pour "fédérer" les différentes briques de la Data.
+
+Fil rouge de la conférence : la *souveraineté*
 
 == 09h40 -> 10h25 - Souveraineté : Les conditions de la Souveraineté Numérique
 
@@ -70,8 +76,73 @@ Cette session sera animée par Sébastien Couasnon, aux côtés de nos intervena
 - Yann Lechelle - CEO de Scaleway
 - Thomas Solignac - CEO & Co-Founder de Golem.ai
 - Renaud Allioux - CTO & Co-Founder de Preligens
-- Arnaud Coustillière - Président du Pôle Excellence Cyber
+- Arnaud Coustillière - Président du Pôle Excellence Cyber (responsable de la cyberdéfense du ministère de la Défense)
 ----
+
+* Yann : Actuellement, pas de souveraineté en Europe : "non souveraineté"
+    ** On part de très très bas, on ne peut donc que progresser
+    ** Donc comment passe-t-on de "rien" à "un peu de souveraineté"
+
+* Thomas : Golem, traitement automatique de mails & docs via IA
+    ** https://golem.ai/fr/
+    ** domaine du traitement automatique du langage
+    ** rupture technologique
+    ** réflexion green / ecoconception : Golem a été pensé pour utiliser le minimum de Data (pour un impact carbone le plus bas possible)
+
+* Arnaud : 
+    ** plutôt que de souveraineté, parlons de *liberté stratégique*
+    ** les lois américaines "s'exportent" à l'international (Cloud Act, Patriot Act)
+        *** C'est dans ce milieu qu'il faut se débattre afin que la richesse ne soit pas captée exclusivement par ces acteurs (cite les affaires Alstom, Bad Secure)
+
+* Renaud
+    ** Preligens : 100% du business pour la Défense et le renseignement, rien dans le civil
+    ** Il faut être "bon" techniquement avant tout, et on arrive à être bon en France
+        *** Preligens est (bien) devant ses concurrents américains
+        *** use cases : détection, classification d'objets sur imagerie satellite
+    ** France et Défense : un des leaders europééns, MAIS un petit pousset à l'échelle du monde
+    ** Preligens : ~30 millions € de levés
+        *** Pas une si grosse levée que cela, MAIS suffisant pour le moment ("capital efficient")
+
+* Yann : 
+    ** AWS se vante "d'avoir 75% des Scale-up françaises"
+        *** C'est un problème, car le "socle" de nos sociétés est déjà à l'étranger
+        *** même si leurs produits sont bons, c'est un souci
+    ** "coup d'accordéon" à venir dans le milieu (capital risk du fait du contexte), donc les entreprises vont plus facilement se "brader"
+        *** nos entreprises doivent donc se construire sur des bases solides (et là on est déjà "vassalisé")
+    ** les acteurs mondiaux achètent pour seulement 1% de techno françaises (à vérifier)
+        *** quand Yann dit que "on est rien"
+
+* Jérôme : 
+    ** "low fair" (protectionnisme) très présent côté américain et chinois
+        *** on a fait un peu ça aussi avec RGPD
+
+* Arnaud : 
+    ** pense qu'on a régressé sur les gros chantiers, plus rien depuis 20 ans et les gros projets franco-allemands (rechercher la nature des projets en question)
+    ** *les grands acteurs américains sont établis sur le marché*
+
+* Yann : 
+    ** Bleu (Cap et Orange) travaillent sur un Cloud de confiance qui "devrait", "à terme" être SecNumCloud, alors qu'il s'appuie sur Microsoft Azure.
+        *** Notre problème est que l'on préfère en France faire des plans sur Bleu plutôt que favoriser nos acteurs locaux pourtant très bons (Scaleways, OVH)
+    ** *les américains maintiennent le "mythe" comme quoi nous sommes 10 ans* en retard sur le domaine de l'hébergement, c'est complètement faux 
+        *** on a peut-être moins de produits, mais ceux qu'on a répondent à 80% des use cases
+    ** *Le cloud est un milieu où être "établi" est un très gros avantage* pour adresser le marché
+        *** Or ce sont les grands groupes américains qui sont justement établis
+
+* Renaud : 
+    ** *les ESN ne sont pas les bons acteurs pour créer un Cloud souverain.*
+        *** Soyons clairs, Renaud dit à demi-mots qu'ils n'ont pas le niveau (ou pas un niveau suffisant en tout cas)
+        *** Il faudrait plutôt aller voir des gens comme Scaleways, OVH dont c'est le "vrai" métier
+
+* Thomas : 
+    ** anecdote pour Golem.ai : face à un investisseur quant à Golem "Nan, je ne vous crois, Google l'aurait déjà fait...". Ben sauf que non...
+    ** *On arrive à faire mieux que les américains*, et parfois avec beaucoup moins, *ce n'est pas QUE une question de moyens*
+        *** Alors attention, avoir des moyens est indispensable pour passer à l'échelle
+        *** Mais ne pas en avoir n'est pas une "condamnation" pour le développement d'un produit
+        *** La conclusion est surtout que les américains ne sont pas les seuls qui créent les techno qui marchent.
+
+* Yann : les acteurs américains dominants ont *"formaté la matrice"*
+    ** il ne faut pas réinventer la roue (pas possible), et s'appuyer sur le socle de ces acteurs pour ensuite proposer autre chose
+        *** et choisir des acteurs locaux pour vos projets
 
 == 10h30 -> 11h00 - Tech : Focus sur les tendances technos et data 2022
 
