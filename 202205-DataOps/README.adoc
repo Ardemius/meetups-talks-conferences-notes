@@ -319,6 +319,12 @@ image:20220524_dataops_12.jpg[]
 
 * StreamSets met particulièrement en avant son Use Case de *CDC* (*Change Data Capture*)
 
+* StreamSets tourne sur Kubernetes
+* le control plane est en SaaS
+
+* Version d'essai (Try) dispo sur le site de StreamSets (limitée à 5 jobs en parallèle)
+* Beaucoup de docs et d'exemple dispo sur GitHub apparemment
+
 == 15h45 -> 16h15 - Tech : Construire un cadastre solaire en combinant Airflow et les données spatiales
 
 By Valentin Ruppli (namR), Alexandre Bacchus (namR)
@@ -327,6 +333,24 @@ By Valentin Ruppli (namR), Alexandre Bacchus (namR)
 ----
 namR vous présentera son process de production de données dédiées à la solarisation des bâtiments. On expliquera plus précisément comment on met à jour un pipeline de données géospatiales avec Airflow.
 ----
+
+* namR existe depuis 4 ans
+    ** très green, membre de Tech4Good
+    ** très connecté au monde académique
+
+* namR vend de la donnée géolocalisée
+    ** des data sets qu'ils ont nettoyées et enrichies
+
+.Comment passer d'une problématique métier à une problématique Data
+image:20220524_dataops_13.jpg[]
+
+.DAG avec Airflow
+image:20220524_dataops_14.jpg[]
+
+* *Data quality testing* : utilise la librairie Open Source "great_expectations"
+    ** pour des tests côté qualité de données
+* *Validation Toolkit Explorer* : avec notebook Jupyter
+    ** pour aller plus dans le détail, et réaliser une analyse plus qualitative des données
 
 == 16h20 -> 16h50 - Tech : Retour d'expérience : DataOps pour l'attrition dans les télécoms
 
@@ -345,6 +369,16 @@ A propos de Lifetime Analytics :
 
 Lifetime est une solution cloud de gestion de l’attrition pour les équipes marketing des opérateurs télécoms, permettant d’anticiper l’impact du churn, d’identifier les clusters de souscriptions à risque et de gérer les actions de rétention.
 ----
+
+* Toute jeune boîte qui travaille surtout dans les pays de l'Europe de l'Est
+* travaille surtout dans les télécoms
+
+* Julien va nous présenter ce qu'ils font pour la problématique du churn en Slovénie.
+    ** le churn est un "vieux" problème, connu, et qui pèse lourd
+
+* Le churn (perte de clients) est un phénomène relativement discontinu. Il découle : 
+    ** de périodes de réduction des concurrents
+    ** d'incidents technologiques
 
 == 16h55 -> 17h40 - Souveraineté : Le Rôle du/de la CTO dans le Business - avec Tech.Rocks
 
@@ -384,4 +418,6 @@ image:20220524_demo_saagie_01.jpg[width=600]
     ** Rayed confirme que le principal use case pour *MongoDB* est bien d'être une *BDD transactionnelle*.
         *** Non, MongoDB, même se disant "Data platform" ne compte pas se positionner en concurrent d'un Snowflake ou autre Cloud DWH.
 
+== Avis sur le salon
 
+* Encore et toujours *Kubernetes* en force et présent partout
