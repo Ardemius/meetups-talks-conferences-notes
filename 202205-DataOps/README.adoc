@@ -291,10 +291,6 @@ image:20220524_dataops_10.jpg[]
 
 * On connaît surtout MongoDB comme une BDD transactionnelle, mais elle fait plus que cela aujourd'hui (analytics, etc.)
 
-== 14h35 -> 15h05 - Souveraineté : XXII, une data industrialisée et réglementée.
-
-By Damien Mulhem (XXII Group)
-
 == 15h10 -> 15h40 - Tech : Comment optimiser l'ingénierie de la donnée dans un écosystème où Snowflake est l'un des piliers ?
 
 By Jean-Marc Le Gonidec (Streamsets), Stéphane Heckel (Streamsets)
@@ -303,6 +299,25 @@ By Jean-Marc Le Gonidec (Streamsets), Stéphane Heckel (Streamsets)
 ----
 Ingestion des données dans le Cloud, traitement des données in-situ dans Snowflake via Snowpark, découvrez comment la DataOps accélère votre Analytique !
 ----
+
+.StreamSets : ETL de bout en bout pour Snowflake
+image:20220524_dataops_11.jpg[]
+
+* StreamSets propose une facilité de prise en main, de maintenance
+    ** pas besoin de (trop) scripting côté administration, apparemment gros interfaçage graphique
+* StreamSets est Snowflake Premium Partner
+* StreamSets s'appuie massivement sur SnowPark : ETL / ELT natif pour Snowflake / Snowpark
+
+.Rappel sur SnowPark
+[NOTE]
+====
+The Snowpark library provides an intuitive API for querying and processing data in a data pipeline. Using this library, you can build applications that process data in Snowflake without moving data to the system where your application code runs.
+====
+
+.ETL / ELT natif pour Snowflake / Snowpark
+image:20220524_dataops_12.jpg[]
+
+* StreamSets met particulièrement en avant son Use Case de *CDC* (*Change Data Capture*)
 
 == 15h45 -> 16h15 - Tech : Construire un cadastre solaire en combinant Airflow et les données spatiales
 
@@ -356,3 +371,17 @@ image:20220524_demo_saagie_01.jpg[width=600]
     ** Saagie travaille et a déjà déployé sa solution au Ministère des armées
 
 == Networking
+
+* Echange avec *Rayed Benbrahim* de *MongoDB*, Solutions Architect, côté "partenariat" chez MongoDB
+    ** MongoDB a l'habitude et cherche à mettre en place des partenariats avec des ESN
+        *** pour faire connaître leur techno chez les ITs
+        *** pour être tenu au courant des besoins des clients
+
+    ** Par contre, j'ai voulu préciser ce dont il était question par "Data platform" pour MongoDB. +
+    Réponse de Rayed, c'est la partie "réplicat" de MongoDB qui est intéressante pour cela. +
+    Sans déplacement / duplication de données, on peut cibler un réplicat pour des traitements coûteux *sans* impacter le reste de la BDD transactionnelle (utilisée par un frontal côté commerce par exemple)
+    
+    ** Rayed confirme que le principal use case pour *MongoDB* est bien d'être une *BDD transactionnelle*.
+        *** Non, MongoDB, même se disant "Data platform" ne compte pas se positionner en concurrent d'un Snowflake ou autre Cloud DWH.
+
+
