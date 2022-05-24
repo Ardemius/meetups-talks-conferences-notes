@@ -182,6 +182,8 @@ Demo de la plateforme Saagie :
 
     * permet d'ouvrir ses pipelines à des systèmes hostés ailleurs (sans devoir changer son code)
     * Saagie fait bien office d'orchestrateur, et permet de faire liens avec des outils tiers / externes.
+        ** parmi les plateformes / techno auxquelles Saagie donne accès : AWS, Azure, Databricks et d'ici peu GCP
+            *** et OVH et Scaleway sont également prévus
 
 Techniquement très intéressant. +
 Les explications de Leshanshui sont très claires.
@@ -197,6 +199,43 @@ Est-il pour autant réaliste de viser une souveraineté française ou européenn
 Quel en serait l’objectif ?
 Que peut-on apprendre de nos échecs pour les dépasser et bâtir d’autres succès ? 
 ----
+
+* souveraineté numérique en France : "ben on est à peu près nulle part..."
+    ** cf le Quadrant du Gartner sur l'infra Cloud : pas une boîte européenne
+
+* Donc situation compliqué / cornélienne : *qu'elle plateforme doit-on choisir en France ?*
+    ** on a de très bonnes solutions en France, MAIS plus compliquée / longue à mettre en place
+    ** où on va chez AWS
+    ** Personnellement, je ne suis pas complètement convaincu que nos solutions soient plus tellement plus compliquées à mettre en place. +
+    Jérôme entend peut-être par là que nos solutions françaises proposent moins de services ques les grandes américaines.
+
+* *souveraineté numérique* : autonomie de décision et de mise en oeuvre dans le domaine du numérique (télécom, informatique et par extension technologies)
+    ** notre monde (occidental) est actuellement extrêmement interdépendant.
+    ** Donc une indépendance complète est complètement utopique
+    ** Donc comment obtenir une indépendance décision ?
+        *** sans qu'en plus un "collègue" (gouvernement américain...) ne vous force la main (comme avec l'amende de 6 milliards à la BNP pour avoir traiter en dollars avec l'Iran)
+
+* Jérôme : *il est important de connaître l'histoire pour éviter qu'elle ne se répète*
+    ** avec pour exemple la vente d'une partie de Bull à General Electrics en 1964 (dans ces eaux là)
+
+* Jérôme : on peut pas dire que l'état et les industriels n'ont pas essayé
+    ** mauvais soutien de Bull à l'époque : on l'a soutenu, plutôt que de lui passer des commandes (à la place d'en passer à IBM qui était son concurrent)
+* Différence avec les USA et la Chine ?
+    ** tous deux ont protégé leurs entreprises, surtout au lancement et en phase de croissance
+    ** Cas *en 2013* du gouvernement américain qui a passé à AWS une commande représentant 20% de son CA (qui était de 3 milliards de $). C'est énorme pour une société dans cette phase de développement
+
+* Jérôme : exemple avec les débuts de Scality et "Laniol" (???), une société américaine, qui leur avait passé un très gros contrat pour eux à l'époque. +
+Scality a développé pour eux un outil / logiciel, qui n'a au final PAS été retenu par Laniol (alors que tout fonctionnait bien) +
+Jérôme était alors gêné, mais Laniol lui a répondu qu'au contraire il ne fallait pas, car leur métier était justement de permettre à des sociétés de se développer. +
+-> *Jérôme explique qu'il n'a jamais retrouvé ce comportement en France*, alors que cette attitude et ce contrat leur avait été extrêmement utile.
+    ** *beaucoup plus que des subventions, il faut donner à nos entreprises / startups des contrats*, pour qu'elles puissent pratiquer et s'améliorer
+    ** Pour cela, le cloud privé (et donc le multi cloud qui permet d'y avoir accès sans oublier le reste) est très adapté
+
+[NOTE]
+====
+* Scality travaille déjà avec l'AP-HP
+* Jérôme : Toucan Tocco est au top mondial en tant que dataviz
+====
 
 == 11h40 -> 12h15 - Tech : Industrialiser des projets IA avec OVHcloud
 
@@ -283,3 +322,12 @@ By Meriem Berkane (OCTO Technology), Nicolas Baron (Yousign,) Mathilde Lemée (J
 
 == 18h30 -> 22h30 - networking : 🍸​🍹​ Cocktail de Clôture 🍸​🍹​
 
+== Demos
+
+* *Demo de Saagie* en zone Long Courrier : +
+image:20220524_demo_saagie_01.jpg[width=600]
+    ** Saagie : tourne n'importe où sur du Kubernetes
+        *** Kubernetes réellement obligatoire actuellement, au même niveau qu'un Kafka (sauf qu'il n'y a même pas de "Pulsar" pour faire un tout petit peu de concurrence)
+    ** Saagie travaille et a déjà déployé sa solution au Ministère des armées
+
+== Networking
