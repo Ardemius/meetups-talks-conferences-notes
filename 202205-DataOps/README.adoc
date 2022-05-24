@@ -1,0 +1,181 @@
+= DataOps.Rocks by Saagie 2022/05/24
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Présentation du salon
+
+.DataOps.Rocks Summit
+--
+Qu'est-ce que c'est ? +
+*DataOps.Rocks Summit* est l'événement dédié aux professionnels du marché Big Data & Analytics pour échanger bonnes pratiques, expériences et tendances futures du secteur, qu'ils soient décideurs, data guys ou éditeurs de logiciel ! +
+Après une édition 100% virtuelle en 2021, nous aurons le plaisir de vous retrouver en présentiel le 24 mai au Ground Control !
+
+Trois thématiques phares seront prévues lors de cette édition :
+
+    * Souveraineté
+    * Business & Stratégie
+    * Tech
+--
+
+Infos pratiques :  
+
+    * https://summit-2022.dataops.rocks/, le 24/05/2022 au https://goo.gl/maps/Xm36YP3EYFMKxN6XA[Ground Control] à Paris.
+    * *Programme* : https://summit-2022.dataops.rocks/programme
+
+== 09h30 -> 09h40 - Souveraineté : Introduction - DataOps.Rocks Summit 2022
+
+By Jérôme Trédan - Saagie
+
+== 09h40 -> 10h25 - Souveraineté : Les conditions de la Souveraineté Numérique
+
+.Abstract
+----
+A l'ère de la transition numérique, les données sont au cœur des stratégies de développement. Dès lors, savoir garantir la protection des données (personnelles ou sensibles), savoir les maîtriser est un enjeu majeur pour les entreprises. Cependant, faut-il uniquement se reposer sur des technologies européennes ? Peut-on tirer profit de l'existant pour mieux répondre aux enjeux de demain ? Durant cette session, nous tenteront d'apporter des éléments de réponse sans tabou ! 
+
+Cette session sera animée par Sébastien Couasnon, aux côtés de nos intervenants :
+- Jérôme Trédan - CEO de Saagie
+- Yann Lechelle - CEO de Scaleway
+- Thomas Solignac - CEO & Co-Founder de Golem.ai
+- Renaud Allioux - CTO & Co-Founder de Preligens
+- Arnaud Coustillière - Président du Pôle Excellence Cyber
+----
+
+== 10h30 -> 11h00 - Tech : Focus sur les tendances technos et data 2022
+
+by Jonathan Pivert (Saagie), Victor Leroux (Saagie), Leshanshui Yang (Saagie)
+
+.Abstract
+----
+A quoi faut-il s'attendre en 2022 sur le marché technos et data ? Leshansui Yang, Data Scientist & PhD Student, Victor Leroux, Product Marketing Manager et Jonathan Pivert, Product Manager chez Saagie feront un état des lieux des tendances technologiques et data émergentes à ne pas louper en 2022 !
+----
+
+== 11h20 -> 11h40 - Souveraineté : Souveraineté numérique et plan calcul, comment dépasser 55 ans d’échecs.
+
+By Jérôme Lecat (Scality)
+
+.Abstract
+----
+En 1966 fût inauguré le Plan Calcul avec pour vocation d’assurer l’autonomie française dans les techniques de l’information et développer une informatique européenne. Ont suivi d’autres initiatives au fil des décennies qui ont englouti des fonds français et européens colossaux sans résultat probant. Pourtant, nous avons en France et en Europe l’expertise, les ressources et l’envie de développer des solutions d’excellence. Nous avons des entreprises de toutes tailles qui sont des leaders mondiaux.
+Est-il pour autant réaliste de viser une souveraineté française ou européenne dans le domaine du numérique ?
+Quel en serait l’objectif ?
+Que peut-on apprendre de nos échecs pour les dépasser et bâtir d’autres succès ? 
+----
+
+== 11h40 -> 12h15 - Tech : Industrialiser des projets IA avec OVHcloud
+
+By Horacio Gonzalez (OVHCloud), Eléa Petton (OVHcloud)
+
+.Abstract
+----
+De nos jours, l'Intelligence Artificielle (IA) et le Machine Learning (ML) font partie de notre quotidien grâce à une multitude d'applications : reconnaissance faciale, assistants numériques, sous-titres générés automatiquement...
+
+L'un des principaux défis auxquels sont confrontées les entreprises qui souhaitent déployer des applications d'IA et de ML est de faire coexister deux mondes assez opposés. D'un côté, des data scientists, experts en algorithmes, mathématiques et méthodologie de recherche. D'autre part, DevOps, avec son paradigme centré sur la plateforme, l'automatisation, l'instrumentation et les processus. Ces deux mondes ont du mal à se comprendre.
+Et c'est dans ce contexte qu'une nouvelle génération d'outils et de services dans le Cloud apparaît pour faire le pont entre ces deux cultures, et automatiser de bout en bout le pipeline de modèles et de données.
+
+Dans cette conférence, nous parlerons de certains de ces outils et montrerons des exemples de la façon de les intégrer dans différentes solutions cloud d'un point de vue DevOps.
+Et pour que cela reste avant tout pratique, nous illustrerons le tout avec un use case bien terre à terre... ou plutôt mer à mer : l'analyse et classification des sons de mamifères marins avec les outils d'IA.
+----
+
+== 14h00 -> 14h30  - Souveraineté : Comment mettre en place une stratégie Data Mesh dans un contexte de souveraineté?
+
+By Rayed Benbrahim (MongoDB)
+
+.Abstract
+----
+Devenir Data-driven, utiliser la data comme avantage compétitif et exploiter la data à grande échelle sont des challenges que de nombreuses entreprises cherchent à relever. Le Data Mesh offre une solution alternative à l'organisation de la data, rendant son exploitation à grande échelle plus manœuvrable. Dans un contexte où la législation et la conscience des utilisateur se tourne vers la souveraineté des données et les conditions dans lesquelles elles sont exploitées, l'implémentation d'une stratégie de Data Mesh devient plus complexe
+
+Durant cette session, venez découvrir:
+- Ce qu'apporte le Data Mesh et son implémentation grâce à MongoDB
+- Les contraintes qu'imposent le respect de la souveraineté des données dans une stratégie de datamesh
+- Les réponses que MongoDB peut apporter pour bénéficier des bienfaits du Data Mesh, tout en étant respectueux des enjeux de souveraineté des données
+----
+
+== 14h35 -> 15h05 - Souveraineté : XXII, une data industrialisée et réglementée.
+
+By Damien Mulhem (XXII Group)
+
+== 15h10 -> 15h40 - Tech : Comment optimiser l'ingénierie de la donnée dans un écosystème où Snowflake est l'un des piliers ?
+
+By Jean-Marc Le Gonidec (Streamsets), Stéphane Heckel (Streamsets)
+
+.Abstract
+----
+Ingestion des données dans le Cloud, traitement des données in-situ dans Snowflake via Snowpark, découvrez comment la DataOps accélère votre Analytique !
+----
+
+== 15h45 -> 16h15 - Tech : Construire un cadastre solaire en combinant Airflow et les données spatiales
+
+By Valentin Ruppli (namR), Alexandre Bacchus (namR)
+
+.Abstract
+----
+namR vous présentera son process de production de données dédiées à la solarisation des bâtiments. On expliquera plus précisément comment on met à jour un pipeline de données géospatiales avec Airflow.
+----
+
+== 16h20 -> 16h50 - Tech : Retour d'expérience : DataOps pour l'attrition dans les télécoms
+
+By Julien Cabot (Lifetime Analytics)
+
+.Abstract
+----
+Chez Lifetime, nous luttons contre l’attrition (“churn”) dans les télécoms en combinant de nombreuses données et surtout de nombreux modèles d’analyse, de manière industrielle, sous la forme d’un produit SaaS pour les équipes marketing.
+
+Lors de ce retour d’expérience, je présenterai :
+- Comment nous appliquons le process Data Ops pour notre produit SaaS,
+- Comment nous avons tourner nos modèles “explainable AI” en tant feature produit,
+- Comment nous déployons à chaud nos containers de code de pipeline sur Microsoft Azure, avec une approche “Pipeline on Demand”.
+
+A propos de Lifetime Analytics :
+
+Lifetime est une solution cloud de gestion de l’attrition pour les équipes marketing des opérateurs télécoms, permettant d’anticiper l’impact du churn, d’identifier les clusters de souscriptions à risque et de gérer les actions de rétention.
+----
+
+== 16h55 -> 17h40 - Souveraineté : Le Rôle du/de la CTO dans le Business - avec Tech.Rocks
+
+By Meriem Berkane (OCTO Technology), Nicolas Baron (Yousign,) Mathilde Lemée (Jolimoi), Sacha Morard (Le Monde)
+
+== 18h30 -> 19h30 - Business : Meetup by Paris Data Ladies - Computer Vision, NLP & Time Series en Santé
+
+----
+1) "Diagnosis of peripheral neuropathy using Deep Learning models on 3D images" par Alexandra LORENZO DE BRIONNE, Lead Data Scientist @ Quantmetry
+
+2) "Leveraging unstructured text from Electronic Health Records - APHP CDW Use Case" par Charline JEAN, Data Scientist et Alice CALLIGER, Machine Learning Engineer @ Assistance Publique - Hôpitaux de Paris (AP-HP)
+
+3) "PlethoMAP: Real-time non-invasive hemodynamic monitoring for operating rooms" par Jade PERDEREAU, Data Scientist @ Hôpital Lariboisière Fernand-Widal AP-HP.
+----
+
+== 18h30 -> 22h30 - networking : 🍸​🍹​ Cocktail de Clôture 🍸​🍹​
+
