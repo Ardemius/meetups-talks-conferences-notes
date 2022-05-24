@@ -380,6 +380,9 @@ Lifetime est une solution cloud de gestion de l’attrition pour les équipes ma
     ** de périodes de réduction des concurrents
     ** d'incidents technologiques
 
+.Churn : explainability over prediction
+image:20220524_dataops_15.jpg[]
+
 == 16h55 -> 17h40 - Souveraineté : Le Rôle du/de la CTO dans le Business - avec Tech.Rocks
 
 By Meriem Berkane (OCTO Technology), Nicolas Baron (Yousign,) Mathilde Lemée (Jolimoi), Sacha Morard (Le Monde)
