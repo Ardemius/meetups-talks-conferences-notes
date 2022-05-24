@@ -384,10 +384,10 @@ Lifetime est une solution cloud de gestion de l’attrition pour les équipes ma
 image:20220524_dataops_15.jpg[]
 
 .Lifetime Analytics workflow
-image:20220524_dataops_15.jpg[]
+image:20220524_dataops_16.jpg[]
 
 .Lifetime Analytics architecture
-image:20220524_dataops_15.jpg[]
+image:20220524_dataops_17.jpg[]
 
 * Lifetime Analytics utilise également *Snowflake*
     ** pour la partie staging & feature store
@@ -423,6 +423,25 @@ By Meriem Berkane (OCTO Technology, CTO), Nicolas Baron (Yousign, VP Engineering
 
 3) "PlethoMAP: Real-time non-invasive hemodynamic monitoring for operating rooms" par Jade PERDEREAU, Data Scientist @ Hôpital Lariboisière Fernand-Widal AP-HP.
 ----
+
+1) "Diagnosis of peripheral neuropathy using Deep Learning models on 3D images"
+
+* *Quantmetry* très lié au domaine de la santé
+    ** grosse équipe de Data scientist, plusieurs brevets de déposés, plusieurs publications
+    ** travail régulier avec le AP-HP
+* *anonymisation*, contrairement à *pseudonimisation*, on ne peut *JAMAIS* revenir au patient.
+
+2) "Leveraging unstructured text from Electronic Health Records - APHP CDW Use Case"
+
+* AP-HP : large volumétrie de données, de 100K jusqu'à 1 million de documents par jour
+* données très sensibles, doivent être traitées sur leurs propres serveurs, et PAS dans le Cloud
+    ** d'où des pannes à gérer
+
+.Stack technique (pour déployer un modèle de NLP sur plusieurs GPUs)
+image:20220524_dataops_18.jpg[]
+
+    * cluster *Spark*
+    * gestion des dépendances avec *Poetry*
 
 == 18h30 -> 22h30 - networking : 🍸🍹Cocktail de Clôture 🍸🍹
 
