@@ -224,6 +224,8 @@ Que peut-on apprendre de nos échecs pour les dépasser et bâtir d’autres suc
     ** tous deux ont protégé leurs entreprises, surtout au lancement et en phase de croissance
     ** Cas *en 2013* du gouvernement américain qui a passé à AWS une commande représentant 20% de son CA (qui était de 3 milliards de $). C'est énorme pour une société dans cette phase de développement
 
+image:20220524_dataops_05.jpg[]
+
 * Jérôme : exemple avec les débuts de Scality et "Laniol" (???), une société américaine, qui leur avait passé un très gros contrat pour eux à l'époque. +
 Scality a développé pour eux un outil / logiciel, qui n'a au final PAS été retenu par Laniol (alors que tout fonctionnait bien) +
 Jérôme était alors gêné, mais Laniol lui a répondu qu'au contraire il ne fallait pas, car leur métier était justement de permettre à des sociétés de se développer. +
@@ -236,21 +238,6 @@ Jérôme était alors gêné, mais Laniol lui a répondu qu'au contraire il ne f
 * Scality travaille déjà avec l'AP-HP
 * Jérôme : Toucan Tocco est au top mondial en tant que dataviz
 ====
-
-== 11h40 -> 12h15 - Tech : Industrialiser des projets IA avec OVHcloud
-
-By Horacio Gonzalez (OVHCloud), Eléa Petton (OVHcloud)
-
-.Abstract
-----
-De nos jours, l'Intelligence Artificielle (IA) et le Machine Learning (ML) font partie de notre quotidien grâce à une multitude d'applications : reconnaissance faciale, assistants numériques, sous-titres générés automatiquement...
-
-L'un des principaux défis auxquels sont confrontées les entreprises qui souhaitent déployer des applications d'IA et de ML est de faire coexister deux mondes assez opposés. D'un côté, des data scientists, experts en algorithmes, mathématiques et méthodologie de recherche. D'autre part, DevOps, avec son paradigme centré sur la plateforme, l'automatisation, l'instrumentation et les processus. Ces deux mondes ont du mal à se comprendre.
-Et c'est dans ce contexte qu'une nouvelle génération d'outils et de services dans le Cloud apparaît pour faire le pont entre ces deux cultures, et automatiser de bout en bout le pipeline de modèles et de données.
-
-Dans cette conférence, nous parlerons de certains de ces outils et montrerons des exemples de la façon de les intégrer dans différentes solutions cloud d'un point de vue DevOps.
-Et pour que cela reste avant tout pratique, nous illustrerons le tout avec un use case bien terre à terre... ou plutôt mer à mer : l'analyse et classification des sons de mamifères marins avec les outils d'IA.
-----
 
 == 14h00 -> 14h30  - Souveraineté : Comment mettre en place une stratégie Data Mesh dans un contexte de souveraineté?
 
@@ -265,6 +252,44 @@ Durant cette session, venez découvrir:
 - Les contraintes qu'imposent le respect de la souveraineté des données dans une stratégie de datamesh
 - Les réponses que MongoDB peut apporter pour bénéficier des bienfaits du Data Mesh, tout en étant respectueux des enjeux de souveraineté des données
 ----
+
+* MongoDB est plus qu'une BDD, mais est une *data platform*
+
+* Jusqu'à maintenant : partie opérationnelle <> ETL <> partie analytique
+    ** avec des technos comme data lake, data warehouse, data lakehouse
+
+* Et maintenant, on évolue vers le *Data mesh*, que l'on peut rapprocher du *DDD*
+
+image:20220524_dataops_06.jpg[]
+
+* Mettre en place un Data mesh va donc impliquer *discipline* et *gouvernance*
+
+.MongoDB Data Mesh
+image:20220524_dataops_07.jpg[]
+
+How MongoD helps Sovereignty ?
+
+    * Discover
+    * Defend
+    * Detect
+
+image::20220524_dataops_08.jpg[]
+
+Rayed que : 
+
+    * GitHub avait il y a quelques années du restreindre l'accès à ces données pour plusieurs pays (Iran)
+    * Les Cloud providers ont du limiter / arrêter leurs services en Russie
+
+.Data sensibility and impact
+image:20220524_dataops_09.jpg[]
+
+* Donc, cf Rayed, il faut être capable de *remonter son infra et ses données chez un autre hébergeur*
+    ** d'où l'*importance de l'IaaC*
+
+.Solutions pour la phase Defend
+image:20220524_dataops_10.jpg[]
+
+* On connaît surtout MongoDB comme une BDD transactionnelle, mais elle fait plus que cela aujourd'hui (analytics, etc.)
 
 == 14h35 -> 15h05 - Souveraineté : XXII, une data industrialisée et réglementée.
 
