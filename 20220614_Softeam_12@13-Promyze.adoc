@@ -1,0 +1,164 @@
+= 2022/06/15 - Softeam - 12@13 - Promyze - culture du partage de connaissances dans les équipes Tech
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Abstract
+
+----
+Bonjour à toutes et tous,
+
+Si le craft vous intéresse, le 14/06, Cédric TEYTON, co-fondateur de Promyse (https://promyze.com/fr/) viendra nous parler en 12@13 (de 12h30 à 13h30) via Teams de la culture du partage de connaissances dans les équipes Tech :
+
+    Délivrer régulièrement des logiciels de qualité est un objectif permanent pour les entreprises du numérique.
+    Concevoir des logiciels durables nécessite de connaître les bonnes pratiques de développement à appliquer au quotidien.
+    Lorsqu'on développe, les domaines de bonnes pratiques sont très variés : Langages, Frameworks, Architecture, Sécurité, Performance, Eco-conception, ...
+    Dans ce contexte, difficile de connaître toutes les bonnes pratiques dans un domaine, de les aligner au sein d'équipe, et de les partager dans une organisation.
+    Nous verrons plusieurs approches pour y arriver et présenterons comment la solution Promyze permet de répondre à cet enjeu de partage de bonnes pratiques.
+
+Pour rappel, Promyze est l'éditeur d'une solution SaaS de saisie et partage de bonnes pratiques de développement, avec des plugins permettant de l'intégrer à la plupart des IDE du marché.
+
+Vous trouverez ci-dessous l'URL de l'évènement Teams, et en pièce jointe un .ics pour l'ajouter à votre calendrier préféré 😉
+https://teams.microsoft.com/l/meetup-join/19%3ameeting_ODI2Njg3MzAtZjJiYy00ZDJmLWI1ZDUtZDg3NzhiZTQxZGUw%40thread.v2/0?context=%7b%22Tid%22%3a%2280c03608-5f64-40bb-9c70-9394abe6011c%22%2c%22Oid%22%3a%225bb88f9c-b55d-4a00-9494-f696b58fb120%22%7d
+
+L'évènement est public, aussi n'hésitez pas à forwarder l'invitation aux collègues et / ou clients intéressés.
+
+Bloquez le créneau dans votre agenda, et venez nombreux et nombreuses 🙂
+
+@bientôt,
+Thomas
+----
+
+== Notes
+
+* Cédric TEYTON comme speaker
+* 18 personnes présentes, mais avec un utilisateur représentant la salle de réunion de Softeam Nantes (Ricardo)
+
+* Promyze 
+    ** StartUpfondée à Bordeaux depuis 6 ans
+    ** nouveau produit Promyze créé il y a 2 ans
+
+//- 
+
+* *L'idée de Promyze* est venu du travail du groupe d'étude derrière le fameux *"Accelerate : The Science of DevOps"*
+    ** tout particulièrement les 4 keys metrics du Software Delivery Performance : + 
+    image:20220614_Softeam_Promyze_01.jpg[]
+
+        *** Deployment frequency
+        *** Lead time for changes
+        *** Time to restore services
+        *** change failure rate
+
+//- 
+
+* L'une des 27 capabilities observées chez les sociétés très fortes sur ces 4 keys metrics : la *learning culture*
+    ** cette learning culture va permettre plus facilement la *code maintenability*
+
+* Seul il est compliqué de tout connaître, mais dans une équipe, il y a beaucoup plus de changes de trouver quelqu'un qui saura ce que l'on ne sait pas
+
+.Misknowledge of best practices introduces code complexity
+image:20220614_Softeam_Promyze_02.jpg[]
+
+.Inner source boosts best practices sharing & reuse
+image:20220614_Softeam_Promyze_03.jpg[]
+
+* Les *Code Reviews* sont souvent limitées au créateur du code et au reviewer (on pourrait faire mieux en termes de communication)
+
+.Turnover increases risks of knowledge loss
+image:20220614_Softeam_Promyze_04.jpg[]
+
+    * l'*onboarding* est un vrai sujet, trop souvent laissé de côté par les boîtes
+        ** il permet d'éviter un trop rapide "ras-le-bol" avec le turnover qui va avec...
+
+* Un wiki permet de partager des pratiques, mais avec la problématique de l'obsolescence / la mise à jour de son contenu.
+
+=== DEMO de Promyze
+
+* Promyze : appli Web ET ensemble de plugins pour la plupart des IDE et navigateurs
+* existe en 100% Cloud *ET* 100% on-premise
+
+image::20220614_Softeam_Promyze_05.jpg[]
+
+* Dans une entrée Promyze, possibilité de renseigner un exemple positif et un exemple négatif pour illustrer la pratique
+
+.Intégration de Promyze dans l'IDE (IntelliJ)
+image:20220614_Softeam_Promyze_06.jpg[]
+
+.Intégration de Promyze dans Chrome
+image:20220614_Softeam_Promyze_07.jpg[]
+image:20220614_Softeam_Promyze_08.jpg[]
+
+* Mise en place d'ateliers craft d'échange de pratiques (amélioration continue, software craftsmanship)
+    ** la plupart des clients partent sur un rythme d'1 atelier toutes les 2 à 3 semaines
+
+image:20220614_Softeam_Promyze_09.jpg[]
+image:20220614_Softeam_Promyze_10.jpg[]
+
+Suite à l'atelier, on pourra prendre une décision sur une pratique *en équipe*.
+
+* Dans une démache d'Inner Source, je peux également consulter *les pratiques des autres équipes* (dans les autres espaces de Promyze).
+* via un *système de suggestions automatiques* (basé sur des RegEx), Promyze va également pouvoir vous proposer des pratiques
+
+Concernant l'onboarding / inner sourcing : les *ateliers découvertes*
+
+image:20220614_Softeam_Promyze_11.jpg[]
+image:20220614_Softeam_Promyze_12.jpg[]
+
+Ces ateliers permettent de *se tester* quant à sa connaissance des pratiques de l'équipe.
+
+Q&A : 
+
+    * licensing par utilisateur, abonnement annuel, ou mensuel sur le Cloud
+        ** 20€ / mois et utilisateur
+        ** généralement les clients prennent un "pack" pour 20+ collaborateurs
+        ** Cédric et Promyze ont l'habitude de travailler avec des ESN
+
+    * il y a une version d'essai / gratuite de Promyze
+        ** actuellement 30 jours gratuits
+        ** passage à modèle freemium, avec une limitation sur le nombre de pratiques créées
+
+    * Arnaud DEIXONNE coach Agile
+        ** constat du manque de comm chez le client où certains coach détiennent la connaissance sur les pratiques, et où il n'est pas si évident de les diffuser
+
+    * *Stockage des données* : 
+        ** Cloud : hébergement chez *Clever Cloud*
+        ** on-premise : données stockées chez soi sur un *MongoDB*
+
+    * D'ici peu, lancement d'un *hub communautaire de bonnes pratiques* : https://bestcodingpractices.dev
+        ** Promyze veut encore l'enrichir pour fin juin, avant lancement officiel début juillet
+        ** hub public
+
+    * Promyze ~10 d'employés à Bordeaux
+
