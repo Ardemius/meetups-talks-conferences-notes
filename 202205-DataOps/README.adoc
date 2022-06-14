@@ -477,3 +477,6 @@ image:20220524_demo_saagie_01.jpg[width=600]
 == Avis sur le salon
 
 * Encore et toujours *Kubernetes* en force et présent partout
+
+
+

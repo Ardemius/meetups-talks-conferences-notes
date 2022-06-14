@@ -37,7 +37,7 @@ toc::[]
 
 Un bloc-notes permettant de persister des notes et réflexions prises très rapidement en suivant talk, conf, émission ou autre.
 
-== 2021/02/21 : JeudiTransfo - Design Thinking
+== XXX
 
 
 

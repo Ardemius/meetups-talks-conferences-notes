@@ -1,0 +1,79 @@
+= 2022/06/01 - Docaposte Jeudi Transfo - Cycle innovation
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== 2021/06/07 : Qu'est-ce que l'Innovation ?
+
+* JeudiTransfo n°23
+* Présenté par *Benjamin DUBAN*, CEO et co-fondateur de STIM (https://www.wearestim.com/)
+    ** STIM est une spin off d'un centre de recherche en gestion de l'école des Mines de Paris, qui a beaucoup analysé les processus d'innovation
+    ** STIM a déjà accompagné plus de 50 entreprises (et la moitié du CAC 40), et doit exister depuis 7 ans (à vérifier)
+* URL : https://web.microsoftstream.com/video/d4afb523-359d-4c4f-b654-05a27c6dc579?channelId=1a63152d-5e82-4c80-9dee-12a16f180c53
+
+----
+Nous vous proposons lors de ce #JeudiTransfo de revenir sur les fondamentaux de l’innovation.
+Innover sans transposer à la réalité du marché, c’est faire de l’innovation une offre hors sol en décalage avec les besoins clients.
+
+Benjamin vous présentera ce qu’est l’innovation ainsi que les idées reçues qui en découlent, mais aussi comment l’organiser pour être en adéquation avec les attentes des consommateurs.
+----
+
+En innovation, méfiez-vous de vos croyances : 
+
+    * un partagé de sécurité face aux évolutions de votre écosystème.
+        ** est-ce vrai ? 
+        ** Tenir à jour ce constat (veille)
+    
+    * les principaux chantiers d'innovation différenciants que vous identifiez sont probablement aussi ceux de vos concurrents.
+        ** Agir en réaction (market-pull) et en anticipation (need-seeker)
+    
+    * Le service qui vous disruptera sera sans doute au "mauvais service" selon vos critères.
+        ** S'autoriser à explorer de "mauvais services", qui cassent les codes de votre entreprise.
+    
+
+.Innovations incrémentale ou majeure : nouveauté et incertitudes
+image:20220601_Docaposte-JeudiTransfo_innovation_01.png[]
+
+
+
+
+
+
+
+
+
+
+
+

@@ -74,12 +74,14 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * *Harness* : CI/CD avec modules de Feature Flags, SRE, Security Test (OWASP)
 	** par contre boîte jeune avec modèle de licensing surprenant : par service pour le "core" CI/CD, puis par user pour les modules annexes (Feature Flags et autres) +
 	Donc quand on prend des modules en plus, on se retrouve vite à avoir une facturation "custom" directement discutée avec Harness
-* *Promyse* : une plateforme de partage de bonnes pratiques de codage
+* *Promyze* : une plateforme de partage de bonnes pratiques de codage
 	** https://promyze.com/fr/
 	** J'ai échangé avec Cédric TEYTON (cedric.teyton@promyse.com), l'un des créateurs de l'outil
-	** Promyse permet de partager des bonnes pratiques au sein d'une équipe de développement
-	** Promyse permet échanger de mettre à jour une base de connaissance des bonnes pratiques
-		*** Base de connaissances publique mise à disposition par Promyse
+	** Promyze permet de partager des bonnes pratiques au sein d'une équipe de développement
+	** Promyze permet échanger de mettre à jour une base de connaissance des bonnes pratiques
+		*** Base de connaissances publique mise à disposition par Promyze
+	** Promyze est hébergé sur Clever Cloud
+	** Jetez un oeil à leurs *bonnes pratiques de dev* : https://bestcodingpractices.dev
 
 * J'ai croisé *Medhi* maintenant chez Ippon, et nous avons parlé du programme Black Belt et de la stratégie que j'ai proposée chez Softeam
 	** Black Belt : par ceinture, 12 SLOs à atteindre
