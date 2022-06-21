@@ -1,4 +1,4 @@
-= 2022/03/08 - Google Developer Group Cloud Paris - Soirée Google Cloud Workflows / BigQuery
+= 2022/05/10 - Google Developer Group Cloud Paris - Soirée Google Cloud Workflows / BigQuery
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
