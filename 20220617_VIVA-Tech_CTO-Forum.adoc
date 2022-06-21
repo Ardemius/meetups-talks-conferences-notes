@@ -1,0 +1,316 @@
+= 2022/06/17 - VIVA Technology - CTO Forum
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Le CTO Forum est organisé par Scaleway, et il s'agit de sa 1ere édition
+
+== Présentation de la conférence
+
+.Programme de la journée
+image:20220617_VIVA-Tech-CTO-Forum_01.jpg[]
+image:20220617_VIVA-Tech-CTO-Forum_02.jpg[]
+
+Talk d'intro par Yann Lechelle, CEO de Scaleway
+
+* Cloud european market is UNbalanced : OVH, Scaleway and other french ones only represent *2% of the market*
+
+.And here is the part of the american cloud providers
+image:20220617_VIVA-Tech-CTO-Forum_03.jpg[width=800]
+
+* Worst, AWS hosts 75% of the FT Next40...
+
+Et ce n'est pas la faute des providers américains, c'est celle de nos politiques et directions, qui ont laissé cette situation s'installer. +
+-> Ces providers américains ne sont pas "mauvais" (ils sont même plutôt bons 😉)
+
+Historical chronology : 
+
+    1. BEFORE : on-premise, private, mono public Cloud
+    2. 2017 Trump with "America First"
+    3. 2019 COVID
+    4. 2022 War in Ukraine
+    5. AFTER we HAVE to be multi cloud to avoid to be impacted by situations like the previous ones
+
+== Your code, your choice: deploying to the multi cloud
+
+Talk avec Steven Le Roux, CTO at Clever Cloud
+
+* Multi Cloud : challenge du multi region
+    ** problématique / difficulté de déployer le dataplane dessus
+
+* Ce dont nous avons besoin : *clever deployment strategy* and XXX
+    ** et le "lift and ship" est une chose à aller chercher
+
+Steven : you can have an application that match the 12 factors AND that is a *MONOLITH*
+
+== Removing barriers to multi-cloud compatibility
+
+Talk avec Meriem Berkane, CTO at Octo.
+
+Meriem : Octo is a 1000 consultants today
+
+* different kind of "locking", not only "vendor locking" (ex : tech knowledge locking)
+    ** there is a very good article from Martin Fowler at this subject : https://martinfowler.com/articles/oss-lockin.html[Don't get locked up into avoiding lock-in]
+    ** The question is "what *compromises* am I ok to accept ?"
+    ** We must be prepared to move / switch very quickly, especially when speaking about Cloud
+        *** on ne peut pas former en permanence tout le monde sur tout (et surtout le faire "vite" : il faut du temps pour monter en compétence)
+
+[IMPORTANT]
+====
+Il faut *utiliser le plus possible les solutions existantes*, et être capable de *les intégrer au mieux*, tout en étant capable d'en changer (le plus facilement / le moins difficilement possible) dès que nécessaire.
+====
+
+Les technologies très importants en ce moment : *les technologies permettant de gérer / faciliter le déploiement des stacks tech*.
+
+== How we recruited engineering managers at Malt
+
+Talk avec Benoit Guillon, VP Engineering at Malt.
+
+* What is a good software engineer ?
+* What is an excellent software engineer ?
+* As an engineering manager, how do you make good engineers become excellent engineers ?
+
+.Quelques chiffres sur Malt ?
+image:20220617_VIVA-Tech-CTO-Forum_04.jpg[width=800]
+
+* Malt is a tech company, editing a product, its web site.
+* Malt aims at doing 1 billion of CA at 2024.
+
+Quelques chiffres récents sur le marché des freelances : 
+
+    * +90% freelancers in 10 years in France
+    * 50% of US workers will be independeat in 2027
+    * +90 000 new freelancers in 2021 on Malt
+
+-> Direction de Malt : Team, *be ready to SCALE* (x2 CA per year, same thing next year, and same thing for employees)
+
+    * *scaling = Retain PLUS Hire*
+        ** but when 1 team become 2, we need 2 leaders ! And so : 
+    * *Scaling = retain + hire + grow people* (+ keep going fast)
+        ** this is a *FULL TIME JOB* for engineer manager
+
+Et c'est là que Benoît ressort le schéma des carrières de progression "contribution individuelle" et managériale : 
+
+image:20220617_VIVA-Tech-CTO-Forum_05.jpg[]
+image:20220617_VIVA-Tech-CTO-Forum_06.jpg[]
+
+[IMPORTANT]
+====
+* As an engineering manager, your role is to maximize the impact of your teams on the long term.
+* Do not manage story points, just manage the value your teams bring.
+====
+
+image:20220617_VIVA-Tech-CTO-Forum_07.jpg[]
+
+== Hiring & retaining engineering talent as you scale
+
+Talk avec Romain Kuzniak, CTO at Openclassroom, Evelyne Norton, CTO at Splio, Caroline Therwath-Chavier, CEO at The Allyance.
+
+* Chaque année, jeter un oeil à l'enquête de StackOverflow
+* We have to ensure we have teams, and not just "group of people"
+    ** avec des réussites d'équipes, et des échecs d'équipe, il ne faut pas que ce soit l'affaire de quelques personnes seulement
+
+== Creating a great candidate experience or engineers : Refty demo
+
+Talk by Guillaume Gelin, co-founder & CTO at Reftly
+
+* Recruiting is *HARD*
+* Why ? Because they don't care 
+    ** don't care about you, your foundings, your interview tests, etc.
+    ** offering is below demands, they can have all they want
+    ** YOU are the one that has to care
+
+//-
+
+* So everything is about candidate experiences
+    ** Candidates must LIKE your candidate process
+
+* On voit quelques screenshot de *Refty*, et cela ressemble beaucoup à *WorkAdventure*.
+    ** Voir Refty "jobverse" (https://www.refty.co/jobverse)
+* Refty propose également un workflow pour vérifier les références des candidats
+* Refty permet également d'envoyer un report anonyme aux candidats (le report généré par Refty qui les décrit ?)
+
+NOTE: Tester https://www.refty.co/[Refty] !
+
+== Fighting complexity: keeping engineering simple as you grow
+
+Talk avec Rémi Guyot, CPO at Blablacar
+
+[IMPORTANT]
+====
+* Things can be simple to build, but complex to use (monocyble)
+* Some others can be complex to build, but easy to use (bicyble)
+====
+
+image:20220617_VIVA-Tech-CTO-Forum_08.jpg[]
+
+Some examples
+
+    * Non Core : messaging system
+    * To avoid : booking code
+    * Run for it : design system
+
+* For *Big Bets* :
+    ** explain why strategic projects create tech debt
+    ** praise the invisible work caused by the curse of simplicity
+        *** il FAUT récompenser les gens qui oeuvre dans l'ombre pour un travail important MAIS non visible
+
+* For *To avoid* : 
+    ** Make sure you have "Remove feature X" on your roadmap
+    ** Simplify features to move them away from that box
+
+* For *Non Core* : 
+    ** Don't fix all the secondary use cases that are nagging your
+
+Un livre conseillé : https://fr.discovery-discipline.com/[Discovery Discipline] +
+Co-écrit par Rémi, et édité by Thiga
+
+== Driving innovation through engineering intrapreneurship
+
+Talk avec Jean-Baptiste Pringuey, VP of Engineering at Teads
+
+* le marché de Teads est très concurrentiel : Google Twitter, Snapshat, etc.
+* avec une présence forte des régulateurs : RGPD, CCPA, etc.
+
+//-
+
+* Teams must be independant and autonomous
+* Each team must have a mission and a vision
+
+== 20+ years of building on open source: The VLC story
+
+Talk avec Jean-Baptiste Kempf, président et lead VLC Developer chez VLC
+
+== Secrets to success for open source startups
+
+Talk avec Benoit Jacquemont, co-fondateur et CTO de Akeneo, et Laetitia Avrot, Field CTO de Enterprise DB
+
+== Building responsable software
+
+Talk avec Killian vermersch (Golem.ai), Florence Chabanois (Scaleway), Mohammed Sijelmassi (Sopra Steria)
+
+* Doing softwares that last longer
+* sustainability is the key: to damage "less" the product
+* Explanability is another great concern : to be able to explain what we are doing things, in order black boxes NOT to exist
+
+== Resilience in a pandemic
+
+Talk avec Nicolas de Nayer, ex VP of Engineering chez Doctolib
+
+Doctolib : The boring architecture
+
+image:20220617_VIVA-Tech-CTO-Forum_09.jpg[]
+image:20220617_VIVA-Tech-CTO-Forum_10.jpg[]
+
+== The future of developer experience
+
+Talk donné par Patrick Joubert, Head of Developer Experience at CircleCI
+
+.Le chemin de croix de l'installation de son poste...
+image:20220617_VIVA-Tech-CTO-Forum_11.jpg[]
+
+.Les endroits ou CircleCI va intervenir
+image:20220617_VIVA-Tech-CTO-Forum_12.jpg[]
+
+.Takeway and maybe some homework
+image:20220617_VIVA-Tech-CTO-Forum_13.jpg[]
+
+== Empowering developers to make a difference
+
+Talk donné par Cesar Lugo, senior software engineer at Typeform
+
+* They have built a bottom up culture
+* Developers want : good balance in their life and work, good work conditions, good salary
+    ** And they don't want to be passive, to "wait for their specifications to arrive"
+
+== Build a cybersecurity strategy, team and culture "from scratch" in a hyper-growth context
+
+Talk donné par Fabien Lemarchand, VP of Platform & Security chez ManoMano
+
+image:20220617_VIVA-Tech-CTO-Forum_14.jpg[]
+
+* Leur mantra à ManoMano : "You build, you run it and you secure it"
+
+* Very important to focus on the first 100 days 5
+image:20220617_VIVA-Tech-CTO-Forum_15.jpg[]
+    ** on commence par passer du temps avec chaque équipe pour comprendre quels sont les risques encourus par chacune d'elles.
+    ** At the end of this phase, it was very important to have measure to show
+        *** To have some, one thing that was used was bug bounties
+        *** those last gave ManoMano measures
+
+image:20220617_VIVA-Tech-CTO-Forum_16.jpg[]
+
+New paradigms :
+
+    * HUMAN : People training to protect the company
+        ** NOT awareness BUT culture
+    * OFFENSIVE : People thinking like an attacker
+        ** NOT like defender BUT like hunter
+
+*External collaboration* is a very good thing (like with bug bounties) : 
+
+    * bug bounty
+    * Community
+    * Articles
+    * Events
+    * Hack4values
+    * Conferences
+
+== The future of Kubernetes
+
+Talk donné par Nigel Poultron, Kubernetes Guru
+
+* Nigel est un expert de Kubernetes et de Docker, qu'il a utilisés quasiment depuis leurs débuts
+
+* Nigel est d'accord, Kubernetes est compliqué... ou plutôt il l'était encore plus avant (ça va mieux maintenant)
+* Et Kubernetes est définitivement en chemin pour la "domination mondiale"
+    ** Il va même plus loin avec le "orchestrate everything" : 
+        *** VMs
+        *** workflows
+        *** etc.
+
+* Kubernetes is still "a litte bit difficult / complex" : raison pour laquelle *on le prend souvent comme un service managé* par d'autres
+    ** Kubernetes devient de la "dark matter", "it's just there", c'est là, mais on ne sait pas vraiment comment ça fonctionne...
+
+* L'*API de Kubernetes* lui permet d'être utilisé partout
+
+* Si votre application tourne sur Kubernetes, peut-être importe que Kubernetes tourne sur un Cloud A ou B, cela marchera toujours
+    ** Ce qui pourrait transformer encore plus Kubernetes en un "supermassive blackhole" où l'on va tout retrouver (ce qui n'est pas la meilleure des nouvelles)
+    ** Les applications sont "container first" actuellement, il se pourrait qu'elles deviennent "container only" (Kubernetes) demain...
+
+
+
+
+
