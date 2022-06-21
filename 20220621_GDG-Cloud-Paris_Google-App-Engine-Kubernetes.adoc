@@ -1,0 +1,222 @@
+= 2022/06/21 - Google Developer Group Cloud Paris - Soirée Google App Engine / Kubernetes
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* Event du *Google Developer Group Cloud*, chez Malt, le 21/06/2022
+* Description de l'évènement : https://gdg.community.dev/events/details/google-gdg-cloud-paris-presents-soiree-google-app-engine-kubernetes/
+
+== Google App Engine, le même, en mieux
+
+=== Abstract
+
+Présenté par Ludovic Champenois / Google
+
+----
+App Engine, le premier produit Cloud de Google, bien avant Google Cloud Platform...
+
+12 ans après, toujours d'actualité, avec Java 11, Java 17, et à nouveau les "Bundled Services", les APIs App Engine d'origine, qui ont fait le succes de la "Plateform As A Service." Le tout maintenant en Open Source sur github.
+
+Ludovic Champenois est Responsable Google Cloud Platform Serverless pour Java App Engine, Fonctions et Buildpacks chez Google
+
+https://twitter.com/ludoch
+----
+
+=== Notes
+
+* Anecdote : à la base Kubernetes était un projet créé par des ingénieurs App Engine
+
+* Ludovic a émigré aux Etats-Unis en 1994
+* Il avait rejoint Sun Microsystems en 1996
+* Quand Oracle a racheté Sun, Ludovic a cherché "n'importe où ailleurs", et Google l'a pris...
+    ** cela fait 11 ans qu'il travaille sur App Engine, et compte bien ne faire que ça jusqu'à sa retraite
+    ** création de App Engine en 2009
+
+* Ludovic a créé un compte Twitter qui s'appelle AppEngine Java qui relate l'histoire de App Engine
+    ** 1er poste : la création de App Engine par Guido Van Rossum, ingénieur Google qui a créé Python
+
+* Ludovic : Google App Engine est l'un des pionniers du PaaS
+* Et le code que l'on va faire tourner aujourd'hui date de 10 ans
+    ** Mais cette fois il a été mis à jour pour tourner sur Java 17 et plus Java 6 😉 
+
+Demo faite sur NetBeans IDE 14 ! 🙂 
+
+* La demo utilise Quarkus
+* et on utilise toujours des servlets (et donc du JEE)
+    ** ces APIs sont donc HYPER stables (merci Java !)
+* Ludovic a "ressucité" le code rien que pour nous...
+* Historiquement, *Cloud Build* est un service qui a été créé pour App Engine.
+
+* Cloud Run Buildpacks -> fichier .tgz que l'on va sauvegarder dans une BDD Spanner
+
+* nouvelle couche de sécurité de Google Cloud (nouvelle sandbox) : *gVisor*
+    ** elle aussi a été créée par les équipes App Engine une fois constatés les problèmes provenant de l'ancienne sandbox
+
+* Depuis 4 mois, Ludovic a mis TOUT le code App Engine sur GitHub
+
+* Ludovic : Docker n'est PAS secure, quand on le fait tourner, on peut "voir" qui le fait tourner (le host)
+
+.Toute l'histoire de Google App Engine
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_01.jpg[]
+
+* Cloud Run sert des Docker images
+    ** La seule chose qu'on rajoute est gVisor
+
+.Quand Cloud Run tourne, il le fait avec la dernière image dispo ici :
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_02.jpg[]
+
+-> Regardez la dernière colonne, et le nombre de vulnérabilités...
+
+    * Alors qu'avec App Engine, à chaque relance on redéploie ET on a la dernière version (à vérifier !)
+
+En fait, GAE est FULLY managed :
+
+    * contrat avec Ubuntu
+    * contrat avec Jetty
+    * rien à payer pour vous, c'est géré (et payé) par Google
+
+Ressources : 
+
+    * Open Source : https://github.com/GoogleCloudPlatform/appengine-java-standard
+    * Bundled Services : 
+        ** https://cloud.google.com/appengine/docs/standard/java-gen2/services/access
+        ** https://github.com/GoogleCloudPlatform/java-docs-samples/...
+
+== Plongée dans la révolution Kubernetes
+
+=== Abstract
+
+Présenté par Alain Regnier / Kubo Labs
+
+----
+Avec l’arrivée des containers et surtout de l’orchestrateur Kubernetes le monde de l’IT est en plein bouleversement. Architecture, Développement, Mise en Production, Management, Monitoring... tout est impacté à plus ou moins grande échelle.
+
+Au cours de cette présentation, nous reviendrons d’abord sur l’histoire de Kubernetes, ce que Kubernetes permet de faire et sa mise en place. Nous verrons ensuite comment le quotidien des développeurs est impacté par cette révolution et les nouveaux outils disponibles. Enfin nous verrons comment se déroule le déploiement d’une application sur un cluster Kubernetes.
+
+Le tout sera accompagné de retours d’expériences et de bonnes pratiques.
+
+Alain Regnier est CTO chez Kubo Labs (spécialiste Kubernetes)
+
+https://www.kubolabs.io
+----
+
+=== Notes
+
+* Alain : "Kubernetes est une solution très complexe", et avec Kudo Labs on essaye de simplifier les choses...
+
+.On commence par quelques rappels...
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_03.jpg[]
+
+* Kubernetes est un terme qui vient du grec et qui veut dire "*timonier*"
+
+.Le principe principal de Kubernetes
+IMPORTANT: Déclarer la cible à atteindre et laisser le système la maintenir.
+
+.Google et les containers
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_04.jpg[]
+
+* rappel - *2014* : Google faisait déjà tourner *4 milliards de containers par semaine*
+
+* Alain : mort de Docker avec le rachat par Mirantis (et le split en 2)
+
+.Pourquoi Kubernetes
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_05.jpg[]
+
+* Les montées de version de Kubernetes peuvent être TRES pénibles
+    ** mais sur GKE ça se passent mieux qu'ailleurs... (apparemment c'est beaucoup plus problématique sur Amazon)
+
+.Pokemon GO et nombre de transactions par seconde (quand le succès dépasse toutes les attentes...)
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_06.jpg[]
+
+* on regarde le "worst case" scénario prévu et on le compare à la réalité... 
+    ** et le succès a été tel que c'est Pokemon GO qui a forcé les ingénieurs de Google a être capable de "mieux pousser les murs"
+
+.Mise en place d'un environnement Kubernetes (d'un cluster Kubernetes)
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_07.jpg[]
+
+.Complexité, besoin de customisation et coût des types d'install Kubernetes
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_08.jpg[]
+
+-> Et on voit l'intérêt de *Kudo Labs* qui vous facilite la vie (et Alain doit bien prêcher un peu pour sa paroisse 😉) +
+-> Dans tous les cas, *il est (très) souvent nécessaire de se faire aider* (et cela peut vite coûter cher !)
+
+.IBM rachète Red Hat pour récupérer son expertise sur Kubernetes
+[NOTE]
+====
+Red Hat, pour OpenShift, a tout réécrit (OpenShift) il y a quelques années sur Kubernetes.
+Red Hat a donc développé une expertise sur Kubernetes, principale raison pour laquelle *IBM a racheté RedHat pour 34 milliards $* : pour récupérer cette expertise Kubernetes.
+
+Et pouvoir vendre (cher) cette expertise. +
+-> OpenShift est une solution *chère* à faire configurer, faire tourner et maintenir (il faut se faire aider, et cela a un coût)
+====
+
+.Déploiement d'une application sur Kubernetes
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_09.jpg[]
+
+.Bonnes pratiques avec Kubernetes
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_10.jpg[]
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_11.jpg[]
+
+Plein d'application se sont développées sur Kube grâce à la Kube API, comme : 
+
+    * *Helm*
+    * *Prometheus* / *Grafana*
+        ** très puissant, compliqué à mettre en place
+        ** Grafana va se connecter à Prometheus pour créer de bô diagrammes (qu'on aura défini à l'avance)
+    * *Istio* : service mesh, plateforme Open Source de gestion et de surveillance de microservices
+        ** utilise un Envoy Proxy en side car
+    * *Kiali* : outil d'observabilité pour Istio
+    * *KuboScore* : outil d'audit créé par la boîte d'Alain
+        ** va par exemple nous dire quelles sont les network policies utilisées
+        ** va donner un score à votre application
+    * *Velero* : permet de sauvegarder le contenu d'un cluster pour le restaurer ailleurs
+    * *Argo CD* : commit d'un fichier .yaml, Argo CD va le détecter et automatiquement redéployer ce qui est nécessaire (à vérifier) 
+    * *KuboVisor* : pour visualiser les problèmes du cluster Kubernetes +
+    image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_12.jpg[]
+        ** permet d'*anticiper* pas mal de problèmes potentiels.
+    * *Telepresence* : on va se brancher à la place d'un container (interception) pour débugage directement sur son IDE
+
+.Le mot de la fin et l'impact pour les développeurs
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_13.jpg[]
+image:20220621_GDG-Cloud-Paris_Google-App-Engine-Kubernetes_14.jpg[]
+
+-> Kubernetes C'EST compliqué, cela VA coûter en services et en conseil
+
+Contacter alain@kubolabs.io pour des besoins de formation sur Kubernetes 😉 
+
+
+
+
+
