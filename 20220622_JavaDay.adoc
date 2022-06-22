@@ -145,6 +145,9 @@ image:20220622_JavaDay_09.jpg[]
 
 -> Conclusion : Dans tous les cas, pour profiter de ces nouvelles fonctionnalités, il *FAUT* migrer !
 
+-> Ce talk est très proche de celui donné par Jean-Michel au dernier Devoxx France 2022 ("10 ans de Devoxx France et de Java"), et dont les slides sont disponibles ici : +
+https://fr.slideshare.net/jmdoudoux/devoxx-2022-10-ans-de-devoxx-fr-et-de-javapdf
+
 [NOTE]
 ====
 Pour fêter les 4000 pages de "Développons en Java", le JavaDay offre 4 millefeuilles à JM 😁 
@@ -230,7 +233,10 @@ image:20220622_JavaDay_19.jpg[]
     Jetez un oeil à la section 4.2.4 de cet article pour plus d'infos : https://e.20-bal.com/law/18082/index.html
     ** D'où l'usage d'un *Security Provider* dans Java : https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html
 
+* *C'est à nous d'indiquer à notre serveur quels types de clés, quels types de traitement il peut accepter*. Cela afin que le client ne puisse pas forcer un certificat que l'on n'accepte pas.
 
+* Avec le Java 17, le *Security Manager* est maintenant *déprécié*.
+    ** Et devrait donc être supprimé d'ici peu
 
 == 12h30 : Déjeuner et café
 
