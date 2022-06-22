@@ -391,5 +391,5 @@ image:20220622_JavaDay_36.jpg[]
     ** Rémi dit cela suite à une question sur le nombre de projets en cours côté JVM ET dans le "monde statique" (GraalVM qui fait un max de choses au build).
     ** En gros la question était "Vers où va Java ? JVM ou statique ?"
 
-
+* Rémi : les changements impactants en Java ont généralement lieu juste après une LTS (pour avoir le temps de les tester !)
 
