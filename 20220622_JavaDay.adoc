@@ -328,12 +328,62 @@ Si l'on souhaite *participer au développement communautaire de Maven*, contacte
 Des Hackegarten sont organisés régulièrement (tous les mois ?) pour mettre le pied à l'étrier (voir si Twitter le Hack.Commit.Push https://twitter.com/hackcommitpush)
 ====
 
-
-== 15h35 : Pause café
-
+NOTE: Hervé suite à une question : OUI, on va avoir maven daemon AVEC le Maven Build Cache +
+-> Et le résultat est impressionant 😉 
 
 == 16h00 : Rémi Forax : Valhalla: Vers de nouveaux generics universels et specialisables
 
+.Si votre boîte ne sait pas quoi faire de ses sous, parlez-lui de la taxe d'apprentissage
+NOTE: *Taxe d'apprentissage*, ne pas hésiter à orienter vos boîtes vers l'université Gustave Eiffel
+
+* Rémi est maître de conf ET développeur Open Source pour le projet ASM
+    ** ASM est le projet derrière TOUTTEEEEE la génération de bytecode côté Java, et n'est maintenu que par 2 "pauvres français" comme le dit Rémi 😅 
+
+Projet Valhalla (*Value classes*)
+
+    * on en est au 4e proto
+    * objectifs : 
+        ** *abstraction for free* : no allocation of intermediary objects
+        ** *Improve information density* : no header, use immediate value (no pointer) +
+        image:20220622_JavaDay_28.jpg[]
+
+Valhalla : *"je veux une classe pour décrire des types primitifs, MAIS je veux que ce soit une classe"*
+
+    * et je ne veux PAS payer le coût d'abstraction : où pour stocker juste un int, on se retrouve à devoir gérer un header coûtant 32 bits + 64 bits (et en sachant qu'on va tout devoir aligner sur 64 bits du fait de l'architecture Intel)
+
+En fait, on veut *manipuler des valeurs SANS pointeur*
+
+    * donc, déjà, je n'ai *pas de null*
+    * mais perdre la notion de pointeurs, c'est perdre énormément de choses (utiles) en Java
+
+.flattening (applatissement des valeurs)
+image:20220622_JavaDay_29.jpg[]
+
+.2 types de value class
+image:20220622_JavaDay_30.jpg[]
+
+La machine virtuelle ne voit pas les classes paramétrées (*erasure*), MAIS le compilateur les voit.
+
+* notion de *SpecializationAnchor*
+
+.regardons le bytecode
+image:20220622_JavaDay_31.jpg[]
+image:20220622_JavaDay_32.jpg[]
+
+.Pour résumer
+image:20220622_JavaDay_33.jpg[]
+
+-> C'est comme ça qu'il faudra écrire le bytecode une fois qu'on aura la VM patchée...
+
+image:20220622_JavaDay_34.jpg[]
+
+.SpecializationAnchor object
+image:20220622_JavaDay_35.jpg[]
+
+.Pour résumer "bis"
+image:20220622_JavaDay_36.jpg[]
+
+-> Talk méritant d'être repris tranquillement chez soi 😅 
 
 == 16h50 : Panel de discussions avec les speakers
 
