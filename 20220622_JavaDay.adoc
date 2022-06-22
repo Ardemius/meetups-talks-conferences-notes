@@ -243,7 +243,7 @@ image:20220622_JavaDay_19.jpg[]
 Talk donné par Cédric Champeau
 
 * Micronaut est un framework initialement créé pour les microservices, mais son utilisation a évolué et est devenu plus généraliste
-* Le framework fait un max de choses au runtime, en se servant de annotation processing
+* Le framework fait un max de choses au build time, en se servant de annotation processing
 
 * Le constat est que *Spring* fait beaucoup de choses au *démarrage*, ce qui a un *coût*
     ** Cela fonctionnait bien, MAIS n'était pas adapté au Cloud (beaucoup de "stop" et "kill" puis de "redémarrage"). Ce n'était pas fluent du fait du temps pris au démarrage.
@@ -387,20 +387,9 @@ image:20220622_JavaDay_36.jpg[]
 
 == 16h50 : Panel de discussions avec les speakers
 
-
-== 17h30 : Fin de la journée
-
-
-
-
-
-
-
-
-
-
-
-
+* Rémi : c'est *extrêmement bien d'avoir de la compétition en termes d'implémentation*
+    ** Rémi dit cela suite à une question sur le nombre de projets en cours côté JVM ET dans le "monde statique" (GraalVM qui fait un max de choses au build).
+    ** En gros la question était "Vers où va Java ? JVM ou statique ?"
 
 
 
