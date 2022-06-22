@@ -238,13 +238,95 @@ image:20220622_JavaDay_19.jpg[]
 * Avec le Java 17, le *Security Manager* est maintenant *déprécié*.
     ** Et devrait donc être supprimé d'ici peu
 
-== 12h30 : Déjeuner et café
+== 14h00 : Micronaut AOT pour optimiser vos applications pour le JIT et GraalVM
 
+Talk donné par Cédric Champeau
 
-== 14h00 : Cédric Champeau : Micronaut AOT pour optimiser vos applications pour le JIT et GraalVM
+* Micronaut est un framework initialement créé pour les microservices, mais son utilisation a évolué et est devenu plus généraliste
+* Le framework fait un max de choses au runtime, en se servant de annotation processing
 
+* Le constat est que *Spring* fait beaucoup de choses au *démarrage*, ce qui a un *coût*
+    ** Cela fonctionnait bien, MAIS n'était pas adapté au Cloud (beaucoup de "stop" et "kill" puis de "redémarrage"). Ce n'était pas fluent du fait du temps pris au démarrage.
+    ** Micronaut supprime les proxy qui sont si chers à Spring
+        *** et permet un démarrage avec une empreinte mémoire très réduite
 
-== 14h50 : Hervé Boutemy : De Maven 3 à Maven 5
+* GraalVM est une VM développée par Oracle
+    ** GraalVM permet de *générer du code natif* à partir du code Java
+
+* Micronaut : on va faire un max de choses au build, et éliminer tout ce qui est réflexion et proxy, ce que n'aime PAS GraalVM.
+
+Demo avec https://micronaut.io/launch
+
+    * l'application peut être déployée sur tous le Cloud
+
+image:20220622_JavaDay_20.jpg[]
+
+== 14h50 : De Maven 3 à Maven 5
+
+Talk donné par Hervé Boutemy.
+
+* Hervé travaille chez Sonatype depuis 3 ans
+
+.Maven 2
+image:20220622_JavaDay_21.jpg[]
+
+.Maven 3
+image:20220622_JavaDay_22.jpg[]
+
+.Aujourd'hui nous en sommes à Maven 3.8
+image:20220622_JavaDay_23.jpg[]
+
+Et tout cela est toujours *basé sur le même POM v4*.
+
+    * Comme au début de Maven 2.0...
+    * A quelques différences près : 
+        ** dependencyMangement import scope
+        ** transitive dependency excludes (wildcard excludes)
+        ** prerequisite (run time -> plugin only) vs enforcer (build time)
+        ** properties : `${project.build.sourceEncoding}`, etc.
+
+Et on ne peut pas le faire évoluer CAR il est utilisé par TOUT le monde.
+
+.Le plan pour relancer les possibilités d'évolution de Maven
+image:20220622_JavaDay_24.jpg[]
+
+.Avec Maven 4, un POM *simplifié* va être mis en place
+image:20220622_JavaDay_25.jpg[]
+
+* avec Maven 4, plus besoin d'indiquer la version de chaque sous-module, celle-ci est déduite du pom parent.
+
+* Le *Maven wrapper* est directement issu du Gradle wrapper qui a été mis à disposition en licence Apache
+    ** `mvn wrapper:wrapper` -> on demande l'install du wrapper dans le projet
+        *** ajout d'un répertoire *wrapper* dans le projet, ainsi que les autres éléments du wrapper
+
+* Autre fonctionnalité qui a été donné à Maven, le *Maven Build Cache*
+    ** cette fonctionnalité a été développé à la base par Deutsch Bank
+    ** on calcule l'empreinte du code de toutes les sources, et si aucune modification n'a été détectée, on va utiliser le contenu du cache +
+    image:20220622_JavaDay_26.jpg[]
+    ** ce cache est par défaut caché dans le .m2
+    ** Si cela vous intéresse, *attendez la sortie de Maven 3.9*
+
+* *Maven Daemon* (`mvnd`) : correspond à une réflexion sur l'optimisation des build Maven
+    ** permet des *build parallèles* afin d'utiliser tous les coeurs de la machine
+    ** plus de problème du "mixte d'output" (qui rendait très compliquée la lecture du build)
+
+.En résumé
+image:20220622_JavaDay_27.jpg[]
+
+* Maven 3.9 pour l'été 2022
+* Maven 4.0.0-alpha-1 pour Q3 2022
+* Pour le Maven Build Cache, il faudra attendre la version 3.9
+
+* Nouveau plugin *Buildplan*, hébergé dans MojoHaus, permettant d'afficher le plan de build de Maven
+    ** Plugin développé par Jean-Christophe Gay
+    ** permet de comprendre comment les goals sont associés à vos exécutions
+
+[TIP]
+====
+Si l'on souhaite *participer au développement communautaire de Maven*, contactez Hervé !
+
+Des Hackegarten sont organisés régulièrement (tous les mois ?) pour mettre le pied à l'étrier (voir si Twitter le Hack.Commit.Push https://twitter.com/hackcommitpush)
+====
 
 
 == 15h35 : Pause café
