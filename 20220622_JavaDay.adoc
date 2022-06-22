@@ -1,0 +1,268 @@
+= 2022/06/22 - JavaDay au Paris JUG: Le futur de Java en 2022
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* JavaDay organisé par le Paris JUG, au centre des congrès du Jardin d'Acclimatation, le 22/06/2022
+* Description de l'évènement : https://javaday.parisjug.org/
+
+== 09h15	: Accueil des participants
+
+image:20220622_JavaDay_00.jpg[]
+
+== 10h00 : Java en 2022 : profiter de Java 17
+
+Talk donné par Jean-Michel Doudoux
+
+.Abstract
+----
+Beaucoup d’applications utilisent encore Java 8 mais Java a beaucoup évolué depuis notamment avec la diffusion de deux versions LTS.
+
+L’objectif de cette présentation est de revenir sur certaines de ces nombreuses évolutions de Java, notamment récentes afin d’en profiter dans nos applications. Au-delà des évolutions syntaxiques et dans les API, ce sera aussi l’occasion de justifier la migration vers des versions plus récentes de Java.
+----
+
+=== Le passé
+
+On commence par des rappels sur les grandes fonctionnalités des précédentes versions de Java depuis Java 8
+
+    * Java 8
+    * Java 9
+        ** JShell
+        ** VarHandle
+        ** *Et les fameux modules* : une fonctionnalité impactante et très controverséee
+            *** et dont la mise en oeuvre implique des contraintes (visibilité, accessibilité, organisation du code, ...)
+        ** création d'un JRE personnalité avec JLink
+        ** `var` pour faciliter la définition de variables
+    * Java 10
+        ** bien meilleur support des containers
+    * Java 11
+        ** version LTS
+    * Java 14
+        ** refonte des switch expression
+            *** le switch devient une vraie expression. +
+            On peut donc faire `String libelle = switch...` +
+            image:20220622_JavaDay_01.jpg[]
+    * Java 15
+        ** blocs de texte
+            *** exprimer une chaîne de caractères littérale multiligne
+        ** Helpful NullPointerException
+    * Java 16
+        ** pattern matching pour instanceof
+        ** nouveau type de classe, les *records*
+            *** son but est d'encapsuler des variables de façon immuable
+    * Java 17
+        ** les classes scellées (`sealed` classes) +
+        image:20220622_JavaDay_02.jpg[]
+        ** nouvelle version LTS
+        ** diffusée en septembre 2021
+        ** changement de licence d'Oracle (qui remet un peu de gratuité dedans)
+    * Java 18
+        ** diffusée en mars 2022
+        ** UTF-8 par défaut (enfin !), sauf pour la sortie console
+        ** le mécanisme finalize est déprécié
+
+=== Le présent
+
+Comment "vendre" à la PROD (les OPS) la migration à une version récente de Java ? +
+-> les bons arguments : *performance* et *sécurité*
+
+.Performance
+image:20220622_JavaDay_03.jpg[]
+
+.Sécurité
+image:20220622_JavaDay_04.jpg[]
+
+Comment "vendre" au management cette fois ? +
+-> Les *coûts*, et d'autres arguments (dont le RGPD)
+
+.Les autres arguments
+image:20220622_JavaDay_05.jpg[]
+
+*Règles générales de migration > 8*
+
+    * mettre à jour les outils
+    * mettre à jour les dépendances
+    * utiliser jdeps
+    * mythe urbain : aucune obligation de modulariser l'application
+
+-> A partir de Java 11 toute version de Java retire des choses
+
+    * `jdeprscan` pour obtenir les API dépréciées du JDK
+    * Jetez un oeil à l'*almanac Java* pour vous aider
+
+.migration de Java 8 vers Java 11
+image:20220622_JavaDay_06.jpg[]
+
+migration de Java 11 vers Java 17 : 
+
+    * Il est important d'avoir un coverage à 100% du code. +
+    Pourquoi ? A cause de la nouvelle encapsulation forte des API internes du JDK +
+    image:20220622_JavaDay_07.jpg[]
+
+migration de Java 8 à 17
+
+=== Le futur
+
+.Les projets futurs de Java
+image:20220622_JavaDay_08.jpg[]
+
+* pattern matching pour les switch (en preview dès Java 17)
+
+.Et le futur un tout petit peu plus éloigné
+image:20220622_JavaDay_09.jpg[]
+
+-> Conclusion : Dans tous les cas, pour profiter de ces nouvelles fonctionnalités, il *FAUT* migrer !
+
+[NOTE]
+====
+Pour fêter les 4000 pages de "Développons en Java", le JavaDay offre 4 millefeuilles à JM 😁 
+
+image:20220622_JavaDay_10.jpg[]
+====
+
+== 10h50 : Remèdes aux oomkill, warm-ups, et lenteurs pour des conteneurs JVM
+
+Talk donné par Jean-Philippe Bempel et Brice Dutheil
+
+-> Ce talk a été donné au dernier Devoxx France 2022 +
+Il a trait à tous les problèmes (oomkill) que l'on peut rencontrer quand l'on fait tourner Java dans un container (Kubernetes).
+
+Mes notes de l'époque sont disponibles ici : +
+https://github.com/Ardemius/meetups-talks-conferences-notes/tree/master/202204-devoxx-france#09h30-12h30-242ab-rem%C3%A8des-aux-oomkill-warm-ups-et-lenteurs-pour-des-conteneurs-jvm
+
+=== Partie mémoire et oomkill
+
+.Rappel sur le RSS, le Resident Set Size
+[NOTE]
+====
+La *Resident Set Size* (*RSS*, "taille du jeu résident") est la quantité de mémoire occupée par un processus contenue dans la RAM. +
+RSS permet d’obtenir la taille réelle du conteneur Kubernetes.
+====
+
+.De quoi est composée la mémoire d'une JVM ?
+image:20220622_JavaDay_11.jpg[]
+
+* Pour le *monitoring*, il existe une multitudes de *MBeans* (accessible via *JMX*) +
+Grâce à cela on aura des infos sur quelques zones mémoires, mais PAS toutes
+
+* Il va falloir utiliser des outils de diagnostic, comme le fantastique *jcmd* +
+image:20220622_JavaDay_12.jpg[]
+
+    ** `jcmd $(pidof java) VM.native_memory` +
+    image:20220622_JavaDay_13.jpg[]
+
+.Il est important de donner au container plus de RAM que la valeur max de la heap
+image:20220622_JavaDay_14.jpg[]
+
+=== Autres problèmes
+
+* redémarrage du container
+
+* Le JIT et les *compilateurs C1 et C2* :
+    ** The JDK implementation by Oracle is based on the open-source OpenJDK project, which includes the HotSpot virtual machine.
+    ** It contains 2 conventional JIT-compilers: the client compiler, also called C1 and the server compiler, called opto or C2.
+
+* Avec Kubernetes, plus qu'une notion de CPU, on a une notion de *shares* et *quotas* +
+image:20220622_JavaDay_15.jpg[]
+image:20220622_JavaDay_16.jpg[]
+
+* *Tuning CPU* : toujours un trade-off entre startup time vs request time
+    ** adjust CPU shares  CPU quotas
+    ** adjust liveness timeout
+    ** use readiness / startup probes
+
+.En conclusion, que faire quant à la mémoire et au démarrage
+image:20220622_JavaDay_17.jpg[]
+image:20220622_JavaDay_18.jpg[]
+
+* Le conseil final de JP : TOUJOURS setter la heap (TOUJOURS) 
+* Et attention au *RAMPercentage* qui n'est PAS un silver bullet pour résoudre tous les problèmes (loin de là)
+
+-> Un talk qui rentre vraiment dans le détail du domaine de la performance. +
+A utiliser si vous êtes confrontés aux problèmes décrits (ou pour culture générale et savoir que des solutions existent). Peut paraître un rien "abrupte" de prime abord 😉 
+
+TIP: Je conseille de vous référer au talk donné à Devoxx si vous voulez plus de détails, car il s'agissait d'une université de 3h 😉 
+
+== 11h40 : Sécurité en Java 17 : les nouveautés passées et à venir
+
+Talk donné par Charles Sabourdin
+
+* Initialement la JVM servait à faire tourner du code qu'on ne connaissait pas sur le navigateur
+* DONC la JVM est arrivé avec son propre système de sécurisation pour l'isoler du système
+
+.Java Security Model
+image:20220622_JavaDay_19.jpg[]
+
+* Autre info à savoir : pour des *raisons légales*, certaines *fonctionnalités sont volontairement limitées*, car jugées "trop puissantes" dans d'autres pays (surtout dans le cas de la cryptographie)
+    ** Un exemple dans un autre monde que Java, la PS2 ne pouvait pas s'exporter partout car jugée trop puissante. +
+    Jetez un oeil à la section 4.2.4 de cet article pour plus d'infos : https://e.20-bal.com/law/18082/index.html
+    ** D'où l'usage d'un *Security Provider* dans Java : https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html
+
+
+
+== 12h30 : Déjeuner et café
+
+
+== 14h00 : Cédric Champeau : Micronaut AOT pour optimiser vos applications pour le JIT et GraalVM
+
+
+== 14h50 : Hervé Boutemy : De Maven 3 à Maven 5
+
+
+== 15h35 : Pause café
+
+
+== 16h00 : Rémi Forax : Valhalla: Vers de nouveaux generics universels et specialisables
+
+
+== 16h50 : Panel de discussions avec les speakers
+
+
+== 17h30 : Fin de la journée
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
