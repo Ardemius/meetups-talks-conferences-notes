@@ -42,7 +42,7 @@ toc::[]
 
 === Abstract
 
-Présenté par Ludovic Champenois / Google
+Présenté par Ludovic Champenois / Google (ludo@google.com)
 
 ----
 App Engine, le premier produit Cloud de Google, bien avant Google Cloud Platform...
