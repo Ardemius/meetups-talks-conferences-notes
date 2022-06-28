@@ -1,0 +1,259 @@
+= 2022/06/28 - DevNation Day
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* Le DevNation Day est organisé par Red Hat
+* Description de l'évènement et programme : https://hopin.com/events/devnation-day-france-2022
+
+== Keynote : Je me lance et deviens CTO !
+
+Par Mathilde LEMEE, CTO de JOLIMOI
+
+.abstract
+----
+Envie de rejoindre ou de créer une startup en tant que CTO ? Nous ferons un tour d'horizon du métier de CTO, avec un retour d'expérience sur les points qui ont marché et ceux qui marchent moins bien et les différents types de CTO.
+----
+
+* On ne peut pas TOUT savoir faire, il faut déléguer
+* Plus la taille de l'équipe augmente, moins le CTO peut coder et prendre des devs sur le chemin critique
+	** On va commencer à passer de plus en plus sur l'organisation (des équipes), avec une importance de plus en plus forte des soft skills
+	** ce "stade 3" (level 1 dev, level 2 lead tech) se rapproche d'un travail d'architecte
+* Au stade 4, on passe côté stratégie, et on va pouvoir un bras droit qui sera le VP Engineering
+	** Le VP va vérifier les cérémonies des équipes
+	** et la stratégie de la boîte va passer au CTO (même si certains "inversent" et veulent garder les fonctions du VP)
+	** et le CTO va pouvoir prendre un "Principal Engineer" pour l'aider sur la Tech
+
+* Même avec une fantastique idée, sans une bonne équipe (donc une bonne exécution) cela ne vaut RIEN (20 000$)
+	** par contre, une idée médiocre MAIS brillamment exécutée peut valoir 10 millions
+	** L'exécution, la qualité de l'équipe c'est l'*essentiel*
+
+* "Surround yourself with only people who are going to lift you higher" (Oprah Winfrey)
+
+la vie du CTO et ce qu'il faut faire avant de se lancer (AVANT, car on ne négocie pas quand les choses vont mal...)
+
+	* demander l'état des levées de fonds de la boîte
+	* demander des chiffres
+
+L'argent pour un CTO et les parts : 
+
+	* si vous êtes au tout début : vous avez 20 à 50% des parts (la startup ne vaut rien)
+	* 4 à 10% si vous arrivez et que la boîte vaut quelques millions
+	* <1% pour une boîte valant quelques dizaines de millions
+
+NOTE: on fait généralement 20 à 30% par levée de fonds
+
+Le salaire maintenant : 
+
+	* dès lors que la boîte est en série B et vaut ~10 millions, vous devez demander votre "vrai" salaire
+	* avant on va vous payer MOINS, c'est donc un risque, qui devra être compenser par la valeur de vos parts sous 4 ans (l'époque où vous aurez récupéré votre salaire "normal")
+
+Le CTO ne peut pas être bon partout, il a des *limites* comme tout monde. +
+Dans ce cas, il doit soit partir, soit être capable de se former très vite :
+
+	* en se formant auprès de CTO déjà au niveau 2, 3, etc.
+		** la discussion avec vos pairs va vous permettre d'apréhender beaucoup plus facilement certaines situations (comme le 1er licenciement que vous aurez à faire)
+
+Q&A
+
+	* le CTO est un métier à "stress" : vous êtes responsable de tout ce qui pourrait arriver (news, pb de sécurité global, etc.)
+		** pour gérer ce stress certains font de la méditation, d'autres courent
+		** Il est important de garder une vie pour éviter le burnout, on ne peut pas travailler comme un malade pendant 5 ans
+	
+	* charge de travail ?
+		** Mathilde : mère célibataire vit en Picardie et travaille sur Paris avec 2 enfants
+			*** "tout est une question d'organisation"
+			*** entre 50h et 60h de boulot par semaine, avec des pointes
+
+== Intégration des systèmes à l'ère de Quarkus, serverless et Kafka
+
+Présenté par Zineb Bendhiba, Senior Software Engineer, Red Hat
+
+.abstract
+----
+Avez-vous déjà eu pour tâche de mettre en place un échange de données entre deux systèmes qui n'ont pas été conçus pour communiquer entre eux ? Je parie que vous l'avez fait, et j'ose vous introduire quelques outils et approches rendant la tâche plus facile à accomplir.
+
+Je commencerai par introduire Apache Camel, le couteau suisse de l'intégration entre systèmes hétérogènes. Il offre plus de 300 connecteurs prêts à l'emploi pour transférer des données depuis et vers une grande variété de systèmes externes. La boîte à outils offre également des options pour acheminer, filtrer et transformer les données en fonction des exigences les plus folles d'une application moderne ou legacy.
+
+Deuxièmement, nous découvrons à quel point c'est fun d'écrire des intégrations Camel dans un projet Quarkus. Vous découvrirez le célèbre dev mode Quarkus, ainsi que devServices qui nous permettra d'approvisionner un broker Kafka.
+
+Finalement, j’expliquerai comment les capacités d'intégration exceptionnelles d'Apache Camel s'inscrivent dans les architectures serverless basées sur Knative. J’aborderai des sujets tels que l'auto-scaling et le scaling à 0, le routage basé sur le contenu des événements cloud, ainsi que le streaming de données depuis/vers Apache Kafka et les 300 + connecteurs Camel.
+----
+
+* Zineb travaille sur Camel
+
+* Bien connaître les Enterprise Integration Patterns (EIP) qui évitent d'avoir à réinventer la roue à chaque fois
+    ** Ce sont ces patterns qui ont inspiré Camel
+
+== DailyCleaner : une application Quarkus au service de la planète
+
+Présenté par Guillaume Thomas, Senior Software Engineer, AXA
+
+.abstract
+----
+Je ne sais pas vous, mais moi, quand j'étais gosse, mes parents m'ont toujours cassé les pieds pour que j'éteigne les lumières non utilisées. Je détestais ça ! Et puis, de fil en aiguille, c'est devenu un automatisme, un geste quotidien et normal.
+
+Aujourd'hui, dans mon boulot, il y a un truc qui émerge : la Finops ! Ou encore, en bon français : comment pouvons-nous réduire les coûts de nos infrastructures informatiques ? Jusque-là, on se dit que c'est une histoire de sous (c'est vrai et c'est aussi important) et puis, en y regardant d'un peu plus près, on se rend compte que cette discipline s'inscrit pleinement dans une démarche GreenIT. Dans ma boîte, nous nous sommes rendus compte que nos services Cloud étaient en moyenne inutilisés 67% du temps ... Si mes parents savaient ça !
+
+Lors de cette présentation, j'aimerais vous montrer un outil de Dailyclean open source qui nous permet de libérer les ressources non utilisées de notre Kubernetes. Vous aussi vous voulez contribuer à sauver la planète ? Venez découvrir comment faire le premier pas !
+----
+
+* Allumer et éteindre vos environnements Kubernetes de façon programmée
+    ** outil réalisé avec Quarkus
+
+* Guillaume travaille actuellement chez AXA comme ML Engineer
+    ** son job consiste à accompagner les Data Scientists dans la mise à l'échelle de leurs solutions de ML
+    ** Il travaille principalement sur du Document Processing
+        *** reconnaissance de caractères (OCR)
+        *** détection de ratures, de l'orientation de la page, etc.
+
+* GraalVM est une JVM proposée par Oracle
+    ** qui fait de Ahead-of-time compilation
+    ** .jar -> .exe
+    ** fast startup & low memory footprint
+
+Conclusion : 
+
+    * De nouveau un "vrai" projet de plus avec Quarkus
+
+== Quarkus, la stack Java revenue du Futur ! 
+
+Présenté par Sébastien Blanc, Java champion, Developer Advocate chez Red Hat
+
+Il s'agit d'une session entière de live coding sur Quarkus
+
+* Pour la persistance, utilisez Hibernate with Panache
+* très bonne intégration de Quarkus avec Kafka, et apparemment également avec KeyCloak
+
+== Merci Keptn Obvious ! La qualité et la stabilité gérées par des SLO
+
+* Présenté par Henrik Rexed, Cloud Native Advocate, Dynatrace
+    ** Henrik est spécialisé sur Kubernetes, le SRE et l'observabilité
+    ** il fait partie de la CNCF, et spécialisé sur OpenTelemetry
+    ** il propose une chaîne YouTube "Is it observable?"
+
+.abstract
+----
+Les objectifs de niveau de service (a.k.a Service Level Objectives - SLO) sont un élément clé des pratiques modernes d'ingénierie logicielle. Ils permettent de quantifier la qualité du service fourni aux utilisateurs finaux, et leur maintien devient donc important pour les approches DevOps modernes avec une livraison progressive. 
+
+Les SLO sont devenus un outil puissant nous permettant de gérer le suivi de la fiabilité de notre production mais également de valider les cycles de tests automatisés lancés au travers nos différents pipelines.
+
+Cette présentation mixera explication technique et démonstration. Lors de cette démo, nous montrerons comment utiliser Keptn pour tirer parti de Prometheus afin de valider et visualiser vos SLO.
+
+Qu'est-ce que Keptn? En un mot, il s'agit d'un plan de framework d’orchestration basé sur des événements Cloud. Il permet de nombreux cas d'utilisation, y compris, du progress delivery, des scénarios de remédiation et d’automatiser des tâches de production.
+----
+
+* Rappel : SRE a pour objectifs d'accroître la fiabilité de nos systèmes et d'éviter les conflits entre Devs et OPs
+
+.SLI (Service Level Indicator)
+image:20220628_DevNation_01.jpg[]
+
+* SLI : Un indicateur permettant de comprendre l'état de votre système ou de vos utilisateurs.
+
+.SLO (Service Level Objectives)
+image:20220628_DevNation_02.jpg[]
+
+* SLO : Un objectif associé à votre indicateur.
+
+.Error budget
+image:20220628_DevNation_03.jpg[]
+
+Standards pour définir des SLO : *OpenSLO*
+
+Prometheus est un fournisseur de métriques
+
+.Architecture de Prometheus
+image:20220628_DevNation_04.jpg[]
+
+* Prometheus est devenu un standard
+    ** très nombreux sont les outils qui utilisent aujourd'hui le format Prometheus
+
+*Keptn* est un outil basé sur des Cloud events
+
+    * projet de la CNCF
+    * *Keptn* est un *outil d'orchestration* basé sur Kubernetes
+    * Control Plane, admin frontend / CLI
+    * Observability, dashboards & alerting
+    * tout est dispo sur le site keptn.sh
+    * tout est basé sur cette notion de SLO
+        ** Keptn : SLO Evaluation & monitoring
+
+.Fonctionnement de Keptn
+image:20220628_DevNation_05.jpg[]
+
+*Demo*
+
+image:20220628_DevNation_06.jpg[]
+
+*Principe de la remédiation de Keptn* : agir AVANT que le problème n'arrive (à savoir un pod de tué)
+
+== Rendre visible l'invisible : comment mesurer l'impact carbone d'application cloud ?
+
+Présenté par Christophe Laprun, Principal Software Engineer, Red Hat
+
+.abstract
+----
+La tendance à la dématérialisation et le déplacement des applications vers le cloud sont une évolution qui peut permettre d’améliorer l’impact carbone d’un grand nombre de secteurs et en particulier celui de l’Information, Communication et Télécommunications (ICT).
+
+Passer au cloud est un moyen efficace pour “réduire” ses émissions en déportant l’impact du scope 2 vers le scope 3, qui est encore très peu pris en compte de manière légale. Tout ceci est néanmoins en train de changer, les législateurs étant en train de légiférer pour empêcher cette option commode de “greenwashing”.
+
+Cependant, encore faudrait-il pouvoir être capable de mesurer de manière suffisamment précise ces émissions déportées! Difficile, de plus, d’agir sur quelque chose qu’on ne mesure pas. Pour toutes ces raisons, il est essentiel d’essayer de mettre en place des systèmes permettant de mesurer l’impact carbone des applications cloud. 
+
+Nous examinerons dans un premier temps le contexte de l’impact carbone du secteur ICT pour ensuite se confronter aux problématiques rencontrées pour mettre en place un tel système de mesure et finirons en examinant un exemple concret de solution en cours de développement pour la plateforme OpenShift de Red Hat.
+----
+
+* Rappel des objectifs : 2050, plus d'émissions de carbone dans l'atmosphère
+    ** nous sommes pas sur le chemin pour y arriver...
+
+image:20220628_DevNation_07.jpg[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
