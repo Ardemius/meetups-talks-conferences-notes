@@ -39,7 +39,7 @@ toc::[]
 * Très difficile d'être présent physiquement, les places étant limitées à 1400 à la Maison de la Mutualité
 	** Par contre, le keynote d'ouverture (09h30 - 11h30) était accessible sans limitation
 
-== Event d'ouverture de la région France
+== Keynote d'ouverture
 
 * Une région est une somme de *3 data center espacé d'au moins 10 kms*
 * La France est la *34e région de GCP*
