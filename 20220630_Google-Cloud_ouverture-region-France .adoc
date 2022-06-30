@@ -1,0 +1,93 @@
+= 2022/06/30 - Google Cloud - Event d'ouverture de la région France
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* Programme : https://cloudonair.withgoogle.com/events/region-france
+* Très difficile d'être présent physiquement, les places étant limitées à 1400 à la Maison de la Mutualité
+	** Par contre, le keynote d'ouverture (09h30 - 11h30) était accessible sans limitation
+
+== Event d'ouverture de la région France
+
+* Une région est une somme de *3 data center espacé d'au moins 10 kms*
+* La France est la *34e région de GCP*
+
+Rappels historiques : 
+
+	* 2004 : 1er bureau Google ouvert en France (Paris)
+	* 2008 : 70 personnes chez Google France
+	* 2022 : 1200 collaborateurs chez Google France
+
+//-
+
+* Cf le speaker *"France : 16e rang des économies numériques en Europe"*
+	** Alors, en fait, elle est à la 15e place de l'*indice 2021 relatif à l'économie et à la sobriété numériques* de la Commission Européenne (DESI : Digital Economy and Society Index), qui porte sur les 27 états membres de l'UE.
+	** Et la "note" globale de la France est légèrement inférieure à note moyenne de l'UE (50.6 contre 50.7)
+	** Pour en savoir plus, les documents de la Commission Européenne sont disponibles ici : 
+		*** https://digital-strategy.ec.europa.eu/en/policies/desi-france
+		*** Indice 2021 : file:///C:/Users/tschwender/Downloads/DESI_2021__France__fr_KGs93cuQ8c5Rl0NSOHemZauL684_80586.pdf
+
+Dernièrement GCP, pour un "grand groupe bancaire", a réussi à mettre toutes les données bancaires du groupe dans le Cloud, après avoir validé avec succès toutes les étapes de sécurité (qui contiennent donc celles propres aux données confidentielles)
+
+Côté critères ESG (Environnementaux, Sociaux et de Gouvernance), le Cloud apporte *nativement* tous les *outils d'observance et de monitoring* nécessaires à leur suivi ("on ne peut pas savoir quoi faire si on ne sait pas ce qui se passe")
+
+*Cloud de confiance* : c'est un terme très précis, correspondand à une *certification donnée par l'ANSSI*, le *SecNumCloud*
+
+*Partenariat industriel Thalès et GCP* (majoritairement Thalès) : création de "SENS"
+
+	* société éditant une offre de *Cloud de confiance*
+	* pour offrir la puissance d'un grand hyperscaler
+	* avec la confiance qui sera certifiée par l'ANSSI
+	* SENS sera en service au 2e semestre 2024
+		** pourquoi si tard ? Car offre très complète qui devra être certifiée SecNumCloud
+		** avec gestion de clés de chiffrement
+	* Avec, si j'ai bien compris, une "offre intermédiaire" lancée dès aujourd'hui, qui ne serait pas SecNumCloud, mais une "surcouche sécurité" par dessus GCP, qui pourrait servir de passerelle vers l'offre SecNumCloud en 2024
+
+BForBank (Banque en ligne du Crédit Agricole) a choisi GCP, pourquoi ? +
+-> Pas d'infos précises de données, "tout a été audité d'un point de vue sécurité et validé au final"
+
+* Google a été la 1ere entreprise à *"annoncer la neutralité carbone" en 2007*
+	** Alors *attention "neutralité carbone" ne veut pas dire que l'on ne produit pas de carbone*... (ce que le speaker n'explique pas 😉 ) +
+	Cela signifie que l'on *compense* ses émissions, par exemple en finançant des projets de captation de dioxyde de carbone, tels que des programmes de reforestation. S’ensuit un calcul, complexe, consistant en substance à déduire le CO2 capturé de celui engendré par son activité, ce qui permet au final d’affirmer la "neutralité" de l'entreprise.
+		*** C'est un procédé très "discuté / contesté" par beaucoup d'acteurs économiques et écologiques, car il n'est en rien synonyme d'une *baisse d'émission* pour l'entreprise (qui pourrait "émettre plus et compenser plus")
+	** Par contre, *Google prévoit d'être "carbon free" d'ici à 2030*, ce qui implique qu'à ce moment la totalité de l’électricité consommée par ses data centers proviendra directement de fermes photovoltaïques et solaires, ou de centrales nucléaires. +
+	Il s'agit là d'une politique saluée, L’ONG Greenpeace attribue d’ailleurs à Google la note A dans son dernier rapport #ClickClean, où les géants du Net sont passés au crible écologique.
+		*** Par contre, *ce rapport ne prend pas en compte la production de CO2 due aux coûts de construction des équipements devant être remplacés* régulièrement (passage à aux éoliennes et aux panneaux solaires qui, s’ils génèrent une électricité propre, produisent du CO2 au moment de leur conception). +
+		Et, pour celles et ceux qui ont déjà écouté les talks d'écoconception de Frédéric Bordage, vous saurez que les coûts de construction sont (très) souvent les plus impactants en termes écologiques.
+
+* Au final, Google reconnaît que l'on ne peut pas faire sans la compensation pour atteindre la "neutralité carbone" (et c'est bien normal, il n'y a pas de magie)
+
+
+
