@@ -37,11 +37,29 @@ toc::[]
 
 Un bloc-notes permettant de persister des notes et réflexions prises très rapidement en suivant talk, conf, émission ou autre.
 
-== XXX
+== 2022/05/11 - gestion de carrière - "Dev senior avec 6 ans d'XP, et après?"
 
+J'ai regardé dernièrement le MeetUp Tech Rocks *"Dev senior avec 6 ans d'XP, et après ?"* qui aborde le sujet de la gestion de carrière chez les ITs, et met bien en avant *2 types de carrière* : la *voie managériale* ("*Engineering Management*") et la voie appelée ici "leadership's path" (ou *Individual Contributor*), correspondant à une *orientation plus technique*, dans laquelle on va chercher à avoir de plus en plus d'impact via sa contribution individuelle (contribution qui va elle impacter un nombre croissant de personnes dans l'entreprise)
 
+Si vous avez ~1h (ou 45 min en x1.5 😉 ), je ne saurais que trop vous conseiller de regarder le talk, réellement très intéressant et faisant intervenir des CxO et leaders seniors dans des boîtes de la Tech : https://www.youtube.com/watch?v=WIW3ow6jL98
 
+video::WIW3ow6jL98[youtube]
 
+J'ai beaucoup aimé la *description faite du "Y" de nos carrières* (entre management et contribution individuelle), tout particulièrement celle de la branche du contributeur individuel. +
+Les intervenants expliquent bien la prise de conscience actuelle et grandissante qu'un IT n'a pas "raté sa vie parce qu'il n'est pas manager à 30 ans", et que sa vie ne s'arrêtait pas non plus à l'obtention du *poste "Senior developer / consultant"*. +
+*Ce dernier est tout sauf la fin du parcours*, et va se poursuivre dans des rôles où sa contribution individuelle va avoir de plus en plus d'impact sur un grand nombre de personnes dans la société.
 
+La progression proposée est celle que l'on retrouve de plus en plus dans les boîtes anglo-saxonnes (bien en avance sur nous à ce niveau), à savoir : +
+*senior software engineer >> staff engineer >> principal engineer >> distinguished engineer >> fellow engineer >> CTO*
 
+Dans un 1er temps, on va avoir un impact sur soi uniquement, puis il faudra chercher à accroître son scope : +
+*Soi >> team / squad >> chapter / guild >> product line >> company >> industry*
+
+image:20220511_Tech-Rocks_dev-senior-et-apres_01.png[]
+image:20220511_Tech-Rocks_dev-senior-et-apres_02.png[]
+
+En passant, si vous voulez un exemple "proche de nous" de ce système, écoutez comment *Emmanuel Bernard*, notre Cast Codeurs bien connu 😉, se présente : *"Distinguished Engineer"* +
+Pour info, cela fait 17 ans qu'il travaille chez Red Hat. +
+Un exemple de plus qu'il est possible de progresser SANS devenir "manager" 😉 +
+(et si vous prenez son collègue *Clément Escoffier* côté Quarkus / Kubernetes chez Red Hat, c'est *"Principal Engineer"* 😉 )
 
