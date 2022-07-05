@@ -1,0 +1,103 @@
+= 2022/07/05 - MeetUp DDD France - Share Pie: The DDD Treasure Hidden in Plain Sight
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+MeetUp du MeetUp DDD France
+
+== Abstrat
+
+Talk donné par *Nick Tune*. +
+Nick is an independent technology consultant who works with CTOs and technology leaders to map out business and technology landscapes, and help to establish high-performing teams.
+
+----
+Domain-Driven Design is 20 years old. While many of the patterns are still present in modern development, some of the key underlying messages have got lost.
+
+In Chapter 8 of the original DDD book, Eric Evans talks about making a big domain breakthrough after a long New York winter of refactoring on an inherited legacy codebase.
+
+Eric's story emphasises the importance of models and modelling breakthroughs. 
+I'd like to re-visit this story and show you how many of the insights are still highly relevant to modern software development... possibly even more so.
+----
+
+== Notes
+
+* Eric Evans actuellement concernant le Blue Book de 2003 : si je devais le réécrire aujourd'hui, je mettrai le chapitre 14 (Strategic DDD) en chapitre 2 ou 3
+	** apparemment il faudrait entendre par là que les précédents chapitres pourraient être supprimés...
+
+* Nick Tune : S'il ne devait y avoir qu'un chapitre dans le livre, ce serait le chapitre 8
+	** Chapitre 8 is "the forgotten chapter of the blue book" : *the Share Pie story*
+
+Nick Tune : 
+
+* Eric Evans : *Model Exploration Whirlpool*
+	** Very important to work on concrete examples with Business Experts +
+	image:20220705_DDD-MeetUp_Nick-Tune_01.jpg[]
+* "Abstract thinking has to be anchored in concrete cases"
+
+.Share pie
+image:20220705_DDD-MeetUp_Nick-Tune_02.jpg[]
+image:20220705_DDD-MeetUp_Nick-Tune_03.jpg[]
+
+	* "As a software developer, your role is not just to translate requirements into code - you can actually add new concepts and ideas into the domain itself"
+	* "This may be one of the most misunderstood parts of DDD. DDD is about designing the domain as well as modelling existing parts of it. Innovation is inventing new ideas, new domain concepts, and new domain terminology."
+
+.Best source of product innovation: software engineers ?
+image:20220705_DDD-MeetUp_Nick-Tune_04.jpg[]
+
+-> Practical DDD Tools and techniques for beginners : https://github.com/ddd-crew
+
+IMPORTANT: Design is an *investment*
+
+* *Tactical Patterns are Extras, Not Main Characters*
+	** There is little mention of entities, aggregates, and value objects in the Share Pie story. They are mentioned briefly to make explaining the Share Pie model clearer. +
+	This is a good reflection on DDD itself. The tactical patterns are useful in creating and describing models, but they shouldn’t be the centre of attention. +
+	And teaching the tactical patterns without teaching the value of modelling should be something we try to avoid when teaching DDD.
+
+.4 quick takeaways
+image:20220705_DDD-MeetUp_Nick-Tune_05.jpg[]
+
+	* If changing the code is hard, it might be your understanding of the domain that is the problem
+	* The domain drives the design - but you can also drive the domain, if you work with business experts
+	* Design is an investment. Big investments can pay off big in the long-term, but trust is required.
+	* You don't need to worship the Church of DDD to achieve any of these things - it's just common sense
+
+[NOTE]
+====
+Nick a écrit un *article complet sur le sujet*, qui porte le même nom que le talk : +
+https://medium.com/nick-tune-tech-strategy-blog/share-pie-the-ddd-treasure-hidden-in-plain-sight-903f07d79776
+====
+
+
+
