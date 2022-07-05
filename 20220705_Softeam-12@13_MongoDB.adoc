@@ -1,0 +1,202 @@
+= 2022/07/05 - Softeam 12@13 - Le pari MongoDB
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *Softeam*, durant lequel *Rayed BENBRAHIM*, *architecte Solutions chez MongoDB*, viendra justement nous parler de MongoDB, du buzz des bases NoSQL des années 2010, et des use cases pour lesquels il y a un véritable intérêt à utiliser la solution.
+
+== Abstract
+
+Depuis sa création en 2007 et suite à un effet de mode dans le début des années 2010s, MongoDB est devenu la base de données NoSQL la plus connue dans l’écosystème d'ingénierie logicielle. +
+Il n’a pas fallu longtemps pour que le soufflet NoSQL retombe et que les limites de ces technologies soient gravées dans la mémoire collective des développeurs.
+
+L'image de MongoDB semble rester figée dans le temps comme une base de données complémentaire dont on ne voit pas très bien quels peuvent être ses cas d’usages.
+
+Dans cette présentation, venez découvrir comment un site de pari sportif a fait le choix de MongoDB pour gérer ses opérations, impliquant transactions et très fort volume d’utilisateurs dans un temps très réduit.
+
+Via cet exemple, venez découvrir quelle est la promesse que MongoDB fait aux développeurs et quels sont les cas d’usages où il serait bon de l’envisager.
+
+== Notes
+
+* Rayed va nous présenter MongoDB en 2022 via un use case fun et très transactionnel
+	** use case de pari sportif
+
+*Histoire de MongoDB*
+
+	* Début comme une solution Open Source
+	* 2007 : ruée des start-ups et du SaaS dans la Silicon Valley
+		** beaucoup de produits ont été créés à cette époque
+			** Ruby on Rails
+			** Heroku
+			** Google App Engine
+
+	* Pas de BDD pouvant scaller au-delà des 400 000 écritures / sec, donc nos 2 fondateurs ont eu l'envie de créer un produit pour aider les devs à déployer leurs applications
+		** c'était l'idée initiale, MAIS du fait du lancement de Google App Engine, cela n'a pas pris au niveau des investisseurs
+		** d'où le switch sur la BDD MongoDB, qui a été la 1ere société de ce type (BDD) à entrer en bourse (2010 ? A vérifier)
+
+Quelques chiffres : 
+
+	* 1000 000 de pari par mois
+	* 1000 000 d'utilisateurs sportifs par mois
+	* jusqu'à 5 000 000 d'utilisateurs connectés au même moment pour un pari dans les cas un peu "chaud" (penalty match de foot)
+
+Donc des contraintes client de : 
+
+	* vélocité
+	* consistence des données
+	* gestion facilité de l'infrastructure
+	* besoin règlementaire de conserver les infos de pari sur un historique de 10 ans
+	* besoin de réactivité : les matchs / paris peuvent s'enchaîner, il faut donc pouvoir payer tout de suite le parieur, afin qu'il puisse reparier immédiatement sur le 2nd match
+
+.Innovation de 2002 à 2022 et passage au Cloud
+image:20220705_Softeam_MongoDB_01.jpg[]
+
+Constat : on ne trouve pas actuellement la flexibilité de l'Agile (avec tout ce qui gravite fréquemment autour, comme le DDD, l'architecture hexagonale) dans les BDD "classiques".
+
+	* Du fait de la complexité des modèles de données relationnels classiques, les migrations avec ces BDDR sont très longues
+	* Les BDD NoSQL, et MongoDB arrivent à ce moment
+
+.Postionnement des BDDR et technologies devant graviter autour dans un projet "moderne"
+image:20220705_Softeam_MongoDB_02.jpg[]
+
+Le positionnement de MongoDB : 
+
+	* proposer la plupart des fonctionnalités du schéma précédent de base dans la solution
+		** On ne switche sur le produit "best of breed" QUE si on a besoin de fonctionnalités plus avancées
+	* CV Driven Development / Resume Driven Development : on utilise ce qui peut "bien rendre" sur le CV, rarement pour le plus grand bien du projet
+		** Mongo cherche à éviter cela
+	* permettre au développeur de ne PLUS avoir à s'occuper de la plomberie
+		** La promesse connue de pouvoir se concentrer sur le code métier
+
+.Fonctionnalités couvertes par MongoDB
+image:20220705_Softeam_MongoDB_03.jpg[]
+
+* Fonctionnalités de la *version Enterprise payante* : *Security* / *monitoring* / *Backup*
+* Le 1er concurrent de MongoDB "enterprise" est en fait MongoDB communautaire
+
+MongoDB Atlas : l'offre de BDD managée de MongoDB
+
+	* Atlas search : moteur de recherche colocalisée avec sa BDD
+		** automatiquement synchronisée avec sa BDDR
+		** service basé sur Lucene
+		** disponible chez tous les Cloud providers
+		** Rayed : à utiliser si toutes les données viennent de la BDDR
+			*** moins d'intérêt si les données viennent également d'autres sources
+		** Pas encore aussi poussé qu'Elasticsearch sur le sharding
+
+MongoDB et transactions : 
+
+	* toujours *ACID* si on travaille sur *1 seul document*
+
+Reproche classique fait au schemaless : c'est le bazar en termes de Data governance...
+
+	* MongoDB n'est pas complètement pour le schemaless +
+	image:20220705_Softeam_MongoDB_04.jpg[]
+
+.Qu'est-ce qui différencie MongoDB "par MongoDB" des versions proposées par les Cloud Providers ?
+image:20220705_Softeam_MongoDB_05.jpg[]
+
+	* Depuis quelques années, les Cloud Providers ne peuvent plus utiliser directement (gratuitement) les drivers de MongoDB
+	* MongoDB met les moyens
+
+* MongoDB caractéristiques
+	** CAP theorem : CP en lecture et en écriture
+
+image:20220705_Softeam_MongoDB_06.jpg[]
+
+.Vitesse de réplication avec MongoDB
+image:20220705_Softeam_MongoDB_07.jpg[]
+
+* Un même cluster MongoDB peut être chez plusieurs Cloud providers
+* MongoDB tourne aussi bien on-premise que sur le Cloud
+
+.Fonctionnalités de la version MongoDB Enterprise
+image:20220705_Softeam_MongoDB_08.jpg[]
+
+.Les différent use cases servis par MongoDB
+image:20220705_Softeam_MongoDB_09.jpg[]
+
+* *Single View* : pouvoir centraliser les données provenant de plusieurs sources
+	** On a toutes les data de façon non transactionnelles dans un gros data center, et met tout dans un gros objet, c'est "moche" mais ça marche : +
+	image:20220705_Softeam_MongoDB_10.jpg[]
+	** Ou alors l'inverse, dans une approche DDD, "splitter l'objet" pour faire apparaître les bounded contexts
+
+* Détection de comportements frauduleux pour des ecommerçants (les ) +
+image:20220705_Softeam_MongoDB_11.jpg[]
+	** grâce à la possibilité d'avoir un noeud analytique sur un noeud secondaire
+
+* *Modernization vs Lift & Shift*
+	** MongoDB est surtout utile dans le cadre d'une modernisation
+		*** pas réellement de valeur ajoutée si on décide de faire du Lift & Shift (on pourrait aller n'importe où avec ce principe)
+
+* *MongoDB University* pour trouver de la formation et des ressources sur MongoDB
+	* Rayed conseille les M101, M103 (à vérifier)
+
+== Q&A
+
+* *outil en preview d'aide à la migration*
+	** va se connecter à une base SQL, et va nous aider à reconstruire l'objet
+	** par contre, pas encore d'outil de traduction de requêtes (mais les concurrents ne le font pas non plus)
+
+* *MongoDB vs Elasticsearch*
+	** Elasticsearch est spécialisé pour des recherches de type full text
+	** MongoDB est davantage orienté pour des requêtes transactionnelles, basé sur des notions de clés, ou du clé / valeur
+		*** MongoDB a pour vocation d'être la BDD principale, et non pas une base complémentaire à celle-ci (ce qui est le cas d'Elasticsearch)
+
+* *coût de la solution*
+	** Rayed : par rapport à un Cloud SQL d'un Cloud provider : à 1ere vue à l'air plus cher, MAIS en rajoutant backup, encryption, etc. MongoDB est compétitif
+	** Rayed : MongoDB Atlas est par contre une offre Premium
+	** Rayed : MongoDB fait gagner du "temps homme" quant à l'usage de sa solution
+		*** MongoDB a une équipe permettant de dégager / d'estimer la "business value" du passage à sa solution
+		*** Et un "retro spec" est fait au bout de 2 ans pour estimer le ROI de la solution
+			**** et pouvoir faire la promotion de la solution pour un nouveau use case
+
+* *Ressources minimales à avoir pour "bien faire tourner" MongoDB*
+	** MongoDB est probablement plus gourmande en RAM qu'un Elasticsearch
+		*** mise en RAM de tous les indexes, et de tous les documents fréquemment accédés
+		*** Atlas a un outil permettant de recommander les outils à créer
+		*** si on fait un sharding on va forcément consommer plus de ressources
+
+
+
+
+
+
+
+
+
+
+
+
