@@ -59,11 +59,15 @@ On commence par des rappels sur les grandes fonctionnalités des précédentes v
 
     * Java 8
     * Java 9
-        ** JShell
-        ** VarHandle
+        ** *JShell* : un REPL (Read-Evaluate-Print Loop) pour Java, donc une console permettant de tester rapidement du code en Java.
+            *** _"The Java Shell tool (JShell) is an interactive tool for learning the Java programming language and prototyping Java code. JShell is a Read-Evaluate-Print Loop (REPL), which evaluates declarations, statements, and expressions as they are entered and immediately shows the results. The tool is run from the command line."_ +
+            User Guide de JShell : https://docs.oracle.com/javase/9/jshell/introduction-jshell.htm
+        ** *VarHandle* : le moyen de manipuler la mémoire off-head devant à terme remplacer l'ancien `sun.misc.Unsafe`
+            *** _"A VarHandle is a dynamically strongly typed reference to a variable, or to a parametrically-defined family of variables, including static fields, non-static fields, array elements, or components of an off-heap data structure."_ +
+            Voir la documentation officielle pour plus d'information : https://docs.oracle.com/javase/9/docs/api/java/lang/invoke/VarHandle.html
         ** *Et les fameux modules* : une fonctionnalité impactante et très controverséee
             *** et dont la mise en oeuvre implique des contraintes (visibilité, accessibilité, organisation du code, ...)
-        ** création d'un JRE personnalité avec JLink
+        ** création d'un JRE personnalisé avec *JLink*
         ** `var` pour faciliter la définition de variables
     * Java 10
         ** bien meilleur support des containers
@@ -90,7 +94,12 @@ On commence par des rappels sur les grandes fonctionnalités des précédentes v
         ** changement de licence d'Oracle (qui remet un peu de gratuité dedans)
     * Java 18
         ** diffusée en mars 2022
-        ** UTF-8 par défaut (enfin !), sauf pour la sortie console
+        ** *UTF-8 par défaut* (enfin !), sauf pour la sortie console
+            *** Pour plus d'information sur les problèmes de CharSet et d'encodage, vous pouvez jeter un oeil à cet article : +
+            https://www.agileconnection.com/article/new-java-18-feature-default-charset-utf-8
+            *** Le principal problème que l'on va taclé avec l'UTF-8 comme CharSet par défaut est le suivant : +
+            _"in pre-Java 18, a JVM’s default charset is determined at startup based on implementation, locale, operating system, and configuration, applications developed with one implementation, locale, and operating system are not guaranteed to run on another environment. If the default charset is different between different systems the text is likely to get corrupted, which makes applications unportable across different systems."_
+
         ** le mécanisme finalize est déprécié
 
 === Le présent
@@ -114,13 +123,14 @@ image:20220622_JavaDay_05.jpg[]
 
     * mettre à jour les outils
     * mettre à jour les dépendances
-    * utiliser jdeps
+    * utiliser `jdeps` +
+    _"The jdeps command shows the package-level or class-level dependencies of Java class files."_
     * mythe urbain : aucune obligation de modulariser l'application
 
 -> A partir de Java 11 toute version de Java retire des choses
 
     * `jdeprscan` pour obtenir les API dépréciées du JDK
-    * Jetez un oeil à l'*almanac Java* pour vous aider
+    * Jetez un oeil à l'*almanac Java* pour vous aider : https://javaalmanac.io/
 
 .migration de Java 8 vers Java 11
 image:20220622_JavaDay_06.jpg[]
@@ -130,8 +140,6 @@ migration de Java 11 vers Java 17 :
     * Il est important d'avoir un coverage à 100% du code. +
     Pourquoi ? A cause de la nouvelle encapsulation forte des API internes du JDK +
     image:20220622_JavaDay_07.jpg[]
-
-migration de Java 8 à 17
 
 === Le futur
 
