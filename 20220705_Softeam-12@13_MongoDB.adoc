@@ -39,14 +39,14 @@ Talk organisé par *Softeam*, durant lequel *Rayed BENBRAHIM*, *architecte Solut
 
 == Abstract
 
-Depuis sa création en 2007 et suite à un effet de mode dans le début des années 2010s, MongoDB est devenu la base de données NoSQL la plus connue dans l’écosystème d'ingénierie logicielle. +
-Il n’a pas fallu longtemps pour que le soufflet NoSQL retombe et que les limites de ces technologies soient gravées dans la mémoire collective des développeurs.
+Depuis sa création en 2007 et suite à un effet de mode dans le début des années 2010s, MongoDB est devenu la base de données NoSQL la plus connue dans l'écosystème d'ingénierie logicielle. +
+Il n'a pas fallu longtemps pour que le soufflet NoSQL retombe et que les limites de ces technologies soient gravées dans la mémoire collective des développeurs.
 
-L'image de MongoDB semble rester figée dans le temps comme une base de données complémentaire dont on ne voit pas très bien quels peuvent être ses cas d’usages.
+L'image de MongoDB semble rester figée dans le temps comme une base de données complémentaire dont on ne voit pas très bien quels peuvent être ses cas d'usages.
 
-Dans cette présentation, venez découvrir comment un site de pari sportif a fait le choix de MongoDB pour gérer ses opérations, impliquant transactions et très fort volume d’utilisateurs dans un temps très réduit.
+Dans cette présentation, venez découvrir comment un site de pari sportif a fait le choix de MongoDB pour gérer ses opérations, impliquant transactions et très fort volume d'utilisateurs dans un temps très réduit.
 
-Via cet exemple, venez découvrir quelle est la promesse que MongoDB fait aux développeurs et quels sont les cas d’usages où il serait bon de l’envisager.
+Via cet exemple, venez découvrir quelle est la promesse que MongoDB fait aux développeurs et quels sont les cas d'usages où il serait bon de l'envisager.
 
 == Notes
 
@@ -77,7 +77,7 @@ Donc des contraintes client de :
 	* vélocité
 	* consistence des données
 	* gestion facilité de l'infrastructure
-	* besoin règlementaire de conserver les infos de pari sur un historique de 10 ans
+	* besoin réglementaire de conserver les infos de pari sur un historique de 10 ans
 	* besoin de réactivité : les matchs / paris peuvent s'enchaîner, il faut donc pouvoir payer tout de suite le parieur, afin qu'il puisse reparier immédiatement sur le 2nd match
 
 .Innovation de 2002 à 2022 et passage au Cloud
