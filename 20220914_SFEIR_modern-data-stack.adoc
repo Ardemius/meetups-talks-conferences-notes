@@ -1,0 +1,153 @@
+= 2022/09/14 - SFEIR - What is a Modern Data Stack ?
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *SFEIR*, dans ses locaux du 48 rue Jacques DULUD, 92200 Neuilly-sur-Seine
+
+== Abstract
+
+Septembre pointe déjà le bout de son nez et pour être au top à la rentrée, nous vous invitions à léévènement sur “Modern Data Stack”, sujet démystifié par *Michaël SCHERDING*. +
+Nous souhaitons, à travers cet event, parcourir le contenu de cette boîte à outils.
+
+Au programme :
+
+	* Qu'est-ce qu'une Modern Data Stack ?
+	* Revue du parcours de la donnée
+	* Introduction au High Level Design de l'Analytics Stack by SFEIR
+	* Revue de l'ensemble des services proposés
+
+== Notes
+
+SFEIR Paris : 
+
+	* ~400 consultants
+	* ~70 clients réguliers
+	* 2 directeurs en binôme sur Paris : Cyril BALIT et Arnaud WALLER (recrutement)
+	* SFEIR propose eux aussi 2 types de carrière : managériale et individual contributor
+		** individual contributor
+			*** temps dédié pour de la création de contenu ou du mentoring
+	* importance de la certification pour le parcours associé
+		** ces certifications sont suivies et accompagnées par SFEIR
+	* intercontrat : "Activ'IT" chez SFEIR
+		** cérémonial organisé en sprint d'1 semaine
+			*** kick off
+			*** daily par groupe tous les jours
+			*** le vendredi : restit / démos / rapport à l'EM
+
+* MDS : *Modern Data Stack* is a suite of tools grouped like below
+	** *ingestion* : fully managed ELT data pipeline
+	** *storage* : cloud-based columnar warehouse
+	** *transformation* : data transformation tool
+	** *analysis and output* : business intelligence or data visualization platform
+
+* Diff avec une legacy stack : MDS is *hosted in tech cloud* and requires *little technical configuration* by the user.
+	** Exemple : Looker et maintenant managé par Google, qu'on ait 500 users ou 50 000, "ça passe" 😉 
+
+NOTE: *Sfeir labs* is an incubator where we test promising solutions which we think can be part of the future's state of the art.
+
+image:20220914_sfeir_mds_01.jpg[]
+
+.The SFEIR stack
+image:20220914_sfeir_mds_02.jpg[]
+
+* *Ingestion* : Airbyte et Fivetran
+	** Airbyte solution préférée car communauté hyper réactive
+		*** Airbyte : open-source, runs on Kubernetes, has more then 100 connectors, can also handle Change Data Capture
+	** Fivetran : the reference solution on the market for a licence tool. No-code and user friendly UI.
+	** 2 outils pour de l'ingestion "pure et dure" 
+
+* *Storage* : Bigquery et Snowflake
+	** pour ces solutions, il faut avant tout vérifier que des connecteurs sont bien présents
+	** à regarder combo Trino + avalanche pour faire et manager sa propre solution de DWH
+
+* *Transformation* : dbt et dataform, 2 outils qui font exactement la même chose, mais a des niveaux de maturité différents
+	** dbt : commence à être très connu, grosse communauté
+	** dataform : racheté depuis 2 ans par Google, et vient tout juste (en preview) d'être ajouté à Big Query
+
+* *Data quality* :
+
+	** *Great Expectations* : permet de définir des expectations et des tests
+		*** supporte dbt
+	** *Elementary data*
+		*** supporte dbt
+	** *Anomalo*
+		*** Anomalo permet une autodétection de failures
+		*** supporte dbt
+	** *Spectacles* (fonctionne Looker)
+		*** supporte dbt
+
+* *Analysis and distribution*
+	** Data studio : outil Google
+	** Lightdash : très récent, à utiliser avec dbt
+	** Looker : tout sauf gratuit...
+		*** tellement puissant que rapidement tout le monde fait n'importe quoi avec... +
+		DONC SURVEILLER LES USAGES ! 😀 
+
+image::20220914_sfeir_mds_03.jpg[]
+
+* *Data Catalog* : Atlan et Acryl Data sont des *Data Catalog* managés
+
+* *Data orchestration* : *Astronomer* surcouche managée d'Airflow
+	** très bon retour de Michaël
+
+* *"Advanced BI"* : Kausa et Transform
+	** Kausa très récent (6 mois) : on paye en fonction du nombre de KPI qu'on souhaite appeler, et de leur profondeur
+
+* *API BI* : pour se créer un endpoint sur un KPI
+	** outil "Cube"
+
+* *Reverse ETL* : Census ou Hightouch
++
+[NOTE]
+====
+*Reverse ETL* is the process of copying data from a warehouse into business applications like CRM, analytics, and marketing automation software. You perform this process by using a reverse ETL tool that integrates with your data source and your business SaaS tools.
+====
+
+NOTE: Dans l'absolu, encore une fois, *DBT* en force ! 👍 
+
+
+*En conclusion* : 
+
+	* énormément de questions à se poser
+	* donc toujours commencer par les basics ! 
+	* dans 70 à 80%, les problèmes se résolvent via la modélisation
+		** ce qui implique d'aider les différentes équipes à communiquer
+	
+	* le rôle du Data stewart est maintenant "bien installé"
+	
+
+
+
