@@ -12,6 +12,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 :imagesdir: ./images
+:resourcesdir: ./resources
 :source-highlighter: highlightjs
 :highlightjs-languages: asciidoc
 // We must enable experimental attribute to display Keyboard, button, and menu macros
