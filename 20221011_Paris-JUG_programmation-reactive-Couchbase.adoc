@@ -1,0 +1,153 @@
+= 2022/10/11 - Paris JUG - What is a Modern Data Stack ?
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par le *Paris JUG* dans les locaux de *Datadog*. +
+Description de la soirée : https://www.parisjug.org/xwiki/wiki/oldversion/view/Meeting/20221011
+
+Les 2 talks seront donnés par *Laurent Doguin* +
+Laurent Doguin est Directeur Developer Relation chez Couchbase. Vous le trouverez peut être à la brasserie La Marmotte Masquée pendant l'été, avec ses autres collègues. +
+Il sera en train de coder, de cuisiner ou de brasser.
+
+// Laurent est un ancien de CleveCloud, et est parti récemment (quelques moisavec d'autres anciens 
+
+== Patterns de programmation réactive pour les bases de données
+
+.Abstract
+----
+Tout nos frameworks préférés ont introduit la programmation réactive. Les modèles de programmation asynchrone gagnent en popularité, et pas seulement sur le frontend. Une stack cohérente est reactive de la base de donnée à l'UI. Et adapter son état d'esprit à l'accès asynchrone, non-bloquant aux base de données peut être difficile après des années passées à écrire du code synchrone et bloquant. Alors habituons nous ensemble à lire et comprendre du code reactive.
+Dans ce talk, on regardera des exemples d'écriture et de lecture reactive avec la base de donnée Couchbase et le projet Reactor.
+----
+
+.reactive manifesto - https://www.reactivemanifesto.org/
+image:20221011_Paris-JUG_programmation-reactive-Couchbase_01.jpg[]
+
+* Callback : c'est l'enfer avec le "callback hell"
+* Les API asynchrone reactive apportent une bien meilleure *lisibilité du code*, où l'on évite des indentations à n'en plus finir (les callbacks)
+
+* Programmation Reactive : "tant que t'a pas fait `.subscribe()` il ne se passe rien"
+
+Outil de la programmation Reactive : les *Reactive Streams* in the JVM world
+
+	* RxJava
+	* Reactor
+	* Mutiny : vient de Quarkus
+	* Helidon
+	* Akka
+
+NOTE: "Stream" OU "Observables" OU "Flux" -> même chose (même concept) via des techno différentes
+
+*RxJava*
+
+	* Observables are the duals of Iterables
+	* They describe both Latency and Error side effects +
+	image:20221011_Paris-JUG_programmation-reactive-Couchbase_02.jpg[]
+	* *RxMarbles* (https://rxmarbles.com/) : le meilleur moyen d'apprendre les fonctionnalités du langage +
+	image:20221011_Paris-JUG_programmation-reactive-Couchbase_03.jpg[]
+
+Couchbase est une BDD suivant l'approche dite *masterless* (également appelée *shared-nothing*) : 1 seule version active et plein de réplicas
+
+*Reactor*
+
+	* notion de Mono et de Flux
+
+IMPORTANT: *BackPressure* : une des notions les plus importantes de la programmation reactive
+
+	* *BackpressureException* : Exception lancée quand on arrive pas à absorber le flot
+	* Possibilité de réessayer "quand on pense que le problème va être résolu bientôt" : +
+	image:20221011_Paris-JUG_programmation-reactive-Couchbase_04.jpg[]
+
+== Que peut-on faire avec Couchbase ?
+
+.Abstract
+----
+Couchbase est une base de donnée JSON distribuée, avec un cache in-memory intégré, que l'on peut requêter avec SQL, en clé-valeur, en fulltext... Ce ne sont pas les seuls features disponibles mais plutôt que de continuer à les lire dans l'abstract, venez au JUG Paris pour en découvrir un peu plus sur la base de donnée NoSQL ACID qu'est Couchbase.
+----
+
+Couchbase : 
+
+	* certains diront que c'est un fork de CouchDB, et n'auront pas forcément tord, car : +
+	"Couchbase is a merge between CouchDB and Membase"
+	* DB créée en 2011
+	* A la base, merge d'une BDD clé / valeur distribuée in memory et d'une BDD JSON
+
+A la base, Pokemon était sur Couchbase
+
+.Couchbase main use cases
+image:20221011_Paris-JUG_programmation-reactive-Couchbase_05.jpg[]
+
+.Et potentiellement, Couchbase peut remplacer tout ça
+image:20221011_Paris-JUG_programmation-reactive-Couchbase_06.jpg[]
+
+NOTE: What is Couchbase ? A distributed, memory-first, NoSQL, JSON DOcument Dat platform.
+
+.De nouveau "XXX Platform YYY"... 
+image:20221011_Paris-JUG_programmation-reactive-Couchbase_07.jpg[]
+
+* On peut faire du *data center distribué* avec Couchbase grâce à XDCR (Cross Data Center Replication)
+* *masterless* : chaque noeud contient une version active de la data
+* De nombreux frameworks et connecteurs de disponibles
+* Notion de TTL (Time To Live) présente : on dégage automatiquement la data quand trop vieille
+
+NOTE: Laurent indique qu'Amadeus a codé son propre framework de gestion de transaction en C il y a 20 ans, et que c'est du beau boulot.
+
+* API "subdoc" de dispo pour éviter de requêter / récupérer TOUT le doc quand pas nécessaire
+
+* Couchbase Capella : le Database-as-a-Service de Couchbase
+	** Capella est de la "sync gateway as a service" 
+	** "Sync Gateway is a horizontally scalable web server that securely manages the access control and synchronization of data between Couchbase Lite and Couchbase Server."
+
+* "Field level encryption" disponible
+
+* Gros effort sur la sécurité de Couchbase de façon générale
+
+* *Couchbase Mobile* = Sync Gateway + Couchbase Lite (driver pour SQLite grosso modo)
+	** SQLite : "juste 1 fichier", rien de plus finalement
+* liens forts avec Dart et Flutter
+
+
+
+
+
+
+
+
+
+
+
+
+
