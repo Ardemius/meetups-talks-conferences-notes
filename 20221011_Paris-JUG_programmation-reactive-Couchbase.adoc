@@ -1,4 +1,4 @@
-= 2022/10/11 - Paris JUG - What is a Modern Data Stack ?
+= 2022/10/11 - Paris JUG - Soirée iRl : Patterns de programmation réactive pour les BDDs - À la découverte de Couchbase
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
