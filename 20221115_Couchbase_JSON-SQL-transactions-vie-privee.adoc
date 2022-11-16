@@ -1,0 +1,176 @@
+= 2022/11/15 - Couchbase France - A la redécouverte de Couchbase : JSON, SQL, transactions et vie privée
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *Couchbase France* dans les locaux d'*Octo*. +
+Description de la soirée : https://www.meetup.com/fr-FR/Couchbase-France/events/289020212/
+
+
+Notre dernier meetup en présentiel remonte à Novembre 2019. 3 ans sans vous donner de nouvelles, sans se voir en présentiel. On vous propose de rectifier le tir en organisant un meetup chez Octo le 15 Novembre.
+
+Au programme nous allons aborder les dernières nouveautés Couchbase, refaire un point sur les différentes fonctionnalités existantes, et vous parler de certaines features plus spécifiques, utiles pour préserver les *données privées* de vos utilisateurs, les *régulations* et *lois* qui évoluent sur ce sujet.
+
+== Couchbase Millésime 2022
+
+Présenté par Raphael XXX
+
+.Abstract
+[NOTE]
+====
+Stéphane donnera une présentation générale de Couchbase et de nos dernières nouveautés. Sans faire un inventaire à la Prévert il sera question de JSON, de SQL, de transactions, d'acidité, de Flex Index (SQL + Fulltext), de user-defined function et d'eventing (en langage courant de procédure stocké et de trigger).
+====
+
+* Couchbase est un BDD orientée document (comme MongoDB) ET AUSSI un cache avec un accès clé / valeur (comme Redis).
+
+.Les différents Use Cases de Couchbase
+image:20221115_Couchbase_GDPR_01.jpg[]
+
+* Couchbase Server ET *Couchbase Mobile* apparu en 2014 (s'agit-il de "Couchbase Lite" ?)
+    ** Couchbase Mobile est sur device (smartphone) et peut fonctionner *offline*
+        *** Déjà utilisé chez Ryanair, chez les mécaniciens pour aller checker les avions
+
+* Couchbase 7 "Integrated & Secured Platform" -> une "plateforme" de plus
+* Architecture, les différentes composantes : 
+    ** Data
+    ** Query, Index : Couchbase respecte parfaitement / totalement le standard SQL ANSI ET l'enrichit avec de nouvelles fonctions
+    ** Full Text search : match 90% des use cases d'un Elasticsearch
+    ** Eventing
+    ** Analytics
+    ** Backup
+    ** Mobile & Edge
+
+.Rappel
+[NOTE]
+====
+* *Buckets* -> *Database*
+    ** C'est quelque chose qui va se sharder, se découper en morceaux
+* *Scopes* -> *Schema*
+    ** zone des contrôles d'accès
+    ** permet d'isoler et de structurer les données
+* *Collections* -> *Table*
+* *Documents* -> *Rows*
+    ** le contenu des tables, les "lignes" de la table
+    ** accessible via une clé (on oublie pas que Couchbase est un cache)
+====
+
+* La version communautaire est en retard par rapport à la version Enterprise
+
+.Couchbase disponible chez tous les grands Cloud providers (*AWS* et *GCP*), sachant que pour *Azure* ce sera *dans les mois qui viennent*
+image:20221115_Couchbase_GDPR_02.jpg[]
+
+    * minimum de 3 noeuds (3 replicas)
+    * Pas de noeuds master et de noeuds slaves (*masterless*) : tous les noeuds sont actifs. 
+        ** Si un noeud tombe, tous les autres sont toujours présents
+    * Par noeud, ratio disponible pour stocker les data soit sur en mémoire, soit sur disque
+    * le "cluster map" va contenir toute la topologie du cluster, ce qui va permettre l'autosharding
+
+image:20221115_Couchbase_GDPR_03.jpg[]
+
+    * multi dimensional scaling : on va pouvoir choisir *comment* on va colocaliser les composants de Couchbase pour répondre au mieux aux besoins.
+
+.Couchbase peut servir de "Datahub" (donc servir à la Data integration)
+image:20221115_Couchbase_GDPR_04.jpg[]
+
+    * possibilité de *synchroniser des clusters* entre eux : via un *flux XDCR* (XDCR : *Cross Data Center Replication*)
+        ** très intéressant pour les DCR (Disaster Recovery Plan)
+    * RGPD : via XDCR on peut filtrer les data que l'on souhaite synchroniser d'un cluster A à un cluster B
+
+.Correspondance et pont avec le monde relationnel
+image:20221115_Couchbase_GDPR_05.jpg[]
+
+* Couchbase est *distribuée* grâce à un mécanisme de *sharding*
+
+* Couchbase permet de *conjuguer* son SQL++ avec ses fonctionnalités de Full Text Search
+
+.Analytics
+image:20221115_Couchbase_GDPR_06.jpg[]
+
+    * Les noeuds analytiques (Analytics Service) sont souvent dimensionnés différemment et distinct du Data Service (pour ne pas affecter les workflows / base opérationnels)
+    * Analyse JSON Data in near real-time without Extract-Transform-Load (ETL)
+    * Dès qu'on ajoute un noeud analytique, via DCR (un mécanisme de Change Data Capture), les autres composants Couchbase sont tenus à jour "le plus vite possible" (le "near real-time" de Couchbase)
+        ** Par "le plus vite possible", il faut comprendre qu'on ne peut pas le configurer, c'est fixé par Couchbase
+        ** Et donc, dès que c'est "activé", cela va générer du trafic réseau pour l'envoi de data (à garder en tête)
+
+.DCP pour transmettre les data au sein de Couchbase
+image:20221115_Couchbase_GDPR_07.jpg[]
+
+.Couchbase Mobile : from Cloud to Edge to Device
+image:20221115_Couchbase_GDPR_08.jpg[]
+
+* Pour le chiffrement, c'est du symétrique avec de l'AES 256
+
+== Prendre en compte la GDPR et autres loi et régulations en développant des applications user-centric.
+
+Présenté par Asmaa Damoth et Laurent Doguin
+
+.Abstract
+[NOTE]
+====
+Les pré-requis des bases de données vont évoluer, ils vont passer de préoccupations comme la scalabilité ou la performance à des *préoccupations liées aux régulations et à la protection de la vie privée*. Probablement parce qu'un certain nombre de prérequis performances et scalabilité sont déjà atteint pour une grande partie des cas d'utilisations.
+
+Après la question de la numérisation de la donnée, la question suivante est comment *gérer ces données privées* en accord avec les dernières lois et régulations, les droits des individus, comment leur *donner le contrôle de leur données*, comment *savoir où elle est*, et *comment y accéder*.
+Ces nouveaux prérequis ne sont pas toujours faciles à atteindre pour les bases de données traditionnelles. Comment décidez-vous quelles données passent du téléphone au cloud, est ce qu'elles peuvent être chiffrées du device au serveur ? Et si vous avez des serveurs synchronisés à travers différents pays, comment s'assurer que ces données qui doivent rester sur le sol d'un pays pour des questions de régulations, sont bien stockées dans ce pays ?
+Couchbase est une base de données qui apporte ses réponses à la plupart des ces questions.
+====
+
+* On laisse toujours de la data (ou de la metadata) en ligne...
+    ** data ou metadata qui peuvent être utilisées à de mauvaises fin
+
+* Et attention à l'extraterritorialité du droit
+    ** surtout celle des US...
+
+* Couchbase est une BDD hautement sécurisée MAIS la protection de vos données est VOTRE responsabilité
+
+.Les possibilités de protection de la donnée
+image:20221115_Couchbase_GDPR_08.jpg[]
+
+* Couchbase met à disposition un service (*eventing*) que l'on peut utiliser pour mettre en place, NOUS, le traitement de protection de la data que l'on souhaite (data masking, pseudonimisation, etc.)
+* Fonctionnalité de TTL (Time To Live) existante
+
+* FLE : Field Level Encryption
+    ** on peut chiffrer jusqu'à un champ
+
+* les données stockées sur le mobile peuvent être *chiffrées sur le mobile*
+    ** en AES 256, donc en chiffrement symétrique, donc AVEC LA CLE (de chiffrement) SUR LE MOBILE
+    ** une fois la donnée chiffrée "on ne peut rien en faire"
+
+.On peut synchroniser les data à tous les niveaux de granularité présentés précédemment (Buckets, scopes, etc.)
+image:20221115_Couchbase_GDPR_09.jpg[]
+
+* Dans tous les cas, *l'échange de clés de chiffrement* / déchiffrement d'un Data Center à l'autre est la *responsabilité du CLIENT*
+    ** Peut-être que les HashiCorp Vault ont un moyen de communiquer entre eux pour se communiquer les clés
+
