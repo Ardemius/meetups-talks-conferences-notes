@@ -27,17 +27,17 @@ endif::[]
 // Add an anchor with hyperlink before the section title
 :sectanchors:
 // To turn off figure caption labels and numbers
-:figure-caption!:
+// :figure-caption!:
 // Same for examples
 //:example-caption!:
 // To turn off ALL captions
-// :caption:
+:caption:
 
 toc::[]
 
 Un bloc-notes permettant de persister des notes et réflexions prises très rapidement en suivant talk, conf, émission ou autre.
 
-== 2022/05/11 - gestion de carrière - "Dev senior avec 6 ans d'XP, et après?"
+== 2022/05/11 - Vidéo "Dev senior avec 6 ans d'XP, et après?" (gestion de carrière)
 
 J'ai regardé dernièrement le MeetUp Tech Rocks *"Dev senior avec 6 ans d'XP, et après ?"* qui aborde le sujet de la gestion de carrière chez les ITs, et met bien en avant *2 types de carrière* : la *voie managériale* ("*Engineering Management*") et la voie appelée ici "leadership's path" (ou *Individual Contributor*), correspondant à une *orientation plus technique*, dans laquelle on va chercher à avoir de plus en plus d'impact via sa contribution individuelle (contribution qui va elle impacter un nombre croissant de personnes dans l'entreprise)
 
@@ -62,4 +62,62 @@ En passant, si vous voulez un exemple "proche de nous" de ce système, écoutez 
 Pour info, cela fait 17 ans qu'il travaille chez Red Hat. +
 Un exemple de plus qu'il est possible de progresser SANS devenir "manager" 😉 +
 (et si vous prenez son collègue *Clément Escoffier* côté Quarkus / Kubernetes chez Red Hat, c'est *"Principal Engineer"* 😉 )
+
+== 2022/10/21 - Demo de Couchbase Capella
+
+J'ai suivi la démo de Couchbase Capella via leur offre d'essai (trial de 30 jours) de la solution.
+
+Vidéo explicative : https://www.youtube.com/watch?v=46715VbaHvk
+
+.Comparaison des concepts entre une BDDR et Couchbase
+[cols="1,1", options="header"] 
+|===
+|Relationel model 			|Couchbase
+|Server	                    |Cluster
+|Database	                |Bucket
+|Schema		                |Scope
+|Table		                |Collection
+|Row		                |Document (JSON or BLOB)
+|===
+
+.Exemple
+image:20221021_couchbase-capella-demo_01.jpg[]
+
+Why the creation of the index is not done automatically ?
+
+    * Because *manipulating the document using only the ID* is *faster* because using internally the *key / value engine*, which *does NOT require any indexes*.
+        ** This works pretty well when you can get the ID of the document
+
+[source,java]
+----
+// guessing the UserHistory ID using the user's id ('123-hist')
+UserHistory hist = userHistoryCollection.get(user.getId() + "-hist")
+----
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
