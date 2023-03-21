@@ -329,7 +329,32 @@ Stratégie Nationale (SNIA) :
     * former *massivement* tous les secteurs à l'IA, à différents niveaux bien sûr
     * dispositifs pour une IA de confiance
 
+-> Très intéressant, *slides à récupérer*
+
 == 14h15 - 15h00 : Google Cloud : des données qui dorment aux données qui se transforment
+
+Présenté par Johan PICARD, Google Cloud, Data Analytics Practice Lead South EMEA et Christophe HENG, OnePoint, expert Data
+
+.Analyticz as a product
+image:20230321_data-ia-summit_14.jpg[width=1000]
+
+    * achat de Looker par Google il y a ~3 ans (a donné naissane à Looker Studio)
+        ** il s'agit d'un outil de couche sémantique
+    * objectif de Google : mettre la BI dans les applicatifs, et à terme se séparer des dashboards
+
+.Google Open Data Platform
+image:20230321_data-ia-summit_15.jpg[width=1000]
+
+.Et on n'a pas besoin de tout migrer sur Google (même si c'est mieux ! 😜)
+image:20230321_data-ia-summit_16.jpg[width=1000]
+
+    * avec de nouveau la possibilité de créer un Data Mesh
+
+.Le mot de la fin : des employés "augmentés"
+image:20230321_data-ia-summit_17.jpg[width=1000]
+
+
+    * Retour à l'exemple et au parallèle du début de talk : nous serions Tony Stark, l'humain créatif, et serions augmentés par Jarvis, notre assistant IA
 
 == 15h15 - 16h00 : Alteryx : démocratisez l'analytique avec Alteryx
 
@@ -342,9 +367,17 @@ Stratégie Nationale (SNIA) :
 * Gaspard Koenig : écrivain et philosophe
 * Repositionnement de l'humain dans ce monde où l'IA va être de plus en plus présente
 
+== Stands
+
+=== Starburst
+
+* Présentation du produit avec Xavier CHABANNES, partner manager chez Starburst
+
 == Ma conclusion
 
 * Excellent summit, je suis TRES agréablement surpris.
+
+* J'ai croise Marie-Eve (HUMBERT) qui était OnePoint, est devenue Softeam, puis est repartie chez OnePoint à Bordeaux pour retrouver la province.
 
 == Lexique
 
