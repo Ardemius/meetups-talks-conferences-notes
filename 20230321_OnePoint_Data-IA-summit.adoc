@@ -420,6 +420,13 @@ Avec David TALAGA, Dataiku, product marketing director
 
 *Exemple de Floa Bank* avec des témoignages disponibles en ligne : projet Dataiku + Snowflake + MLOps
 
+* Dataiku : un facilitateur et un orchestrateur
+
+Ressources à consulter : 
+
+    * TEDX de *Yves Moreau* sur la collaboration : https://www.youtube.com/watch?v=aD2LS4zQ0R0 (vidéo à vérifier, peut-être pas la bonne)
+    * Livre blanc "How to safely scale AI with oversight" et autres ressources Dataiku sur le scaling de IA : https://content.dataiku.com/safely-scaling#page=1 
+
 NOTE: Dataiku présent sur le salon au 4e étage
 
 == 17h15 - 18h00 : Microsoft : inédit : Azure Open AI, CHatGPT, le mode d'emploi pour s'emparer dès aujourd'hui de la révolution de l'IA générative
