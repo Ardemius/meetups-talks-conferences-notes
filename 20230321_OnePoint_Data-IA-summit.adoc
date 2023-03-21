@@ -59,6 +59,8 @@ OnePoint, des partenariats technologiques (réels) avec plusieurs éditeurs (11 
 
 == 9h15 - 10h00 : Data issues / Data trends 2023 par OnePoint
 
+*PARTIE DATA ISSUE*
+
 Présenté par 3 intervenants de OnePoint (dont "Aude" et "Florent" ???)
 
 Les problématiques 2023 : 
@@ -127,7 +129,7 @@ image:20230321_data-ia-summit_01.jpg[width=1000]
 
 -> Très bonne conf, 15 à 20 consultants ont participé à la création de cette étude.
 
-== 10h00 - 10h45 : Comment échouer lamentablement sa transformation Data
+*PARTIE DATA TRENDS*
 
 * il y a un laboratoire en traitement du langage naturel chez OnePoint
 * Leur directeur de l'IA (ou d'un de leur labo d'IA) fait la prez (doit être proche des 60 ans, un "vrai" senior 🙂)
@@ -135,9 +137,146 @@ image:20230321_data-ia-summit_01.jpg[width=1000]
 
 * Exemple relaté, on va demander à *ChatGPT* de mener une *analyse de satisfaction client*
 
-    * 
+Dans les coulisses  de ChatGPT : 2 idées extrêmement fécondes
+
+* 2019 : *Modèles de langue* : entrîner un modèle à prédire le mot suivant une suite de mots lui onfère une forme de bon sens : 
+    ** "Pourriez-vous me rappeler, lorsque vous aurez un moment de" : histoire
+    ** "disponibilité" : prédiction
+
+* 2022 : *mettre des humains dans la boucle*
+    ** savoir prédire le mot suivant avec un modèe de langue ne suffit pas ! *Il faut que les humains "éduquent" les modèles* pour qu'ils fournissent des réponses +
+    "utiles (helpful), acceptables, claires, etc." -> impossible à formaliser !
+
+image:20230321_data-ia-summit_02.jpg[width=1000]
+
+"Une forme d'intelligence pourrait naître spontanément dans de très gros modèles"
+
+image:20230321_data-ia-summit_03.jpg[width=1000]
+
+.Les limites de ChatGPT
+image:20230321_data-ia-summit_04.jpg[width=1000]
+
+    * ne peut pas construire de chaînes de raisonnement fiables : ce n'est donc PAS un système expert
+    * ne peut pas citer ses sources : donc pas d'articles pour Wikipedia 😉 
+
+.Les risques pour la société
+image:20230321_data-ia-summit_05.jpg[width=1000]
+
+    * risque d'un biais culturel anglo-saxon
+    * On veut que l'IA "fasse ce que l'on attend d'elle et NON ce qu'on lui dit"
+
+.Les recommandations de OnePoint
+image:20230321_data-ia-summit_06.jpg[width=1000]
+
+Les mots de la fin : 
+    
+    * "L'humain a des projets, la machine n'en a pas"
+    * posez-vous des questions
+
+Pour contacter l'équipe sur ces data issues : didt@groupoinepoint.com +
+-> On peut en demander une version papier en fin de summit
+
+== 10h00 - 10h45 : Joe REIS : Comment échouer lamentablement sa transformation Data
+
+Débat entre le public et Joe
+
+* Joe Reis anime un très bon podcast sur la Data : "Monday Morning Data Chat"
+* a écrit "Fundamentals of Data Engineering" chez O'Reilly (best-seller)
+
+* CEO de France Télévision présent dans le débat
+
+* Joe est très à l'aise à l'oral, débattre avec lui nous permet de nous rendre compte, encore 1 fois, que les mentalités US et européennes / françaises sont TRES différentes
+    ** chez les US on "tente", on parie dès qu'on le peut ("gamble"), tout l'inverse de la France où l'on cherche à estimer / quantifier un retour avant même d'avoir commencer quoi que ce soit
 
 == 11h00 - 11h45 : Starburst : Data Mesh : simplifier la gestion des Data Products pour gagner en agilité opérationnelle
+
+Présenté par Adrian Estala, VP et CDO de Starbust, et Victor Coustenoble, Solutions Architect Manager.
+
+"To understand Data Products, you need to reimagine how data is transformed and served to the consumers".
+
+Principles of success : 
+
+    * Focus on the consumer
+    * build alignment
+    * take an agile approach
+    * promote data literacy
+
+Design Imperatives : 
+
+    * Discoverable
+    * Consumable
+    * Metadata
+    * Description
+    * Reusable
+    * Ownership
+    * Observability
+
+Design considerations : 
+
+    * Interoperable
+    * SLA
+    * Size
+    * Security
+    * Agility
+    * Dependencies
+    * Lifecycle
+
+image:20230321_data-ia-summit_07.jpg[width=1000]
+
+    * CDO : a transversal view on all the following data tasks : 
+        ** Generate Data : architects & data owners
+        ** in
+
+Design considerations : 
+
+    * talk to an experienced professional about the design requirements that create value for you today
+
+image:20230321_data-ia-summit_08.jpg[width=1000]
+
+    * Minimize dependencies, use data products that feed from the source.
+    * Do NOT sacrifice agility
+    * minimize data migration, access data from the source. +
+    You do not have to migrate data to use it for analytics.
+
+Operations : 
+
+    * TCO : Data products should create a material reduction in your cost to transform and serve data
+    * Security : do not sacrifice security
+    * Reliability
+
+image:20230321_data-ia-summit_09.jpg[width=1000]
+
+.Business impact
+image:20230321_data-ia-summit_10.jpg[width=1000]
+
+    * Immediate impact
+    * Future impact
+
+*Demo de Starburst*
+
+image:20230321_data-ia-summit_11.jpg[width=1000]
+
+* Starburst est un moteur SQL basé sur la solution OpenSource Trino (anciennement PrestoSQL)
+
+.Définition de Starburst par ChatGPT
+--
+The Starburst data solution is a cloud-native analytics platform designed to help organizations analyze large volumes of data quickly and efficiently. +
+The platform is built on the open-source Trino project (formerly known as PrestoSQL), which allows users to *query data from multiple sources*, including Hadoop, NoSQL databases, and cloud-based data stores.
+--
+
+.Presto vs Trino
+[NOTE]
+====
+* *Presto* formerly PrestoDB
+    ** Martin Traverso, David Phillips, Dain Sundstrom, and Eric Hwang created PrestoDB in 2012 while at Facebook. It was initially created to solve for slow queries on a 300 PB Hive Data Warehouse. +
+    Martin, David, Dain and Eric needed to build a *SQL-based MPP engine* that would be easy to use based on existing skills, *easy to connect to any database, warehouse, or data lake, and easy to integrate with any BI tool*. Presto was created to solve for speed and cost-efficiency of data access at a massive scale.
+
+* *Trino* formerly PrestoSQL
+    ** In 2018 Martin, Dain, and David left Facebook to pursue building the Presto Open Source Community full-time, under the new name PrestoSQL. While PrestoDB was built to make queries more efficient for hyper-scale internet companies, like Facebook and Uber, PrestoSQL was built for a much broader variety of customers and use cases. +
+    In December 2020, PrestoSQL was rebranded as Trino. Trino (formerly PrestoSQL) brings the value of Presto to a broad array of companies in varying stages of cloud adoption who need faster access to all of their data. Companies like LinkedIn, Lyft, Netflix, GrubHub, Slack, Comcast, FINRA, Condé Nast, Nordstrom and thousands of others use Trino today.
+
+Pour plus de détails, voir l'article de Starburst : https://www.starburst.io/learn/open-source-presto/prestosql-and-prestodb/
+====
 
 == 12h00 - 12h45 : Data, IA et territoires : pour le meilleur et pour le pire
 
@@ -157,4 +296,10 @@ image:20230321_data-ia-summit_01.jpg[width=1000]
 
 * Gaspard Koenig : écrivain et philosophe
 * Repositionnement de l'humain dans ce monde où l'IA va être de plus en plus présente
+
+== Ma conclusion
+
+* Excellent summit, je suis TRES agréablement surpris.
+
+
 
