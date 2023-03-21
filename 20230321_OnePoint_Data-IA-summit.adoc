@@ -358,7 +358,69 @@ image:20230321_data-ia-summit_17.jpg[width=1000]
 
 == 15h15 - 16h00 : Alteryx : démocratisez l'analytique avec Alteryx
 
+Présenté par Issam BADACHE, Alteryx, Sales engineer et Olivier ZACCHELLO, OnePoint, expert Data.
+
+* Issam : "Si 92% des entreprises continuent d'investir dans l'IA et l'analytique, seuls 19% des entreprises se disent et se sentent "data driven""
+
+* Rappelle le graphe de la maturité analytique avec un score de 1 à 5 et un score moyen de l'entreprise de de 2,2
+
+image:20230321_data-ia-summit_18.jpg[width=1000]
+
+Progression type des experts métiers : 
+
+    1. manipulation des données
+    2. automatisation des processus
+    3. Analytique avancée / Data science
+    4. refonte des processus
+
+Alteryx pour la démocratisation de l'analytique
+
+    * cible surtout les populations "non tech" / "moins tech" de l'entreprise
+    * Alteryx peut être déployé aussi bien on-premise que sur le Cloud
+
+.scope d'Alteryx
+image:20230321_data-ia-summit_19.jpg[width=1000]
+
+* *Alteryx Designer* : pour créer ses process
+* *Alteryx Server* : pour déployer vos process
+    ** *Designer Cloud* : la même chose mais en mode SaaS
+* *Alteryx Machine Learning*
+* *Alteryx Auto Insights* : pour générer des dashboards
+
+Questions : 
+
+    * Qui développe les connecteurs Alteryx ? Alteryx ou 3rd parties ?
+    * Comment est calculée la note donnée par Alteryx AutoML ?
+
+-> Une présentation typiquement "sales"
+
 == 16h15 - 17h00 : Dataiku : industrialisation Data & IA avec Dataiku : 3 étapes clés pour passer à l'échelle
+
+Avec David TALAGA, Dataiku, product marketing director
+
+* IA (et donc modèle) entre étape de conception et de production, le Gartner donne une moyenne de 9 mois, donc un "rien long"
+
+* *Disposer d'une solution adaptative*
+    ** Déployer indépendamment de votre confiuration
+    ** Evoluer en capacité selon les besoins
+    ** Investir dans une grammaire commune
+
+* *Accélérer le Time To Value*
+    ** Eliminer les frictions de vos processus : MLOps sur une solution, CI/CD en self service ou entièrement automatisé.
+    ** Accélérer le partage des données
+    ** Une longueur d'avance avec les accélérateurs
+
+    ** Dataiku unifie et boucle l'approche MLOps +
+    image:20230321_data-ia-summit_20.jpg[width=1000]
+
+* *Piloter vos projets en toute confiance*
+    ** Piloter les projets sous un angle stratégique : rattacher vos projets aux initiatives stratégiques pour piloter la valeur
+    ** Suivre la performance IA de manière centralisée : une vue d'ensemble des performances du modèle
+    ** Déployer sereinement selon vos critères de gouvernance : approbation des projets avant déploiement
+
+*Exemple de Floa Bank* avec des témoignages disponibles en ligne : projet Dataiku + Snowflake + MLOps
+
+NOTE: Dataiku présent sur le salon au 4e étage
 
 == 17h15 - 18h00 : Microsoft : inédit : Azure Open AI, CHatGPT, le mode d'emploi pour s'emparer dès aujourd'hui de la révolution de l'IA générative
 

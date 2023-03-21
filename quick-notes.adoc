@@ -133,7 +133,9 @@ https://fr.slideshare.net/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-
 
 * https://www.linkedin.com/pulse/rapport-tendances-2023-didier-girard
 
-
+* Didier met lui aussi en avant le succès de Team Topologies et du DDD
+* Il insiste sur le besoin de découplage des équipes, dans le but d'en augmenter l'autonomie et la productivité.
+    ** L'équipe doit être responsable de bout en bout d'un domaine, et ne doit pas avoir à se reposer sur la synchronisation avec n équipes pour délivrer de la valeur.
 
 
 
