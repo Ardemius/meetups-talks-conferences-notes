@@ -63,6 +63,34 @@ Pour info, cela fait 17 ans qu'il travaille chez Red Hat. +
 Un exemple de plus qu'il est possible de progresser SANS devenir "manager" 😉 +
 (et si vous prenez son collègue *Clément Escoffier* côté Quarkus / Kubernetes chez Red Hat, c'est *"Principal Engineer"* 😉 )
 
+== 2022/06/28 - Artisan Développeur : Interview de Thomas PIERRAIN
+
+Thomas PIERRAIN est VP of engineering chez Agicap, et est un ancien archi de la SGCIB
+
+* Thomas Pierrain : on justifie le *passage aux microservices* principalement pour des raisons de *vélocité du delivery* et *éviter les bottle neck*.
+* De plus en plus on parle d'ailleurs de *macro service* plutôt que de micro service (on revient du buzz des premières années des microservices)
+
+* Thomas P chez Agicap : mise en place (à vérifier) d'une architecture dite "la ruche" pour monolithe 
+
+* *Living doc* très avancée chez Thomas : génération automatique depuis le build vers markdown 
+* Environnement technique hexagonale et CQRS très avancé, à regarder 
+
+* Conseil : *ne découpe pas trop tôt ! Le réseau va te tuer...*
+* Exemple Doctolib : the boring architecture et 400 dev sur 1 monolithe : 
+*"La qualité d'aujourd'hui c'est la productivité de demain"*
+
+1. on *modularise son code dans le monolith*, on l'aligne sur le métier
+    ** -> TSC : De nombreux architectes connus donnent également ce conseil ("proprifier AVANT de migrer en microservices")
+	** en gros, modular monolith : on crée des modules indépendants pour chaque feature
+	** This combined the advantages of a monolith, such a single test and deployment pipeline, with the advantages of microservices, such as code modularity and decoupling.
++
+-> Il faut bien se dire que les microservices nécessitent une grande maturité d'équipeS (oui, au pluriel) surtout côté de la chaîne de CI/CdD
+
+2. *DDD* pour une meilleure séparation et un meilleur contrôle de la logique métier
+	** le concept clé : les *bounded contexts*
++
+Mise en place de l'architecture hexagonale pour isoler le métier, et forcer le passage par les ports et adapters
+
 == 2022/10/21 - Demo de Couchbase Capella
 
 J'ai suivi la démo de Couchbase Capella via leur offre d'essai (trial de 30 jours) de la solution.
@@ -95,14 +123,15 @@ UserHistory hist = userHistoryCollection.get(user.getId() + "-hist")
 ----
 
 
+== 2022/05/12 - Le Comptoir OCTO x Dataiku x Snowflake - Comment créer plus de valeur et developper la collaboration a partir de données enrichies ?
 
+https://fr.slideshare.net/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies
 
+* Présentation d'une architecture de solution basée sur Snowflake et Dataïku, avec le soutien d'OCTO Technology
 
+== 2023/01/09 - Rapport tendances 2023 par Didier Girard
 
-
-
-
-
+* https://www.linkedin.com/pulse/rapport-tendances-2023-didier-girard
 
 
 
