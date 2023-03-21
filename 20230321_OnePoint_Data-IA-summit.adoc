@@ -1,0 +1,160 @@
+= 2023/03/21 - Groupe OnePoint - Data & IA Summit
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *OnePoint*
+Description du summit : https://www.groupeonepoint.com/fr/notre-actualite/data-ia-summit-by-onepoint/
+
+== Discours d'ouverture par OnePoint, organisateur du summit
+
+Présenté par Gontran PEUBEZ, leader IA et Data Strategist chez OnePoint.
+
+Quelques mots sur OnePoint : 
+
+    * 3300 employés
+    * 35 ans d'existence
+    * 16 bureaux dans le monde
+    * 500 millions € de CA (ratio 150 K€ CA / employés bien !)
+
+OnePoint, des partenariats technologiques (réels) avec plusieurs éditeurs (11 partenraires) côté IA et Data : 
+
+    * Alteryx
+    * Dataiku
+
+"Passer la data à l'échelle : la 4e révolution industrielle"
+
+== 9h15 - 10h00 : Data issues / Data trends 2023 par OnePoint
+
+Présenté par 3 intervenants de OnePoint (dont "Aude" et "Florent" ???)
+
+Les problématiques 2023 : 
+
+    * GESTION DES DONNÉES
+        ** connaissance
+        ** *qualité*
+            *** 80% des données de l'entreprise ne sont PAS utilisées
+        ** MDM
+
+    * PEOPLE
+        ** culture
+        ** compétences
+        ** *recrutement* : la priorité absolue, les talents sont *RARES*, surtout sur les profils data : augmentation des salaires, turnover important
+            *** avec *concurrence au sein de la même boîte* sur ces profils dans plusieurs départements
+            *** le *recrutement* de ces profils se fait *directement par les équipes data*, plus que par l'équipe recrutement
+            *** de nouveau, création de *centres d'excellence* pour fédérer ces talents
+            *** Accent mis sur la *certification* de ces talents
+
+    * INDUSTRIALISATION
+        ** science vs engineering
+            *** il faut pouvoir mêler ces 2 types de profils
+            *** le travail ne s'arrête pas avec la création du modèle, il faut pouvoir l'industrialiser après coup (ré-entraînement) 
+        ** *sécurité*
+        ** *mise à l'échelle*
+            *** en 2023 on accélère à fond sur l'IA
+            *** on réconcilie monde de l'expérimentation avec monde de la production
+
+Nouvelle problématique : *Data Fasting*
+
+Data Fasting : "Comment j'arrive à apporter de la valeur par petits pas, de façon progressive, en embarquant les équipes dans la transformation"
+
+    * Constat : 
+        ** fin des investissements de set up, mode run
+        ** paradoxe : résultats CT (court terme) vs transfo
+    * Raisons : 
+        ** recherche de ROI
+        ** Complexité de gestion temps courts / temps longs
+    * Convictions : 
+        ** use cases métier en mode "product"
+        ** Frugalité + ténacité stratégique
+
+.évolution des data trends 2022 et 2023
+image:20230321_data-ia-summit_01.jpg[width=1000]
+
+* La "data productization" s'applique maintenant sur l'ensemble des produits de l'entreprise (à l'échelle de l'entreprise elle-même)
+    ** ce produit est auto-porteur, multi-consommateur, va permettre de maximiser le ROI
+    ** le produit est orienté consommateur, il est orienté marché
+    ** la *monétisation* est le "graal" côté data marketplace
+    ** gouvernance : passage d'un mode "défensif" (exigence réglementaire) à une doc opérationnelle (catalogue réellement utile & co)
+
+* *Beyond 360* : 
+    ** 360 : données métier
+    ** 720 : données tierces
+    ** 1080 : données exogènes
+
+* *Data protection* : 
+    ** 2018 : RGPD
+    ** 2020 : Privacy shield
+    ** 2022 : ANSSI SecNumCloud
+
+* *Data Reset* : Responsabilité Environnementale, Sociétale, Economique et Technologique
+    ** valeurs associées : confiance, efficience, frugalité
+    ** Comment à travers la data et ses usages je vais pouvoir réconcilier ces différentes valeurs
+    ** Data Reset : prioriser les projets ayant le plus d'impact
+
+-> Très bonne conf, 15 à 20 consultants ont participé à la création de cette étude.
+
+== 10h00 - 10h45 : Comment échouer lamentablement sa transformation Data
+
+* il y a un laboratoire en traitement du langage naturel chez OnePoint
+* Leur directeur de l'IA (ou d'un de leur labo d'IA) fait la prez (doit être proche des 60 ans, un "vrai" senior 🙂)
+    ** il se définit clairement comme un chercheur
+
+* Exemple relaté, on va demander à *ChatGPT* de mener une *analyse de satisfaction client*
+
+    * 
+
+== 11h00 - 11h45 : Starburst : Data Mesh : simplifier la gestion des Data Products pour gagner en agilité opérationnelle
+
+== 12h00 - 12h45 : Data, IA et territoires : pour le meilleur et pour le pire
+
+== 12h45 - 13h00 : Le mot de Guillaume AVRIN : coordinateur national de l'IA
+
+* Guillaume est un peu le successeur de Cédric Villani.
+
+== 14h15 - 15h00 : Google Cloud : des données qui dorment aux données qui se transforment
+
+== 15h15 - 16h00 : Alteryx : démocratisez l'analytique avec Alteryx
+
+== 16h15 - 17h00 : Dataiku : industrialisation Data & IA avec Dataiku : 3 étapes clés pour passer à l'échelle
+
+== 17h15 - 18h00 : Microsoft : inédit : Azure Open AI, CHatGPT, le mode d'emploi pour s'emparer dès aujourd'hui de la révolution de l'IA générative
+
+== 18h20 - 19h00 : Intervention de clôture par Gaspard Koenig
+
+* Gaspard Koenig : écrivain et philosophe
+* Repositionnement de l'humain dans ce monde où l'IA va être de plus en plus présente
+
