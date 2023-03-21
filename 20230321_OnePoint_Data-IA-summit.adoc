@@ -57,7 +57,7 @@ OnePoint, des partenariats technologiques (réels) avec plusieurs éditeurs (11 
 
 "Passer la data à l'échelle : la 4e révolution industrielle"
 
-== 9h15 - 10h00 : Data issues / Data trends 2023 par OnePoint
+== 09h15 - 10h00 : Data issues / Data trends 2023 par OnePoint
 
 *PARTIE DATA ISSUE*
 
@@ -431,10 +431,33 @@ NOTE: Dataiku présent sur le salon au 4e étage
 
 == 17h15 - 18h00 : Microsoft : inédit : Azure Open AI, CHatGPT, le mode d'emploi pour s'emparer dès aujourd'hui de la révolution de l'IA générative
 
+Avec Xavier PERRET, directeur Azure Microsoft France, et François BINDER OnePoint Partner
+
+.Très rapide chronologie sur l'IA générative
+image:20230321_data-ia-summit_21.jpg[width=1000]
+
+* *GitHub Copilot* s'appuie sur le modèle *Codex* sous le capot
+    ** Codex est le modèle pour la génération de code
+
+* Le déploiement de Bing avec ChatGPT (basé sur GPT-4 et appelé Prométhée) permet d'accéder aux sources ayant été utiliser par le modèle, ce qui n'est pas possible avec ChatGPT seul. +
+Il s'agit d'un use case développé pour Bing
+
+Demo de *Azure OpenAI Studio*
+
+    * Dans le cas d'Azure OpenAI, les requêtes que je fais ne vont PAS être réutilisées pour entraîner le modèle, contrairement avec un usage direct de ChatGPT. 
+    * On peut aller *requêter son PROPRE corpus de documents*
+
+* Xavier PERRET : GPT-4 est moins consommateur en ressources que GPT-3
+* Si on utilise GPT dans Azure, l'objectif n'est PAS d'accéder aux données d'internet, le but est d'utiliser le modèle de langage
+    ** Si on a besoin d'accéder aux données d'internet, il faut alors développer une application SE SERVANT de GPT par Azure pour accéder aux données d'internet.
+
 == 18h20 - 19h00 : Intervention de clôture par Gaspard Koenig
 
 * Gaspard Koenig : écrivain et philosophe
 * Repositionnement de l'humain dans ce monde où l'IA va être de plus en plus présente
+
+-> Fantastique talk, un avis argumenté, bien présenté. +
+Aussi bien sur le fond que la forme, ce talk est une perle, à revoir absolument et à communiquer dès que la vidéo sera disponible.
 
 == Stands
 

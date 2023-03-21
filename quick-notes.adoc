@@ -137,11 +137,22 @@ https://fr.slideshare.net/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-
 * Il insiste sur le besoin de découplage des équipes, dans le but d'en augmenter l'autonomie et la productivité.
     ** L'équipe doit être responsable de bout en bout d'un domaine, et ne doit pas avoir à se reposer sur la synchronisation avec n équipes pour délivrer de la valeur.
 
+.Produit vs Projet
+--
+Un *produit* est une offre matérielle ou immatérielle qui répond à un besoin ou satisfait une envie. +
+Il est le résultat de la stratégie commerciale d'une entreprise et doit être conçu, développé et géré afin d'apporter de la valeur au client. Il est ensuite mis au catalogue, et est régulièrement mis à jour dans le cadre de son cycle de vie - jusqu'à ce qu'il soit retiré du marché - en fonction d'une roadmap établie pour répondre aux besoins des clients, qui évoluent au fil du temps. +
+Le produit vise un objectif, et chaque itération s'en rapprochera.
 
+De son côté, un *projet* est un effort temporaire qui a pour but de répondre à un besoin unique : il s'agit de créer un livrable spécifique, pour une date précise et un budget fixé à l'avance. Ce qui ne laisse pas de place à l'imprévu, et va donc à l'encontre des principes agiles ; cette façon de faire est une source évidente de frustration lorsque cet imprévu arrive (ce qu'il fait immanquablement).
+--
 
+*MVP vs MLP* : Minimum Valuable Product vs Minimum Lovable Product
 
+    * Un MVP est une version d'un produit qui possède l'ensemble minimal de fonctionnalités nécessaires pour être utilisable par les clients.
+    * Un MLP, en revanche, est une version d'un produit qui possède l'ensemble minimum de fonctionnalités nécessaires pour être aimée des clients.
 
-
+    * En résumé, la principale différence entre MVP et MLP est l'accent mis sur le retour d'information des clients et l'engagement émotionnel. +
+    Un MVP se concentre sur la collecte de commentaires et l'itération sur le produit, tandis qu'un MLP se concentre sur la création d'un lien émotionnel positif avec les clients du produit.
 
 
 
