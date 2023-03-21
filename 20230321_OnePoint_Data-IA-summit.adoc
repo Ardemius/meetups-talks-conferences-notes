@@ -278,11 +278,56 @@ The platform is built on the open-source Trino project (formerly known as Presto
 Pour plus de détails, voir l'article de Starburst : https://www.starburst.io/learn/open-source-presto/prestosql-and-prestodb/
 ====
 
+Data product = Data view (A VERIFIER)
+
 == 12h00 - 12h45 : Data, IA et territoires : pour le meilleur et pour le pire
+
+Présenté par : 
+
+    * Hugo ALVAREZ : Atout France, agence nationale en charge des retombées touristiques
+    * Hubert BEROCHE : Urban AI, Think tank sur l'IA appliquée au domaine urbain, la "ville intelligente"
+    * Pascal HOGUET : OnePoint
+    * Jean-Noël OLIVIER : Bordeaux Métropole
+    * Isabelle SCUILLER : OnePoint
+
+image:20230321_data-ia-summit_12.jpg[width=1000]
+
+* Jean-Noël : Les données des territoires est un tas d'or qu'on exploite pas, ou plutôt qui est exploité par d'autres.
+    ** on ne lit plus les panneaux de signalisation, on utilise Waze
+    ** AirBnb fait qu'à Bordeaux on ne peut plus trouver de logement étudiant
+    ** Crainte des directeurs, élus, qui ont peur de perdre leur pouvoir avec le partage des data, en la rendant transparente.
+        *** Cela veut dire pour nos élus se faire juger plus facilement sur leurs résultats.
+    ** Même conclusion que précédemment : "On est en France, nos boss ont peur de ne plus être boss, ou de ne plus avoir le pouvoir du boss"
+    ** Si on publie les données *factuelles* de propreté des quartiers d'une ville, on va pouvoir CLASSER les quartiers par propreté, et reprocher un mauvais "classement" à l'élu associé -> crainte
+
+** Hubert : "La bonne technologie, c'est celle que l'on ne voit pas" (Marc Weiser)
+    ** Marc Weiser : http://scihi.org/mark-weiser-ubiquituous-computing/
+        *** "The best computer is a quiet, invisible servant"
+        *** "The more you can do by intuition the smarter you are; the computer should extend your unconscious."
+    ** *Panoptique* : "les capteurs vous voient, mais vous ne pouvez pas les voir" -> c'est un problème, les citoyens n'en veulent pas...
+        *** https://fr.wikipedia.org/wiki/Panoptique
+
+** Hugo : Il faut partir des besoins de la filière et mobiliser ensuite startups, chercheurs, etc. pour lever les verrous qui empêchent de répondre à ces besoins.
+
+** Jean-Noël : la data est politique, et nous sommes encore très en retard à ce niveau en France (et sûrement également ailleurs aussi)
+    *** De plus en plus de "data journalisme" : des articles créés sur l'analyse des Open Data mis à disposition
+    *** MAIS sans dashboards "humainement lisibles" pour le plus grand nombre, l'usage des Open Data ne décolle pas
+    *** Exemple donné : problème de relation de confiance avec Atout France, qui est vu comme une "agence administrative française" : "j'ai pas envie de vous aider à faire du redressement de TVA en vous donnant MES informations de fréquentation..."
+        **** Peut faire sourire, mais le problème n'est pas aussi anecdotique que ça...
 
 == 12h45 - 13h00 : Le mot de Guillaume AVRIN : coordinateur national de l'IA
 
 * Guillaume est un peu le successeur de Cédric Villani.
+
+image:20230321_data-ia-summit_13.jpg[width=1000]
+
+* "inciter à partager les data et autres retours", mais "inciter" va-t-il être suffisant quand les gens ont des craintes ("redressement de TVA" précédent en exemple). +
+Ne faudrait-il pas légiférer pour *imposer* / *obliger* ?
+
+Stratégie Nationale (SNIA) : 
+
+    * former *massivement* tous les secteurs à l'IA, à différents niveaux bien sûr
+    * dispositifs pour une IA de confiance
 
 == 14h15 - 15h00 : Google Cloud : des données qui dorment aux données qui se transforment
 
@@ -301,5 +346,7 @@ Pour plus de détails, voir l'article de Starburst : https://www.starburst.io/le
 
 * Excellent summit, je suis TRES agréablement surpris.
 
+== Lexique
 
-
+* CDP : Customer Data Platform
+* SNIA : Stratégie Nationale pour l'IA
