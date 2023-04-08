@@ -90,7 +90,7 @@ On tombe sur une image donnant, en 1 ligne, les droits roots sur la machine héb
 Il est donc *IMPERATIF* de mettre en place des contrôles sur les images pour être récupérées.
 
 WARNING: Attention aux images Docker qui installent des fichiers en root sur le file system du host, ou qui créent de nouveaux utilisateurs sur la machine host. +
-Généralement les accès aux machines sont tracés, avec des utilisateurs bien définis. Les nouveaux utilisateurs précédants vont donc lever de nombreuses alertes...
+Généralement les accès aux machines sont tracés, avec des utilisateurs bien définis. Les nouveaux utilisateurs précédents vont donc lever de nombreuses alertes...
 
 L'écosystème Docker évolue *très vite* ! Faire attention aux versions fournies par les plateformes éditeur (ex : Suze avec CASP - Container as a Platform)
 

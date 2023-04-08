@@ -1,0 +1,621 @@
+= Devoxx France 2023
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== MERCREDI
+
+Programme du mercredi : https://cfp.devoxx.fr/2023/byday/wed
+
+=== Présentation du salon
+
+* https://www.devoxx.fr/, du 12 au 14/04/2022
+
+* *Softeam* sera présent au stand 21 en tant que sponsor Gold
+
+=== 09h30 - 12h30 (xxx) : Une Architecture GitOps from scratch : Gitlab, Ansible, Terraform, Kubernetes et AWS
+
+==== Abstract
+
+.Speakers : Loïc Ortola et Aurélien Moreau
+--
+Quand *Loïc* n’est pas en train de militer pour qu’on ne copie-colle pas les réponses de StackOverflow sans regarder la doc, il gère les DevRel en tant que CTO de Takima. +
+Passionné de transmission, il aime aller au fond et partager ses trouvailles sur des sujets trendy pour faire gagner du temps à ceux qui se lancent, parce que ça, on le trouve pas sur Stack Overflow. +
+Rudement impliqué dans l'architecture et le DevOps, il est formateur Kubernetes et GitOps. Après avoir lancé Jawg Maps, Frog Connexion, Notion Automations et quelques libs Opensource, il revient au Devoxx pour le début des beaux jours !
+
+*Aurélien* n’est pas juste un adepte de la marinière. Ops passionné, ayant fait ses armes dans les équipes infra chez EDF, il a vu passer 10 ans d’innovations et a vécu les changements de paradigmes engendrés par l’avènement des outils DevOps. Formateur Kubernetes en France et à l’international, il mobilise son expertise sur des chantiers de migration de grands acteurs vers le Cloud Native. Il est aujourd’hui Head of Infrastructure chez Takima et saura vous donner une lecture de ce que le DevOps a changé dans sa manière de fonctionner au quotidien. Spoiler alert : maintenant, il code !
+--
+
+----
+On a compris : Kubernetes permet de gérer les ressources applicatives.
+
+Mais du coup, comment bien utiliser l'Infrastructure-As-Code ? Comment provisionner mon socle technique ? Combien de clusters dois-je utiliser ? Qu'est-ce que j'utilise dans ma CI pour mon infra ? Quid de la zone grise (DNS, Storage, DBs etc…) qui touche à la fois à de l’infra et à de l’applicatif ? Où mettre mon observabilité ? Comment bien gérer une infra multi-cluster ?
+
+Dans ce talk, on va vraiment aborder les aspects importants du day-2.
+
+On vous propose de mettre ensemble en place une architecture GitOps avec Kubernetes, Terraform, Helm et ArgoCD (notamment) dans un SI pas trop compliqué (pas de multi-régions, pas de multi-tenancy, pas de cluster on-premises).
+
+Le mieux dans tout ça ? On part de zéro, on expliquera en détail toutes les étapes et on va aussi faire pas mal de live-coding.
+
+Les participants pourront repartir avec une grille d’analyse end-to-end (CI / Infra-as-code / Templating / Managed services), et un joli repo tout propre qu'ils pourront rapidement adapter et mettre en place dans leur projet !
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 16h30 (xxx) : Comprendre et utiliser les modèles de langage d'IA
+
+==== Abstract
+
+.Speakers : Sébastien Collet
+--
+Data Scientist chez Sparklane, je travaille principalement au développement et au déploiement de solutions basées sur du Deep Learning pour améliorer notre produit et simplifier les usages de nos clients.
+--
+
+----
+Récemment, les modèles d'IA comme GPT3, PaLM ou ChatGPT sont devenus de plus en plus populaires et performants. Ces approches sont basées sur du Deep Learning et plus particulièrement sur ce que l'on appelle les modèles de langage. Les possibilités offertes par ces modèles semblent alléchantes, mais pour autant, est-ce simple de les utiliser au sein d'un produit ? Avec la performance, vient aussi une couche de complexité qu'il ne faut pas négliger.
+
+Dans cette université, nous aborderons l'évolution et le fonctionnement de ces modèles depuis le premier GPT en 2018 jusqu'aux approches les plus récentes. Nous verrons ensuite comment il est possible de mettre en place ce genre de méthode dans la "vraie vie". C'est-à-dire avec un besoin métier spécifique, des contraintes de production et un budget limité. Enfin, nous ouvrirons le débat sur le potentiel futur du domaine, alors que les nouveaux modèles semblent devenir obsolètes en quelques mois seulement.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 17h00 - 17h30 (xxx) : SELECT 'amazing_features' FROM "postgresql"
+
+==== Abstract
+
+.Speaker : Kevin Davin
+--
+Google Developer Expert on Google Cloud and Kotlin, I am above all passionate about tech, languages, infrastructure, and automation. +
+Java, Kotlin, SQL, YAML are my day-to-day languages. I deploy all of those on the Google Kubernetes Engine with the Continuous Integration of Gitlab 🚀. +
+I'm Senior Software Engineer at Gradle and I share my passion here with everyone ❤️
+--
+
+----
+C'est unanime, PostgreSQL devient le Linux de la base de données pour le bien de tous 🚀!
+Et cela parce que ce moteur de BDD contient des fonctionnalités fantastiques permettant de résoudre des problèmes complexes très simplement!
+
+Venez découvrir dans cette présentation les features les plus utiles et pratiques pour vous éviter de tout re-coder "from scratch" 😅!
+L'on détaillera des features standards du monde SQL trop peu connues et des features propres à PG qui en font un moteur SQL passionnant 🔥
+
+Et pour terminer, l'on fera le tour des "distributions" PostgreSQL disponibles, car dans ce domaine, il y a beaucoup de choix, pour de l'on-prem ou scalable
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 17h45 - 18h15 (xxx) : Redis: du cache à la time series!
+
+==== Abstract
+
+.Speaker : Clement Escoffier et Holly Cummins
+--
+*Clement Escoffier* (@clementplop) is a distinguished engineer at Red Hat. He is a Java Champion, author, and also acts as a Reactive Architect at Red Hat. Before joining Red Hat, Clement had several professional lives, from academic positions to management. Clement has always been interested in software engineering, distributed systems, and event-driven architecture. He recently focused on Reactive Systems, Cloud-Native applications, and Kubernetes. Clement actively contributes to many open-source projects, such as Eclipse Vert.x, SmallRye, Mutiny, and Quarkus.
+
+*Holly Cummins* is a Senior Principal Software Engineer on the Red Hat Quarkus team. Before joining Red Hat, Holly was a long time IBMer, in a range of roles from cloud consultant, full-stack javascript developer, WebSphere Liberty devops architect, JVM performance engineer, to innovation leader. Holly led projects for enormous banks, tiny startups, and everything in between. Holly has used the power of cloud to understand climate risks, count fish, help a blind athlete run ultra-marathons in the desert solo, and invent stories (although not at all the same time). Holly is also a Java Champion, author, and regular keynote speaker. You can follow her on twitter at @holly_cummins or at hollycummins.com.
+--
+
+----
+Redis est devenu extrêmement populaire. Redis est souvent utilisé comme solution de cache ou pour stocker les sessions utilisateurs. Mais Redis a beaucoup d’autres fonctionnalités et devient le couteau suisse des applications Cloud. En effet, Redis peut être utilisé comme base de données spatiales, queue d’exécution, time series, moteur de recherche. On peut stocker des documents textes, binaires ou du JSON, des graphes et même des structures mathématiques tel que des filtres Bloom ou Cuckoo.
+
+Cette présentation explique les différents types de données que Redis peut manipuler et comment l’API Redis intégré à Quarkus vous permet de développer avec ces types facilement, et rapidement. Après cette présentation, vous ne verrez plus votre Redis comme avant!
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 18h30 - 19h00 (xxx) : RESEAUTAGE
+
+== JEUDI
+
+Programme du jeudi : https://cfp.devoxx.fr/2023/byday/thu
+
+=== 09h00 - 09h20 (AB) : La Keynote de Devoxx France 2022 - 10 ans déjà
+
+==== Abstract
+
+.Speakers : https://cfp.devoxx.fr/2022/speaker/nicolas_martignole[Nicolas Martignole], https://cfp.devoxx.fr/2022/speaker/antonio_goncalves[Antonio Goncalves], https://cfp.devoxx.fr/2022/speaker/zouheir_cadi[Zouheir Cadi]
+--
+*Nicolas* : Nicolas Martignole est l'un des 3 organisateurs et fondateurs de Devoxx France. Lorsqu'il ne s'occupe pas de Devoxx France, il est Principal Engineer chez Doctolib.
+
+*Antonio* : Antonio Goncalves est un développeur senior qui vit à paris. Ancien de chez BEA il est aujourd'hui consultant Java EE indépendant avec une bonne expertise des serveurs d'application comme JBoss, Weblogic ou GlassFish. Il est l'un des fondateurs du Paris Java User Group et plus récemment de Devoxx France. Antonio est aussi l'une des voix des CastCodeurs, auteur de livres sur Java EE.... et Java Champion.
+
+*Zouheir* : Zouheir CADI est consultant spécialisé dans les technologies java/jee. Après plusieurs années dans le développement, il est architecte suivi de production, un métier passionnant, interface entre le développement et les problématiques opérationnelles. Il est également intervenant à Telecom ParisTech où il enseigne les technologies java. +
+Zouheir CADI est membre du bureau du Paris JUG et co-fondateur de Devoxx France.
+--
+
+----
+Devoxx France a été créé en 2012, après 4 années d'aventure avec le Paris JUG. C'est le moment de venir partager avec nous quelques souvenirs, de revenir sur ces 10 dernières années.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 09h00 - 09h20 (AB) : Et si le digital permettait de mieux vivre et plus longtemps ?
+
+==== Abstract
+
+.Speakers : Céline Lazorthes
+--
+Entrepreneure optimiste et passionnée, Céline Lazorthes est la co-fondatrice et co-CEO de Resilience. Sa mission ? Universaliser l'excellence médicale pour vivre mieux et plus longtemps. Elle a précédemment fondé le groupe Leetchi, vendu au Crédit Mutuel Arkea en Septembre 2015. Business angel active, elle a investi dans plus de 40 entreprises telles que : Jimmy Fairly, Talent.io, Frichti, Le Slip Français, Welcome to the jungle... Profondément engagée, elle a co-fondé France Digitale, France FinTech, SISTA et plus récemment #ProtègeTonSoignant, un collectif d'entrepreneurs et d'artistes au service du personnel médical. Elle intervient régulièrement sur les thèmes de l'économie du partage, de l'égalité des chances et du women empowerment.
+--
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 09h25 - 09h45 (AB) : La tech au secours de la planète ?
+
+==== Abstract
+
+.Speakers : Philippe Bihouix
+--
+Philippe Bihouix a travaillé comme ingénieur-conseil ou dirigeant dans différents secteurs industriels, en particulier les transports et la construction, avant de rejoindre le groupe AREP, agence d’architecture interdisciplinaire, comme directeur général. Il est l’auteur de plusieurs ouvrages sur la question des ressources non renouvelables et des enjeux technologiques associés, en particulier L’âge des low tech. Vers une civilisation techniquement soutenable (Seuil, 2014 ; Points 2021) et Le bonheur était pour demain. Les rêveries d’un ingénieur solitaire (Seuil, 2019 ; Points 2022).
+--
+
+----
+Alors que les « limites planétaires » se rapprochent dangereusement (changement climatique, effondrement de la biodiversité, dégradation des sols, tensions sur l’énergie et les matières premières…), les promesses « techno-solutionnistes » sont plus prégnantes que jamais.
+
+A en croire les prophètes de la Silicon Valley, métavers, intelligence artificielle, robots autonomes, puces neuronales et conquête de l’espace seraient notre destin inéluctable. Et en attendant, énergies renouvelables, voitures électriques et hydrogène « vert » devraient nous permettre de ne pas trop entamer notre niveau de vie.
+
+Mais ces innovations consomment des métaux, souvent plus rares et difficilement recyclables. La contrainte sur les ressources matérielles nous imposera-t-elle des limites ? Et si nos efforts d’innovation devaient se concentrer plutôt sur les technologies sobres et plus résilientes ?
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 09h50 - 10h10 (AB) : Definition of Done : une notion évolutive en start-up santé
+
+==== Abstract
+
+.Speaker : Sophie Cahen
+--
+Sophie a co-fondé Ganymed Robotics en 2018 à Paris. La société, qui a levé 36m€ en 2022, développe des logiciels de vision par ordinateur et des technologies robotiques visant à guider le geste du chirurgien pendant des opérations de chirurgie. Son robot d’assistance chirurgicale, destiné à la pose de prothèse de genoux, ambitionne d’améliorer la précision des interventions et les bénéfices patients, tout en démocratisant l’accès à des soins chirurgicaux de qualité.
+
+Sophie a 10 ans d’expérience professionnelle internationale ; avant de co-fonder Ganymed Robotics, elle a travaillé chez Avencore, l'Agence française de développement (AFD) et Astorg. Sophie a co-inventé 3 brevets déposés, elle siège au comité de pilotage pour la robotique et l'électronique du programme gouvernemental "France 2030" et a été nommée Chevalière de l'Ordre National du Mérite en 2022.
+--
+
+----
+Le développement logiciel est au coeur de la différenciation de Ganymed Robotics. Une des briques technologique majeures repose sur la technologie unique et brevetée de vision par ordinateur, véritable “GPS instantané” qui permet la mise en correspondance précise des informations pré et per-opératoires via des algorithmes testés et validés en conditions cliniques.
+
+Ensuite vient évidemment le contrôle du mouvement du robot, le suivi du workflow chirurgical, la gestion de l’interface chirurgien, des données générées en cours d’opération, etc.
+
+Bref, on code !
+
+Mais comment et dans quel but ? Le passage d’algorithmes de recherche et de test à un véritable code industriel, robuste, adapté aux exigences de qualité du médical, très normé, représente un changement de méthodes de travail majeur au sein des équipes de R&D.
+
+Sophie parlera de l’expérience de Ganymed Robotics et de ses équipes logiciel dans la gestion de ce virage entre développement d’une technologie et développement d’un produit, nécessaire et difficile!
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 10h45 - 11h30 (xxx) : CRAC vs GraalVM
+
+==== Abstract
+
+.Speakers : Lilian BENOIT
+--
+Lilian est Tech Leader dans une ESN Bordelaise. il est passionné par l'informatique depuis bien plus longtemps. Il aime travailler sur sa plateforme préféré Java (Java SE et Jakarta EE), notamment sur sa distribution de prédilection : Debian.
+
+Il adore apprendre et partager ses connaissances. C'est comme cela qui s'est rapproché du BordeauxJUG dont il en est JUG Leader depuis 2016. L'objectif du Bordeaux JUG est de promouvoir Java à travers des soirées/conférences mensuelles autour de la plateforme Java.
+--
+
+----
+Dans les cas d'usages modernes (Kubernetes, Serverless), tout le monde sait que le point noir de la JVM est son démarrage.
+
+Depuis quelques années, GraalVM s'impose comme rémède permettant ainsi un démarrage rapide via une compilation native. Cela apporte néanmoins certaines contraintes.
+
+Une nouvelle solution apparait dans le paysage de la JVM. C'est CRaC pour Coordinated Restore at Checkpoint. Regardons ensemble comment cela fonctionne et les avantages.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 11h45 - 12h30 (xxx) : Bien choisir sa base de données
+
+==== Abstract
+
+.Speaker : Sébastien Keller et Alexandre Budzko
+--
+*Sébastien Keller* : S’il n’est pas en train de faire sa séance de bloc quasi-quotidienne, vous pourrez trouver Sébastien en train de répondre à des questions sur son diagramme d’archi ou de lire le code de Kafka Stream pour trouver le bon TaskAssignor. +
+Après 11 ans, et quelques générations de juniors formées, Sébastien se décide enfin à partager son expérience à un public plus large. +
+Côté métier, il a travaillé sur des codebases aussi variées que de l’assurance, des sites e-commerce et plus récemment, de la Big Data. Il pourra vous parler de toutes les mauvaises idées qu’il a croisé sur son chemin, mais aussi des bonnes !
+
+*Alexandre Budzko* : Jeune developpeur fullstack, passionné par la tech et en particulier le free software
+--
+
+----
+RDBMS ? Orienté colonnes ? Documents ? Timeseries ? Graphes ? Distribué ou non ? Pas facile de faire le bon choix lorsqu’on est perdu dans toutes ces notions. Dans ce talk, on est là pour t’aider à faire le meilleur choix de base de données pour ta prochaine application ! Comme la solution universelle n’existe pas, on va plutôt te présenter différents critères de choix, les pièges et antipatterns qu’il faut éviter, ainsi qu’une lecture analytique de chaque type de DB. On va notamment parler des grands types de bases de données, de transactions et de distribution de la donnée. En sortant, tu te poseras les bonnes questions pour choisir ta BDD et tu n’auras pas besoin de chercher à faire des jointures dans Elastic !
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 14h15 (xxx) : De chroot à Docker, Podman, et maintenant les modules Wasm, 40 ans d'évolution de la conteneurisation
+
+==== Abstract
+
+.Speaker : Thomas SCHWENDER
+--
+Architecte et Crafter convaincu, j'anime la communauté technique de ma société depuis des années. En tant que techos, parmi mes hobbies du moment, on retrouve : de la Data, du Cloud (vous voyez mes cheveux blancs ?), et prêcher une doc efficace ("dans le wiki je crois !")
+--
+
+----
+La plupart d'entre nous ont découvert le concept de conteneur en 2013 avec l'arrivée de Docker.
+Aujourd'hui, avec l'avènement du Cloud et de Kubernetes, les conteneurs sont partout autour de nous.
+
+Toutefois, l'histoire de la conteneurisation reste globalement méconnue.
+Qui pour se souvenir que tout a commencé en 1979 avec l'apparition de chroot, qui marqua le début de l'isolation des process ?
+Qu'il a fallu attendre d'avoir les cgroups (2008), puis les user namespaces (2013) pour que Docker puisse voir le jour ?
+Que la généralisation des containers, conséquence de l'adoption de Kubernetes par tous les Cloud providers (2018), entraîna l'apparition des sandbox runtimes et des daemonless runtimes ?
+Sans oublier la récente poussée de WebAssembly et de ses modules (2022), nos nouveaux "containers Javascript".
+
+Au cours de ce talk, nous allons détailler les grandes étapes qui ont marqué l'histoire de la conteneurisation, et expliquer POURQUOI elles ont eu lieu.
+L'objectif est qu'en sortant, vous ayez compris quelles orientations a suivi la conteneurisation depuis toutes ces années, et ce vers quoi nous allons.
+----
+
+==== Notes
+
+-> La conf de bibi ! 😉 
+
+=== 14h30 - 15h15 (xxx) : 30 index sur une table PG de 6To : défis et solutions
+
+==== Abstract
+
+.Speaker : Flora Briand et Emmanuel Quincerot
+--
+*Flora Briand* : Pendant 10 ans, Flora a travaillé sur la programmation et l'interactivité des robots Nao et Pepper (Aldebaran Robotics). Elle jonglait alors entre des enjeux de justesse d'expérience interactive naturelle et de performance d'embarqué. L'élaboration d'un CMS web permettant aux utilisateurs de créer et de modifier facilement le contenu de leurs robots en temps réel, l'a fait glisser petit à petit dans le monde du développement web full stack. Elle est maintenant Senior Software Engineer chez Doctolib depuis 2 ans, focalisée sur l'optimisation de l'utilisation de sa base de données.
+
+*Emmanuel Quincerot* : Développeur fullstack depuis 12 ans, j'ai travaillé sur des sujets variés qui m'ont confronté à de nouvelles problématiques : applications web, migration et tests de pipelines Jenkins, docker... Dernièrement j'ai plus particulièrement travaillé sur la scalabilité de la base de données Doctolib.
+--
+
+----
+Au cours du temps, nos bases de données grossissent. Viennent alors les problématiques de performance. Une solution classique consiste à rajouter des index. Ceux-ci jouent effectivement un rôle crucial sur les performances, mais ils peuvent également être contre-productifs. Les pièges classiques : ajouter un index à chaque nouvelle requête, mal les définir ou les laisser vieillir sans s'en occuper.
+
+Chez Doctolib nous avons une BDD Postgres de 30To, avec des pics quotidiens de 250k requêtes par seconde. La plus grosse table fait 6To, elle a 30 index.
+
+Alors comment nous sommes-nous outillés pour améliorer l'usage de nos index et réduire leur nombre ? Nous parlerons de représentativité de tests, de pièges SQL, de write-amplification, de benchmark d'index, et des défis que notre équipe a rencontrés pendant quelques mois.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 15h30 - 16h15 (253) : Gestion de la dette d'architecture dans un contexte d'hypercroissance
+
+==== Abstract
+
+.Speaker : Cyril Beslay
+--
+Solution Architect depuis 3 ans chez ManoMano, j'ai précédemment été Développeur Java, Technical Leader puis Software Architect principalement en ESN.
+--
+
+----
+La dette d’architecture est une sous partie de la dette technique qui traite des problèmes inhérents à l’architecture des systèmes d’information.
+
+La dette d’architecture, causée par de nombreux facteurs techniques, organisationnels ou humains, augmente avec le temps et a des impacts majeurs sur la vélocité et la motivation des équipes.
+
+Identifiée et mesurée, elle peut être réduite lors de transformations majeures ou refactorings ciblés. Alors que la dette technique est connue, outillée et couverte par de nombreuses thèses et articles, la dette d’architecture, malgré son potentiel impact majeur, n’est que très peu maitrisée.
+
+Dans ce talk, j’aimerais partager le concept de dette d’architecture, détailler les travaux déjà effectués pour la définir et expliquer comment la mesurer grâce à la construction d’un framework au sein mon entreprise.
+
+Ce travail est basé sur une expérience pratique dans une entreprise en hyper-croissance et sur le travail théorique de Roberto Verdecchia, Antonio Martin.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 16h45 - 17h30 (xxx) : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
+
+==== Abstract
+
+.Speaker : https://cfp.devoxx.fr/2022/speaker/nelson_dionisi[Nelson Dionisi]
+--
+*Clément Delafargue* : I'm a functional programmer, working on IAM matters at Outscale
+
+*Geoffroy Couprie* : Geoffroy Couprie est consultant indépendant. Spécialiste en sécurité logicielle, il travaille à rendre le code plus sûr, et les outils cryptographiques plus utilisables. Il étudie plus particulièrement la sécurité des protocoles d'authentification et d'échange de messages.
+--
+
+----
+Depuis l'essor des architectures microservices, l'auth a bien évolué. Les solutions basées sur un serveur d'authorisation central sont certes simples à mettre en place, mais rendent les systèmes moins résilients. Si le serveur d'auth tombe, l'ensemble de la plateforme tombe. De l'autre côté du spectre, des systèmes à base de jetons au porteur (comme JWT) permettent de s'affranchir des contraintes d'un système centralisé. En revanche, de tels systèmes sont notoirement complexes à mettre en place et nécessitent une bonne dose d'expérience pour éviter les erreurs.
+
+Dans cette conférence nous vous présenterons:
+
+- comment choisir entre un système d'auth centralisé et un système distribué
+- un tour d'horizon des solutions possibles pour les jetons au porteur;
+- les différentes architectures d'auth possibles (passerelle d'auth, intégration directe, …);
+- les éléments indispensables à mettre en place dans un tel système (rafraichissement des tokens, révocation, rotation des clés, …);
+- la plateforme biscuit, construite autours de ces use cases.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 17h45 - 18h15 (xxx) : RESEAUTAGE
+
+=== 18h30 - 19h00 (xxx) : Rust In Peace
+
+==== Abstract
+
+.Speaker : Guillaume Soldera
+--
+Développeur depuis plus de 10 ans et issu du monde des technologies web, langages JVM et des frameworks backend ou frontend qui vont avec, j'ai découvert la joie du développement Rust depuis mon arrivée chez Doctolib.
+--
+
+----
+Rust est un langage de plus en plus populaire et qui comporte de nombreux avantages : fiabilité, rapidité d'exécution, mémoire optimisée, cross-compilation... Toutefois se lancer dans Rust quand on vient du monde Web ou des langages JVM, ça peut être assez (très) frustrant ! Nouveaux paradigmes, gestion de la mémoire, compilateur psycho-rigide, il y a pas mal de nouveaux concepts qu'il faut appréhender.
+
+À mon arrivée chez Doctolib, je découvrais le monde Rust et avec mes biais issus de mes années Java/Javascript, je suis tombé dans pas mal de pièges et ai pris pas mal de murs ! Durant cette session, je vous présenterai à partir d'exemples de code les concepts de base afin de comprendre les erreurs que l'on rencontre, comment les résoudre et se réconcilier avec le compilateur.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 21h00 - 21h50 (xxx) : BOF Paris Software Crafters Community
+
+==== Abstract
+
+.Speakers : Cyrille Martraire
+--
+Développeur depuis 1999, Cyrille est auteur du livre Living Documentation (Addison-Wesley) et CTO co-fondateur de la société Arolla, qui rassemble 90 développeurs passionnés de code bien écrit et bien testé. Il a fondé la communauté Paris Software Crafters en 2011 pour partager son enthousiasme de TDD, BDD et DDD, et intervient fréquemment depuis comme orateur dans des conférences en Europe et parfois au-délà.
+--
+
+----
+Cette rencontre BOF est une nouvelle occasion de découvrir, ou redécouvrir, ce qui se cache derrière le Software Craft, dans le cadre même de Devoxx France. Dans un format de discussion libre, rejoignez-nous pour observer ou participer avec vos questions, retours et opinions sur des sujets divers tels que les techniques de code et de tests, les façons de collaborer en pair programming ou en mob programming, ou encore l'attitude en entreprise et la notion de professionalisme dans notre métier.
+
+Comme à notre habitude le choix des sujets de discussion et / ou d'exercice de code sera laissé librement aux participants en début de session. A bientôt !
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+== VENDREDI
+
+Programme du vendredi : https://cfp.devoxx.fr/2023/byday/fri
+
+=== 09h00 - 09h20 (AB) : Soyons optimiste
+
+==== Abstract
+
+.Speaker : Thomas Durand
+--
+Vulgarisateur des sciences, animateur de la Tronche en Biais, Thomas C. Durand est auteur d’ouvrages sur la science et l’esprit critique (L’ironie de l’évolution, Seuil 2018. Connaissez-vous l’homéopathie ? Éditions Matériologiques 2019. Quand est-ce qu’on biaise ? Humenscience 2019. Dieu, la contre-enquête, 2022), et directeur de la rédaction de l’Association pour la Science et la Transmission de l’Esprit Critique (ASTEC).
+--
+
+----
+Au temps des Fake News et de la Post-vérité, il est facile de se décourager et de penser que les humains sont foutus. Mais l’esprit critique réside souvent même là où on pense qu’il est absent.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 09h25 - 09h45 (AB) : Géopolitique de la data
+
+==== Abstract
+
+.Speakers : Benjamin Bayart
+--
+Expert en télécommunications, Benjamin Bayart milite pour les libertés fondamentales dans la société de l'information par la neutralité du net et le logiciel libre, ses prises de positions en font une personnalité remarquée de l'Internet français.
+--
+
+----
+Il a été pendant quinze ans président de French Data Network, le plus ancien fournisseur d'accès à Internet (FAI) encore en exercice en France. Il est aujourd'hui consultant chez OCTO Technology et co-président de la Quadrature du Net, une association française de défense des droits et libertés sur Internet, qui lutte notamment pour la protection de la vie privée, la neutralité du net et la libre circulation de l'information. Fondée en 2008, elle sensibilise l'opinion publique et intervient auprès des institutions nationales et européennes pour promouvoir et défendre un Internet ouvert et libre.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 09h50 - 10h10 (AB) : Briser le plafond de glace
+
+==== Abstract
+
+.Speakers : Marion Poitevin
+--
+Première dans un groupe d’élite d’alpinisme de l’armée de terre, 1ère instructrice montagne après 80 ans d’existence de l'Ecole Militaire de Haute Montagne et enfin 1ère secouriste CRS Montagne dans la police nationale. Marion Poitevin est aussi l’une des 35 femmes guides de haute montagne, monitrice de ski alpin et maman de deux enfants. A seulement 37 ans elle vous présente comment "Briser le plafond de glace" dans des mondes jusque là exclusivement masculins, les difficultés rencontrées, les solutions trouvées et les leçons apprises. Aujourd’hui son engagement est féministe mais aussi écologique face à la problématique du développement toujours grandissant des stations de sports d’hiver.
+--
+
+----
+Le web est de plus en plus attaqué par des campagnes de désinformation, qui emploient des usines de trolls pour manipuler l'opinion publique, noyer les informations compromettantes et amplifier la haine. Cette guerre de l'information est devenue un enjeu de sécurité nationale.
+
+En réaction à cela, les géants du web ont pris des décisions radicales et unilatérales, comme le bannissement de Donald Trump ou l'autorisation des appels au meurtre de Poutine et des soldats russes.
+
+Dans cette présentation, après avoir insisté sur l'ampleur du problème, je présenterai la plateforme Tournesol, qui propose une gouvernance collaborative et sécurisée de la recommandation de l'information.
+
+J'essaierai de convaincre le public que la recherche et le développement de telles solutions sont critiques pour le futur de l'humanité.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 10h45 - 11h30 (xxx) : Qualité radicale - de Toyota à la tech
+
+==== Abstract
+
+.Speakers : Flavian Hautbois et Woody Rousseau
+--
+*Flavian Hautbois* : I have loved using computers for as long as I can remember. I use them to code and I use them for creating art. I have an entrepreneurial spirit and a deep interest in societal and environmental challenges. I've been a developer and a CTO for a few companies. I now focus on technical consultant work and co-writing the upcoming book "Build to Sell". I also provide training around the book's contents to help entrepreneurs build products that people love.
+
+*Woody Rousseau* : CTO & cofondateur de Sipios, une des boîtes du groupe Theodo. Passionné d'APIs, d'architecture évolutives, d'Open Finance et de Lean (Toyota Production System) en tant que système d'apprentissage pour former les développeurs à créer du code sans bug.
+--
+
+----
+Il y a du chemin... Là où dans l'industrie les défauts se comptent en défaut par million de pièces produites, un développeur introduit en moyenne 70 bugs pour 1000 lignes de code produites. Nous nous sommes plongé dans les expérimentations de Sadao Nomura, qui a lancé dans des usines Toyota le Dantotsu, "Better than the best" un programme sur 3 ans capable de réduire de 85% les défauts.
+
+Nous nous sommes inspiré dans la tech des pratiques, management visuels et outils du Dantotsu pour :
+- Éradiquer les causes profondes d'un bug en 24h après sa détection
+- Identifier les "weak points", problèmes types qui nécessitent de muscler le système de formation
+- Créer une culture de la qualité où chacun partage ses bugs résolus
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 11h45 - 12h30 (xxx) : FoundationDB : le secret le mieux gardé des nouvelles architectures distribuées !
+
+==== Abstract
+
+.Speakers : Steven Le Roux et Pierre Zemb
+--
+*Steven Le Roux* : He worked on the AntiDDoS detection system bringing significant improvements from specialized appliances. Then he led a data team to build the Data infrastructure, mixing Hadoop Pig & Flink in a lambda fashion pipeline, which became the main trusted data source for BI and internal needs. Then, he embraced a new challenge by leading Observability and Data products development and engineering teams, then enlarged the scope to Cloud Services. He joined Clever Cloud as CTO to build the best cloud for developers and to offer a European alternative for high end Cloud Services.
+
+*Pierre Zemb* : Pierre is a Software Engineer building data infrastructure at Clever Cloud. He has built and operated a variety of stateful distributed systems throughout his career. +
+He is interested in distributed systems, data stores, understanding how things works under the hood. He enjoy being part of open-source communities, through talks, posts, and contributions to HBase, Kafka, Pulsar, ETCD, FoundationDB.
+--
+
+----
+Savez-vous quel est le point commun entre Apple, Snowflake, VMWare et Datadog ? Ces entreprises partagent le même ingrédient : FoundationDB
+
+FoundationDB est une base de données distribuée, open-source, souvent cachée dans l'infrastructure bas-niveau permettant de gérer des transactions distribuées ACID.
+
+Durant ce talk, nous vous proposons une découverte de cette base de données si peu connue. Vous découvrirez l'histoire du projet, ses garanties transactionnelles aussi fortes que Spanner, ainsi que sa robustesse opérationnelle. Nous ferons aussi un retour d'expérience sur le développement d'applications par-dessus FoundationDB.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== -------------------- REPAS --------------------
+
+=== 13h30 - 14h15 (xxx) : RESEAUTAGE
+
+=== 14h30 - 15h15 (xxx) : Profitez de PostgreSQL pour passer à la vitesse supérieure
+
+==== Abstract
+
+.Speakers : Emmanuel Remy
+--
+Responsable des architectures, de l'urbanisation et des bases de données au sein d'une banque, à 54 ans je conserve cette passion informatique qui m'anime depuis maintenant plus de trente années. Ancien formateur, j'ai conservé cette volonté de partager la connaissance; ainsi, sur le principe des BBL, chaque semaine pendant 30 min j'anime en interne un thème. Aujourd'hui je continue d'explorer avec appétit des solutions et des langages, avec le souhait que cela soit simple, abordable, et si possible que j'aie un coup de coeur ! Impliqué dans la communauté Javascript et PostgreSQL, l'indépendance et l'opensource représentent à mes yeux des valeurs fortes que j'ai plaisir à soutenir financièrement.
+--
+
+----
+Voilà quelques années que PostgreSQL a pris un bel essor. Mais souvent on utilise les mêmes fonctionnalités basiques, alors que PostgreSQL est riche, très riche. Nombre de tâches que vous réalisez côté applicatif pourraient être avantageusement traitées et optimisées côté base. Soyons concrets, étudions comment au quotidien vous pouvez tirer bénéfice de PG, simplement, afin de gagner en qualité et en efficacité, apporter des solutions, voire mieux coller au RGPD. Ainsi, découvrez d'autres types de données, partitionnez et créez/utilisez des tenants, sécurisez les données au niveau des lignes, manipulez efficacement du JSON, générez du JSON, générez des données pour les tests de performance, anonymisez vos données à la volée, utilisez d'autres sources de données avec les Foreign Data Wrapper (FDW), créez un FDW en Python, mettez en place un CRON, ou encore écrivez une fonction dans un autre langage (Python, Java, JS...). Chaque thème est abordé selon un exemple de cas d'usage bien concret (applicatif et serveur), puis détaillé et démontré lors de la présentation. A l'issue de cette présentation vous ne serez pas DBA, mais vous saurez quoi leur proposer et leur demander !
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 15h30 - 16h15 (xxx) : Ré-architecturer vos traitements batch avec Domain-Driven Design
+
+==== Abstract
+
+.Speaker : Dorra Bartaguiz et Cyrille Martraire
+--
+*Dorra Bartaguiz* : Dorra est VP Tech chez Arolla, co-auteure du livre Software Craft (édition Dunod), rédactrice en chef du numéro spécial 100% féminin chez Programmez! (245 Janvier 2022) Elle est passionnée par le développement et les bonnes pratiques. Elle partage son savoir-faire en publiant des articles et en animant des conférences et meetups. Elle a aussi enseigné dans une école d'ingénieurs à Paris pendant des années.
+
+*Cyrille Martraire* : Développeur depuis 1999, Cyrille est auteur du livre Living Documentation (Addison-Wesley) et CTO co-fondateur de la société Arolla, qui rassemble 90 développeurs passionnés de code bien écrit et bien testé. Il a fondé la communauté Paris Software Crafters en 2011 pour partager son enthousiasme de TDD, BDD et DDD, et intervient fréquemment depuis comme orateur dans des conférences en Europe et parfois au-délà.
+--
+
+----
+Même en 2023, les batches (traitements par lots) sont toujours bien présents dans les systèmes informatiques ! Pourtant il est rare d'en parler avec fierté ; ils sont régulièrement sources de frustrations, au point que certains voudraient les voir disparaitre. Quel avenir meilleur imaginer pour vos batches existants ? Lors de cette session, qui s'appuie sur des projets réels, vous découvrirez comment refactorer ou ré-architecturer vos batches en empruntant à l'état de l'art de la conception logicielle, dont Domain-Driven Design. Vous verrez comment les notions d'agrégat, de decorators, d'invariants, de domain models peuvent améliorer la performance, l'observabilité, la reprise sur erreur et la maintenabilité d'ensemble de vos batches, et quel équilibre viser entre batches et orientation event-driven.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 16h45 - 17h30 (xxx) : Tour d’horizon de la gestion de la concurrence dans différents langages
+
+==== Abstract
+
+.Speaker : Benjamin Coenen et François Samin
+--
+*Benjamin Coenen* : Un belge perdu à Paris. Je suis tombé amoureux du développement informatique en écrivant de l'assembleur sur des microcontrôleurs. J'adore me battre avec des problèmes de performance. Toujours en recherche de comprendre ce qu'il se passe sous le capot je passe une bonne partie de mon temps à écrire du Rust & du Go. "Opensource everything" est mon objectif. Speaker à mes heures perdues. J'adore partager et contribuer dans la communauté tech et open source. Ancien contributeur actif de https://github.io/ovh/cds. Aujourd’hui dès que le temps me le permet je contribue activement à rust-analyzer. Au boulot et sur mon temps perso entre autre j’écris un compilateur en Rust.
+
+*François Samin* : Senior SWE @OVH - Gopher / Continuous Delivery / Metalhead +
+Développeur/chef de projet dans une grande SSII européenne pendant 10 ans, j’ai rejoint OVH en 2016 pour travailler sur les problématiques de Continuous Delivery At Scale.
+--
+
+----
+Le choix d’un langage pour un projet est toujours un moment important. Lorsque qu’on fait l’exercice de manière objectif, il y a de nombreux critères à prendre en compte dont la syntaxe, l’écosystème, la maturité, … Il en est un qui est souvent oublié et qui est un point majeure de l’expérience de dévelopeur: la gestion de la concurrence. Dans certains langages, il est primordiale de comprendre comment la concurrence est implémentée sous le capot si on ne veut pas tomber dans certains pièges et perdre en performance.
+
+Nous allons rentrer dans le détail des différentes implémentations et utilisations de la concurrence dans les langages Javascript, Golang, Rust et Java afin de mieux comprendre les avantages et inconvénients de chacun. Parfois supportée nativement par le langage, parfois apportée par des librairies tierces, les implémentations de la concurrence peuvent être très différentes. Nous allons aborder les notions de green thread, de native thread, de futures, promises, goroutines, de work stealing ainsi que les différents exécuteurs asynchrones et expériences développeurs pour chacun de ces langages.
+----
+
+==== Notes
+
+TO BE COMPLETED
+
+=== 17h45 - 18h30 (252AB) : Les Cast Codeurs en 🪑 et en 🦴
+
+==== Abstract
+
+.Speakers : Emmanuel Bernard, Guillaume Laforge, Antonio Goncalves, Arnaud Héritier
+--
+*Emmanuel* : Emmanuel est Java Champion, Distinguished Engineer et Chief Architect services cloud applicatifs chez Red Hat. Son travail est Open Source. Il est connu pour ses contributions et sa direction des projets Quarkus, Hibernate ainsi qu'à ses contributions aux standards Java. +
+Son aventure la plus récente est la construction d'un Kafka as a service managé par les équipes Red Hat +
+Il parle régulièrement dans des conférences et JUGs notamment JavaOne, Red Hat Summit et Devoxx. Il est l'hôte de plusieurs podcasts et notamment Les Cast Codeurs.
+
+*Guillaume* : Guillaume Laforge est Developer Advocate chez Google et se focalise en particulier sur l'offre Google Cloud Platform. Et la nuit, il enfile sa casquette Apache Groovy !
+
+*Antonio* : Antonio Goncalves est un développeur senior qui vit à paris. Ancien de chez BEA il est aujourd'hui consultant Java EE indépendant avec une bonne expertise des serveurs d'application comme JBoss, Weblogic ou GlassFish. Il est l'un des fondateurs du Paris Java User Group et plus récemment de Devoxx France. Antonio est aussi l'une des voix des CastCodeurs, auteur de livres sur Java EE.... et Java Champion.
+
+*Arnaud* : Spécialisé dans le développement logiciels et l'automatisation des processus, il participe depuis de nombreuses années à divers projets opensource comme Jenkins ou Apache Maven. Il contribue autant que possible à différentes communautés autour de Java et DevOps. Il co-anime le podcast Les CastCodeurs et participe à l'organisation de la conférence Devoxx France. +
+En 2015, il rejoint en tant que responsable de l'équipe support CloudBees, Inc., éditeur de logiciels spécialisé dans la livraison en continu et contributeur majeur à Jenkins.
+
+*Audrey* : Audrey est développeur full-stack. Passionnée par son métier, Audrey a toujours été fortement engagée dans la communauté Java au travers de plusieurs JUGs et conférences (Duchess France, Paris JUG, Devoxx France, Devoxx UK) mais aussi au sein d’initiatives visant à faire découvrir la programmation aux plus jeunes (Programatoo, Devoxx4Kids). Plus récemment elle a également rejoint l’équipe des Cast Codeurs.
+--
+
+----
+Les Cast Codeurs, le papy des podcasts de développement francophones revient cette année à Devoxx pour clôturer cette belle conférence dans la relaxation, la joie et peut être la blague carambar. Venez partager avec le public vos impressions de cette cuvée Devoxx, des choses qui vous on surpris, des tendances qui se dessinent.
+En espérant cette fois que les polos rouges ne fassent pas grève pendant l'enregistrement comme l'année dernière 😆.
+----
+
+
+
+
