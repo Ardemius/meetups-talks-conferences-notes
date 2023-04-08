@@ -146,13 +146,40 @@ Le produit vise un objectif, et chaque itération s'en rapprochera.
 De son côté, un *projet* est un effort temporaire qui a pour but de répondre à un besoin unique : il s'agit de créer un livrable spécifique, pour une date précise et un budget fixé à l'avance. Ce qui ne laisse pas de place à l'imprévu, et va donc à l'encontre des principes agiles ; cette façon de faire est une source évidente de frustration lorsque cet imprévu arrive (ce qu'il fait immanquablement).
 --
 
-*MVP vs MLP* : Minimum Valuable Product vs Minimum Lovable Product
+**MVP vs MLP* : Minimum Valuable Product vs Minimum Lovable Product
 
-    * Un MVP est une version d'un produit qui possède l'ensemble minimal de fonctionnalités nécessaires pour être utilisable par les clients.
-    * Un MLP, en revanche, est une version d'un produit qui possède l'ensemble minimum de fonctionnalités nécessaires pour être aimée des clients.
+    ** Un MVP est une version d'un produit qui possède l'ensemble minimal de fonctionnalités nécessaires pour être utilisable par les clients.
+    ** Un MLP, en revanche, est une version d'un produit qui possède l'ensemble minimum de fonctionnalités nécessaires pour être aimée des clients.
 
-    * En résumé, la principale différence entre MVP et MLP est l'accent mis sur le retour d'information des clients et l'engagement émotionnel. +
+    ** En résumé, la principale différence entre MVP et MLP est l'accent mis sur le retour d'information des clients et l'engagement émotionnel. +
     Un MVP se concentre sur la collecte de commentaires et l'itération sur le produit, tandis qu'un MLP se concentre sur la création d'un lien émotionnel positif avec les clients du produit.
+
+* *Nouveau rôle de l'architecte* : 
+    ** concevoir et de mettre en œuvre la structure globale du système, en veillant à ce qu'il soit évolutif, maintenable et capable de s'adapter à l'évolution des besoins de l'entreprise.
+    ** L'architecte est responsable de la conception de l'architecture des données, y compris le stockage, l'accès et la sécurité des données.
+    ** L'architecte doit s'assurer que le système d'information est sécurisé, à la fois contre les menaces externes et contre les accès non autorisés par les utilisateurs internes.
+
+* *SI Cloud Native :*
+    ** Un SI Cloud Native mixe des applications SaaS et des services managés avec des applications ou micro-services maison conteneurisés, déployés dans le cloud de son choix.
+
+* *WebAssembly* (WASM)
+    ** solution permettant d'exécuter du code bas niveau directement dans le navigateur, offrant des *améliorations spectaculaires des performances*.
+    ** solution pour l'exécution, dans le navigateur, d'applications écrites en C++, Rust ou Go.
+    ** WebAssembly va aussi bien au-delà du navigateur. +
+    Cette technologie peut aussi être utilisée dans les applications de cloud computing et d'Internet des objets (IoT) : *WebAssembly fournit un environnement de sandboxing sécurisé dans lequel le code peut s'exécuter sans avoir d'impact sur les autres programmes*.
+        *** Donc une notion proche de celle des conteneurs.
+
+* *Cloud, la plateforme de choix*
+    ** importance de l'Infra as Code (IaC), qui est au coeur des architectures cloud-natives
+        *** Importance des outils de type *Terraform* ou *Pulumi*
+        *** Pulumi : Ce framework de l'écosystème Terraform, développé par HashiCorp, permet de décrire l'infrastructure désirée en utilisant un langage de programmation tel que TypeScript, Python ou Go plutôt que d'utiliser le DSL spécifique à Terraform (HCL).
+
+== 2023/03/30 : Les 3 grands facteurs clés de succès d’une entreprise data driven
+
+* https://www.wenvision.com/les-facteurs-cles-de-succes-dune-entreprise-data-driven/
+
+* L'organisation data par domaine permet de désengorger la gestion des données d'une équipe centralisée et valoriser la connaissance. Elle déplace la responsabilité auprès des domaines ce qui offre en plus d'une expertise technique une expertise métier. La création d'équipes pluridisciplinaires doit favoriser cette innovation. On parle souvent de *Data Mesh*, pour évoquer cette décentralisation des données.
+
 
 
 
