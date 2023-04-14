@@ -178,6 +178,8 @@ Programme du jeudi : https://cfp.devoxx.fr/2023/byday/thu
 
 === 09h00 - 09h20 (AB) : La Keynote de Devoxx France 2022 - 10 ans déjà
 
+image:devoxx-france-2023_a.jpg[width=800]
+
 * 3300 participants
 * 80 sponsors
 
@@ -938,7 +940,29 @@ Même en 2023, les batches (traitements par lots) sont toujours bien présents d
 
 ==== Notes
 
-TO BE COMPLETED
+* créer un *domain model commun*
+
+image:devoxx-france-2023_047.jpg[width=800]
+
+Concernant les monoids, on peut se référer à cet article de Cyrille : +
+https://blog.arolla.fr/wp-content/uploads/2018/10/DomainModelingwithMonoids.pdf
+
+image:devoxx-france-2023_048.jpg[width=800]
+
+[NOTE]
+====
+Bonne conférence, mais le format à base de beaucoup slides avec juste quelques mots rend la prise de notes très difficile : il manque des slides de recap avec des explications texte
+
+-> *Récupérer les slides et la vidéo* et garder sous le coude
+====
+
+REX Cyrille : 
+
+    * les sagas sont réputées compliquées d'usage
+    * batch de réconciliation nocture à la place des sagas : on s'en "vante pas", mais c'est encore ce que font pas mal de boîtes (comme Netflix par exemple)
+
+TIP: AHHHH ! Cyrille avait prévu un Gist sur le sujet reprenant les techniques présentées en talk 👍 +
+https://gist.github.com/cyriux/62a01433c2d6113554b37cb7f07ffe3d
 
 === 16h45 - 17h30 (xxx) : Tour d’horizon de la gestion de la concurrence dans différents langages
 

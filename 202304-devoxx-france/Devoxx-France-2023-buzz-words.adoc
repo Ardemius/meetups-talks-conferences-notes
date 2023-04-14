@@ -67,10 +67,29 @@ Techno dont le nom revient plusieurs fois dans le programme :
 
 == Sociétés et personnes rencontrées
 
-
+* Steven Le Roux chez Clever Cloud
+* Sopra Steria, qui a développé ses chemins de gestion de carrière sur l'exemple du "Y" avec individual contributor path et manager path. 
 
 == Avis sur le salon
 
+== Les polos rouges, jam et autres
 
+Comme d'habitude, une team polos rouge au TOP ! 👍 
+
+image:devoxx-france-2023_b.jpg[width=800]
+image:devoxx-france-2023_c.jpg[width=800]
+image:devoxx-france-2023_d.jpg[width=800]
+
+La Jam ouverte du jeudi soir : "The Voxx"
+
+	* Une ambiance de folie
+	* Un Quentin qui nous a fait un "pas de boogie woogie" de folie 👍 
+
+image:devoxx-france-2023_e.jpg[width=800]
+
+video::20230413_jam-session.mp4[width=640, height=480]]
+
+Et j'ai ENFIN récupéré un doudou Axolotl !!!!
+image:devoxx-france-2023_f.jpg[width=800]
 
 
