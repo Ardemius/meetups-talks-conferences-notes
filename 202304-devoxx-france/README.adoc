@@ -1063,6 +1063,40 @@ Les Cast Codeurs, le papy des podcasts de développement francophones revient ce
 En espérant cette fois que les polos rouges ne fassent pas grève pendant l'enregistrement comme l'année dernière 😆.
 ----
 
+==== Notes
+
+* Les vidéos de Devoxx ont été générées avec Kaiber (https://www.kaiber.ai/)
+    ** mais avec l'aide d'un graphiste professionnel : https://www.linkedin.com/in/stephane-itschner/[Stéphane Itschner] (ALT Codes)
+
+* Laurent Doguin de Couchbase : a fourni les bières et le vin blanc du Meet&Greet
+    ** leur bièrerie est "la marmote masquée"
+
+Les thèmes Devoxx de cette année
+
+    * IA
+    * Soft skills
+    * La JVM
+    * GitOps
+    * Kubernetes
+    * BDD
+
+Et reg.devoxx.fr est déployé sur Clever Cloud 👍 
+
+Keynote du jeudi : 
+
+    * ambiance morose : on va mourrir sous peu...
+    * MAIS on peut réparer les genoux ! 😁 
+
+-> Toutes les vidéos de Devoxx France seront sur la chaîne YouTube dans moins de 15 jours
+
+
+
+
+
+
+
+
+
 
 
 
