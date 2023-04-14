@@ -864,7 +864,62 @@ Voilà quelques années que PostgreSQL a pris un bel essor. Mais souvent on util
 
 ==== Notes
 
-TO BE COMPLETED
+* Association PostgreSQL.fr
+* 4e BDD la plus utilisée après Oracle, SQLServer, SQLite
+* son protocole est repris par plusieurs autres solutions de persistance : 
+    ** YugabyteDB
+    ** CockroachDB
+    ** TimescaleDB
+
+.Protocole PostgreSQL Wire Protocol (ChatGPT)
+[NOTE]
+====
+Le protocole PostgreSQL Wire Protocol est le protocole de communication utilisé par le système de gestion de base de données relationnelle PostgreSQL pour communiquer avec les clients via des applications.
+
+    * Il est utilisé pour *établir une connexion entre un client et une base de données PostgreSQL* et pour transférer des requêtes et des réponses entre eux.
+
+    * Protocole ouvert et standardisé : peut être utilisé par d'autres bases de données pour communiquer avec les clients via des applications. +
+    -> Cela permet une grande flexibilité et une compatibilité avec les applications qui utilisent des clients PostgreSQL.
+====
+
+.grandes fonctionnalités de Postgre
+image:devoxx-france-2023_039.jpg[width=800]
+
+    * fonctionnalité souvent réservée aux solutions payantes : le partitionnement
+
+* type de données bien pratiques : 
+    ** `inet` pour les adresses réseau : `select inet ...`
+
+image:devoxx-france-2023_040.jpg[width=800]
+
+.Demo de partitionnement (avec un chat partitionné avec ses pattes "rapides" et le reste plus lent...)
+image:devoxx-france-2023_041.jpg[width=800]
+
+.Anonymisation en Posgre
+image:devoxx-france-2023_042.jpg[width=800]
+
+    * se base sur les security level
+
+.Sécuriser l'accès aux lignes des tables
+image:devoxx-france-2023_043.jpg[width=800]
+
+    * fonctionne avec le principe bien connu de RLS : Row Level Security
+    * Même si je fais un select * de toute la table, je ne verrai QUE les lignes auxquelles j'ai le droit d'accéder
+    * on peut définir des rôles (policy) dont l'application va permettre d'injecter ses restrictions sur les requêtes (SELECT) +
+    Un "select * from table" devient un "select * from table WHERE <quelque chose de la policy>"
+
+.Exemple de création et d'application de policy
+image:devoxx-france-2023_044.jpg[width=800]
+
+* On peut également mettre un CRON directement dans PostgreSQL
+
+.Ecrire des fonctions dans d'autres langages
+image:devoxx-france-2023_045.jpg[width=800]
+
+    * c'est souvent du Python qui est utilisé
+
+.Foreign Data Wrapper
+image:devoxx-france-2023_046.jpg[width=800]
 
 === 15h30 - 16h15 (xxx) : Ré-architecturer vos traitements batch avec Domain-Driven Design
 
