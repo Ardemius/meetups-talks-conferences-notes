@@ -161,12 +161,12 @@ Cette présentation explique les différents types de données que Redis peut ma
 Redis est-il un cache, une BDD, une super BDD, ou autre chose ?
 
 .Redis as a cache
-image:devoxx-france-2023_001.jpg[]
+image:devoxx-france-2023_001.jpg[width=800]
 
 Toute la complexité de Redis : *plus de 389 commandes...*
 
 .Redis stack vs Redis core
-image:devoxx-france-2023_002.jpg[]
+image:devoxx-france-2023_002.jpg[width=800]
 
 
 
@@ -462,7 +462,7 @@ La mémoire est vraiment essentielle et au coeur du modèle Rust.
 
 * Le *move* est un transfert d'ownership 
 +
-image:devoxx-france-2023_003.jpg[]
+image:devoxx-france-2023_003.jpg[width=800]
 
 * *Borrowing* : passer une référence à une fonction (mutable ou pas)
 * *Clone* : ne le faire QUE quand réellement nécessaire, sinon un passage de référence est bien suffisant.
@@ -472,11 +472,14 @@ La *gestion des erreurs* et la *programmation concurrente* sont apparemment trè
 .REX sur la montée en compétence sur Rust
 IMPORTANT: En Rust, on ne peut pas partir bille en tête, il FAUT avoir pris le temps de lire la doc AVANT.
 
+.Feedback sur Rust
+image:devoxx-france-2023_003a.jpg[width=800]
+
 * La *communauté* de Rust est très *bienveillante*
 * La doc est très bonne
     ** avec des cours officiels, les "Rustlings", très bien faits.
 
-image:devoxx-france-2023_004.jpg[]
+image:devoxx-france-2023_004.jpg[width=800]
 
 === 21h00 - 21h50 (xxx) : BOF Paris Software Crafters Community
 
@@ -519,14 +522,14 @@ Au temps des Fake News et de la Post-vérité, il est facile de se décourager e
 La positive attitude, faut se méfier... +
 On te fait comprendre que c'est surtout : "ferme ta gueule"
 
-image:devoxx-france-2023_005.jpg[]
+image:devoxx-france-2023_005.jpg[width=800]
 
 IMPORTANT: L'optimisme n'est PAS la positive attitude !
 
 Evitez d'avoir cette inférence : "il y a des idées bêtes partout, donc tout le monde est bête"
 
 .Esprit critique
-image:devoxx-france-2023_006.jpg[]
+image:devoxx-france-2023_006.jpg[width=800]
 
 La propagande n'est que très peu de "retourner" quelqu'un, MAIS elle est très efficace pour pour exacerber et conforter les opinions que l'on avait déjà avant :
 
@@ -537,8 +540,8 @@ Biais d'endogroupe : on a toujours à penser que notre groupe "a moins tord", "a
 
     * on a une pensée de "meute" / tribalisme
 
-image:devoxx-france-2023_007.jpg[]
-image:devoxx-france-2023_008.jpg[]
+image:devoxx-france-2023_007.jpg[width=800]
+image:devoxx-france-2023_008.jpg[width=800]
 
 Les croyances "stupides" omniprésentes : 
 
@@ -648,7 +651,7 @@ Nous nous sommes inspiré dans la tech des pratiques, management visuels et outi
 Toyota est très très fort dans ses pratiques et la qualité.
 
 .La qualité est plus chére que la non-qualité -> FAUX
-image:devoxx-france-2023_009.jpg[]
+image:devoxx-france-2023_009.jpg[width=800]
 
 Une "étoile du nord" : visez le 0 défaut (même si on ne l'atteind pas)
 
@@ -669,42 +672,42 @@ Il identifie aussi les défauts en 4 types A, B, C, D de gravité croissante :
         ** comme un véhicule livré à un client avec un gros pb : il faut rapatrier le véhicule, indemniser les personnes, etc. 
 
 .Dantotsu : processus en 8 étapes
-image:devoxx-france-2023_010.jpg[]
-image:devoxx-france-2023_011.jpg[]
+image:devoxx-france-2023_010.jpg[width=800]
+image:devoxx-france-2023_011.jpg[width=800]
 
 -> ce programme est réalisé en 24h pour chaque défaut
 
 .On peut monitorer le % de déploiements introduisant un incident
-image:devoxx-france-2023_012.jpg[]
+image:devoxx-france-2023_012.jpg[width=800]
 
 -> c'est d'ailleurs également la *préco d'Accelerate du DORA*
 
 .Cycle adapté au développement logiciel
-image:devoxx-france-2023_013.jpg[]
-image:devoxx-france-2023_014.jpg[]
+image:devoxx-france-2023_013.jpg[width=800]
+image:devoxx-france-2023_014.jpg[width=800]
 
 Points importants : 
 
     * création de standards : on a ses standards toujours accessibles facilement sur son bureau
     * l'environnement de travail : +
-    image:devoxx-france-2023_015.jpg[]
+    image:devoxx-france-2023_015.jpg[width=800]
 
 .QRQC : exemple de REX d'un dev sur qu'il a tenté pour corriger un problème
-image:devoxx-france-2023_016.jpg[]
+image:devoxx-france-2023_016.jpg[width=800]
 
     * *QRQC* : *Quick Response Quality Control* ou "Contrôle de Qualité à Réponse Rapide" en français. C'est un processus de résolution de problèmes qui permet de détecter rapidement les problèmes et de les résoudre de manière efficace.
     
 .L'équipe CodeScan de AutoRabbit (un SonarQube pour SalesForce) définit ses types A, B, C, D
-image:devoxx-france-2023_017.jpg[]
+image:devoxx-france-2023_017.jpg[width=800]
 
 Les difficultés
 
-image:devoxx-france-2023_018.jpg[]
-image:devoxx-france-2023_019.jpg[]
+image:devoxx-france-2023_018.jpg[width=800]
+image:devoxx-france-2023_019.jpg[width=800]
 
 D'où le nouveau format de description d'un défaut par Woody et Flavian
 
-image:devoxx-france-2023_020.jpg[]
+image:devoxx-france-2023_020.jpg[width=800]
 
     * on décrit le pb du point de vue de l'utilisateur
     * on cherche le commit qui a introduit le défaut
@@ -713,11 +716,11 @@ image:devoxx-france-2023_020.jpg[]
 
 Les résultats obtenus quand ça marche bien : 
 
-image:devoxx-france-2023_021.jpg[]
+image:devoxx-france-2023_021.jpg[width=800]
 
 Et quand c'est plus difficile (côté Woody, au niveau de toute l'entreprise)
 
-image:devoxx-france-2023_022.jpg[]
+image:devoxx-france-2023_022.jpg[width=800]
 
 Conclusion : 
 
@@ -726,9 +729,12 @@ Conclusion :
     * se concentrer sur les apprentissages craft : centrez-vous sur la tech pour créer de la motivation sur les objectifs
     * se fixer des objectifs
 
-Coordonnées de Flavian et Woody
+Formats (defect, problem) pour s'aider proposés par Flavian et Woody (seront également donner par Twitter) : +
+image:devoxx-france-2023_023.jpg[width=800]
+image:devoxx-france-2023_024.jpg[width=800]
 
-image:devoxx-france-2023_023.jpg[]
+Coordonnées de Flavian et Woody : +
+image:devoxx-france-2023_025.jpg[width=800]
 
 === 11h45 - 12h30 (xxx) : FoundationDB : le secret le mieux gardé des nouvelles architectures distribuées !
 
@@ -752,7 +758,45 @@ Durant ce talk, nous vous proposons une découverte de cette base de données si
 
 ==== Notes
 
-TO BE COMPLETED
+IMPORTANT: Le but d'une BDD est de stocker durablement de la data
+
+[NOTE]
+====
+*Retour très négatif* de Clever Cloud sur *HBase* : ne plus prendre ! +
+-> Faites du FoundationDB
+====
+
+.Comment choisir une BDD ?
+image:devoxx-france-2023_026.jpg[width=800]
+
+.Requirements pour une telle BDD
+image:devoxx-france-2023_027.jpg[width=800]
+
+Concepts de FoundationDB :
+
+    * fournit le plus haut niveau d'isolation des transactions (comme Spanner)
+    * extrêment tolérant à la panne
+
+.Caractéristiques de FoundationDB
+image:devoxx-france-2023_028.jpg[width=800]
+
+.Histoire de FoundationDB
+image:devoxx-france-2023_029.jpg[width=800]
+
+    * et disparation de toute la base de code avec le rachat d'Apple...
+
+.Macro architecture de FoundationDB
+image:devoxx-france-2023_030.jpg[width=800]
+
+
+Comme débugger un système distribué en PROD est l'enfer, FoundationDB a créé un *simulateur de BDD* qui va injecter des fautes dans l'I/O, dans le temps, et dans la topologie du cluster. +
+-> Et ils vont TRES loin dedans, le système est déterministe
+
+    * Si on trouve quelque chose qui ne marche, on prend le numéro de la simulation et on peut après *débugger EN LOCAL* ! 👍 
+
+image:devoxx-france-2023_031.jpg[width=800]
+
+-> Donc, une simulation rock-solid 👍👍👍 
 
 === -------------------- REPAS --------------------
 
