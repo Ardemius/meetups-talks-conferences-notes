@@ -964,27 +964,77 @@ REX Cyrille :
 TIP: AHHHH ! Cyrille avait prévu un Gist sur le sujet reprenant les techniques présentées en talk 👍 +
 https://gist.github.com/cyriux/62a01433c2d6113554b37cb7f07ffe3d
 
-=== 16h45 - 17h30 (xxx) : Tour d’horizon de la gestion de la concurrence dans différents langages
+=== 16h45 - 17h30 (xxx) : Comment réconcilier sécurité et agilité pour le bien de vos applications
 
 ==== Abstract
 
-.Speaker : Benjamin Coenen et François Samin
---
-*Benjamin Coenen* : Un belge perdu à Paris. Je suis tombé amoureux du développement informatique en écrivant de l'assembleur sur des microcontrôleurs. J'adore me battre avec des problèmes de performance. Toujours en recherche de comprendre ce qu'il se passe sous le capot je passe une bonne partie de mon temps à écrire du Rust & du Go. "Opensource everything" est mon objectif. Speaker à mes heures perdues. J'adore partager et contribuer dans la communauté tech et open source. Ancien contributeur actif de https://github.io/ovh/cds. Aujourd’hui dès que le temps me le permet je contribue activement à rust-analyzer. Au boulot et sur mon temps perso entre autre j’écris un compilateur en Rust.
-
-*François Samin* : Senior SWE @OVH - Gopher / Continuous Delivery / Metalhead +
-Développeur/chef de projet dans une grande SSII européenne pendant 10 ans, j’ai rejoint OVH en 2016 pour travailler sur les problématiques de Continuous Delivery At Scale.
---
+Speaker : *Fouad Chmainy* - F5 - @fchmainy, Blog: Https://www.f5.com
 
 ----
-Le choix d’un langage pour un projet est toujours un moment important. Lorsque qu’on fait l’exercice de manière objectif, il y a de nombreux critères à prendre en compte dont la syntaxe, l’écosystème, la maturité, … Il en est un qui est souvent oublié et qui est un point majeure de l’expérience de dévelopeur: la gestion de la concurrence. Dans certains langages, il est primordiale de comprendre comment la concurrence est implémentée sous le capot si on ne veut pas tomber dans certains pièges et perdre en performance.
-
-Nous allons rentrer dans le détail des différentes implémentations et utilisations de la concurrence dans les langages Javascript, Golang, Rust et Java afin de mieux comprendre les avantages et inconvénients de chacun. Parfois supportée nativement par le langage, parfois apportée par des librairies tierces, les implémentations de la concurrence peuvent être très différentes. Nous allons aborder les notions de green thread, de native thread, de futures, promises, goroutines, de work stealing ainsi que les différents exécuteurs asynchrones et expériences développeurs pour chacun de ces langages.
+Un rythme de livraison toujours plus rapide, toujours plus d’exposition aux cyber-attaques pour vos applications et vos APIs, un écosystème toujours plus riche et complexe… Comment NGINX/F5 peut vous aider dans vos projets DevOps en réconciliant simplement la sécurité avec vos process GitOps
 ----
 
 ==== Notes
 
-TO BE COMPLETED
+.Les 4 piliers des apps modernes pour NGINX
+image:devoxx-france-2023_049.jpg[width=800]
+
+    * scalabilité
+    * portabilité
+    * résilience
+    * agilité
+
+.Les 6 principes d'architecture des apps modernes
+image:devoxx-france-2023_050.jpg[width=800]
+
+    1. be platform agnostic
+    2. prioritize open source software
+    3. define everything (possible) with reusable code
+    4. design with automated CI/CD as a native/default state
+    5. Practise secure development
+        ** mise en place d'un WAF (Web Application Firewall) par exemple
+    6. Widely distribute storage and infrastructure
+
+.Les barrières pour livrer des modern apps et les réponses de NGINX
+image:devoxx-france-2023_051.jpg[width=800]
+image:devoxx-france-2023_052.jpg[width=800]
+
+    * Scalibity
+        ** NGINX scale très facilement
+    * insights (éclairages / perspectives)
+    * governance
+    * security
+
+//-
+
+* NGINX est : *server web* + *reverse proxy* + *load balancer*
+    ** le produit gère également le monitoring
+    ** et peut faire office d'*API Gateway*
+    ** et il contient un WAF dans sa version "NGINX Ingress" ???
+        *** apparemment oui
+
+.Les différents composants de NGINX
+image:devoxx-france-2023_053.jpg[width=800]
+
+*DEMO*
+
+image:devoxx-france-2023_054.jpg[width=800]
+
+solutions du pipeline : 
+
+    * NGINX Ingress
+    * GitLab
+    * ArgoCD
+    * Grafana
+
+//-
+
+.NGINX NAP Main Dashboard
+image:devoxx-france-2023_055.jpg[width=800]
+image:devoxx-france-2023_056.jpg[width=800]
+
+    * NGINX est capable via son WAF de bloquer un grand nombres d'attaque
+    * Toutes les 6 semaines : mise à jour de la liste des attaques signatures
 
 === 17h45 - 18h30 (252AB) : Les Cast Codeurs en 🪑 et en 🦴
 
