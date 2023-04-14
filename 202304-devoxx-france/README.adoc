@@ -74,7 +74,8 @@ Les participants pourront repartir avec une grille d’analyse end-to-end (CI / 
 
 ==== Notes
 
-TO BE COMPLETED
+* Le job de TerraForm s'arrête avec le déploiement du cluster, "vide"
+    ** après, il passe la main à Ansible qui pour la configuration du cluster
 
 === -------------------- REPAS --------------------
 
@@ -120,7 +121,23 @@ Et pour terminer, l'on fera le tour des "distributions" PostgreSQL disponibles, 
 
 ==== Notes
 
-TO BE COMPLETED
+Common table expression
+
+* row_number()
+
+Les "faire et ne PAS faire" : 
+
+    * Ne faites pas de "not in"
+    * Ne faites pas d'héritage, faites de la composition
+    * N'utilisez pas les timestamp
+    * utilisez jsonb plutôt qu'utiliser un mongo, en plus, ce sera acide
+
+PG (Postgre) peut tourner sur Kube : 
+    
+    * CloudNativePG
+    * Yugabyte
+
+-> ET ne faites pas tourner PG vous-mêmes : utilisez une version managée chez un Cloud provider
 
 === 17h45 - 18h15 (xxx) : Redis: du cache à la time series!
 
@@ -141,7 +158,17 @@ Cette présentation explique les différents types de données que Redis peut ma
 
 ==== Notes
 
-TO BE COMPLETED
+Redis est-il un cache, une BDD, une super BDD, ou autre chose ?
+
+.Redis as a cache
+image:devoxx-france-2023_001.jpg[]
+
+Toute la complexité de Redis : *plus de 389 commandes...*
+
+.Redis stack vs Redis core
+image:devoxx-france-2023_002.jpg[]
+
+
 
 === 18h30 - 19h00 (xxx) : RESEAUTAGE
 
@@ -150,6 +177,12 @@ TO BE COMPLETED
 Programme du jeudi : https://cfp.devoxx.fr/2023/byday/thu
 
 === 09h00 - 09h20 (AB) : La Keynote de Devoxx France 2022 - 10 ans déjà
+
+* 3300 participants
+* 80 sponsors
+
+* Pour 2024, on loue le 1er étage en plus du 2e : on passe à 4 000 personnes de capacité
+* Devoxx France aura lieu du 17 au 19/04 2024
 
 ==== Abstract
 
@@ -351,9 +384,10 @@ Ce travail est basé sur une expérience pratique dans une entreprise en hyper-c
 
 ==== Notes
 
-TO BE COMPLETED
+* Tout jeter pour tout réécrire est une mauvaise pratique : mieux vaut évoluer, petit à petit
+    ** Thomas : à discuter suivant la situation, mais je vois le principe dans l'absolu (on ne capitalise rien)
 
-=== 16h45 - 17h30 (xxx) : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
+=== 16h45 - 17h30 (maillot) : Auth et systèmes distribués: ne jetons pas le bébé avec l'eau du bain
 
 ==== Abstract
 
@@ -378,7 +412,12 @@ Dans cette conférence nous vous présenterons:
 
 ==== Notes
 
-TO BE COMPLETED
+* *Authn* : authentification
+* *Authz* : autorisation
+
+Authn in a distributed system
+
+Access toker et refresh token : 
 
 === 17h45 - 18h15 (xxx) : RESEAUTAGE
 
@@ -399,7 +438,45 @@ Rust est un langage de plus en plus populaire et qui comporte de nombreux avanta
 
 ==== Notes
 
-TO BE COMPLETED
+* le compilateur de Rust vérifie énormément de choses, c'en est même "perturbant" au début
+
+* Cargo est le package manager de Rust. +
+Il est utilisé pour la gestion des dépendances, la construction de projets et la création de packages pour la distribution des bibliothèques et des programmes Rust.
+
+La mémoire est vraiment essentielle et au coeur du modèle Rust.
+
+    * La *stack* est une région de la mémoire où les variables locales et les appels de fonctions sont stockés. 
+        ** C'est une zone de mémoire continue
+        ** Elle est utilisée pour stocker les variables locales et les arguments de fonction, ainsi que pour suivre l'ordre d'appel des fonctions (c'est-à-dire la pile d'appel). ** La stack est gérée automatiquement par le compilateur Rust, qui s'occupe de l'allocation et de la libération de la mémoire de manière sûre et efficace.
+
+    * la *heap* est une région de la mémoire où les données allouées dynamiquement sont stockées. 
+        ** Contrairement à la stack, la heap est utilisée pour stocker des données dont la taille ou la durée de vie est inconnue à la compilation. En Rust, l'allocation de mémoire sur la heap se fait avec les fonctions Box::new ou Vec::new, par exemple. 
+        ** Contrairement à la stack, la gestion de la mémoire de la heap doit être effectuée manuellement par le développeur Rust, qui doit appeler explicitement la fonction drop pour libérer la mémoire allouée.
+    
+*Ownership* : En Rust, la gestion de la mémoire est gérée par un mécanisme appelé Ownership qui permet de garantir la sécurité de la mémoire. 
+
+    * Les variables allouées sur la stack sont gérées automatiquement par le système
+    * tandis que les allocations sur la heap sont gérées via les types de données tels que Box<T> et Vec<T> et sont soumises à la gestion de la mémoire Ownership.
+
+//- 
+
+* Le *move* est un transfert d'ownership 
++
+image:devoxx-france-2023_003.jpg[]
+
+* *Borrowing* : passer une référence à une fonction (mutable ou pas)
+* *Clone* : ne le faire QUE quand réellement nécessaire, sinon un passage de référence est bien suffisant.
+
+La *gestion des erreurs* et la *programmation concurrente* sont apparemment très efficace avec Rust.
+
+.REX sur la montée en compétence sur Rust
+IMPORTANT: En Rust, on ne peut pas partir bille en tête, il FAUT avoir pris le temps de lire la doc AVANT.
+
+* La *communauté* de Rust est très *bienveillante*
+* La doc est très bonne
+    ** avec des cours officiels, les "Rustlings", très bien faits.
+
+image:devoxx-france-2023_004.jpg[]
 
 === 21h00 - 21h50 (xxx) : BOF Paris Software Crafters Community
 
@@ -439,7 +516,45 @@ Au temps des Fake News et de la Post-vérité, il est facile de se décourager e
 
 ==== Notes
 
-TO BE COMPLETED
+La positive attitude, faut se méfier... +
+On te fait comprendre que c'est surtout : "ferme ta gueule"
+
+image:devoxx-france-2023_005.jpg[]
+
+IMPORTANT: L'optimisme n'est PAS la positive attitude !
+
+Evitez d'avoir cette inférence : "il y a des idées bêtes partout, donc tout le monde est bête"
+
+.Esprit critique
+image:devoxx-france-2023_006.jpg[]
+
+La propagande n'est que très peu de "retourner" quelqu'un, MAIS elle est très efficace pour pour exacerber et conforter les opinions que l'on avait déjà avant :
+
+    * "un peu raciste" -> "très raciste"
+    * "un peu con" -> "très con"
+
+Biais d'endogroupe : on a toujours à penser que notre groupe "a moins tord", "a plus raison" que les autres.
+
+    * on a une pensée de "meute" / tribalisme
+
+image:devoxx-france-2023_007.jpg[]
+image:devoxx-france-2023_008.jpg[]
+
+Les croyances "stupides" omniprésentes : 
+
+    * PAS dues à un défaut de compétence individuelle
+    * Plutôt la conséquence de champs de force culturaux et sociaux
+
+Les foules ne sont pas folles : intelligence collective
+
+    * communauté scientifique
+    * jurés d'assise
+    * logiciels opensources
+    * démocratie
+
+Soyons optimistes ! 
+
+    * nous pouvons créer les conditions de plus de rationalité pour l"humanité
 
 === 09h25 - 09h45 (AB) : Géopolitique de la data
 
@@ -456,7 +571,32 @@ Il a été pendant quinze ans président de French Data Network, le plus ancien 
 
 ==== Notes
 
-TO BE COMPLETED
+* L'ordinateur est "fatal" : au sens 1er du terme, à savoir que c'est "non négociable"
+    * tu ne peux pas "négocier" avec un formulaire sur le web, tu ne peux rien changer
+    * avec du temps et de la persévérance, avec quelqu'un à l'administration, on pourrait finir par y arriver
+
+On est obligé de modifier la réalité pour coller à l'ordinateur
+
+* "Tout fichier est une maltraitance"
+    ** "réification" : quand on se met à considérer les gens comme des choses
+    ** pour pouvoir mettre des chomeurs à la rue par paquet de 1000, la seule solution est de ne pas les considérer comme des gens mais comme des choses, donc comme des "fiches" (fichiers)
+
+* "Les données sont la personne"
+    ** "vous n'êtes que la somme des données qu'on a sur vous"
+    ** Donc, quand on traite MAL les données qu'on a sur vous, c'est donc qu'on VOUS traite mal
+    ** -> raison pour laquelle il faut ABSOLUMENT faire attention au traitement des données
+
+* *Géopolitique* : pour créer un rapport de pouvoir permettant d'imposer sa volonté ou de faire respecter un accord
+    ** exemple : les anglais après le Brexit ne respecte pas l'accord sur la pêche, et finissent par faire accompagner leurs bâteaux de pêche par des bateaux de guerre
+    ** que fait la France en réponse ? On menace de couper le courant sur l'île de Jersey... (alimentée principalement par un câble français)
+    ** on crée un rapport de force, c'est CA de la géopolitique
+
+Benjamin : 
+
+    * "on a des dirigeants qui croient que les informaticiens français sont mauvais, car ils sont NULS"
+    * "on a des DSI qui ne pinent rien en informatique"
+
+-> *FANTASTIQUE TALK hyper intéressant*, à conseiller
 
 === 09h50 - 10h10 (AB) : Briser le plafond de glace
 
@@ -479,7 +619,9 @@ J'essaierai de convaincre le public que la recherche et le développement de tel
 
 ==== Notes
 
-TO BE COMPLETED
+Petzl, et Millet ont mis fin au partenariat avec Marion suite à sa grossesse.
+
+-> Très très bonne conf également 👍
 
 === 10h45 - 11h30 (xxx) : Qualité radicale - de Toyota à la tech
 
@@ -503,7 +645,90 @@ Nous nous sommes inspiré dans la tech des pratiques, management visuels et outi
 
 ==== Notes
 
-TO BE COMPLETED
+Toyota est très très fort dans ses pratiques et la qualité.
+
+.La qualité est plus chére que la non-qualité -> FAUX
+image:devoxx-france-2023_009.jpg[]
+
+Une "étoile du nord" : visez le 0 défaut (même si on ne l'atteind pas)
+
+    * chercher la meilleure stratégie pour créer des équipes extraordinaires
+
+2 speakers passionnés de Lean
+
+* *Sadao Nomura* : le messieurs qualité de chez Toyota
+    ** auteur du *livre*, paru l'année dernière : "the Toyota way of dantotsu radical quality improvement"
+    ** Son *programme Dantotsu* réduit de 88% les défauts en 3 ans (dans les meilleurs cas)
+
+Il identifie aussi les défauts en 4 types A, B, C, D de gravité croissante :
+
+    * A : *défaut de fabrication* : la voiture sort rayée de la chaîne de fabrication
+    * B : *défaut d'utilisation*
+    * C : *défaut d'entretien* : Les défauts que l'on sort globalement et que l'on envoie à nos presta
+    * D : *défaut de conception* : le plus grave que l'on puisse classifier. +
+        ** comme un véhicule livré à un client avec un gros pb : il faut rapatrier le véhicule, indemniser les personnes, etc. 
+
+.Dantotsu : processus en 8 étapes
+image:devoxx-france-2023_010.jpg[]
+image:devoxx-france-2023_011.jpg[]
+
+-> ce programme est réalisé en 24h pour chaque défaut
+
+.On peut monitorer le % de déploiements introduisant un incident
+image:devoxx-france-2023_012.jpg[]
+
+-> c'est d'ailleurs également la *préco d'Accelerate du DORA*
+
+.Cycle adapté au développement logiciel
+image:devoxx-france-2023_013.jpg[]
+image:devoxx-france-2023_014.jpg[]
+
+Points importants : 
+
+    * création de standards : on a ses standards toujours accessibles facilement sur son bureau
+    * l'environnement de travail : +
+    image:devoxx-france-2023_015.jpg[]
+
+.QRQC : exemple de REX d'un dev sur qu'il a tenté pour corriger un problème
+image:devoxx-france-2023_016.jpg[]
+
+    * *QRQC* : *Quick Response Quality Control* ou "Contrôle de Qualité à Réponse Rapide" en français. C'est un processus de résolution de problèmes qui permet de détecter rapidement les problèmes et de les résoudre de manière efficace.
+    
+.L'équipe CodeScan de AutoRabbit (un SonarQube pour SalesForce) définit ses types A, B, C, D
+image:devoxx-france-2023_017.jpg[]
+
+Les difficultés
+
+image:devoxx-france-2023_018.jpg[]
+image:devoxx-france-2023_019.jpg[]
+
+D'où le nouveau format de description d'un défaut par Woody et Flavian
+
+image:devoxx-france-2023_020.jpg[]
+
+    * on décrit le pb du point de vue de l'utilisateur
+    * on cherche le commit qui a introduit le défaut
+    * occurrence : xxx
+    * qu'est-ce qui fait qu'on l'a détecté aussi tard ? (après tous les tests auto de notre UDD)
+
+Les résultats obtenus quand ça marche bien : 
+
+image:devoxx-france-2023_021.jpg[]
+
+Et quand c'est plus difficile (côté Woody, au niveau de toute l'entreprise)
+
+image:devoxx-france-2023_022.jpg[]
+
+Conclusion : 
+
+    * buy-in du top management
+    * s'entraîner aux résolutions de problème
+    * se concentrer sur les apprentissages craft : centrez-vous sur la tech pour créer de la motivation sur les objectifs
+    * se fixer des objectifs
+
+Coordonnées de Flavian et Woody
+
+image:devoxx-france-2023_023.jpg[]
 
 === 11h45 - 12h30 (xxx) : FoundationDB : le secret le mieux gardé des nouvelles architectures distribuées !
 

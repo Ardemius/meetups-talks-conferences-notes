@@ -40,6 +40,15 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 
 * Les photos du salon sont visibles ici : xxx
 
+== Informations générales sur le salon
+
+Cf le Tweet d'Arnaud Héritier (https://twitter.com/aheritier/status/1612001418268794881?s=20) : 
+
+	* 1018 propositions de sujets
+		** dont 45 sans vote car en draft uniquement, 973 propositions avec vote au final
+	* 10 615 reviews
+	* ~200 talks donnés sur le salon
+
 == Buzz words & Technos qui ont le vent en poupe
 
 Techno dont le nom revient plusieurs fois dans le programme : 
@@ -51,9 +60,10 @@ Techno dont le nom revient plusieurs fois dans le programme :
 
 == Technos dont on parle moins (ou plus !)
 
-== Conf à voir sur YouTube
+== Talk à revoir sur YouTube
 
-
+* Géopolitique de la data par Benjamin BAYART : fantastique talk à conseiller
+	** connaissance du milieu, on sent la maîtrise de l'environnement tech niveau stratégique
 
 == Sociétés et personnes rencontrées
 
