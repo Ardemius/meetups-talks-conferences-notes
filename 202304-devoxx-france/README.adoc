@@ -774,6 +774,9 @@ image:devoxx-france-2023_027.jpg[width=800]
 
 Concepts de FoundationDB :
 
+    * Deliver transactions at NoSQL performance and scale
+    * reduce core to minimal feature set
+    * add features back with higher-level abstractions called layers
     * fournit le plus haut niveau d'isolation des transactions (comme Spanner)
     * extrêment tolérant à la panne
 
@@ -788,7 +791,6 @@ image:devoxx-france-2023_029.jpg[width=800]
 .Macro architecture de FoundationDB
 image:devoxx-france-2023_030.jpg[width=800]
 
-
 Comme débugger un système distribué en PROD est l'enfer, FoundationDB a créé un *simulateur de BDD* qui va injecter des fautes dans l'I/O, dans le temps, et dans la topologie du cluster. +
 -> Et ils vont TRES loin dedans, le système est déterministe
 
@@ -797,6 +799,51 @@ Comme débugger un système distribué en PROD est l'enfer, FoundationDB a cré�
 image:devoxx-france-2023_031.jpg[width=800]
 
 -> Donc, une simulation rock-solid 👍👍👍 
+
+* Clever Cloud a "étendu / utilisé" (???) la simulation de FoundationDB pour "virtualiser la BDD"
+image:devoxx-france-2023_032.jpg[width=800]
+
+.Snowflake utilise également MASSIVEMENT FoundationDB pour le stockage de ses metadata
+image:devoxx-france-2023_033.jpg[width=800]
+
+* Snowflake : "FoundationDB" est tellement centrale chez nous que la moindre panne est critique 
+    ** -> FoundationDB est au milieu de tout chez Snowflake
+    ** et leur retour est que c'est *ULTRA SOLIDE* et *DISPONIBLE* 
+
+.Exemple d'usage en Java
+image:devoxx-france-2023_034.jpg[width=800]
+
+Explication sur le transaction model : 
+
+image:devoxx-france-2023_035.jpg[width=800]
+image:devoxx-france-2023_036.jpg[width=800]
+
+* numéro de début de transaction et de fin de transaction
+    ** si quelque chose est modifié entre temps, la transaction va être rejouée
+    ** *FoundationDB va garder toutes les modifications effectuées durant les 5 dernières*
+
+* Donc limitations : 
+    ** GROSSE LIMITATION : *Transactions cannot exceed 5 seconds*
+    ** keys cannot exceed 10 Ko in size
+    ** Values cannot exceed 100 Ko in size
+
+.Modélisation de data avec FoundationDB
+image:devoxx-france-2023_037.jpg[width=800]
+
+    * *Multi-tenancy* can be easily added by *adding prefixes to the key*
+
+REX de Pierre et Steven: 
+
+    * le meilleur SDKs pour FoundationDB est le Java
+    * communauté TRES bienveillante : le core contributor viennent souvent répondre avec des réponses très qualitatives
+    * il y a également un MeetUp FoundationDB sur Paris organisé par Pierre
+        ** où participe les core developers
+
+.Forces et faiblesses
+image:devoxx-france-2023_038.jpg[width=800]
+
+* Steven : ce truc est un accident industriel qui a bien tourné
+    ** c'est un papier de recherche qui est arrivé en PROD...
 
 === -------------------- REPAS --------------------
 
