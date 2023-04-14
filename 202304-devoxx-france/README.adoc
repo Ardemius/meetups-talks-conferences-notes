@@ -1033,7 +1033,9 @@ solutions du pipeline :
 image:devoxx-france-2023_055.jpg[width=800]
 image:devoxx-france-2023_056.jpg[width=800]
 
-    * NGINX est capable via son WAF de bloquer un grand nombres d'attaque
+    * NGINX est capable via son WAF de bloquer un grand nombres d'attaques
+        ** Apparemment, un bon nombre des attaques répertoriées côté OWASP
+        ** Ils ont une équipe dédiée qui travaille sur l'identification des attaques afin de mettre à jour le WAF NGINX
     * Toutes les 6 semaines : mise à jour de la liste des attaques signatures
 
 === 17h45 - 18h30 (252AB) : Les Cast Codeurs en 🪑 et en 🦴
