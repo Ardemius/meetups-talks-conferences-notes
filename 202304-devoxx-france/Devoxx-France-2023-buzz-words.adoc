@@ -60,10 +60,17 @@ Techno dont le nom revient plusieurs fois dans le programme :
 
 == Technos dont on parle moins (ou plus !)
 
+* "Big data" et "Hadoop", plus un mot
+	** Côté persistance, beaucoup de talks sur PostgreSQL par contre
+
 == Talk à revoir sur YouTube
 
 * Géopolitique de la data par Benjamin BAYART : fantastique talk à conseiller
 	** connaissance du milieu, on sent la maîtrise de l'environnement tech niveau stratégique
+
+* Jean-Laurent Morlhon (@morlhon) : Comment bâtir des équipes d’ingénierie mémorables
+	** Un talk basé sur le livre "Team Topologies"
+	** https://cfp.devoxx.fr/2023/talk/SNV-2709/Batir_des_equipes_d%E2%80%99ingenierie_logicielle_memorables._
 
 == Sociétés et personnes rencontrées
 
@@ -71,6 +78,13 @@ Techno dont le nom revient plusieurs fois dans le programme :
 * Sopra Steria, qui a développé ses chemins de gestion de carrière sur l'exemple du "Y" avec individual contributor path et manager path. 
 
 == Avis sur le salon
+
+* J'étais malade les 3 jours du salon, autant dire que ce fut un rien difficile, j'ai donné mon talk sur l'histoire de la conteneurisation en serrant les dents 😓
+
+* Durant ce salon, on a pu constater le retour en force de la "persistance SQL classique", personnifiée par PostgreSQL qui fut l'objet de plusieurs talks. +
+Par contre, *le côté "Big" de la data ne fait plus du tout le "buzz"* : ce n'est plus une nouveauté, il est train d'intégrer progressivement tous les projets et devient du BAU (Business As Usual).
+* Par contre, le passage massif au Cloud est bien maintenant confirmé : "tout le monde (ou presque) y est".
+	** Néanmoins, le coût de ce dernier, plus élevé que le on premise quand bien géré (même si on ne disait pas ça au début, grosse bêtise de l'époque) donne actuellement lieu à une réflexion sur un *"retour du Cloud"* qui se matérialise par un intérêt accru pour les *architectures hybrides*.
 
 == Les polos rouges, jam et autres
 

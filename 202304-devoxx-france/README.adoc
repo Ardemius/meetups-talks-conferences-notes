@@ -181,6 +181,7 @@ Programme du jeudi : https://cfp.devoxx.fr/2023/byday/thu
 image:devoxx-france-2023_a.jpg[width=800]
 
 * 3300 participants
+    ** mais 3816 visiteurs uniques badgés au total (exposants, speakers, et billets blancs de l'après-midi) en 3 jours
 * 80 sponsors
 
 * Pour 2024, on loue le 1er étage en plus du 2e : on passe à 4 000 personnes de capacité
