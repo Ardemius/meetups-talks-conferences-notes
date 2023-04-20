@@ -53,10 +53,24 @@ Cf le Tweet d'Arnaud Héritier (https://twitter.com/aheritier/status/16120014182
 
 Techno dont le nom revient plusieurs fois dans le programme : 
 
-* GitOps
-* Sigstore : le Let's Encrypt de la signature du code !
-* PostgreSQL : a été confirmé dans un précédent épisode des Cast Codeurs, il y a eu énormément de propositions sur PostgreSQL
-* Redis
+	* GitOps
+	* Sigstore : le Let's Encrypt de la signature du code !
+	* PostgreSQL : a été confirmé dans un précédent épisode des Cast Codeurs, il y a eu énormément de propositions sur PostgreSQL
+	* Redis
+
+.Top 10 des tags extraits des talks retenus pour #DevoxxFR 2023 - Entrée fracassante de l'IA en 8eme position cette année
+image:devoxx-france-2023_g.jpg[width=800]
+
+	* Kubernetes
+	* DevOps
+	* Java
+	* Security
+	* Containers
+	* Performance
+	* Architecture
+	* Artificial Intelligence
+	* Quarkus
+	* GitOps
 
 == Technos dont on parle moins (ou plus !)
 
