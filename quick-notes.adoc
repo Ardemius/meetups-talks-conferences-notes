@@ -180,8 +180,44 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 
 * L'organisation data par domaine permet de désengorger la gestion des données d'une équipe centralisée et valoriser la connaissance. Elle déplace la responsabilité auprès des domaines ce qui offre en plus d'une expertise technique une expertise métier. La création d'équipes pluridisciplinaires doit favoriser cette innovation. On parle souvent de *Data Mesh*, pour évoquer cette décentralisation des données.
 
+== 2023/04/26 : ma réaction à l'article de Didier Girard "L'IA générative sera au data catalogue ce que Google a été à Yahoo"
 
+L'article de Didier est disponible sur le blog de WEnvision : https://www.wenvision.com/lia-generative-sera-au-data-catalogue-ce-que-google-a-ete-a-yahoo/
 
+Un article très intéressant de Didier, dont je partage pleinement les conclusions, avec beaucoup de curiosité sur l'évolution de ce domaine à (très) court terme 😉 
+
+A l'heure actuelle, la "vraie" "big" data a lieu quand les metadata elles-mêmes doivent être traitées comme de la "big data". +
+Depuis quelques temps, nous sommes passés d'une gestion "passive" des metadata (les plateformes de metadata / data catalog étaient dans l'attente d'une action humaine pour la saisie de metadata et / ou leur catégorisation) à des "active metadata platforms" comme les appelle le Gartner. +
+Ces dernières collectent en continu toutes les metadata qu'elles peuvent trouver sur le SI, d'où une explosion de la volumétrie associée.
+
+Résultat : il devient très difficile (voire impossible) de cataloguer cette dernière en amont de la création / ingestion des metadata. +
+Il nous faut donc un moyen de le faire soit au moment de la création de la metadonnée, soit plus tard, à la demande, au moment ou on a besoin de se servir des metadata. +
+Dans le 1er cas, le problème est de trouver sur quelle base il est possible d'identifier / catégoriser cette metadata ? +
+Fasse à des volumes de metadata très conséquents et très variables, une catégorisation "statique" prédéfinie en amont n'est plus possible ou adéquate, il faut donc se baser sur un ensemble de règles dont le but est d'aboutir par calcul à une catégorisation. +
+Souci : ce "calcul de catégorisation" est seulement valable à un instant "t", car forcément dépendant du volume de meta-donnée. +
+Avec l'avènement des "active metadata", la catégorisation déterminée à un instant "t" ne sera probablement plus correct à un instant "t + x" synonyme d'un pourcentage (conséquent) de metadata supplémentaires. +
+Dès lors, c'est la 2e solution qui paraît la plus pertinente : une catégorisation à la demande.
+
+Et là je rejoins complètement l'avis de Didier, le catalogage "statique" n'est plus possible et doit être remplacé par un moyen efficace d'aboutir à cette catégorisation à la demande : un algorithme rappelant le fonctionnement d'un moteur de recherche. +
+C'est à ce moment qu'on voit l'IA générative entrer en scène.
+
+Les grandes étapes d'évolution des data catalog ont été : 
+
+    * Data Catalog 1.0: la gestion des metadata (identification, catégorisation, etc.) est directement l'affaire des équipes techniques
+    * Data Catalog 2.0: on passe à une gestion pilotée par des équipes dédiées (nos data stewards) en lien étroit avec le métier
+    * Data Catalog 3.0: Devant le nombre toujours croissant de metadata, on donne les moyens à une communauté étendue d'utilisateurs d'analyser les metadata.
+
+Aujourd'hui, nous arrivons à l'aube du Data Catalog "4.0" : les metadata deviennent tout simplement trop nombreuses pour un traitement "humain" ou créé par des humains (les règles changeraient trop vites), nous avons besoin d'une aide, d'une "pré-catégorisation" effectuée par la machine, c'est là que l'IA générative intervient : nous créer / suggérer les catégories les plus pertinentes (entre autres), mais à la demande. +
+Mais est-ce encore un data "catalog" ? Comme le dit Didier, on se trouve davantage face à un "metadata search engine".
+
+Dès lors, la question que je me pose est : comment valider cette catégorisation effectuée à la demande, sachant qu'elle est susceptible de changer très rapidement, avec la prochaine ingestion d'un +x0% de metadata d'un coup (ou plus encore) qui viendra modifier toutes les catégories précédemment calculées par l'algo ? +
+Une interventation de validation serait impossible ou très compliquée car très (trop) limitée dans le temps : valider une catégorisation stable sur 1 mois soit, 1 semaine pourquoi pas, mais si cela doit passer à plusieurs fois par jour ? +
+Dès lors, accepterait-on de croire la catégorisation réalisée par la machine "sur parole", sans contrôle humain ? +
+Contrairement à une "recherche Google classique", qui est avant tout "indicative", les metadata sont à la base de process opérationnels et métier : une information "indicative" n'est pas suffisante, il faut une information "validée". +
+Comment valider cette information, son "sens métier" ? +
+Pourrait-on imaginer des "Tests Unitaires de catégorisation de données" ? Mais, ne connaissant ni le résultat à l'avance (la catégorie !) ni la mécanique de résolution de l'algo, l'écriture de ces derniers me semble difficile.
+
+J'ai hâte de voir comment va évoluer ce milieu dans les mois à venir, et à quoi vont ressembler les prochains data catalog.
 
 
 

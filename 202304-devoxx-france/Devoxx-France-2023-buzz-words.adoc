@@ -86,6 +86,9 @@ image:devoxx-france-2023_g.jpg[width=800]
 	** Un talk basé sur le livre "Team Topologies"
 	** https://cfp.devoxx.fr/2023/talk/SNV-2709/Batir_des_equipes_d%E2%80%99ingenierie_logicielle_memorables._
 
+* Lise Quesnel : Les post-mortems ou comment sortir heureux d’un carnage
+	** https://cfp.devoxx.fr/2023/talk/JKD-9971/Les_post-mortems_ou_comment_sortir_heureux_d%E2%80%99un_carnage
+
 == Sociétés et personnes rencontrées
 
 * Steven Le Roux chez Clever Cloud
