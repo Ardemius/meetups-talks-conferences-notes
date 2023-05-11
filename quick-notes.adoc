@@ -187,7 +187,8 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
         Headless signifie que l'application n'a pas d'interface utilisateur, et qu'on y accède et la *contrôle exclusivement par le biais d'API*. Cette approche permet une plus grande flexibilité et personnalisation, car l'interface utilisateur peut être construite et modifiée indépendamment de l'application sous-jacente.
 
 * *REST vs GraphQL*
-    ** 
+
+TO BE COMPLETED
 
 == 2023/03/30 : Les 3 grands facteurs clés de succès d’une entreprise data driven
 
@@ -285,7 +286,11 @@ This analogy helps us understand several key properties of DuckDB:
     ** *SQLite*, as a data store *focused on transactions*, *stores data row-by-row* while *DuckDB*, as a *database engine for analytics*, stores *data by columns*. 
     ** Additionally, SQLite doesn't strictly enforce types in the data -- this is known as being weakly typed (or flexibly typed).
 
+== 2023/05/11 - Tech Rocks - Modern Data Stack
 
+A REVOIR !
+
+image:20230511_tech-rocks_modern-data-stack_01.jpg[]
 
 
 

@@ -441,9 +441,25 @@ MAIS, CloudWatch permet d'indexer facilement les données sans avoir besoin d'in
 * Il y a également un Prometheus managé : "AMP" (Amazon Managed Service for Prometheus)
 * Et il y a également un AWS Distro for Open Telemetry (ADOT)
 
-== Si on veut en savoir plus
+== Ressources 
 
-* https://aws.github.io/aws-eks-best-practices/
+* *Support utilisé* durant la journée : link:{resourcesdir}/20230509_AWS_ImmersionDay_EKS.pdf[AWS Immersion Day EKS (PDF)]
+* Le *workshop* est public et disponible ici : https://www.eksworkshop.com/
+
+* "Liens utiles" sur les sujets partagés pendant la journée : 
+
+    ** EKS Best Practices : https://aws.github.io/aws-eks-best-practices/
+    ** Amazon EKS Compute Blog : https://aws.amazon.com/blogs/compute/
+    ** Amazon EKS User Guide : https://docs.aws.amazon.com/eks/latest/userguide/getting-started.html
+    ** Harden EKS : https://github.com/aws-samples/hardeneks
+    ** EKS Node Viewer : https://github.com/awslabs/eks-node-viewer
+    ** Kubernetes Operational View : https://codeberg.org/hjacobs/kube-ops-view
+    ** How LEGO.com accelerates innovation with serverless : https://gotoldn.com/2022-eda-aws-day/sessions/2125/the-road-to-event-driven-architecture-at-lego-com
+    ** AWS Observability options : https://catalog.workshops.aws/observability/en-US/intro#aws-observability-options
+
+Si on veut en savoir plus : 
+
+    * Bonnes pratiques EKS : https://aws.github.io/aws-eks-best-practices/
 
 == Q&A
 
