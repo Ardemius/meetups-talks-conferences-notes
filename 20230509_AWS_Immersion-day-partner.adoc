@@ -461,6 +461,8 @@ Si on veut en savoir plus :
 
     * Bonnes pratiques EKS : https://aws.github.io/aws-eks-best-practices/
 
+Et voici l'*agenda des autres Immersion Day* d'AWS : https://immersiondaysfrance.splashthat.com/
+
 == Q&A
 
 * Les clients vont-ils plutôt vers EKS ou ECS ?
