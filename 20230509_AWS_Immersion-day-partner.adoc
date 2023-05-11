@@ -1,0 +1,462 @@
+= 2023/05/09 - AWS - Immersion day on EKS - Partner
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk dédié à AWS EKS, réservé aux partners Amazon AWS et organisé par Cyril PARISOT (qui était Amazon avant de rejoindre Softeam) et Cyrille CARTOT
+
+== Présentation et introduction
+
+.planning
+image:20230509_AWS_immersion-day_01.jpg[width=1000]
+
+.Présentateurs pour AWS
+image:20230509_AWS_immersion-day_02.jpg[width=1000]
+
+    * Clément Goillot : Solutions Architect
+    * Benjamin Guerin : Solutions Architect
+    * Martin-Zack Mekkaoui : Technical Account Manager
+    * et Cyril (Parisot) dont les précédentes personnes sont les anciens collègues
+
+.outil de sondage utilisé pour l'immersion day
+image:20230509_AWS_immersion-day_03.jpg[width=1000]
+
+    * ahaslides.com/CONTAINERS
+
+== Rappel : Kubernetes
+
+.Kubernetes concepts
+image:20230509_AWS_immersion-day_04.jpg[width=1000]
+
+    * en jaune le Control Plane, et en "bleu" le Data plane
+    * Kubelet : va être responsable de démarrer les containers sur les noeuds
+
+Pour plus d'infos : https://kubernetes.io/docs/concepts/overview/components
+
+.Quelques définitions : pods, label, deployment, service, Ingress, namespace, DaemonSet, StatefulSet
+image:20230509_AWS_immersion-day_05.jpg[width=1000]
+
+    * *Pods* : Co-located group of containers that share an IP, namespace, storage volume
+    * *DaemonSet* : souvent utilisé pour du monitoring pour aller récupérer des métriques sur un pod (à vérifier)
+    * *namespace* : The Namespaces are a logical grouping of the resources for each microservice and also act a soft isolation boundary which can be used to effectively implement controls using Kubernetes RBAC and Network Policies.
+
+Comme beaucoup, AWS participe activement au développement de Kubernetes
+
+image:20230509_AWS_immersion-day_06.jpg[width=1000]
+
+    * EKS utilise la version upstream de Kubernetes
+    * 4 versions de Kubernetes sont supportées en parallèle
+
+//- 
+
+* Amazon EKS est *disponible depuis 2018*
+* *70$ / mois par cluster provisionné* pour le coût d'un cluster EKS, *quelle que soit la taille* du cluster
+
+* Recommandation : 1 cluster par environnement
+* rappel : Kubernetes a à la base été fait pour mutualiser de la ressource
+
+.Les services annexes sur lesquels EKS peut s'appuyer
+image:20230509_AWS_immersion-day_07.jpg[width=1000]
+
+EKS est audité en permanence : https://aws.amazon.com/compliance/services-in-scope/
+
+    * PCI-SS
+    * FedRAMP
+    * etc.
+
+.Architecture d'EKS
+image:20230509_AWS_immersion-day_08.jpg[width=1000]
+
+== Workshop
+
+image:20230509_AWS_immersion-day_09.jpg[width=1000]
+
+* Workshop website : https://catalog.workshops.aws/join
+* region : us-west-2
+    ** sur la console (https://us-west-2.console.aws.amazon.com/console/home?region=us-west-2), on voit que la région utilisée est bien Oregon / us-west-2
+
+.console AWS
+image:20230509_AWS_immersion-day_10.jpg[width=1000]
+
+    * https://us-west-2.console.aws.amazon.com/console/home?region=us-west-2#
+    * Cloud9, IDE hosté sur AWS : https://us-west-2.console.aws.amazon.com/cloud9/ide/a12d9d8a89184c76aa35a0fb793eb773
+
+.Resetting your EKS cluster
+TIP: Simply run the command `reset-environment`
+
+=== Introduction
+
+Workshop section URL : https://build-ee0efb6.eksworkshop.com/docs/introduction/
+
+.The application has several components and dependencies
+image:20230509_AWS_immersion-day_11.jpg[width=600]
+
+* Source code of the application : https://github.com/aws-containers/retail-store-sample-app
+* The sample application has *container images already available in Amazon Elastic Container Registry* for the labs we'll complete today.
+* on peut voir via les Dockerfile que : 
+    ** les applications sont en : 
+        *** Java : https://github.com/aws-containers/retail-store-sample-app/blob/main/images/java17/Dockerfile
+            **** avec usage de Amazon Corretto
+    ** les ressources statiques sont servies par un NGinx
+        *** https://github.com/aws-containers/retail-store-sample-app/blob/main/src/assets/Dockerfile
+
+Commmands : 
+
+    * kubectl get nodes
+    * kubectl get pods
+
+==== Microservices on Kubernetes
+
+"catalog" component
+
+image:20230509_AWS_immersion-day_12.jpg[width=1000]
+
+[NOTE] 
+====
+EC2 fournit des ressources compute pour les clients : 
+
+    * Plus de 600 types d'instances
+    * les nodes de EKS tournent traditionnellement sur des instances EC2
+====
+
+* The sample application is composed of a set of Kubernetes manifests organized in a way that can be easily applied with *Kustomize*. 
+    ** Kustomize is an open-source tool also provided as a *native feature* of the *kubectl* CLI.
+
+.What is already deployed for the workshop ?
+image:20230509_AWS_immersion-day_13.jpg[width=1000]
+
+.Présentation de l'EKS Control Plane et de son architecture
+image:20230509_AWS_immersion-day_14.jpg[width=1000]
+image:20230509_AWS_immersion-day_15.jpg[width=1000]
+
+    * highly available and single tenant infrastructure
+
+.Importance de tenir à jour sa version d'EKS
+[NOTE]
+====
+Si on part sur Kubernetes et de l'EKS, c'est dans l'optique de mettre à jour SOUVENT son infra, à savoir sa version de Kubernetes.
+
+-> Le client DOIT être capable, doit être à l'aise avec la mise à jour régulière de la version d'EKS (à minima 1 à 2 fois par an, ce qui n'est pas du tout négligeable)
+
+    * Si on sent que le client n'en est pas capable, mieux vaut lui conseiller autre chose qu'EKS, comme une solution FULL MANAGED (comme un ECS)
+
+Certains Cloud providers forcent la mise à jour de la version de Kubernetes utilisée (GCP et AWS), d'autres non (Azure)
+
+MAIS, ne pas être à jour peut avoir des conséquences (graves) pour son application : 
+
+    * version plus supportée
+    * application / container ne tournant plus sur cette version de Kubernetes
+====
+
+image:20230509_AWS_immersion-day_16.jpg[width=1000]
+
+.Managed Node Groups for Amazon EKS
+image:20230509_AWS_immersion-day_17.jpg[width=1000]
+
+.EKS with EC2
+image:20230509_AWS_immersion-day_18.jpg[width=1000]
+
+    * Sur ce dernier schéma : control plane à gauche, et data plane à droite
+        ** Data plane : les instances EC2 qui sont sur le compte
+
+.Autre possibilité : EKS with Fargate
+image:20230509_AWS_immersion-day_19.jpg[width=1000]
+
+    * Fargate : 1 VM  *PAR* Pod
+        ** Fargate : uniquement à destination des applications : "je ne veux pas m'occuper des muscles qui font mon application"
+        ** Donc aucun intérêt à faire des daemonset avec Fargate
+            *** Daemonset : déployer des pods sur chacun des noeuds, pas d'intérêt avec Fargate
+    * Fargate : c'est "pile-poil" les ressources demandées par votre application, avec EC2 c'est à VOUS de définir ce dont vous avez besoin.
+        ** On en revient à "de quoi a besoin le client", par moment on aura besoin de EC2 ET de Fargate (pour optimiser les coûts)
+
+.Deployment with Fargate
+image:20230509_AWS_immersion-day_20.jpg[width=1000]
+
+[NOTE]
+====
+*Architecture ARM* chez AWS : AWS *Graviton* processors.
+
+Cette architecture de proc *consomme bien moins d'électricité* (par rapport à du x86), avec un *impact carbone* bien moindre. +
+-> Si le client est très porté sur le GreenIT et l'impact RSE, c'est la 1ere chose à lui conseiller.
+====
+
+S'il y a un besoin de stockage, plutôt que de mettre sa BDD (ou autre) sur EC2, mieux vaut choisir une solution comme : 
+
+image:20230509_AWS_immersion-day_21.jpg[width=1000]
+
+    * Attention ! EBS est sur une seule AZ, donc si on a des besoins de sécurité / réplication (donc besoin de PLUSIEURS AZ), ce n'est PAS la solution qu'il faut choisir. On en revient encore aux besoins du client.
+
+.How can I reduce costs in my cluster ?
+image:20230509_AWS_immersion-day_22.jpg[width=1000]
+
+==== Deploying our first component
+
+* kubectl apply -k /workspace/manifests/catalog
+* kubectl get namespaces -l app.kubernetes.io/created-by=eks-workshop
+* kubectl get pod -n catalog
+* kubectl wait --for=condition=Ready pods --all -n catalog --timeout=180s
+* kubectl logs -n catalog deployment/catalog
+
+* kubectl scale -n catalog --replicas 3 deployment/catalog
+* kubectl wait --for=condition=Ready pods --all -n catalog --timeout=180s
+
+* kubectl -n catalog exec -it \
+deployment/catalog -- curl catalog.catalog.svc/catalogue | jq .
+    ** Rappel : The JQ command is used to transform JSON data into a more readable format and print it to the standard output on Linux.
+
+==== Other components
+
+* kubectl get deployment -l app.kubernetes.io/created-by=eks-workshop -A
+
+==== Kustomize
+
+* Kustomize : https://kustomize.io/
+    ** Kustomize introduces a *template-free way to customize application configuration* that simplifies the use of off-the-shelf applications. Now, *built into kubectl* as `apply -k`
+
+* kustomize build /workspace/modules/introduction/kustomize | kubectl apply -f -
+
+NOTE: Although we have used the kustomize CLI directly in this section, *Kustomize is also integrated directly with the kubectl CLI*, and can be applied with `kubectl apply -k <kustomization_directory>`. +
+-> This approach is used through this workshop to make it easier to apply changes to manifest files, while clearly surfacing the changes to be applied.
+
+=== Fundamentals
+
+Workshop section URL : https://build-ee0efb6.eksworkshop.com/docs/fundamentals/
+
+* An *EKS cluster* contains *one or more EC2 nodes* that Pods are scheduled on. 
+* EKS nodes run in your AWS account and connect to the control plane of your cluster through the cluster API server endpoint. 
+* You deploy one or more nodes into a *node group*. 
+* A node group is one or more EC2 instances that are deployed in an *EC2 Auto Scaling group*.
+* *EKS nodes* are *standard Amazon EC2 instances*. You're billed for them based on EC2 prices.
+
+* Amazon EKS *managed node groups* automate the provisioning and lifecycle management of nodes for Amazon EKS clusters.
+
+* inspect the default managed node group that was pre-provisioned for you: +
+eksctl get nodegroup --cluster $EKS_CLUSTER_NAME --name $EKS_DEFAULT_MNG_NAME
+
+==== Add nodes
+
+* Need to update your managed node group configuration : 
+    ** Amazon EKS Console : https://console.aws.amazon.com/eks/home#/clusters
+    ** using `eksctl scale nodegroup` command
+
+* Retrieve the current nodegroup scaling configuration and look at minimum size, maximum size and desired capacity of nodes using eksctl command below: : +
+    eksctl get nodegroup --name $EKS_DEFAULT_MNG_NAME --cluster $EKS_CLUSTER_NAME
+* Scale the nodegroup in eks-workshop by changing the node count from 2 to 3 for minimum size and desired capacity using below command : +
+    eksctl scale nodegroup --name $EKS_DEFAULT_MNG_NAME --cluster $EKS_CLUSTER_NAME --nodes 3 --nodes-min 3 --nodes-max 6
+
+[TIP]
+====
+A node group can also be updated using the `aws` CLI with the following command :
+
+    aws eks update-nodegroup-config --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME --scaling-config minSize=3,maxSize=6,desiredSize=3
+====
+
+* Notice that the node shows a status of NotReady, which happens when the new node is still in the process of joining the cluster. We can also use `kubectl wait` to watch until all the nodes report Ready:
+
+    kubectl wait --for=condition=Ready nodes --all --timeout=300s
+
+[source,bash]
+----
+WSParticipantRole:~/environment $ kubectl wait --for=condition=Ready nodes --all --timeout=300s
+node/ip-10-42-10-112.us-west-2.compute.internal condition met
+node/ip-10-42-10-172.us-west-2.compute.internal condition met
+node/ip-10-42-11-157.us-west-2.compute.internal condition met
+node/ip-10-42-12-28.us-west-2.compute.internal condition met
+----
+
+=== Upgrading AMIs
+
+.eks-node-viewer
+[TIP]
+====
+Astuce / bon à savoir du formateur, installer l'outil *eks-node-viewer* pour une visualisation dynamique de l'usage des nodes au sein d'un cluster : +
+https://github.com/awslabs/eks-node-viewer
+
+Il peut être installé en lançant la commande suivante dans la console AWS :
+
+    * go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
+    * vim ~/.bashrc
+    * ajouter en dernière ligne : export PATH="~/go/bin:$PATH"
+    * source ~/.bashrc
+
+Pour son usage :
+
+[source,bash]
+----
+# Standard usage
+eks-node-viewer
+# Karenter nodes only
+eks-node-viewer --node-selector "karpenter.sh/provisioner-name"
+# Display both CPU and Memory Usage
+eks-node-viewer --resources cpu,memory
+# Display extra labels, i.e. AZ
+eks-node-viewer --extra-labels topology.kubernetes.io/zone
+# Specify a particular AWS profile and region
+AWS_PROFILE=myprofile AWS_REGION=us-west-2
+----
+====
+
+* You can initiate an update of the managed node group used to host our sample application like so : +
+    aws eks update-nodegroup-version --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME
+
+* You can watch activity on the nodes using kubectl : +
+    kubectl get nodes --watch
+
+* If you want to wait until the MNG is updated you can run the following command:
+    aws eks wait nodegroup-active --cluster-name $EKS_CLUSTER_NAME --nodegroup-name $EKS_DEFAULT_MNG_NAME
+
+==== Fargate
+
+* AWS *Fargate* is a technology that provides on-demand, *right-sized compute capacity* for containers. 
+* With AWS Fargate, you don't have to provision, configure, or scale groups of virtual machines on your own to run containers. 
+* You also don't need to choose server types, decide when to scale your node groups, or optimize cluster packing. 
+* You can control which Pods start on Fargate and how they run with Fargate profiles. 
+* Fargate profiles are defined as part of your Amazon EKS cluster.
+
+=== Autoscaling
+
+.Kubernetes Autoscaling
+image:20230509_AWS_immersion-day_23.jpg[width=1000]
+
+    * Pod-based scaling (*application layer*) +
+    -> "je rajoute des containers"
+        ** HPA : Horizontal Pod Autoscaler
+        ** VPA : Vertical Pod Autoscaler
+
+    * Node-based scaling (*infrastructure layer*) +
+    -> "je rajoute des noeuds"
+        ** CA : Cluster Autoscaler
+        ** Karpenter
+
+.Kubernetes pod-based scaling (application layer)
+image:20230509_AWS_immersion-day_24.jpg[width=1000]
+
+.Kubernetes node-based scaling (infrastructure layer)
+image:20230509_AWS_immersion-day_25.jpg[width=1000]
+
+.Kubernetes Cluster Autoscaler
+image:20230509_AWS_immersion-day_26.jpg[width=1000]
+
+.Scaling the application and infrastructure
+image:20230509_AWS_immersion-day_27.jpg[width=1000]
+
+-> Proposer le mieux pour les besoins du client, et le mieux, *c'est que ça s'adapte*.
+
+image:20230509_AWS_immersion-day_28.jpg[width=1000]
+image:20230509_AWS_immersion-day_29.jpg[width=1000]
+
+* Une alternative à Cluster Autoscaler : *Karpenter*
+    ** Karpenter est open source, mais seul AWS l'intègre et le propose actuellement
+    ** Mais Karpenter a été conçu pour tous les Cloud providers
+    ** Le but de Karpenter est d'être très précis, et *plus rapide* (que Cluster Autoscaler) : il répond aux besoins des clients d'AWS qui disaient "ça ne scale pas assez vite"
+        *** Karpenter va plus vite car il "ôte des maillons de la chaîne" (il ne passe PAS par les auto-scaling groups)
+    ** Karpenter est "plus intelligent" que Cluster Autoscaler
+
+.Karpenter vs Cluster Autoscaler : Karpenter wins !
+[NOTE]
+====
+* Il n'y a QUE des avantages à utiliser Karpenter, qui est un projet plus récent que Cluster Autoscaler, et spécifiquement conçu pour répondre aux derniers retours des clients
+* Néanmoins, Cluster Autoscaler fait partie de la CNCF et doit donc "matcher" les exigences "génériques" de la CNCF, là où Karpenter est plus spécifique (à Amazon)
+* MAIS, la CNCF est train de pousser la notion / le concept de modules pour les projets qu'elle regroupe. +
+Ces modules permettront à chaque Cloud providers de gérer leurs spécificités.
+    ** Raison pour laquelle Cluster Autoscaler, qui ne s'inscrit pas dans cette optique, est passé sur une branche "deprecated", et va donc être définitivement remplacé d'ici peu par Karpenter
+====
+
+=== Networking
+
+.EKS Cluster Architecture
+image:20230509_AWS_immersion-day_30.jpg[width=1000]
+
+=== Security
+
+.Authentication and Authorization of a client in an Amazon EKS Cluster
+image:20230509_AWS_immersion-day_31.jpg[width=1000]
+
+    * Besoin d'un mapping (via le composant "config map") entre les rôles côtés AWS et les rôles côté Kubernetes
+
+.Diving into IAM Roles for Service Accounts
+image:20230509_AWS_immersion-day_32.jpg[width=1000]
+
+*Chiffrement des données*
+
+    * AWS KMS : AWS Key Management Service
+
+image:20230509_AWS_immersion-day_33.jpg[width=1000]
+
+[WARNING]
+====
+La DEK (Data Encryption Key) est une clé symétrique, de même que la CMK (Customer Master Key). +
+On vient donc chiffrer la DEK, qui permet de chiffrer les données, avec la CMK, et la donnée chiffrée est stockée dans l'ETCD.
+
+Ce workflow représente un "mieux", MAIS, par rapport aux exigences d'un Digital Wallet par exemple, chiffrer une clé symétrique avec une autre clé symétrique ne serait PAS une garantie de sécurité suffisante.
+
+-> Pour une meilleure sécurité (qui serait requise par exemple pour un Digital Wallet), il faut passer par un workflow "complètement" externe, et l'usage d'un Vault (externe).
+====
+
+=== Observability
+
+.Triangle de l'observabilité et AWS Observability Tools
+image:20230509_AWS_immersion-day_34.jpg[width=1000]
+
+.CloudWatch Container Insights
+image:20230509_AWS_immersion-day_35.jpg[width=1000]
+image:20230509_AWS_immersion-day_36.jpg[width=1000]
+
+La partie dashboard de CloudWatch est "moche", préférer Grafana. +
+MAIS, CloudWatch permet d'indexer facilement les données sans avoir besoin d'installer un ELK.
+
+* Il y a également un Prometheus managé : "AMP" (Amazon Managed Service for Prometheus)
+* Et il y a également un AWS Distro for Open Telemetry (ADOT)
+
+== Si on veut en savoir plus
+
+* https://aws.github.io/aws-eks-best-practices/
+
+== Q&A
+
+* Les clients vont-ils plutôt vers EKS ou ECS ?
+    ** Petites équipes et aller vite -> plutôt ECS
+
+== Lexique
+
+[summary]
+CMK:: Customer Master Key
+CNI:: Container Network Interface
+DEK:: Data Encryption Key
+NLP:: Network Load Balancer
+
+
+

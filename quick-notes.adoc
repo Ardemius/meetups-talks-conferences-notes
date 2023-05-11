@@ -174,6 +174,21 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
         *** Importance des outils de type *Terraform* ou *Pulumi*
         *** Pulumi : Ce framework de l'écosystème Terraform, développé par HashiCorp, permet de décrire l'infrastructure désirée en utilisant un langage de programmation tel que TypeScript, Python ou Go plutôt que d'utiliser le DSL spécifique à Terraform (HCL).
 
+* Repenser le *réseau étendu dans une perspective Cloud*, un concept auquel Gartner a donné le nom de *Secure Access Service Edge*, ou *SASE* (prononcer sassy).
+    ** Dans une architecture SASE, les services Cloud gèrent l’authentification et plus largement toute la sécurité du réseau, et une *couche d’abstraction logicielle permet de gérer l’infrastructure réseau* : le *SD-WAN*, *Software-Defined Wide Area Network*. Les services de SD-WAN permettent d’agréger plusieurs types d’infrastructures d’un ou plusieurs fournisseurs (MPLS, fibre, SDSL, 4G…) et de gérer ainsi des réseaux complexes de manière centralisée, industrialisée et simple.
+
+* *Plateformes Back*
+    ** *MACH* est un acronyme qui signifie Microservices (ou Modules-based), API-first, Cloud native et Headless.
+        *** *API-First* : +
+        L'application est conçue et construite autour des API, qu'elles soient REST ou GraphQL. Cette approche met l'accent sur les *API comme principal moyen d'accéder et d'interagir avec l'application*, plutôt que sur l'interface utilisateur.
+        *** *Cloud-native* : +
+        Applications construites à l'aide de containers, serverless (fonctions déclenchables avec des événements) ou autre capacités PaaS
+        *** *Headless* : +
+        Headless signifie que l'application n'a pas d'interface utilisateur, et qu'on y accède et la *contrôle exclusivement par le biais d'API*. Cette approche permet une plus grande flexibilité et personnalisation, car l'interface utilisateur peut être construite et modifiée indépendamment de l'application sous-jacente.
+
+* *REST vs GraphQL*
+    ** 
+
 == 2023/03/30 : Les 3 grands facteurs clés de succès d’une entreprise data driven
 
 * https://www.wenvision.com/les-facteurs-cles-de-succes-dune-entreprise-data-driven/
@@ -218,6 +233,59 @@ Comment valider cette information, son "sens métier" ? +
 Pourrait-on imaginer des "Tests Unitaires de catégorisation de données" ? Mais, ne connaissant ni le résultat à l'avance (la catégorie !) ni la mécanique de résolution de l'algo, l'écriture de ces derniers me semble difficile.
 
 J'ai hâte de voir comment va évoluer ce milieu dans les mois à venir, et à quoi vont ressembler les prochains data catalog.
+
+== 2023/02/07 - Jordan TIGANI (MotherDuck, l'éditeur de DuckDB) : Big Data is dead
+
+URL de l'article : https://motherduck.com/blog/big-data-is-dead/
+
+* Jordan utilise / cite le comparateur bien connu "DB Engines" pour comparer les perfs de certaines BDDs.
+
+* Customer data sizes followed a power-law distribution. The largest customer had double the storage of the next largest customer, the next largest customer had half of that, etc. So while there were customers with hundreds of petabytes of data, the sizes trailed off very quickly. There were *many thousands of customers* who paid *less than $10 a month for storage*, which is *half a terabyte*. Among customers who were using the service heavily, the *median data storage size* was much less than *100 GB*.
+
+* He (GCP investissor ?) found that the *largest B2B companies* in his portfolio had around *a terabyte of data*, while the *largest B2C companies* had around *10 Terabytes of data*. +
+-> Most, however, had *far less data*.
+
+* *Modern cloud data platforms all separate storage and compute*, which means that customers are not tied to a single form factor. This, more than scale out, is likely the single *most important change in data architectures* in the last 20 years.
+    ** *Instead of “shared nothing” architectures* which are hard to manage in real world conditions, *shared disk architectures* let you grow your storage and your compute independently. +
+    The rise of scalable and reasonably fast object storage like S3 and GCS meant that you could relax a lot of the constraints on how you built a database.
+
+* *The amount of data processed for analytics workloads is almost certainly smaller than you think*. Dashboards, for example, very often are built from aggregated data. People look at the last hour, or the last day, or the last week's worth of data. Smaller tables tend to be queried more frequently, giant tables more selectively.
+
+* A couple of years ago I did an analysis of BigQuery queries, looking at customers spending more than $1000 / year. *90% of queries processed less than 100 MB of data*.
+
+* A huge percentage of the data that gets processed is less than 24 hours old. By the time data gets to be a week old, it is probably 20 times less likely to be queried than from the most recent day.
+
+* One definition of *“Big Data” is “whatever doesn’t fit on a single machine*.. By that definition, the number of workloads that qualify has been decreasing every year.
+
+* An alternate definition of *Big Data is “when the cost of keeping data around is less than the cost of figuring out what to throw away.”* 
+    ** I like this definition because it encapsulates why people end up with Big Data. It isn’t because they need it; they just haven’t bothered to delete it. +
+    If you think about many data lakes that organizations collect, they fit this bill entirely: giant, messy swamps where no one really knows what they hold or whether it is safe to clean them up.
+
+* Some questions that you can ask to *figure out if you’re a “Big Data One-Percenter”*:
+    ** Are you really generating a huge amount of data?
+    ** If so, do you really need to use a huge amount of data at once?
+    ** If so, is the data really too big to fit on one machine?
+    ** If so, are you sure you’re not just a data hoarder?
+    ** If so, are you sure you wouldn’t be better off summarizing?
+
+== 2023/01/24 - Ryan BOYD (MotherDuck, l'éditeur de DuckDB) : How to analyse SQLite databases in DuckDB
+
+* https://motherduck.com/blog/analyze-sqlite-databases-duckdb/
+
+* *DuckDB* is often referred to as the *'SQLite for analytics.'* +
+This analogy helps us understand several key properties of DuckDB: 
+    ** it's for analytics (OLAP), 
+    ** it's embeddable, 
+    ** it's lightweight, 
+    ** it's self-contained 
+    ** and it's widely deployed. +
+-> Okay, the latter may not be a given yet for DuckDB, but SQLite says it's likely the most widely used and deployed database engine and, with the rising popularity of analytics, it's quite possible DuckDB will eventually be competitive.
+
+* There are some noticeable differences between SQLite and DuckDB in how data is stored. 
+    ** *SQLite*, as a data store *focused on transactions*, *stores data row-by-row* while *DuckDB*, as a *database engine for analytics*, stores *data by columns*. 
+    ** Additionally, SQLite doesn't strictly enforce types in the data -- this is known as being weakly typed (or flexibly typed).
+
+
 
 
 
