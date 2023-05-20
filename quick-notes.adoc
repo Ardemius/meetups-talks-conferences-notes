@@ -63,7 +63,7 @@ Pour info, cela fait 17 ans qu'il travaille chez Red Hat. +
 Un exemple de plus qu'il est possible de progresser SANS devenir "manager" 😉 +
 (et si vous prenez son collègue *Clément Escoffier* côté Quarkus / Kubernetes chez Red Hat, c'est *"Principal Engineer"* 😉 )
 
-== 2022/06/28 - Artisan Développeur : Interview de Thomas PIERRAIN
+== 2022/06/28 - Artisan Développeur : Interview de Thomas PIERRAIN, DDD et microservices
 
 Thomas PIERRAIN est VP of engineering chez Agicap, et est un ancien archi de la SGCIB
 
@@ -122,8 +122,7 @@ Why the creation of the index is not done automatically ?
 UserHistory hist = userHistoryCollection.get(user.getId() + "-hist")
 ----
 
-
-== 2022/05/12 - Le Comptoir OCTO x Dataiku x Snowflake - Comment créer plus de valeur et developper la collaboration a partir de données enrichies ?
+== 2022/05/12 - Le Comptoir OCTO x Dataiku x Snowflake - Comment créer plus de valeur et développer la collaboration a partir de données enrichies ?
 
 https://fr.slideshare.net/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies
 
@@ -292,8 +291,58 @@ A REVOIR !
 
 image:20230511_tech-rocks_modern-data-stack_01.jpg[]
 
+== 2023/05/12 - Starburst Academy : The difference between data lakes and data lakehouses
 
+* URL : https://www.youtube.com/watch?v=k1cch-6bZhM
 
+* *Modern data formats* replaced traditional old Hive format. +
+Those new modern data formats : 
+    ** Apache *Iceberg*
+    ** Databricks *Delta Lake*
+    ** Apache *Hudi*
+
+* Hive tables lack ACID compliance and version control -> not the case of those modern data formats
+
+* *Those new data formats are what make a lakehouse a lakehouse*.
+    ** With Hive, we create a data lake
+    ** with those formats, we create a data lakehouse
+
+* Compared to data lake, those new formats handle better performance, data modification and schema evolution
+    ** Ces nouveaux formats permettent des performances proches des data warehouse ou des BDDs, tout en utilisant un stockage objet, comme les data lakes.
+
+* Data lakehouse improves the *reporting structure*.
+    ** data lakes store metadata limited to : location, format, structure BUT they do NOT record a comprehensive end to end record of all changes made to a table.
+    
+    ** On the other side, data *lakehouses* store *large amounts of metadata* painting a *comprehensive picture of the system*, including record by record details of : 
+        *** every modifications
+        *** every updates
+        *** every deletions
+    ** Those metadata are stored in a set of hierarchically structured files : *manifest files*
+        *** Manifest files capture changes in the state of the dataset, providing the ability to record an accurate up-to-date account of the changes occurring in the table at any given time : inserts, deletions, updates, schema migrations, partition updates +
+        image:20230512_starburst-academy_data-lakehouse-modern-data-formats_01.jpg[]
+
+* How Iceberg uses metadata manifest files to create a transactional layer on top of traditional data lake storage : 
+    ** if a change is made TO THE DATA (let's a file persistance in this example) -> a manifest file is created that references a specific section of the data
+    ** multiple manifest files are referenced in a manifest list
+    ** manifest list is contained in a metadata file
+    ** this metadata file is held in the Iceberd catalog
+
+    ** The metadata held in the lakehouse ~ a database transaction log that sits on top of the traditional cloud object storage (this last making up a data lake)
+
+* Collectively *those manifest files create a kind of snapshot*
+    ** Iceberg calls them just that : *Snapshot files*
+    ** Delta lake uses the Delta log in a similar way
+
+    ** These snapshots detailed the points at which the changes are made
+        *** So they can be used to query the database at a particular point in time, facilitate schema and partition evolution, or roll back changes
+
+* Those numerous metadata and their possibilities are what make the differences between data lake and data lakehouse : 
+    ** record level updates
+    ** ACID compliance
+    ** transaction support
+    ** data concurrency support
+
+image:20230512_starburst-academy_data-lakehouse-modern-data-formats_02.jpg[]
 
 
 
