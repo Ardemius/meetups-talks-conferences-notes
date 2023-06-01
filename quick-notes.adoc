@@ -287,9 +287,31 @@ This analogy helps us understand several key properties of DuckDB:
 
 == 2023/05/11 - Tech Rocks - Modern Data Stack
 
-A REVOIR !
+Animé par : Marie GRAPPE (Choose - Head of Data), Julieu GOULLEY (Fivetran - Senior Solution Architet), Thomas LAPORTE (devoteam - CTO France)
+
+* MDS : Modern Data Stack
 
 image:20230511_tech-rocks_modern-data-stack_01.jpg[]
+
+* Le MDS est une solution Cloud, avec peu de configuration technique et qui ouvre donc la barrière d'entrée pour plus d'utilisateurs.
+* Les caractéristiques clés de la MDS : 
+    ** Cloud-First
+    ** ETL remplacé par une approche ELT
+    ** SQL-based
+    ** Entièrement managé
+        *** l'automatisation de l'accès aux données est un des piliers de la MDS. Vous n'avez plus à créer et manager des pipelines vous-mêmes.
+
+* Thomas LAPORTE : Plutôt qu'une "stack", la MDS est davantage une collection d'outils
+
+* Julien Goulley : "DBT qui est un outil de transformation qui permet d'écrire des modèles en SQL [...]"
+
+Et maintenant un autre article, 2022/07, *critique de la MDS* : https://anaselk.com/p/modern-data-stack-dead/
+
+    * Il en ressort ce schéma, où une approche plus raisonnable que la MDS est proposée (appelée "Postmodern Data Stack" par l'auteur, Lauren Balik) : +
+    image:202207_modern-data-stack-vs-more-reasonable-stack.jpg[]
+
+Pour un autre *recensement des technologies derrière la Modern Data Stack*, voir ce site : https://notion.castordoc.com/modern-data-stack-guide +
+image:20230511_tech-rocks_modern-data-stack_02.jpg[]
 
 == 2023/05/12 - Starburst Academy : The difference between data lakes and data lakehouses
 

@@ -1,0 +1,220 @@
+= 2023/06/01 - JavaDay au Paris JUG: Le futur de Java en 2023
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* JavaDay organisé par le Paris JUG, au centre des congrès du Jardin d'Acclimatation, le 2023/06/01
+* Description de l'évènement : https://javaday.parisjug.org/
+* Programme : https://javaday.parisjug.org/schedule.html
+
+== 09h15 : Accueil des participants
+
+== 10h00 : Jean-Michel Doudoux : En route vers Java 21
+
+=== Abstract
+
+Passionné par le développement de logiciels et par la veille technologique, je possède une longue expérience, en SSII/ESN et personnelle, dans l’écriture d’applications avec différents langages. Je suis actuellement Senior tech lead pour la société Sciam. Utilisant Java depuis sa version 1.0, j’aime partager ma passion pour cette plateforme et son écosystème notamment en me consacrant, depuis presque vingt années, à la rédaction de deux tutoriels, intitulés “Développons en Java”, diffusés sous licence GNU FDL. Ce travail m’a permis d’être nommé Java Champion. Je suis également un des cofondateurs du Lorraine JUG.
+
+En attendant la publication de Java 21, la prochaine version diffusée en septembre de cette année, et pour en donner quelques aperçus, cette présentation brosse une revue détaillée des nouveautés qui devraient être proposées dans cette future version LTS de Java, issues des projets Amber, Loom et Panama d’OpenJDK.
+
+=== Notes
+
+* 2023 : Java 21 version LTS, version cible pour les entreprises
+    ** rappel : réduction de 3 à 2 ans entre 2 LTS après JAva 17
+
+* Java 21 : 13 nouvelles JEP déjà ciblées +
+image:20230601_Javaday_01.jpg[]
+
+* Projet *Amber* :
+
+    ** rôle : développer la syntaxe
+
+    ** Les *Record Patterns* deviennent standard
+        *** On rajoute un pattern qui va permettre de faire de la déconstruction de Record
+
+    ** Le *Pattern Matching* devient également standard dans une instruction switch
+        *** avec support de la valeur null contrairement à la levée historique d'une NPE
+
+    ** JEP 430 : *String Templates* en preview
+        *** but : enrichir le langage Java avec es string templates
+            **** qui complètent les chaînes littérales et les blocs de texte en combinant : 
+                ***** un texte littéral avec des expressions intégrées
+                ***** et un processeur de templates
+            **** pour produire des chaînes de caractères construites dynamiquement
+
+.Template expressions
+image:20230601_Javaday_02.jpg[]
+
+    ** JEP 443 : *Unnamed patterns* and variables
+        *** enrichit le langage d'une syntaxe pour les patterns inutilisés dans les record pattern imbriqués et les variables inutilisées qui doivent être déclarées
+        *** utilise le 51 opérateur de Java introduit avec Java 9 : "_"
+
+image:20230601_Javaday_03.jpg[]
+
+    ** *Unnamed classes* and *Instance Main* methods
+        *** Exemple avec la réécriture simplifiée de notre "bon vieux Hello World" +
+        image:20230601_Javaday_04.jpg[]
+
+* Projet *Loom* : 
+    ** but : explorer, incuber et fournier des fonctionnalités (JVM et API) pour prendre en charge une concurrence légère, facile à utiliser et à haut débit
+    ** ainsi que de nouveau modèles de programmation concurrente.
+
+    ** *Virtual Threads* : threads légers, gérés par la JVM, doivent devenir standards avec Java 21
+    ** *Structured Concurrency* : nouveau modèle de programmation pour simplifier la programmation multithread
+        *** sera en preview en Java 21 (JEP 453 proposed to target)
+    ** *Scoped Values*
+        *** pour partager des objets dans le code exécuté par un thread, on utilisait jusqu'à maintenant une variable de type ThreadLocal
+            **** cela évite de devoir passer des paramètres au thread
+
+image:20230601_Javaday_05.jpg[]
+
+* Projet *Panama* :
+
+    ** *Foreign function & memory API* : API de bas niveau pour de manière, sûre et efficace : 
+        *** accéder à des données en mémoire hors du tas (off heap memory)
+        *** invoquer des fonctions natives
+
+image:20230601_Javaday_06.jpg[]
+
+    ** *Vector API* : exprimer des calculs vectoriels
+        *** qui, au moment de l'exécution, sont systématiquement compilés
+        *** ave les meilleures instructions vectorielles possibles sur l'architectures xxx (SIMD ?)
+
+* Evolutions des API de Java Core
+
+    ** Sequenced collections : +
+    image:20230601_Javaday_07.jpg[]
+    image:20230601_Javaday_08.jpg[]
+    
+* Evolutions dans la JVM HotSpot : 
+
+    ** generational ZGC : donc avec des objets à durée de vie longue et à durée de vie courte
+    ** generational Shenandoah
+
+.Conclusion
+image:20230601_Javaday_09.jpg[]
+
+* L'écosystème Java en 2023 : beaucoup de nouveautés présentées dans les prochains talks de la journée
+
+    **Jakarta EE 10 et Microprofile 6.0
+    ** Spring Boot 3 et xxx
+
+*Q&A* : 
+
+    * Pour une migration de Java 8 à Java 21, les plus durs n'est PAS le passage aux dernières LTS, MAIS le passage à *Java 11*
+
+== 10h50 : Antoine Sabot-Durant : Les nouveautés de Jakarta EE 10 et Microprofile 6.0
+
+=== Abstract 
+
+Antoine est un Java Champion et l’ancien spec lead de Jakarta EE CDI. Il a fait partie de l’équipe de lancement de Quarkus chez Red Hat et à travaillé sur des specs MicroProfile majeures comme Fault Tolerance ou Health Check. Aujourd’hui, Antoine est architecte et expert technique chez SCIAM. Il pilote des projets complexes en utilisant en grande partie les technologies qu’il a contribué à mette au point.
+
+La dernière mouture de Jakarta EE est arrivée en fin d’année dernière. Sortie enfin de la migration Java EE vers Jakarta EE, cette nouvelle édition apporte de réelles nouveautés utilisables telles quelles ou dans votre stack préférée comme MicroProfile, Quarkus ou même Spring (!). Au même moment Microprofile 6.0 est également arrivé dans un repository près de chez vous. Cette nouvelle édition s’appuie directement sur Jakarta EE 10 pour simplifier son socle et proposer de nouvelles fonctionnalités. Dans cette présentation nous passerons en revues les principales nouveautés de ces 2 stacks majeures. Puis non évoquerons les évolutions présentent et à venir sur les frameworks ou produits qui les implémentent.
+
+=== Notes
+
+* *Jakarta EE* is a set of vendor's neutral, open specifications that are used for developing modern, cloud compatible applications from the ground.
+    ** specifications documentation
+    ** specifications code & API
+    ** specifications TCK
+
+.J2EE, Java EE, Jakarta EE Timeline
+image:20230601_Javaday_10.jpg[]
+
+* Initialement il y a avait 10 specs, maintenant il y en a 30
+
+* Spring : "c'est proposé un truc qui fonctionne mieux et soit plus facile d'usage que JEE"
+    ** D'où Java EE 5 sorti en réaction en 2006
+        *** "on va faire EJB 3.0 pour éliminer les problèmes des précédents EJB". +
+        Mais la comm c'est capital, et corriger les erreurs passées MAIS garder le même nom "EJB", ce n'est pas la meilleure des idées
+
+* Java EE 8 à Jakarta EE 8 : 2 ans de "déménagement" pour passer de Oracle à la fondation Eclipse
+
+* Jakarta EE 10 en 2022 : facilite l'interaction avec MicroProfile
+
+.Jakarta EE 10 in a nutshell
+image:20230601_Javaday_11.jpg[]
+
+    * grosse nouveauté : apparition de CDI Lite (qui reste inclus dans CDI "classique")
+
+Comme ces 30 specs représentent au final quelque chose d'assez lourd, des profiles ont été créés : 
+
+.Web Profile
+image:20230601_Javaday_12.jpg[]
+
+.Core Profile : pour microservices et applications Cloud native
+image:20230601_Javaday_13.jpg[]
+
+    * Le Core Profile est le résultat d'une collaboration avec l'équipe MicroProfile
+    * Accent mis sur l'intégration / l'utilisation (??? A VERIFIER) de frameworks Quarkus, Elidon, Micronaute afin de produire du code léger et très performant.
+
+
+
+== 11h40 : Brian Clozel : Spring Boot 3, GraalVM et images natives
+
+=== Abstract
+
+Brian est membre de l’équipe Spring chez VMware. Il travaille sur le Spring Framework, sur Spring GraphQL et sur Spring Boot.
+
+Comment compiler une application Spring en code natif et profiter d’un temps de démarrage rapide et d’une consommation mémoire réduite ? Pendant cette session, nous vous présenterons le moteur AOT qui permet aux applications Spring d’adopter la technologie GraalVM Native images. Comment procéder, quelles sont les limitations, comment participer à la communauté GraalVM ? Nous évoquerons tous ces points en utilisant une application exemple.
+
+== 14h00 : Lilian Benoit : CRaC vs GraalVM, pour un démarrage rapide
+
+=== Abstract
+
+Lilian est Tech Leader dans une ESN Bordelaise. il est passionné par l’informatique depuis bien plus longtemps. Il aime travailler sur la plateforme Java (Java SE et Jakarta EE), d’autant plus sur sa distribution de prédilection : Debian. Il adore apprendre et partager ses connaissances. C’est comme cela qui s’est rapproché du BordeauxJUG dont il en est JUG Leader depuis 2016. L’objectif du Bordeaux JUG est de promouvoir Java à travers des soirées/conférences mensuelles autour de la plateforme Java.
+
+Dans les cas d’usages modernes (Kubernetes, Serverless), tout le monde sait que le point noir de la JVM est son démarrage. Depuis quelques années, GraalVM s’impose comme rémède permettant ainsi un démarrage rapide via une compilation native. Cela apporte néanmoins certaines contraintes. Une nouvelle solution apparait dans le paysage de la JVM. C’est CRaC pour Coordinated Restore at Checkpoint. Regardons ensemble comment cela fonctionne et les avantages.
+
+== 14h50 : Hervé Boutémy : Software Supply Chain, SBOM et signature avec Maven
+
+=== Abstract
+
+Hervé est Committer Maven depuis 2007, Maven PMC Chair de 2014 à 2016. Il est membre de la Fondation Apache depuis 2011, Apache Community Development, actuel VP Apache Attic.
+
+Ghost, Dirty cow, Log4Shell, Heart Bleed ont tous fait frémir nos managers et occupé pas mal de nos nuits d’astreinte. Cela a eu suffisamment d’importance pour que les Etats Unis imposent la livraison d’un SBOM avec nos logiciels pour renforcer la maîtrise de la “Software Supply Chain”. Et les attaques sur cette Supply Chain relancent la nécessité de la signature, qui évidemment ne peut pas se faire à l’ancienne comme au siècle dernier. Comme souvent, il ne s’agit pas tant de technologie que d’habitude et d’hygiène que l’outillage doit faciliter. Parcourons ensemble ces questions et comment Maven peut vous faire entrer dans le cercle vertueux.
+
+== 16h00 : Rémi Forax : La programmation concurrente structurée : un scoop sur les scopes
+
+=== Abstract
+
+Loom en preview, c’est fini ; les threads virtuels débarquent en tant que fonctionnalité officielle de Java 21, la prochaine LTS. Les performances des API asynchrones sans utiliser de Mono, Flux et autres Multi. Comme d’habitude, dès qu’on a une grosse fonctionnalité en Java, tout le monde regarde de près le code. Là, on se rend compte qu’en fait, l’API des Executor n’est pas si bien que cela, surtout maintenant qu’on a des threads virtuels. Et si on imaginait une nouvelle API synchrone pour faire du calcul asynchrone en utilisant les principes de la programmation concurrente structurée. Dans ce talk, après une rapide explication de ce qu’est un thread virtuel, j’expliquerai quel est le principe d’une API concurrente structurée, l’API prévue en Java 21 et les améliorations prévues pour Java 22.
+
+== 16h50 : Panel de discussions avec les speakers
+
+
+
+
+
