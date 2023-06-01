@@ -178,9 +178,51 @@ image:20230601_Javaday_12.jpg[]
 image:20230601_Javaday_13.jpg[]
 
     * Le Core Profile est le résultat d'une collaboration avec l'équipe MicroProfile
-    * Accent mis sur l'intégration / l'utilisation (??? A VERIFIER) de frameworks Quarkus, Elidon, Micronaute afin de produire du code léger et très performant.
+    * Accent mis sur l'intégration / l'utilisation (??? A VERIFIER) de frameworks Quarkus, Helidon, Micronaute afin de produire du code léger et très performant.
 
+* CDI : équivalent de Spring mais dans JEE, Context Dependency Injection
 
+.What is CDI Lite ?
+image:20230601_Javaday_14.jpg[]
+
+    ** Main goal : réduire l'empreinte mémoire et CPU et la taille de l'exécutable de façon très significative tout en conservant un maximum de la "magie" de CDI
+    ** Pour rappel, Quarkus a été développé par RedHat, et CDI est une spécification RedHat...
+        *** De là à dire qu'on a changé la spec CDI pour l'adapter à Quarkus... (ben il y a un peu de cela, mais un peu seulement)
+        *** Il y a eu une réflexion pour s'assurer que CDI Lite n'allait pas fonctionner QUE avec Quarkus
+            **** Les équipes de Micronaute, puis plus tard d'Oracle pour Helidon, ont participé à la définition de CDI Lite
+
+.What is NOT in CDI Lite ?
+image:20230601_Javaday_15.jpg[]
+
+    * Pas de décorateur
+    * Tout ce qu'on fait dans CDI Lite, on sait le faire dans CDI "full". +
+    CDI Lite est vraiment un sous-ensemble de CDI full
+
+.Build time compatible extension
+image:20230601_Javaday_16.jpg[]
+
+.De nombreuses implémentations de Jakarta EE de disponible
+image:20230601_Javaday_17.jpg[]
+
+* ET, Spring utilise 22 spec Jakarta EE sur les 30... (C'est donc la pire implémentation disponible de Jakarta EE) +
+image:20230601_Javaday_18.jpg[]
+
+*Définition de Microprofile* : an open specifications stack to optimize Entreprise java fo a microservices architecture by collaborating on common areas of interest with the goal of standardization.
+
+.Microprofile Timeline
+image:20230601_Javaday_19.jpg[]
+
+    * 1 release majeure tous les ans
+    * 1 intermédiaire tous les 6 mois
+
+-> La *cible de Microprofile* est bien le *Cloud*.
+
+* Initialement Microprofile a été annoncé pour concurrencer Spring Boot.
+
+.Spec Microprofile 6.0
+image:20230601_Javaday_20.jpg[]
+
+Open Telemetry a remplacé Open Tracing dans Microprofile 6.0, ce dernier est passé en "outside umbrella / standalone"
 
 == 11h40 : Brian Clozel : Spring Boot 3, GraalVM et images natives
 
@@ -190,6 +232,43 @@ Brian est membre de l’équipe Spring chez VMware. Il travaille sur le Spring F
 
 Comment compiler une application Spring en code natif et profiter d’un temps de démarrage rapide et d’une consommation mémoire réduite ? Pendant cette session, nous vous présenterons le moteur AOT qui permet aux applications Spring d’adopter la technologie GraalVM Native images. Comment procéder, quelles sont les limitations, comment participer à la communauté GraalVM ? Nous évoquerons tous ces points en utilisant une application exemple.
 
+=== Notes
+
+.Pourquoi passer en natif ?
+image:20230601_Javaday_21.jpg[]
+
+.Les use cases pour des images native
+image:20230601_Javaday_22.jpg[]
+image:20230601_Javaday_23.jpg[]
+
+Dans Spring Boot 3 on va introduire une phase de compilation intermédiaire : +
+image:20230601_Javaday_24.jpg[]
+
+.Principe de "closed world"
+image:20230601_Javaday_25.jpg[]
+
+* Il faut éviter de manipuler du Bytecode au runtime, le cas ne s'y prête pas, on va souffrir pour pas grand chose
+
+.GraalVM native image
+image:20230601_Javaday_26.jpg[]
+
+Conseil : Essayer de déléguer au plus tard la création de l'image native, au plus proche de la PROD
+
+*  Observabilité : gros travail de fait côté SPring à ce niveau 
+    ** Plutôt que de passer par un agent externe pour le monitoring, passer par les fonctionnalités déjà mise à disposition par Spring
+
+* Nouvelle version GraalVM 23.0
+    ** convergence entre GraalVM et le JDK
+        *** Bientôt la version de GraalVM sera simplement la version du JDK
+
+* Dans l'équipe Spring, il y a un travail en cours sur *Checkpoint / Restore* (l'autre nom de CRaC)
+    ** POur redémarrer en quelques ms la JVM dans l'état exact où elle était précédemment.
+
+.GraalVM & CRaC tradeoffs
+image:20230601_Javaday_27.jpg[]
+
+Conclusion : *Spring : being part of the GraalVM community*
+
 == 14h00 : Lilian Benoit : CRaC vs GraalVM, pour un démarrage rapide
 
 === Abstract
@@ -197,6 +276,28 @@ Comment compiler une application Spring en code natif et profiter d’un temps d
 Lilian est Tech Leader dans une ESN Bordelaise. il est passionné par l’informatique depuis bien plus longtemps. Il aime travailler sur la plateforme Java (Java SE et Jakarta EE), d’autant plus sur sa distribution de prédilection : Debian. Il adore apprendre et partager ses connaissances. C’est comme cela qui s’est rapproché du BordeauxJUG dont il en est JUG Leader depuis 2016. L’objectif du Bordeaux JUG est de promouvoir Java à travers des soirées/conférences mensuelles autour de la plateforme Java.
 
 Dans les cas d’usages modernes (Kubernetes, Serverless), tout le monde sait que le point noir de la JVM est son démarrage. Depuis quelques années, GraalVM s’impose comme rémède permettant ainsi un démarrage rapide via une compilation native. Cela apporte néanmoins certaines contraintes. Une nouvelle solution apparait dans le paysage de la JVM. C’est CRaC pour Coordinated Restore at Checkpoint. Regardons ensemble comment cela fonctionne et les avantages.
+
+=== Notes
+
+Changement de paradigme : besoin d'un démarrage rapide des applications (microservices, applications Cloud native, etc.)
+
+* Fonctionnement de la JVM : 
+    ** Bytecode interprété
+    ** le code "préchauffe"
+    ** compilateur C1 et C2 du JIT
+
+* Usage de Java
+    ** chargement des classes et chargeur de classes
+    ** prise en compte des annotations (ex: Entity) : magique pour les développeurs, mais une charge de plus pour la JVM !
+    ** initialisation des blocs statiques
+        *** Les fameux blocs entre "\{ \]" que l'on rappelle de ne PAS faire (mauvaise pratique, ces blocs sont chargés au début de la classe)
+    ** initialisation du contexte applicatif (CDI ou Spring)
+
+* GraalVM : une solution proposée par Oracle Labs
+    ** compilateur Graal qui remplace le compilateur Java classique
+
+.Fonctionnement pour la partie native image
+image:20230601_Javaday_28.jpg[]
 
 == 14h50 : Hervé Boutémy : Software Supply Chain, SBOM et signature avec Maven
 
