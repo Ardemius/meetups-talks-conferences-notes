@@ -12,6 +12,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 :imagesdir: ./images
+:resourcesdir: ./resources
 :source-highlighter: highlightjs
 :highlightjs-languages: asciidoc
 // We must enable experimental attribute to display Keyboard, button, and menu macros
@@ -441,6 +442,19 @@ image:20230601_Javaday_45.jpg[]
 
 .Conclusion
 image:20230601_Javaday_46.jpg[]
+
+== L'invité spécial de la conférence !
+
+image:20230601_Javaday_extra_01.jpg[width=800]
+image:20230601_Javaday_extra_02.jpg[width=800]
+
+ifdef::env-github[]
+link:{imagesdir}/20230601_Javaday_extra_03.mp4[]
+endif::[]
+ifdef::env-browser[]
+video::20230601_Javaday_extra_03.mp4[width=640, height=480]
+endif::[]
+
 
 
 
