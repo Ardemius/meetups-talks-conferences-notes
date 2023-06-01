@@ -410,7 +410,39 @@ Maven Central : PGP + sigstore
 
 Loom en preview, c’est fini ; les threads virtuels débarquent en tant que fonctionnalité officielle de Java 21, la prochaine LTS. Les performances des API asynchrones sans utiliser de Mono, Flux et autres Multi. Comme d’habitude, dès qu’on a une grosse fonctionnalité en Java, tout le monde regarde de près le code. Là, on se rend compte qu’en fait, l’API des Executor n’est pas si bien que cela, surtout maintenant qu’on a des threads virtuels. Et si on imaginait une nouvelle API synchrone pour faire du calcul asynchrone en utilisant les principes de la programmation concurrente structurée. Dans ce talk, après une rapide explication de ce qu’est un thread virtuel, j’expliquerai quel est le principe d’une API concurrente structurée, l’API prévue en Java 21 et les améliorations prévues pour Java 22.
 
-== 16h50 : Panel de discussions avec les speakers
+=== Notes
+
+.Dans ce code, problème de latence
+image:20230601_Javaday_41.jpg[]
+
+    * problème de latence car on rend la main à l'OS, et qu'à partir de là, ben on l'attend
+
+.Avec un CompletableFuture maintenant
+image:20230601_Javaday_42.jpg[]
+
+    * avec un CompletableFuture, on rend plus la main à l'OS, plus de problème de latence.
+        ** Par contre, c'est moins bon en termes de throughput, mais cela, c'est moins important (les gens s'en moquent la plupart du temps)
+
+* OpenJDK Project Loom
+    ** *Virtual Threads* : je vais pouvoir créer des threads, qui ne sont PAS des threads de l'OS, donc je ne vais PAS attendre comme dans le 1er cas précédent.
+        *** Les Virtual Threads sont en final dans Java 21
+
+* 1 thread virtuel coûte ~1000 fois moins cher qu'une thread "classique"
+    ** donc plus besoin de les pooler
+    ** 1 thread virtuel est également 1000 fois plus rapide qu'un thread classique
+    ** MAIS est 1000 fois plus lent qu'un "+ 1"
+        *** -> donc un thread virtuel a malgré tout un coût
+
+image:20230601_Javaday_43.jpg[]
+
+.Big picture de l'API
+image:20230601_Javaday_44.jpg[]
+image:20230601_Javaday_45.jpg[]
+
+.Conclusion
+image:20230601_Javaday_46.jpg[]
+
+
 
 
 
