@@ -279,6 +279,11 @@ Dans les cas d’usages modernes (Kubernetes, Serverless), tout le monde sait qu
 
 === Notes
 
+Lilian : 
+
+    * Mastodon : @lilian_Benoit@jvm.social
+    * Twitter : @Lilian_Benoit
+
 Changement de paradigme : besoin d'un démarrage rapide des applications (microservices, applications Cloud native, etc.)
 
 * Fonctionnement de la JVM : 
@@ -296,8 +301,19 @@ Changement de paradigme : besoin d'un démarrage rapide des applications (micros
 * GraalVM : une solution proposée par Oracle Labs
     ** compilateur Graal qui remplace le compilateur Java classique
 
+* L'intérêt est de faire un checkpoint une fois que la JVM a bien "chauffé" et que le JIT a optimisé le code.
+    ** Par contre, il faudrait faire attention à ne pas faire de checkpoint au cours de certaines opérations de la JVM
+    ** Pour le restore, il faut vraiment que ce dernier soit fait sur une machine IDENTIQUE : classes au même endroit, modules du noyau, ET il faut que ce soit sur Unix (pas sur Windows ni sur MAC)
+        *** donc faire une image (Docker) sur distro Redhab et la rétablir sur Debian sera difficile (il faudra que tout le kernel et ce qui gravite autour soit identique)
+    ** TODO : il faudrait recreuser toutes ces explications... 😅
+
 .Fonctionnement pour la partie native image
 image:20230601_Javaday_28.jpg[]
+
+CRaC : Coodinated Restore and Chekkpoint
+
+.Synthèse : GraalVM native image vs CRaC JVM image
+image:20230601_Javaday_29.jpg[]
 
 == 14h50 : Hervé Boutémy : Software Supply Chain, SBOM et signature avec Maven
 
@@ -306,6 +322,87 @@ image:20230601_Javaday_28.jpg[]
 Hervé est Committer Maven depuis 2007, Maven PMC Chair de 2014 à 2016. Il est membre de la Fondation Apache depuis 2011, Apache Community Development, actuel VP Apache Attic.
 
 Ghost, Dirty cow, Log4Shell, Heart Bleed ont tous fait frémir nos managers et occupé pas mal de nos nuits d’astreinte. Cela a eu suffisamment d’importance pour que les Etats Unis imposent la livraison d’un SBOM avec nos logiciels pour renforcer la maîtrise de la “Software Supply Chain”. Et les attaques sur cette Supply Chain relancent la nécessité de la signature, qui évidemment ne peut pas se faire à l’ancienne comme au siècle dernier. Comme souvent, il ne s’agit pas tant de technologie que d’habitude et d’hygiène que l’outillage doit faciliter. Parcourons ensemble ces questions et comment Maven peut vous faire entrer dans le cercle vertueux.
+
+=== Notes
+
+.Explication au sujet de la Software Supply Chain
+image:20230601_Javaday_30.jpg[]
+
+* La majorité des problèmes de vulnérabilités sont introduits au travers de *dépendances transitives*.
+
+*PARTIE SBOM :*
+
+* SBOM : *Software Bill of Materials*
+    ** si on devait vouloir traduire cette expression, ce serait avec un concept "d'*inventaire*"
+        *** SBOMs are hierarchical lists of content
+    ** Le SBoM est la base de la maîtrise de la Supply Chain : toute personne qui développe un logiciel devrait être capable de fournir son SBoM
+
+.BoMs in traditional Supply Chains
+image:20230601_Javaday_31.jpg[]
+
+Les 2 plus gros standards de SBOMs : *CycloneDX* (OWASP) et *SPDX* (Fondation Linux)
+
+.CycloneDX (création en 2019)
+image:20230601_Javaday_32.jpg[]
+
+.SBOM n'est "PAS" Maven
+WARNING: SBOM != Maven BOM POM 
+
+.BOM POM
+image:20230601_Javaday_33.jpg[]
+
+* le BOM POM représente ce que l'on POURRAIT utiliser et le SBOM est ce que utilise réellement
+    ** Le BOM POM est une notion créée avec le SBOM, mais en termes d'adoption (merci le gouvernement américain...), c'est bien le SBOM qui a gagné.
+
+.Sonatype BOM Doctor
+image:20230601_Javaday_34.jpg[]
+
+*PARTIE SIGNATURE :*
+
+* PGP vs Sigstore
+    ** PGP (Pretty Good Privacy) : la signature "à l'ancienne"
+
+* *Sigstore* : sa promesse est "d'oublier les clés à la PGP"
+    ** l'objectif est d'oublier toute la problématique de gestion des clés
+    ** Sigstore : easy "keyless" signature
+    ** son 1er marché : le mone Kubernetes
+
+.Sigstore
+image:20230601_Javaday_35.jpg[]
+
+-> Il va falloir à ce que tous les écosystèmes intègrent Sigstore pour le déploiement d'artifacts (en plus ou en remplacement des clés PGP)
+
+.Keyless signing workflow
+image:20230601_Javaday_36.jpg[]
+
+    * Identité fournit par OpenID Connect
+    * Fulcio va fournir un certificat valable 10 min
+        ** "c'est bien moi qui est signé durant les 10 min où le certificat était valide"
+
+Demo sur programme d'illustration complet créé par Hervé ("sigstore-poc-0.1.0" ???)
+
+image:20230601_Javaday_37.jpg[]
+image:20230601_Javaday_38.jpg[]
+
+C'est l'infrastructure classique de Sigstore que Hervé a utilisé : 
+
+image:20230601_Javaday_39.jpg[]
+
+* Le service Sigstore est actuellement géré par Google et une université américaine.
+    ** il est hébergé sur du GCP
+
+* Si on veut "faire sa propre infra Sigstore", attention, ce n'est pas si évident que cela...
+    ** Par défaut, le mieux est d'utiliser l'infra Sigstore publique
+
+.Architecture applicative de Sigstore
+image:20230601_Javaday_40.jpg[]
+
+Sigstore et Maven : 
+
+    * sigstore-java-library
+    * sigstore-maven-plugin
+
+Maven Central : PGP + sigstore
 
 == 16h00 : Rémi Forax : La programmation concurrente structurée : un scoop sur les scopes
 
