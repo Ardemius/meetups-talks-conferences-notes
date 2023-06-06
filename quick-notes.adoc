@@ -91,43 +91,6 @@ Thomas PIERRAIN est VP of engineering chez Agicap, et est un ancien archi de la 
 +
 Mise en place de l'architecture hexagonale pour isoler le métier, et forcer le passage par les ports et adapters
 
-== 2022/10/21 - Demo de Couchbase Capella
-
-J'ai suivi la démo de Couchbase Capella via leur offre d'essai (trial de 30 jours) de la solution.
-
-Vidéo explicative : https://www.youtube.com/watch?v=46715VbaHvk
-
-.Comparaison des concepts entre une BDDR et Couchbase
-[cols="1,1", options="header"] 
-|===
-|Relationel model 			|Couchbase
-|Server	                    |Cluster
-|Database	                |Bucket
-|Schema		                |Scope
-|Table		                |Collection
-|Row		                |Document (JSON or BLOB)
-|===
-
-.Exemple
-image:20221021_couchbase-capella-demo_01.jpg[]
-
-Why the creation of the index is not done automatically ?
-
-    * Because *manipulating the document using only the ID* is *faster* because using internally the *key / value engine*, which *does NOT require any indexes*.
-        ** This works pretty well when you can get the ID of the document
-
-[source,java]
-----
-// guessing the UserHistory ID using the user's id ('123-hist')
-UserHistory hist = userHistoryCollection.get(user.getId() + "-hist")
-----
-
-== 2022/05/12 - Le Comptoir OCTO x Dataiku x Snowflake - Comment créer plus de valeur et développer la collaboration a partir de données enrichies ?
-
-https://fr.slideshare.net/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies/OCTOTechnology/le-comptoir-octo-x-dataiku-x-snowflake-comment-crer-plus-de-valeur-et-developper-la-collaboration-a-partir-de-donnes-enrichies
-
-* Présentation d'une architecture de solution basée sur Snowflake et Dataïku, avec le soutien d'OCTO Technology
-
 == 2023/01/09 - Rapport tendances 2023 par Didier Girard
 
 * https://www.linkedin.com/pulse/rapport-tendances-2023-didier-girard
@@ -145,7 +108,7 @@ Le produit vise un objectif, et chaque itération s'en rapprochera.
 De son côté, un *projet* est un effort temporaire qui a pour but de répondre à un besoin unique : il s'agit de créer un livrable spécifique, pour une date précise et un budget fixé à l'avance. Ce qui ne laisse pas de place à l'imprévu, et va donc à l'encontre des principes agiles ; cette façon de faire est une source évidente de frustration lorsque cet imprévu arrive (ce qu'il fait immanquablement).
 --
 
-**MVP vs MLP* : Minimum Valuable Product vs Minimum Lovable Product
+* *MVP vs MLP* : Minimum Valuable Product vs Minimum Lovable Product
 
     ** Un MVP est une version d'un produit qui possède l'ensemble minimal de fonctionnalités nécessaires pour être utilisable par les clients.
     ** Un MLP, en revanche, est une version d'un produit qui possède l'ensemble minimum de fonctionnalités nécessaires pour être aimée des clients.
@@ -168,11 +131,6 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
     Cette technologie peut aussi être utilisée dans les applications de cloud computing et d'Internet des objets (IoT) : *WebAssembly fournit un environnement de sandboxing sécurisé dans lequel le code peut s'exécuter sans avoir d'impact sur les autres programmes*.
         *** Donc une notion proche de celle des conteneurs.
 
-* *Cloud, la plateforme de choix*
-    ** importance de l'Infra as Code (IaC), qui est au coeur des architectures cloud-natives
-        *** Importance des outils de type *Terraform* ou *Pulumi*
-        *** Pulumi : Ce framework de l'écosystème Terraform, développé par HashiCorp, permet de décrire l'infrastructure désirée en utilisant un langage de programmation tel que TypeScript, Python ou Go plutôt que d'utiliser le DSL spécifique à Terraform (HCL).
-
 * Repenser le *réseau étendu dans une perspective Cloud*, un concept auquel Gartner a donné le nom de *Secure Access Service Edge*, ou *SASE* (prononcer sassy).
     ** Dans une architecture SASE, les services Cloud gèrent l’authentification et plus largement toute la sécurité du réseau, et une *couche d’abstraction logicielle permet de gérer l’infrastructure réseau* : le *SD-WAN*, *Software-Defined Wide Area Network*. Les services de SD-WAN permettent d’agréger plusieurs types d’infrastructures d’un ou plusieurs fournisseurs (MPLS, fibre, SDSL, 4G…) et de gérer ainsi des réseaux complexes de manière centralisée, industrialisée et simple.
 
@@ -187,185 +145,49 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 
 * *REST vs GraphQL*
 
-TO BE COMPLETED
+    ** REST : 
+        *** différents points d’accès (endpoints) selon les données que le producteur d’API va mettre à disposition
+        *** Erreurs et validation des données : Dans une API REST, le serveur renvoie généralement des codes d'erreur HTTP pour indiquer les échecs, comme 404 pour "non trouvé" ou 500 pour "erreur de serveur".
+    ** GraphQL : 
+        *** un seul point d’accès permet d’accéder à l’ensemble de la donnée, et c’est le consommateur qui choisira celle qu’il souhaite récupérer.
+        *** Erreurs et validation des données : Dans une API GraphQL, le serveur peut renvoyer des messages d'erreur détaillés avec les données, ce qui facilite la gestion et le débogage des problèmes par le client.
+    ** Conclusion : *GraphQL* peut être un bon choix pour construire des API qui doivent être *flexibles* et *personnalisables*, tandis que *REST* peut être un bon choix pour les API qui suivent un *design plus standard et établi*.
 
-== 2023/03/30 : Les 3 grands facteurs clés de succès d’une entreprise data driven
+* *Webhooks*
 
-* https://www.wenvision.com/les-facteurs-cles-de-succes-dune-entreprise-data-driven/
+    ** Les *webhooks* sont fondamentaux dans EDA (Event Driven Architecture) car ils offrent un moyen pour différentes applications de communiquer entre elles en temps réel.
 
-* L'organisation data par domaine permet de désengorger la gestion des données d'une équipe centralisée et valoriser la connaissance. Elle déplace la responsabilité auprès des domaines ce qui offre en plus d'une expertise technique une expertise métier. La création d'équipes pluridisciplinaires doit favoriser cette innovation. On parle souvent de *Data Mesh*, pour évoquer cette décentralisation des données.
+* *Serverless, FaaS, cloud function et lambda* : très utile dans les architectures EDA
 
-== 2023/04/26 : ma réaction à l'article de Didier Girard "L'IA générative sera au data catalogue ce que Google a été à Yahoo"
+* *Build*
+    ** Vite.js, esbuild et webpack sont tous des outils de build JavaScript populaires.
+    ** *Vite.js* : approche basée sur les *roll-up* pour n*e reconstruire que les parties de l'application qui ont été modifiées*, ce qui le rend plus rapide que d'autres outils build.
 
-L'article de Didier est disponible sur le blog de WEnvision : https://www.wenvision.com/lia-generative-sera-au-data-catalogue-ce-que-google-a-ete-a-yahoo/
+* *Cloud, la plateforme de choix*
+    ** importance de l'Infra as Code (IaC), qui est au coeur des architectures cloud-natives
+        *** Importance des outils de type *Terraform* ou *Pulumi*
+        *** Pulumi : Ce framework de l'écosystème Terraform, développé par HashiCorp, permet de décrire l'infrastructure désirée en utilisant un langage de programmation tel que TypeScript, Python ou Go plutôt que d'utiliser le DSL spécifique à Terraform (HCL).
 
-Un article très intéressant de Didier, dont je partage pleinement les conclusions, avec beaucoup de curiosité sur l'évolution de ce domaine à (très) court terme 😉 
+* *FinOps*
+    ** Avec le Cloud, il devient possible de ventiler le coût de chaque service, à la seconde près, en fonction des produits business
+    ** MAIS cela ne peut être fait qu'après la *labellisation des ressources Cloud*
+        *** Ce plan d’étiquetage des ressources est la pierre angulaire de la démarche FinOps
 
-A l'heure actuelle, la "vraie" "big" data a lieu quand les metadata elles-mêmes doivent être traitées comme de la "big data". +
-Depuis quelques temps, nous sommes passés d'une gestion "passive" des metadata (les plateformes de metadata / data catalog étaient dans l'attente d'une action humaine pour la saisie de metadata et / ou leur catégorisation) à des "active metadata platforms" comme les appelle le Gartner. +
-Ces dernières collectent en continu toutes les metadata qu'elles peuvent trouver sur le SI, d'où une explosion de la volumétrie associée.
+* *Transformation des CCoE (Cloud Center of Excellence) en CC4E (Cloud Center FOR Excellence)*
+    ** Pour diffuser plus largement le savoir et le savoir-faire cloud au sein des entreprises, transformation des CCoE en CC4E (dans cette optique d'acculturation)
+    ** Les débats sur le cloud souverain et le cloud de confiance ont mis en évidence des besoins, et finalement donné naissance à une *nouvelle forme de cloud*, où les hyperscalers deviennent fournisseurs d'infrastructures de cloud sans en assurer le run (par exemple S3NS, la co-entreprise managée par Thalès, qui s’appuie sur les technologies de Google Cloud).
 
-Résultat : il devient très difficile (voire impossible) de cataloguer cette dernière en amont de la création / ingestion des metadata. +
-Il nous faut donc un moyen de le faire soit au moment de la création de la metadonnée, soit plus tard, à la demande, au moment ou on a besoin de se servir des metadata. +
-Dans le 1er cas, le problème est de trouver sur quelle base il est possible d'identifier / catégoriser cette metadata ? +
-Fasse à des volumes de metadata très conséquents et très variables, une catégorisation "statique" prédéfinie en amont n'est plus possible ou adéquate, il faut donc se baser sur un ensemble de règles dont le but est d'aboutir par calcul à une catégorisation. +
-Souci : ce "calcul de catégorisation" est seulement valable à un instant "t", car forcément dépendant du volume de meta-donnée. +
-Avec l'avènement des "active metadata", la catégorisation déterminée à un instant "t" ne sera probablement plus correct à un instant "t + x" synonyme d'un pourcentage (conséquent) de metadata supplémentaires. +
-Dès lors, c'est la 2e solution qui paraît la plus pertinente : une catégorisation à la demande.
+* *La sécurité et le Cloud*
 
-Et là je rejoins complètement l'avis de Didier, le catalogage "statique" n'est plus possible et doit être remplacé par un moyen efficace d'aboutir à cette catégorisation à la demande : un algorithme rappelant le fonctionnement d'un moteur de recherche. +
-C'est à ce moment qu'on voit l'IA générative entrer en scène.
+    ** Le *poste du développeur* reste une *faiblesse dans le SI* : un développeur est souvent administrateur de sa machine et est amené à y installer beaucoup de logiciels. La virtualisation des postes de travail des développeurs, sujet sur lequel planchent par exemple Google Cloud et AWS, devrait apporter un niveau de sécurité supplémentaire.
 
-Les grandes étapes d'évolution des data catalog ont été : 
+    ** émergence de la *Security as Code* : 
+        *** politique de sécurité as code : +
+        Par exemple, l’interdiction globale de rendre publique n'importe quel bucket appartenant à l'organisation (via Google Organization Policies, AWS Security Control Policies ou encore Azure Security Policies).
+        *** règles de configuration des ressources d’infrastructure cloud as code : inspectent les scripts IaC : +
+        Ce sont les règles de bonne configuration de chaque produit cloud qui sont évaluées avant le déploiement et le stoppent si une non conformité a été détectée (exemples d’outils : Checkov, KICS, Spectral, tfsec…).
 
-    * Data Catalog 1.0: la gestion des metadata (identification, catégorisation, etc.) est directement l'affaire des équipes techniques
-    * Data Catalog 2.0: on passe à une gestion pilotée par des équipes dédiées (nos data stewards) en lien étroit avec le métier
-    * Data Catalog 3.0: Devant le nombre toujours croissant de metadata, on donne les moyens à une communauté étendue d'utilisateurs d'analyser les metadata.
-
-Aujourd'hui, nous arrivons à l'aube du Data Catalog "4.0" : les metadata deviennent tout simplement trop nombreuses pour un traitement "humain" ou créé par des humains (les règles changeraient trop vites), nous avons besoin d'une aide, d'une "pré-catégorisation" effectuée par la machine, c'est là que l'IA générative intervient : nous créer / suggérer les catégories les plus pertinentes (entre autres), mais à la demande. +
-Mais est-ce encore un data "catalog" ? Comme le dit Didier, on se trouve davantage face à un "metadata search engine".
-
-Dès lors, la question que je me pose est : comment valider cette catégorisation effectuée à la demande, sachant qu'elle est susceptible de changer très rapidement, avec la prochaine ingestion d'un +x0% de metadata d'un coup (ou plus encore) qui viendra modifier toutes les catégories précédemment calculées par l'algo ? +
-Une interventation de validation serait impossible ou très compliquée car très (trop) limitée dans le temps : valider une catégorisation stable sur 1 mois soit, 1 semaine pourquoi pas, mais si cela doit passer à plusieurs fois par jour ? +
-Dès lors, accepterait-on de croire la catégorisation réalisée par la machine "sur parole", sans contrôle humain ? +
-Contrairement à une "recherche Google classique", qui est avant tout "indicative", les metadata sont à la base de process opérationnels et métier : une information "indicative" n'est pas suffisante, il faut une information "validée". +
-Comment valider cette information, son "sens métier" ? +
-Pourrait-on imaginer des "Tests Unitaires de catégorisation de données" ? Mais, ne connaissant ni le résultat à l'avance (la catégorie !) ni la mécanique de résolution de l'algo, l'écriture de ces derniers me semble difficile.
-
-J'ai hâte de voir comment va évoluer ce milieu dans les mois à venir, et à quoi vont ressembler les prochains data catalog.
-
-== 2023/02/07 - Jordan TIGANI (MotherDuck, l'éditeur de DuckDB) : Big Data is dead
-
-URL de l'article : https://motherduck.com/blog/big-data-is-dead/
-
-* Jordan utilise / cite le comparateur bien connu "DB Engines" pour comparer les perfs de certaines BDDs.
-
-* Customer data sizes followed a power-law distribution. The largest customer had double the storage of the next largest customer, the next largest customer had half of that, etc. So while there were customers with hundreds of petabytes of data, the sizes trailed off very quickly. There were *many thousands of customers* who paid *less than $10 a month for storage*, which is *half a terabyte*. Among customers who were using the service heavily, the *median data storage size* was much less than *100 GB*.
-
-* He (GCP investissor ?) found that the *largest B2B companies* in his portfolio had around *a terabyte of data*, while the *largest B2C companies* had around *10 Terabytes of data*. +
--> Most, however, had *far less data*.
-
-* *Modern cloud data platforms all separate storage and compute*, which means that customers are not tied to a single form factor. This, more than scale out, is likely the single *most important change in data architectures* in the last 20 years.
-    ** *Instead of “shared nothing” architectures* which are hard to manage in real world conditions, *shared disk architectures* let you grow your storage and your compute independently. +
-    The rise of scalable and reasonably fast object storage like S3 and GCS meant that you could relax a lot of the constraints on how you built a database.
-
-* *The amount of data processed for analytics workloads is almost certainly smaller than you think*. Dashboards, for example, very often are built from aggregated data. People look at the last hour, or the last day, or the last week's worth of data. Smaller tables tend to be queried more frequently, giant tables more selectively.
-
-* A couple of years ago I did an analysis of BigQuery queries, looking at customers spending more than $1000 / year. *90% of queries processed less than 100 MB of data*.
-
-* A huge percentage of the data that gets processed is less than 24 hours old. By the time data gets to be a week old, it is probably 20 times less likely to be queried than from the most recent day.
-
-* One definition of *“Big Data” is “whatever doesn’t fit on a single machine*.. By that definition, the number of workloads that qualify has been decreasing every year.
-
-* An alternate definition of *Big Data is “when the cost of keeping data around is less than the cost of figuring out what to throw away.”* 
-    ** I like this definition because it encapsulates why people end up with Big Data. It isn’t because they need it; they just haven’t bothered to delete it. +
-    If you think about many data lakes that organizations collect, they fit this bill entirely: giant, messy swamps where no one really knows what they hold or whether it is safe to clean them up.
-
-* Some questions that you can ask to *figure out if you’re a “Big Data One-Percenter”*:
-    ** Are you really generating a huge amount of data?
-    ** If so, do you really need to use a huge amount of data at once?
-    ** If so, is the data really too big to fit on one machine?
-    ** If so, are you sure you’re not just a data hoarder?
-    ** If so, are you sure you wouldn’t be better off summarizing?
-
-== 2023/01/24 - Ryan BOYD (MotherDuck, l'éditeur de DuckDB) : How to analyse SQLite databases in DuckDB
-
-* https://motherduck.com/blog/analyze-sqlite-databases-duckdb/
-
-* *DuckDB* is often referred to as the *'SQLite for analytics.'* +
-This analogy helps us understand several key properties of DuckDB: 
-    ** it's for analytics (OLAP), 
-    ** it's embeddable, 
-    ** it's lightweight, 
-    ** it's self-contained 
-    ** and it's widely deployed. +
--> Okay, the latter may not be a given yet for DuckDB, but SQLite says it's likely the most widely used and deployed database engine and, with the rising popularity of analytics, it's quite possible DuckDB will eventually be competitive.
-
-* There are some noticeable differences between SQLite and DuckDB in how data is stored. 
-    ** *SQLite*, as a data store *focused on transactions*, *stores data row-by-row* while *DuckDB*, as a *database engine for analytics*, stores *data by columns*. 
-    ** Additionally, SQLite doesn't strictly enforce types in the data -- this is known as being weakly typed (or flexibly typed).
-
-== 2023/05/11 - Tech Rocks - Modern Data Stack
-
-Animé par : Marie GRAPPE (Choose - Head of Data), Julieu GOULLEY (Fivetran - Senior Solution Architet), Thomas LAPORTE (devoteam - CTO France)
-
-* MDS : Modern Data Stack
-
-image:20230511_tech-rocks_modern-data-stack_01.jpg[]
-
-* Le MDS est une solution Cloud, avec peu de configuration technique et qui ouvre donc la barrière d'entrée pour plus d'utilisateurs.
-* Les caractéristiques clés de la MDS : 
-    ** Cloud-First
-    ** ETL remplacé par une approche ELT
-    ** SQL-based
-    ** Entièrement managé
-        *** l'automatisation de l'accès aux données est un des piliers de la MDS. Vous n'avez plus à créer et manager des pipelines vous-mêmes.
-
-* Thomas LAPORTE : Plutôt qu'une "stack", la MDS est davantage une collection d'outils
-
-* Julien Goulley : "DBT qui est un outil de transformation qui permet d'écrire des modèles en SQL [...]"
-
-Et maintenant un autre article, 2022/07, *critique de la MDS* : https://anaselk.com/p/modern-data-stack-dead/
-
-    * Il en ressort ce schéma, où une approche plus raisonnable que la MDS est proposée (appelée "Postmodern Data Stack" par l'auteur, Lauren Balik) : +
-    image:202207_modern-data-stack-vs-more-reasonable-stack.jpg[]
-
-Pour un autre *recensement des technologies derrière la Modern Data Stack*, voir ce site : https://notion.castordoc.com/modern-data-stack-guide +
-image:20230511_tech-rocks_modern-data-stack_02.jpg[]
-
-== 2023/05/12 - Starburst Academy : The difference between data lakes and data lakehouses
-
-* URL : https://www.youtube.com/watch?v=k1cch-6bZhM
-
-* *Modern data formats* replaced traditional old Hive format. +
-Those new modern data formats : 
-    ** Apache *Iceberg*
-    ** Databricks *Delta Lake*
-    ** Apache *Hudi*
-
-* Hive tables lack ACID compliance and version control -> not the case of those modern data formats
-
-* *Those new data formats are what make a lakehouse a lakehouse*.
-    ** With Hive, we create a data lake
-    ** with those formats, we create a data lakehouse
-
-* Compared to data lake, those new formats handle better performance, data modification and schema evolution
-    ** Ces nouveaux formats permettent des performances proches des data warehouse ou des BDDs, tout en utilisant un stockage objet, comme les data lakes.
-
-* Data lakehouse improves the *reporting structure*.
-    ** data lakes store metadata limited to : location, format, structure BUT they do NOT record a comprehensive end to end record of all changes made to a table.
-    
-    ** On the other side, data *lakehouses* store *large amounts of metadata* painting a *comprehensive picture of the system*, including record by record details of : 
-        *** every modifications
-        *** every updates
-        *** every deletions
-    ** Those metadata are stored in a set of hierarchically structured files : *manifest files*
-        *** Manifest files capture changes in the state of the dataset, providing the ability to record an accurate up-to-date account of the changes occurring in the table at any given time : inserts, deletions, updates, schema migrations, partition updates +
-        image:20230512_starburst-academy_data-lakehouse-modern-data-formats_01.jpg[]
-
-* How Iceberg uses metadata manifest files to create a transactional layer on top of traditional data lake storage : 
-    ** if a change is made TO THE DATA (let's a file persistance in this example) -> a manifest file is created that references a specific section of the data
-    ** multiple manifest files are referenced in a manifest list
-    ** manifest list is contained in a metadata file
-    ** this metadata file is held in the Iceberd catalog
-
-    ** The metadata held in the lakehouse ~ a database transaction log that sits on top of the traditional cloud object storage (this last making up a data lake)
-
-* Collectively *those manifest files create a kind of snapshot*
-    ** Iceberg calls them just that : *Snapshot files*
-    ** Delta lake uses the Delta log in a similar way
-
-    ** These snapshots detailed the points at which the changes are made
-        *** So they can be used to query the database at a particular point in time, facilitate schema and partition evolution, or roll back changes
-
-* Those numerous metadata and their possibilities are what make the differences between data lake and data lakehouse : 
-    ** record level updates
-    ** ACID compliance
-    ** transaction support
-    ** data concurrency support
-
-image:20230512_starburst-academy_data-lakehouse-modern-data-formats_02.jpg[]
-
+* *Data* : in my repo about Data
 
 
 
