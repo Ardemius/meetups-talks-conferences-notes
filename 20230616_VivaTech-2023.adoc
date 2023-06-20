@@ -1,0 +1,128 @@
+= 2023/06/01 - VivaTech 2023
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+image:20230616_vivatech-2023_01.jpg[width=1000]
+
+== Conférences
+
+=== Robotics
+
+image:20230616_vivatech-2023_02.jpg[width=1000]
+
+video::20230616_vivatech-2023_03.mp4[width=800]
+
+video::20230616_vivatech-2023_04.mp4[width=800]
+
+image:20230616_vivatech-2023_05.jpg[width=1000]
+image:20230616_vivatech-2023_06.jpg[width=1000]
+image:20230616_vivatech-2023_07.jpg[width=1000]
+image:20230616_vivatech-2023_08.jpg[width=1000]
+image:20230616_vivatech-2023_09.jpg[width=1000]
+image:20230616_vivatech-2023_10.jpg[width=1000]
+image:20230616_vivatech-2023_11.jpg[width=1000]
+
+=== Deeptech
+
+== Visite des stands
+
+=== LightOn
+
+LightOn : boîte de 20 personnes
+
+* LightOn : a développé son propre LLM sur la base de la commande d'un client qui a donné lieu au développement du LLM Falcon.
+* LightOn l'a fine-tuné (de façon généraliste, principalement pour modération) ce qui a donné naissance au LLM Mini.
+* Le commanditaire de Falcon a ensuite rendu Falcon Open Source (ce que LightOn n'avait pas forcément prévu)
+
+* Mini : 40 milliards de paramètres, 1 trilliard (billiard ?) de tokens
+
+* La plus value de LightOn et ce qu'ils peuvent proposer : 
+    1. prompt-tuning
+    2. efficient fine-tuning
+    3. ré-entraînement
+
+* L'évaluation de l'"efficient fine-tuning" se fait sur la base de critères / règles données par l'utilisateur ET calculées par l'outil.
+
+* Si un prompt commence à voir son retour / sa note chuter, un efficient fine-tuning est réalisé, et son résultat basé sur la nouvelle note obtenue.
+    ** Ce fine-tuning est effectué sur un autre serveur / une autre infra pour, bien entendu, ne pas impacter la PROD. +
+    Il faut que cet autre serveur soit localisé dans le même datacenter, du fait des problématiques de transit du nouveau modèle
+        *** taille conséquente
+        *** coût du transit
+        *** sécurité du transit
+    ** Idem pour un ré-entraînement, il faut que les serveurs de PROD et de ré-entraînement soient colocalisés.
+    ** On vient chez LightOn avant tout pour raison de souveraineté, donc on ne va pas aller fine-tuner / ré-entraîner un modèle chez un hyperscaler étranger à partir de là.
+
+* Plaquette récupérée
+* Très bon échange avec Benoît de LightOn
+    ** je me suis inscrit sur leur stand pour me mettre en contact avec Benoit et LightOn, et recevoir une doc détaillée de leur produit.
+
+=== NumSpot
+
+Numspot : IaaS opérationnel, PaaS en cours de développement avec 1ere offre disponible vers S2 2024
+
+=== Urban cuisine
+
+* Dans un meuble Ikea classique, la case d'un four (60 x 60), on peut installer la zone de 16 pots dans lesquels pousseront aromates et autres petites plantes, pour une promesse de 3 kilos de production par mois
+* le système ventile, donne la bonne luminosité (simili soleil) via éclairement LED à raison de 14 heures par jour
+* le substrat est spécifique en fonction de la plante qui va pousser : un "genre de terreau déshydraté"
+    ** ce substrat est spécifiquement créé et contient tous les nutriments nécessaires au développement de la plante associée
+    ** Il doit être changé régulièrement, le renouvellement coûte quelque chose comme 24€ pour 8 substrats si j'ai bien retenu.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

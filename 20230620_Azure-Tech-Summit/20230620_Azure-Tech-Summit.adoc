@@ -1,0 +1,279 @@
+= 2023/06/20 - Azure Tech Summit
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Planning
+
+Je me suis inscrit à 2 ateliers : 
+
+    * Workshop infra : Azure Landing Zone
+    * Workshop OpenAI
+
+Azure Tech Summit - workshops (nouvelle plateforme MoaW) : https://aka.ms/msworkshops
+
+.Windows supporte maintenant les .tar !
+NOTE: Après des dizaines d'années, enfin Windows supporte nativement les .tar 😉
+
+== Keynote : l'ère de l'IA générative
+
+.Communautés Microsoft, programme MVP
+image:20230620_Azure-Tech-Summit_01.jpg[]
+
+.Agenda
+image:20230620_Azure-Tech-Summit_02.jpg[]
+
+Partenaires du salon : 
+
+    * *Avanade* : partenaire Microsoft "privilégié" : cloud, conseil, 60 000+ collaborateurs dans 26 pays
+        ** créé en 2000
+        ** Joint-venture entre Accenture et Microsoft
+    * *Cellenza* : partenaire Microsoft reconnu sur la partie Cloud, ainsi que centre de formation
+
+=== Speech de Corine de Bilbao, présidente de Microsoft France
+
+    * Il s'agit du 2e Azure Tech Summit
+    * 40 ans d'existence de l'agence Microsoft France
+
+Chaque année Microsoft publie une "grande" étude sur des thèmes variés. +
+Cette année, le thème est l'IA, et les constats sont les suivants : 
+
+    * Les personnes ne sont pas assez formées
+    * xxx
+
+=== Speech de Philippe LIMANTOUR CTO / CSO de Microsoft France
+
+image:20230620_Azure-Tech-Summit_03.jpg[]
+
+    * IA responsable : systématiquement un humain dans la bouche
+
+image:20230620_Azure-Tech-Summit_04.jpg[]
+
+    * Disponibilités de critères de filtres pour le retour / la complétion du modèle
+
+.Nouvelle annonce de Microsoft Fabric
+image:20230620_Azure-Tech-Summit_05.jpg[]
+
+    * Encore une fois, on voit / sent le passage de Synapses à *Fabric*, la nouvelle Data platform poussée par Microsoft
+        ** https://app.fabric.microsoft.com/home
+    * Azure AI Studio mis également en avant
+
+=== Speech de *Pierre Gilot*, CTO Azure
+
+.Retour sur la dernière Microsoft Build 2023
+image:20230620_Azure-Tech-Summit_06.jpg[]
+
+.Demo de GitHub Copilot (Copilot Chat)
+image:20230620_Azure-Tech-Summit_07.jpg[]
+
+    * on reste dans tous les cas responsables du code (raison pour laquelle l'outil s'appelle Copilot et non "Pilot")
+
+=== Demo de *Microsoft Fabric* par *Christopher Maneu*
+
+    * Fabric utilise dans la demo un data lake "One Lake"
+        ** OneLake est complètement managé côté Microsoft
+    * Grâce à Direct lake, on peut requêtes directement des données au format Parquet "Delta"
+    * Pour plus d'infos sur Fabric, voir les *"Fabric Notes"*
+
+=== Han Wang, Cloud Solutions Architect, Demo de *PromptFlow*
+
+image:20230620_Azure-Tech-Summit_08.jpg[]
+
+.Copilot stack
+image:20230620_Azure-Tech-Summit_09.jpg[]
+
+.Azure AI, Machine Learning Studio
+image:20230620_Azure-Tech-Summit_10.jpg[]
+image:20230620_Azure-Tech-Summit_11.jpg[]
+
+=== Speech de Laurent Curny, directeur général de Avanade France, Belgique et Hollande
+
+.Pursuit of GDP growth from 1000 up to now...
+image:20230620_Azure-Tech-Summit_12.jpg[]
+
+.ChatGPT, 100 M d'utilisateurs actifs en 1 mois
+image:20230620_Azure-Tech-Summit_13.jpg[]
+
+.L'impact de l'IA générative sur le travail
+image:20230620_Azure-Tech-Summit_14.jpg[]
+
+=== Community Discord & MOAW
+
+* Julien Bichon : GTM Manager, Microsoft France
+* Olivier Mertens: GTM Manager, Microsoft France
+    ** Les 2 dans les équipes Azure de Microsoft France
+
+Annonces : 
+
+    * on vient de lancer une *plateforme sur Discord* pour les MTG : +
+    image:20230620_Azure-Tech-Summit_15.jpg[]
+    
+    * Ouverture de *"Mother Of All the Workshops"* : https://aka.ms/moaw +
+    image:20230620_Azure-Tech-Summit_16.jpg[]
+        ** Des ressources à emporter pour t'aider à acquérir de nouvelles compétences, mais aussi à créer, animer et partager tes propres workshops.
+
+=== Azure Club Insiders
+
+image:20230620_Azure-Tech-Summit_17.jpg[]
+
+* Pour rejoindre le Club : https://aka.ms/JeRejoinsLeClub/
+
+== Workshop Infra : Azure Landing Zone
+
+Animé par Freddy Ayala
+
+* Evidemment, on commence par une présentation du *Cloud Adoption Framework* (notre bon vieux CAF)
+    ** Mais le retour des clients : trop abstrait
+
+* *Azure Landing Zones* : for scale, security, governance, networking and identity
+    ** Une Landing Zone est un "terrain viabilisé" (déjà préparé)
+    ** Et on donne ce même terrain à tout le monde (agnostique) : en gros, il n'y a "que" le CAF à lire
+
+* Le scope que devrait avoir *"l'équipe plateforme Azure"* : Identity, Management plus la possibilité de donner la main sur de nouveaux environnements
+    ** et son scope s'arrête là : côté PCA par exemple, c'est la responsabilité des applications qui viennent s'accoster sur la Landing Zone
+    ** ("plateforme" côté Azure = Landing Zone)
+
+* L'aspect *Infra as Code* est crucial pour la mise en place d'une Landing Zone
+    ** En mode Hub and Spoke tout le monde est connecté au Hub, si on fait une bêtise sur le Hub, cela affecte tout le monde (Ok, et ???)
+    ** IaC avec Terraform : attention, *le state est à gérer soi-même*, contrairement à ARM (ou Azure Biceps)
+        *** Le fameux "jardinage de tfstate"...
+
+* Pass Azure pour la demo : xxx (www.microsoftazurepass.com)
+    ** Apparemment c'est un compte valable 30 jours
+    ** La nouvelle subscription s'appelle "Azure Pass - Sponsorship"
+        *** Attention à bien désactiver le filtre par défaut sur les subscriptions pour voir apparaître cette nouvelle subscription...
+
+Repo pour la demo : https://github.com/FreddyAyala/AzureLandingZonesTerraform
+
+[source, shell]
+----
+# Pour vérifier la souscription utilisée
+az account show
+
+# Pour passer sur la souscription gratuite
+az account set -s "Azure Pass - Sponsorship" 
+
+terraform init
+terraform apply -auto-approve
+----
+
+== Workshop OpenAI
+
+Animé par Patrice TRUONG (Microsoft, senior Cloud Solution Architect, patrice.truong@microsoft.fr), Yann BILISSOR CTO Smart Business Cellenza, Nicolas ROBERT TO Smart BUsiness Cellenza)
+
+* Patrice est spécialisé dans les BDD relationnelles (Cosmos DB côté Azure)
+
+Côté Microsoft Research, il y a également des modèles de langage de disponibles, différents de OpenAI : 
+
+    * Turing : Rich language understanding
+    * Z-Code : 100 languages translation
+    * Florence : breakthrough visual recognition
+
+.Microsoft Azure runs on trust
+image:20230620_Azure-Tech-Summit_18.jpg[]
+
+    * si on instancie dans France Central, tout reste dans France Central
+    * On peut opt-out des 30 jours de rétention des prompts / complétions pour modération MAIS ce ne sera effectif qu'après un "temps d'observation côté Microsoft"
+
+.Les modèles de la famille GPT-3
+image:20230620_Azure-Tech-Summit_19.jpg[]
+
+.Les modèles de la famille GPT-3.5
+image:20230620_Azure-Tech-Summit_20.jpg[]
+
+WARNING: GPT-4 *sur Azure* n'est pas encore multimodal !
+
+.Powerful prompts
+image:20230620_Azure-Tech-Summit_21.jpg[]
+
+*Azure OpenAI Service* :
+
+    * C'est une ressource de type "cognitiveservices"
+    * Une fois la ressource obtenue, on constate qu'elle est livrée "sans modèle". Il faut donc installer ceux que l'on souhaite
+
+*DEMO d'OpenAI sur Azure*
+
+image:20230620_Azure-Tech-Summit_22.jpg[]
+
+NOTE: conseil : rester en anglais, la traduction française est TRES mauvaise
+
+* *Azure OpenAI "Add your own data"* accessible depuis hier soir (19/06)
+    ** Les données que l'on donne ne sont dès lors accessibles QUE par nous
+
+image:20230620_Azure-Tech-Summit_23.jpg[]
+
+    ** les données vont être ajoutées à un Azure Cognitive Search pour créer un index de recherche
+    ** Lien GitHub pour répliquer cette infrastructure : https://github.com/Azure-Samples/azure-search-openai-demo
+
+* Concernant les *embeddings* : 
+    ** embedding : *représentation vectorielle* de notre objet
+    ** Cela va permettre de grouper les infos se ressemblant : +
+    image:20230620_Azure-Tech-Summit_24.jpg[]
+    image:20230620_Azure-Tech-Summit_25.jpg[]
+
+image:20230620_Azure-Tech-Summit_26.jpg[]
+
+.Vector search : conceptual approach
+image:20230620_Azure-Tech-Summit_27.jpg[]
+
+-> On a le meilleur des 2 mondes avec l'*Azure Cognitive Search ET la représentation vectorielle*
+
+Q&A : 
+
+    * Thomas : modèles CODEX dépréciés côté OpenAI, mais pas côté Azure, tant bien même sont 10x plus chers que les GPT-3.5, y a-t-il encore une raison de les utiliser ?
+        ** Ben, pas de réponse très claire côté Microsoft 😅 "Utilisez GPT-4" ?!!!
+            *** Mais les modèles GPT-4 restent très chers : https://azure.microsoft.com/en-us/pricing/details/cognitive-services/openai-service/
+
+== Réseautage
+
+* J'ai pu échanger avec Nicolas Robert, MVP AI pour Microsoft, travaille chez Cellenza
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
