@@ -161,13 +161,167 @@ image:20230703_data-ia-summit_05.jpg[]
         *** Cette RESET Score Card est présente dans toutes les propales Onepoint
         *** Apparemment des exemples sont dispo sur leur site
 
+== Souveraineté numérique : Essai pour une reconquête
 
+Talk présenté par Matthieu Bourgeois, Avocat associé Immatériel et Numérique chez klein - wenner - Vice-Président du Cercle de la Donnée.
 
+* En lien avec le Cercle de la donnée et l'Agora 41 +
+image:20230703_data-ia-summit_06.jpg[]
 
+* But de ce groupe de travail (Cercle de la donnée + Agora 41) : Travaux prospectifs sur le numérique et la donnée (avec ministres, chercheurs, militaires, tous types de profils)
+* Agora 41 est un Think Tank créé par Guillaume Poupard, ancien DG de l'ANSSI travaillant maintenant pour La Poste
 
+* L'étude présentée est décrite dans un livre téléchargeable librement sur le site du Cercle de la donnée
 
+.De la souveraineté à la souveraineté numérique
+image:20230703_data-ia-summit_07.jpg[]
 
+* *Définition de la souveraineté* : Capacité à décider de ses destinés SEUL.
+* Souveraineté, 4 piliers : 
 
+    * *1 population* : Le souverain a une population sous sa charge
+    * *Territoire* : la population vit dans un territoire circonscrit
+    * *Puissance* : le souverain a besoin d'une puissance pour protéger sa population et assurer son rayonnement (puissance économique, militaire, etc.)
+    * *Légitimité politique* : le souverain ne peut protéger sa population que s'il est légitime. Il peut l'être soit par la force, soit par la religion, soit par l'élection.
+
+*Transposons ces 4 piliers dans l'espace numérique* : 
+
+    * *population* : nous sommes en France, MAIS nos Data ne sont PAS en France, souvent même pas en Europe.
+    * On nous a bercer dans l'illusion que le numérique était virtuel ou dématérialisé ("les données sont dans les nuages")
+        ** Or il n'y a pas de souverain des nuages
+        ** Or nos data sont bien souveraines dans des data centers sur des territoires qui sont soumis à des lois souveraines (des territoires qui ne sont PAS la France)
+    * *Puissance* : La France a une certaine puissance : militaire, économique, culturelle MAIS dans le monde NON numérique
+        ** la puissance dans le monde numérique c'est : 
+            *** puissance de calcul
+            *** infrastructure 
+            *** et talents
+        ** Nous sommes donc en déficit criant de puissance, avec des talents qui soit partent à l'étranger, soit travaillent en France pour une société étrangère.
+    * *Légitimité politique* : la transposition de l'élection dans le monde du numérique, c'est peut-être *l'acception des CGU*.
+        ** Or personne ne les lit, mais tout le monde donne son consentement : nous sommes donc dans un choix "vassalisé", avec des textes qui sont souvent plein d’anglicismes ou de concepts de droits NON européens.
+
+Et sur le terrain INTERNATIONAL, les états ont essayé de mettre en place une gouvernance mondiale de la souveraineté (ancienne société des nations et maintenant ONU)
+
+    * Dans le monde numérique, cette gouvernance là est fortement contrôler par les Etats-Unis.
+    * Les instances gouvernantes dans le monde numérique sont principalement américaines : ICAN et W3C
+    * Les européens sont très peu représentés dans ce monde numérique très américain et anglo-saxon.
+
+*Les défis à relever sont de 3 ordres* : 
+
+    * *L'Europe et la France sont en concurrence avec des cyber-puissances* : US, Chine, Russie (plutôt des guerrieros dans ce dernier cas)
+        ** US : 320 millions de personnes en marché domestique
+        ** Chine : état très fort avec tentative de répliquer les GAFA avec les BATX
+        ** Ces états n'ont pas cherché à s'ouvrir à la concurrence mondiale, ils ont au contraire faire preuve d'un très grand protectionnisme.
+        ** Ces puissances espionnent largement dans leur intérêt l'espace numérique.
+        ** La France s'est dotée finalement assez tôt de l'ANSSI MAIS nous ne sommes qu'un pays de 65 millions d'habitants
+        ** -> DONC, nous sommes "chahutés" par certaines puissances devenues des cyber-puissances.
+
+        ** Europe : 450 millions de consommateurs et entreprises.
+            *** Nous sommes devenus un marché de consommateurs, et non de bâtisseurs.
+            *** donc une des propositions de l'étude est de *réformer le droit de la concurrence* dans le milieu numérique.
+
+    * *Concurrence des états par des entreprises privées du numérique* : certaines entreprises sont plus puissantes que certains états.
+        ** Matthieu pense que Google sait actuellement plus de choses sur les Français que les états
+        ** D'où le 2e défi : donc les états sont chahutés par des entreprises qui touchent au régalien, avec des services privés qui marchent beaucoup mieux que les services étatiques.
+            *** Il fallait dire "on arrête la récré, on ne touche pas au régalien"
+        ** C'est hyper important que La Poste soit un champion numérique étatique.
+
+        ** Nos dirigeants n'ont pas "pensé" la révolution numérique, ils l'ont subi et PIRE, maintenant, ils transfèrent / délèguent cette responsabilité aux Cloud providers
+            *** Une solution : un investissement sur le judiciaire dans le domaine du numérique
+
+    * *3e défi : l'ignorance et l'indifférence citoyenne*
+        ** "Vous n'arrivez pas à remplir votre formulaire SERFA, vous êtes vraiment débiles..." : mais en fait c'est le formulaire qui est juste IMBITABLE.
+        ** MAIS à côté de cela, il y a vraiment un problème de compétences d'une partie de la population sur le numérique.
+        ** En utilisant des services américains, même meilleurs que les français, on travaille en fait à la perte de souveraineté de notre état.
+
+        ** *Indifférence numérique : le fait d'être conscient, mais ça m'indiffère* : je m'en fiche pas, mais je me résigne tellement c'est difficile, c'est perdu d'avance, il y a une telle avance technologique que je n'ai pas envie de lutter contre
+
+        * Plutôt que de nouvelles lois et normes, il faudrait mettre plus de moyens dans le judiciaire pour METTRE EN PLACE les lois existantes
+
+        * Thomas : s'il faut 10, 20 ou 30 ans pour mettre en place les préco de Matthieu, ce qui changera réellement les choses ne sera-t-il pas la "décroissance forcée" dont parle Mr Jancovici.
+
+.7 propositions pour une reconquête de notre souveraineté numérique
+image:20230703_data-ia-summit_08.jpg[]
+
+    * 3 volets : Economique / Education & recherche / Juridique & Politique
+
+    * *L'Europe a le plus d'épargne par habitant au monde*, principalement orientée vers l'immobilier et la retraite : il faudra créer une niche fiscale pour l'orienter vers le numérique.
+
+.L'impact de cette étude
+image:20230703_data-ia-summit_09.jpg[]
+
+-> Talk hyper-intéressant avec Matthieu, personne à suivre 👍
+
+== 4 ateliers de co-construction en groupe de 50 min chacun de 13h30 à 18h30
+
+.Le contexte du "jeu", le fil rouge derrière ces ateliers
+image:20230703_data-ia-summit_10.jpg[]
+
+Les thèmes des ateliers : 
+
+    * Data sharing
+    * Data Gouvernance
+    * Data engineering
+    * IA/ML/LLM Ops
+
+.Le déroulé du jeu
+image:20230703_data-ia-summit_11.jpg[]
+
+-> Je suis groupe *"Mario"*, et je suis *"Kirby"* comme personnage. +
+Dans l'équipe nous avons aussi : Lara Croft, Steve, Link et Donkey Kong, Pikachu +
+Et le responsable de l'atelier du Data Sharing est Cloud Strife.
+
+.La liste des personnages
+image:20230703_data-ia-summit_13.jpg[]
+
+=== Atelier Data Sharing
+
+.La mission à valider
+image:20230703_data-ia-summit_12.jpg[]
+
+.board de l'atelier
+image:20230703_data-ia-summit_14.jpg[]
+
+=== Atelier IA/ML/LLM Ops
+
+.La mission à valider
+image:20230703_data-ia-summit_15.jpg[]
+
+* Modèle churn : si on part sur un modèle supervisé comme un Random Forest, Gradient Boosting, ce dernier est plutôt léger, < 100 Mo
+
+* Si on travaille pour une société dans les produits évoluent régulièrement : le modèle va devoir être réentraîné (réapprentissage) plus régulièrement.
+
+* En termes de KPI et d'indicateurs, on peut également ajouter la dégradation du modèle (*model drift*)
+
+.Board de l'atelier
+image:20230703_data-ia-summit_16.jpg[]
+image:20230703_data-ia-summit_17.jpg[]
+
+3 niveaux de maturité avec le MLOps : 
+
+    * NIVEAU 0 : Récupération de la donnée et construction du modèle, passé ensuite à l'équipe de dev pour intégration à la chaîne de PROD
+    * NIVEAU 1 : on a mis en place un pipeline permettant de ré-entraîner manuellement le modèle (plutôt que de tout faire à la main)
+    * NIVEAU 2 : Chaîne de CI/CD complète : création du modèle et déploiement automatique, et chaîne de CI/CD particulière pour mise à jour automatique du modèle
+        ** ce qui implique la présence de métriques de validation du modèle
+
+=== Atelier Data Engineering
+
+.La mission à valider
+image:20230703_data-ia-summit_18.jpg[]
+
+* Denodo (ou Starburst) pour de la *data virtualisation* afin d'éviter la phase d'ingestion de données
+    ** Par contre, qu'en est-il de l'historisation des données à partir de là ?
+    ** et qu'en est-il de ma Data Quality ?
+    ** de ma consistence des données ?
+
+    ** On se servirait de la *data virtualisation* comme une espèce d'ESB
+
+* Pour la création d'un framework d'ingestion : 
+    ** ce framework propose une API générique pour les différents flux
+    ** quand un type de flux est manquant, on peut utiliser un outil de templating pour faciliter le développement / la mise à jour du framework d'ingestion pour ce nouveau flux.
+    ** Il y a une question à se poser entre code généré (ChatGPT et autres IA Gen) et code générique (développement custom)
+
+.Board de l'atelier
+image:20230703_data-ia-summit_19.jpg[]
 
 == Lexique
 
