@@ -1,0 +1,182 @@
+= 2023/07/03 - Groupe OnePoint - Data & IA Summit
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *OnePoint* dans les nouveaux locaux 14 avenue d'Eylau à Paris.
+
+== Mot d'introduction par Pierre-Etienne BARDIN Head du Pôle Data / IA de La Poste
+
+== Keynote d'ouverture
+
+* Présenté par Gontran PEUBEZ, partner OnePoint
+    ** anime les activités Data et IA de OnePoint
+    ** activités Data ET IA, il y a eu un choix de fait de lier fortement les 2
+    ** ces 2 activités représentent 350 collaborateurs chez Onepoint
+
+* L'IA est un moyen, un accélérateur, qui un nouveau "quelque chose" permettant d'améliorer le travail des métiers.
+    
+* Onepoint est convaincu que l'IA est le point de départ de la 4e révolution industrielle
+    ** et que cela va au-delà du simple "prompt engineering"
+
+* Gontran voit l'*Open Data* vues comme des éléments de mise en contexte
+
+* Gontran : s'éloigner du *rêve chimérique d'arriver à centraliser toutes les data* au même endroit
+
+* Gontran : la *révolution agricole*, ce n'est pas le tracteur, c'est le fait d'avoir des *champs de plus en plus grands* -> C'est donc *une question d'architecture*
+    ** Un parallèle avec la situation actuelle dans le milieu de la Data et de l'IA
+
+*Organisation de la journee et équipe d'organisation* : 
+
+    * Grégory LECOINTE : Leader OnePoint, lead la cellule Data / IA de La Poste
+    * Charlaine CRUTZ : animatrice de la journée
+    * Victor de CHANTERAC : Associate Onepoint, participe à la cellule Data / IA de La Poste
+    * Naomi DARRIGOL : stagiaire
+
+.Agenda de la journée
+image:20230703_data-ia-summit_01.jpg[]
+
+-> Chaque année Onepoint fait une enquête sur les Data trends auprès de ~80 CDOs.
+
+== Data Issues et Data Trends 2023 par OnePoint
+
+* Nora DIEP-ACHOR : spécialisée sur le Data Empowerment
+* Aude PERDRIEL-VAISSIERE : Experte Data, surtout Data Marketing et Media
+
+.Contexte de l'étude
+image:20230703_data-ia-summit_02.jpg[]
+
+* 2022 : problème de l'acculturation data dans les entreprises
+    ** les CDOs considèrent aujourd'hui que c'est fait
+        *** Ils considèrent que les process nécessaires ont été initiés ("j'ai coché la case")
+* Mais le problème en 2023 est la gestion et la recherche des talents
+    ** inflation des salaires, "c'est la guerre"
+
+.Data issues et évolution des problématiques
+image:20230703_data-ia-summit_03.jpg[]
+
+* Ce ne sont plus forcément les RH qui vont recruter les talents, ce sont directement les équipes Data qui vont vendre un projet, l'ADN de la boîte : "viens faire de la Data chez moi on va s'éclater" -> opération séduction
+    ** on va recruter durant des évènements tech : VivaTech, Big Data Paris
+
+* On va chercher à faire évoluer les gens en interne, au travers de *parcours de formation*.
+    ** ce qui permet de faire évoluer les collaborateurs ET de les conserver au sein de la société
+
+* Sur la MDM, on a créé des projets, on a enclenché des process, les CDOs interrogés ne considèrent plus que c'est une issue.
+
+* Participant : la gouvernance est un "gros sujet" (grosse problématique) à La Poste
+
+* Nora : aucun métier que je connais "n'accepte comme ça" d'investir dans la connaissance et la documentation des données
+
+* On ne fait pas un POC juste pour "faire un POC", on le fait car on croit dans le projet / produit, et que l'on croit que *le passage à l'échelle de ce projet / produit va changer des choses*.
+
+* *Data Fasting* (Nora l'avoue, le terme a été "soufflé" par ChatGPT 😉)
+    ** Suite à l'enthousiasme derrière la Data, on déploie des socles et des fondamentaux à grand renfort de millions. Le ROI s'il existe, reste très modeste au regard des investissements.
+
+.Data Trends : évolution de 2022 à 2023
+image:20230703_data-ia-summit_04.jpg[]
+
+* Les *trends qui ont disparu* : 
+
+    ** les *Data academy* : aujourd'hui on a lancé les projets, donc c'est un point de "traité"
+        *** Data academy : tout le développement de la culture et des expertises associées à la Data
+        *** Tout n'est pas fini bien sûr, mais dans la "checklist mentale des CDOs", c'est un point traité
+
+    ** *Data Xops* : Le DevOps, le DataOps sont des cultures qui commencent à être intégrées dans les organisations, on considère que c'est traité, que c'est entré dans le BAU.
+
+    ** *Data Office as Profit center* : on y est pas, on a "d'autres chats à fouetter".
+
+* Les *nouvelles trends* : 
+
+    ** faire en sorte que les outils Data soient des outils plus accessibles
+
+*Data Productization*
+
+    * *Data Products* : un data product est conçu pour fournir une valeur pratique en exploitant les données disponibles.
+
+    * *Data Productization* : 
+        ** capacité d'un orga à mettre à disposition et à consommer ces Data produts
+        ** Il s'agit d'une vision globale au sein de l'entreprise
+        ** il s'agit d'une *capacité à démultiplier ces Data Products*
+        ** outils plus simples à utiliser, s'appuyant souvent sur du SQL (connu de la plupart)
+        ** Importance de la *Data Marketplace* : quelque qui se doit d'être simple, on doit pouvoir obtenir ce qu'on veut en 3 clics
+        ** Les cas d'usage évoluent du "simplement réglementaire" (attitude défensive) à des cas d'usage beaucoup plus métiers (on passe à de l'offensif)
+
+.Bilan des tendances : 3 grandes tendances
+image:20230703_data-ia-summit_05.jpg[]
+
+* *BEYOND 360* : Comment j'enrichis ma donnée à moi avec celles des autres
+
+    ** *donnée 360* : ma donnée à moi c'est ma donnée 360
+        *** je la génère moi et elle est administrée par moi
+    ** *2nd partie Data (up to 720°)* : donnée que je vais pouvoir échanger avec d'autres dans un environnement sécurisé.
+    ** *1080 Data* : tout ce qui va venir enrichir on top des données 720 : le 3rd party cookie par exemple (qui va mourir sous peu car ne sera plus supporté par défaut dans les navigateurs)
+        *** Cela peut-être des études classiques
+
+* *FRUGALITY* : 
+
+    ** considération RSE : il ne faut plus stocker 14 duplications de la même data (en tout cas pas sans se poser de questions)
+
+* *DATA PROTECTION* : 
+
+    ** RGPD 2018, et on commence seulement en 2023 à voir les 1eres grosses sanctions tomber.
+    ** Depuis que le Privacy Shield a été cassé, il n'y a plus de contrat qui lie les US avec l'Europe sur ce sujet.
+
+* *RESET* : Responsabilité Environnementale, Sociétale, Eonomique et Technologique
+
+    ** Data RESET : Confiance / Efficience / Frugalité
+    ** Appliquée systématiquement par Onepoint à tous ses clients, avec un scoring de créé (RESET Score Card)
+        *** Cette RESET Score Card est présente dans toutes les propales Onepoint
+        *** Apparemment des exemples sont dispo sur leur site
+
+
+
+
+
+
+
+
+
+== Lexique
+
+[summary]
+données ESG:: Critères environnementaux, sociaux et de gouvernance
+
+
+
+
+
+
+

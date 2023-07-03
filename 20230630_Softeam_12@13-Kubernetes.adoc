@@ -1,0 +1,131 @@
+= 2023/06/30 - 12@13 Softeam - Kubernetes
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+12@13 présenté par Cyril PARISOT
+
+== Abstract
+
+Comme il s'agit du sujet le plus demandé du dernier sondage. 
+La communauté Cloud est ravi de vous inviter à une session de présentation sur Kubernetes.
+
+Kubernetes occupe une place centrale en tant que plateforme d'orchestration de conteneurs. Il permet de gérer efficacement et de manière évolutive les applications conteneurisées dans des environnements complexes. Son adoption généralisée en fait la plateforme privilégiée pour l'orchestration de conteneurs
+
+Venez participer à une session interactive* sur la présentation des bases du système d’orchestration, de son histoire, son adoption et de son utilisation à l'échelle
+*La session sera interactive (car prise en compte de vos feedback ;), des pop-up Quiz, des BD, et même des quick démo si l'on a le temps. 
+Nous encourageons tous les participants à participer activement à la discussion et au quiz pour en tirer le meilleur parti.
+
+Rejoignez-nous le VENDREDI 30 JUIN PROCHAIN à 12h30 À 13H30
+
+Qui peut participer ? 🤓
+Cet évènement s’adresse à TOUS, aux développeurs, aux ingénieurs DevOps, aux architectes, mais aussi aux commerciaux et managers et plus généralement à toutes les personnes qui souhaitent découvrir Kubernetes ou renforcer ses bases. 
+
+Nous sommes convaincus que cette session sera bénéfique pour vous et nous espérons que vous pourrez vous joindre à nous.
+
+Belle journée à tous 
+
+== Notes 
+
+* Spotify a été un early adopter de Docker et des microservices
+    * Ils ont même créé leur propre orchestrateur : *Helios*
+    * dès le début ils ont été capables de gérer 10 millions de requêtes / sec
+
+* K3S : une distribution "light" de Kubernetes qui prend moitié moins de place
+
+Force de Kubernetes : *portabilité* et *open source*
+
+* *Control plane* : le cerveau
+* *Data plane* : les muscles
+
+.Rappels de 2023/05/01 - bdh Devoxx France 2023
+--
+* Control plane : tout ce qui est infra pure.
+    ** Ex : provisionner un cluster Kube, donc ok pour Terraform 
+* Data plane : tout ce qui données à l'intérieur de l'infra
+    ** Provisionner tout ce qui est à l'intérieur du Kube, c'est du data plane, et là on devrait laisser la main aux outils dédiés : Helm, Kubectl ou autres.
+--
+
+image:20230630_12-13-Softeam_kubernetes_01.jpg[]
+
+* *etcd* : le stockage du cluster, l'endroit où il va mettre tout son state
+    ** toutes les problématiques de split brain, de consortium sont associées à ce composant
+    ** gérer le state est TRES PENIBLE
+        *** Tout le control plane est pénible à gérer (raison pour laquelle AKS, GKE, etc. propose des solutions managées)
+
+* Pour plus d'infos sur les différents composants de Kubernetes, la doc officielle est plutôt bien faite : +
+https://kubernetes.io/docs/concepts/overview/components/
+
+.Chaque objet dans Kubernetes a 1 chose et 1 seule à faire
+image:20230630_12-13-Softeam_kubernetes_02.jpg[]
+
+2 sondes : 
+
+    * *liveness* : es-tu vivant ?
+    * *readiness* : est-ce que je peux t'envoyer du trafic ?
+
+*Pourquoi utiliser Kubernetes ?*
+
+    * open source : je suis agnostique à ce qui se passe à l'intérieur de mon cluster
+    * Open source container management platform governed by the community
+    * Run containers at scale, integrating networking, storage, and compute
+    * take advantage of open source tools that are designed to brun on Kubernetes
+
+*CNCF Survey 2020* : https://www.cncf.io/wp-content/uploads/2020/11/CNCF_Survey_Report_2020.pdf
+
+.Les challenges de Kubernetes
+image:20230630_12-13-Softeam_kubernetes_03.jpg[]
+
+Cyril n'a pas eu le temps de nous faire tourner sa *DEMO*, mais cette dernière est disponible ici : +
+https://gitlab.com/CyrilParisot/k8s-the-easy-way
+
+* *LA BD qui a été utilisée pour illustrer le début de la présentation* : +
+https://cloud.google.com/kubernetes-engine/kubernetes-comic?hl=en
+    ** Elle a été créée par Google
+
+[TIP]
+====
+* Pour une liste des *raccourcis de kubectl* : `kubectl get`
+* Pour savoir quel est le container runtime utilisé : `kubectl get nodes -o wide`
+====
+
+Pour le ROTI du talk : https://cparisot.limesurvey.net/989932
+
+
+
+
+
+
