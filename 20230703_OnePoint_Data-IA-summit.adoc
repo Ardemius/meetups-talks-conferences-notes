@@ -161,6 +161,10 @@ image:20230703_data-ia-summit_05.jpg[]
         *** Cette RESET Score Card est présente dans toutes les propales Onepoint
         *** Apparemment des exemples sont dispo sur leur site
 
+Ressources : 
+
+    * Etude Onepoint link:{resourcesdir}/2023_Onepoint_DataTrends2023.pdf[Data Trends : les 8 tendances data de 2023]
+
 == Souveraineté numérique : Essai pour une reconquête
 
 Talk présenté par Matthieu Bourgeois, Avocat associé Immatériel et Numérique chez klein - wenner - Vice-Président du Cercle de la Donnée.
@@ -250,6 +254,11 @@ image:20230703_data-ia-summit_08.jpg[]
 image:20230703_data-ia-summit_09.jpg[]
 
 -> Talk hyper-intéressant avec Matthieu, personne à suivre 👍
+
+Ressources : 
+
+    * Etude présentée lors du talk "Souveraineté numérique : Esssai pour une reconquête" : +
+    https://www.lecercledeladonnee.org/wp-content/uploads/2022/01/SOUVENUM_CMJN_Rogne.pdf
 
 == 4 ateliers de co-construction en groupe de 50 min chacun de 13h30 à 18h30
 
