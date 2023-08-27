@@ -38,6 +38,8 @@ toc::[]
 
 == Planning
 
+image:20230620_Azure-Tech-Summit_planning.jpg[]
+
 Je me suis inscrit à 2 ateliers : 
 
     * Workshop infra : Azure Landing Zone

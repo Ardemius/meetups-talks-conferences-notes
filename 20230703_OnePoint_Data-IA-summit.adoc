@@ -332,6 +332,10 @@ image:20230703_data-ia-summit_18.jpg[]
 .Board de l'atelier
 image:20230703_data-ia-summit_19.jpg[]
 
+== Ressources
+
+* Compte-rendu de Onepoint du salon : link:{resourcesdir}/20230703_OnePoint_Data-IA-summit_CR-de-Onepoint.pdf[RESTITUTION - Journée de Veille DATA.IA]
+
 == Lexique
 
 [summary]
