@@ -1,0 +1,61 @@
+= 2023/10/03 - Microsoft - "formation Develop Generative AI Solution with Azure OpenAI"
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Training Microsoft "Develop Generative AI Solution with Azure OpenAI" : +
+https://learn.microsoft.com/en-us/training/courses/ai-050t00
+
+== Notes
+
+* Klaxoon de la formation : https://enterprise.klaxoon.com/animate/survey/SZZMBHU
+
+image:20231004_Microsoft_GEN-AI-050_01.jpg[]
+
+Access to the Azure OpenAI service can be requested through the form at : +
+https://aka.ms/oaiapply
+
+* Le "Form Recognizer" a été renommé en "Azure AI Document Intelligence"
+
+*Responsible AI* :
+
+    * Azure OpenAI is a limited access service : access is approved based on use case : +
+    https://learn.microsoft.com/legal/cognitive-services/openai/
+
+
+
+
+

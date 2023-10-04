@@ -1,0 +1,269 @@
+= 2023/10/03 - Microsoft - Green Software & Green IT
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Journée de conférence sur le Green IT organisée par Microsoft dans ses locaux d'Issy-les-Moulineaux
+
+.planning de la journée
+image:20231003_Microsoft_green-software-green-it_01.jpg[]
+
+== Intro
+
+* *CSRD* : Corporate Sustainability Reporting Directive
+    ** identifier exigences réglementaires
+    ** cartographier les data
+    ** identifier les techno permettant de transformer votre entreprise
+    ** https://finance.ec.europa.eu/capital-markets-union-and-financial-markets/company-reporting-and-auditing/company-reporting/corporate-sustainability-reporting_en[] : +
+    "EU rules require large companies and listed companies to publish *regular reports* on the social and environmental risks they face, and on how their activities impact people and the environment." +
+    "This new directive modernises and strengthens the rules concerning the social and environmental information that companies have to report."
+
+.Microsoft Carbon consumption and forsight for 2023
+image:20231003_Microsoft_green-software-green-it_02.jpg[]
+
+* *Sustainability fact sheet*, voir https://azure.microsoft.com/en-us/blog/sharing-the-latest-improvements-to-efficiency-in-microsoft-s-datacenters/ +
+image:20231003_Microsoft_green-software-green-it_08.jpg[]
+
+* Outil de Microsoft de calcul de l'impact environnemental : *Microsoft Sustainability Manager*
+
+== The road to green code
+
+Présenté par Olivier Le Goaer, enseignant-chercheur
+
+* Energy-efficient vs run-time-efficient
+
+.French roadmap
+image:20231003_Microsoft_green-software-green-it_03.jpg[]
+
+* Réflexion sur la mise en place d'un eco-score logiciel
+    ** et sur une marketplace, les applications avec le meilleur score seraient mises en avant
+
+* Green programming languages ?
+    ** Olivier affiche le tableau de la consommation énergétique des langages, et explique que c'est une synthèse somme toute assez "simpliste"
+        *** Les optimisations sont mises de côté (on ne prend pas en compte les JVMs optimisées comme Dalvik par exemple), Python est présenté comme très énergivore MAIS on oublie qu'en data science il est surtout utilisé comme une "simple glue"
+
+    ** Donc il n'y a pas à proprement parler de langages "réellement" green, mais il y a des pratiques que l'on peut suivre et des choses que l'on peut éviter pour améliorer les choses
+
+.Catalogue Open Source de green code smells
+image:20231003_Microsoft_green-software-green-it_04.jpg[]
+
+* *ecoCode* : analyse statique du code
+    ** projet géré par la Green Code Initiative
+    ** Derrière on voit un principe et un concept d'*eco score*
+
+* Olivier a créé avec la société Snap un SonarQube complètement custom qui *lève des alertes de green code smells*.
+
+.Green Code Initiative (GCI)
+image:20231003_Microsoft_green-software-green-it_05.jpg[]
+
+.Le green code est-il une SPECIALISATION du clean code, ou un code de qualité est-il COMPOSE (composition) du clean code et du green code ?
+image:20231003_Microsoft_green-software-green-it_06.jpg[]
+
+== Comment Microsoft vous accompagne dans la sustainability ?
+
+* Microsoft a créé en 2021 avec d'autres sociétés la *Green Software Foundation*.
+
+.Green Software Principles
+image:20231003_Microsoft_green-software-green-it_07.jpg[]
+
+-> Les 2 1eres catégories sont associées au FinOPS 
+
+* Les émissions carbones de notre software sont impactées par le lieu et l'heure de génération de son électricité.
+
+== Table ronde
+
+* La question de base est avant tout fonctionnelle : mon application a-t-elle besoin d'être performante ?
+    ** et donc de "consommer plus" pour y parvenir ?
+
+* On peut essayer de "faire autant avec moins" MAIS
+* On peut également essayer de tout simplement *"faire moins"* (même si cela donne des boutons à certains)
+    ** Exemple : se débarrasser de ce dont on n'a plus besoin
+
+* Eleonore GUEIT : travaille chez Amadeus, qui est actuellement en train de passer sur le Cloud
+
+Bonnes pratiques rapides et quickwin pour réduire sa consommation de ressources : 
+
+    * dégager l'historique de Powerpoint
+    * faire du ménage sur Teams
+    * plus compliqué : 
+        ** *éviter le Shadow IT*, et donc mettre en place une *gouvernance*
+
+*Côté métriques et outils :* 
+
+    * *GreenOps 4 Cloud* : appli développée par Kevin Vimard (Expertime) et présente sur la marketplace d'Azure
+        ** https://azuremarketplace.microsoft.com/en-us/marketplace/apps/expertime_sas.greenops4cloud?tab=overview
+
+        ** It aims to enhance 5 aspects of a responsible cloud computing usage :
+            *** Reduce the environmental impact
+            *** Rationalize Cloud consumptions through better usages
+            *** Reinforce the customer's digital transformation
+            *** Promote collaboration and ownership of IT by CSR teams
+            *** Influence a Green IT approach to companies suppliers and customers
+
+    * Il est par moment difficile de dire à un dev "ce que tu as fait a eu un impact" car c'est difficile à "prouver"
+        ** Donc les multiples "petits indicateurs" que l'on a à dispo (ou qui commencent à se créer) permettent au moins d'apporter un "rien de concret" comme réponse à cette question
+
+    * Souvent FinOPS et GreenOPS se touchent, mais la finalité n'est PAS la même
+        ** FinOPS : ce qu'on me demande c'est *avant tout* combien ça coûte et comment le réduire
+        ** GreenOPS : avant tout combien ça consomme et comment le réduire : on peut proposer une solution plus chère *si elle consomme moins*
+
+    * En termes de conso carbone, les mesures ne sont pas encore mâtures.
+        ** De plus, on ne sait actuellement calculer que ce que coûte le compute, mais pas le volume ou le coût réseau (A VERIFIER !)
+
+*Comment se lancer dans le Green IT ? Par où commencer ?*
+
+    * Mise en place de l'awareness
+    * Faire du FinOPS : c'est un début vu qu'on a pas encore de mesures pour les émissions Carbone
+    * Des outils et stack Green, il commence à y en avoir plein : *choisissez vos outils, puis tenez bon et tenez-y vous !*
+
+.Pour aller plus loin
+image:20231003_Microsoft_green-software-green-it_09.jpg[]
+
+== Workshop GreenOps & FinOPS
+
+* Cette session fait un gros focus sur Azure
+
+* Why GreenOps : well-architected framework applied to sustainable workloads.
+Demo emission impact dashboard and cloud for sustainability API
+
+* 80% des émissions de carbone de Microsoft sont dues à du "scope 3"
+    ** cf Microsoft Cloud or sustainability API calculation methodology : https://learn.microsoft.com/en-us/industry/sustainability/api-calculation-method +
+    image:20231003_Microsoft_green-software-green-it_10.jpg[]
+
+    ** Partant de ce postulat "le meilleur serveur s'est tout simplement celui qu'on ne construit pas"
+
+* il faut faire la chasse aux "ressources allumées mais non utilisées"
+
+.Cloud efficiency = resource cost + carbon emissions + energy consumed
+image:20231003_Microsoft_green-software-green-it_11.jpg[]
+
+-> Ce schéma est issu de l'article sur les *Sustainable workloads* de Microsoft : +
+https://learn.microsoft.com/en-us/azure/well-architected/sustainability/sustainability-get-started
+
+NOTE: le *Well-Architected framework* de Microsoft est bien mis en avant. +
+https://learn.microsoft.com/en-us/azure/well-architected/
+
+* *Partie waste management* +
+Quelques points d'attention pour du waste management
+image:20231003_Microsoft_green-software-green-it_12.jpg[]
+
+* *use only the resource you need and only when you need it* : 
+    ** avoid unused and orphan resources
+        *** managed disk
+        *** public IP address
+        *** network interface
+        *** network security group
+        *** application gateway
+    ** right size underutilized resources & choose right type for resources
+        *** virtual machine
+        *** app service
+        *** AKS
+    ** start new environment only when you need it
+    ** avoid duplicated solutions
+        *** log analytics workspace : évitons de dupliquer les logs
+
+* *Choose the right (best) VM type* : +
+image:20231003_Microsoft_green-software-green-it_13.jpg[]
+
+    ** On aime bien les machines de la série D, MAIS on se rend également compte que se sont *souvent les besoins en CPU qui augmentent et pas ceux en RAM*. +
+    -> Donc plutôt que de prendre tout de suite la machine supérieure en série D, on peut aller chercher ceux des autres séries (comme la F)
+        *** et penser qu'il y a aussi des *processeurs ARM de disponibles*
+    
+* *Virtual Machine Scheduling*
+    ** This new version of Start/Stop VMs v2 provides a decentralized low-cost automation option for customers who want to optimize thier VM costs and carbon footprint. +
+    It starts or stops Azure VMs on user-defined schedules, provides insights through Azure Application Insights, and send optional notifications by using action groups. +
+    Save 58% (cost and carbon emission) by stopping your virtual machine 14 hours per day. +
+    Implement Auto Stop by default for all your workloads.
+
+* *Understand scalability patterns* +
+image:20231003_Microsoft_green-software-green-it_14.jpg[]
+
+    ** Par moment, il y a des traitements que l'on ne peut pas paralléliser (scaling out / horizontal scaling) et pour lesquels "une plus grosse machine" va être nécessaire (scaling up / vertical scaling) +
+    ** L'*auto-scaling* est toujours préférable à un manual scaling
+
+* Leverage cloud native deign patterns
+    ** and *event-driven architecture* is even better !!!! +
+    image:20231003_Microsoft_green-software-green-it_15.jpg[]
+
+* *Containerization*
+    ** Les VMs c'est bien, mais il y a mieux : la containerization (avec Azure Kubernetes Service) +
+    L'idée est que l'orchestrateur fera mieux que nous
+
+* Impact of Disaster Recovery Strategy +
+image:20231003_Microsoft_green-software-green-it_16.jpg[]
+    ** le métier va "souvent" vouloir le dernier (Real Time), mais c'est rarement vrai 😜
+
+* Les *reservations tips* (reserved instances, les "réserves d'instances") : en gros l'approche capacitaire qui est de nouveau à la mode
+image:20231003_Microsoft_green-software-green-it_17.jpg[]
+image:20231003_Microsoft_green-software-green-it_18.jpg[]
+
+    ** Mais les reserved instances sont contraire à une approche green
+        *** Les reserved instances ne sont valables que pour un même type de machine et une même région
+    ** côté green, mieux vaut scheduler l'usage des ressources (le dev ne va pas dev 24/24 7/7)
+
+* *Savings plan*
+image:20231003_Microsoft_green-software-green-it_19.jpg[]
+
+* *Emissions Impact Dashboard* de PowerBI (mais besoin d'une licence PRO...)
+    ** Cette interface permet d'aller chercher les données d'émissions de CO2 dans les data centers Microsoft
+    ** La *connexion de cette interface* aux DC MS nécessite d'avoir accès à une personne avec des droits suffisants (côté MS ? SE RENSEIGNER !)
+
+* *Microsoft Cloud For sustainability API* :
+    ** prend 2 sources : 1 liée à Azure, l'autre à Microsoft 365
+        *** prend 24 à 48h d'activation
+    ** ExportJobStatus : use Export APIs to transfer your emissions data directly to your Azure ...
+        *** Puis on va pouvoir accéder à l'export via un Azure Storage Explorer par exemple, on y verra des fichiers parquet
+        *** Et ces parquet on va pouvoir les charger dans PowerBI
+        *** Tout ceci est à vérifier, c'est actuellement *tout nouveau côté Microsoft*
+            **** Et de l'aveu même des speakers : *lisez bien la doc !*
+            **** Pour la doc voir le Microsoft Learn "Connect to the Emissions Impact Dashboard for Azure" : +
+            https://learn.microsoft.com/en-us/power-bi/connect-data/service-connect-to-emissions-impact-dashboard
+
+.Conclusion
+[NOTE]
+====
+Les éléments les plus importants / intéressants vus aujourd'hui : 
+
+    * *CSRD* : Corporate Sustainability Reporting Directive, une nouvelle directive européenne sur le social et les risques environnementaux
+    * *Green Software Foundation*
+    * Application *"GreenOps 4 Cloud"* sur la marketplace Azure
+    * *Microsoft Cloud For sustainability API* : attention, c'est toujours une preview aujourd'hui
+====
+
+
+
+
+
