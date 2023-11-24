@@ -1,0 +1,136 @@
+= 2023/11/24 - 12@13 Softeam - Exploration Cybersécurité pour le Cloud
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+Présentation par Cyril PARISOT et Julien SAUVAGE
+
+* Julien SAUVAGE : RSSI Softeam
+	** Julien a rejoint Softeam le 2023/07/04
+	** Création du pôle Cybersécurité chez Softeam depuis 2023/07
+		*** Ce pôle est côté Softeam Consulting
+	** Stéphane DUBREUIL en est le directeur
+	** Atomes crochus avec Docaposte confirmés
+		** contact Gwenael MARTINEZ qui porte les offres de sécurité côté Docaposte
+
+Programme : 
+
+	* Gouvernance
+	* Famille d'outils et grands acronymes
+	* Présentation d'un CNAPP : invités spécial Antoine Yeramian
+		** Antoine : Cloud Security Solutions Engineer at Wiz
+		** Former Senior Solutions Architect at AWS
+
+*Les fondamentaux de la sécurité* : 
+
+	* L'ANSI a un guide de dispo en la matière
+	* "NIST 800" : règles que tous les Cloud providers doivent respecter.
+	* Cyril, pour NIST 2.0 voir https://csrc.nist.gov/News/2023/just-released-nist-csf-2-0-reference-tool
+
+*Les outils de la cybersécurité* : 
+
+	* tous ces acronymes proviennent d'un gros travail de la part de sociétés de conseil et autres organisations comme Gartner, Forrester, etc.
+	
+	* *CSPM* : Cloud Security Posture Management +
+	image:20231124_softeam_exploration_cybersecu_cloud_01.png[]
+	
+	* *CWPP* : Cloud Workload Protection Platform +
+	image:20231124_softeam_exploration_cybersecu_cloud_02.png[] 
+		** Protection du workload
+
+	* *CASB* : Cloud Access Security Broker +
+	image:20231124_softeam_exploration_cybersecu_cloud_03.png[] 
+
+	* *SIEM* : Security Information and Event Management +
+	image:20231124_softeam_exploration_cybersecu_cloud_04.png[] 
+		** Sherlock Holmes de la sécurité des données avec un gros dashboard
+
+	* *CIEM* : Cloud infrastrure +
+	image:20231124_softeam_exploration_cybersecu_cloud_05.png[] 
+		** gestion des droits d'infrastructure Cloud (les identités, les accès)
+
+	* *CNAPP* : Cloud Native Application Protection Platform
+	image:20231124_softeam_exploration_cybersecu_cloud_06.png[] 
+		** Couvre les aspects développement et exploitation de la sécurité
+
+.Take way : synthèse pour les outils précédents
+image:20231124_softeam_exploration_cybersecu_cloud_07.png[] 
+
+*Présentation d'Antoine*
+
+	* Wiz est un CNAPP
+
+.Le Cloud : une transformation majeure
+image:20231124_softeam_exploration_cybersecu_cloud_08.png[]
+
+.Exploitable vulnerability detected on highly priviledged VM or container
+image:20231124_softeam_exploration_cybersecu_cloud_09.png[]
+
+.Gestion des clés Cloud (Externally exposed VM/serverless function with cleartext cloud keys allowing access to external accounts)
+image:20231124_softeam_exploration_cybersecu_cloud_10.png[]
+
+.Publicly exposed resource with permissions to access private storage buckets or databases
+image:20231124_softeam_exploration_cybersecu_cloud_11.png[]
+
+.Dashboard de Wiz
+image:20231124_softeam_exploration_cybersecu_cloud_12.png[]
+image:20231124_softeam_exploration_cybersecu_cloud_13.png[]
+image:20231124_softeam_exploration_cybersecu_cloud_14.png[]
+
+.On voit que Wiz fait du Vulnerabilities Findings
+image:20231124_softeam_exploration_cybersecu_cloud_15.png[]
+
+* Wiz se base (entre autres) sur MITRE ATTACK (https://attack.mitre.org/)
+	** Le framework le plus riche dans ce domaine, car se base sur des *contextes d'attaque* (A VERIFIER)
+
+* Wiz fonctionne avec un agent (mais également par API ? A VERIFIER)
+
+* Pourquoi prendre Wiz plutôt que l'outil d'un Cloud provider ?
+	** le contexte de Wiz est bien meilleur
+	** Wiz est capable de scanner de la même manière tous les Cloud providers
+	** Pour du mono-cloud, les études écartent souvent Defender comme CNAPP, même pour Azure en mono-cloud.
+		*** et ils préconisent beaucoup plus Wiz
+		*** Cyril : les outils du Cloud provider sont bons pour analyser SES services, mais beaucoup moins pour analyser les workloads du client
+	** Wiz (la société) a déjà de nombreuses certifications et de nombreux clients, y compris dans le très exigeant monde bancaire.
+	** les clients choisissent Wiz pour remplacer plusieurs outils
+		*** les CNAPP peuvent remplacer les outils de gestion de vulnérabilités ainsi que d'autres outils
+	** Wiz est un outil SaaS avec un backend sur AWS
+	** Wiz est un outil dédié au Cloud et PAS au on-premise
+
+.Les contacts en cas de besoin (Cybersecu, Cloud, Wiz)
+image:20231124_softeam_exploration_cybersecu_cloud_16.png[]
