@@ -75,7 +75,8 @@ Force de Kubernetes : *portabilité* et *open source*
 --
 * Control plane : tout ce qui est infra pure.
     ** Ex : provisionner un cluster Kube, donc ok pour Terraform 
-* Data plane : tout ce qui données à l'intérieur de l'infra
+
+* Data plane : tout ce qui est données à l'intérieur de l'infra
     ** Provisionner tout ce qui est à l'intérieur du Kube, c'est du data plane, et là on devrait laisser la main aux outils dédiés : Helm, Kubectl ou autres.
 --
 

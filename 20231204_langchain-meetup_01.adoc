@@ -1,0 +1,77 @@
+= 2023/12/04 - Langchain and LLM MeetUp
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Notes
+
+=== 1ere partie : LangChain 101
+
+Par Ravidhu Dissanayake de @WEnvision
+
+
+
+=== 2e partie : REX de Veolia sur l'usage de l'IA Gen (surtout les architectures RAG)
+
+Par Fouaid (?), Head of architecture côté Veolia
+
+* Travaille avec Azure OpenAI et non OpenAI
+	** et plus particulièrement Azure Cognitive Services
+
+* travaille sur un tenant dédié et un contrat dédié pour protéger les données
+	** pour ne pas logger les données, même pour 30 jours
+	** pour que ce qui sort du LLM soit bien la propriété de Veolia
+
+* Travaille avec ChromaDB et NON Pinecone
+
+image:20231204_langchain-meetup_01.jpg[]
+image:20231204_langchain-meetup_02.jpg[]
+image:20231204_langchain-meetup_03.jpg[]
+image:20231204_langchain-meetup_04.jpg[]
+image:20231204_langchain-meetup_05.jpg[]
+image:20231204_langchain-meetup_06.jpg[]
+
+* Comment le projet a-t-il été réalisé en finalement si peu de temps dans un groupe de cette taille (avec la latence qu'on leur connaît) ?
+	** Eh bien, dixit "les chose"
+
+* Si je comprends bien, des chunks avec un overlap de 200 caractères
+* Veolia : on multiplie les bases de connaissances plutôt que de maintenir une unique base "énorme"
+
+* Veolia : 213 ou 220 000 personnes
+	* 1 à 2 euros par jour par user, cela donne donc 220 000 x 1.5 x 20 par mois, soit 6.6M€ par mois ???
+	* ça ne peut pas être déployé pour tous les utilisateurs...
+
+

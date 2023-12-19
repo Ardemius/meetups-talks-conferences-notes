@@ -1,0 +1,247 @@
+= 2023/12/14 - Microsoft Azure Virtual Training Day : Innovate and Scale with Cloud Native Apps resources
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Microsoft Azure Virtual Training Day : +
+Well-Architected Framework
+
+Evènement virtuel Microsoft : +
+https://event.on24.com/wcc/r/4391079/46B431E937BE7E073257183F2B5EB5D4
+
+== Intro
+
+Talk donné par Sarah Allali
+
+Programme : 
+
+	* Première partie +
+	Introduction
+		** Présentation de Well-Architected +
+		Pause : 10 minutes
+		** Pilier de la fiabilité +
+		Pause : 10 minutes
+		** Pilier de la sécurité + 
+		Questions-réponses de conclusion
+
+	* Deuxième partie +
+	Introduction
+		** Pilier de l'optimisation des coûts +
+		Pause : 10 minutes
+		** Pilier de l'excellence opérationnelle + 
+		Pause : 10 minutes
+		** Pilier de l'efficacité des performances +
+		Questions-réponses de conclusion
+
+Ressources : 
+
+	* *programme* : https://on24static.akamaized.net/event/43/91/07/9/rt/1/documents/resourceList1630320213127/frfrfy23mvtdazurewellarchitectedframeworkagenda1678186616865.pdf
+	* Documentation Microsoft : Microsoft Azure Virtual Training Day: Well Architected Framework +
+	https://learn.microsoft.com/en-us/collections/x31dsgg0q1p827
+
+== Part 1
+
+=== Présentation de Well-Architected
+
+image:20231218_Microsoft-Azure_well-architected-framework_01.jpg[]
+
+* Documentation du produit
+* Architectures : application / infra / données
+	** plus de 700 architectures de référence disponibles dans le centre d'architecture Azure
+* charge de travail
+* Portfolio
+
+bonnes pratiques permettant d'optimiser la qualité des charges de travail : +
+image:20231218_Microsoft-Azure_well-architected-framework_02.jpg[]
+
+Les 5 piliers du WAF : 
+
+	* fiabilité
+	* sécurité
+	* optimisation des coûts
+	* excellence opérationnelle
+	* efficacité des performances
+
+NOTE: Pour plus d'infos sur les Well-Architected Framework (WAF), voir https://aka.ms/WAF[] (https://learn.microsoft.com/en-us/azure/well-architected)
+
+.Le WAF et le centre des architectures vous aide tout au long du cycle de vie du projet
+image:20231218_Microsoft-Azure_well-architected-framework_03.jpg[]
+
+* Azure compte plus de 3000 services aujourd'hui
+
+=== Formuler des conseils exploitables grâce à Well-architected Review
+
+.Well-architected Review
+image:20231218_Microsoft-Azure_well-architected-framework_04.jpg[]
+
+Conseils en matière de durabilité Azure : https://www.microsoft.com/fr-fr/sustainability
+
+.Ressources sur le WAF
+image:20231218_Microsoft-Azure_well-architected-framework_05.jpg[]
+
+=== Pilier de la fiabilité
+
+image:20231218_Microsoft-Azure_well-architected-framework_06.jpg[]
+
+.Fiabilité et résilience
+image:20231218_Microsoft-Azure_well-architected-framework_07.jpg[]
+
+Région : infra liée par une même latence
+
+.Conception axée sur la fiabilité
+image:20231218_Microsoft-Azure_well-architected-framework_08.jpg[]
+
+	* utiliser les zones de disponibilité dans une même région
+	* il est judicieux de réaliser le basculement sur plusieurs régions en cas d'urgence
+	* mais attention aux coûts supplémentaires (données, mise en réseau et service Azure Site Recovery pour le basculement)
+
+	* Si on utilise du PaaS, tout est géré par le fournisseur de service, mais attention au IaaS où il y a plus de choses à gérer de notre côté.
+
+.Test de disponibilité et de résilience
+image:20231218_Microsoft-Azure_well-architected-framework_09.jpg[]
+
+.Surveiller l'intégrité des applications
+image:20231218_Microsoft-Azure_well-architected-framework_10.jpg[]
+
+	* Azure Service Health : vue d'ensemble de l'intégrité des services et des régions Azure, ainsi que des communications sur les pannes et les activités de maintenance planifiées.
+		** les évènements Azure Service Health sont utilisés pour alerter les evts de niveau de service applicables.
+	* Azure Resource Health : aperçu de la santé de vos ressources individuelles
+		** les evts Azure Resource Health sont utilisés pour alerter les evts d'intégrité des ressources.
+	* les tableaux de bord Azure : offrent une vue consolidée des données issues d'Application Insight
+
+.Well-architected Review
+image:20231218_Microsoft-Azure_well-architected-framework_11.jpg[]
+
+.Quetions relatives à la fiabilité
+image:20231218_Microsoft-Azure_well-architected-framework_12.jpg[]
+
+.Quels objectifs et mesures avez-vous définis pour votre application en termes de fiabilité ?
+image:20231218_Microsoft-Azure_well-architected-framework_13.jpg[]
+
+=== Pilier de la sécurité
+
+.Créer et gérer des charges de travail sécurisées de manière proactive
+image:20231218_Microsoft-Azure_well-architected-framework_14.jpg[]
+
+	* il est ici question de *Zero Trust architecture* et de *principle of least privilege* (PoLP)
+	* Pour ce faire nous avons besoin d'une vue centralisée de nos charges de travail
+
+.Tirer parti d'une base sécurisée
+image:20231218_Microsoft-Azure_well-architected-framework_15.jpg[]
+
+.Zero Trust
+image:20231218_Microsoft-Azure_well-architected-framework_16.jpg[]
+
+.Garantir une sécurité permanente de manière proactive grâce à des contrôles natifs
+image:20231218_Microsoft-Azure_well-architected-framework_17.jpg[]
+image:20231218_Microsoft-Azure_well-architected-framework_18.jpg[]
+
+
+.Détecter et contrer les menaces 
+image:20231218_Microsoft-Azure_well-architected-framework_19.jpg[]
+
+	* détection des menaces native avec Microsoft Sentinel et Microsoft Defender
+
+== Part 2
+
+=== Optimisation des coûts
+
+.Optimisez les coûts
+image:20231218_Microsoft-Azure_well-architected-framework_20.jpg[]
+image:20231218_Microsoft-Azure_well-architected-framework_21.jpg[]
+image:20231218_Microsoft-Azure_well-architected-framework_22.jpg[]
+
+	* attention : il peut y avoir un délai entre la réception d'une alerte et le dépassement de seuil qui en est la cause
+	* préférez "scale out" (ajouter des machines) que "scale up" (augmenter les ressources de machines existantes)
+		** le "scale up" (terme à vérifier) implique souvent un déprovisionnement puis reprovisionnement
+		** "scale up"  = vertical scaling 
+		** "scale out" (ou "scale in") = horizontal scaling
+	
+
+.Azure Well-architected Review : questions relatives à l'optimisation des coûts
+image:20231218_Microsoft-Azure_well-architected-framework_23.jpg[]
+
+	* optimisation : trouver les coûts min et max
+
+=== Pilier de l'excellence opérationnelle
+
+.créer, déployer et gérer des charges de travail à l'aide de processus fiables
+image:20231218_Microsoft-Azure_well-architected-framework_24.jpg[]
+image:20231218_Microsoft-Azure_well-architected-framework_25.jpg[]
+
+	* IaC : choisir une *approche déclarative* plutôt qu'impérative
+		** Azure Resources Manager, Terraform, Azure Control Plane
+
+* Check-list relative à la configuration de l'infrastructure
+	** utiliser le plan de données Azure
+	** Automatisation bootstrap
+		*** extensions de machine virtuelle Azuer
+		*** Cloud-init
+		*** scripts de déploiement
+	** gestion de configuration
+		*** configuration d'état Azure Automation
+		*** Chef
+		*** Puppet
+
+=== Pilier de l'efficacité des performances
+
+image:20231218_Microsoft-Azure_well-architected-framework_26.jpg[]
+
+* Efficacité des performances : faire correspondre au mieux les ressources des applications à leurs besoins
+* Concevez et gérez des charges de travail qui évoluent en fonction des changements de charge.
+
+.Réponse active aux problèmes de performance
+image:20231218_Microsoft-Azure_well-architected-framework_27.jpg[]
+
+	* outils utilisés : 
+		** Azure Monitor
+		** Log Analytics
+		** Application Insights
+
+* règles des 80 / 20 valable également pour l'optimisation : +
+La loi de Pareto a été formulée par le sociologue et économiste italien Vilfredo Pareto à la fin du 19e siècle. Elle suggère que, bien souvent, 20 % des efforts sont à l'origine de 80 % des résultats, c'est-à-dire qu'une petite partie des causes produit la plupart des résultats.
+
+
+
+
+
+
+
+
+
+
+
+

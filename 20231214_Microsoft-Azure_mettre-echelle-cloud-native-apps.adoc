@@ -1,0 +1,200 @@
+= 2023/12/14 - Microsoft Azure Virtual Training Day : Innovate and Scale with Cloud Native Apps resources
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Microsoft Azure Virtual Training Day : +
+Innover et mettre à l'échelle avec des applications natives du Cloud
+
+Evènement virtuel Microsoft : +
+https://event.on24.com/wcc/r/4396919/A832297782FF9755D284AA842CBB4EB7
+
+== Intro
+
+Microsoft Azure Virtual Training Day: Innovate and Scale with Cloud Native Apps  
+
+Gain the skills to build resilient applications. You will explore how to run cloud native applications by identifying the correct components, building integration efficiencies, and deploying applications on Azure more securely. 
+
+Agenda : +
+link:{resourcesdir}/20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_agenda.pdf[]
+
+* Part 1 
+
+	** Introduction 
+
+	** Build optimized cloud applications +
+	Break: 10 Minutes 
+
+	** Manage your application with Azure Container Apps +
+	Break-10 minutes 
+
+	** Leverage managed databases for cloud native applications
+	
+	** Closing Question & Answer 
+
+* Part 2
+
+	** Introduction
+
+	** Monitor your deployments with native Azure services +
+	Break: 10 minutes
+
+	** Deploy and maintain cloud native applications with GitHub +
+	Actions and Azure pipelines
+
+	** Closing Question & Answer 
+
+Training donné par Kristin Deokiesingh
+
+Resources : 
+
+	* Microsoft Azure Virtual Training Day : Innovate and Scale with Cloud Native Apps resources : +
+	https://learn.microsoft.com/en-us/collections/no31f88nr5jjjp
+	* slides de la présentation : +
+	link:{resourcesdir}/20231214_Microsoft-Azure_mise-a-echelle-cloud-native-apps.pdf[]
+
+== Part 1
+
+=== 1) Build optimized cloud applications 
+
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_01.jpg[]
+
+.What can you build with serverless in Cloud-native ?
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_02.jpg[]
+
+First scenario
+
+.Smarting SMALL
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_03.jpg[]
+
+.Growing the application
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_04.jpg[]
+
+	* using CosmosDB for streaming data
+
+Now, when to use Cloud native applications ?
+
+	* challenge for modern developers : agility, security, reliability
+	* developers must move from idea to code seamlessly
+
+.Agility, Reliability and Security in the Cloud (Azure)
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_05.jpg[]
+
+.Using containers in the Cloud
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_06.jpg[]
+
+	* Azure Container Registry : All images stored in a container registry are encrypted at rest
+
+* AKS can use *kubectl*, the standard Kubernetes command-line tool, or you can choose to leverage other open-source tools, like *Argo CD*.
+	** Argo CD semble très apprécié côté Microsoft : ils le mettent très en avant, et vante son aspect visuel
+
+.Kubernetes node > Pod > Container > website
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_07.jpg[]
+
+Demo with Azure Container Apps
+
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_08.jpg[]
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_09.jpg[]
+
+* This example uses *sidecar architecture*
+* *Kubernetes Event-driven Autoscaling* known as *KEDA*
+
+.What are Azure Functions ?
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_10.jpg[]
+
+* Azure Functions are *FaaS* : Function as a Service
+	** Azure Functions can be written in various languages : Java, C#, Python, etc.
+
+Azure Functions use cases : 
+
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_11.jpg[]
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_12.jpg[]
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_14.jpg[]
+
+.Worflows and orchestration with Durable Functions
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_13.jpg[]
+
+* *Service* : represents a collection of components that collectively deliver specific, workload-oriented functionality to your cloud-native application.
+
+* Azure Cosmos DB
+	** one of the fundamental Azure service, available in all regions
+	** is a fully managed, cloud-native NoSQL Database
+
+* Azure Cosmos DB advantages : 
+
+	** support for different consistency models
+	** built-in replication
+	** multiple-region writes
+	** configurable conflict resolution mechanism
+
+* Azure Database for PostgreSQL
+	** available in 3 deployment modes : 
+		*** single server : base deployment for apps that do not need granular management
+		*** flexible server : offer more control of management tasks and configuration services
+		*** hyperscale : implements sharding to minimize response time for large datasets
+			**** for datasets of at least 100 Go 
+
+== Part 2)
+
+=== Monitor your deployments with native Azure services
+
+.Benefits of GitHub Actions
+image:20231214_Microsoft-Azure_mettre-echelle-cloud-native-apps_14.jpg[]
+
+* GitHub Actions consist of the following components : 
+	** Workflow
+	** Runner
+	** Event
+	** Job
+	** Step
+	** Action
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

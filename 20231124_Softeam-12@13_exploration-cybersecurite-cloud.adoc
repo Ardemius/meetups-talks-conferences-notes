@@ -132,5 +132,9 @@ image:20231124_softeam_exploration_cybersecu_cloud_15.png[]
 	** Wiz est un outil SaaS avec un backend sur AWS
 	** Wiz est un outil dédié au Cloud et PAS au on-premise
 
-.Les contacts en cas de besoin (Cybersecu, Cloud, Wiz)
+Le Take Away final, *les contacts en cas de besoin* (Cybersecu, Cloud, Wiz) : +
 image:20231124_softeam_exploration_cybersecu_cloud_16.png[]
+
+    * Besoin de conseils sur quoi faire & pourquoi ? Contact la  Cyber (DUBREUIL Stephane, SAUVAGE Julien)
+    * Besoin d'aide sur le comment ? Contact Cloud les cyrilles ( CARTOT Cyrille, et moi) 
+    * Submergé par les outils et les alertes ? contacter WIz(antoine.yeramian@wiz.io ) 

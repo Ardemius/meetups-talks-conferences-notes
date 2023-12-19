@@ -189,5 +189,13 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 
 * *Data* : in my repo about Data
 
+== 2023/12/15 - 12@13 Softeam - Le rôle de l'architecte est-il compatible avec un projet Agile ?
 
+[12:28] LOPES SILVA Ricardo - ressources d'architecture données par un participant (Abdallah ?) : 
+    
+    * https://www.hosiaisluoma.fi/blog/lean-ea-framework/[] : Lean Enterprise Architecture Framework (LEAF)
+    * https://www.hosiaisluoma.fi/blog/lean-ea/
+
+Thomas - Gregor Hohpe : The Architect Elevator : +
+https://architectelevator.com/
 
