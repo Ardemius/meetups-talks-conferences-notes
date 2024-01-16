@@ -208,7 +208,7 @@ image:20231218_Microsoft-Azure_well-architected-framework_25.jpg[]
 * Check-list relative à la configuration de l'infrastructure
 	** utiliser le plan de données Azure
 	** Automatisation bootstrap
-		*** extensions de machine virtuelle Azuer
+		*** extensions de machine virtuelle Azure
 		*** Cloud-init
 		*** scripts de déploiement
 	** gestion de configuration

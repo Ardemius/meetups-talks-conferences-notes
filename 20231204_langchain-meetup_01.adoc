@@ -42,7 +42,28 @@ toc::[]
 
 Par Ravidhu Dissanayake de @WEnvision
 
+* LangChain est un framework d'application, au même titre que les frameworks MVC à l'époque
 
+.Overview de LangChain
+image:20231204_langchain-meetup_07.jpg[]
+
+* LangChain est un framework d'applications qui permet d'orchestrer l'interaction avec les grands modèles de langage (LLM)
+* Il permet de construire facilement des prompts qui incorporent des documents et / ou l'historique des précédentes interactions.
+* Il permet également d'orchestrer des raisonnements en s'appuyant sur des LLM
+
+* Le framework LangChain est composé de plusieurs parties : 
+
+	** *La library LangChain*
+		*** disponible en Python et en JavaScript
+			**** Thomas : on peut également citer le projet *LangChain4J* qui permet un portage sur Java
+		*** Ces bibliothèques comprennent :
+			**** Des interfaces applicatives et des intégrations avec des outils 3rd
+			**** un moteur d'exécution qui permet de faire communiquer l'ensemble des composants de cette library, pour assembler ces composants en *chaînes* et *agents*
+			**** des implémentations prêtes à l'emploi de chaînes et d'agents
+
+TO BE COMPLETED
+
+* LCEL : LangChain Expression Language
 
 === 2e partie : REX de Veolia sur l'usage de l'IA Gen (surtout les architectures RAG)
 

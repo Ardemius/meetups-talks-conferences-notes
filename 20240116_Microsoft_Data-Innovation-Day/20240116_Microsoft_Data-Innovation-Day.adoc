@@ -1,0 +1,293 @@
+= 2024/01/16 - Microsoft - Data Innovation Day
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Agenda
+
+1. Une plénière d'ouverture sur nos dernières innovations autour de la donnée, de l'analytique, de l'IA et de la gouvernance ainsi qu'un retour d'expérience de Saint-Gobain sur sa transformation par l'IA
+
+2. Trois ateliers avec nos experts Data & AI pour mettre la main à la pâte :
+
+    ** [IA] Démo assistée : A partir de scenarii concrets, suivez des démos guidées sur l'utilisation des modèles d'IA générative, du RAG, du Prompt Flow Designer et des frameworks comme Langchain, Semantic Kernel ou encore Autogen.
+    ** [Analytics] Hands-on lab : Suivez une démo guidée de Microsoft Fabric, la solution analytique complète alimentée par des données transactionnelles, et comment les Copilots aident à la création de la solution.
+    ** [IA & NoSQL] Hands-on lab : A partir de cas d'usage, réalisez une application depuis votre PC avec une souscription qui est fournie, comme la recherche de produit en utilisant des embeddings.
+
+3. Des moments d'échange avec vos pairs et nos experts autour d'un buffet déjeunatoire et/ou d'un cocktail.
+
+Programme : 
+
+    * 09:30 AM - 10:00 AM : Accueil & Café
+    * 10:00 AM - 12:00 PM : Plénière innovation animée par Eric Charbonnier, CTO Data & AI, Microsoft France
+    * 12:00 PM - 01:30 PM : Déjeuner & Networking
+    * 01:30 PM - 04:00 PM : Ateliers & Demo (3 tracks : AI ; Analytics ; Data)
+    * 04:00 PM - 05:00 PM : Cocktail & Networking
+
+Intervenants : 
+
+    * Nicolas Cornet : Head of Data & AI Engineering, Saint-Gobain
+    * Eric Charbonnier : CTO Data & AI, Microsoft France
+    * Maggie Mhanna : Cloud Solution Architect Data & AI, Microsoft France
+    * Rudy Plissoneau : AI & Analytics Architect, Microsoft France
+    * Emmanuel Deletang : NoSQL Specialist, Microsoft EMEA
+    * Patrice Truong : Cloud Solution Architect Data & AI, Microsoft France
+    * Frederic Gisbert : Cloud Solution Architect Data & AI, Microsoft France
+    * Clement Droinat : Sales Engineer Data & AI, Microsoft France
+    * Florent Thibault : Cloud Solution Architect Data & AI, Microsoft France
+    * Pierre Doudet : Technical Specialist Data & Analytics, Microsoft France
+
+== Intro
+
+Intro par Eric Charbonnier, CTO Data & IA Microsoft
+
+NOTE: Les talks sont traduits en direct à l'écran
+
+"Le meilleur moyen de prédire l'avenir est de le créer" Peter Drucker
+
+* Grâce à l'IA, Microsoft vient de dépasser Apple comme 1ere capitalisation boursière mondiale
+    ** voir https://www.strategies.fr/actualites/culture-tech/LQ2772631C/grace-lia-microsoft-depasse-apple-comme-entreprise-la-plus-valorisee-au-monde.html[] (2024/01/16): +
+    ""Microsoft devient la première capitalisation boursière mondiale en surpassant Apple, avec une valorisation de 2890 milliards de dollars contre 2870 milliards pour Apple. Cette première depuis novembre 2021 s'explique par l'élan de Microsoft dans le domaine de l'intelligence artificielle, en particulier avec son partenariat avec OpenAI, créateur de ChatGPT. Depuis le lancement de ChatGPT en novembre 2022, l'action Microsoft a augmenté de près de 75 %, tandis qu'Apple a connu une hausse de 35 %. Les inquiétudes concernant la croissance d'Apple et les performances mitigées de l'iPhone 15 ont contribué à cette inversion de tendance. Microsoft pourrait dépasser les 3000 milliards de dollars de valorisation boursière cette année, se joignant ainsi à Apple en tant que seule société à atteindre ce seuil.
+
+* *Azure Maya* : GPU développé par les labs de Microsofts
+    ** https://aka.ms/AzureMaia[]
+
+* *Projet Silica* : archivage sur du verre
+    ** pas cher
+    ** durable
+    ** très haute densité de stockage
+    ** Eric espère que cela "commencera" à être dispo courant 2025
+
+* *Projet Sophia*
+    ** un espèce de Copilot like ???
+    ** à tester : https://projectsophia.microsoft.com/tryit[] +
+    image:20240116_Microsoft_Data-Innovation-Day_01.jpg[]
+    ** Description de Microsoft du projet : +
+    Explore solutions to complex business problems with Project Sophia's infinite, AI-powered canvas. Build exploratory journeys to discover insights and suggested actions, or allow business process guides to aid you through the process of gathering relevant data to tackle specific business outcomes.
+
+.Microsoft Intelligent Data Platform
+image:20240116_Microsoft_Data-Innovation-Day_02.jpg[]
+
+* Parmi ses partenaires, Eric insiste particulièrement sur : 
+    ** Databricks, Informatica et DBT (qui vient s'intégrer aux solutions MS Synapses et Fabric)
+
+A partir de là, 2 nouveaux speakers pour parler de : 
+
+* *Azure Arc* (Azure Arc-enabled SQL Server architecture) 
+
+image:20240116_Microsoft_Data-Innovation-Day_03.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_04.jpg[]
+
+* Copilot est partout, et maintenant *Copilot est disponible pour SQLServer*
+    ** On peut maintenant enrichir Azure DataStudio avec une extension GitHub : Copilot pour SQL
+
+.Feedback sur les nouveautés de l'année
+image:20240116_Microsoft_Data-Innovation-Day_05.jpg[]
+
+    * il est maintenant possible de mettre en pause les managed instances
+
+De nouveau, 2 nouveaux speakers
+
+* Microsoft Fabric
+    ** general availability
+    ** centrée autour du datalake OneLake
+    ** plutôt que partager ses fichiers avec PowerBI Desktop, on va pouvoir le faire via OneLake (à vérifier)
+    ** https://aka.ms/Fabric[]
+    ** l'IA est infusée partout dans Fabric
+
+image:20240116_Microsoft_Data-Innovation-Day_06.jpg[]
+
+    ** la gouvernance des data est intégrée à Fabric / OneLake via l'offre *Purview*
+
+.Copilot for Data Science and Data Engineering
+image:20240116_Microsoft_Data-Innovation-Day_07.jpg[]
+
+    * On va pouvoir demander l'explication d'un cote Python en langage naturel
+    * Plus besoin d'instancier les services Azure OpenAI, tout est déjà intégré dans Fabric
+
+Toute la demo est disponible à l'URL : https://aka.ms/fabricHotels[]
+
+*REX de Saint-Gobain de Nicolas CORNET, Head of Data & AI Engineering*
+
+[NOTE]
+====
+J'ai assisté à ce REX de Saint-Gobain via le Azure Club Insiders le 2023/07/04.
+
+Voici mes notes : https://github.com/Ardemius/AI-resources/blob/main/misc-ia-generatives-notes.adoc#20230704-la-strat%C3%A9gie-de-saint-gobain-pour-le-passage-%C3%A0-l%C3%A9chelle-des-applications-dia
+====
+
+image:20240116_Microsoft_Data-Innovation-Day_08.jpg[]
+
+* Saint-Gobain n'est PAS digital native, l'IA est arrivée chez eux via les centres de recherche (en 2018)
+* et initialement, c'était très siloté, on ne savait pas ou mal ce qui était fait dans l'équipe / le département d'à côté
+
+* 2022 : mise en place de l'AI Portal +
+image:20240116_Microsoft_Data-Innovation-Day_09.jpg[]
+
+* pour des raisons de sécurité, pas de plateforme centralisée, MAIS une plateforme par BU (soit 27 au total)
+    ** d'où un besoin fort d'industrialisation
+
+.Accelerate GenAI Deployment in Saint-Gobain
+image:20240116_Microsoft_Data-Innovation-Day_10.jpg[]
+
+    * problèmatique de gouvernance et juridique : pas possible de laisser les collaborateurs "faire n'importe quoi avec le chatbot".
+        ** D'où le travail qui a été commencé pour créer AI SGChat
+    * Chaque collaborateur peut créer son propre Chatbot (2023/11) ou son Chatbot d'équipe
+        ** à peu près 200 chatbots de créés aujourd'hui, que SG préfère appeler "playground"
+
+.AI SGChat : portail de création de chatbot
+image:20240116_Microsoft_Data-Innovation-Day_11.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_12.jpg[]
+
+.La roadmap de Saint-Gobain quant à l'IA
+image:20240116_Microsoft_Data-Innovation-Day_13.jpg[]
+
+    * 2024 : Bring AI at strategic level & Scale AI
+    * Today...
+    * 2025+ : Augment Main Business processes thanks to AI
+
+//- 
+
+* Nicolas : *pour générer la doc* : filmer un opérateur décrire un process industriel, et à partir de cette vidéo et des technos de GenAI, on peut prégénérer une grosse partie de la doc (au format word dans leur cas)
+
+* Nicolas : TOUTE l'intelligence de AI SGChat est côté backend, RIEN côté frontend
+    ** C'est principalement fait par call API
+
+Nouveaux intervenants : 
+
+* 682 publications sur l'IA durant les 12 mois pour Microsoft
+
+* grosse contribution de Microsoft dans l'OpenSource : +
+image:20240116_Microsoft_Data-Innovation-Day_14.jpg[]
+
+* DeepSpeed : profiter des "heures creuses" pour faire tourner l'entraînement des modèles de l'IA
+
+DEMO : *le quizz de la retraite* (avec usage de GPT-4 Vision)
+
+NOTE: Apparemment, tout le code est sur GitHub
+
+image:20240116_Microsoft_Data-Innovation-Day_15.jpg[]
+
+1. Générer un quizz pertinent : GPT-4 avec JSON output mode
+2. Dessiner l'image du voyage idéal : Co-Audit avec Dall-E et GPT-4 Vision
+3. Dessiner l'image du voyage idéal : GPT-4 Vision et Azure AI Search
+
+.On commence le codage dans Fabric
+image:20240116_Microsoft_Data-Innovation-Day_16.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_17.jpg[]
+
+    * la nouveauté apportée : `response_format={"type": "json_object"},`
+    * Autogen
+
+.Autogen
+[NOTE]
+====
+*AutoGen* est un framework open-source développé par Microsoft Research qui *permet aux développeurs de créer des applications basées sur des modèles de langage*. Il est conçu pour simplifier le développement de ces applications en fournissant une API hautement abstraite et des fonctionnalités avancées, telles que la collaboration entre agents, la personnalisation et la teachabilité.
+
+AutoGen est *basé sur une architecture multi-agents*, dans laquelle chaque agent est responsable d'une tâche spécifique. Ces agents peuvent interagir entre eux pour résoudre des tâches complexes. AutoGen fournit un ensemble d'agents prédéfinis, mais les développeurs peuvent également créer leurs propres agents.
+====
+    
+        ** on va créer des classes qui vont représenter des personnes dans une conversation
+
+    * GPT-4 Vision est un *LMM*, une *Large Multimodal Model* +
+    "Large multimodal models (LMMs) extend large language models (LLMs) with multi-sensory skills, such as visual understanding, to achieve stronger generic intelligence."
+
+Nouvel intervenant
+
+.Microsoft Purview pour une gouvernance des données centralisées
+image:20240116_Microsoft_Data-Innovation-Day_18.jpg[]
+
+    * Anciennement Azure Purview : le Data Catalog de MS
+
+.3 exemples classiques de leakage de Data
+image:20240116_Microsoft_Data-Innovation-Day_19.jpg[]
+
+.Example : labelling : le Gandalf du data leakage !
+image:20240116_Microsoft_Data-Innovation-Day_20.jpg[]
+
+    * la référence à Gandalf de Lakera est sympa 😁
+    * le label posé sur un doc est hérité par tout les users et évite ainsi les leakages "par erreur"
+        ** on empêche par exemple le partage de docs avec des externes
+
+    * Copilot est également intégré à Microsoft Purview
+    * Tout ce qui est montré ici sera disponible d'ici début 2024 (Q1)
+
+IMPORTANT: De manière générale, Copilot est maintenant disponible dans "presque tous" les services Microsoft
+
+*Conclusion, tendances et roadmap 2024 pour Microsoft*
+
+* Les 3 tendances sont : 
+
+    ** *Intelligent Datalake* : 
+        *** auto-optimisation des requêtes dans Fabric
+        *** il y aura une grosse annonce cette année sur "quelque chose de plus transactionnel"
+        *** "tous les composants parlent le Delta Parquet" (à creuser)
+
+    ** *Software as a Service* : 
+        *** l'idée est que tous les services "soient disponibles" : "c'est DEJA là, je n'ai qu'à me servir"
+
+    ** *IA Boosted* : 
+        *** 6 ou 7 Copilot en cours de diffusion pour Fabric, et d'autres arrivent
+            **** "on continue sur cette vague"
+        *** et *Microsoft produit également des modèles indépendamment d'OpenAI*
+        *** les modèles sont proposés "as a service" comme Mistral ou LLaMA
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
