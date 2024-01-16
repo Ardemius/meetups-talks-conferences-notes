@@ -73,7 +73,12 @@ Intervenants :
 
 Intro par Eric Charbonnier, CTO Data & IA Microsoft
 
-NOTE: Les talks sont traduits en direct à l'écran
+[NOTE]
+====
+Les talks sont traduits en direct à l'écran
+
+Whisper : chunk de 15 sec, donc pas "top" pour de la traduction en temps réel de talk MAIS dans le speech to text, il y a déjà des services pour du temps réel
+====
 
 "Le meilleur moyen de prédire l'avenir est de le créer" Peter Drucker
 
@@ -266,26 +271,172 @@ IMPORTANT: De manière générale, Copilot est maintenant disponible dans "presq
         *** et *Microsoft produit également des modèles indépendamment d'OpenAI*
         *** les modèles sont proposés "as a service" comme Mistral ou LLaMA
 
+== Après-midi : Workshop AI
 
+."Add generative AI to your apps to gain true intelligence" -> a paradigm shift
+image:20240116_Microsoft_Data-Innovation-Day_21.jpg[]
 
+* Qu'est-ce qui a le plus ralenti l'adoption de la gen IA ? L'outillage d'après le speaker +
+image:20240116_Microsoft_Data-Innovation-Day_22.jpg[]
+    ** Evaluation : pour évaluer des LLM, on utilise des LLM (layer de *content safety*)
 
+."Copilot s'est AVEC l'utilisateur, ça ne le remplace pas"
+image:20240116_Microsoft_Data-Innovation-Day_23.jpg[]
 
+.Azure AI portfolio : liste des principaux services
+image:20240116_Microsoft_Data-Innovation-Day_24.jpg[]
 
+* l'Azure AI Studio est très centré actuellement sur le scénario RAG, mais c'est amené à s'étendre.
 
+.Agenda de l'après-midi
+image:20240116_Microsoft_Data-Innovation-Day_25.jpg[]
 
+    * Generative AI Development Hub - Azure AI Studio
+    * Unlock new possibilities - GPT-4 for Vision
+    * AI-powered information retrieval platform - Azure AI Search
+    * Copilot & plugins - Prompts Flow and Semantic Kernel
+    * Claim AI Phone Bot - Demo
 
+=== Generative AI Development Hub - Azure AI Studio
 
+* Azure OpenAI c'est vraiment du "model as a service", on n'a rien à déployer sur une infra
+* Microsoft souhaite amener certains models "extérieurs" en model as a service : LLaMA et bientôt Mistral
+    ** souvent des "SLLM" (Small LLM) +
+    image:20240116_Microsoft_Data-Innovation-Day_26.jpg[]
+    ** Microsoft est "très impatient" d'avoir Mistral (modèle français !) en model as a service
 
+.Architecture RAG actuelle
+image:20240116_Microsoft_Data-Innovation-Day_27.jpg[]
 
+* Rudy a demandé, via GPT-4 Vision, à ce que soit décrit le schéma précédent
+* Rudy : On pourrait utiliser GPT-4 Vision pour analyser des CVs par exemple
+* Toute cette partie multimodal est amenée à "exploser" dans les mois à venir
 
+* Rudy : Vision est une fonctionnalité en preview depuis 2023/12
+    ** pas encore de date de mise à disposition en France aujourd'hui
+    ** la latence reste faible / mauvaise
+    ** c'est "à tester" mais certainement PAS pour de la PROD (pas aujourd'hui)
 
+=== Unlock new possibilities - GPT-4 for Vision
 
+* les bases vectorielles dispo chez MS : CosmoDB, MongoDB, Postgre, AI Search
+    ** la suite de la demo va se concentrer sur AI Search
 
+.Hybrid search et reranking
+image:20240116_Microsoft_Data-Innovation-Day_28.jpg[]
 
+* tous les exemples sont codés en Python ou en NO code -> importance du langage Python une fois de plus mise en avant
+* BM25 est l'algo le plus utilisé pour le ranking de keywords (la recherche "classique" et NON la recherche vectorielle)
+* l'*embedding* souvent utilisé dans les demo de la journée est *ADA* d'OpenAI
 
+* Il n'y a pas de communication aujourd'hui sur les algos de reranking
+    ** C'est une techno (des algos et autres) que Microsoft utilise depuis 2 ans (et sur lesquels il ne communique pas)
 
+.Exemple de reranking
+image:20240116_Microsoft_Data-Innovation-Day_29.jpg[]
 
+[NOTE]
+====
+Question au speaker : il confirme bien qu'actuellement, il n'y a *pas moyen de "configurer / personnaliser"* les *algos / procédés de reranking*. +
+-> Ils sont actuellement à prendre tel quel.
+====
 
+=== AI-powered information retrieval platform - Azure AI Search
+
+Par Frédéric (speaker génial avec mass d'humour ! 😁)
+
+* Copilot : l'idée est d'apporter une nouvelle expérience d'interaction avec l'utilisateur +
+image:20240116_Microsoft_Data-Innovation-Day_30.jpg[]
+    ** et cette expérience sera *conversationnelle*
+
+* A côté -> contexte de l'application
+* Intégré -> Contexte d'une tâche
+* Immersive -> orchestre les applications
+    ** celui là je lui donne un objectif : "trouve-moi tout ce qui concerne le semantic Kernel et tu m'envoie la synthèse par mail"
+
+.Microsoft 365 Copilot architecture
+image:20240116_Microsoft_Data-Innovation-Day_31.jpg[]
+
+* Frédéric : RAG (Retrieval Augmented Generation) -> très mal nommé, ça n'augmente pas la génération, ça augmente le prompt
+
+.Copilot stack
+image:20240116_Microsoft_Data-Innovation-Day_32.jpg[]
+
+* 2 orchestrateurs : Langchain et Semantic Kernel (OpenSource et développé par Microsoft)
+    ** Semantic Kernel : https://github.com/microsoft/semantic-kernel[]
+
+.Semantic Kernel
+image:20240116_Microsoft_Data-Innovation-Day_33.jpg[]
+
+* Frédéric se sert du LLM (il lui demande) d'anonymiser les data
+* "LLM OPS à mettre en place" (creuser le point) quand on passe en PROD pour ajouter la gouvernance 
+
+* Le markdown est très bien géré dans les archi RAG
+
+.Image LLM life cycle
+image:20240116_Microsoft_Data-Innovation-Day_34.jpg[]
+
+.Image workflow LLM OPS
+image:20240116_Microsoft_Data-Innovation-Day_35.jpg[]
+
+* Tout cette demo est un exemple d'usage de C'est un exemple de *Prompt flow* dans VS Code, qui peut potentiellement tout faire tourner localement, pour peu qu'on choisisse un petit LLM qui puisse tourner localement (Mistral)
+
+    ** https://github.com/microsoft/promptflow[] : +
+    *Prompt flow* is a suite of development tools designed to *streamline the end-to-end development cycle of LLM-based AI applications*, from ideation, prototyping, testing, evaluation to production deployment and monitoring.
+
+    ** Prompt flow fait partie de la "Microsoft Power Platform" : https://learn.microsoft.com/en-us/power-platform/[]
+        ** A vérifier !
+        ** il semblerait que le nom complet de Prompt flow soit "Azure Machine Learning prompt flow" : https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow?view=azureml-api-2[]
+    ** Avec Prompt flow, on va pouvoir *créer des plugins pour Copilot*
+
+* Avec *Copilot Studio* (https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio[]), on va également pouvoir *se créer son "propre" Copilot* et y intégrer ses plugins
+
+* *AutoGen* n'est pas encore un élément du Semantic Kernel (mais cela va peut-être vite venir à écouter Frédéric...)
+    ** C'est un framework opensource multiagents (qui permet la collaboration entre agents pour obtenir un résultat)
+    ** https://microsoft.github.io/autogen/[] : 
+        ** Multi-Agent Conversation Framework : AutoGen provides multi-agent conversation framework as a high-level abstraction. With this framework, one can conveniently build LLM workflows.
+        ** Easily Build Diverse Applications : AutoGen offers a collection of working systems spanning a wide range of applications from various domains and complexities.
+        ** Enhanced LLM Inference & Optimization : AutoGen supports enhanced LLM inference APIs, which can be used to improve inference performance and reduce cost.
+
+=== Cas d'usage d'un call center pour l'assurance : Claim AI Phone Bot - Demo
+
+* Conversation en direct avec le chatbot, et mise à jour en direct des infos de la fiche incident
+* Possible de tenir des milliers de conversations en parallèle 
+
+.Fiche incident mise à jour en direct
+image:20240116_Microsoft_Data-Innovation-Day_35.jpg[]
+
+* Le moteur de la démo s'appuie simplement sur Azure OpenAI (??? Cela manque d'infos sur cette démo)
+
+.Code de la demo disponible sur GitHub
+image:20240116_Microsoft_Data-Innovation-Day_36.jpg[]
+
+[WARNING]
+====
+* Malheureusement, impossible de trouver le repo de la demo, j'ai bien peur qu'il ne s'agisse en fait d'un repo privé... 😭
+* Et idem, impossible de trouver la fameuse vidéo associée sur YouTube...
+====
+
+== Conclusion
+
+-> On va recevoir un mail récapitulatif avec les formations ou learning paths associés aux talks.
+
+== Réseautage
+
+* Discussion avec Nicolas CORNET de Saint-Gobain : 
+    ** la BDD vectorielle de Postgre est bien moins chère que celle dispo dans Azure AI Search
+        *** A vérifier, mais pour cette dernière, on est aux alentours de 2000$ pour 3 Go de data
+    ** la démarche de Saint-Gobain est avant tout une démarche d'acculturation des collaborateurs, et de sensibilisation / formation de la direction
+
+* Discussion avec Rudy Plissoneau (Microsoft) : 
+    ** faire du *search vectoriel* sur du *XML* ou du *JSON*, qui plus est avec de fortes jointures entre éléments, n'est *PAS une bonne idée*
+        *** et Microsoft n'a rien de prévu pour améliorer ce constat dans les mois à venir : ce n'est "pas fait pour" -> il faut passer par une bonne vieille recherche "classique" à la place
+    ** Rudy explique que GPT-4 Vision n'est actuellement absolument PAS prêt à analyser des schémas compliqués : il faut complètement oublier l'analyse avec Vision des schémas ArchiMate (et j'ai bien présenté ArchiMate à Rudy)
+        *** De plus, l'outil accuse actuellement une mauvaise latence : on va galérer...
+    ** j'ai présenté à Rudy ma *solution de création de requête xQL via l'IA*, et il pense que c'est effectivement la *meilleure voie à suivre aujourd'hui*
+        *** et il me conseille d'aller jeter un oeil du côté des "*SQL AI Agent*" sur Google ou GitHub
+            **** un exemple rapidement trouvé sur YouTube : https://www.youtube.com/watch?v=HbTh3dVDn6g
+            **** Mais pour ce que je vois, on ne trouve pas autant de ressources que cela... 🤔
 
 
 
