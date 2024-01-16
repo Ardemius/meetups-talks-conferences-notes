@@ -96,6 +96,8 @@ NOTE: Les talks sont traduits en direct à l'écran
     image:20240116_Microsoft_Data-Innovation-Day_01.jpg[]
     ** Description de Microsoft du projet : +
     Explore solutions to complex business problems with Project Sophia's infinite, AI-powered canvas. Build exploratory journeys to discover insights and suggested actions, or allow business process guides to aid you through the process of gathering relevant data to tackle specific business outcomes.
+    ** Par contre, le "gag", le service n'est apparemment pas encore ouvert en France... +
+    Donc impossible de tester, sauf à utiliser un VPN 😉
 
 .Microsoft Intelligent Data Platform
 image:20240116_Microsoft_Data-Innovation-Day_02.jpg[]
