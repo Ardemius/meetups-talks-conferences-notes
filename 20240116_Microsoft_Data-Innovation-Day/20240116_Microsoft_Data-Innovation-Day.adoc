@@ -400,6 +400,8 @@ image:20240116_Microsoft_Data-Innovation-Day_35.jpg[]
 
 === Cas d'usage d'un call center pour l'assurance : Claim AI Phone Bot - Demo
 
+Présenté par Clémence LESNE
+
 * Conversation en direct avec le chatbot, et mise à jour en direct des infos de la fiche incident
 * Possible de tenir des milliers de conversations en parallèle 
 
@@ -411,11 +413,8 @@ image:20240116_Microsoft_Data-Innovation-Day_35.jpg[]
 .Code de la demo disponible sur GitHub
 image:20240116_Microsoft_Data-Innovation-Day_36.jpg[]
 
-[WARNING]
-====
-* Malheureusement, impossible de trouver le repo de la demo, j'ai bien peur qu'il ne s'agisse en fait d'un repo privé... 😭
-* Et idem, impossible de trouver la fameuse vidéo associée sur YouTube...
-====
+* Repo GitHub : https://github.com/clemlesne/claim-ai-phone-bot
+* Vidéo de démo : https://www.youtube.com/watch?v=gnnin34V7Zg
 
 == Conclusion
 
