@@ -1,4 +1,4 @@
-= 2024/01/16 - Microsoft - Data Innovation Day
+= 2024/01/16 - Microsoft - Data & IA Innovation Day
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -42,7 +42,7 @@ toc::[]
 
 2. Trois ateliers avec nos experts Data & AI pour mettre la main à la pâte :
 
-    ** [IA] Démo assistée : A partir de scenarii concrets, suivez des démos guidées sur l'utilisation des modèles d'IA générative, du RAG, du Prompt Flow Designer et des frameworks comme Langchain, Semantic Kernel ou encore Autogen.
+    ** [IA] Démo assistée : A partir de scenarii concrets, suivez des démos guidées sur l'utilisation des modèles d'IA générative, du *RAG*, du *Prompt Flow* Designer et des frameworks comme Langchain, *Semantic Kernel* ou encore *Autogen*.
     ** [Analytics] Hands-on lab : Suivez une démo guidée de Microsoft Fabric, la solution analytique complète alimentée par des données transactionnelles, et comment les Copilots aident à la création de la solution.
     ** [IA & NoSQL] Hands-on lab : A partir de cas d'usage, réalisez une application depuis votre PC avec une souscription qui est fournie, comme la recherche de produit en utilisant des embeddings.
 
@@ -82,9 +82,9 @@ Whisper : chunk de 15 sec, donc pas "top" pour de la traduction en temps réel d
 
 "Le meilleur moyen de prédire l'avenir est de le créer" Peter Drucker
 
-* Grâce à l'IA, Microsoft vient de dépasser Apple comme 1ere capitalisation boursière mondiale
+* Grâce à l'IA, *Microsoft vient de dépasser Apple comme 1ere capitalisation boursière mondiale*
     ** voir https://www.strategies.fr/actualites/culture-tech/LQ2772631C/grace-lia-microsoft-depasse-apple-comme-entreprise-la-plus-valorisee-au-monde.html[] (2024/01/16): +
-    ""Microsoft devient la première capitalisation boursière mondiale en surpassant Apple, avec une valorisation de 2890 milliards de dollars contre 2870 milliards pour Apple. Cette première depuis novembre 2021 s'explique par l'élan de Microsoft dans le domaine de l'intelligence artificielle, en particulier avec son partenariat avec OpenAI, créateur de ChatGPT. Depuis le lancement de ChatGPT en novembre 2022, l'action Microsoft a augmenté de près de 75 %, tandis qu'Apple a connu une hausse de 35 %. Les inquiétudes concernant la croissance d'Apple et les performances mitigées de l'iPhone 15 ont contribué à cette inversion de tendance. Microsoft pourrait dépasser les 3000 milliards de dollars de valorisation boursière cette année, se joignant ainsi à Apple en tant que seule société à atteindre ce seuil.
+    "Microsoft devient la première capitalisation boursière mondiale en surpassant Apple, avec une valorisation de 2890 milliards de dollars contre 2870 milliards pour Apple. Cette première depuis novembre 2021 s'explique par l'élan de Microsoft dans le domaine de l'intelligence artificielle, en particulier avec son partenariat avec OpenAI, créateur de ChatGPT. Depuis le lancement de ChatGPT en novembre 2022, l'action Microsoft a augmenté de près de 75 %, tandis qu'Apple a connu une hausse de 35 %. Les inquiétudes concernant la croissance d'Apple et les performances mitigées de l'iPhone 15 ont contribué à cette inversion de tendance. Microsoft pourrait dépasser les 3000 milliards de dollars de valorisation boursière cette année, se joignant ainsi à Apple en tant que seule société à atteindre ce seuil.
 
 * *Azure Maya* : GPU développé par les labs de Microsofts
     ** https://aka.ms/AzureMaia[]
@@ -108,7 +108,7 @@ Whisper : chunk de 15 sec, donc pas "top" pour de la traduction en temps réel d
 image:20240116_Microsoft_Data-Innovation-Day_02.jpg[]
 
 * Parmi ses partenaires, Eric insiste particulièrement sur : 
-    ** Databricks, Informatica et DBT (qui vient s'intégrer aux solutions MS Synapses et Fabric)
+    ** *Databricks*, Informatica et *DBT* (qui vient s'intégrer aux solutions MS Synapses et Fabric)
 
 A partir de là, 2 nouveaux speakers pour parler de : 
 
@@ -141,7 +141,7 @@ image:20240116_Microsoft_Data-Innovation-Day_06.jpg[]
 .Copilot for Data Science and Data Engineering
 image:20240116_Microsoft_Data-Innovation-Day_07.jpg[]
 
-    * On va pouvoir demander l'explication d'un cote Python en langage naturel
+    * On va pouvoir demander l'explication d'un code Python en langage naturel
     * Plus besoin d'instancier les services Azure OpenAI, tout est déjà intégré dans Fabric
 
 Toute la demo est disponible à l'URL : https://aka.ms/fabricHotels[]
@@ -169,10 +169,16 @@ image:20240116_Microsoft_Data-Innovation-Day_09.jpg[]
 .Accelerate GenAI Deployment in Saint-Gobain
 image:20240116_Microsoft_Data-Innovation-Day_10.jpg[]
 
-    * problèmatique de gouvernance et juridique : pas possible de laisser les collaborateurs "faire n'importe quoi avec le chatbot".
+    * problématique de gouvernance et juridique : pas possible de laisser les collaborateurs "faire n'importe quoi avec le chatbot".
         ** D'où le travail qui a été commencé pour créer AI SGChat
-    * Chaque collaborateur peut créer son propre Chatbot (2023/11) ou son Chatbot d'équipe
+    * *Chaque collaborateur peut créer son propre Chatbot* (2023/11) ou son Chatbot d'équipe
         ** à peu près 200 chatbots de créés aujourd'hui, que SG préfère appeler "playground"
++
+[NOTE]
+====
+C'est d'ailleurs la promesse de la solution : permettre à chacun de se créer très facilement son "propre" chatbot adapté à ses besoins.
+====
+
 
 .AI SGChat : portail de création de chatbot
 image:20240116_Microsoft_Data-Innovation-Day_11.jpg[]
@@ -196,7 +202,7 @@ Nouveaux intervenants :
 
 * 682 publications sur l'IA durant les 12 mois pour Microsoft
 
-* grosse contribution de Microsoft dans l'OpenSource : +
+* grosse contribution de Microsoft dans l'*OpenSource* : +
 image:20240116_Microsoft_Data-Innovation-Day_14.jpg[]
 
 * DeepSpeed : profiter des "heures creuses" pour faire tourner l'entraînement des modèles de l'IA
@@ -221,7 +227,7 @@ image:20240116_Microsoft_Data-Innovation-Day_17.jpg[]
 .Autogen
 [NOTE]
 ====
-*AutoGen* est un framework open-source développé par Microsoft Research qui *permet aux développeurs de créer des applications basées sur des modèles de langage*. Il est conçu pour simplifier le développement de ces applications en fournissant une API hautement abstraite et des fonctionnalités avancées, telles que la collaboration entre agents, la personnalisation et la teachabilité.
+*AutoGen* est un framework open-source développé par Microsoft Research qui *permet aux développeurs de créer des applications basées sur des modèles de langage*. Il est conçu pour simplifier le développement de ces applications en fournissant une API hautement abstraite et des fonctionnalités avancées, telles que la collaboration entre agents et la personnalisation.
 
 AutoGen est *basé sur une architecture multi-agents*, dans laquelle chaque agent est responsable d'une tâche spécifique. Ces agents peuvent interagir entre eux pour résoudre des tâches complexes. AutoGen fournit un ensemble d'agents prédéfinis, mais les développeurs peuvent également créer leurs propres agents.
 ====
@@ -236,7 +242,7 @@ Nouvel intervenant
 .Microsoft Purview pour une gouvernance des données centralisées
 image:20240116_Microsoft_Data-Innovation-Day_18.jpg[]
 
-    * Anciennement Azure Purview : le Data Catalog de MS
+    * Anciennement Azure Purview : le *Data Catalog de MS*
 
 .3 exemples classiques de leakage de Data
 image:20240116_Microsoft_Data-Innovation-Day_19.jpg[]
@@ -276,7 +282,7 @@ IMPORTANT: De manière générale, Copilot est maintenant disponible dans "presq
 ."Add generative AI to your apps to gain true intelligence" -> a paradigm shift
 image:20240116_Microsoft_Data-Innovation-Day_21.jpg[]
 
-* Qu'est-ce qui a le plus ralenti l'adoption de la gen IA ? L'outillage d'après le speaker +
+* Qu'est-ce qui a le plus ralenti l'adoption de la gen IA ? L'*outillage* d'après le speaker +
 image:20240116_Microsoft_Data-Innovation-Day_22.jpg[]
     ** Evaluation : pour évaluer des LLM, on utilise des LLM (layer de *content safety*)
 
@@ -286,7 +292,7 @@ image:20240116_Microsoft_Data-Innovation-Day_23.jpg[]
 .Azure AI portfolio : liste des principaux services
 image:20240116_Microsoft_Data-Innovation-Day_24.jpg[]
 
-* l'Azure AI Studio est très centré actuellement sur le scénario RAG, mais c'est amené à s'étendre.
+* l'*Azure AI Studio* est *très centré actuellement sur le scénario RAG*, mais c'est amené à s'étendre.
 
 .Agenda de l'après-midi
 image:20240116_Microsoft_Data-Innovation-Day_25.jpg[]
@@ -299,7 +305,7 @@ image:20240116_Microsoft_Data-Innovation-Day_25.jpg[]
 
 === Generative AI Development Hub - Azure AI Studio
 
-* Azure OpenAI c'est vraiment du "model as a service", on n'a rien à déployer sur une infra
+* Azure OpenAI c'est vraiment du "*Model as a Service*" (MaaS), on n'a rien à déployer sur une infra
 * Microsoft souhaite amener certains models "extérieurs" en model as a service : LLaMA et bientôt Mistral
     ** souvent des "SLLM" (Small LLM) +
     image:20240116_Microsoft_Data-Innovation-Day_26.jpg[]
@@ -319,14 +325,14 @@ image:20240116_Microsoft_Data-Innovation-Day_27.jpg[]
 
 === Unlock new possibilities - GPT-4 for Vision
 
-* les bases vectorielles dispo chez MS : CosmoDB, MongoDB, Postgre, AI Search
+* les *bases vectorielles* dispo chez MS : CosmoDB, MongoDB, Postgre, AI Search
     ** la suite de la demo va se concentrer sur AI Search
 
 .Hybrid search et reranking
 image:20240116_Microsoft_Data-Innovation-Day_28.jpg[]
 
 * tous les exemples sont codés en Python ou en NO code -> importance du langage Python une fois de plus mise en avant
-* BM25 est l'algo le plus utilisé pour le ranking de keywords (la recherche "classique" et NON la recherche vectorielle)
+* *BM25* est l'*algo le plus utilisé pour le ranking de keywords* (la recherche "classique" et NON la recherche vectorielle)
 * l'*embedding* souvent utilisé dans les demo de la journée est *ADA* d'OpenAI
 
 * Il n'y a pas de communication aujourd'hui sur les algos de reranking
@@ -343,9 +349,9 @@ Question au speaker : il confirme bien qu'actuellement, il n'y a *pas moyen de "
 
 === AI-powered information retrieval platform - Azure AI Search
 
-Par Frédéric (speaker génial avec mass d'humour ! 😁)
+Par Frédéric Wickert (speaker génial avec masse d'humour ! 😁)
 
-* Copilot : l'idée est d'apporter une nouvelle expérience d'interaction avec l'utilisateur +
+* *Copilot* : l'idée est d'apporter une *nouvelle expérience d'interaction avec l'utilisateur* +
 image:20240116_Microsoft_Data-Innovation-Day_30.jpg[]
     ** et cette expérience sera *conversationnelle*
 
@@ -357,7 +363,7 @@ image:20240116_Microsoft_Data-Innovation-Day_30.jpg[]
 .Microsoft 365 Copilot architecture
 image:20240116_Microsoft_Data-Innovation-Day_31.jpg[]
 
-* Frédéric : RAG (Retrieval Augmented Generation) -> très mal nommé, ça n'augmente pas la génération, ça augmente le prompt
+* Frédéric : *RAG* (Retrieval Augmented Generation) -> très mal nommé, ça n'augmente pas la génération, *ça augmente le prompt*
 
 .Copilot stack
 image:20240116_Microsoft_Data-Innovation-Day_32.jpg[]
@@ -368,10 +374,10 @@ image:20240116_Microsoft_Data-Innovation-Day_32.jpg[]
 .Semantic Kernel
 image:20240116_Microsoft_Data-Innovation-Day_33.jpg[]
 
-* Frédéric se sert du LLM (il lui demande) d'anonymiser les data
+* Frédéric se sert du LLM (il lui demande) pour anonymiser les data
 * "LLM OPS à mettre en place" (creuser le point) quand on passe en PROD pour ajouter la gouvernance 
 
-* Le markdown est très bien géré dans les archi RAG
+* Le *markdown* est *très bien géré dans les archi RAG*
 
 .Image LLM life cycle
 image:20240116_Microsoft_Data-Innovation-Day_34.jpg[]
@@ -387,22 +393,24 @@ image:20240116_Microsoft_Data-Innovation-Day_35.jpg[]
     ** Prompt flow fait partie de la "Microsoft Power Platform" : https://learn.microsoft.com/en-us/power-platform/[]
         ** A vérifier !
         ** il semblerait que le nom complet de Prompt flow soit "Azure Machine Learning prompt flow" : https://learn.microsoft.com/en-us/azure/machine-learning/prompt-flow/overview-what-is-prompt-flow?view=azureml-api-2[]
-    ** Avec Prompt flow, on va pouvoir *créer des plugins pour Copilot*
+
+    ** Avec *Prompt flow*, on va pouvoir *créer des plugins pour Copilot*
 
 * Avec *Copilot Studio* (https://www.microsoft.com/en-us/microsoft-copilot/microsoft-copilot-studio[]), on va également pouvoir *se créer son "propre" Copilot* et y intégrer ses plugins
 
 * *AutoGen* n'est pas encore un élément du Semantic Kernel (mais cela va peut-être vite venir à écouter Frédéric...)
-    ** C'est un framework opensource multiagents (qui permet la collaboration entre agents pour obtenir un résultat)
+    ** C'est un *framework opensource multi-agents* (qui permet la collaboration entre agents pour obtenir un résultat)
+
     ** https://microsoft.github.io/autogen/[] : 
-        ** Multi-Agent Conversation Framework : AutoGen provides multi-agent conversation framework as a high-level abstraction. With this framework, one can conveniently build LLM workflows.
-        ** Easily Build Diverse Applications : AutoGen offers a collection of working systems spanning a wide range of applications from various domains and complexities.
-        ** Enhanced LLM Inference & Optimization : AutoGen supports enhanced LLM inference APIs, which can be used to improve inference performance and reduce cost.
+        ** *Multi-Agent Conversation Framework* : AutoGen provides multi-agent conversation framework as a high-level abstraction. With this framework, one can conveniently build LLM workflows.
+        ** *Easily Build Diverse Applications* : AutoGen offers a collection of working systems spanning a wide range of applications from various domains and complexities.
+        ** *Enhanced LLM Inference & Optimization* : AutoGen supports enhanced LLM inference APIs, which can be used to improve inference performance and reduce cost.
 
 === Cas d'usage d'un call center pour l'assurance : Claim AI Phone Bot - Demo
 
 Présenté par Clémence LESNE
 
-* Conversation en direct avec le chatbot, et mise à jour en direct des infos de la fiche incident
+* *Conversation en direct avec le chatbot*, et mise à jour en direct des infos de la fiche incident
 * Possible de tenir des milliers de conversations en parallèle 
 
 .Fiche incident mise à jour en direct
