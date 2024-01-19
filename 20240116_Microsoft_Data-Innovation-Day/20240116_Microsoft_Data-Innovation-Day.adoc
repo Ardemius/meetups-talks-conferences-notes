@@ -426,6 +426,7 @@ image:20240116_Microsoft_Data-Innovation-Day_36.jpg[]
     ** la BDD vectorielle de Postgre est bien moins chère que celle dispo dans Azure AI Search
         *** A vérifier, mais pour cette dernière, on est aux alentours de 2000$ pour 3 Go de data
     ** la démarche de Saint-Gobain est avant tout une démarche d'acculturation des collaborateurs, et de sensibilisation / formation de la direction
+    ** Je crois que Nicolas a estimé le coût de RUN annuel de leur solution à ~100 k€ (Attention, c'est vraiment à vérifier !)
 
 * Discussion avec Rudy Plissoneau (Microsoft) : 
     ** faire du *search vectoriel* sur du *XML* ou du *JSON*, qui plus est avec de fortes jointures entre éléments, n'est *PAS une bonne idée*
