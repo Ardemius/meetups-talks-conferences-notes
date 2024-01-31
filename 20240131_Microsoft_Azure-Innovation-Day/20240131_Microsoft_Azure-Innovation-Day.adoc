@@ -356,6 +356,109 @@ Quelques liens :
 .Les communautés de Microsoft
 image:20240131_Microsoft_Azure-Innovation-Day_42.jpg[]
 
+== WORKSHOP : Renouvelez vos Applications avec l'IA !
+
+Agenda : migration / modernisation / renouvellement
+
+.Scénario
+image:20240131_Microsoft_Azure-Innovation-Day_43.jpg[]
+
+=== 1) Evaluation & migration
+
+* Mise en situation : je dois migrer 2 applis, 1 en java et 1 en .Net, et moi, je suis OPS et je ne sais pas coder...
+
+.3 différents types d'applications à migrer
+image:20240131_Microsoft_Azure-Innovation-Day_44.jpg[]
+
+.Modernisation d'une application
+image:20240131_Microsoft_Azure-Innovation-Day_45.jpg[]
+
+* Azure migrate : l'outil Microsoft pour réaliser la migration d'application
+    ** Azure Migrate application and code assessment : https://aka.ms/appcat
+
+=== 2) Modernisation : GitHub Copilot pour la migration d'une application d'une version de .Net à une autre
+
+Tour d'horizon de *GitHub Copilot* : 
+
+    * Cas d'usages
+        ** suggestions de code
+        ** tests unitaires
+        ** développement d'infrastructure as code
+        ** développement de chaîne CI/CD
+        ** traduction de code
+        ** création de Regex
+        ** générer des données de tests
+
+    * Anti-patterns
+        ** tâches non liées au code
+        ** génération de données de production
+        ** génération de texte
+
+*ChatGPT vs GitHub Copilot* : même différence qu'entre aller voir un médecin généraliste ou un spécialiste
+
+    * *ChatGPT* : 
+        ** LLM générique : GPT 4
+        ** Contexte limité au chat
+
+    * *GitHub Copilot* : 
+        ** LLM Fine-Tuné : Sahara (son nom depuis avril 2023), une version fine-tunée de GPT-3.5 pour répondre aux cas d'usage précédents
+        ** Contexte : 
+            *** ficher courant
+            *** commentaires
+            *** onglets ouverts
+
+-> GitHub Copilot : *Concentrez-vous sur le code que vous SEUL pouvez écrire !* (citation d'Eric ce matin)
+
+* *GitHub Copilot* et *GitHub Copilot Chat*
+
+.GitHub Copilot dans Visual Studio Code
+image:20240131_Microsoft_Azure-Innovation-Day_46.jpg[]
+
+* Dans GitHub Copilot Chat, utilisez *"@workspace"* pour indiquer que ce que l'on va demander concerne tout le workspace +
+
+.Pour être plus précis : https://code.visualstudio.com/docs/editor/github-copilot
+[NOTE]
+====
+To further help Copilot give you more relevant answers, you can indicate the scope and intent of your question through *agents* and *slash commands*.
+
+*Agents* are like experts who have a specialty that they can help you with, and you can talk to them in the chat by mentioning them with the @ symbol. Currently, there are the following agents:
+
+    * *@workspace* has context about the code in your workspace and can help you navigate it, finding relevant files or classes.
+    * *@vscode* knows about commands and features in the VS Code editor itself, and can help you use them.
+    * *@terminal* has context about the integrated terminal shell and its contents.
+
+You can prepend your chat inputs with a specific agent to help Copilot give you a more relevant response.
+====
+
+=== 3) Renouvellement
+
+J'ai l'impression que cette demo repose sur la création d'un *plugin spécifique pour Copilot*
+
+.Custom plugin pour Copilot
+image:20240131_Microsoft_Azure-Innovation-Day_47.jpg[]
+
+-> Ici, c'est un plugin qui a été appelé via une API en REST +
+Tant que le LLM peut contacter l'API derrière, ça marche
+
+* Et côté licence, pour que cela fonctionne, cette application ne nécessite aucune licence Copilot spécifique
+    ** Si on avait voulu faire un *custom plugin Copilot pour Teams*, là, il aurait fallu une licence Copilot Office 365
+        *** Et dans ce cas on aurait Teams, qui appelle une application Copilot, qui va elle faire des appels à une API
+    ** la licence n'est pas requise par le plugin Copilot lui-même
+
+* Le démonstrateur utilisé ici est "Chat Copilot" : https://github.com/microsoft/chat-copilot
+    ** il y a dans ce projet un bouton bleu "Deploy to Azure" permettant de déployer ce démonstrateur sur une souscription Azure en 1 clic +
+    image:20240131_Microsoft_Azure-Innovation-Day_48.jpg[]
+
+=== Conclusion
+
+.Les 2 derniers logos sont ceux de GitHub Copilot ET de Microsoft Copilot
+image:20240131_Microsoft_Azure-Innovation-Day_49.jpg[]
+
+* https://aka.ms/AzureMigrate
+* https://aka.ms/GitHubCopilot
+
+* Azure Day with Kubernetes, le 2024/03/19 de 09h à 17h : https://aka.ms/aks-day
+
 
 
 
