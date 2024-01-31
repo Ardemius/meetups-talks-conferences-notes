@@ -1,0 +1,361 @@
+= 2024/01/31 - Microsoft - Azure Innovation Day
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Journée de conférence ayant lieu dans les locaux de Microsoft à Issy-les-Moulineaux (41 Quai du Président Roosevelt)
+
+== Description et agenda de la journée
+
+* URL de l'évènement : https://msevents.microsoft.com/event?id=989164664
+
+*Bring to Life Modern Apps : la convergence du Cloud, de l'IA et du Low-Code*
+ 
+Microsoft a le plaisir de vous inviter pour une journée dédiée à l'innovation le mercredi 31 janvier au sein du campus Microsoft France. 
+ 
+Dans la suite de la Keynote "Idea-to-Cloud", cette conférence offre une plongée dans l'univers des applications modernes polymorphes, du DevSecOps et de la sécurité de vos applications, le tout enveloppé dans une perspective du plateforme engineering. 
+
+*Conférence*
+
+    * *Applications Modernes Polymorphes* : Découvrez comment les applications modernes évoluent et s'adaptent dans un paysage technologique en constante mutation. Des discussions sur les architectures flexibles et les approches innovantes captiveront les participants.
+    * *DevSecOps et Sécurité Innovante pour les Applications* : Plongez dans le monde du DevSecOps et explorez comment la sécurité peut être intégrée dès le départ du processus de développement et jusqu'au suivi de la production. Découvrez comment utiliser de solutions intégrées pour simplifier et garantir la robustesse vos applications. 
+    * *Plateform Engineering* : Explorez les fondations technologiques qui soutiennent les applications modernes.  Comment créer et la gérer des infrastructures solides pour favoriser l'innovation continue. 
+
+*Sessions Techniques et Hands-on-Lab*
+ 
+    * *#1 Hands-On-Lab : Application Hybrid Coding - COMPLET*
+    Citizen Dev et Pro Dev plus proches que jamais pour créer des solutions intelligentes grâce à Power Platform et la puissance de l'IA. Cet atelier vous permettra de coder et low coder des applications hydrides et mettre en pratique les concepts vus durant la conférence. +
+    -> Cette session est désormais complète. Merci de votre compréhension. 
+
+[NOTE]
+====
+J'étais inscrit à ce hands-on-lab, mais il est complet et je n'étais pas prioritaire 😓 +
+Je passe sur l'atelier 2 MAIS, bonne nouvelle, Simon de l'Azure Club Insider m'informe que le hands-on-lab sera refait à l'identique au Club le 23/02 de 09h30 à 12h30 : https://aka.ms/AppHoL[]
+====
+
+    * *#2 Session technique : Renouvelez vos Applications avec l'IA !*
+    Découvrez à travers des présentations et démos, une approche innovante pour migrer une application vers Azure avec des outils d'Intelligence Artificielle tel que GitHub Copilot. 
+ 
+    * *#3 Session technique : Protégez Vos Applications Web*
+    * Apprenez des meilleures pratiques et des techniques avancées pour assurer la protection de vos applications contre les menaces actuelles avec les Service Azure API Management et Azure Defender. 
+
+Programme : 
+
+    * 09:30 AM - 10:00 AM : Accueil & Petit-déjeuner
+    * 10:00 AM - 12:00 PM : Conférence Bring to Life Modern Apps
+    * 12:00 PM - 01:00 PM : Déjeuner & Networking
+    * 01:00 PM - 01:30 PM : Répartition des sessions techniques
+    * 01:30 PM - 04:00 PM : Sessions techniques & Hands-on Lab
+    * 04:00 PM - 05:00 PM : Cocktail & Networking
+
+Intervenants : 
+
+    * Eric Grenon : CTO Digital App Inno, Microsoft France
+    * Louis-Guillaume Morand : Senior Cloud Solution Architect, Microsoft France
+    * Félix Ndouga : CTO Sécurité CSU, Microsoft France
+
+== Préambule
+
+L'IA : 
+
+    * faire une tâche *POUR* moi ?
+    * faire une tâche *AVEC* moi ?
+    * me dire *COMMENT* faire une tâche ?
+
+Copilot chez MS : 
+    
+    * c'est déjà un concept : ça peut nous aider
+    * il faut après des outils et des frameworks pour permettre la réalisation de ce concept
+
+Pour créer une application intelligente, il y a 3 cas : 
+
+    * je vais quelque chose à côté de mon appli
+    * j'intègre mon Copilot à l'intérieur de mon appli (comme c'est le cas pour Teams, ou l'application a été modifiée pour intégrer l'IA)
+    * immersive : les applications intégrant l'IA peuvent communiquer entre elles via un élément d'interaction
+        ** Ce 3e cas, on y est pas encore...
+
+image:20240131_Microsoft_Azure-Innovation-Day_01.jpg[]
+
+NOTE: De nouveau, Eric nous redit qu'*en 2025 une application sans IA sera une application inexistante*
+
+.Les cycles du développeur
+image:20240131_Microsoft_Azure-Innovation-Day_02.jpg[]
+
+* "Concentrez-vous sur le coe que *vous seul* pouvez écrire" -> votre VA n'est PAS d'écrire de la plomberie
+* 40 millions de dev dans le monde, ce n'est pas suffisant -> il faut qu'on se concentre sur ce qui a de la valeur
+
+.La stack Microsoft complète (AI platform + Data Platform + Power Platform)
+image:20240131_Microsoft_Azure-Innovation-Day_03.jpg[]
+
+== Applications Modernes Polymorphes
+
+* *Polymorphe* : qui peut se présenter sous différentes formes
+
+.J'ai envie d'être un fournisseur de réponse à des problèmes -> Copilot plugin
+image:20240131_Microsoft_Azure-Innovation-Day_04.jpg[]
+
+    * Je suis dev, je fais des API, et "je définis tranquillement en langage naturel ce que cela fait"
+
+.Copilot plugin
+image:20240131_Microsoft_Azure-Innovation-Day_05.jpg[]
+
+.Un Copilot plugin s'est 4 choses : API + API Spec + plugin manifest + Logo
+image:20240131_Microsoft_Azure-Innovation-Day_06.jpg[]
+
+.Plugin manifest : je décris en langage naturel ce que mon application va faire
+image:20240131_Microsoft_Azure-Innovation-Day_07.jpg[]
+
+    * voir sur le screenshot "description_for_model" et "description_for_human"
+
+-> Je vais pouvoir *ENRICHIR mon Copilot à l'aide d'un plugin*
+
+* Oui MAIS : https://learn.microsoft.com/en-us/copilot-plugins/publish/store-policies[], §3.2
+    ** must not have a latency more than 2 sec
+    ** must be available at least 99% of the time
+    ** sinon on disable le plugin...
+
+* DONC, comment on fait pour *garantir* ce "moins de 2 sec" et "99% d'availability" ?
+
+    ** *Cloud native* : l'application du futur est Cloud Native infusée d'IA -> en fait PAS l'application du "futur", c'est déjà pour aujourd'hui
+        *** systèmes Cloud natif : conçus et exécutés pour s'adapter aux changements rapides, à grande échelle et à la résilience sans aucun impact sur l'entreprise
+        *** l'analogie : durant mon vol Paris / New York, je suis capable de changer le moteur en vol sans impact...
+
+        *** *concepts du Cloud Native* : 
+
+            **** Modern design
+            **** Micro-services
+            **** Events
+            **** API
+            **** DevOps
+
+        *** Facilitateurs du Cloud Native : 
+
+            **** public cloud & managed services
+            **** IaC
+            **** Conteneurs
+            **** Serverless
+            **** GitHub / Azure DevOps
+
+.DAPR (Distributed Application Runtime) et ses composants
+image:20240131_Microsoft_Azure-Innovation-Day_08.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_09.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_10.jpg[]
+
+* *DAPR* repose sur un modèle de *side-car*
+    ** l'intérêt du side-car est que l'on ne parle PAS avec l'extérieur : on parle avec son copain (le side-car) et c'est lui qui parle à l'extérieur
+
+image:20240131_Microsoft_Azure-Innovation-Day_11.jpg[]
+
+.Demo de DAPR
+image:20240131_Microsoft_Azure-Innovation-Day_12.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_13.jpg[]
+
+* Le cycle de vie du module DAPR est décorrélé de celui de mon application
+* "Dans mon application, j'ai besoin de "fonctions", et une fonction ne bouge pas quand mon implémentation change"
+    ** la formulation de la phrase précédente est à prendre "avec des pincettes", mais
+    ** on voit l'idée et l'analogie avec la prog fonctionnelle et les fonction "1st class citizen"
+
+.La seule chose qui change ici est la déclaration de la techno de stockage (Redis et CosmosDB)
+image:20240131_Microsoft_Azure-Innovation-Day_14.jpg[]
+
+.La plateforme qui tient DAPR
+image:20240131_Microsoft_Azure-Innovation-Day_15.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_16.jpg[]
+
+* *DAPR* a été créé par Microsoft, puis a été *versé à la CNCF*
+
+.Flexibilité vs efficacité
+image:20240131_Microsoft_Azure-Innovation-Day_17.jpg[]
+
+* CPU : hyper flexible mais pas le plus efficace
+* CPU - ARM : flexible et moins de watts consommés
+* GPU : multi-coeurs (100+), MAIS ne fonctionne QUE par vecteurs
+* FPGA : le plus efficace côté consommation de ressources (watts), MAIS pas du tout flexible
+
+* On a des séries de machines Azure correspondant à ces composants (Dp series pour les "CPU - ARM", GPU de type compute "NC", etc.)
+
+.Fonctionnement et cas d'usage
+image:20240131_Microsoft_Azure-Innovation-Day_18.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_19.jpg[]
+
+* Avec les GPU, comme multi-coeurs, on fait de l'exécution parallèle
+
+.Comment utiliser ses différents catégories de machines "en vrai" ? (Vision applicative)
+image:20240131_Microsoft_Azure-Innovation-Day_20.jpg[]
+
+-> mon bilan carbone est meilleur et mes perf sont meilleures
+
+.Exemple d'application polymorphique
+image:20240131_Microsoft_Azure-Innovation-Day_21.jpg[]
+
+.Sans superposition d'état, il y a des problèmes qu'on ne résoudra jamais -> quantique
+image:20240131_Microsoft_Azure-Innovation-Day_22.jpg[]
+
+.Workflow faisant intervenir le quantique
+image:20240131_Microsoft_Azure-Innovation-Day_23.jpg[]
+
+* Dans le workflow, on va pouvoir basculer du monde numérique au monde quantique, mais présenter au final les résultats en numérique
+
+.Technologies utilisées pour cette présentation d'application polymorphe
+image:20240131_Microsoft_Azure-Innovation-Day_24.jpg[]
+
+== DevSecOps et Sécurité Innovante pour les Applications
+
+.Rappels sur le DevSecOps
+image:20240131_Microsoft_Azure-Innovation-Day_25.jpg[]
+
+.Les contrôles DevSecOps
+image:20240131_Microsoft_Azure-Innovation-Day_26.jpg[]
+
+.L'utilisation de l'IA générative peut également présenter des risques de sécurité
+image:20240131_Microsoft_Azure-Innovation-Day_27.jpg[]
+
+-> OWASP Top 10 des vulnérabilités et des mesures d'atténuation pour les applications LLM
+
+* *AI RMF* (AI Risk Management Framework) : https://www.nist.gov/itl/ai-risk-management-framework
+    ** L'AI Risk Management Framework (AI RMF) est un cadre de gestion des risques pour l'intelligence artificielle (IA) développé par le National Institute of Standards and Technology (NIST) des États-Unis. Il fournit un ensemble de principes, de lignes directrices et d'outils pour aider les organisations à identifier, évaluer, atténuer et gérer les risques liés à l'IA.
+
+.Principes d'IA responsable de Microsoft
+image:20240131_Microsoft_Azure-Innovation-Day_28.jpg[]
+
+.Tableau de bord d'IA responsable sur Azure
+image:20240131_Microsoft_Azure-Innovation-Day_29.jpg[]
+
+En résumé : 
+
+    * Développement logiciel : 
+        ** innovation
+        ** vulnérabilités
+        ** cybercriminels
+
+    * DevSecOps : 
+        ** développement, sécurité et opérations
+        ** responsabilité partagée et sensibilisation à la sécurité
+        ** sécurité de bout en bout
+
+    * IA responsable : 
+        ** principes
+        ** modèles impartiaux et transparents
+        ** *tableau de bord IA responsable*
+
+== Plateform Engineering
+
+.Définition de DevOps
+image:20240131_Microsoft_Azure-Innovation-Day_30.jpg[]
+
+.Modèles de développement logiciel de 1980 à aujourd'hui
+image:20240131_Microsoft_Azure-Innovation-Day_31.jpg[]
+
+.C'est là qu'arrive le platform engineering
+image:20240131_Microsoft_Azure-Innovation-Day_32.jpg[]
+
+Définition du Gartner du *platform engineering* : +
+"Une *approche technologique* émergente qui améliore l'expérience et la productivité des développeurs en fournissant des fonctionnalités en *libre-service* avec des opérations d'infrastructure *automatisées*"
+
+.On veut passer à ça : le DEV peut agir de "bout en bout"
+image:20240131_Microsoft_Azure-Innovation-Day_33.jpg[]
+
+=== Azure Deployments Environment
+
+Pour tout ça, chez Microsoft, on a : *Azure Deployments Environment*
+
+.Les défis de l'infra pour les apps
+image:20240131_Microsoft_Azure-Innovation-Day_34.jpg[]
+
+.De multiples environnements et des rôles différents laissant un domaine de liberté aux développeurs
+image:20240131_Microsoft_Azure-Innovation-Day_35.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_36.jpg[]
+
+"Donner un *sentiment de liberté aux devs* tout en gardant un *contrôle total* avec une *gouvernance centralisée*"
+
+DEMO : 
+
+* Je définis des projets, chacun avec des environnements différents (DEV, REC, PROD, etc.) et des rôles / droits différents sur ces environnements
+
+.Création d'environnement pour la démo
+image:20240131_Microsoft_Azure-Innovation-Day_37.jpg[]
+
+-> Une fois créé, en 1 clic mon dev accède à "son" environnement, préparé tout spécialement pour lui.
+
+=== Radius
+
+* *Radius*, produit sorti comme DAPR du CTO Office de MS, et également versé à la CNCF
+    ** *DAPR* concerne des *composants fonctionnels*, *Radius* a trait a de *composants technologiques*
+
+.Mapper la définition de son application sur un environnement à l'aide de recettes (recipes)
+image:20240131_Microsoft_Azure-Innovation-Day_38.jpg[]
+image:20240131_Microsoft_Azure-Innovation-Day_39.jpg[]
+
+.Platform engineering avec Radius
+image:20240131_Microsoft_Azure-Innovation-Day_40.jpg[]
+
+=== AIOps
+
+image:20240131_Microsoft_Azure-Innovation-Day_41.jpg[]
+
+-> Microsoft : en prod sur le niv 2 "gérable" et en exploration sur le niv 4 "Autonome"
+
+* niv 2 - *Gérable* : "en fonction de ce que j'ai compris, je sais que je peux agir"
+    ** Là, AIOps, me dit ce qu'il *faut faire*
+
+* niv 3 - *Proactif* : niv 1 et 2, et, en plus, j'ai conscience mon environnement -> je suis capable de comprendre le périmètre qui est vu par mon application
+
+* niv 4 - *Autonome* : on déploie l'application en mode code et on laisse faire la machine...
+    ** exemple : on a un pic de charge, ok, donc il faut scaler
+    ** mais en fait non, car le code est mauvais et pas scalable...
+    ** donc Autonome propose un nouveau code, fait la PR et redéploie -> tout est automatisé
+    ** et c'est pas pour tout de suite...
+
+== Conclusion de la matinée
+
+Quelques liens : 
+
+    * https://aka.ms/ai
+    * https://aka.ms/dapr
+    * https://radapp.io
+    * https://aka.ms/containerapps
+    * https://copilot.microsoft.com
+    * https://aka.ms/rai
+
+    * https://azure.microsoft.com/solutions/modern-application-development/
+    * https://learn.microsoft.com/azure/architecture/
+
+.Les communautés de Microsoft
+image:20240131_Microsoft_Azure-Innovation-Day_42.jpg[]
+
+
+
+
