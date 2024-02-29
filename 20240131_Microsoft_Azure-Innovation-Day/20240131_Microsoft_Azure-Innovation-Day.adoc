@@ -271,7 +271,7 @@ En résumé :
         ** modèles impartiaux et transparents
         ** *tableau de bord IA responsable*
 
-== Plateform Engineering
+== Platform Engineering
 
 .Définition de DevOps
 image:20240131_Microsoft_Azure-Innovation-Day_30.jpg[]
@@ -459,6 +459,13 @@ image:20240131_Microsoft_Azure-Innovation-Day_49.jpg[]
 
 * Azure Day with Kubernetes, le 2024/03/19 de 09h à 17h : https://aka.ms/aks-day
 
+=== Réseautage
 
+* Discussion avec Eric Grenon (CTO Digital App Inno, Microsoft France)
+    ** Pour le pruning du contexte des LLM, pas de solution miracle, il faut s'en méfier et "prendre de la marge"
+
+* Echange avec Fethi Dilmi, architecte Microsoft sur le projet exploratoire d'interrogation NLP d'un référentiel d'architecture utilisant ArchiMate
+    ** Fethi me conseille de jeter un oeil à Perplexity
+    ** Nous avons échangé nos coordonnées sur le Teams Microsoft (guest de mon compte Softeam)
 
 

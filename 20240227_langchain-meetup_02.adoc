@@ -1,0 +1,143 @@
+= 2023/12/04 - Langchain and LLM MeetUp - session 02
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+URL : https://live.remo.co/e/meetup-2-langchain-and-llm-franc
+
+== Notes
+
+* Le MeetUp est le plus gros "world wide" sur Langchain
+	** J'ai checké, nous sommes 272 connectés au MeetUp ce soir 😉
+
+* Google Bard is dead, long live Google Gemini
+* Groq et ses LPU font parler d'eux
+* Mistral et prise de participation minoritaire de Microsoft
+	** avec les interrogations associés sur l'open source
+* Lancement de OpenAI Sora : model text to video
+
+=== REX sur les GenAI services chez L'Oréal
+
+image:20240227_langchain-meetup_01.jpg[]
+
+* REX par : 
+	** Antoine CASTEX : Data platform architect
+	** Thomas MENARD : le maître Yoda de l'IA chez L'Oréal
+	** Gauthier DEBUICHE : Luke Skywalker qui va faire la demo
+
+* L'Oréal : 100 000 employés
+* 3e entreprise d'advertising mondiale
+	** donc beaucoup beaucoup de use cases, avec de très petites timelines
+
+* Début de l'histoire avec L'OréalGPT
+
+* Les GenAI services sont un ensemble de microservices qui permettent de faire de l'IA à l'échelle de l'entreprise
+	** le tout validé par la privacy, la compliance et le RSSI
+
+image:20240227_langchain-meetup_02.jpg[]
+
+* L'Oréal : 10 Po de data sur Google BigQuery
+
+* Les 4 main features des GenAI services chez L'Oréal : +
+image:20240227_langchain-meetup_03.jpg[]
+	** Prompt
+	** Chat
+	** Image
+	** RAG
+
+* Usage de Google Cloud Run pour faire du serverless
+	** Usage privilégié de Google chez L'Oréal
+
+.technologies utilisées dans les GenAI services
+image:20240227_langchain-meetup_04.jpg[]
+
+* *Pourquoi le choix de Langchain ?* +
+image:20240227_langchain-meetup_05.jpg[]
+
+	** Il FAUT avoir le choix du modèle (LLM) que l'on va utiliser
+		*** "On ne sait pas de quoi est fait demain"
+		*** "SummarizationBuffer Memory" : pour donner l'illusion d'un contexte infini même si limité à 4K
+		*** LCEL (LangChain Expression Language) dont L'Oréal est apparemment très satisfait
+		** Usage de Apigee
+
+.Architecture simplifiée des GenAI services
+image:20240227_langchain-meetup_06.jpg[]
+
+* *Langsmith* (par les créateurs de Langchain) : payant MAIS apparemment très puissant en "seulement 3 clics"
+	** "LangSmith est un outil complémentaire à LangChain qui se concentre sur le débogage, le test, l'évaluation et la surveillance des applications LLM. Il offre une interface utilisateur intuitive et des outils puissants pour visualiser les résultats des pipelines LangChain, identifier les erreurs et améliorer les performances."
+
+.Focus sur le RAG
+image:20240227_langchain-meetup_07.jpg[]
+
+* L'Oréal avec l'équipe Google Black Belt contribue à l'évolution de Langchain
+
+*Les prochaines étapes et la roadmap de L'Oréal*
+
+image:20240227_langchain-meetup_08.jpg[]
+
+	* Problème de tout le monde : on arrive pas à avoir des GPU !
+		** et pourtant ils sont allés voir directement NVidia et PAS de passe-droit
+		** DONC, ils ont essayer les TPU, et malgré la complexité de configuration, cela va 4x plus vite que les GPU
+
+	* Info top secrète : bientôt une nouvelle version de Gemini (encore 😉)
+	* L'Oréal travaille sur le côté numérique responsable de ses IA pipelines
+
+=== REX sur l'IA générative chez Worldline
+
+* Worldline : numéro 1 du paiement en Europe, 4e dans le monde
+* 18 000 employés, présents dans 170 pays
+* Donc des problématiques des volumétries (transactions) très importantes
+	** un transaction dans le paiement est de l'ordre de quelques secondes (et non quelques ms comme dans le trading)
+
+* Comme tout le monde, ils ont également leur ChatGPT interne
+* En lien avec Microsoft et Google
+
+* Contribue au projet open source *LibreChat*
+	** a développé des modules complémentaires pour faire du RAG avec Langchain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
