@@ -167,8 +167,55 @@ image:20240312_Microsoft_AI_tour_09.jpg[]
 * *Personal Voice* fait partie de la suite Azure AI Services : +
 "With personal voice, you can get AI generated replication of your voice (or users of your application) in a few seconds. You provide a one-minute speech sample as the audio prompt, and then use it to generate speech in any of the more than 90 languages supported across more than 100 locales."
 
+.MIcrosoft is built on trust
+image:20240312_Microsoft_AI_tour_10.jpg[]
+
+* De nouveau, Microsoft rappelle que "your data is not used to train or enrich AI models used by others"
+    ** c'est un rappel plus que régulier, toute cette problématique a vraiment dû leur faire mal
+* Microsoft : "the biggest security firm on the planet"
+
+image:20240312_Microsoft_AI_tour_11.jpg[]
+
 == 02:00 PM - 2:45 PM : Democratizing Software Development in the Enterprise
+
+* URL : https://envision.microsoft.com/en-US/sessions/74fcdd81-1dd7-4a86-b40d-238e1e7e68d9?source=sessions
+
+* Abstract : +
+"Enterprise software development is shifting from a resource-heavy, tedious process to an efficient one thanks to AI. Join argodesign, a DXC Technology company, to learn how they combined their design expertise with a unique understanding of AI technologies to create a human-centered AI interface for Builder.ai. Session will include real-world examples and give attendees insights into how the platform fosters innovation and maintains competitive advantage in the fast-paced digital landscape."
+
+* Présenté par :
+    ** David Cleaves, Argodesign, a DXC Technology company
+    ** Ridhima Gupta, Builder.ai
+    ** Rakesh Rathod, Builder.ai
+
+Plateforme de développements d'application low code, mais pas de demo !
+
 == 03:15 PM - 4:00 PM : End-to-end protection in the age of AI
+
+* URL : https://envision.microsoft.com/en-US/sessions/bf2a4036-6dfc-46f9-8cd3-0bc25f5c0c0f?source=sessions
+* Abstract : +
+"AI has changed the threat landscape, placing new demands on security. Explore the latest strategies, features, and capabilities for the age of AI. Learn more about Microsoft Security Copilot, our industry-leading generative AI solution that can help you defend everything."
+
+Les 3 piliers de la sécurité Zero Trust : 
+
+    * plus de zone sécurisée où l'on considère que les contrôles ne sont plus nécessaires : les contrôles doivent être réalisés à chaque moment
+    * least privilege access
+    * une segmentation qui empêche les intrusions (parce qu'il y aura à un moment ou un autre) d'aller trop loin
+
+.End to end security with Microsoft Security
+image:20240312_Microsoft_AI_tour_12.jpg[]
+
+* Encore un nouveau Copilot, dédié à la sécurité : "Copilot for Security" (ou Security Copilot)
+
+* Microsoft new Unified Security Operations Platform : Microsoft Sentinel + Microsoft Defender + Security Copilot
+
+.Secure the use of generative AI
+image:20240312_Microsoft_AI_tour_13.jpg[]
+
+* Understand use of AI : discovery capabilities for 400+ generative AI apps in Microsoft Defender
+* Protect data used or created by AI : AI hub in Microsoft Purview
+* Govern the use of AI : AI-specific data security capabilities in Microsoft Purview.
+    ** Purview compliance extended to Microsoft Copilot
 
 == Stands
 
@@ -184,6 +231,8 @@ Je suis allé demandé une demo au stand :
 
     * De nombreuses sources de données sont disponibles : BDD (Oracle montré), Sharepoint, PDF et autres docs.
         ** Que du texte pour le moment, Copilot peut lire le format PDF, taille limite des docs de 3 Mo
+        ** ATTENTION ! Pour les BDD, c'est de l'accès direct à la data, sans copie de donnée. +
+        Du coup, je me demande vraiment comment ça marche : si les data sont trop conséquentes, impossible de les charger dans le contexte du LLM
     * Copilot est en écoute des sources et en détecte automatiquement les modifications
         ** POINT A CREUSER : à quelle fréquence écoute-t-il ?
 
@@ -193,12 +242,9 @@ Je suis allé demandé une demo au stand :
     * Copilot permet de définir facilement des workflows avec des structures conditionnelles
     * Le workflow créé peut être exporté en YAML
 
-
 == Conclusion
 
 
-
-== Réseautage
 
 
 
