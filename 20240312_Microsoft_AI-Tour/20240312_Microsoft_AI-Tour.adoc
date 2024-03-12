@@ -1,0 +1,205 @@
+= 2024/03/12 - Microsoft - AI Tour
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Salon Microsoft AI, Tour aux Salles du Carrousel, 99 rue de Rivoli, 75001 Paris
+
+== Description et agenda de la journée
+
+* URL de l'évènement : https://envision.microsoft.com/en-US/sessions?filter=event%2FlogicalValue%3EParis&wt.mc_ID=Envision2023_esc_corp_em_oo_sv_ATTE_welc_paris_sesh
+
+
+== 09:30 AM - 10:15 AM : AI that supports government services
+
+* URL du talk : https://envision.microsoft.com/en-US/sessions/14905782-0ef3-4962-8b5f-1a5b26643763?source=sessions
+* salle : breakout room 2
+
+* Abstract : +
+"Government agencies can deliver better services while reducing waste by using AI. Learn how AI can streamline systems, prevent fraud, and improve citizen engagement to create real value while building trust and responsible solutions."
+
+* Présenté par :
+    ** Jean-Philippe Courtois : Microsoft, Vice-président exécutif et président, partenariats de transformations nationales
+    ** Philippe Limantour : Microsoft, Directeur Technologique et Cybersécurité
+
+* Rappels de PHilippe : 
+    ** participation "massive" de Microsoft à l'open source
+    ** AI "respectueuse de la vie privée" : "aucune de vos données ne sert à réentrainer un de nos modèles"
+
+*Intervention de Audrey Herblin-Stoop de Mistral AI*
+
+* fier du partenariat signé entre Microsoft et Mistral AI
+    ** participation au talk de Audrey Herblin-Stoop, Directrice des Affaires Publiques de Mistral AI
+
+* Audrey sur Mistral : 
+    ** Mistral Large le meilleur modèle du monde en français
+    ** Mistral, une solution non américaine, ces derniers qui ont "beaucoup d'avance dans ce domaine"
+    ** Mistral Large dispo en "Model as a service"
+    ** Mistral Large très performant sur le code
+        *** capable d'appeler des fonction
+
+* Philippe à Audrey : "tendance à la réduction de la taille des modèles ?" -> SLM ?
+    ** Audrey : "pas forcément", on constate encore aujourd'hui la place prépondérante de "gros modèles", mais suivant le cas d'usage il va être de plus en plus question de *composition de modèles*
+        *** D'où la proposition de Mistral AI d'une famille de modèle
+        *** et rappel : un gros modèle coûte très cher et consomme beaucoup : donc *choisissez le modèle le plus adapté à votre cas d'usage*
+
+*Intervention de Jean-Philippe Courtois*
+
+* l'IA générative : un nouveau pivot au même niveau que l'invention du PC, d'Internet et du Smartphone
+* L'investissement dans l'infra Cloud Azure va continuer, avec apparemment une ouverture à court terme d'un nouveau data center en France
+
+* L'Inde 270 langues dont 22 officielles... : donc la communication des personnes avec l'état est par moment TRES difficile (questions et problématiques administratives, etc.)
+    ** Exemple donné : A l'heure actuelle, via certains projets backés par l'IA lancés par Microsoft, même un fermier indien peut, avec un simple téléphone portable (PAS un smartphone) rechercher le formulaire dont il a besoin pour demander une subvention pour son champs parmi les millions de l'administration indienne.
+
+*Intervention de Franck Denie de France Travail*
+
+* Filiale Microsoft France : initiative "A vous l'IA" visant à former 100 000 français (chiffres à vérifier)
+* Franck : "on a peut-être atteint le bout d'un modèle de matching en offre et demande"
+    ** les profils sont trop peu renseignés, et ils attendent que l'IA gen puisse les aider à acquérir plus facilement les données / une description plus complète des profils des demandeurs d'emploi
+        *** avec l'objectif d'un meilleur matching afin d'éviter les "erreurs de casting" quant aux propositions d'offres aux candidats
+
+*Intervention de Gabriela Ramos, Unesco, Assistant Director-General for Social and Human Sciences*
+
+* garantir l'état de droit, réduire la fracture numérique, biais de l'IA qui est trop majoritairement développée par des hommes blancs et qui est donc biaisée et discrimine certaines populations.
+
+.Les 3 indicateurs à garder en tête pour l'IA générative : vitesse, qualité, profondeur
+image:20240312_Microsoft_AI_tour_01.jpg[]
+
+== 11:00 AM - 12:15 PM - KEYNOTE : Power your AI transformation with the Microsoft Cloud
+
+* URL : https://envision.microsoft.com/en-US/sessions/48a1f61d-c6ca-4793-98d5-984e1976b20c?source=sessions
+* salle : breakout room 1
+
+* Abstract : +
+"As new AI technology grabs headlines and captures imaginations for businesses and consumers alike, organizations have a unique opportunity to harness the power of AI to drive value faster in their own businesses. Join Hayete Gallot, Jessica Hawk, and Corine de Bilbao to learn how you can power your AI transformation with the Microsoft Cloud: the cloud built for the era of AI. See how organizations are already creating differentiated value using AI, and what steps you can take right now so that you’re in a position to lead as together, we move into the new era of AI."
+
+* Présenté par :
+    ** Corinne de Bilbao, Microsoft France, Chief Executive Officer, CVP Microsoft France
+    ** Hayete Gallot, Microsoft, Corporate Vice President, Commercial Solution Areas
+    ** Jessica Hawk, Microsoft, Corporate Vice President for the Data and Artificial Intelligence (AI) business
+
+* Cas de Schneider Electric qui utilise déjà l'IA depuis des années, MAIS qui est passé dernièrement à Copilot for Sales, ce qui a permis de leur faire gagner 2h par semaine.
+
+* De nouveau, mise en avant du nouveau programme "A vous l'IA" de Microsoft France : pour démocratiser la formation sur l'IA générative
+
+* 73% des français utilisent déjà l'IA générative 
+* 60% des 18 - 30 ans utilise déjà l'IA générative dans leur travail au quotidien +
+-> Chiffres A VERIFIER
+
+."We believe every worker need an assistant"
+image:20240312_Microsoft_AI_tour_02.jpg[]
+
+* Et donc Microsoft a pour ambition de créer des Copilot pour tous les cas d'usage, tous les métiers.
+    ** Et comme on veut que ces Copilot accède bien à NOS données, cela implique la création de *solutions RAG à la demande*.
+
+.La famille de Copilot de Microsoft
+image:20240312_Microsoft_AI_tour_03.jpg[]
+
+* Et on nous ressort les chiffres de l'étude de GitHub Copilot comme quoi Copilot for developers leur permet de gagner 55% de temps de développement.
+    ** Nos propres campagnes de test, ainsi que celles de nos clients, nous montrent que le gain est moindre (10 à 20%)
+
+.La stack Copilot
+image:20240312_Microsoft_AI_tour_04.jpg[]
+
+.Les façcons de créer son propre Copilot
+image:20240312_Microsoft_AI_tour_05.jpg[]
+
+* build a plugin to extend COpilot for Microsoft 365 -> Microsoft Copilot Studio
+* build a custom copilot with low code -> Microsoft Copilot Studio
+* build a custom copilot with pro-code -> Microsoft AI Studio
+
+* Une info intéressante donné Hayete (Gallot, Microsoft, Corporate Vice Preisdent, Commercial Solution Areas) : on va choisir les modèles les plus adaptés à son cas d'usage, *dans le cas où le français est très important*, on va choisir *Mistral*
+    ** C'est certainement l'une des raisons de l'investissement de Microsoft dans Mistral AI : *avoir le meilleur LLM pour le français*
+
+.1100 prebuilt plugins and connectors avec Microsoft Copilot Studio
+image:20240312_Microsoft_AI_tour_06.jpg[]
+
+.Les sociétés qui utilisent déjà Microsoft Copilot
+image:20240312_Microsoft_AI_tour_07.jpg[]
+
+* Onepoint est mis en avant pour la partie Developers
+
+* Chanel : passage récent à Microsoft Fabric pour mettre en place une approche data mesh
+
+* Jessica : "Client want to be Chief INFORMATION Officer, not Chief Integration Officer..."
+* *Fabric* mis en avant comme la solution de *Data Analytics de l'ère de l'IA*
+    ** avec un lien direct avec AI Studio
+
+.Microsoft is customer 0 for Azure AI
+image:20240312_Microsoft_AI_tour_08.jpg[]
+
+.Microsoft pousse également le Model as a Service : l'industrialisation du domaine progresse
+image:20240312_Microsoft_AI_tour_09.jpg[]
+
+* *Personal Voice* fait partie de la suite Azure AI Services : +
+"With personal voice, you can get AI generated replication of your voice (or users of your application) in a few seconds. You provide a one-minute speech sample as the audio prompt, and then use it to generate speech in any of the more than 90 languages supported across more than 100 locales."
+
+== 02:00 PM - 2:45 PM : Democratizing Software Development in the Enterprise
+== 03:15 PM - 4:00 PM : End-to-end protection in the age of AI
+
+== Stands
+
+=== Microsoft Copilot Studio
+
+Je suis allé demandé une demo au stand : 
+
+    * Copilot Studio permet de créer des Copilot personnalisés, intégrables très facilement dans différents outils Microsoft (Teams dans la demo)
+    * En gros, Copilot Studio permet de créer rapidement son propre RAG
+
+    * tous les utilisateurs du Copilot créés voient les mêmes données : si un utilisateur charge 1 doc, tous les autres utilisateurs le voient, il n'y a pas de RBAC à ce niveau
+        ** si je peux restreindre l'accès à certains documents, il faut que je les expose dans un autre Copilot
+
+    * De nombreuses sources de données sont disponibles : BDD (Oracle montré), Sharepoint, PDF et autres docs.
+        ** Que du texte pour le moment, Copilot peut lire le format PDF, taille limite des docs de 3 Mo
+    * Copilot est en écoute des sources et en détecte automatiquement les modifications
+        ** POINT A CREUSER : à quelle fréquence écoute-t-il ?
+
+    * On peut charger son propre modèle dans son Copilot, en provenance de AI Studio.
+        ** A partir de là, on peut accéder à toute la customisation possible du modèle
+
+    * Copilot permet de définir facilement des workflows avec des structures conditionnelles
+    * Le workflow créé peut être exporté en YAML
+
+
+== Conclusion
+
+
+
+== Réseautage
+
+
+
+
