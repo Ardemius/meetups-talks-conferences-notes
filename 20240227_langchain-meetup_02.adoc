@@ -1,4 +1,4 @@
-= 2023/12/04 - Langchain and LLM MeetUp - session 02
+= 2024/02/27 - Langchain and LLM MeetUp - session 02
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]

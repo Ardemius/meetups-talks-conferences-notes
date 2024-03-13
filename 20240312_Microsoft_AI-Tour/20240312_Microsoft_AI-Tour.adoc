@@ -53,7 +53,7 @@ Salon Microsoft AI, Tour aux Salles du Carrousel, 99 rue de Rivoli, 75001 Paris
 
 * Présenté par :
     ** Jean-Philippe Courtois : Microsoft, Vice-président exécutif et président, partenariats de transformations nationales
-    ** Philippe Limantour : Microsoft, Directeur Technologique et Cybersécurité
+    ** Philippe Limantour : Microsoft, Directeur Technologique et Cybersécurité (CTO Microsoft France)
 
 * Rappels de PHilippe : 
     ** participation "massive" de Microsoft à l'open source
@@ -243,6 +243,279 @@ Je suis allé demandé une demo au stand :
     * Le workflow créé peut être exporté en YAML
 
 == Conclusion
+
+* Montée en puissance "des" Copilot et du Low Code (Power Platform poussée à fond)
+    ** L'interface conversationnelle avec les utilisateurs sera l'avenir, voir l'est déjà d'après Microsoft
+
+== JOUR 2 - For Developers
+
+Programme de la journée : https://www.microsoft.com/en-us/msaitour/Assets/Paris_Onsite_printed_agenda_MS_AI_Tour.pdf
+
+== 09:00 AM - 10:15 AM : Next Generation AI for Developers
+
+* Dès les 1ers slides, le partenariat avec NVidia est mis en avant
+
+* Présenté par : 
+    ** Amanda Silver, Corporate Vice President, Head of Product Developer Division, Microsoft
+
+* Abstract : +
+"Join us for the Microsoft AI Tour, an event that showcases how Microsoft empowers every person and organization to achieve more with AI. In this keynote, Amanda Silver and product and engineering experts will demonstrate how you can accelerate employee productivity by adopting Microsoft Copilot, adding AI into every Microsoft Cloud solution, as well as how developers can build their own transformational AI apps with tools and services available in Azure. You'll also learn how to design safe, trustworthy, and ethical AI systems using techniques such as metaprompt design, data grounding, and content safety. Join us to learn how you can leverage the power of AI and Microsoft Copilot to accelerate your productivity and innovation.
+"
+
+* The *Microsoft Graph* est présenté comme la BDD la plus importante de Microsoft
+    ** C'est elle qui va backée Microsoft 365 Copilot
+
+image:20240313_Microsoft_AI_tour_01.jpg[]
+
+*Demo de Copilot*
+
+    1. explication d'un code déjà existant pour une personne ne connaissant pas le langage
+    2. création et correction d'un code pour accéder à la caméra depuis une page web
+        ** "ce n'est pas parfait, mais cela évite la recherche documentaire qui aurait été nécessaire"
+            *** Effectivement, on a quelque chose qui marche "presque du 1er coup". +
+            Ma question : peut-on vraiment faire à ce point confiance à la proposition SANS se poser de question, aller soi-même checker ou rechecker la doc ?
+
+La "stratégie" présentée par Microsoft : 
+
+    * On commence par avoir les Data, avec des persistances spécialement prévus pour l'AI : +
+    image:20240313_Microsoft_AI_tour_02.jpg[]
+
+    * une fois qu'on a nos data, on passe à Fabric qui intègre NATIVEMENT l'AI : 
+    image:20240313_Microsoft_AI_tour_03.jpg[]
+        ** Fabric est vraiment présenté comme un "centralisateur" de la data, une solution unifiée, conçue pour le Cloud et l'IA et l'intégrant nativement
+        ** de très nombreux connecteurs sont disponibles, permettant de se connecter aux différentes sources de données de l'entreprise, et pas seulement les solutions de Microsoft (Snowflake est souvent mis en avant dans la vidéo de demo par exemple)
+
+Vector Search in Azure AI Search
+
+    * Azure AI Search ne fait pas "que" du vector search, il combine des techniques et sélectionne les meilleurs résultats (via reranking et autres)
+
+* Via une nouvelle demo / illustration dans le AI Studio, on montre l'intérêt d'ajouter des garde-fous dans le system prompt : "quand tu ne connais pas la réponse, réponds SALSA!"
+
+La galaxie d'outils Microsoft pour l'AI (Azure AI) est mise en avant : +
+image:20240313_Microsoft_AI_tour_04.jpg[]
+
+.Azure OpenAI Service : GPT-4 Turbo with Vision
+image:20240313_Microsoft_AI_tour_05.jpg[]
+
+    * Enable multimodal GenAI with video, image and text
+    * unlock new scenarios with integrated Azure AI Vision support
+    * Augment RAG pattern with images and Azure AI Search
+
+*Intervention de Serge Palaric de NVidia* (Vice President Alliances & Hyperscalers EMEA, NVIDIA)
+
+    * Microsoft et NVidia ont annoncé de fortes relations (partenariat ?) pour développés des outils en commun pour répondre au mieux aux nouveaux besoins de l'IA +
+    image:20240313_Microsoft_AI_tour_06.jpg[]
+
+    * NVidia est en train de développer de nouveaux AI foundation Models : ils sont fiables, disponibles et peuvent être utilisés en entreprise dès maintenant : +
+    image:20240313_Microsoft_AI_tour_07.jpg[]
+
+    * *NVidia NeMo* : un pipeline complet sur Azure pour build, fine-tune, evaluate, etc. your model +
+    image:20240313_Microsoft_AI_tour_08.jpg[]
+        ** NVidia NeMo : end-to-end platform for developing generative AI available on Azure
+
+    * Maintenant que nos modèles sont prêts, il reste encore à les déployer :
+    image:20240313_Microsoft_AI_tour_09.jpg[]
+
+    * Donc, au final, on a une usine complète (*NVidia AI Foundry Service on Azure*) de gestion des modèles d'IA sur Azure développée avec NVidia
+    image:20240313_Microsoft_AI_tour_10.jpg[]
+
+.Azure Content Safety et les couches de mitigation
+image:20240313_Microsoft_AI_tour_11.jpg[]
+
+* Implémentation d'un AI based safety system
+
+* Demo sur Visual Studio Code d'un *Prompt Flow*, pour expliquer le workflow du pipeline présenté
+
+image:20240313_Microsoft_AI_tour_12.jpg[]
+image:20240313_Microsoft_AI_tour_13.jpg[]
+
+* Il est question du Azure OpenAI's content filtering system : +
+image:20240313_Microsoft_AI_tour_14.jpg[]
+
+Présentation d'une nouvelle startup, Milvue, dans le domaine médical, pour des "state-of-the-art vision models" : donc de l'analyse d'images médicales +
+image:20240313_Microsoft_AI_tour_15.jpg[]
+
+== 10:45 AM - 11:30 AM : Vector search and state of the art retrieval for Generative AI apps - Breakout 4
+
+* Présenté par Alvaro Videla, Senior Cloud Developer Advocate, Microsoft
+
+* Abstract : +
+"Generative AI apps increasingly rely on Retrieval-Augmented Generation (RAG), incorporating specific supplemental data to ground responses. In this session, we'll dive into the information retrieval elements of the RAG pattern, how vector searches, hybrid search, and reranking models improve relevance of your results. We’ll present concepts with live code and data from our extensive evaluations on retrieval quality"
+
+.SLIDES A RECUPERER !
+[WARNING]
+====
+Je n'ai pu assister qu'aux dernières 15 20 min, mais super conf. +
+-> Malheureusement non enregistrée, MAIS je suis allé demandé les slides au speaker, c'est ok pour lui mais à récupérer auprès du staff (voir Teri)
+====
+
+* De façon générale Alvaro cite la source : https://aka.ms/aitour/search-relevance
+    ** https://github.com/pamelafox/vector-search-demos/blob/main/search_relevance.ipynb
+
+image:20240313_Microsoft_AI_tour_16.jpg[]
+image:20240313_Microsoft_AI_tour_17.jpg[]
+image:20240313_Microsoft_AI_tour_18.jpg[]
+image:20240313_Microsoft_AI_tour_19.jpg[]
+image:20240313_Microsoft_AI_tour_20.jpg[]
+image:20240313_Microsoft_AI_tour_21.jpg[]
+image:20240313_Microsoft_AI_tour_22.jpg[]
+image:20240313_Microsoft_AI_tour_23.jpg[]
+image:20240313_Microsoft_AI_tour_24.jpg[]
+image:20240313_Microsoft_AI_tour_25.jpg[]
+image:20240313_Microsoft_AI_tour_26.jpg[]
+image:20240313_Microsoft_AI_tour_27.jpg[]
+
+== 12:00 PM - 12:45 PM : Build your RAG Application in Prompt flow in Azure AI Studio - Breakout 3
+
+* Présenté par Seth Juarez, Principal Program Manager, Microsoft
+    ** Seth qui faisait également toutes les démos de la keynote
+
+* Abstract : +
+"What is Prompt flow and how do you create intelligent applications with LLMs? In this session you will learn how to build a Prompt flow application end to end in a code first experience with VS Code. Then learn how to add rich features by implementing RAG (Retrieval Augmented Generation) operations on your own data. Lastly, seamlessly leverage the power of Azure AI Studio to share and evaluate the application. Join us to see this in action."
+
+.Agenda
+image:20240313_Microsoft_AI_tour_28.jpg[]
+
+    * Introduction LLMOps and LLM processes
+    * AI Studio and Model Catalog
+    * Build a RAG solution with prompt flow in VS Code
+    * How to test LLMs with Evaluations
+
+-> question dans la salle : j'ai déjà pas mal testé Prompt Flow, et j'ai beaucoup de mal à l'intégrer dans mon workflow de développement, surtout avec Git.
+
+Azure AI  est "le lieu", la plateforme ou mettre "TOUT" notre "AI stuff"
+
+image:20240313_Microsoft_AI_tour_29.jpg[]
+
+Seth, comme tous les autres intervenants, cherche à nous rassurer sur l'usage qui est fait de nos data : 
+
+."Rien n'est utilisé dans vos data"
+image:20240313_Microsoft_AI_tour_30.jpg[]
+
+."SAUF... les fameux 30 jours de modération"
+image:20240313_Microsoft_AI_tour_31.jpg[]
+.Et de nouveau Seth rappelle qu'on peut refuser cette modération, MAIS qu'on prend dès lors les risques associés à NOTRE charge
+image:20240313_Microsoft_AI_tour_32.jpg[]
+
+.What is Prompt Flow ?
+image:20240313_Microsoft_AI_tour_33.jpg[]
+
+.Où se situe Prompt Flow en termes de complexité par rapport à d'autres outils
+image:20240313_Microsoft_AI_tour_34.jpg[]
+
+-> Prompt Flow is a *low level AI orchestrator*
+
+Seth : Langchain et Semantic Kernel sont très cool, jusqu'au moment où on a besoin de débugger...
+
+.LLM lifecycle in the real world
+image:20240313_Microsoft_AI_tour_35.jpg[]
+
+-> Attention ! Il s'agit bien d'un cycle différent de celui du développement logiciel "classique" 😉
+
+.Détails des étapes précédentes du cycle de vie
+image:20240313_Microsoft_AI_tour_36.jpg[]
+
+.Schéma classique du RAG à jour
+image:20240313_Microsoft_AI_tour_37.jpg[]
+
+Seth retente ici sa "demo de la chaussure" qui avait planté durant la keynote (le réseau était tombé... durant la seule conf enregistrée du salon... 😭🤣)
+
+Voici ce que nous allons essayer de construire : 
+image:20240313_Microsoft_AI_tour_38.jpg[]
+
+.On commence avec un "brain new Prompt FLow"
+image:20240313_Microsoft_AI_tour_39.jpg[]
+
+.Un prompt flow un peu plus compliqué maintenant
+image:20240313_Microsoft_AI_tour_40.jpg[]
+
+.voici la "RAG part" du code
+image:20240313_Microsoft_AI_tour_41.jpg[]
+
+.voici le customer look up
+image:20240313_Microsoft_AI_tour_42.jpg[]
+
+.Et voici le prompt
+image:20240313_Microsoft_AI_tour_43.jpg[]
+
+.On prépare quelques tests
+image:20240313_Microsoft_AI_tour_44.jpg[]
+
+.Une vue du projet de Seth dans Visual Studio Code
+image:20240313_Microsoft_AI_tour_45.jpg[]
+
+.Un autre exemple de prompt utilisé par Seth
+image:20240313_Microsoft_AI_tour_46.jpg[]
+
+Les *métriques d'évaluation* de l'IA : +
+image:20240313_Microsoft_AI_tour_47.jpg[]
+
+    * *Groundedness* : measures how well the model's generated answers align with information from the input source
+    * *Relevance* : measures the extent to which the model's generated answers are relevant 
+    * *Coherence* : 
+
+image:20240313_Microsoft_AI_tour_48.jpg[]
+
+.Pour les intéressés, le "badge" Microsoft de la conf
+image:20240313_Microsoft_AI_tour_49.jpg[]
+
+.Les coordonnées de Seth AVEC LE LIEN DE LA PREZ
+image:20240313_Microsoft_AI_tour_50.jpg[]
+
+* Repo GitHub *contoso-chat* : https://github.com/Azure-Samples/contoso-chat
+* Repo GitHub du site Web *contoso-web* utilisé par Seth pour ses démos : https://github.com/Azure-Samples/contoso-web
+
+== 14:15 - 15:00 : Prompt Engineering to Production with LLMOps - Breakout 1
+
+Présenté par Seth Juarez, Principal Program Manager, Microsoft
+
+* abstract : +
+"Prompt engineering and LLMOps are pivotal in maximizing the capabilities of Language Models (LLMs) for specific business needs. This session offers a comprehensive guide to Azure AI's latest features that simplify the AI application development cycle. We'll walk you through the process of experimenting, evaluating and deploying your AI-powered apps. Learn how to streamline your AI workflows and harness the full potential of Generative AI with Azure AI Studio."
+
+Cet autre talk de Seth est un peu la suite de "Build your RAG Application in Prompt flow in Azure AI Studio" un peu plus tôt.
+
+.Agenda
+image:20240313_Microsoft_AI_tour_54.jpg[]
+
+.Prompt Flow RAG architecture
+image:20240313_Microsoft_AI_tour_55.jpg[]
+
+* *Evaluations* are *ESSENTIAL* : you HAVE to evaluate +
+image:20240313_Microsoft_AI_tour_56.jpg[]
+
+1. JSONL file with test data
+2. Run local or cloud batch run of Contoso Chat Prompt Flow with 35 Turbo
+3. Feed result Prompt Flow into evaluation Prompt flow that uses GPT-4
+
+== 15:05-15:20 : Productizing Enterprise AI with NVIDIA End-to-End
+
+image:20240313_Microsoft_AI_tour_57.jpg[]
+image:20240313_Microsoft_AI_tour_58.jpg[]
+image:20240313_Microsoft_AI_tour_59.jpg[]
+
+* -> On en conclut que NVidia est vraiment en train de promouvoir son infra pour faire tourner les pipelines d'IA, avec une collaboration très forte avec Microsoft
+* La marketplace d'Azure est régulièrement donnée comme la porte d'entrée des produits NVidia par les speakers NVidia
+
+== 15:45-17:00 : Develop a production-level RAG workflow - Workshop 2
+
+.abstract
+----
+What is Prompt flow and how do you create intelligent applications with LLMs? In this session you will learn how to build a Prompt flow application end to end in a code first experience with VS Code. Then learn how to add rich features by implementing RAG (Retrieval Augmented Generation) operations on your own data. Lastly, seamlessly leverage the power of Azure AI Studio to share and evaluate the application. Join us to see this in action.
+----
+
+== Communautés Microsoft et formations sur l'IA
+
+image:20240313_Microsoft_AI_tour_51.jpg[]
+image:20240313_Microsoft_AI_tour_52.jpg[]
+image:20240313_Microsoft_AI_tour_53.jpg[]
+
+== Conclusion
+
+* La collaboration Microsoft et Nvidia en force !
+
+
+
+
 
 
 

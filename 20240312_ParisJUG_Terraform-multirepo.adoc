@@ -1,0 +1,131 @@
+= 2024/03/12 - Paris JUG - Terraform & multirepo
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+URL : https://live.remo.co/e/meetup-2-langchain-and-llm-franc
+
+== Introduction
+
+.Criteo aujourd'hui en quelques chiffres
+image:20240312_parisjug_terraform-multirepo_00.jpg[]
+
+== RETEX: Pièges et chausse-trappes avec Terraform en entreprise
+
+Présenté par Duy Hai Doan
+
+.abstract
+----
+Terraform s'est imposé de facto comme la technologie pour déployer dans le cloud. Mais tout n'est pas si rose.
+
+A travers ce retour d'expérience d'utilisation de Terraform dans une grande organisation, nous allons mettre en lumière les chausses-trappes classiques et les pièges les plus vicieux liés à l'utilisation de Terraform et les solutions pour y faire face:
+
+	* tfstate désynchronisé
+	* modularité et refactoring de code Terraform
+	* interopérabilité
+	* control-plane vs data-plane
+	* automatisation et outillage
+
+Après cette session, vous apprendrez à utiliser Terraform de manière plus judicieuse et rationnelle.
+----
+
+* Duy nous explique que Terraform est au final "l'ami qui ne nous veut PAS du bien"...
+
+* 1er souci : le tfstate et tous les risques de désynchro
+	** par exemple sur Azure, Terraform n'est pas fan du "backup / restore"
+
+* sur Azure, *les policy interceptent le cycle de vie*, et vont modifier vos ressources SANS vous demander votre avis
+	** sur la sécurité a décidé XXX, elle n'a PAS à vous demander votre avis, et c'est bien normal
+	** et terraform n'est PAS au courant de ces modifs de sécu, qui feront que Terraform sera, de facto, désynchronisé
+
+* Microsoft, AWS et les autres Cloud providers ont dépensé des milliards dans leurs portails. +
+On ne peut PAS demander à ce que toutes les modifs d'infra passent par Terraform et NON par les portails des providers
+	** ce problème est si présent que certaines boîtes se montent uniquement pour détecter les erreurs de synchro du tfstate.
+
+*Inconvénients des modules dans Terraform*
+
+* Tout refacto sur Terraform a des conséquences terrifiantes sur le tfstate : 
+	** je change le nom du repo Git utilisé, je remplace "main" par autre chose, et cela impacte TOUTES mes ressources qui référençaient cet ancien nom
+
+* Duy Hai : "faut pas croire ce que les gens disent en conf, il faut voir ce qu'ils font vraiment en PROD"
+
+.Control plane et Data place
+image:20240312_parisjug_terraform-multirepo_01.jpg[]
+
+* *Control plane* : 
+	** gouverne la création et configuration des infrastructures Cloud
+	** configure le "contenant"
+
+-> Duy Hai : dans la théorie, Terraform ne devrait gérer QUE le Control Plane
+
+* *Data plane* : 
+	** gouverne la gestion des "données" d'une ressource Cloud
+	** configure le "contenu"
+
+* Si tu crées ta BDD Postgre avec Terraform, l'équipe de maintenance qui doit restaurer ta BDD en cas de souci ne va JAMAIS utiliser Terraform (l'équipe n'est pas formée), elle va utiliser le portail Azure
+	** et si elle devait faire ça pour 50 BDDs, jamais elle ne va avoir accès aux 50 repo contenant les scripts Terraform...
+
+.La "bonne façon de faire"
+image:20240312_parisjug_terraform-multirepo_02.jpg[]
+
+-> On utilise pas Terraform pour tout et n'importe quoi (c'est mieux, mais certains s'en fiche, y compris certains Cloud providers eux-mêmes...)
+
+	* provisionner une VM -> Terraform
+	* configurer cette VM, installer des choses dessus -> Ansible, GitHub Actions, etc.
+
+== Dépendances à gogo : les dessous d'une CI multi repository à grande échelle
+
+Présenté par Emmanuel Guérin
+
+.Abstract
+----
+Mettre en place une intégration continue est aujourd'hui chose courante dans l'industrie. Mais il existe encore peu de solutions pour le faire efficacement sur des centaines de repositories, rassemblant des milliers de projets.
+
+Comment gérer les dépendances entre projets ? Comment connaître la qualité de chacun d'entre eux ? Comment automatiser les validations de clients avant même de merger une pull request ?
+
+Dans cette séance, nous présenterons différentes approches pour résoudre ce problème à travers un retour d'expérience au sein de notre entreprise.
+
+Mono repository, build from source, build from master, autant de définitions sur lesquelles nous tenterons également de placer des exemples concrets.
+----
+
+.La gestion des repo et des branches chez Criteo
+image:20240312_parisjug_terraform-multirepo_03.jpg[]
+
+.Le workflow de travail chez Criteo
+image:20240312_parisjug_terraform-multirepo_04.jpg[]
+
+
+
