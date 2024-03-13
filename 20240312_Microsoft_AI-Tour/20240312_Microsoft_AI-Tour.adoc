@@ -340,13 +340,14 @@ image:20240313_Microsoft_AI_tour_15.jpg[]
 * Présenté par Alvaro Videla, Senior Cloud Developer Advocate, Microsoft
 
 * Abstract : +
-"Generative AI apps increasingly rely on Retrieval-Augmented Generation (RAG), incorporating specific supplemental data to ground responses. In this session, we'll dive into the information retrieval elements of the RAG pattern, how vector searches, hybrid search, and reranking models improve relevance of your results. We’ll present concepts with live code and data from our extensive evaluations on retrieval quality"
+"Generative AI apps increasingly rely on Retrieval-Augmented Generation (RAG), incorporating specific supplemental data to ground responses. In this session, we'll dive into the information retrieval elements of the RAG pattern, how vector searches, hybrid search, and reranking models improve relevance of your results. We'll present concepts with live code and data from our extensive evaluations on retrieval quality"
 
-.SLIDES A RECUPERER !
 [WARNING]
 ====
 Je n'ai pu assister qu'aux dernières 15 20 min, mais super conf. +
 -> Malheureusement non enregistrée, MAIS je suis allé demandé les slides au speaker, c'est ok pour lui mais à récupérer auprès du staff (voir Teri)
+
+Teri m'a expliqué qu'ils n'ont pas les moyens de communiquer les slides durant la conf, MAIS celle-ci en tout cas a été donné à l'identique ou presque lors du *Microsoft Ignite de 2023/11* : https://www.youtube.com/watch?v=lSzc1MJktAo
 ====
 
 * De façon générale Alvaro cite la source : https://aka.ms/aitour/search-relevance
