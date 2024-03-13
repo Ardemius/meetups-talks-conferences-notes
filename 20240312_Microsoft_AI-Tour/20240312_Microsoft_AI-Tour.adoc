@@ -383,8 +383,7 @@ image:20240313_Microsoft_AI_tour_28.jpg[]
 
 -> question dans la salle : j'ai déjà pas mal testé Prompt Flow, et j'ai beaucoup de mal à l'intégrer dans mon workflow de développement, surtout avec Git.
 
-Azure AI  est "le lieu", la plateforme ou mettre "TOUT" notre "AI stuff"
-
+.Azure AI est "le lieu", la plateforme ou mettre "TOUT" notre "AI stuff"
 image:20240313_Microsoft_AI_tour_29.jpg[]
 
 Seth, comme tous les autres intervenants, cherche à nous rassurer sur l'usage qui est fait de nos data : 
@@ -394,76 +393,76 @@ image:20240313_Microsoft_AI_tour_30.jpg[]
 
 ."SAUF... les fameux 30 jours de modération"
 image:20240313_Microsoft_AI_tour_31.jpg[]
-.Et de nouveau Seth rappelle qu'on peut refuser cette modération, MAIS qu'on prend dès lors les risques associés à NOTRE charge
-image:20240313_Microsoft_AI_tour_32.jpg[]
+
+-> Et de nouveau Seth rappelle qu'on peut refuser cette modération, MAIS qu'on prend dès lors les risques associés à NOTRE charge
 
 .What is Prompt Flow ?
-image:20240313_Microsoft_AI_tour_33.jpg[]
+image:20240313_Microsoft_AI_tour_32.jpg[]
 
 .Où se situe Prompt Flow en termes de complexité par rapport à d'autres outils
-image:20240313_Microsoft_AI_tour_34.jpg[]
+image:20240313_Microsoft_AI_tour_33.jpg[]
 
--> Prompt Flow is a *low level AI orchestrator*
+-> Prompt Flow is a *low level AI orchestrator*, c'est un outil *simple d'usage*
 
 Seth : Langchain et Semantic Kernel sont très cool, jusqu'au moment où on a besoin de débugger...
 
 .LLM lifecycle in the real world
-image:20240313_Microsoft_AI_tour_35.jpg[]
+image:20240313_Microsoft_AI_tour_34.jpg[]
 
 -> Attention ! Il s'agit bien d'un cycle différent de celui du développement logiciel "classique" 😉
 
 .Détails des étapes précédentes du cycle de vie
-image:20240313_Microsoft_AI_tour_36.jpg[]
+image:20240313_Microsoft_AI_tour_35.jpg[]
 
 .Schéma classique du RAG à jour
-image:20240313_Microsoft_AI_tour_37.jpg[]
+image:20240313_Microsoft_AI_tour_36.jpg[]
 
 Seth retente ici sa "demo de la chaussure" qui avait planté durant la keynote (le réseau était tombé... durant la seule conf enregistrée du salon... 😭🤣)
 
 Voici ce que nous allons essayer de construire : 
-image:20240313_Microsoft_AI_tour_38.jpg[]
+image:20240313_Microsoft_AI_tour_37.jpg[]
 
 .On commence avec un "brain new Prompt FLow"
-image:20240313_Microsoft_AI_tour_39.jpg[]
+image:20240313_Microsoft_AI_tour_38.jpg[]
 
 .Un prompt flow un peu plus compliqué maintenant
-image:20240313_Microsoft_AI_tour_40.jpg[]
+image:20240313_Microsoft_AI_tour_39.jpg[]
 
 .voici la "RAG part" du code
-image:20240313_Microsoft_AI_tour_41.jpg[]
+image:20240313_Microsoft_AI_tour_40.jpg[]
 
 .voici le customer look up
-image:20240313_Microsoft_AI_tour_42.jpg[]
+image:20240313_Microsoft_AI_tour_41.jpg[]
 
 .Et voici le prompt
-image:20240313_Microsoft_AI_tour_43.jpg[]
+image:20240313_Microsoft_AI_tour_42.jpg[]
 
 .On prépare quelques tests
-image:20240313_Microsoft_AI_tour_44.jpg[]
+image:20240313_Microsoft_AI_tour_43.jpg[]
 
 .Une vue du projet de Seth dans Visual Studio Code
-image:20240313_Microsoft_AI_tour_45.jpg[]
+image:20240313_Microsoft_AI_tour_44.jpg[]
 
 .Un autre exemple de prompt utilisé par Seth
-image:20240313_Microsoft_AI_tour_46.jpg[]
+image:20240313_Microsoft_AI_tour_45.jpg[]
 
 Les *métriques d'évaluation* de l'IA : +
-image:20240313_Microsoft_AI_tour_47.jpg[]
+image:20240313_Microsoft_AI_tour_46.jpg[]
 
     * *Groundedness* : measures how well the model's generated answers align with information from the input source
-    * *Relevance* : measures the extent to which the model's generated answers are relevant 
-    * *Coherence* : 
-
-image:20240313_Microsoft_AI_tour_48.jpg[]
+    * *Relevance* : measures the extent to which the model's generated responses are pertinent and directly related to the given questions
+    * *Coherence* : Measures evaluates how well the language model can produce output that flows smoothly, reads naturally, and resembles human-like language
 
 .Pour les intéressés, le "badge" Microsoft de la conf
-image:20240313_Microsoft_AI_tour_49.jpg[]
+image:20240313_Microsoft_AI_tour_47.jpg[]
 
 .Les coordonnées de Seth AVEC LE LIEN DE LA PREZ
-image:20240313_Microsoft_AI_tour_50.jpg[]
+image:20240313_Microsoft_AI_tour_48.jpg[]
 
-* Repo GitHub *contoso-chat* : https://github.com/Azure-Samples/contoso-chat
-* Repo GitHub du site Web *contoso-web* utilisé par Seth pour ses démos : https://github.com/Azure-Samples/contoso-web
+Ressources du talk : 
+
+    * Repo GitHub *contoso-chat* : https://github.com/Azure-Samples/contoso-chat
+    * Repo GitHub du site Web *contoso-web* utilisé par Seth pour ses démos : https://github.com/Azure-Samples/contoso-web
 
 == 14:15 - 15:00 : Prompt Engineering to Production with LLMOps - Breakout 1
 
@@ -505,13 +504,21 @@ What is Prompt flow and how do you create intelligent applications with LLMs? In
 
 == Communautés Microsoft et formations sur l'IA
 
-image:20240313_Microsoft_AI_tour_51.jpg[]
-image:20240313_Microsoft_AI_tour_52.jpg[]
-image:20240313_Microsoft_AI_tour_53.jpg[]
+.Microsoft Learn AI Cloud Skills Challenge
+image:20240313_Microsoft_AI_tour_49.jpg[]
+
+* Get Started skilling with *AI on Microsoft Learn*. +
+Build AI skills, connect with the community, earn Microsoft credentials, learn from experts, and take the Cloud skills Challenge : +
+https://aka.ms/LearnAtAITour (https://learn.microsoft.com/en-us/ai/microsoft-ai-days/)
+
+* Tous les liens des différentes *communautés techniques Microsoft* : https://linktr.ee/msdevfr
+    ** L'équipe *Developer Relations* de *Microsoft France* : https://twitter.com/msdev_fr
 
 == Conclusion
 
-* La collaboration Microsoft et Nvidia en force !
+* La collaboration Microsoft et Nvidia mise en avant à chaque occasion
+* Le RAG est réellement en train de s'industrialiser
+    ** Copilot Studio (membre de la Power Platform) permet de créer "ses" RAG à la volée de façon très simple
 
 
 
