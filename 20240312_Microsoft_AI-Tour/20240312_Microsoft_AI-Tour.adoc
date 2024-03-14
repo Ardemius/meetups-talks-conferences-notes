@@ -38,12 +38,13 @@ toc::[]
 
 Salon Microsoft AI, Tour aux Salles du Carrousel, 99 rue de Rivoli, 75001 Paris
 
-== Description et agenda de la journée
+== JOUR 1 - Business et décideurs
+
+=== Description et agenda de la journée
 
 * URL de l'évènement : https://envision.microsoft.com/en-US/sessions?filter=event%2FlogicalValue%3EParis&wt.mc_ID=Envision2023_esc_corp_em_oo_sv_ATTE_welc_paris_sesh
 
-
-== 09:30 AM - 10:15 AM : AI that supports government services
+=== 09:30 AM - 10:15 AM : AI that supports government services
 
 * URL du talk : https://envision.microsoft.com/en-US/sessions/14905782-0ef3-4962-8b5f-1a5b26643763?source=sessions
 * salle : breakout room 2
@@ -98,7 +99,7 @@ Salon Microsoft AI, Tour aux Salles du Carrousel, 99 rue de Rivoli, 75001 Paris
 .Les 3 indicateurs à garder en tête pour l'IA générative : vitesse, qualité, profondeur
 image:20240312_Microsoft_AI_tour_01.jpg[]
 
-== 11:00 AM - 12:15 PM - KEYNOTE : Power your AI transformation with the Microsoft Cloud
+=== 11:00 AM - 12:15 PM - KEYNOTE : Power your AI transformation with the Microsoft Cloud
 
 * URL : https://envision.microsoft.com/en-US/sessions/48a1f61d-c6ca-4793-98d5-984e1976b20c?source=sessions
 * salle : breakout room 1
@@ -176,7 +177,7 @@ image:20240312_Microsoft_AI_tour_10.jpg[]
 
 image:20240312_Microsoft_AI_tour_11.jpg[]
 
-== 02:00 PM - 2:45 PM : Democratizing Software Development in the Enterprise
+=== 02:00 PM - 2:45 PM : Democratizing Software Development in the Enterprise
 
 * URL : https://envision.microsoft.com/en-US/sessions/74fcdd81-1dd7-4a86-b40d-238e1e7e68d9?source=sessions
 
@@ -190,7 +191,7 @@ image:20240312_Microsoft_AI_tour_11.jpg[]
 
 Plateforme de développements d'application low code, mais pas de demo !
 
-== 03:15 PM - 4:00 PM : End-to-end protection in the age of AI
+=== 03:15 PM - 4:00 PM : End-to-end protection in the age of AI
 
 * URL : https://envision.microsoft.com/en-US/sessions/bf2a4036-6dfc-46f9-8cd3-0bc25f5c0c0f?source=sessions
 * Abstract : +
@@ -217,9 +218,9 @@ image:20240312_Microsoft_AI_tour_13.jpg[]
 * Govern the use of AI : AI-specific data security capabilities in Microsoft Purview.
     ** Purview compliance extended to Microsoft Copilot
 
-== Stands
+=== Stands
 
-=== Microsoft Copilot Studio
+==== Microsoft Copilot Studio
 
 Je suis allé demandé une demo au stand : 
 
@@ -242,7 +243,7 @@ Je suis allé demandé une demo au stand :
     * Copilot permet de définir facilement des workflows avec des structures conditionnelles
     * Le workflow créé peut être exporté en YAML
 
-== Conclusion
+=== Conclusion
 
 * Montée en puissance "des" Copilot et du Low Code (Power Platform poussée à fond)
     ** L'interface conversationnelle avec les utilisateurs sera l'avenir, voir l'est déjà d'après Microsoft
@@ -251,7 +252,7 @@ Je suis allé demandé une demo au stand :
 
 Programme de la journée : https://www.microsoft.com/en-us/msaitour/Assets/Paris_Onsite_printed_agenda_MS_AI_Tour.pdf
 
-== 09:00 AM - 10:15 AM : Next Generation AI for Developers
+=== 09:00 AM - 10:15 AM : Next Generation AI for Developers
 
 * Dès les 1ers slides, le partenariat avec NVidia est mis en avant
 
@@ -335,7 +336,7 @@ image:20240313_Microsoft_AI_tour_14.jpg[]
 Présentation d'une nouvelle startup, Milvue, dans le domaine médical, pour des "state-of-the-art vision models" : donc de l'analyse d'images médicales +
 image:20240313_Microsoft_AI_tour_15.jpg[]
 
-== 10:45 AM - 11:30 AM : Vector search and state of the art retrieval for Generative AI apps - Breakout 4
+=== 10:45 AM - 11:30 AM : Vector search and state of the art retrieval for Generative AI apps - Breakout 4
 
 * Présenté par Alvaro Videla, Senior Cloud Developer Advocate, Microsoft
 
@@ -366,7 +367,7 @@ image:20240313_Microsoft_AI_tour_25.jpg[]
 image:20240313_Microsoft_AI_tour_26.jpg[]
 image:20240313_Microsoft_AI_tour_27.jpg[]
 
-== 12:00 PM - 12:45 PM : Build your RAG Application in Prompt flow in Azure AI Studio - Breakout 3
+=== 12:00 PM - 12:45 PM : Build your RAG Application in Prompt flow in Azure AI Studio - Breakout 3
 
 * Présenté par Seth Juarez, Principal Program Manager, Microsoft
     ** Seth qui faisait également toutes les démos de la keynote
@@ -465,7 +466,7 @@ Ressources du talk :
     * Repo GitHub *contoso-chat* : https://github.com/Azure-Samples/contoso-chat
     * Repo GitHub du site Web *contoso-web* utilisé par Seth pour ses démos : https://github.com/Azure-Samples/contoso-web
 
-== 14:15 - 15:00 : Prompt Engineering to Production with LLMOps - Breakout 1
+=== 14:15 - 15:00 : Prompt Engineering to Production with LLMOps - Breakout 1
 
 Présenté par Seth Juarez, Principal Program Manager, Microsoft
 
@@ -487,7 +488,7 @@ image:20240313_Microsoft_AI_tour_56.jpg[]
 2. Run local or cloud batch run of Contoso Chat Prompt Flow with 35 Turbo
 3. Feed result Prompt Flow into evaluation Prompt flow that uses GPT-4
 
-== 15:05-15:20 : Productizing Enterprise AI with NVIDIA End-to-End
+=== 15:05-15:20 : Productizing Enterprise AI with NVIDIA End-to-End
 
 image:20240313_Microsoft_AI_tour_57.jpg[]
 image:20240313_Microsoft_AI_tour_58.jpg[]
@@ -496,14 +497,14 @@ image:20240313_Microsoft_AI_tour_59.jpg[]
 * -> On en conclut que NVidia est vraiment en train de promouvoir son infra pour faire tourner les pipelines d'IA, avec une collaboration très forte avec Microsoft
 * La marketplace d'Azure est régulièrement donnée comme la porte d'entrée des produits NVidia par les speakers NVidia
 
-== 15:45-17:00 : Develop a production-level RAG workflow - Workshop 2
+=== 15:45-17:00 : Develop a production-level RAG workflow - Workshop 2
 
 .abstract
 ----
 What is Prompt flow and how do you create intelligent applications with LLMs? In this session you will learn how to build a Prompt flow application end to end in a code first experience with VS Code. Then learn how to add rich features by implementing RAG (Retrieval Augmented Generation) operations on your own data. Lastly, seamlessly leverage the power of Azure AI Studio to share and evaluate the application. Join us to see this in action.
 ----
 
-== Communautés Microsoft et formations sur l'IA
+=== Communautés Microsoft et formations sur l'IA
 
 .Microsoft Learn AI Cloud Skills Challenge
 image:20240313_Microsoft_AI_tour_49.jpg[]
@@ -515,7 +516,7 @@ https://aka.ms/LearnAtAITour (https://learn.microsoft.com/en-us/ai/microsoft-ai-
 * Tous les liens des différentes *communautés techniques Microsoft* : https://linktr.ee/msdevfr
     ** L'équipe *Developer Relations* de *Microsoft France* : https://twitter.com/msdev_fr
 
-== Conclusion
+=== Conclusion
 
 * La collaboration Microsoft et Nvidia mise en avant à chaque occasion
 * Le RAG est réellement en train de s'industrialiser
