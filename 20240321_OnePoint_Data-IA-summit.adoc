@@ -509,8 +509,12 @@ Q&A :
 
 Avec Eric Sadin, philosophe Data & IA en écrivain
 
+* Il est quand même très "clivant" / provoquant Eric Sadin
 
+    ** "Yann LE CUN annonce que l'IA va permettre des progrès révolutionnaires dans la médecine" : Eric Sadin "Mais que connaît Yann LE CUN en médecine pour dire ça ?!"
+        *** Thomas : de mon côté, vu les analyses permises par l'IA (analyse d'image pour la radiologie par exemple), je comprends les propos de Yann LE CUN, ça ne me choque pas
 
+-> Discours très dense, écouter le replay, c'est très difficile à résumer
 
 
 
