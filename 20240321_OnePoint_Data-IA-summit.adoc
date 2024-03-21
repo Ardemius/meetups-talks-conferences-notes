@@ -293,19 +293,217 @@ Avec Frédérique Vidal, Ministre de l'Enseignement supérieur, de la Recherche 
 
 == 15h00 - 15h45 : Personnalisation et IA : L'alliance puissante de Tealium pour un engagement client incomparable
 
-Avec Pascal Morvan, Teallium Senior Solution Consultant et Anne-Sophie Dutroncy, Associate Onepoint. (Espace Workshops)
+Avec Pascal Morvan, Tealium Senior Solution Consultant et Anne-Sophie Dutroncy, Associate Onepoint. (Espace Workshops)
 
 * Pascal : "Tealium permet de connecter vos données pour que vous puissiez vous connecter à vos clients"
 * Pascal : Tealium dans toutes les verticales, tous les secteurs d'activité
+* Tealium est une CDP, une Customer Data Platform
 
+* Le Gartner a sorti dernièrement sa toute 1ere étude sur le CDP (Customer Data Platform) et Tealium est en tête de liste
+
+.Quelques constats et préoccupations sur l'IA
+image:20240321_data-ia-summit_18.jpg[]
+
+    * La conformité
+    * les silos de données : comment les réconcilier pour en permettre l'usage par l'IA
+    * le cookie est mort (ou presque), et maintenant / après ?
+    * L'IA exige de la data en temps réel
+        ** Thomas : souvent vrai, MAIS dépend quand même des use cases
+
+.Les besoins, conséquents et variés, de l'IA
+image:20240321_data-ia-summit_19.jpg[]
+
+.L'un des gros intérêts de Tealium : libérer du temps pour les Data scientists
+image:20240321_data-ia-summit_20.jpg[]
+
+* Le même constat que d'habitude : les Data scientists "perdent" énormément de temps pour préparer les données
+    ** -> Tealium permet de gagner de beaucoup de temps à ce niveau
+
+* Pascal : *"on doit travailler la donnée au moment où on la connecte"*
+    * Thomas : je comprends le point MAIS ce n'est "qu'un avis" : on pourrait faire différemment (apprentissage non supervisé avec découverte des catégories *après coup*)
+
+* *Tealium apporte des données consenties*, filtrées, organisées et enrichies aux modèles d'IA et récupère les scores des modèles à chaque outil et point de contact, en temps réel.
+    ** Thomas : Tealium travaille vraiment en lien particulier avec la CDP. +
+    La "récupération des scores des modèles" est une expression un rien traître, il s'agit en fait de la récupération des résultats de la campagne marketing associée à la CDP : ai-je réussi à bien toucher mes cibles / clients ? L'activation a-t-elle réussi ?
+
+.Définition de l'activation dans le cadre d'un CDP
+[NOTE]
+====
+L'*activation* est l'étape finale du cycle de vie des données clients dans un CDP. Il s'agit de l'utilisation des données clients collectées et organisées pour *générer des actions concrètes* et *influencer le comportement des clients*.
+====
+
+.Avantages de Tealium pour l'IA
+image:20240321_data-ia-summit_21.jpg[]
+
+* Dès la source, on s'est assuré du *consentement*
+
+.Tealium pour permettre la collecte de données pour l'IA
+image:20240321_data-ia-summit_22.jpg[]
+
+.Macro architecture de Tealium
+image:20240321_data-ia-summit_23.jpg[]
+
+-> Tealium comme un dictionnaire de données, il permet de standardiser les données quelle que soit la source
+
+* Thomas : Tealium, s'il permet de collecter et qualifier les data quelle que soit la source, ne pourrait-il pas faciliter la mise en place de data mesh ? (approche à laquelle je ne crois pas)
+
+.Cas d'usage de Tealium
+image:20240321_data-ia-summit_24.jpg[]
+
+.Pourquoi les organisations d'IA choisissent-elles Tealium ? Pour ses certificats de sécurité
+image:20240321_data-ia-summit_25.jpg[]
+image:20240321_data-ia-summit_26.jpg[]
+
+* Donc surtout pour des raisons de sécurité : on sent bien le *poids croissant de la régulation sur ces sujets*
 
 == 16h00 - 16h45 : Innovation à l'échelle avec Microsoft x Onepoint : Solutions mises en œuvre en 2023 et Stratégies 2024
 
 Avec Sandrine Tarnaud, Microsoft Head of Data and AI, François Binder, Partner Onepoint (Atelier)
 
+* Les dernières transformations : Cloud -> Digital Transformation -> AI transformation
+* Mais dans tous les cas, "tout" est devenu "data driven"
+
+* D'ici à 2026 : 300 Md$ seront investis dans l'IA
+
+.Intégration des technologies OpenAI dans Azure
+image:20240321_data-ia-summit_27.jpg[]
+
+.Toutes les applications Microsoft peuvent s'appuyer sur un Copilot
+image:20240321_data-ia-summit_28.jpg[]
+image:20240321_data-ia-summit_29.jpg[]
+
+.La stratégie de Microsoft pour ces GenAI services
+image:20240321_data-ia-summit_30.jpg[]
+
+2 stratégies en fait : 
+
+    * la partie de gauche *"Model as a Platform"*
+    * et la partie de droit *"Model as a Service"* où en 3 clics avec AI Studio vous allez pouvoir gérer votre IA pipeline
+        ** et Microsoft annonce déjà qu'ils sont convaincus que le marché va tendre vers cette 2e solution
+
+.Les GenAI services ne sont qu'une partie des AI services de Microsoft
+image:20240321_data-ia-summit_31.jpg[]
+
+NOTE: Microsoft : le projet Trident est devenu le produit *Fabric*
+
+.Le "voyage vers l'IA" et ses étapes
+image:20240321_data-ia-summit_32.jpg[]
+
+* -> S'y intègre les outils *OneLake*, *Fabric* et *Azure AI Studio*
+
+* Etape 1 : Establish a *central repository for all data*
+* Etape 2 : Prepare Data for AI innovation : improve the quality of your data to ensure it is complete, accurate and governed
+* Etape 3 : Build generative AI experiences on top of your Data
+
+.La confidentialité pour d'OpenAI SUR AZURE (au contraire d'OpenAI public)
+image:20240321_data-ia-summit_33.jpg[]
+
+.Comme beaucoup, Onepoint a créé son propre assistant pour ses effectifs
+image:20240321_data-ia-summit_34.jpg[]
+
+* Les principaux intérêts de NEO sont les couches de valeurs ajoutées dessus (c'est un RAG)
+
+.Smart Data Management
+image:20240321_data-ia-summit_35.jpg[]
+
+* une solution en lien avec le Data Catalog de client
+* *le LLM qualifie (tag) seul le caractère personnel d'une information* au regard du RGPD
+* une solution "RAG like" utilisant Langchain pour la plomberie et générant la documentation des données qui sera insérée dans le Data Catalog
+* Le constat de OnePoint sur cet outil, c'est simple "on va plus vite (x3) et ça coûte moins cher"
+
+* Microsoft met en avant la *qualité des LLM de NVidia dans le cadre du codage*
+
+Les étapes pour le passage à l'échelle de la genAI : 
+
+    * il faut les bonnes compétences
+    * il faut le bon accès à la data et qu'elle soit de qualité
+    * il faut définir les outils pour gérer la continuité du service
+
+.Gouvernance de l'AI
+image:20240321_data-ia-summit_36.jpg[]
+
+* Grrrrr... Microsoft pousse lui aussi l'approche Data Mesh...
+
+.L'offre de GenAI et son vocabulaire
+image:20240321_data-ia-summit_37.jpg[]
+
+.Facteurs clé de succès
+image:20240321_data-ia-summit_38.jpg[]
+image:20240321_data-ia-summit_38.jpg[]
+
+-> Dans tous les cas, le support du COMEX est absolument clé
+
 == 17h00 - 17h45 : Les fondations d'un futur intelligent, en France
 
 Avec Clément Morizot, Google Cloud Data & AI Specialist et Maxime Bourliatoux, Associate Onepoint (Atelier)
+
+.La Data et l'IA au coeur des transformations du secteur banche / assurance
+image:20240321_data-ia-summit_39.jpg[]
+
+.Les expérimentations GenAI de Google avec ses clients Finance
+image:20240321_data-ia-summit_40.jpg[]
+
+Les fondations pour passer à l'échelle avec l'IA
+
+    * 19% des compagnies pensent qu'elles utilisent au max leurs data
+    * *L'accès à la Data reste LE problème principal*
+        ** Clément : lors de son dernier projet, ils ont passé plus de temps à récupérer / déplacer les data que les travailler. +
+        On récupère à droite, on déplace à gauche et c'est sans fin
+
+* La conviction de Google : Une ligne métier doit pouvoir gérer ses data de façon autonome
+
+.Une organisation "Data Inside"
+image:20240321_data-ia-summit_41.jpg[]
+
+.et des Data products (encore)
+image:20240321_data-ia-summit_42.jpg[]
+
+* Clément - Data products : ça peut être n'importe quoi (fichier ou autres) MAIS quelqu'un doit être responsable d'exposer quelque chose dans le temps
+
+.Le use case de 2014 2015 avec la plateforme Hadoop centrale
+image:20240321_data-ia-summit_43.jpg[]
+
+* La BI a toujours été très difficile avec de l'Hadoop
+
+.Et on a BigQuery qui "marche très bien"
+image:20240321_data-ia-summit_44.jpg[]
+
+* BigQuery permet de gérer use cases Big Data, analytics, ML
+* BigQuery permet de "créer son data lake" SANS avoir besoin d'instancier un data lake : +
+on utilise BigQuery pour intégrer les data petit à petit, et c'est lui qui permet de les mettre à disposition
+    ** Thomas : une présentation très high level de BigQuery, attention, cela mérite plusieurs précisions 😉
+
+.BigQuery couvre un peu tous les grands use cases de la Data ET gère les embeddings (et donc la GenAI)
+image:20240321_data-ia-summit_45.jpg[]
+
+.La stack technologique de Google Cloud AI
+image:20240321_data-ia-summit_46.jpg[]
+
+* Gestion multi-modèles : on peut déployer des modèles non Google sur l'infra de Google
+* Boîte à outil disponible pour tuner les modèles
+
+NOTE: rapport de 825 pages, soit ~900 000 tokens
+
+* Avec Gemini et la prise en charge de son 1M de tokens, traiter un document de 1000 pages, Clément donne l'exemple d'un rapport financier, prend 7 sec pour une récupération d'infos ("trouve-moi l'info XXX" et fait une règle de 3 avec...)
+
+.Côté sécurité, Google pousse SENS qui vise une certification SecNumCloud 3.2
+image:20240321_data-ia-summit_47.jpg[]
+image:20240321_data-ia-summit_48.jpg[]
+
+NOTE: HSBC est le plus gros client GCP BigQuery d'Europe
+
+Conclusion : 
+
+    * Présentation très "Google number 1" mais les performances annoncées sont juste impressionnantes. +
+    -> Chiffres à récupérer, beaucoup de slides dans la présentation, ce n'était pas fait pour une format 45 min.
+
+Q&A : 
+
+    * Thomas : vous pensez VRAIMENT avoir la certification SecNumCloud pour SENS ? +
+    (Guillaume (Google) avait commencé la séance de Q&A en disant bien "qu'ils n'avaient RIEN à cacher" 😉)
+        ** Guillaume (Google) est sûr à 100% que SENS aura le SecNumCloud 3.2 d'ici quelques semaines. +
+        -> Ce sont des 100e de M€ d'investissement, on "ira jusqu'au bout"
+            *** la demande a déjà été faite à l'ANSSI, il faut donc maintenant attendre la réponse de l'ANSSI sous quelques semaines (me semble court)
 
 == 18h00 - 18h45 : IA Génératives : un séisme social culturel et civilisationnel
 
