@@ -145,8 +145,39 @@ Dans notre quotidien, les matières ont de plus en plus besoin d'être interconn
 
 == 11h15 - 12h00 : Challenges de l'IA à l'échelle : Simplifier votre Ecosystème Data pour Amplifier les bénéfices de l'IA
 
-Avec Pierre Maussion, Teradata Solution Engineers, Denis Molin, Terradata Principal Data Scientist (Atelier)
+Avec Pierre Maussion, Teradata Solution Engineers, Denis Molin, Teradata Principal Data Scientist (Atelier)
 
+* Partenariat entre Onepoint et Teradata
+    ** Onepoint supporte leur dernière offre *VantageCloud lake*
+
+* *Intérêt de l'hybridation* avec cloud et on-premise : on gère plus facilement les données sensibles ne pouvant PAS être placées dans le Cloud.
+
+* Teradata est très cher, MAIS *VantageCloud lake serait apparemment très compétitif* comparé aux offres des Cloud providers
+
+* Teradata pense être parmi les mieux placés pour la mise en place de data mesh et autres data products
+
+.Teradata VantageCloud main components
+image:20240321_data-ia-summit_04.jpg[]
+image:20240321_data-ia-summit_05.jpg[]
+image:20240321_data-ia-summit_06.jpg[]
+
+* On voit que VantageCloud Lake (dernière image) s'appuie sur les principes actuels d'un Cloud data lakehouse avec une persistance s'appuyant sur les formats ouverts (Iceberg et autres)
+
+image:20240321_data-ia-summit_07.jpg[]
+
+* *Teradata QueryGrid* : un Data fabric permettant de relier, de faire communiquer la technologie Teradata avec les technologies partenaires
+    ** Cela permet à Teradata d'être hybride et multi-cloud
+
+.les principaux différenciants de VantageCloud Lake D'APRES Teradata
+image:20240321_data-ia-summit_08.jpg[]
+
+.L'évolution de Teradata vers l'IA
+image:20240321_data-ia-summit_09.jpg[]
+
+Conclusion : 
+
+    * Teradata veut intégrer la liste des éditeurs de Cloud data lakehouse "qui comptent".
+    * C'est une solution qui pourra intégrer la liste des produits à comparer / tester pour nos études
 
 == 12h15 - 13h00 : Entre tradition et innovation : L'IA comme accélérateur de la modernisation de vos plateformes
 
