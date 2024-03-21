@@ -183,13 +183,121 @@ Conclusion :
 
 Avec Thomas Rudel, Dataiku account executive, Nicolas Willems, Leader, Onepoint (Espace Workshops)
 
+* Nicolas : par rapport à la transformation en cours de SAS et son changement de licensing, Onepoint a reçu de nombreux sollicitations, questions et inquiétudes de ses clients. +
+-> Et Onepoint a décidé de répondre à ces questions à l'aide de l'IA Gen, ce pourquoi ils se sont également rapprochés de leur partenaire Dataiku
+
+* 40 certifiés Dataiku chez Onepoint, dont une bonne partie pouvant eux-mêmes dispenser des formations Dataiku
+
+* On peut considérer que Dataiku est un studio de développement de projet Data, NON verticalisé (ils travaillent avec tous les secteurs d'activité)
+* Dataiku : approche de bout en bout de traitement de la data
+
+image:20240321_data-ia-summit_10.jpg[]
+
+.Répartition des différents types d'utilisateurs de Dataiku
+image:20240321_data-ia-summit_11.jpg[]
+
+* La *valeur de la plateforme* : 
+    ** rapidité et efficacité
+    ** efficacité technique : baisse du coût par projet à l'aide de cette plateforme de bout-en-bout qui nécessite moins de dépenses d'intégration
+    ** contrôle : gouvernance de la donnée et gestion du risque
+        *** TOUS les projets sont sécurisés
+
+.Les intérêts de Dataiku pour moderniser sa plateforme Data
+image:20240321_data-ia-summit_12.jpg[]
+
+REX d'une mission chez un assureur : sortir de SAS pour aller sur Dataiku
+
+.Contexte et objectifs
+image:20240321_data-ia-summit_13.jpg[]
+
+* Recensement : 40 000 assets et 80 To de data
+* un SAS qui était détourné de son usage 1er (SAS est un outil de stat à la base) pour souvent servir à de la préparation de data
+* cible de la migration : Dataiku + Tableau + BI
+
+.Stratégie pour la migration
+image:20240321_data-ia-summit_14.jpg[]
+
+    1. xxx
+    2. Comment je transforme ?
+    3. yyy
+    4. Conduite du changement : avec des experts SAS proches de la retraite et qu'il faut complètement faire changer de stack technologique
+
+* Développement d'un *parser des programmes SAS* pour évaluer la complexité de ces derniers 
+    ** -> cela alimente la stratégie de migration : on commence par les plus simples ou les plus compliqués
+
+.Macro-architecture
+image:20240321_data-ia-summit_15.jpg[]
+
+* On ne veut pas mettre les programmes et les données sur le Cloud (Google), seuls les scripts y transitent.
+
+.Principe de la transformation
+image:20240321_data-ia-summit_16.jpg[]
+
+* pour transformer un programme SAS de plusieurs milliers de lignes, on va splitter le code en petits bouts que l'on pourra plus facilement valider / vérifier
+
+* Au final pour ce projet Onepoint et Dataiku ont développé un outil d'assistance à la migration
+
+.Résultat brut de la migration d'un programme complexe (script de 4000 lignes)
+image:20240321_data-ia-summit_17.jpg[]
+
+Les avantages de la démarche : 
+
+    * *optimisation de l'effort de migration* : x3 d'accélération
+        ** Thomas : sur la phase 2 de découpage du script en petits bouts, ces derniers sont-ils validés automatiquement ou par revue manuelle ?
+            *** Nicolas : une recette *globale* est effectuée automatiquement : on vérifie qu'on obtient exactement la même table que le programme SAS avec la nouvelle solution. +
+            MAIS, si ça plante, pas de magie, il faut manuellement aller mettre la main dans le script SAS original (et pleurer...)
+            *** donc pour la migration d'un programme complexe, on peut se poser la question de l'intérêt de l'usage de l'outil, car on sait qu'on va devoir "mettre les mains dedans". +
+            -> Mais déjà, on peut se dire que l'outil a un réel intérêt pour les 80% des cas les plus simples, pour lesquels on profite pleinement de cette automatisation. +
+            Pour les 20% les plus durs restant, ce sera de toute façon la misère, il faudra mettre les mains dedans.
+
+    * des utilisateurs acteurs de leur migration et qui s'approprient la cible
+    * l'opportunité de reconsidérer les programmes prioritaires
+        ** avec pas mal de programmes obsolètes supprimés
+    * Attirer les talents en proposant une offre de service ouverte et collaborative
+
+Q&A : 
+
+* Thomas Rudel "l'avantage de Dataiku : il est agnostique"
+    ** Thomas : mais comme tous les éditeurs de solutions de Cloud data lakehouse, c'est l'un des principaux intérêts de ces solutions
+
+* Nicolas : c'est SENS (Cloud "dit souverain") backé par Google qui a été utilisé pour la cible.
+
+* Aller à l'IA Clinic, demander Philippe et des infos sur l'outil *OneMig*, *outil de migration de code* en cours de développement chez Onepoint
+
+== 13h30 - 14h00 : AI Clinic
+
+* J'ai demandé son avis au "docteur" si l'évolution du marché quant aux RAG à la demande : make or buy ? On attend des solutions plus "finies / élaborées" de la part des éditeurs, ou on reste sur des développements internes, ou un mixte des 2 ?
+    ** on partage le même avis le docteur et moi : +
+    -> Tant qu'il n'y a pas de besoin critique ON ATTEND, MAIS pas s'en rien faire : on se forme, on lance des projects exploratoires pour bien se faire la main à la techno
+
 == 14h00 - 14h45 : IA : au-delà de l'avancée technologique, le défi politique. 
 
 Avec Frédérique Vidal, Ministre de l'Enseignement supérieur, de la Recherche et de l'Innovation de 2017 à 2022
 
+* Frédérique : on régule "avant de faire" ou on "laisse aller" ? C'est la grande question.
+* Encore plus essentiel que de former les étudiants en maths et physique POUR L'IA, il faut avant tout former la population
+    ** trop de personnes pensent que la machine ne se trompe jamais
+    ** et que la machine est plus intelligente qu'eux
+
+* les IAs n'ont aucune idée de la "signification" des données qu'elles analysent
+    ** Ce sont des machines probabilistes qui renvoient la réponse la plus probable
+
+* On a des jeunes brillants, qui n'hésitent pas à créer leur startup, qui arrivent à trouver des fonds en 1ere ou 2e levée, MAIS ça coince après quand on veut vraiment se développer. +
+-> A partir de là, à toutes les autres levées, les fonds ne sont plus français.
+
+* Pour toute réponse, la bonne réponse se situe à l'*échelle européenne*.
+
+* Il s'agit vraiment (aux yeux des personnes présentes) de la *4e révolution industrielle*.
+* Pensez l'IA comme un outil, et pas comme un prescripteur de quoi que ce soit
+    ** et on ne va PAS mettre de l'IA partout
+
 == 15h00 - 15h45 : Personnalisation et IA : L'alliance puissante de Tealium pour un engagement client incomparable
 
 Avec Pascal Morvan, Teallium Senior Solution Consultant et Anne-Sophie Dutroncy, Associate Onepoint. (Espace Workshops)
+
+* Pascal : "Tealium permet de connecter vos données pour que vous puissiez vous connecter à vos clients"
+* Pascal : Tealium dans toutes les verticales, tous les secteurs d'activité
+
 
 == 16h00 - 16h45 : Innovation à l'échelle avec Microsoft x Onepoint : Solutions mises en œuvre en 2023 et Stratégies 2024
 
