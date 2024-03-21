@@ -1,0 +1,194 @@
+= 2024/03/21 - Groupe OnePoint - Data & IA Summit
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Talk organisé par *OnePoint* dans les locaux 29 rue des Sablons à Paris.
+
+* Plan et programme du salon : https://www.groupeonepoint.com/fr/notre-actualite/programme-plan-data-ia-summit-2024/ +
+image:https://www.groupeonepoint.com/wp-content/uploads/2024/03/dia_planning2024_A1.jpg[]
+
+== Keynote d'ouverture
+
+* Avec Gontran PEUBEZ, partner OnePoint
+
+== 09h15 - 10h00 : Data et IA issue and trends
+
+Présenté comme l'année passée par *Nora Diep* (spécialisée sur le Data Empowerment), *Jamila Yahia* et *Fanny Brottes*, toutes leaders Onepoint (département Data, données marketing)
+
+*Data issues* 
+
+    * gestion des données
+
+    * people
+        ** du fait des difficultés finalement habituelles de recrutement, *l'accent est de nouveau mis sur la formation* interne des collaborateurs (sur l'IA)
+            *** et qui dit formation dit risque de départ du prestataire si c'est le cas, D'OU des effectifs qui vont probablement pencher davantage du côté d'une population d'*ITs internes* 
+
+    * industrialisation
+
+*Data trends*
+
+image:20240321_data-ia-summit_01.jpg[]
+
+    * *Data Academy* : c'est bon, c'est fait, on a formé c'est devenu du BAU
+    * *Data Office as Profit Center* : malheureusement pas dans l'air du temps même si pourrait être tellement utile. Toujours perçu comme un centre de coût, et non un apport de valeur
+
+    * *Data Productization* : 
+
+        ** value driven data governance
+            *** la "reprise en main" des data par les métiers est un grand axe, avec les *data products* comme l'un des grands principes sous-jacents.
+                **** Toujours avec la complexité d'identifier les data dont vont être composés les data products
+
+        ** low code data platform
+
+        ** beyond 360° Data
+            *** "360°" : les données qu'on "a", c'est le 1er niveau
+            *** les 2 autres niveaux sont le *720*, les données que je vais pouvoir échanger avec d'autres dans un environnement sécurisé, et le *1080*, tout ce qui va venir enrichir on top des données 720 : le 3rd party cookie par exemple
+            
+
+        ** solutions spécialisée par métier, par secteur -> la "game changer" est vraiment la *spécialisation*
+        ** avec une prise en main facilité par les utilisateurs
+
+    * *Protection, Trust, Global Responsibility* : 
+
+        ** SecNumCloud
+
+        ** Trustworthy AI
+            *** Intro de l'IA Act : avoir une IA de confiance "centrée sur l'homme"
+            *** l'humain doit garder le contrôle
+
+        ** *RESET* : Renforcement de la Sécurité et de l'Ethique des Technologies +
+        RESET est un acronyme français qui signifie "Renforcement de la Sécurité et de l'Ethique des Technologies". Il s'agit d'un programme gouvernemental français lancé en 2021 visant à renforcer la confiance dans le numérique et à protéger les données personnelles et composé de 5 axes principaux : +
+            *** Lutte contre la cybercriminalité
+            *** protection des données personnelles
+            *** développeemnt d'une IA éthique
+            *** renforcement de la confiance dans le numérique
+            *** coopération internationale
+
+    * *"DAC" engineer*
+        ** une évolution du data engineer : monte les tuyaux pour l'échange de données, en lien avec les interactions par API qui ont explosé
+        ** "A" pour "API"
+        ** "C" pour "Cloud"
+
+    * Centaure vs Cyborg
+
+        ** qu'est-ce qui doit être mis dans les mains de la machine, et qu'est-ce qui doit rester dans les mains des humains
+        ** *Centaure* : vont utiliser l'IA de façon complètement conscience et vont lui confier des tâches pour lesquelles elles sont les plus efficaces
+        ** *Cyborg* : vont utiliser l'IA sans même s'en rendre compte car l'IA va être présente partout dans nos vies.
+
+.Contact avec les intervenantes et IA Clinic
+image:20240321_data-ia-summit_02.jpg[]
+
+== 10h15 - 11h00 : Quels sont les défis majeurs de l'éducation à l'ère de l'intelligence artificielle. 
+
+Avec Thierry Coulhon, Polytechnique , Romain Soubeyran, Mines Paris Tech, Alice Guilhon, Skema, Muriel Touaty, Partner Onepoint (Atelier)
+
+.Conférenciers
+image:20240321_data-ia-summit_03.jpg[]
+
+* Comment préparer les apprenantes à un monde où les machines peuvent leur être supérieures ?
+* Comment former des individus résilient et éthiques ? 
+
+* Comment former les managers pour qu'ils puissent parler / comprendre la langue de l'IA ?
+    ** les tech la parlent, mais ne parlent pas ou pas bien le langage des managers
+    ** centre d'*IA for business* installé par Skmea à Montreal, car ils auraient trouvé là-bas un "lieu acculturé" où l'on parle les 2 langages. 
+    ** Skmea : 8 sites, 10 000 étudiants et beaucoup de nationalités différentes
+    ** il y a de grosses différences dans la façon d'apprendre suivant les pays (Brésil, Chine, etc.)
+
+* Habituellement, on a tendance à dire que les disruptions ont moins d'impact que l'on le pense à court terme, et plus à long terme
+    ** Dans le cas présent, avec l'IA, l'impact est parti pour être très fort même dès le court terme
+
+* On constate qu'aussi bien le groupe "Institut polytechnique" que Centrale Supélec cherche à créer des centres de compétences regroupant leurs différentes écoles
+
+* Les disciplines sont de plus en plus hybrides (hybridation des compétences), on n'a plus le "matheux dans sa tour d'ivoire" qui peut bosser seul dans son coin. +
+Dans notre quotidien, les matières ont de plus en plus besoin d'être interconnectées pour répondre à nos besoins. Ou plutôt que de véritables "besoins", disons que nos usages se reposent de plus en plus sur un grand nombre de disciplines / matières et non 1 seul et unique comme c'était beaucoup plus le cas avant
+    ** D'où une *explosion de l'hybridation des compétences* dans les enseignements de nos écoles
+
+* Alice sur ce qu'elle a vécu avec Skmea : "quand on est en France et qu'on est pas la 1ere école de France, on ne vous parle pas". Skmea est la 5 ou 6e (dixit Alice), donc on ne voulait pas nous parler / nous entendre
+    ** DONC Skmea part au Brésil où la mentalité serait plutôt "Ah vous proposez un truc innovant, ben venez donc !"
+    ** plus évidemment la légendaire lourdeur de l'administration française...
+
+    ** et quand dans l'enseignement on est présent dans plusieurs pays, on peut plus facilement "passer outre" les interdits d'un pays en particulier
+
+== 11h15 - 12h00 : Challenges de l'IA à l'échelle : Simplifier votre Ecosystème Data pour Amplifier les bénéfices de l'IA
+
+Avec Pierre Maussion, Teradata Solution Engineers, Denis Molin, Terradata Principal Data Scientist (Atelier)
+
+
+== 12h15 - 13h00 : Entre tradition et innovation : L'IA comme accélérateur de la modernisation de vos plateformes
+
+Avec Thomas Rudel, Dataiku account executive, Nicolas Willems, Leader, Onepoint (Espace Workshops)
+
+== 14h00 - 14h45 : IA : au-delà de l'avancée technologique, le défi politique. 
+
+Avec Frédérique Vidal, Ministre de l'Enseignement supérieur, de la Recherche et de l'Innovation de 2017 à 2022
+
+== 15h00 - 15h45 : Personnalisation et IA : L'alliance puissante de Tealium pour un engagement client incomparable
+
+Avec Pascal Morvan, Teallium Senior Solution Consultant et Anne-Sophie Dutroncy, Associate Onepoint. (Espace Workshops)
+
+== 16h00 - 16h45 : Innovation à l'échelle avec Microsoft x Onepoint : Solutions mises en œuvre en 2023 et Stratégies 2024
+
+Avec Sandrine Tarnaud, Microsoft Head of Data and AI, François Binder, Partner Onepoint (Atelier)
+
+== 17h00 - 17h45 : Les fondations d'un futur intelligent, en France
+
+Avec Clément Morizot, Google Cloud Data & AI Specialist et Maxime Bourliatoux, Associate Onepoint (Atelier)
+
+== 18h00 - 18h45 : IA Génératives : un séisme social culturel et civilisationnel
+
+Avec Eric Sadin, philosophe Data & IA en écrivain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
