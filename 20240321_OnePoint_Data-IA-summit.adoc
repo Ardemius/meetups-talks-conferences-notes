@@ -429,7 +429,6 @@ image:20240321_data-ia-summit_37.jpg[]
 
 .Facteurs clé de succès
 image:20240321_data-ia-summit_38.jpg[]
-image:20240321_data-ia-summit_38.jpg[]
 
 -> Dans tous les cas, le support du COMEX est absolument clé
 
@@ -519,7 +518,7 @@ Avec Eric Sadin, philosophe Data & IA en écrivain
 
 
 
-
+    
 
 
 
