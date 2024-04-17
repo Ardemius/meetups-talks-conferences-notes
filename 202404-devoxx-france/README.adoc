@@ -405,17 +405,154 @@ image:20240417_Devoxx-France_37.jpg[]
 
 === 15:40 -> 16:25 - conference - Paris 242AB : Crafting your own RAG system: Leveraging 30+ LLMs for enhanced performance
 
+Présenté par Stephan Janssen, créateur de Devoxx (Belgique, l'original)
 
+.abstract
+--
+In this talk you'll learn how to set up a RAG (Retrieval-Augmented Generation) system against 30+ different Large Language Models using Java.
 
-=== 17:00 -> 17:30 - tools-in-action
+We'll show you step-by-step how to ingest documents, choose the best text splitter strategies, find similar documents, answer questions, and create a chatbot.
 
+Then, we'll see how to test and compare different AI models, both from open sources and private ones, and whether they are stored on your own computer or accessed online.
+You'll walk away knowing how to setup a well balanced RAG system using Java and the best performing and/or cheapest LLM.
+--
 
-==== Notes
+* How many talks did Brian Goetz give at Devoxx Belgium ? 
+* How many presentation did Brian Goetz give at Devoxx Belgium ? 
+    ** eh bien, notre LLM nous donne 2 réponses différentes...
 
+.Architecture d'un RAG par Stéphane Janssen
+image:20240417_Devoxx-France_39.jpg[]
 
+* ReRanker : NON semantic (IA) sort
 
+* LLM providers locally running on your laptop : 
+    ** Ollama
+    ** LM Studio
+    ** GPT4All
+    ** Apple MLX
 
+* LLM providers online :
+    ** OpenAI
+    ** Claude
+    ** Groq
 
+image:20240417_Devoxx-France_40.jpg[]
+
+-> Tous sont supportés par LangChain (à vérifier !)
+
+.Stéphane a développé sa propre BM25 (ReRanker) Java implementation, en 1 we en se faisant aider de ChatGPT et Claude
+image:20240417_Devoxx-France_38.jpg[]
+
+* et son implémentation BM25 est gratuite...
+
+.Import Data (Ingestion) : extract data from "content"
+image:20240417_Devoxx-France_41.jpg[]
+
+* *To Split or... Not to split* ?!
+    ** des contects qui montent maintenant au 1M de tokens...
+    ** from 0.10$ to 120$ for 1M tokens
+    ** milliseconds to minutes (10 min pour 1M tokens)
+    ** Be aware : "context injection" does reduce hallucinations
+
+.Advanced Splitting Strategies
+image:20240417_Devoxx-France_42.jpg[]
+
+-> Regarder le talk de *Text Splitting* de *Greg Kamradt* : +
+https://www.youtube.com/watch?v=8OJC21T2SL4
+
+* Importance capitale de l'embedding
+    ** et plusieurs modèles pour faire de l'embedding sont dispo
+
+.Vector Databases
+image:20240417_Devoxx-France_43.jpg[]
+image:20240417_Devoxx-France_44.jpg[]
+
+* Regarder le très bon talk sur le Vector DB de *Alexander Chatzizacharias* : +
+https://www.youtube.com/watch?v=W-i8bcxkXok
+
+* On ne peut pas utiliser PostgrePG pour de l'embedding avec OpenAI, car il ne supporte que 2000 dimensions quand OpenAI en utilise 3000 (A VERIFIER)
+
+.Stéphane a également développé, car manquant, LangChain4J-cohere (Langchain4J compliant Cohere embedding model)
+image:20240417_Devoxx-France_45.jpg[]
+
+    * https://github.com/stephanj/langchain4j-cohere
+    * Gemini : "Cohere is a novel approach to representing text data that aims to capture both semantic and syntactic information in a more effective way compared to traditional embedding methods."
+
+.Conclusion and lessons learned
+image:20240417_Devoxx-France_46.jpg[]
+
+* Embeddings models have an *input limit*
+* the bigger the embedding dimensions the higher the hosting cost
+* multi language embedding is a thing
+* QUALITY of your embedding influences the QUALITY of your results
+
+* Stéphane a écrit le plugin "Devoxx Genie" pour IntelliJ
+
+image:20240417_Devoxx-France_47.jpg[]
+image:20240417_Devoxx-France_48.jpg[]
+
+-> Et Claude 3 Opus donne apparemment des résultats exceptionnels
+
+image:20240417_Devoxx-France_49.jpg[]
+
+* Ressources GitHub du talk : 
+    ** https://github.com/stephanj/rag-genie
+    ** https://github.com/devoxx/devoxxgenieIDEAplugin
+
+Conclusion : 
+
+    * Comme Jean-Emmanuel, Stéphane est vraiment impressionnant quand on voit tout ce qu'il arrive à créer en si peu de temps
+
+=== 17:50 -> 18:20 - tools-in-action - Neuilly 153 : Creating a documentation site for users with AsciiDoc and Antora
+
+Présenté par Alexander Schwartz, Principal Software Engineer at Red Hat
+
+.abstract
+--
+Documentation for a software project is essential for users, administrator and developers alike: Users need to find the right tutorials, reference documentation and answers to their questions, administrators need to know how to install and operator the software, while developers need other documents to get started contributing, and share concepts and architectures for fellow contributors.
+
+The tool Antora simplifies the process by creating documentation websites from AsciiDoc sources stored in Git repositories. Users can browse the generated website and select the version matching the software they use. Navigation outlines, search and cross-references between pages allow users to find answers to their questions. Several open-source software projects like Camel, Debezium and Couchbase use this solution.
+For developers it is normal to develop software in collaboration using their IDE and a version control system like Git. The same type of collaboration is possible when all documentation is versioned in a markup-format like AsciiDoc.
+
+This talk presents the basics of an Antora setup and walks through all the steps from editing content in the IDE to updating the documentation site using continuous integration and delivery.
+--
+
+URL : https://docs.antora.org
+
+.Sommaire du talk
+image:20240417_Devoxx-France_53.jpg[]
+
+1. How users search for informations
+
+    * *Every page is "page one"* : +
+    image:20240417_Devoxx-France_50.jpg[]
+
+2. How AsciiDoc and Antora help
+
+    ** Antora provides publishing tools and documentation structure +
+    image:20240417_Devoxx-France_51.jpg[]
+
+    ** AsciiDoc is the language, AsciiDoctor is a toolchain 
+    image:20240417_Devoxx-France_52.jpg[]
+
+3. Setting up Antora
+
+.Antora structure
+image:20240417_Devoxx-France_54.jpg[]
+
+.Antora process
+image:20240417_Devoxx-France_55.jpg[]
+
+* Antora va permettre la génération d'un site statique (logique)
+
+1. définition des rôles for Antora
+2. first steps de configuration d'Antora +
+image:20240417_Devoxx-France_56.jpg[]
+
+Conclusion : 
+
+    * Le talk passe pas mal de temps à présenter AsciiDoc, et je n'arrive pas trop à voir l'intérêt d'Antora rapport à AsciiDoc et AsciiDoctor seuls
 
 
 

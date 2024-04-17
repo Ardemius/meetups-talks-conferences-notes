@@ -56,7 +56,8 @@ image:20240417_Devoxx-France_03.jpg[]
 
 == Buzz words & Technos qui ont le vent en poupe
 
-* *IA* IA IA (générative)
+* *IA* IA IA (générative)   
+    ** et donc *RAG* RAG RAG...
     ** Gaffe aux *biais* !
     ** *LifeArchitect.ai* en force
 
@@ -81,6 +82,18 @@ image:20240417_Devoxx-France_03.jpg[]
 
 == Sociétés et personnes rencontrées
 
+=== Temporal
+
+* Solution d'orchestration de workflows
+* basé sur de l'orchestration et NON de la chorégraphie
+    ** ce qui va à contre-courant des Event Based Architecture qui sont mainstream actuellement
+    ** Pourquoi "ça marche" ? +
+    -> Parce que les retours des clients disent que ces architectures sont trop compliquées à développer et à maintenir ! On veut du plus simple. +
+    Et c'est la raison d'être de Temporal
+* 2000 transactions par seconde (transaction = appel de microservice)
+    ** Ce n'est PAS un concurrent de Kafka
+    ** les uses cases adressés ne sont PAS du "Big Data"
+        *** on peut avoir de la transaction bancier
 
 == Avis sur le salon
 
