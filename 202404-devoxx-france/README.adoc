@@ -124,22 +124,288 @@ Conclusion :
 
 === 10:30 -> 12:30 - Hands-on Lab - Neuilly 253 : Hands-on Gemini, the Google DeepMind LLM
 
+* Présenté par Google : Mete Atamel, Valentin Deleplace
+    ** Le workshop a été conçu par Guillaume LAFORGE
+    ** Tous les 3 sont developer advocates chez Google
+
+.abstract
+--
+In this hands-on workshop, you will get to code using Gemini, the new Large Language Model from Google DeepMind. 
+
+You will first start by familiarizing yourself with the model's capabilities. Then you will use Gemini in different concrete cases, such as extracting data from unstructured text, document classification, but also searching your own documents, or how to supplement the model by integrating the call to external APIs.
+
+The workshop will be conducted using the Java language and the LangChain4j library. Come equipped with a laptop. We will code together in the cloud, no need for any special installation on your machine.
+--
+
 .Ressources pour le Hands-on Lab
 image:20240417_Devoxx-France_09.jpg[]
 
-    * URL : bit.ly/gemini-devoxx-2024
-    * codelab : https://codelabs.developers.google.com/codelabs/gemini-java-developers
-    * repo : https://github.com/glaforge/gemini-workshop-for-java-developers/tree/main
-    * Google Cloud Console : https://console.cloud.google.com/
+    * URL : https://bit.ly/gemini-devoxx-2024
+        ** codelab : https://codelabs.developers.google.com/codelabs/gemini-java-developers
+        ** repo : https://github.com/glaforge/gemini-workshop-for-java-developers/tree/main
+        ** Google Cloud Console : https://console.cloud.google.com/
 
+==== Partie théorique
+
+.Définition du AI landscape
+image:20240417_Devoxx-France_10.jpg[]
+
+* On commence à différencier dans l'IA gen "Image Gen" et "LLMs"
+    ** Aujourd'hui, on focus sur la partie "LLM"
+
+.Evolution des LLMs depuis l'invention des Transformer par Google en 2017
+image:20240417_Devoxx-France_11.jpg[]
+
+-> Encore une fois, on se réfère aux graphes de *LifeArchitect.ai* pour la comparaison des modèles
+
+.Google (Cloud) Lanscape for AI
+image:20240417_Devoxx-France_12.jpg[]
+
+* Aujourd'hui : 
+    ** Duet AI, Bard -> Gemini
+    ** PaLM  (devenu un ancien modèle) -> Gemini
+    ** MakerSuite -> Google AI Studio
+
+.Gemini is an umbrella brand for Google for all their Gemini products
+image:20240417_Devoxx-France_13.jpg[]
+
+* Gemini is a brand AND a model
+    ** a multimodal model
+
+.Gemini 1.5 characteristics
+image:20240417_Devoxx-France_14.jpg[]
+
+* ET il y a une *version opensource de Gemini* : *Gemma*
+    ** qu'on peut utiliser dans son propre cluster Kubernetes
+    ** Gemma : open weights model derived from Gemini
+
+* You can use Gemini from *Google AI Studio* or *Vertex AI* in Google Cloud
+    ** Google AI Studio and Vertex AI sont 2 produits différents, bien distincts
+
+* -> Dans ce workshop, nous allons utiliser *Vertex AI* dans Google Cloud.
+    ** Et *LangChain4j*
+
+==== Workshop
+
+image:20240417_Devoxx-France_15.jpg[]
+image:20240417_Devoxx-France_16.jpg[]
+
+Etape 3 : Preparing your development environment
+
+    * Pas besoin de la version 21 de Java pour ce workshop
+    * On va se servir du *Cloud Code Editor* (un VSCode like dans le Cloud)
+
+image:20240417_Devoxx-France_17.jpg[]
+image:20240417_Devoxx-France_18.jpg[]
+
+Etape 4 : First call to the Gemini model
+
+image:20240417_Devoxx-France_19.jpg[]
+
+IMPORTANT: les LLMs sont stateless : si on ne fait "rien", par défaut les LLMs ne se "souviennent" pas des précédents prompts.
+
+IMPORTANT: Même avec une température de 0, il n'y a PAS de "vraie" garantie d'avoir le même résultat en appelant 2 fois le même prompt.
+
+Etape 5 : Chat with Gemini
+
+Attention, avec `MessageWindowChatMemory.builder().maxMessages(20)` on peut garder les 20 derniers messages.
+
+Etape 6 : Multimodality with Gemini
+
+Etape 7 : Extract structured information from unstructured text
+
+    * Et là on se rend compte d'un des problèmes de l'IA gen : +
+    Toutes les personnes du workshop ont la même erreur, y compris les speakers : 
++
+[source, bash]
+----
+Exception in thread "main" com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+        at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:397)
+        at com.google.gson.Gson.fromJson(Gson.java:1227)
+        at com.google.gson.Gson.fromJson(Gson.java:1137)
+        at com.google.gson.Gson.fromJson(Gson.java:1047)
+        at com.google.gson.Gson.fromJson(Gson.java:982)
+        at dev.langchain4j.internal.GsonJsonCodec.fromJson(GsonJsonCodec.java:66)
+        at dev.langchain4j.internal.Json.fromJson(Json.java:79)
+        at dev.langchain4j.service.ServiceOutputParser.parse(ServiceOutputParser.java:87)
+        at dev.langchain4j.service.DefaultAiServices$1.invoke(DefaultAiServices.java:179)
+        at gemini.workshop.$Proxy2.extractPerson(Unknown Source)
+        at gemini.workshop.ExtractData.main(ExtractData.java:56)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+        at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:393)
+        at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:386)
+        ... 10 more
+
+FAILURE: Build failed with an exception.
+----
+
+    * -> En fait, le JSON généré par le LLM doit être "mauvais" depuis aujourd'hui, il doit manquer le tout 1er "{" du doc, d'où le "Expected BEGIN_OBJECT but was STRING"
+        ** OR, "hier cela marchait" cf les speakers
+        ** MAIS il n'y a aucune garantie d'avoir 2 fois le même résultat (completion) avec un LLM, d'où le problème
+
+    * "MORALITE" : *importance de la programmation défensive avec un LLM !*
+        ** La completion d'hier n'est PAS garantie aujourd'hui, il faut donc S'ASSURER que la completion matche toujours les critères attendus
+
+Etape 8 : Structure prompts with prompt templates
+
+Etape 9 : Text classification with few-shot prompting
+
+Etape 10 : RAG
+
+The document is split in chunks thanks to the DocumentSplitters class. It is going to split the text of the PDF file into snippets of 500 characters, with an overlap of 100 characters (with the following chunk, to avoid cutting words or sentences, in bits and pieces).
+
+Etape 11 : Function calling
 
 === -------- 12:20 -> 13:30 : LUNCH --------
 
 === 12:35 -> 12:50 - quickie - Paris 141 : Révolutionnez votre expérience utilisateur avec les Progressive Web Apps
 
-=== 13:30 -> 14:15 - conference - Neuilly 153 : Quality & Security Gate dans nos chaînes CI / CD
+Présenté par Khadija ABDELOUALI de Ippon
 
-=== 15:40 -> 16:25 - conference - Paris 143 : Multi-Cloud & On Premise, dépassons les frontières ! Tirez le meilleur de chacun des mondes
+.abstract
+--
+Révolutionner le monde du web en créant une nouvelle génération d'applications « progressives » et proposer une alternative aux applications natives 📱 avec une seule et unique base de code : tel est l'enjeu des PWAs.
+Entre l'essor du mobile et l'envol des OS divers et variés, les coûts de développement pour chaque plateforme 💶, la consommation des ressources ainsi que la procédure de validation sur les différents app stores deviennent des challenges primordiaux auxquels il faut apporter une réponse de toute urgence🚨.
+La solution « Progressive Web App » apparut ainsi pour la première fois en 2015 et a depuis été largement adoptée par Starbucks, Pinterest, Uber, …
+Alors, le pari des PWAs a-t-il été remporté 🏆?
+📢 Pour le savoir, ne manquez surtout pas cette conférence, où nous plongerons dans les fondamentaux de cette technologie révolutionnaire et découvrirons également comment les PWAs combinent le meilleur des sites web 🌐 et des applications mobiles 📱, afin d'offrir une expérience utilisateur sans précédent 👨‍💻.
+--
+
+* Les PWA : créées par Google en 2015
+
+Avantages : 
+
+    * réduction des coûts
+    * facilité de distribution : pas besoin de passer par les stores Google ou Apple
+    * disponibilités des ressources : plus de facilité à trouver des devs web (hors mobile)
+    * économie d'énergie
+    * mise à jour optimisées : on ne récupére QUE les fichiers mis à jour, pas la peine de packager une application entière
+
+.Passage de Starbucks d'une application mobile à une PWA
+image:20240417_Devoxx-France_20.jpg[]
+
+image:20240417_Devoxx-France_21.jpg[]
+
+* C'est le *manifest* et le *service worker* de la PWA qui indiquent au navigateur que c'est une "application" qu'il doit installer
+
+.Lighthouse permet d'évaluer l'adéquation de l'application web aux critères techniques pour être une PWA.
+image:20240417_Devoxx-France_22.jpg[]
+image:20240417_Devoxx-France_23.jpg[]
+
+.Conclusion : l'approche pour savoir si on doit faire une PWA
+image:20240417_Devoxx-France_24.jpg[]
+
+=== 13:30 -> 14:15 - conference - Neuilly 252AB : Du Clic à la Conversation : remplaçons boutons et formulaires par un LLM !
+
+Présenté par Marie-Alice Blete, Softeam engineer chez Worldline
+
+.abstract
+--
+Préparez-vous à voyager dans le domaine de l'interaction homme/machine. 
+Vous connaissez la première révolution : la souris et l'interface graphique ? Nous sommes désormais à l'ère de la deuxième révolution : l'interaction en langage naturel grâce a l'intelligence artificielle.
+
+Dans cette présentation, nous allons metamorphoser une application standard en une application basée sur un LLM. Dites adieu aux boutons et formulaires car nous nous apprêtons à réécrire les règles de l'interface utilisateur !
+
+Nous débuterons par les bases, avec un bref rappel des principes de LLM, suivi d'une première solution exploitant l'*API OpenAI*. 
+Ensuite, nous verrons deux autres solutions plus avancées, dont une comprenant l'utilisation d'agents avec le framework *LangChain*.
+
+À la fin de cette présentation, vous disposerez de toutes les connaissances nécessaires pour vous lancer. Vous aurez également une liste d'astuces, de conseils, ainsi qu'une bonne compréhension des écueils pour intégrer des LLM dans vos developpements. Passons du clic à la conversation !
+--
+
+* Les LLMs sont la 2e révolution dans l'interaction homme / machine
+    ** La 1ere étant l'invention de la souris
+
+.LLMs : ceux dispo via une API et ceux à déployer soi-même
+image:20240417_Devoxx-France_25.jpg[]
+
+* Nouveau rappel : les LLMs sont *STATELESS* +
+-> Ils ne se "rappellent" les précédentes interactions
+
+.Interaction et conversation
+[NOTE]
+====
+* 1 *interaction* = 1 paire de question / réponse
+* 1 *conversation* est un ensemble d'interactions
+====
+
+Problématique : remplacer une IHM et toutes ces pop-up nestées par un LLM...
+
+NOTE: les demo de Marie-Alice semble être sur "venv" Python
+
+* 1ere solution : *tout remplacer par 1 prompt*
+
+    1. donner le contexte
+    2. définir le format de sortie +
+    image:20240417_Devoxx-France_26.jpg[]
+    image:20240417_Devoxx-France_27.jpg[]
+    image:20240417_Devoxx-France_28.jpg[]
+
+    3. donner des instructions précises
+    4. prompt de départ
+
+    ** Conclusion : 
+        *** pas scalable
+        *** confiance ?
+        *** maintenance difficile
+
+* 2e solution : *essayer une approche machine à état*
+
+image:20240417_Devoxx-France_29.jpg[]
+image:20240417_Devoxx-France_30.jpg[]
+
+    ** les prompts des transitions vont avoir la partie métier
+    ** Et on a DE NOUVEAU un "bug" du LLM où le comportement d'aujourd'hui n'est pas celui d'hier, ce qui pose problème
+
+    ** Conclusion : 
+        *** XXX
+        *** consomme moins de ressources
+        *** plus facile à valider
+
+* 3e solution : *utiliser des agents* (LangChain ici)
+
+image:20240417_Devoxx-France_31.jpg[]
+
+    ** *Gradio* utilisé ici pour la demo. +
+    -> Parfait pour faire de petites demo, MAIS à ne PAS utiliser en prod...
+
+.Comparaison de ces 3 solutions
+image:20240417_Devoxx-France_32.jpg[]
+
+* Dans tous les cas, il FAUT *évaluer les prompts* !
+    ** exemple d'outil : *prompt-foo*
+
+* Autre problème : *ce qui était hier ne sera peut-être plus aujourd'hui...* +
+-> Un LLM n'est PAS un système déterministe
+    ** Il ne faut pas essayer de le rendre complètement déterministe (perte de créativité), mais il faut mettre en place des *process de vérification* +
+    image:20240417_Devoxx-France_33.jpg[]
+    ** Et si ça ne marche pas, il faut mettre en place des *stratégies de repli* +
+    image:20240417_Devoxx-France_34.jpg[]
+    ** Exemple de *retry* pour essayer de garantir un "bon" format JSON +
+    image:20240417_Devoxx-France_35.jpg[]
+    image:20240417_Devoxx-France_36.jpg[]
+
+* Attention au *prompt injection*
+    ** mettre un disclaimer car on PEUT se faire "hacker"
+
+* Gestion du *coût*
+    ** utiliser un cache pour les questions fréquentes
+    ** XXX
+
+* Attention à la confidentialité des données ! 
+    ** OpenAI est aux US, voulez-vous, pouvez-vous envoyer les données de vos clients là-bas ?
+
+Conclusion : 
+
+    * de bonnes explications et astuces à récupérer !
+
+.Ressources
+image:20240417_Devoxx-France_37.jpg[]
+
+    * Tout le code et les slides sont dispo sur https://github.com/malywut/clicks2conversations
+
+=== 15:40 -> 16:25 - conference - Paris 242AB : Crafting your own RAG system: Leveraging 30+ LLMs for enhanced performance
+
+
 
 === 17:00 -> 17:30 - tools-in-action
 

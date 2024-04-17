@@ -58,6 +58,7 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * *IA* IA IA (générative)
     ** Gaffe aux *biais* !
+    ** *LifeArchitect.ai* en force
 
 * OpenTelemetry
 * Renovate / Dependabot
@@ -76,6 +77,7 @@ image:20240417_Devoxx-France_03.jpg[]
 * High-Speed DDD (revisited) de Thomas PIERRAIN
 * Cyberspace Miners : introduction à la cybersécurité avec Minecraft
     ** carte Minecraft expliquant des concepts de cybersécurité (complexité mots de passe, VPN, ransomware, etc.) -> Flo, c'est pour toi 😉
+* Tabby, mon "Copilot" libre
 
 == Sociétés et personnes rencontrées
 
