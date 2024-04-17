@@ -1,0 +1,90 @@
+= Devoxx France 2024 - Buzz words and synthesis
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+.2024/xx/yy - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur https://www.youtube.com/channel/UCsVPQfo5RZErDL41LoWvk0A[chaîne YouTube de Devoxx France].
+
+
+== Informations générales sur le salon
+
+* 3 jours, du 17 au 19 avril 2024 à Paris, au Palais des Congrès, porte Maillot
+* Le salon occupe 2 étages du Palais des Congrès, 4500 personnes par jour dont 3900 visiteurs unique par jour
+ 
+* 230 présentations
+* 310 orateurs et oratrices
+* 65 exposants
+
+.Plan du salon
+image:20240417_Devoxx-France_01.jpg[width=400] image:20240417_Devoxx-France_02.jpg[width=400]
+image:20240417_Devoxx-France_03.jpg[]
+
+* Stand SOFTEAM - sponsoring Gold : C04
+
+== Buzz words & Technos qui ont le vent en poupe
+
+* *IA* IA IA (générative)
+    ** Gaffe aux *biais* !
+
+* OpenTelemetry
+* Renovate / Dependabot
+* Temporal : orchestrateur de workflows opensource
+
+* Toujours Springboot
+* et Quarkus maintenant bien installé, avec un Micronaut toujours là
+    ** on voit poper des techno comme OpenRewrite pour migrer de "l'ancien monde" (WebLogic et même JBoss EAP / Wildfly) vers Springboot / Quarkus
+
+== Technos dont on parle moins (ou plus !)
+
+
+== Talk à revoir sur YouTube
+
+* La doc va bien, ne t'en fais pas : https://www.devoxx.fr/schedule/talk/?id=12552
+* High-Speed DDD (revisited) de Thomas PIERRAIN
+* Cyberspace Miners : introduction à la cybersécurité avec Minecraft
+    ** carte Minecraft expliquant des concepts de cybersécurité (complexité mots de passe, VPN, ransomware, etc.) -> Flo, c'est pour toi 😉
+
+== Sociétés et personnes rencontrées
+
+
+== Avis sur le salon
+
+
+== Les polos rouges, jam, photos du salon et autres
+
+* Les photos du salon sont visibles ici : xxx
+
+

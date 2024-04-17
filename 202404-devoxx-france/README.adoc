@@ -1,0 +1,160 @@
+= Devoxx France 2024
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 2
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Programme du salon : https://mobile.devoxx.com/events/devoxxfr2024/schedule
+
+== JOUR 1 : MERCREDI 17/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Bienvenue à Devoxx France 2024
+
+image:20240417_Devoxx-France_00.jpg[]
+
+=== 09:35 -> 10:00 - keynote - Amphi bleu : IA en médecine : où en sommes-nous ?
+
+Présenté par Jean-Emmanuel Bibault
+
+.biographie
+--
+Jean-Emmanuel est médecin cancérologue et chercheur spécialisé en Intelligence Artificielle. 
+Il a un doctorat en informatique biomédicale et a réalisé un post-doctorat à l'Université de Stanford, dans le laboratoire d'Intelligence Artificielle appliquée à la Santé. 
+Il est Professeur des Universités - Praticien Hospitalier à l'Université de Paris / Hôpital Européen Georges Pompidou et chercheur à l'INSERM. Ses recherches portent sur l'apprentissage machine appliqué au diagnostic et à la prédiction. 
+
+Il est lauréat 2019 de l'Académie Nationale de Médecine pour ses travaux sur la prédiction de la réponse thérapeutique par Intelligence Artificielle. Il a par ailleurs développé plusieurs applications iPhone et Android et cofondé une startup dans ce domaine, revendue en 2014.
+
+En 2023, il a publié "2041, L'Odyssée de la médecine" aux Editions Equateurs, livre qui raconte comment l'IA en médecine est née et comment elle a et va changer les soins.
+--
+
+.abstract
+--
+Les techniques de machine learning sont actuellement utilisées pour entraîner de nombreux modèles en médecine. Pourquoi connaissons-nous un tel âge d'or de l'IA appliquée à la médecine ? 
+
+Cette présentation illustrera l'utilisation de l'IA par différents exemples publiés : prédiction du risque de développer un risque 5 ans à l'avance, interprétation automatisée d'image médicale, détection par Deep Learning de mélanome, prédiction de la survie sur simple scanner, pilotage de robots chirurgicaux, dépistage de la dépression sur instagram, chaque exemple sera expliqué et commenté. Mais l'IA comporte également des risques liés à la gestion des données d'entraînement, aux biais ou encore les attaques adversarielles. Les perspectives de développement à 10 à 15 ans seront enfin abordées pour comprendre comment l'IA va changer la santé de tous.
+--
+
+* "Intelligence" en anglais ne se traduit en fait PAS par "intelligence" en français, mais plutôt par "capacité de renseignement"
+
+.Accélération de l'IA depuis 1940
+image:20240417_Devoxx-France_04.jpg[]
+
+.Toutes les données médicales suivantes sont maintenant digitalisées
+image:20240417_Devoxx-France_05.jpg[]
+
+* Parmi les frameworks d'IA les plus utilisés : 
+    1. Pytorch
+    2. TensorFlow
+    3. Scikit-learn
+
+-> Tous sont américains...
+
+* Actuellement les données médicales sont encore TRES mal structurées 
+    ** Encore BEAUCOUP de travail à ce niveau    
+
+* *XGBoost* : LE framework pour l'analyse de données tabulaires
+
+* Quand on parle d'*analyse d'images*, il est tout le temps question de *Deep Learning*
+
+* Algo / papier de Stanford sur un scan de peau (mélanome) et l'IA donne de meilleurs résultats que les 21 dermatologues auxquels elle était comparée.
+
+* Sous 10 15 ans, on aura des opérations médicales, parmi les plus simples, qui seront totalement automatisées.
+
+.L'IA générative fait de plus en plus "mieux" que les médecins
+image:20240417_Devoxx-France_06.jpg[]
+
+* *Y COMPRIS pour l'empathie* que "simule" l'IA (qui est meilleure que son généraliste quand on le consulte tard le soir une fois qu'il est crevé d'avoir vu 50 patients...)
+
+.Generative adversarial networks (GANs)
+image:20240417_Devoxx-France_07.jpg[]
+
+* On se retrouve avec l'empoisonnement de données à la Glaze, auquel il va falloir faire TRES attention dans le milieu médical -> TOUJOURS vérifier ses données !
+
+* Au Japon, via un réseau neuronal, on commence à arriver à *"lire dans les pensées"* ET CA MARCHE ! 🤯
+    ** Donc petits problèmes à prévoir d'interrogatoire non consentis et très efficaces...
+
+Donc, pour l'avenir : le médecin artificiel
+
+image:20240417_Devoxx-France_08.jpg[]
+
+*Q&A :* 
+
+* Jean-Emmanuel : *le meilleur des tests* (pour éviter des biais par exemple) est (et restera probablement) l'*essai clinique*.
+    ** la FAC d'Emmanuel est la 1ere à avoir un DU d'IA en santé, MAIS ce n'est pas une formation obligatoire
+    ** Mais on a un problème sur la formation des étudiants en médecine aujourd'hui, qui seront médecins dans 10 ans, et qui ne seront pas ou pas suffisamment formés à l'IA alors qu'elle sera partout autour d'eux.
+
+* Enorme risque de perte de connaissances en même temps que l'IA va "aider" les médecins
+    ** Comme pour les pilotes de ligne, il va y avoir des épreuves où ils vont être testés SEULS, sans pouvoir être aider par l'IA.
+
+Conclusion : 
+
+    * Jean-Emmanuel est un génie... Comment peut-on réussir à faire autant de choses
+    * sujet maîtrisé techniquement de bout en bout, aucune hésitation à l'oral, des détails, un sans faute, l'un des meilleurs orateurs que j'ai jamais entendu 👍
+
+=== 10:30 -> 12:30 - Hands-on Lab - Neuilly 253 : Hands-on Gemini, the Google DeepMind LLM
+
+.Ressources pour le Hands-on Lab
+image:20240417_Devoxx-France_09.jpg[]
+
+    * URL : bit.ly/gemini-devoxx-2024
+    * codelab : https://codelabs.developers.google.com/codelabs/gemini-java-developers
+    * repo : https://github.com/glaforge/gemini-workshop-for-java-developers/tree/main
+    * Google Cloud Console : https://console.cloud.google.com/
+
+
+=== -------- 12:20 -> 13:30 : LUNCH --------
+
+=== 12:35 -> 12:50 - quickie - Paris 141 : Révolutionnez votre expérience utilisateur avec les Progressive Web Apps
+
+=== 13:30 -> 14:15 - conference - Neuilly 153 : Quality & Security Gate dans nos chaînes CI / CD
+
+=== 15:40 -> 16:25 - conference - Paris 143 : Multi-Cloud & On Premise, dépassons les frontières ! Tirez le meilleur de chacun des mondes
+
+=== 17:00 -> 17:30 - tools-in-action
+
+
+==== Notes
+
+
+
+
+
+
+
+
+
+
+
+
+
