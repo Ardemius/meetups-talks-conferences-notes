@@ -69,6 +69,9 @@ image:20240417_Devoxx-France_03.jpg[]
 * et Quarkus maintenant bien installé, avec un Micronaut toujours là
     ** on voit poper des techno comme OpenRewrite pour migrer de "l'ancien monde" (WebLogic et même JBoss EAP / Wildfly) vers Springboot / Quarkus
 
+* Plusieurs talks sur la sécurité
+    ** Tout particulièrement les problématiques d'authentification et de mots de passe
+
 == Technos dont on parle moins (ou plus !)
 
 
@@ -79,6 +82,10 @@ image:20240417_Devoxx-France_03.jpg[]
 * Cyberspace Miners : introduction à la cybersécurité avec Minecraft
     ** carte Minecraft expliquant des concepts de cybersécurité (complexité mots de passe, VPN, ransomware, etc.) -> Flo, c'est pour toi 😉
 * Tabby, mon "Copilot" libre
+
+* "Comprendre l'IA: construisez votre propre ChatGPT d'entreprise avec LangChain4J" de Microsoft avec Julien DUBOIS, Antonio, etc.
+    ** Tout le workshop peut être rejoué chez soi et est décrit ici : +
+    https://aka.ms/ws/openai-rag-quarkus
 
 == Sociétés et personnes rencontrées
 
@@ -93,7 +100,14 @@ image:20240417_Devoxx-France_03.jpg[]
 * 2000 transactions par seconde (transaction = appel de microservice)
     ** Ce n'est PAS un concurrent de Kafka
     ** les uses cases adressés ne sont PAS du "Big Data"
-        *** on peut avoir de la transaction bancier
+        *** on peut avoir de la transaction bancaire, et d'autres use cases "pérennes" (dans le cas de la transaction bancaire, on peut réessayer plusieurs fois juqu'à ce que ça réussisse)
+
+=== Google
+
+* Echanges sur la modération opérée par Google sur leurs LLM : contrairement à Microsoft et les modèles Azure OpenAI, il n'y aurait apparemment PAS de modération des prompts effectuée par Google (donc pas de période de rétention de 30 jours)
+
+* Echanges sur l'avenir des RAG : 
+    ** les personnes avec lesquelles j'ai échangées n'étaient pas forcément les plus tech, mais elles pensent que les RAG ne vont pas encore mourir demain pour être remplacés par une architecture reposant sur du "full in context" (du fait de l'augmentation de la taille des contextes à plusieurs millions de tokens)
 
 == Avis sur le salon
 

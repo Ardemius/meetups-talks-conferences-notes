@@ -256,7 +256,7 @@ The document is split in chunks thanks to the DocumentSplitters class. It is goi
 
 Etape 11 : Function calling
 
-=== -------- 12:20 -> 13:30 : LUNCH --------
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
 === 12:35 -> 12:50 - quickie - Paris 141 : Révolutionnez votre expérience utilisateur avec les Progressive Web Apps
 
@@ -553,6 +553,311 @@ image:20240417_Devoxx-France_56.jpg[]
 Conclusion : 
 
     * Le talk passe pas mal de temps à présenter AsciiDoc, et je n'arrive pas trop à voir l'intérêt d'Antora rapport à AsciiDoc et AsciiDoctor seuls
+
+== JOUR 2 : JEUDI 18/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Programming's Greatest Mistakes
+
+Présenté par Mark Rendle
+
+.Bio
+--
+Mark is the founder of RendleLabs, which provides consulting services and workshops to .NET development teams across all industries. His particular obsessions are API design and development, performance, Observability and code-base modernisation. He also uses skills acquired during a few years as a professional stand-up comic to deliver entertaining and informative talks at conferences around the world, and recently learned to play bass so he could join tech parody band The LineBreakers.
+--
+
+.abstract
+--
+Most of the time when we make mistakes in our code, a message gets displayed wrong or an invoice doesn't get sent. But sometimes when people make mistakes in code, things literally explode, or bankrupt companies, or make web development a living hell for millions of programmers for years to come.
+ 
+Join Mark on a tour through some of the worst mistakes in the history of programming. Learn what went wrong, why it went wrong, how much it cost, and how things can be pretty funny when they're not happening to you.
+--
+
+* Dans les années 1950, la mémoire coûtait 1$ pour 1 bit (et pas un byte, bien 1 bit)
+    ** dans 1 kilobytes coûtait plus de 8 000$...
+    ** la mémoire était "tricotée" à la main par des femmes sur des plaquettes comme la suivante : +
+    image:20240418_Devoxx-France_01.jpg[]
+
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : Un monde shooté aux métaux
+
+Présenté par Guillaume Pitron et Agnes Crepet
+
+.Bio
+--
+* *Guillaume* : Éminent journaliste, auteur et réalisateur français basé à Paris, Guillaume Pitron est reconnu pour ses essais perspicaces sur les impacts cachés des transitions énergétique et numérique.
+
+* *Agnes* : Agnès Crepet est responsable de la longévité logicielle et de l'informatique chez Fairphone, une entreprise sociale créant un smartphone éthique, modulaire et réparable.
+--
+
+.abstract
+--
+Dans cette conférence intitulée "Un monde shooté aux métaux", Guillaume Pitron, expert des enjeux géopolitiques liés aux ressources naturelles, et Agnes Crepet, spécialiste en technologies éco-responsables, s'unissent pour aborder la dépendance croissante de nos sociétés aux métaux rares et ses implications profondes. Ils exploreront comment cette consommation excessive impacte l'environnement, l'économie mondiale et les relations sociales, en dévoilant les chaînes d'approvisionnement complexes qui relient les mines isolées aux technologies quotidiennes. La discussion soulignera les conséquences environnementales de l'extraction des métaux, les défis éthiques et les tensions géopolitiques qu'elle engendre.
+--
+
+* Smartphone : ratio de 1200 / 1 -> si mon téléphone pèse 200g, il a fallu 240kg de matières premières pour le fabriquer
+
+* Les métaux derrière un iPhone, juste les métaux, coûtent 2€... Juste 2€...
+    ** On doit certainement pouvoir faire quelque chose pour mieux exploiter les mines qui sont derrière : respect des mineurs, amélioration du contexte géopolitique (corruption, contrebande, etc.)
+
+* Durée de vie d'un mobile sur la stack Android : 2 à 3 ans
+    ** Ce serait bien si on passait à 7 à 8 ans
+
+=== 10:30 -> 11:15 - conference - Paris 143 : Comment Back Market a reconditionné sa plateforme en changeant de Cloud Provider
+
+* C'est vrai : BackMarket est bien passé de AWS à GCP
+    ** la dernière partie de la migration s'étant terminée hier !
+
+.BackMarket en quelques chiffres
+image:20240418_Devoxx-France_02.jpg[]
+
+* infogéré, dans le Cloud, plus de 40 000 containers
+
+*2014 à 2018*
+
+    * de 5 à 100 employés en 4 ans
+    * infogérance totale, qui se passe bien au début, mais au fur et à mesure de cette croissance rapide, l'infogéreur n'arrive plus à suivre +
+    -> BackMarket décide donc d'internaliser toute sa plateforme
+
+.Les limites de l'infogérance initiale de la plateforme
+image:20240418_Devoxx-France_03.jpg[]
+
+* A l'époque la boîte va bien, fait de la croissance, mais les OPS s'inquiètent...
+
+.La plateforme infogérée
+image:20240418_Devoxx-France_04.jpg[]
+
+    * 2 monolithes, l'un en Django
+
+.La cible sur le Cloud (AWS à l'époque)
+image:20240418_Devoxx-France_05.jpg[]
+
+* Stratégie : 
+    ** internaliser la plateforme (toujours sur AWS, comme l'infogéreur)
+    ** déporter sur les edges : CDN + Sec
+    ** passage de VMs à Containers & Kubernetes (K8s)
+    ** PAS de make, surtout du *buy*
+
+*Et pourquoi pas GCP alors ???*
+
+* Non, car il faut que la durée de l'internalisation soit de 1 mois MAX
+* On veut rester Cloud agnostique
+
+* GCP Engineer : "Vous n'allez pas pouvoir migrer chez nous sans efforts substantiels au niveau de la base de données"
+    ** BackMarket était sur Aurora, dont on devient vite accro à la latence basse (à vérifier), MAIS qui devient vite galère du côté de l'eventual consistency +
+    -> A VERIFIER
+
+.Tips pour une migration de ce type
+image:20240418_Devoxx-France_06.jpg[]
+
+*De 2018 à 2023 :*
+
+.Poursuite de la croissance
+image:20240418_Devoxx-France_07.jpg[]
+
+.Le côté Cloud Agnostic commence à coûter cher, trop cher
+image:20240418_Devoxx-France_08.jpg[]
+
+* des K8s clusters self managed -> beaucoup d'opérations
+* coûts de maintenance élevés
+* plateforme d'analytics sur BigQuery, alors que le reste de la plateforme était sur AWS, et on voyait bien que les *coûts d'Egress*, acceptables au début allaient devenir un problème
+
+.Architecture en 2023
+image:20240418_Devoxx-France_09.jpg[]
+
+    * répliquée sur 3 régions, avec à chaque fois Prod et NON Prod
+
+*2023* (et l'idée de passer chez GCP)
+
+* *Comment changer de trajectoire architecturale et stratégique tout en modernisant sa plateforme ?*
+
+* Là maintenant, on arrête d'être Cloud agnostique, et on va adhérer au catalogue du Cloud provider
+    ** On sait que cela va être davantage un "locked in" chez le Cloud provider choisi
+
+.La stratégie et les questions à se poser pour un changement de Cloud Provider
+image:20240418_Devoxx-France_10.jpg[]
+
+    * Stratégie : "se décider, convaincre et aligner"
+
+.Une stratégie pour la technique ET pour le business (pour vérifier la viabilité du projet)
+image:20240418_Devoxx-France_11.jpg[]
+
+* *Qualification des équipes* : on était compétent en AWS, mais pas en GCP
+    ** BackMarket a considéré que ce n'était pas un problème, les concepts du Cloud étant considéré comme similaires
+    ** MAIS il est important de ne PAS chercher à utiliser exactement les mêmes services d'un Cloud à l'autre : il faut tenir compte au mieux des spécificités du Cloud Provider et ne pas chercher un matching "1 pour 1"
+
+* Le POC a été une étape cruciale : 
+    ** on aurait pas changé de Cloud provider sans lui
+    ** on aurait pas changé sans résultat concluant
+
+.Détails du POC
+image:20240418_Devoxx-France_12.jpg[]
+
+* Objectif : une PrePROD live sur GCP en *10 jours*
+    ** cela semble tellement court vue leur infra !
+* Les équipes Google ont été directement sollicitées pour ce POC
+
+.Comparaison entre les Cloud Providers AWS et GCP
+image:20240418_Devoxx-France_13.jpg[]
+
+* *Engagement durable et écologique* : AWS noté "F" jusqu'en 2020 où ils ont arrêté de remplir le questionnaire... Passé "B" en 2023
+* *Coûts* : plus de docs et d'efforts de transparence côté Google
+
+.Au final, 8 mois pour la durée totale de la migration
+image:20240418_Devoxx-France_14.jpg[]
+
+.La nouvelle plateforme sur GCP (et GCP GKE)
+image:20240418_Devoxx-France_15.jpg[]
+
+* plus de MySQL pour le monolithe, passage à Postgre
+
+.Les conclusions de cette migration
+image:20240418_Devoxx-France_16.jpg[]
+
+* Buy buy buy, et make LATER
+* Faites un vrai POC, PAS une simple "tech discovery"
+* en POC, *TRACEZ* les difficultés et décisions, car vous y ferez face plus tard
+
+.Côté Leadership
+image:20240418_Devoxx-France_17.jpg[]
+
+* *Créer une culture du risque !*
+* Mettre en place une TPM (Total Productive Maintenance)
+
+*Conclusion* : un REX très concret, avec beaucoup de bons conseils à revoir en cas de projet de migration de Cloud Provider 👍
+
+*Q&A*
+
+* *Pourquoi pas Azure ?*
+    ** Stratégie de "bundleling" de Microsoft
+    ** certains outils ne convenaient pas (ne semblaient pas convenir)
+    ** utilisateurs de BigQuery depuis 2009, passer sur Azure signifiait conserver les problèmes d'Egress ?
+
+* *Pourquoi pas une approche hybride AWS / GCP ?*
+    ** De nouveau, pas réaliste pour les *coûts d'Egress*
+
+* La migration de la partie DB a été le plus difficile
+    
+=== 11:35 -> 12:20 - conference - Paris 141 : La recherche à l'ère de l'IA
+
+.abstract
+--
+La recherche ne se contente plus de l'approche maintenant traditionnelle basée sur la fréquence des termes (TF/IDF ou BM25) mais plus sur la tendance actuelle du machine learning où les nouveaux modèles ont ouvert une nouvelle dimension pour la recherche.
+Cette conférence donne un aperçu de :
+
+    * La recherche "Classique" et ses limitations
+    * Qu'est qu'un modèle de machine learning et comment vous pouvez l'utiliser
+    * Comment utiliser la recherche vectorielle ou la recherche hybride dans Elasticsearch
+    * Comment ChatGPT d'OpenAI ou les "large language models" (LLMs) similaires viennent jouer naturellement avec Elastic
+
+Cette session couvre l'état de l'art en matière de recherche de nos jours : BM25, recherche vectorielle, embeddings, recherche hybride, Reciprocal Rank Fusion, intégration avec OpenAI... +
+La démo principale montre comment générer des embeddings à partir de musiques puis comment trouver la musique qui s'approche le plus d'une musique que nous fredonnons.
+--
+
+.Agenda
+image:20240418_Devoxx-France_18.jpg[]
+
+* *Elasticsearch* permet AUSSI de faire de la *recherche vectorielle*
+
+.Qu'est-ce qu'un vecteur ?
+image:20240418_Devoxx-France_19.jpg[]
+image:20240418_Devoxx-France_20.jpg[]
+
+* Là on n'a que 2 dimensions, mais on pourrait en avoir plus
+
+.Choice of Embedding Model
+image:20240418_Devoxx-France_21.jpg[]
+
+image:20240418_Devoxx-France_22.jpg[]
+
+.Tous les modèles supportés par Elastic
+image:20240418_Devoxx-France_23.jpg[]
+
+.Maintenant, comment faire la recherche (Vector Query) ?
+image:20240418_Devoxx-France_24.jpg[]
+
+.3 étapes pour faire une recherche vectorielle :
+image:20240418_Devoxx-France_25.jpg[]
+
+    * search
+    * index
+    * generate
+
+* Les moyens de trouver les bons vecteurs : 
+
+    ** similarité cosinus +
+    image:20240418_Devoxx-France_26.jpg[]
+    image:20240418_Devoxx-France_27.jpg[]
+
+    ** longueur du vecteur : dot_product +
+    image:20240418_Devoxx-France_28.jpg[]
+
+    ** distance euclidienne
+    image:20240418_Devoxx-France_29.jpg[]
+
+    ** une approche un peu différente : HNSW
+    image:20240418_Devoxx-France_30.jpg[]
+
+.Filtering KNN Vector Similarity
+image:20240418_Devoxx-France_31.jpg[]
+
+* -> Elastic supporte maintenant 4096 dimensions
+    ** MAIS cela consomme beaucoup de ressources !
+
+.Les bonnes pratiques de recherche vectorielle
+image:20240418_Devoxx-France_32.jpg[]
+
+.Recherche hybride
+image:20240418_Devoxx-France_33.jpg[]
+
+.ELSER
+image:20240418_Devoxx-France_34.jpg[]
+image:20240418_Devoxx-France_35.jpg[]
+
+*Ranking* : RRF (Reciprocal Rank Fusion)
+
+image:20240418_Devoxx-France_36.jpg[]
+
+DEMO
+
+* sur le thème de la musique, David adore mixer 😉
+
+.Architecture de la demo
+image:20240418_Devoxx-France_37.jpg[]
+
+* repo GitHub : https://github.com/dadoonet/music-search
+
+.ET ChatGPT et la gen AI sont arrivés...
+image:20240418_Devoxx-France_38.jpg[]
+
+.ChatGPT et les LLM -> "une" réponse
+image:20240418_Devoxx-France_39.jpg[]
+
+.RAG -> "la bonne réponse" (car on va la chercher dans les "bonnes" données)
+image:20240418_Devoxx-France_40.jpg[]
+
+.En conclusion, de quoi avons-nous besoin pour faire de la recherche sémantique ?
+image:20240418_Devoxx-France_41.jpg[]
+
+-> *Elasticsearch* permet AUSSI de faire de la *recherche sémantique*
+
+Ressources : 
+
+    * slides de la présentation : https://speaker.pilato.fr/WlpZdt
+
+Conclusion : 
+
+    * Super talk, dense avec comme d'habitude un David très fluide et qui maîtrise le sujet 👍
+    * A revoir "calmement" car cela allait vite 😅
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 12:35 -> 12:50 - quicky - Paris 242AB : Je délègue tous mes tests à une IA
+
+=== 12:35 -> 12:50 - quicky - Maillot : C4 model, la solution pour standardiser mes schémas d'architecture ?
+
+=== 13:30 -> 16:30 - Deep Dive - Neuilly 251 : Construire son assistant Intelligent avec Hugging Face et Elasticsearch
+
+=== 17:00 -> 18:30 - other - Neuilly 253 : Toutes et tous les mercenaires de DevOps !
+
 
 
 
