@@ -45,6 +45,7 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * Le salon occupe 2 étages du Palais des Congrès, 4500 personnes par jour dont 3900 visiteurs unique par jour
  
 * 230 présentations
+    ** et plus de 1100 propositions !
 * 310 orateurs et oratrices
 * 65 exposants
 
@@ -54,12 +55,20 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * Stand SOFTEAM - sponsoring Gold : C04
 
+== Mon Top des talks
+
+* Stéphane Janssen
+* David Pilato : la recherche et Elasticsearch
+* Le RAG expliqué en détail vendredi en conférence
+* le staff engineer
+
 == Buzz words & Technos qui ont le vent en poupe
 
 * *IA* IA IA (générative)   
     ** et donc *RAG* RAG RAG...
     ** Gaffe aux *biais* !
     ** *LifeArchitect.ai* en force
+    ** et l'IA Gen ce n'est *PAS déterministe*
 
 * OpenTelemetry
 * Renovate / Dependabot
@@ -87,6 +96,13 @@ image:20240417_Devoxx-France_03.jpg[]
     ** Tout le workshop peut être rejoué chez soi et est décrit ici : +
     https://aka.ms/ws/openai-rag-quarkus
 
+* "RAGtime : Discuter avec vos propres données"
+    ** le Hands-on Lab est décrit dans ce repo : https://github.com/bdauvissat/ragtime
+
+* Interagir avec votre documentation technique via l'Intelligence Artificielle Générative
+
+* L'Architecture Hexagonale par la pratique, le live coding qui rendra vos applications plus pérennes par Julien Topcu
+
 == Sociétés et personnes rencontrées
 
 === Temporal
@@ -109,11 +125,28 @@ image:20240417_Devoxx-France_03.jpg[]
 * Echanges sur l'avenir des RAG : 
     ** les personnes avec lesquelles j'ai échangées n'étaient pas forcément les plus tech, mais elles pensent que les RAG ne vont pas encore mourir demain pour être remplacés par une architecture reposant sur du "full in context" (du fait de l'augmentation de la taille des contextes à plusieurs millions de tokens)
 
+=== Microsoft
+
+* Pour la facturation des services AI sur Azure, y compris pour de l'hébergement de modèle "externe" dans Azure (via le AI Studio), commencer apparemment par voir "Azure PTU" (provisioned throughput) : +
+https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/provisioned-throughput
+    ** pour avoir une "garantie de bande passante avec latence constante dans les réponses" 
+        *** Vérifier le coût d'entrée de ces ressources provisionnées, cela commence peut-être à 30 k€ par mois
+
+* Cf Microsoft, toutes les infos de facturation ne vont pas être dans la doc, le mieux sera de les contacter directement
+    ** et cela va rester quand même un rien "au doigt mouillé" d'après eux...
+
+=== Cyrille
+
+* Débat sur chorégraphie ou orchestration, en lien avec l'orientation orchestration maintenant poussée par Temporal
+
 == Avis sur le salon
 
 
 == Les polos rouges, jam, photos du salon et autres
 
 * Les photos du salon sont visibles ici : xxx
+
+.La jam du jeudi soir à la soirée Meet and Greet
+image:20240418_Devoxx-France_jam.jpg[]
 
 

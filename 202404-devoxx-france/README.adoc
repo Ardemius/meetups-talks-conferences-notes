@@ -852,12 +852,980 @@ Conclusion :
 
 === 12:35 -> 12:50 - quicky - Paris 242AB : Je délègue tous mes tests à une IA
 
-=== 12:35 -> 12:50 - quicky - Maillot : C4 model, la solution pour standardiser mes schémas d'architecture ?
+Présenté par Valentin Dumas, craftsman chez Takima.
+
+.abstract
+--
+Le craftsmanship et nos pratiques de développement moderne plébiscitent de tester efficacement nos applications. Et heureusement !
+
+Pour autant, le test est rarement ce qu'on préfère réaliser au quotidien, et cela prend une partie non négligeable de notre temps. +
+D'ailleurs, on se dit même que le test, ce n'est pas vraiment la partie avec le meilleur ROI de l'utilisation de nos neurones. +
+Alors pourquoi pas faire faire nos tests à une IA ?
+
+Dans cette conf, je vous présenterai Codium AI à travers des exemples concrets, et de son utilisation à la fois pour du Unit Testing que pour des tests plus complexes (e2e). +
+On prendra ensemble le temps de regarder ce qui marche bien, et aussi ses limites !
+Une chose est sure : vous n'êtes pas prêts !
+--
+
+* Les tests, c'est long... (25% du temps de Romain par jour) +
+Comment on pourrait améliorer ça grâce à l'IA ?
+
+* Il sera ici question de tests unitaires et de tests d'intégration
+    ** avec *CodiumAI*
+
+.Comment marche CodiumAI ?
+image:20240418_Devoxx-France_42.jpg[]
+
+* Plugin de CodiumAI ("Codiumate") disponible pour IntelliJ et VSCode
+
+.Interface de Codiumate pour IntelliJ
+image:20240418_Devoxx-France_43.jpg[]
+image:20240418_Devoxx-France_45.jpg[]
+
+* On peut par exemple demander via le prompt à Codiumate d'utiliser la librairie AssertJ
+
+.On demande maintenant à Codiumate de générer cette fois des tests d'intégration
+image:20240418_Devoxx-France_44.jpg[]
+
+* Codiumate respecte les conventions Java
+* En version payante, Codiumate permet d'*itérer sur la couverture de code* afin de *générer les tests manquants*
+
+.Génération de tests d'intégration sur un contrôleur
+image:20240418_Devoxx-France_46.jpg[]
+
+*Conclusion* : 
+    
+    * on peut gagner 15 à 20% de temps de développement
+    * version VSCode plus avancée
+    * "l'Archi c'est pour moi, et le boilerplate, c'est pour l'IA"
+
+.Avantages
+image:20240418_Devoxx-France_47.jpg[]
+
+.Limites
+image:20240418_Devoxx-France_48.jpg[]
+
+.Use cases
+image:20240418_Devoxx-France_49.jpg[]
+
+
+=== 13:00 -> 13:15 - quicky - Maillot : C4 model, la solution pour standardiser mes schémas d'architecture ?
+
+Présenté par Jérôme Gauthier de Sopra Steria
+
+.abstract
+--
+L'accélération des rythmes d'innovation et de transformation, couplée la diversification des types d'architecture logicielle, entrainent de plus en plus l'abandon des modélisations historiques type UML ou ArchiMate, à la fois riches mais aussi complexes à maitriser et maintenir.
+
+Mais comment garder une forme de standardisation dans les représentations d'architecture, tout en permettant un niveau fin de personnalisation, une bonne collaboration, et une maintenance simple et accessible orientée diagram-as-code ?
+
+Durant cette session je vous propose de partir à la découverte du C4 Model, en explorant ses concepts et ses limites via un cas pratique avec l'outil Structurizr.
+--
+
+.C4 model : 4 niveaux d'abstractions
+image:20240418_Devoxx-France_50.jpg[]
+image:20240418_Devoxx-France_51.jpg[]
+
+    1. context
+    2. containers : PAS celui de Docker, bien entendu
+    3. components
+    4. code
+
+* La spécificité du C4 model est le niveau / concept de "zoom" qu'il propose
+
+* On peut faire du C4 model avec un simple papier / crayon
+* En diagramme as Code, Structurizr est un bon outil
+    ** même créateur que le C4 model
+    ** une extension existe pour VSCode
+
+.Structurizr
+image:20240418_Devoxx-France_52.jpg[]
+image:20240418_Devoxx-France_53.jpg[]
+
+*Demo*
+
+image:20240418_Devoxx-France_54.jpg[]
+
+* Il existe un image Docker officielle pour générer les diagrammes Structurizr
+
+Conclusion
+
+.Comparaison C4 model à la main et via Structurizr
+image:20240418_Devoxx-France_55.jpg[]
+
+.Plus adapté pour du multi-containers que du monolithe
+image:20240418_Devoxx-France_56.jpg[]
+
+.Ressources du talk
+image:20240418_Devoxx-France_57.jpg[]
+
+* slides de la présentation : https://github.com/jerga/c4model
 
 === 13:30 -> 16:30 - Deep Dive - Neuilly 251 : Construire son assistant Intelligent avec Hugging Face et Elasticsearch
 
-=== 17:00 -> 18:30 - other - Neuilly 253 : Toutes et tous les mercenaires de DevOps !
+Présenté par Lucian Precup, Pietro Mele de Adelean
 
+.abstract
+--
+Nous explorerons comment utiliser Elasticsearch et Hugging Face pour créer un assistant intelligent personnalisé. 
+
+Nous utiliserons les modèles pour le traitement du langage naturel (NLP), les modèles open source de langage de grande taille (LLMs) et l'indexation et la recherche vectorielle. 
+
+Elasticsearch, moteur de recherche avancé et base de données NoSQL, permet d'indexer et d'analyser des données de manière efficace, tandis que Hugging Face offre une plateforme collaborative pour le développement et le déploiement de modèles de machine learning open source. 
+
+Cette session approfondira la manière d'intégrer ces deux technologies pour construire des assistants intelligents sur mesure. +
+Les participants auront l'occasion d'apprendre à travers des exemples concrets et des prototypes, de comprendre les subtilités des modèles de langage naturel disponibles sur Hugging Face, de revisiter les fonctionnalités d'Elasticsearch et de découvrir comment ces outils peuvent être combinés pour créer des versions personnalisées d'assistants intelligents comme ChatGPT.
+--
+
+.Feuille de route du talk
+image:20240418_Devoxx-France_58.jpg[]
+
+.Qu'est-ce qu'un assistant intelligent ?
+image:20240418_Devoxx-France_59.jpg[]
+
+.Les capacités d'un assistant intelligent
+image:20240418_Devoxx-France_60.jpg[]
+
+* L'assistant doit être capable de comprendre l'utilisateur, et donc le langage humain (NLU Natural Language Understanding, NLP)
+
+.Une défintion du traitement du langage naturel
+image:20240418_Devoxx-France_61.jpg[]
+
+    * Traitement Automatique du Langage Naturel : branche de l'IA qui se concentre sur l'interaction entre les ordinateurs et les humains à travers le langage naturel.
+    * capacité des ordinateurs à comprendre, interpréter et générer le langage humain
+
+.L'histoire du traitement du langage naturel
+image:20240418_Devoxx-France_62.jpg[]
+
+* introduction de BERT en 2018
+
+.Liste des LLMs, en jaune ceux qui sont "publicly available"
+image:20240418_Devoxx-France_63.jpg[]
+
+* Attention ! "Publicy available" ne veut pas forcément dire open
+
+.Ce que font les moteurs de recherche
+image:20240418_Devoxx-France_64.jpg[]
+
+.NLP et search : une longue histoire
+image:20240418_Devoxx-France_65.jpg[]
+
+* Les moteurs de recherche intègre nativement des méthodes de NLP : 
+    ** analyzers : 
+        *** tokenizer
+        *** stemmers
+        *** synonyms
+    ** inverted index
+    ** NLP avec ML
+
+* Puis la "révolution" de la recherche avec les *ChatGPT like* intégrés *dans les navigateurs* (comme un LLM dans Bing)
+    ** avec du "*Question answering*" proposant au début 1 résultat (le bouton "j'ai de la chance" de Google)
+    ** puis permettant de *croiser les résutats*
+    ** et qui maintenant peut même *citer ses sources*
+
+.Une vidéo conseillée par Lucian concernant la fonctionnalité de pouvoir citer ses sources pour un LLM, remontant à "avant" que le terme RAG n'apparaisse
+image:20240418_Devoxx-France_66.jpg[]
+
+* Les grandes fonctionnalités d'un LLM : 
+    ** résumé de texte
+    ** reformulation de texte / correction orthographique / traduction
+    ** compréhension de texte
+    ** génération de code
+
+* Sam Altman se sert principalement de ChatGPT pour ses capacités de *synthèse*
+
+* On peut dire que le *question answering* est un peu l'*ancêtre du RAG*
+
+*Traitement de la voix*
+
+.Process du traitement de la voix
+image:20240418_Devoxx-France_67.jpg[]
+
+*Tâches NLP avec un moteur de recherche*
+
+image:20240418_Devoxx-France_68.jpg[]
+
+    * *Analyse de sentiment*
+    * *Named Entity Recognition (NER)* : être capable de reconnaître que l'on parle d'une "entité" (personne) dans un texte
+    * *Zero-shot classification* : être capable de classifier sans être spécialement entraîner pour cela. Il classe des classes / étiquettes précédemment inconnues.
+
+image:20240418_Devoxx-France_69.jpg[]
+
+*Embeddings ou vecteur sémantique dense*
+
+.Exemple de vectorisation dans un vecteur à 3 dimensions tridimensionnel
+image:20240418_Devoxx-France_70.jpg[]
+image:20240418_Devoxx-France_71.jpg[]
+image:20240418_Devoxx-France_72.jpg[]
+
+.Text embedding et vector search
+image:20240418_Devoxx-France_73.jpg[]
+
+.Quelques techniques pour faire cela : KNN (K-Nearest Neighbors) vs ANN (Approximate Nearest Neighbors)
+image:20240418_Devoxx-France_74.jpg[]
+
+* Gemini : KNN et ANN sont deux algorithmes populaires utilisés dans la recherche vectorielle pour trouver les points les plus proches d'un point de requête dans un espace vectoriel de grande dimension.
+
+* Les vecteurs creux sont plus simples / faciles à intégrer dans un index inversé
+
+* Gemini au sujet des vecteurs creux et denses : 
+
+    ** Les *vecteurs creux* sont des vecteurs de grande dimension où la plupart des éléments sont égaux à zéro.
+        *** Ils sont donc compacts et économes en mémoire
+        *** Cas d'usage : 
+            **** Représentation de documents textuels dans des modèles de *sac de mots* (BoW) ou TF-IDF (Term Frequency-Inverse Document Frequency).
+            **** *Indexation inversée* pour la recherche rapide de documents pertinents. +
+            L'index inversé utilise des vecteurs creux pour mapper les mots aux documents dans lesquels ils apparaissent.
+
+.Exemple de vecteur creux pour représenter des documents dans un modèle de sac de mots (BoW)
+--
+Soit un vocabulaire de 10 000 mots et un document contenant les mots "chien", "chat", "courir", "jouer".
+
+    * Le vecteur creux pour ce document aura 10 000 dimensions.
+    * Les dimensions correspondant aux mots "chien", "chat", "courir" et "jouer" auront des valeurs non nulles égales à la fréquence respective de ces mots dans le document.
+    * Les 9 996 autres dimensions restantes seront nulles.
+--
+
+    ** Les *vecteurs denses* sont des vecteurs de grande dimension où tous les éléments ont une valeur non nulle.
+        *** Ils sont souvent utilisés dans des modèles d'apprentissage automatique où toutes les dimensions du vecteur sont importantes.
+
+.Aperçu Hugging Face
+image:20240418_Devoxx-France_75.jpg[]
+
+* Hugging Face : le "GitHub" de l'IA
+    ** mais en plus ils sont des machines, des GPU, ce qui permet de *tester les modèles en live*
+
+* Hugging face : de nombreux cours de dispo
+    ** Voir créer un assistant vocal : chapter7/voice-assistant
+
+image:20240418_Devoxx-France_76.jpg[]
+
+* On réveille l'assistant avec un mot trigger, un wake word ("ok Google")
+
+* Podium des LLM sur hugging face : open_llm_leaderboard
+    ** Classés suivant plusieurs critères (à creuser)
+
+*Elasticsearch*
+
+* Certains modèles (en provenance de hugging face par exemple) sont déployables directement dans le cluster elastic, d'autres sont non compatibles +
+image:20240418_Devoxx-France_77.jpg[]
+image:20240418_Devoxx-France_78.jpg[]
+
+* *Eland* est l'outil permettant d'envoyer un modèle depuis Hugging Face vers Elastic
+image:20240418_Devoxx-France_79.jpg[]
+
+* Conseil et bonne pratique avec elastic : Avoir un 1er index "simple" où charger rapidement les data, et prévoir un 2nd index utilisant du ML / des calculs plus lourds
+
+* Modèle *elser* vient par défaut avec elasticsearch depuis la version 8.3.11 (à vérifier)
+
+.Ressources conseillées sur le sujet
+image:20240418_Devoxx-France_80.jpg[]
+
+== JOUR 3 : VENDREDI 19/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Comment modéliser l'état du monde en 2100 ? Le Rapport Meadows
+
+Présenté par Anatole Chouard
+
+.bio
+--
+Je m'appelle Anatole, j'ai 27 ans et je suis vulgarisateur scientifique ! Pour ça j'ai 2 casquettes : je suis à la fois conférencier et sur YouTube. Après des études en classe préparatoire PC (Physique-Chimie), j'ai étudié les mathématiques appliquées à l'École Polytechnique, puis la modélisation mathématique à la University College de Londres. J'applique maintenant ces enseignements dans ma vulgarisation des sciences !
+--
+
+.abstract
+--
+Comment modéliser l'état du monde en 2100 ? Pas la question la plus simple ! Mais en 1972 un groupe de chercheurs du MIT a essayé de répondre à cette question : c'est le fameux et fascinant rapport Meadows. Et ils ont compris bien des choses avant tout le monde. Dans cette conférence interactive, je vous fais un résumé en 20 minutes de la méthode et surtout des résultats du rapport Meadows !
+--
+
+Dynamique des systèmes
+
+    1. identifier les systèmes majeurs
+    2. identifier leurs interactions
+    3. quantifier leurs interactions
+
+image:20240419_Devoxx-France_01.jpg[]
+image:20240419_Devoxx-France_05.jpg[]
+
+.identifier les systèmes majeurs : 5 systèmes
+image:20240419_Devoxx-France_02.jpg[]
+
+    * à l'époque, on avait pas encore déterminer l'impact de l'homme sur la pollution, il est donc surtout question de pollution des sols.
+
+.identifier leurs interactions
+image:20240419_Devoxx-France_03.jpg[]
+image:20240419_Devoxx-France_04.jpg[]
+
+.Les résultats du rapport
+image:20240419_Devoxx-France_06.jpg[]
+
+* -> Aie aie aie en 2100 ! Plus de ressources ?!!!
+
+Hypothèses : mieux utiliser les ressources ? +
+Les résultats sont PIRES encore... (et c'est SANS compter le réchauffement climatique)
+
+image:20240419_Devoxx-France_07.jpg[]
+
+* Et si on agit dès 1970 ???
+
+image:20240419_Devoxx-France_08.jpg[]
+
+* Et si on agit dès 2000 ??? Avec les mêmes changements qu'en 1970
+
+image:20240419_Devoxx-France_09.jpg[]
+
+.La conclusion du rapport
+image:20240419_Devoxx-France_10.jpg[]
+
+Les critiques du rapport : 
+
+.Matthew Simmons 1ere critique
+image:20240419_Devoxx-France_11.jpg[]
+
+.Matthew Simmons 30 ans après : on s'est trompé, on a juste gaspillé 30 ans...
+image:20240419_Devoxx-France_12.jpg[]
+
+* Nouveau rapport plus récemment : *"Earth4All"*
+
+image:20240419_Devoxx-France_13.jpg[]
+
+* *Meadows* : nous sommes dépassés par...
+* *Earth4All* : Nous espérons que ce livre sera un guide de survie pour le 21e siècle
+    ** là où Meadows donne 12 scénarios, Earth4All n'en donne que 2 : le paradis ou l'enfer
+
+-> Anatole : Earth4All cherche plus le "buzz", c'est peut-être dans l'air du temps, mais il cherche aussi peut-être à alerter en faisant cela. +
+Le rapport Meadows reste le plus précis. 
+
+Voir :  
+
+    * Chaîne YouTube : chez Anatole
+    * chezanatole.contact@gmail.com
+
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : Cybersécurité et cyberdéfense : un sujet géopolitique
+
+Présenté par Guillaume Poupard, Docaposte, Directeur Général Adjoint en charge notamment des domaines data/IA, cyber et cloud. Ancien Directeur Général de l'ANSSI.
+
+.bio
+--
+Polytechnicien (X92) et docteur en cryptographie, Guillaume Poupard débute sa carrière en tant que chef du laboratoire de cryptologie de la Direction Centrale de la Sécurité des Systèmes d'Information (DCSSI) qui deviendra, en 2009, l'Agence Nationale de la Sécurité des Systèmes d'Information (ANSSI).
+En 2005, il rejoint le ministère de la Défense où il se spécialisera dans la cyberdéfense, avant d'intégrer en 2010 la Direction Générale de l'Armement (DGA) en tant que responsable des pôles sécurité des systèmes d'information et cyberdéfense. En 2014, il est appelé à prendre la direction générale de l'ANSSI, fonction qu'il occupera jusqu'à fin de l'année 2022.
+En janvier 2023, il rejoint Docaposte en tant que Directeur Général Adjoint en charge notamment des domaines data/IA, cyber et cloud.
+--
+
+.abstract
+--
+La cybersécurité est souvent vue, à juste titre, sous un angle technique, opérationnel et réglementaire. 
+L'incroyable évolution de la menace informatique nous concerne tous, à titre individuel, au niveau des organisations mais également à l'échelle des Etats. Dans un contexte général de fortes tensions géopolitiques, le cyber est devenu un ingrédient majeur dont l'usage se systématise dans des conflits qualifiés « d'hybrides ». 
+Passionnante et effrayante, cette militarisation de l'espace numérique nous concerne toutes et tous !
+--
+
+image:20240419_Devoxx-France_14.jpg[]
+
+* Livre blanc "de la cybersécurité de 2008"
+    ** Plus grande crainte de l'époque : que des systèmes soient empêchés de fonctionner du fait d'attaques informatiques
+
+* 12 secteurs en France "d'intérêt / d'importance vitale / stratégique"
+
+=== 10:30 -> 11:15 - Conférence - Neuilly 252AB : L'IA et qualité de code : Construire une synergie avec l'intelligence humaine
+
+Présenté par Arthur Magne de Packmind
+
+.Bio
+--
+Développeur convaincu de l'importance du partage de connaissances et de bonnes pratiques dans les équipes, j'ai co-fondé Packmind avec deux associés.
+Nous développons des plugins pour les IDE et les outils de code review qui aident les équipes de développement à capitaliser sur l'expertise de tous les membres des équipes. J'accompagne des entreprises à mettre en place des nouveaux formats d'échanges techniques pour partager ces connaissances rapidement.
+L'objectif est de mettre en place et d'animer des communautés de pratiques transverses qui permettrons d'aider au maximum des développeurs et développeuses à progresser techniquement sur différents sujets (architecture, performance, sécurité, clean code, test, DDD, React, etc.).
+--
+
+.abstract
+--
+La qualité du code généré par l'IA est directement influencée par la qualité des données et des standards de développement qu'elle reçoit.
+Dans un contexte où l'IA est un copilote de l'équipe de développement, le code qui est généré va forcément être lu et maintenu par l'équipe elle même. Pour ne pas gâcher le temps gagné grâce à l'IA dans des activités de maintenance laborieuses, ce code doit alors correspondre aux pratiques de développement déjà mises en place par l'équipe (contraintes de sécurité, design patterns, accessibilité, choix techniques, etc.).
+Mais pour que l'IA génère du code qui ne s'éloigne pas des pratiques de l'équipe, ces pratiques doit d'abord être explicitées et partagées avec elle.
+Nous verrons comment l'équipe peut définir ces pratiques et comment l'IA peut aider à les extraire de la base de code récent. Une fois ces standards de développement définis, l'IA peut maintenant nous aider à les détecter, à former l'ensemble de l'équipe dessus et va générer du code qui correspond à ce qui a été validé par cette expertise humaine.
+Avec quelques exemples concrets nous verrons comment l'IA peut devenir un réel copilote de l'équipe, qui contribue réellement à faire progresser le projet et permet d'améliorer en continu les pratiques de l'équipe.
+--
+
+* Il faut voir l'IA comme un mercenaire qui intervient sur votre projet sans en connaître le contexte
+    ** Ce même contexte que l'on met des mois à communiquer à un nouveau développeur lors de son onboarding
+
+* Pas de question de "junior" ou "senior" : il faut toujours rester critique du code généré par l'IA
+
+* IA Gen : baisse du code ownership -> ce n'est plus, ou moins, "notre" code
+
+.Etude de Visual Studio Magazine (et non GitClear 😉) mettant en avant le code churn qui a fortement augmenté avec l'IA Gen
+image:20240419_Devoxx-France_15.jpg[]
+
+* L'étude en question : https://visualstudiomagazine.com/Articles/2024/01/25/copilot-research.aspx
+
+* -> La question de 2024 : qui va s'occuper de la maintenance de ce code généré par l'IA ?
+
+.Globalement, le retour sur l'IA gen est bon, on va devoir y passer
+image:20240419_Devoxx-France_16.jpg[]
+
+* Contrairement aux chiffres des dernières études, on ne va faire des gains de productivité de 50 ou 80%, on est plus sur du 10 à 20%
+    ** En travaillant dernièrement avec plusieurs grandes entreprises, Arthur a eu confirmation d'un chiffre de l'ordre de ~10% de gain de productivité
+        *** Nous sommes donc en phase avec nos propres chiffres côté Docaposte 😉
+
+* Par contre, il y a d'autres effets, positifs, pour l'individu / le développeur
+* MAIS, quand on raisonne maintenant sur l'équipe, ces nouvelles pratiques backées par l'IA gen donnent lieu à certains problèmes nouveaux
+
+image:20240419_Devoxx-France_17.jpg[]
+
+* Attention à l'analyse d'une base documentaire par l'IA gen via un RAG ! +
+-> La doc qui n'est PLUS à jour va également être prise en compte
+    ** il ne faut pas que l'IA nous propose une information / un process obsolète depuis 3 ans...
+
+* Donc, pour pallier ce problème : 
+    ** *Capture des pratiques* : "ça c'est une bonne manière de faire", la préco donnée, "capturée" au sein de l'équipe
+    ** AVEC la *validation des pratiques* : "Oui, mais est-ce que c'est bien la bonne manière de faire ?"
+
+-> La question : l'*IA* ne pourrait-elle pas nous *aider à capturer et valider ces pratiques* ?
+
+* Information que ne reste que dans ma tête -> *information tacite*
+    ** Ca ne posait PAS de problème avant l'IA gen, car on échangeait entre nous via différentes pratiques et cérémonies "humaines"
+    ** MAIS l'information tacite, l'IA gen ne la connaitraît PAS. Un gros *problème vu le fonctionnement de l'IA gen*
+
+* Aujourd'hui, l'IA gen peut nous remonter des suggestions de pratiques
+    ** à l'IA Gen : "tu regardes le code tous les jours, et tu nous remontes des suggestions"
+
+image:20240419_Devoxx-France_18.jpg[]
+
+* -> MAIS il faut dans tous les cas une *validation humaine* de ces suggestions de l'IA Gen
+    ** *Packmind* peut nous aider en nous proposant un process (un process "réalisé par des humains") pour valider ces suggestions
+
+* Rappel : une "mauvaise pratique" pour une équipe, peut donner de très bons résultats pour une autre
+
+* Et toutes ces bonnes pratiques à mettre en place nous rappellent en fait beaucoup le Lean une nouvelle fois : 
+    1. mise en place de standards : comme Toyota à l'époque
+    2. garder un regard critique sur le code
+    3. L'IA Gen n'est pas un silver bullet et plusieurs outils vont permettre d'y avoir accès. +
+    Il faudra choisir les meilleurs pour nous, et savoir ne PAS les utiliser par moment / suivant les use cases
+        ** Par exemple, Arthur débranche Copilot quand il fait des TDDs
+    4. on ne va PAS pouvoir se passer de l'IA Gen : il y a des gains dans l'absolu, donc la question est "comment va-t-on faire pour s'en servir"
+
+NOTE: Voir le LeadDev Berlin de cette année 
+
+.La petite phrase de Kent Beck...
+image:20240419_Devoxx-France_19.jpg[]
+
+[quote,Kent Beck]
+____
+"I've been reluctant to try ChatGPT. Today I got over that reluctance. Now I understand why I was relunctant. +
+*The value of 90% of my skills just dropped to 0$*. The leverage for the remaining 10% went up 1000x. I need to recalibrate"
+____
+
+=== 11:35 -> 12:20 - Conférence - Paris 141 : L'IA et qualité de code : Comment ça marche l'IA Generative ? LLM, RAG sous le capot
+
+Présenté par Arnaud PICHERY et Aurélien COQUARD, tous les 2 VP Engineering chez Dataiku
+
+.abstract
+--
+45 minutes pour comprendre (un peu) comment ces algorithmes arrivent à écrire des poèmes ou répondre à des questions mieux que ta grand-mère. +
+Tout le monde n'a que ça à la bouche : "Generative AI". Parmi les modèles les plus captivants de cette sphère se trouvent les LLM et RAG (Retrieval-Augmented Generation). Ce talk technique vise à dévoiler les mécanismes et les principes fondamentaux qui animent ces puissantes architectures d'IA. +
+Plongée dans les Modèles de Langage à Grande Echelle (LLM)
+
+    * Explication des LLM et de leur fonctionnement.
+    * Aperçu des architectures de réseau neuronal, telles que les Transformers, qui soutiennent les LLM.
+    * Exploration de cas d'utilisation de LLM : rédaction de textes, génération de code, traduction de langues, et bien plus.
+
+Les Approches RAG : Fondamentaux et Innovations
+
+    * Introduction au concept de RAG et à son importance.
+    * Comment RAG fusionnent la puissance des LLM avec des techniques de recherche d'informations
+
+La génération d'images
+
+    * Aperçu du fonctionnement de DALL-e et Midjourney
+--
+
+* Les réseaux de neurones existent depuis les années 60
+* Word2vec pour l'embedding dès 2013
+* 2017 : mécanisme d'attention
+
+.LLM = Large Language Model
+image:20240419_Devoxx-France_20.jpg[]
+image:20240419_Devoxx-France_21.jpg[]
+
+* Fonction d'activation qu'on va retrouver dans tous les noeuds du réseau
+
+image:20240419_Devoxx-France_22.jpg[]
+
+.LLM : énormes -> 175 milliards de poids / paramètres pour GPT-3
+image:20240419_Devoxx-France_23.jpg[]
+
+NOTE: un humain dans toute sa vie aura lu ~1 Mds de mots
+
+.Processus de génréation de mots, où chacun est prédit à la suite des autres
+image:20240419_Devoxx-France_24.jpg[]
+
+* Transformers : Attention is all your need
+    ** C'est ce modèle qui a "gagné" face à tous les autres +
+    image:20240419_Devoxx-France_25.jpg[]
+
+.Fonctionnement des Transformes
+image:20240419_Devoxx-France_26.jpg[]
+
+* 1) *Tokenizer* : voir Tiktokenizer +
+image:20240419_Devoxx-France_27.jpg[]
+
+.On va transformer les mots en chiffres : leur position dans le dictionnaire
+image:20240419_Devoxx-France_28.jpg[]
+
+NOTE: embedding ou plongement en français
+
+* 2) *token embedding* +
+image:20240419_Devoxx-France_29.jpg[]
+
+.On va rajouter à notre vecteur des coordonnées qui correspondent à la position du mot dans la phrase
+image:20240419_Devoxx-France_30.jpg[]
+image:20240419_Devoxx-France_31.jpg[]
+
+.On va récupérer le "positional encoding" pour chaque mot
+image:20240419_Devoxx-France_32.jpg[]
+
+.Et tout ça on va le répéter 12 fois (une mesure complètement empirique)
+image:20240419_Devoxx-France_33.jpg[]
+
+* 3) *masked self-attention* : une couche permettant de savoir *comment un mot se rapporte aux autres*
+    ** Et on s'arrête au mot courant (cad on regarde le passé et pas l'avenir)
+    image:20240419_Devoxx-France_34.jpg[]
+
+* Comment fait-on cela ? On prend un mot on le répète 3 fois
+image:20240419_Devoxx-France_35.jpg[]
+
+-> Tout ceci ressemble au final à une grosse hashtable
+
+* 4) *Feed forward* +
+image:20240419_Devoxx-France_36.jpg[]
+    ** A chaque couche de niveau on enrichit le modèle mais SANS masquer les résultats précédents
+
+* *Mécanisme d'entraînement* +
+image:20240419_Devoxx-France_37.jpg[]
+image:20240419_Devoxx-France_38.jpg[]
+
+* *Fine-tuning* : on va entraîner le modèle sur un jeu de données spécifique
+image:20240419_Devoxx-France_39.jpg[]
+    ** Sans oublier la phase de validation par des humains (mal payés !)
+
+Et maintenant, le *RAG*
+
+* A quoi les LLMs ne sont-ils pas bons ? 
+    ** -> *Training date cutoff*
+    ** connaissances non accessibles dans le corpus d'entraînement (connaissances lacunaires et hallucinations)
+
+-> Pour *pallier ces problèmes* -> *RAG*, Retrieval Augmented Generation
+
+image:20240419_Devoxx-France_40.jpg[]
+
+* Les évolutions du RAG : +
+image:20240419_Devoxx-France_41.jpg[]
+
+    ** *Naive RAG*
+    ** *Advanced RAG* : query routing, query rewriting, query expansion
+        *** query routing : orienter l'utilisateur vers la meilleure source de données
+    ** *Modular RAG* : concernent les dernières avancées décrites dans les papiers de recherche
+
+.Et la suite ? L'après RAG
+image:20240419_Devoxx-France_42.jpg[]
+
+-> On va chercher à faire évoluer le RAG vers le fine-tuning
+
+.Multimodal RAG
+image:20240419_Devoxx-France_43.jpg[]
+
+*Génération d'images*
+
+* auparavant le domaine des *GAN* : *Generative Adversarial Networks* +
+image:20240419_Devoxx-France_44.jpg[]
+
+* En 2014 : OpenAI a sorti CLIP
+
+* puis *algo de diffusion* : un algo qui ne sert qu'à *débruiter une image* +
+image:20240419_Devoxx-France_45.jpg[]
+image:20240419_Devoxx-France_46.jpg[]
+    ** On va ajouter 20% de bruit à l'image et on va demander au LLM de "trouver ce bruit"
+image:20240419_Devoxx-France_47.jpg[]
+    ** Et ensuite on va répéter l'opération avec cette fois 100% de bruit
+image:20240419_Devoxx-France_48.jpg[]
+image:20240419_Devoxx-France_49.jpg[]
+image:20240419_Devoxx-France_50.jpg[]
+
+Conclusion : 
+
+    * Hyper intéressant, plein d'insights pour creuser, à revoir 👍👍👍
+    * -> Slides à récupérer absolument !
+
+=== 12:35 -> 12:50 - quicky - Neuilly 153 : C'est une bonne situation ça, Staff Engineer ? 😉
+
+Présenté par François Nollen, staff engineer & Dev Rel chez SNCF Connect & Tech
+
+.abstract
+--
+On parle beaucoup du métier d'Engineering Manager, mais plus rarement de Staff Engineer.
+Ils sont pourtant complémentaires dans beaucoup d'organisations.
+
+    * Quelles différences avec Engineering Manager, Principal Engineer, Architect, Chief of Staff ?
+    * En 2024, doit-on (toujours) devenir manager pour évoluer dans la tech ?
+    * "Staff" comme un bâton de sorcier 🧙 ?
+
+Venez découvrir le métier de Staff Engineer. On vous racontera comment ça se décline dans notre entreprise, pourquoi et comment on est arrivés là, une journée typique de "SE", les sujets qu'on porte, comment on collabore avec les autres équipes de SNCF Connect au quotidien.
+--
+
+image:20240419_Devoxx-France_51.jpg[]
+
+* De nouveau, on nous présente la double échelle : 
+    ** filière du contributeur individuel
+    ** filière du manager
+
+.Staff engineer : des définitions pas toujours claires...
+image:20240419_Devoxx-France_52.jpg[]
+
+* *Staff engineer* : avoir un *impact global positif à l'échelle de l'organisation*
+    ** C'est du *leadership par influence*
+
+image:20240419_Devoxx-France_52.jpg[]
+
+* Ce qui est requis : 
+    ** compétences techniques
+    ** Soft skills : collaboration, communication
+
+* *Ressources et communautés* : +
+image:20240419_Devoxx-France_54.jpg[]
+    ** communautés *staff 42*
+    ** les articles du *Touilleur Express* de Nicolas Martignole
+
+* SNCF Connect : 
+    ** dans le département, tout le monde est redevenu dev
+
+    ** puis, après, mise en place des *"référents expertise tech"* +
+    image:20240419_Devoxx-France_55.jpg[]
+        *** Ces gens ont été COMPLEMENT sortis des équipes
+        *** ils sont libres de leurs agendas
+        *** ils commencent leur journée de travail par "tout lire et tout voir" autour d'eux
+        *** ils sont en charge d'élaborer les bonnes pratiques de dev
+        *** ils contribuent à la PROD (suivi, remédiation, etc.)
+        *** etc etc.
+
+* SNCF Connect a donc choisi de *les sortir des équipes*, afin qu'ils ne soient PAS sur le chemin critique des projets
+* Ils ne sont *PAS managés par les engineering managers*
+
+* C'est plus simple de porter un message en se présentant comme un petit collectif
+* Les staff travaillent à l'échelle de l'organisation
+
+.Les 7 différences
+image:20240419_Devoxx-France_56.jpg[]
+
+.Est-ce fait pour vous ?
+image:20240419_Devoxx-France_57.jpg[]
+
+* OUI : si vous aimez aller dans les équipes pendant 1 ou 2 mois
+* Didier GIRARD : si vous aimez être la personne avec laquelle les autres dev aiment travailler
+
+* On va parler de code toute la journée, mais pas forcément coder toute la journée
+
+.Mais est-ce fait pour votre entreprise ?
+image:20240419_Devoxx-France_58.jpg[]
+
+* Plutôt pour les grandes / moyennes entreprises
+
+.Pour résumer
+image:20240419_Devoxx-France_59.jpg[]
+
+Conclusion : super talk ! 👍
+
+=== 13:00 -> 13:15 - quicky - Paris 143 : Comment orchestrer l'IA générative pour qu'elle code à votre place le front-end d'une page en moins de 2min.
+
+Présenté par Sébastien Vanson
+
+.abstract
+--
+Jamais je ne ferai bosser une IA à ma place !
+C'est à peu près ce qu'a dit l'homme de Cro-Magnon, trop attaché à son métier de chasseur-cueilleur, lorsque l'oracle lui a prédit que quelqu'un se chargerait bientôt de tuer le mammouth à sa place.
+C'est aussi ce que m'a dit récemment un collègue développeur.
+Certains oracles, en 2024, prédisent la fin prochaine des développeurs.
+Si cette prédiction est discutable, de nouveaux outils arrivent et le développeur qui s'adapte est maintenant doté de superpouvoirs. +
+Après une courte introduction dédiée à l'orchestration d'IA générative, nous générerons ensemble :
+
+    * Un exemple de page front-end pour un formulaire de création d'utilisateur.
+    * Puis un exemple de dashboard statistique.
+
+Tout cela avec des technologies front-end à la mode, en une poignée de minutes ! +
+Cerise sur le gâteau, nous plongerons dans le code et je vous montrerai comment chacun d'entre vous peut réaliser dès lundi ce véritable tour de magie dans votre codebase. +
+Avec quelques lignes de configuration, que vous soyez front ou back, vous générerez du code qui répond à vos propres standards de qualité.
+--
+
+* Stéphane a créé *beeker.tech* : *orchestrateur d'IA* +
+image:20240419_Devoxx-France_60.jpg[]
+
+* Un LLM seul pour des cas simples OK, mais pour un pb complexe ?
+* C'est là que l'orchestrateur intervient : il découpe le pb complexe en sous-parties plus simples
+
+.Fonctionnement de Beeker
+image:20240419_Devoxx-France_61.jpg[]
+image:20240419_Devoxx-France_62.jpg[]
+
+* L'IA Gen c'est un Yeoman +++
+
+DEMO
+
+image:20240419_Devoxx-France_63.jpg[]
+image:20240419_Devoxx-France_64.jpg[]
+image:20240419_Devoxx-France_65.jpg[]
+
+En 2 min : 2 pages React de créées
+
+.Ressources
+image:20240419_Devoxx-France_66.jpg[]
+
+    * GitHub : https://github.com/beeker-tech/sample-app
+    * site : https://beeker.tech
+
+=== 13:30 -> 14:15 - Conférence - Maillot : Le cauchemar des attaquants : une infrastructure sans secret
+
+Présenté par Thibault Lengagne, Head of Cybersecurity à Padok
+
+.bio
+--
+Head of Cybersecurity à Padok, Thibault est en charge de la branche spécialisée en sécurité Cloud, en tant que directeur technique. Son but : allier Sécurité et DevOps pour trouver des solutions innovantes qui protègent les systèmes tout en améliorant le quotidien des développeurs.
+--
+
+.abstract
+--
+La gestion des secrets a toujours été un sujet complexe : comment et où les stocker, comment les partager,qui les utilise, ont-ils été volés ? Sérieusement, quand avez-vous changé le mot de passe de votre base de données pour la dernière fois ? Selon les chiffres de Verizon, 49% des attaques informatiques impliquent le vol et l'utilisation de secrets, parfois des mois après leur exfiltration. +
+Est-il possible de construire un écosystème sans secret long-terme, en coupant ainsi l'herbe sous le pied des hackers ? Les avancées technologiques récentes (SSO, OIDC, Cloud IAM, Workload Identity, Vault credential brokering, Just-in-Time access) rendent ce rêve non seulement réalisable, mais en prime, elles simplifient la vie des développeurs.
+A la lumière de plus d'une dizaine de missions dans des écosystèmes différents, Thibault se propose de vous montrer par des exemples concrets le chemin vers l'infrastructure “Zero-Creds” :
+
+    * Comment supprimer les secrets utilisés par les développeurs ? (applicatifs, base de données, clés SSH…)
+    * Quels mécanismes et outils permettent la rotation automatique des secrets utilisés par les machines ?
+
+A la fin du talk, vous connaitrez toutes les bonnes pratiques et outils pour supprimer tout secret long-terme de votre écosystème.
+--
+
+*Zero-Credentials*
+
+    * Secrets développeurs
+    * Secrets CI/CD
+    * Secrets workload
+
+.Les cyber-attaques impliquent l'utilisation de secrets long terme
+image:20240419_Devoxx-France_67.jpg[]
+
+* Et les secrets ne sont *pas rotate assez souvent*
+
+.La philosophie Zero-Credentials supprime le problèem à la source
+image:20240419_Devoxx-France_68.jpg[]
+
+.Changement de paradigme : legacy -> Zero-Credentials
+image:20240419_Devoxx-France_69.jpg[]
+
+.Avantages du Zero-Credentials
+image:20240419_Devoxx-France_70.jpg[]
+
+    * réduire le risque d'attaque de 60%
+    * forte auditabilité
+
+.Les sources des risques
+image:20240419_Devoxx-France_71.jpg[]
+
+.La méthode Padok : détection et suppression de secrets long-terme
+image:20240419_Devoxx-France_72.jpg[]
+
+* Il restera quand même certains secrets au final : *clés d'API de services externes* qui ne proposent pas de rotation
+
+1) *Secrets développeurs*
+
+    * Mise en place du SSO +
+    image:20240419_Devoxx-France_73.jpg[]
+        ** Attention néanmoins à tous les outils qui ne supportent pas le SSO
+            *** Tout particulièrement BDD on-premise
+        ** Mais des solutions existent : *OAuth-proxy* +
+        image:20240419_Devoxx-France_74.jpg[]
+        ** Autre solution : *Vault / Boundary* +
+        image:20240419_Devoxx-France_75.jpg[]
+
+2) *Secrets de CI / CD*
+
+    * 0 secret dans le code source +
+    image:20240419_Devoxx-France_76.jpg[]
+
+        ** *TruffleHog* et *GitLeaks* pour trouver les secrets laissés sur les repo Git
+        ** SOPS va permettre de gérer les secrets chiffrés +
+        image:20240419_Devoxx-France_77.jpg[]
+
+    * génération de credentials court-terme pour le pipeline
+
+    * L'*autorisation* plutôt que l'authentification +
+    image:20240419_Devoxx-France_78.jpg[]
+    image:20240419_Devoxx-France_79.jpg[]
+
+    * Eviter le stockage en "stockage de CI / CD" +
+    image:20240419_Devoxx-France_80.jpg[]
+
+        ** Utilisez les dynamic secret par Vault
+
+3) *Secret de workloads*
+
+    * *Rotation automatique* +
+    image:20240419_Devoxx-France_81.jpg[]
+
+    * *External Secret + Vault* +
+    image:20240419_Devoxx-France_82.jpg[]
+        ** L'external secret est vide à la base, puis son contenu vient être renseigné par Vault
+            *** Problème : quand le secret change, l'external secret n'est pas mis à jour, c'est à nous de le gérer
+
+    * *Vault Operator* pour la détection automatique de la rotation d'un secret, avec le rollout automatique des applications associées +
+    image:20240419_Devoxx-France_83.jpg[]
+
+    * *Vault-agent + Vault* +
+    image:20240419_Devoxx-France_84.jpg[]
+
+NOTE: Article conseigné par Thibault concernant Vault (les points précédents plus en détails) : +
+https://www.hashicorp.com/blog/kubernetes-vault-integration-via-sidecar-agent-injector-vs-csi-provider
+
+*DEMO*
+
+image:20240419_Devoxx-France_85.jpg[]
+
+.En conclusion
+image:20240419_Devoxx-France_86.jpg[]
+image:20240419_Devoxx-France_87.jpg[]
+
+    * Autorisation
+    * Génération à la volée
+    * Rotation
+
+image:20240419_Devoxx-France_88.jpg[]
+
+Q&A : 
+
+    * Plutôt 1 Vault que plusieurs
+
+=== 15:40 -> 16:25 - Conférence - Maillot : J'ai terminé les 9 Advents of Code : Leçons Apprises
+
+Présenté par Teiva Harsanyi, SRE chez Google
+
+.abstract
+--
+Je ne sais pas pour vous, mais personnellement, les seules fois où je travaillais sur des problèmes d'algorithmique, c'était pour préparer des entretiens. Du coup, je voyais ces sujets comme contraignants. +
+Mais ça, c'était avant... avant de connaître l'Advent of Code. L'Advent of Code, c'est un calendrier de l'Avent de puzzles de programmation. Chaque jour en décembre depuis 2015, on doit résoudre un nouveau problème. +
+En faisant les Advent of Code, je me suis rendu compte qu'il y avait un bon nombre de leçons que j'avais apprises et que je peux appliquer dans mon travail de tous les jours.
+Au cours de cette présentation, nous explorerons ces leçons réparties en 3 catégories :
+
+    * Sur les algorithmes et les structures de données
+    * Sur la programmation en général
+    * Et sur le rôle de développeur
+--
+
+* *LeetCode* -> contrainte, MAIS *Advent of Code* -> jeu 😃
+    ** Teiva voulait entrer chez Google, il a commencé par "travailler" son LeetCode, mais il le voyait comme une contrainte. +
+    -> Tout a changé avec *Advent of Code* ("calendrier de l'Avent de challenges de programmation")
+
+Ce talk est un REX de Teiva après avoir résolu les 9 Advents of Code
+
+1) Algo et structures de données
+
+    * *graphes* : ensembles de *noeuds* et *liens*
+        ** Important à connaître pour ces graphes, le *topological sort*
+            *** mais ne peut être appliqué qu'à un *DAG* (liens avec direction et pas de cycle)
+            *** Exemple : 2022 jour 21 : liste de singes hurleurs. +
+            Problème : que hurle root ?
+
+    * *Big O* : un modèle pour comprendre comment un algorithme va scaler
+
+        ** optimisation de l'exécution, mais à faire APRES avoir optimisé notre algorithme
+        ** bien penser à sa structure de données
+        ** Big O pour la space complexity (la quantité de mémoire utilisée par l'algorithme)
+
+Conclusion sur cette partie : 
+
+    * Ces notions sont cruciales pour de nombreux entretiens techniques
+    * la data est maintenant partout
+    * ces notions aident vraiment à devenir un meilleur développeur
+
+2) Coding
+
+TO BE COMPLETED
+
+Ressources : 
+
+    * teivah.dev/devoox
+
+=== 17:00 -> 17:30 - Conférence - Paris 242AB : Apache Lucene : de l'indexation textuelle à l'intelligence artificielle
+
+Présenté par Lucian Precup, CTO de All.site
+
+.bio
+--
+Lucian Precup est CTO de all.site - le moteur de recherche et assistant intelligent collaboratif développé à Station F. Avec ses collègues d’Adelean, Lucian développe des solutions pour l’indexation, la recherche et l’analyse de données. Lucian participe régulièrement à des conférences françaises et internationales spécialisées sur les moteurs de recherche et organise le Meetup Search, Data & AI à Paris.
+--
+
+.abstract
+--
+Apache Lucene a soufflé ses vingt-deux bougies en septembre dernier, un voyage qui continue d'impacter profondément le monde des technologies Search et Data. 
+
+Lucene est le moteur derrière des géants comme Elasticsearch, OpenSearch, Apache Solr, ou encore le récent Atlas Search de MongoDB. +
+Son intégration dans de nombreux autres projets Open Source, tels que Apache Nutch - le pionnier des web crawlers et précurseur d'Hadoop, et Apache Cassandra - la base de données NoSQL la plus scalable, témoigne de son influence étendue. Utilisé dans des milliers de projets d'entreprise, y compris par des leaders comme LinkedIn et Twitter, Lucene bénéficie d'une base d'utilisateurs solide et diversifiée.
+
+La conférence se plongera dans l'évolution de Lucene, depuis son index inversé essentiel pour le traitement du texte, jusqu'aux innovations récentes qui reflètent une avancée technologique constante. +
+Pour conclure, nous aborderons les dernières fonctionnalités de Lucene : l'indexation des vecteurs et la recherche vectorielle, qui créent une synergie puissante avec l'intelligence artificielle générative, ouvrant des horizons inédits pour l'avenir de la recherche de données.
+--
+
+* Lucene a 22 ans et est toujours une technologie maintenue
+* Lucene est la technologie qui a trouvé le plus de bugs dans la JVM
+* *Berlin Buzzwords* : la conférence de référence mondiale du Search
+
+image:20240419_Devoxx-France_89.jpg[]
+
+.Index inversé : ici la toute première version de Lucene
+image:20240419_Devoxx-France_90.jpg[]
+image:20240419_Devoxx-France_91.jpg[]
+
+* Les recherches booléennes sont très rapides sur ce type d'index
+
+.Rappels sur la syntaxe Lucene
+image:20240419_Devoxx-France_92.jpg[]
+
+.Auto-complétion avec nGram
+image:20240419_Devoxx-France_93.jpg[]
+
+* Un index spécifique, et compressé, est créé spécialement pour ça
+
+.A partir de la version 4 de Lucene, introduction du stockage colonne
+image:20240419_Devoxx-France_94.jpg[]
+
+* ce qui a amené à de nouveaux usages : monitoring, obervabilité, etc.
+
+.Base de données spatiales
+image:20240419_Devoxx-France_95.jpg[]
+
+* Un point se trouve-t-il dans un polygone qui est la France ?
+* Lucene, base de données spaciale, peut-être même la meilleure BDD géo-localisée
+
+Apparition des IA générative et recherche vectorielle
+
+.Apparition de la recherche vectorielle dans Lucene
+image:20240419_Devoxx-France_96.jpg[]
+
+* Les vecteurs stockés dans Lucene sont multi-dimensionnels (plusieurs 100e de dimensions possibles)
+
+image:20240419_Devoxx-France_97.jpg[]
+
+.Vecteurs creux ou denses ?
+image:20240419_Devoxx-France_98.jpg[]
+image:20240419_Devoxx-France_99.jpg[]
+
+.L'approche RAG
+image:20240419_Devoxx-France_100.jpg[]
+image:20240419_Devoxx-France_101.jpg[]
+
+* Je pose maintenant *une question qui n'a plus besoin d'être précise*
+    ** Ce n'est plus du full text search, ce n'est plus du key word search
+
+Ressources : 
+
+    * voir les notes du précédent talk d'Adelean
+    * leur blog contient de très bons articles sur le search et les RAG : +
+    https://www.adelean.com/blog/
 
 
 
