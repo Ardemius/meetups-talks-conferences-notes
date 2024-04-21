@@ -1827,7 +1827,9 @@ Ressources :
     * leur blog contient de très bons articles sur le search et les RAG : +
     https://www.adelean.com/blog/
 
+=== Cloture : les Cast Codeurs
 
+* C'est Midjourney et plus Dall-E qui a été utilisé pour toutes les images de ce Devoxx France
 
 
 

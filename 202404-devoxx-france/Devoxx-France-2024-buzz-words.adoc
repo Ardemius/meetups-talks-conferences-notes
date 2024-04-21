@@ -103,6 +103,13 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * L'Architecture Hexagonale par la pratique, le live coding qui rendra vos applications plus pérennes par Julien Topcu
 
+* Le talk sur la négociation de salaire de Shirley
+* Barbie dans le Dojo Mojo Casa House de Ken
+* Les talks de Lize (contributrice de LangChain4j)
+* Apollo Guidance Computer
+* Le talk de Cyrille (Martraire) sur le Software Craftsmanship et le "cycle" sous-jacent (10 à 12 ans avant de devenir "dogmatique", le craft en est là)
+* "Henry Motte au travail" (en remote...) avec, entre autres, les aléas juridiques du télé-travail
+
 == Sociétés et personnes rencontrées
 
 === Temporal
@@ -124,6 +131,8 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * Echanges sur l'avenir des RAG : 
     ** les personnes avec lesquelles j'ai échangées n'étaient pas forcément les plus tech, mais elles pensent que les RAG ne vont pas encore mourir demain pour être remplacés par une architecture reposant sur du "full in context" (du fait de l'augmentation de la taille des contextes à plusieurs millions de tokens)
+
+Echanges avec Valentin Deleplace <deleplace@google.com>, Developer Advocate chez Google Cloud
 
 === Microsoft
 
