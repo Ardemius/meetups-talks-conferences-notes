@@ -83,6 +83,7 @@ image:20240417_Devoxx-France_03.jpg[]
 
 == Technos dont on parle moins (ou plus !)
 
+* Finalement, peu (voire pas) de sujets sur les Cloud providers et leurs services en tant que tels
 
 == Talk à revoir sur YouTube
 
@@ -148,8 +149,19 @@ https://learn.microsoft.com/en-us/azure/ai-services/openai/concepts/provisioned-
 
 * Débat sur chorégraphie ou orchestration, en lien avec l'orientation orchestration maintenant poussée par Temporal
 
-== Avis sur le salon
+== Synthèse du salon
 
+* L'IA (et les RAG) était vraiment "LE" sujet du salon
+    ** Mais on pouvait noter que la plupart des participants au salon en avait encore une connaissance très basique, voire ne le connaissait pas si ce n'est de nom
+    ** La plupart des conf (à l'exception du très bon "Comment ça marche l'IA Generative ? LLM, RAG sous le capot") proposaient une 1ere présentation de ce qu'est un RAG, mais sans aller plus loin. +
+    -> A date, c'est encore un sujet émergent pour la plupart
+
+* De très bonnes conf sur la fonctionnement des moteurs de recherche, beaucoup s'articulant autour d'Elasticsearch et Lucene
+    ** On en revient ici à des bases pérennes et à toute la théorie du domaine du "search" (fouille documentaire)
+
+* Présence forte des sujets autour de la sécurité et cybersécurité
+    ** On constate une prise de conscience de plus en plus forte sur ce thème
+    ** L'excellente keynote de Guillaume POUPARD illustre bien l'importance du sujet
 
 == Les polos rouges, jam, photos du salon et autres
 

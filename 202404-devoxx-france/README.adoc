@@ -1121,6 +1121,8 @@ image:20240418_Devoxx-France_79.jpg[]
 .Ressources conseillées sur le sujet
 image:20240418_Devoxx-France_80.jpg[]
 
+IMPORTANT: Une recommandation que Lucian répête à toutes ses conf : il ne faut *PAS* utiliser un LLM pour remplacer un moteur de recherche.
+
 == JOUR 3 : VENDREDI 19/04
 
 === 09:00 -> 09:25 - Keynote - Amphi bleu : Comment modéliser l'état du monde en 2100 ? Le Rapport Meadows
