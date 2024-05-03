@@ -106,10 +106,12 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * Le talk sur la négociation de salaire de Shirley
 * Barbie dans le Dojo Mojo Casa House de Ken
-* Les talks de Lize (contributrice de LangChain4j)
+* Les talks de Lize RAES sur LangChain4J (contributrice de LangChain4j)
 * Apollo Guidance Computer
 * Le talk de Cyrille (Martraire) sur le Software Craftsmanship et le "cycle" sous-jacent (10 à 12 ans avant de devenir "dogmatique", le craft en est là)
 * "Henry Motte au travail" (en remote...) avec, entre autres, les aléas juridiques du télé-travail
+* "Rendez vos applications Kafka plus robustes" par Stéphane Derosiaux (CTO et co-fondateur de Conduktor)
+* "Utiliser les IA Génératives avec Java : Au delà des simples chatbots" par Abdellfetah SGHIOUAR (Google) et Cédrick LUNVEN (DataStax)
 
 == Sociétés et personnes rencontrées
 
