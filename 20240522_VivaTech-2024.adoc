@@ -1,0 +1,515 @@
+= 2024/05/22 à 24 - Viva Tech 2024
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[width=800]
+
+== Sessions CTO - Communauté Tech Rocks - Exec Arena
+
+.Plan du salon
+image:20240522_Viva-Tech_Tech-Rocks_00b.jpg[width=800]
+
+.Planning des sessions Tech Rocks
+image:20240522_Viva-Tech_Tech-Rocks_00a.jpg[width=800]
+
+.Le Hall 1 de Viva Tech
+image:20240522_Viva-Tech_Tech-Rocks_00c.jpg[width=800]
+
+=== Mercredi : Security talks
+
+==== Talk de Wavestone
+
+Présenté par : Gérôme BILLOIS et Noémie HONORE (prenom.nom@wavestone.com)
+
+.Landscape des solutions de sécurité
+image:20240522_Viva-Tech_Tech-Rocks_01.jpg[width=800]
+
+* 3 domaines clés qui drive la croissance en France en matière de sécurité
+    ** Data security & encryption
+    ** NIS2 : compliance
+    ** *Cyber for AI*
+
+image:20240522_Viva-Tech_Tech-Rocks_02.jpg[width=800]
+
+* La sécurisation de l'IA est en train d'exploser : 
+    ** sécuriser l'environnement
+    ** sécuriser les data
+    ** se conformer aux réglementations, à la régulation
+
+==== Trust & Tech : Empowering boards for cybersecurity leadership
+
+* Dès qu'on pousse un code / une solution en PROD, on est maintenant systématiquement attaqué (attaques automatiques)
+
+==== Cybersecurity and supply chain : the challenge of the years to come
+
+Talk donné par Guillaume POUPARD, notre DGA Docaposte
+
+image:20240522_Viva-Tech_Tech-Rocks_03.jpg[width=800]
+
+* Nous sommes dans un état de "guerre" côté cybersécurité, et ce n'est pas nouveau au final.
+* La cybersécurité est obligatoire ET DOIT être un sujet "top prioritaire" pour nos sociétés
+
+* 2 nouvelles pièces de législation :  
+
+    ** *NIS 2* (Network and Information Security) - *Directive* : la version 2 de la directive NIS
+        *** Une correction plus ambitieuse de la v1
+        *** again and again : they NEED to do all that is necessary to protect themselves : enable a security policy
+            **** That's NOW mandatory
+        *** Nouveau poste CISO : Chief Information and Security Officer
+        *** Il faut maintenant prévoir le pire : que faire QUAND le pire arrivera ? Il faut y avoir pensé
+
+    ** *DORA* (Digital Operational Resilience Act) - *Regulation* : 
+        *** On insiste encore plus sur la résilience des systèmes 
+        *** Il faut maintenant être obligatoirement très attentive à la *supply chain*
+
+.Directive vs Regulation
+[NOTE]
+====
+* A *directive* sets a course, and cannot be applied as it stands in every EU Member State. It *must first be transposed into the national law* of each country.
+
+* A *regulation*, on the other hand, *applies unchanged* in all Member States as soon as it comes into force. It is a binding legislative act, and must be enforced in its entirety.
+====
+
+==== Talk de Dynamo
+
+* Pour plus d'infos : info@dynamo.cloud
+* site : https://www.dynamo.cloud/
+
+* Cf site Dynamo : +
+"Dynamo is the catalyst for *collaboration, trust, and innovation among European Cloud Service Providers (CSPs)*, paving the way for a resilient and competitive European digital economy."
+
+.Gemini : comparaison entre Dynamo et GAIA-X
+--
+*Dynamo* et *GAIA-X* sont deux *initiatives européennes* visant à créer une infrastructure cloud sécurisée et souveraine. Bien qu'elles partagent des objectifs communs, elles présentent des différences notables en termes de portée, de structure et de gouvernance.
+
+* *Dynamo* se concentre sur la collaboration entre les fournisseurs de services cloud (CSP) européens. Son objectif est de *favoriser l'interopérabilité et la portabilité des données entre les différents clouds européens*, en créant un *marché unique pour les services cloud*.
+
+* *GAIA-X* a une portée plus large, visant à *établir un écosystème cloud européen complet*, englobant non seulement les CSP mais aussi les fournisseurs de logiciels, les intégrateurs systèmes et les utilisateurs finaux. L'objectif est de créer une infrastructure cloud européenne ouverte, sécurisée et fiable, capable de répondre aux besoins croissants de l'économie numérique européenne.
+--
+
+* Apparemment, Dynamo "is a place" où nous pouvons ajouter (implémenter) des indicateurs / moyens réels permettant de "calculer" / estimer la sécurité de nos services dans le Cloud.
+    ** Un "vrai" moyen de vérifier la sécurité de nos services Cloud, plutôt qu'un "bout de papier" indiquant "GDPR compliant"
+
+image:20240522_Viva-Tech_Tech-Rocks_04.jpg[width=800]
+
+==== Security and sovereignty at the edge: navigating the AI revolution
+
+Talk donné par Johann RUIZ, Chief Revenue Officer chez GCore
+
+* il faut réussir *le plus possible* à *bloquer les attaques "at the edge"*, et non quand elles ont déjà pénétré notre infrastructure
+
+==== Visa's Approach to Cybersecurity in the Face of Evolving Threats
+
+Talk donné par Rajat Taneja, president technology at Visa, Responsible for Visa's global technology research
+
+.Stratégie de sécurité Visa
+image:20240522_Viva-Tech_Tech-Rocks_05.jpg[width=800]
+
+* le cycle de vie de la sécurité : *Identify* -> *Protect* -> *Detect* -> *Respond* -> *Recover*
+    ** Ce qui passe par des phases de : 
+        *** *Design*
+            **** pessimistic principles (maintenant Zero Trust)
+            **** Zero Trust architecture
+            **** Threat Model
+        *** *Implement*
+            **** DevSecOps
+            **** Defense in-depth
+            **** Devalue Data
+        *** *Operate*
+            **** automation
+            **** adaptive defense
+            **** continuous monitoring
+
+* Zero Trust, correspond à ce que l'on appelait avant un "pessimistic design"
+
+.Operational Availability Approach
+image:20240522_Viva-Tech_Tech-Rocks_06.jpg[width=800]
+
+.Opportunities and key takeaways
+image:20240522_Viva-Tech_Tech-Rocks_07.jpg[width=800]
+
+    * Prevent, detect, and auto-contain advanced threats in real time : *adaptive Defense* (AI/ML)
+    * Supply Chain risk management
+
+=== Jeudi : Platforms & Products
+
+==== Werner et Swami
+
+Interview par BusinessInsiders de Werner Vogels, CTO Amazon et Swami Sivasubramanian, VP Data, AI, LLM Amazon
+
+image:20240523_Viva-Tech_Tech-Rocks_01.jpg[width=800]
+
+* Werner : l'IA va permettre de créer du "unique for you", peut-être même jusqu'à la fabrication de médicaments spécifiques
+* Werner : souvent certains domaines "stagnent" ou ne décollent pas car il ne représente pas un marché suffisant, les personnes impliquées (comme pour les maladies rares) ne sont pas assez nombreuses, même si leur maladie est terrible.
+
+==== Unleash the power of platform : a journey to multi-product success
+
+Talk donné par Viali Marglon, R&D director, Monday.com
+
+* La clé de la réussite de Monday comme "Sales platform" (CRM) en à peine 2 ans : "Our platform enables us to reach the market *FAST*"
+    ** La société est donc devenue une "multi-products company", la plateforme dont il est question
+
+.Une architecture en layers
+image:20240523_Viva-Tech_Tech-Rocks_02.jpg[width=800]
+
+.Et de MULTIPLES playground fournis pour "pratiquer" sur ces différents layers
+image:20240523_Viva-Tech_Tech-Rocks_03.jpg[width=800]
+
+* Produit créé à la base comme un monolithe avant de devenir une "plateforme". +
+Le fameux "fake it until you make it"
+
+* Ils ont un cycle de développement rapide leur ayant permis de créer cette plateforme, avec un arbitrage permanent entre "fait-on de la plateforme" (donc c'est pour du long terme), ou fait-on du produit / du spécifique ? (du plus court terme)
+    ** ils ont créer beaucoup de produits avant de finalement arriver à cette plateforme finale.
+    ** Donc, c'est comme on l'entend souvent : il faut faire de *nombreuses tentatives* et "*fail fast*" pour ne garder que ce qui fonctionne.
+        *** Par moment, on est sûr d'avoir créé un bon produit mais cela ne "marche juste pas"
+    ** mais au final, ils ne lancent pas énormément de produits en même temps. +
+    Ils vérifient scrupuleusement la qualité des produits développés avant de les passer en PROD.
+
+* L'importance quand on bâtit une startup : passer le plus de temps possible sur la création de son produit et PAS sur les tâches annexes comme l'administratif, la paye des employés, la gestion des investisseurs, etc.
+    ** Le conseil de Viali : trouver une structure (Comme Monday et d'autres si j'ai bien compris) qui prend en charge ces sujets, pour que l'on puisse passer le plus de temps possible sur la création du produit lui-même.
+
+==== How to create a climate tech startup inside a large corporate
+
+Talk donné Thibault Grégoire, directeur strategy & transformation, Schneider Electrics
+
+* 1/5 of global CO2 come from homes : one of the major source of carbon emissions
+* 75% of the EU's projected building stock of 2050 already exist today and is energy insufficient
+
+* DONC the worst 15% of homes in Europe will need to be improved by 2030
+    ** En France on a maintenant la notation énergétique (Diagnostic de Performance Energétique (DPE) de A à G) et si un logement est G, en 2030 on ne pourra plus le louer +
+    Chiffre et niveau à vérifier mais c'est l'idée
+    ** Les autres pays d'Europe sont également en train de s'y mettre (la France a un peu d'avance dans ce domaine)
+
+* Pour la création de cette startup from scratch, les conseils sont en fait les mêmes que ceux de Viali dans le talk précédent : +
+image:20240523_Viva-Tech_Tech-Rocks_04.jpg[width=800]
+    ** Test quickly
+    ** Shorten decision loops
+    ** Build at speed
+
+-> En gros, toujours le même "*Fail fast*"
+
+* Leur produit est capable de donner des conseils et scénarios de rénovation pour améliorer la note énergétique de son logement
+    ** et pour un acheteur, c'est également moyen de supprimer de sa liste les biens dont le "G" ne peut pas être changé OU les biens pour lesquels le scénario d'amélioration est trop cher
+
+.Les recommandations globales de Thibault
+image:20240523_Viva-Tech_Tech-Rocks_05.jpg[width=800]
+
+=== Vendredi : Data, CLoud & AI
+
+==== Why research institutes are key in the digital transformation challenges ?
+
+Talk donné par Sophie PROUST, Executive Head of the Digital Agency, INRIA
+
+* Il y a une forte demande du président de la République de rapprocher la recherche du "monde du travail" (et du secteur privé), il faut que les 2 travaillent ensemble
+
+* La recherche est très importante et implique des compétences qui nécessitent une formation conséquente.
+    ** Former, le mieux possible, est particulièrement important
+
+* La sécurité est un domaine particulièrement important
+    ** focus sur la cryptographie
+    ** la sécurisation du Machine Learning
+    ** PTCC - Programme de Transfert au Campus Cyber : collaboration avec l'ANSSI +
+    "Financé dans le cadre de la Stratégie Nationale pour la Cybersécurité le PTCC ou Programme de Transfert au Campus Cyber soutient le développement d'une dynamique de *transfert de compétences et de technologies* entre les *acteurs de la recherche publique* et les *entreprises de la cybersécurité*."
+        *** https://ptcc.fr/
+
+* On ne peut pas penser à la *Data* sans penser au *Cloud* et à la *sécurité*, il y a un continuum derrière ces sujets
+    ** *Continuum*, entre autres : "a whole made up of many parts"
+
+==== Unveiling the risks and building trust : navigating the tech double-edged sword
+
+Talk animé par Joe ATKINSON, vice chair & CPTO - PwC, Nassima AUVRAY Chief Trust Officer - Orange, Antoine LARMANJAT, technical director - Google.
+
+* Nassima : les lois diffèrent d'un pays à l'autre, il faut être capable de s'y conformer
+
+* Antoine : il y a des demandes des états de pouvoir "régionaliser" les data de leur pays ou de leurs entreprises
+    ** Antoine cite le partenariat avec SENS qui permet de mettre à disposition la technologie Google au sein d'une société française.
+    ** Antoine et honnête, il donne la raison de pourquoi Google fait ça (et les autres aussi !) : "without it, we will not be able to broaden our customer base"
+    ** question très intéressante du public durant la session : 
+        *** "j'étais un innovateur, maintenant je suis "reluctant" et je souhaiterais que l'évolution technologique se calme, car les gouvernements et les lois qu'ils promulguent ont toujours 20 ans de retard sur la technologie"
+
+* Nassima : aujourd'hui il n'y a *pas de définition officielle de "souveraineté logicielle"*
+    ** Raison pour laquelle ce talk / panel parle plutôt de "trust"
+    ** aujourd'hui, chacun (chaque gouvernement) a sa définition de souveraineté
+
+* *Traitement très intéressant du sujet de la souveraineté* et de la problématique de comment s'y conformer / de comment la considérer.
+    ** Nassima - réalité économique : le coût des solutions permettant d'adresser les problématiques de souveraineté fait toujours beaucoup réfléchir les directions : "utiliser cette solution "plus secure" va me coûter 10% de plus ? Attendez je dois y réfléchir..."
+
+==== At the brink of transformation : the Gen AI corporate revolution is yet to happen
+
+Talk donné par Chadi Hantouche, partner Data, AI chez Wavestone
+
+* Wawestone : nouveau radar sur les startups de l'IA Gen en France sortit il y a 2 jours +
+image:20240524_Viva-Tech_Tech-Rocks_01.jpg[width=800]
+
+.Ce qui nous avons déjà avec l'IA Gen ET ce qui va / doit encore arriver
+image:20240524_Viva-Tech_Tech-Rocks_02.jpg[width=800]
+
+.The large-scale transformative revolution has not happened yet !
+image:20240524_Viva-Tech_Tech-Rocks_03.jpg[width=800]
+
+.A framework for Generative AI at scale
+image:20240524_Viva-Tech_Tech-Rocks_04.jpg[width=800]
+
+.How do we make the revolution happen ?
+image:20240524_Viva-Tech_Tech-Rocks_05.jpg[width=800]
+
+    * Leveraging the potential will take *time, effort and money*
+
+.When the revolution unfolds, we will have profound questions to address    
+image:20240524_Viva-Tech_Tech-Rocks_06.jpg[width=800]
+
+    * People : Should I review the expected skillset / my recruitment strategy ?
+    * Org : How does this impact the ways of working in our organization ?
+    * Society : what do we do with the time we are saving ?
+
+Q&A : 
+
+    * il est difficile de mesurer la valeur ajoutée de l'IA Gen, car il faudrait déjà être capable de mesurer où nous sommes actuellement, ce que nous n'arrivons pas à faire (des boîtes essayent, pas de réussite flagrante jusqu'à maintenant)
+    * Pas de "bulle de l'IA gen" comme à l'époque de la "bulle Internet" car aujourd'hui nous avons des use cases (à ce point ???) qui en plus viennent de la vie courante.
+        ** je suis beaucoup plus réservé sur ce constat de Chadi
+
+* Chadi cite Yann LECUN, présent également à Viva Tech : "si vous êtes jeunes et que vous voulez faire de l'IA, *ne choisissez PAS les LLM car ils ne sont pas le futur*"
+
+-> Talk très intéressant
+
+==== Accelerating growth : choose the right AI for faster time to market
+
+Talk donné par IBM
+
+.Key productivity challenges across business domains
+image:20240524_Viva-Tech_Tech-Rocks_07.jpg[width=800]
+
+    * une statistique très intéressante : en moyenne, les employés switchent entre 13 applications, 30x par jour
+        ** Thomas : on pourrait imaginer qu'un agent "intelligent" puisse faire ce switch à leur place
+
+.Elements of AI risk
+image:20240524_Viva-Tech_Tech-Rocks_08.jpg[width=800]
+
+== Stands
+
+=== LightOn
+
+* Présentation du "Talk Factory" de leur solution Paradigm +
+image:20240523_Viva-Tech_LightOn_01.jpg[width=800]
+    ** il s'agit d'une assistance à la rédaction de prompt. +
+    On se sert du LLM pour aider l'utilisateur à rédiger le meilleurs prompt possible à destination du LLM
+
+=== AI21 Labs
+
+* "AI21" pour "AI for the 21st"
+* Ce sont eux qui éditent l'architecture Jamba !
+* j'ai pu échanger avec un de leur sales, Yotam SHINAN (Pre-Sales engineer)
+
+* C'est une boîte israélienne fondée en 2017
+    ** 300 employés
+    *** série C qui a dernièrement levé 210 M $ si j'ai bien noté
+        **** C'est donc une licorne
+
+* Toute leur solution est décrite sur leur site, avec TP, playground de dispo, etc.
+    ** et ils font également du RAG (qui n'est pas encore mort ! 😜)
+    ** https://www.ai21.com/
+
+image:20240523_Viva-Tech_AI21-Labs_01.jpg[width=800]
+
+=== YOOI
+
+* Site : https://www.yooi.com/ +
+image:20240523_Viva-Tech_YOOI_01.jpg[width=800]
+image:20240523_Viva-Tech_YOOI_02.jpg[width=800]
+
+* Une société (startup ?) proposant des services ET un produit (création de graphes et charts dynamiques) afin de mieux saisir ses besoins, les use cases associés, les data associées, voir les outils associés.
+    ** L'idée est de mettre en place un lineage de toute cette chaîne "très en amont" afin de pouvoir se souvenir de "pourquoi on a fait ça" : 
+        *** "Si on a ce use case, c'est par rapport à ce besoin, et ce commit est bien associé à ce use case" +
+        image:20240523_Viva-Tech_YOOI_03.jpg[width=800]
+
+    ** Toute cette définition et saisie des besoins est réalisée lors d'atelier avec le client (c'est l'un des services vendus par la société)
+
+=== Qolaig
+
+* Site : https://www.qolaig.com/
+* Une StartUp qui s'est montée pour aider les entreprises à créer des agents AI spécifiquement conçus pour répondre à leurs besoins.
+    ** Il s'agit là de besoin plutôt simple, et non de scénarios très complexes avec beaucoup d'étapes.
+        *** Exemple : Création automatique de revue de presse : l'agent va sélectionner les articles les plus pertinents à partir d'une liste de sites de news. +
+        Il ne s'agit donc ici "que" de sélection d'articles, les contenus ne sont pas retravaillés
+        image:20240523_Viva-Tech_Qolaig_01.jpg[width=800]
+
+=== IBM
+
+.Les principaux risque de l'IA Gen
+image:20240523_Viva-Tech_IBM_01.jpg[width=800]
+
+.Les promesses de la solution Eviden dans le domaine de l'IA Health
+image:20240523_Viva-Tech_IBM_02.jpg[width=800]
+
+=== Inetum
+
+image:20240523_Viva-Tech_Inetum_01.jpg[width=800]
+
+.Même conclusion que pour notre étude sur GitHub Copilot pour les dev : l'IA gen permet un gain de productivité surtout pour les juniors
+image:20240523_Viva-Tech_Inetum_02.jpg[width=800]
+image:20240523_Viva-Tech_Inetum_03.jpg[width=800]
+
+."AI wont replacy you, but a person who uses AI will"
+image:20240523_Viva-Tech_Inetum_04.jpg[width=800]
+image:20240523_Viva-Tech_Inetum_05.jpg[width=800]
+
+=== Ampere
+
+* *Ampere* sur le stand de *Scaleway*
+* ils développent un CPU avec un très bon rapport puissance / watts consommés
+* Ce type de CPU est disponible chez tous les hyperscaleurs ainsi que d'autres hébergeurs (dont Scaleway bien sûr !)
+* Pour accéder à ces CPU sur Azure, il faut utiliser des Dpsv5 +
+image:20240524_Viva-Tech_Ampere_01.jpg[width=800]
+
+== Divers et autres photos
+
+* *Enchanted Tools* : ses robots tout mignons et son très beau stand
++
+video::20240523_Viva-Tech_EnchantedTools_01.mp4[width=500]
++
+image:20240523_Viva-Tech_EnchantedTools_02.jpg[width=800]
+
+* *Tesla* et le Cybertruk +
+image:20240523_Viva-Tech_Tesla_01.jpg[width=800]
+image:20240523_Viva-Tech_Tesla_02.jpg[width=800]
+image:20240523_Viva-Tech_Tesla_03.jpg[width=800]
+image:20240523_Viva-Tech_Tesla_04.jpg[width=800]
+
+* *Peugeot* et un très beau prototype +
+image:20240523_Viva-Tech_Peugeot_01.jpg[width=800]
+image:20240523_Viva-Tech_Peugeot_02.jpg[width=800]
+image:20240523_Viva-Tech_Peugeot_03.jpg[width=800]
+
+* *MotionXP* et son simulateur (ici de vol) +
+image:20240523_Viva-Tech_MotionXP_01.jpg[width=800]
+
+* *Onyro* et son robot qui sert café, verre d'eau, etc.
++
+video::20240523_Viva-Tech_Onyro_01.mp4[width=500]
+
+* *Scewo* le fauteuil roulant qui descend et monte les escaliers
++
+image:20240523_Viva-Tech_scewo_01.jpg[width=500]
++
+video::20240523_Viva-Tech_scewo_02.mp4[width=500]
+
+* *DeluPay* qui propose un système pour faire disparaître le passage en caisse en magasin +
+image:20240523_Viva-Tech_delupay_01.jpg[width=400]
+    ** Un peu comme Amazon l'avait proposé avec son magasin automatique (sauf qu'il était en fait opéré par des effectifs bien humains en Inde...)
+
+* *SNCF* et son simulateur de cabine de TGV +
+image:20240523_Viva-Tech_sncf_01.jpg[width=800]
+
+* *Volocity* le prochain taxi volant
+image:20240523_Viva-Tech_volocity_01.jpg[width=800]
++
+video::20240523_Viva-Tech_volocity_02.mp4[width=800]
+
+* *Sabi Agri* le robot destiné à l'agriculture +
+image:20240523_Viva-Tech_sabi-agri_01.jpg[width=800]
+
+* *La Poste* et son fantastique Lego motorisé de 103 000 pièces et 8 mois de travail +
+image:20240523_Viva-Tech_La-Poste_01.jpg[width=800]
++
+video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
+
+* *Renault* et sa future gamme utilitaire FlexEVan, ici déclinée en une salle de consultation médicale mobile : le U1st Vision +
+image:20240524_Viva-Tech_Renault_02.jpg[width=800]
+image:20240524_Viva-Tech_Renault_03.jpg[width=800]
+    ** La société derrière ce concept récupère des données de santé OpenData ET de la société "Kanopy" (à vérifier) pour déployer ce van dans les lieux où les médecins manquent le plus (déserts médicaux)
+    image:20240524_Viva-Tech_Renault_01.jpg[width=800]
+
+== Echanges / discussions
+
+* Jean Baptiste Kempf : le nouveau CTO de Scaleway
+    ** lors du déjeuner Tech Rocks
+    ** on partage un même quotidien très planifié / organisé
+    ** horaires de JB : lever 06h et coucher 23h / 23h30
+
+* Guillaume POUPARD après son talk
+    ** Sur les aspects de cybersécurité "traditionnels" (pas IA), on peut aller voir Stéphane DUBREUIL qui est arrivé récemment (juin 2023) chez Softeam en tant que CISO
+        *** Stéphane a précédemment travaillé chez Thales, à l'ANSSI (Guillaume doit donc bien le connaître) et dans plusieurs ministères en tant que CISO également
+
+== Synthèse et avis sur le salon
+
+* De l'IA, surtout de l'IA générative, presque partout
+
+* Le *secteur du luxe* très représenté et vraiment à la pointe : +
+image:20240523_Viva-Tech_luxe_01.jpg[width=800]
+image:20240523_Viva-Tech_luxe_02.jpg[width=800]
+    ** Assistant AI "Beauté" dans la poche via Smartphone +
+    image:20240523_Viva-Tech_luxe_03.jpg[width=800]
+    ** réalité "assistée" (pas le bon terme) : via son smartphone, de nombreuses applications proposent de tester "sur soi" divers vêtements, bijoux, chaussures, de façon toujours plus réaliste
+    ** et de nombreux autres use cases... +
+    image:20240523_Viva-Tech_luxe_04.jpg[width=800]
+    image:20240523_Viva-Tech_luxe_05.jpg[width=800]
+
+* Le *secteur de la publicité* et de la *création graphique* / visuelle associée également très représenté
+    ** *Omi*, chez *Meta*, un 3D generative AI tool permettant de créer des assets pour le marketing, sans compétence technique : +
+    video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
+    ** *AdCreative.ai* : qui permet la création de visuels / d'images via l'IA Gen "in seconds" +
+    https://www.adcreative.ai/ 
+
+* Le *secteur de la santé* également très présent : 
+
+    ** *Assistant médical personnalisé* backé par l'IA / l'IA Gen
+        *** Voir la solution EVIDEN chez IBM : un *assistant personnalisé*, fonctionnant en local du fait des données sensibles associées
+            **** Cette problématique de sécurité / confidentialité des données dans le cadre de l'IA Gen revient de plus en plus souvent : il faut être capable de *faire tourner les modèles "en local"* (on the edge) pour *garantir la sécurité des données* en évitant autant que possible tout transfert de ces dernières.
+
+    ** cabine consultation mobile pouvant être présente dans les lieux en ayant le plus besoin ("déserts médicaux")
+
+* l'écologie / le *numérique responsable* via la recherche d'une meilleure performance énergétique
+    ** Exemple avec les processeurs Ampère proposant un très bon ratio performance / watts consommés
+
+* Problématiques de *sécurité* présentes : 
+    ** SLM souvent présent pour disposer d'une solution tournant localement sur portable
+
+[NOTE]
+====
+* L'un des "graals" du moment, l'une des tendances à mon avis durable, est la création d'agent IA *personnalisés* pour chaque utilisateur.
+====
+
+* Maintenant que l'IA est capable de "bien parler", on cherche à lui donner *"le bon ton"*, à *rajouter de l'émotion* dans ce qu'elle dit +
+image:20240523_Viva-Tech_SeamlessExpressive_01.jpg[width=800]
+
+    ** Ce que l'on a également vu dans la dernière conf OpenAI et lors de la Google I/O
+
+* *NVidia* est présent (et mis en avant) un peu partout... +
+image:20240523_Viva-Tech_NVidia-AWS_01.jpg[width=800]
+
+
+
+
+
