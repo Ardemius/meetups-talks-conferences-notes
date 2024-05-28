@@ -58,7 +58,7 @@ image:20240522_Viva-Tech_Tech-Rocks_01.jpg[width=800]
 
 * 3 domaines clés qui drive la croissance en France en matière de sécurité
     ** Data security & encryption
-    ** NIS2 : compliance
+    ** NIS 2 : compliance
     ** *Cyber for AI*
 
 image:20240522_Viva-Tech_Tech-Rocks_02.jpg[width=800]
@@ -317,6 +317,33 @@ image:20240524_Viva-Tech_Tech-Rocks_07.jpg[width=800]
 .Elements of AI risk
 image:20240524_Viva-Tech_Tech-Rocks_08.jpg[width=800]
 
+== Conférences publiques
+
+=== Interview de Yann LECUN
+
+* Talk actuellement disponible via cet enregistrement au smartphone sur YouTube (qualité médiocre mais l'essentiel est là, on comprend) : https://www.youtube.com/watch?v=cmZ6nHujo50
+
+* 4 caractéristiques pour caractériser les systèmes intelligents et que les LLMs ne possèdent pas : +
+    ** they can understand the "*understand the physical world*"
+    ** they have a *persistent memory*
+    ** they are able to *reason*
+    ** they can *plan*
+
+* -> Ce sont là les challenges de l'IA pour les prochaines années ou la dizaine d'années à venir
+    ** Il s'agit de la prochaine génération de systèmes d'IA après les LLM.
+
+* Intelligence is not a linear scale on which you can just measure if something is more intelligent or less intelligent. +
+It's a collection of skills and a capacity to acquire new skills quickly.
+
+* Yann : *JEPA*, *Joint Embedding Predictive Architecture*, est une technique *NON générative* représentant la prochaine génération de système IA et la vision de Yann LECUN d'une "AMI" (Advanced Machine Intelligence)
+    ** JEPA va permettent de chercher / prédire la séquence d'actions permettant d'arriver au prochain état représentant mon objectif (à "t + 1")
+    ** C'est un objectif à 5 ou 10 ans
+
+* Le *danger de l'IA Gen* aujourd'hui : *fake images and videos*
+    ** Pour être plus précis, le problème est en fait la "*dissémination*" trop simple et trop rapide de ces fakes.
+
+* La communication vocale des systèmes va leur permettre de se faire comprendre dans les nombreux coins du monde où l'illettrisme est fort.
+
 == Stands
 
 === LightOn
@@ -388,7 +415,8 @@ image:20240523_Viva-Tech_Inetum_05.jpg[width=800]
 === Ampere
 
 * *Ampere* sur le stand de *Scaleway*
-* ils développent un CPU avec un très bon rapport puissance / watts consommés
+    ** échange avec Gary Peak, sales director (gpaek@amperecomputing.com) et xxx
+* Ils développent un CPU avec un très bon rapport puissance / watts consommés
 * Ce type de CPU est disponible chez tous les hyperscaleurs ainsi que d'autres hébergeurs (dont Scaleway bien sûr !)
 * Pour accéder à ces CPU sur Azure, il faut utiliser des Dpsv5 +
 image:20240524_Viva-Tech_Ampere_01.jpg[width=800]
@@ -432,24 +460,33 @@ image:20240523_Viva-Tech_delupay_01.jpg[width=400]
 * *SNCF* et son simulateur de cabine de TGV +
 image:20240523_Viva-Tech_sncf_01.jpg[width=800]
 
-* *Volocity* le prochain taxi volant
+* *Volocity*, le prochain taxi volant de la société Volocopter
 image:20240523_Viva-Tech_volocity_01.jpg[width=800]
 +
 video::20240523_Viva-Tech_volocity_02.mp4[width=800]
+    ** L'objectif pour Volocity est d'obtenir la MEME certification que pour un Airbus A-320 pour les JO afin de faire voler le Volocity pour la 1ere fois à cette occasion, et au-dessus de Paris.
+        *** "Si on y arrive au-dessus d'une ville comme Paris, alors tout le monde comprendra qu'on peut le faire partout"
+    *** Volocopter est associé sur ce projet au Groupe ADP, à la Direction Générale de l'Aviation Civile et à la Région Ile-de-France. +
+    Cf https://presse.groupeadp.fr/uam-volocoter-groupeadp/?lang=fr[] : +
+    "Le Groupe ADP et Volocopter, aux côtés de la Direction Générale de l'Aviation Civile et de la Région Ile-de-France, ont confirmé que l'ensemble des conditions sont réunies pour un lancement des premiers services de eVTOL (aéronefs électriques à décollage et atterrissage vertical) au-dessus du ciel francilien à l'occasion des Jeux Olympiques et Paralympiques 2024. +
+    S'achève plus d'un an de tests réussis sur le vertiport de Pontoise, sur l'ensemble des aspects (sécurité, intégration dans l'espace aérien, acceptabilité, parcours passagers) : c'est plus de 20 vols réalisés, près de 200 km parcourus et 1000 visiteurs accueillis."
 
 * *Sabi Agri* le robot destiné à l'agriculture +
 image:20240523_Viva-Tech_sabi-agri_01.jpg[width=800]
 
-* *La Poste* et son fantastique Lego motorisé de 103 000 pièces et 8 mois de travail +
+* *La Poste* et son fantastique Lego (plateforme courrier (PFC) Normandie) motorisé de 103 000 pièces et 8 mois de travail +
 image:20240523_Viva-Tech_La-Poste_01.jpg[width=800]
 +
 video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
 
-* *Renault* et sa future gamme utilitaire FlexEVan, ici déclinée en une salle de consultation médicale mobile : le U1st Vision +
-image:20240524_Viva-Tech_Renault_02.jpg[width=800]
-image:20240524_Viva-Tech_Renault_03.jpg[width=800]
-    ** La société derrière ce concept récupère des données de santé OpenData ET de la société "Kanopy" (à vérifier) pour déployer ce van dans les lieux où les médecins manquent le plus (déserts médicaux)
-    image:20240524_Viva-Tech_Renault_01.jpg[width=800]
+* *Software Republic* : association regroupant Renault, orange, Dassault system, JC Decaux, ST microélectronic, Atos, tout un ensemble de grosses sociétés qui s'associent avec des sociétés plus petites pour réaliser des projets très concrets. Ici une initiative d'*Open Innovation* : une cabine de santé mobile (*U1st Vision*) pouvant réaliser des tests assez profonds avec pour vocation d'être déployée dans les lieux où les médecins manquent le plus (déserts médicaux)
+    ** il s'agit d'un véhicule électrique reposant sur le socle de la nouvelle game utilitaire FlexEvan de Renault +
+    image:20240524_Viva-Tech_Renault_02.jpg[width=800]
+    image:20240524_Viva-Tech_Renault_03.jpg[width=800]
+    ** Withings, si j'ai bien compris, va équiper en matériel médical (?)
+    ** Toujours si j'ai bien compris, c'est Dassault qui est derrière le soft permettant de trouver les endroits où le van serait le plus utile.
+        *** Sur le stand, il m'avait également dit que les données utilisées pour ce soft étaient des open data ET des données de la société "Kanopy" (à vérifier) qui est habilitée à traiter des données personnelles / sensibles / de santé.
+    image:20240524_Viva-Tech_Renault_01.jpg[width=800]  
 
 == Echanges / discussions
 
