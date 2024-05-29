@@ -520,6 +520,8 @@ video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
     ** *AdCreative.ai* : qui permet la création de visuels / d'images via l'IA Gen "in seconds" +
     https://www.adcreative.ai/ 
 
+* Le secteur de l'*éducation* : là aussi à l'aide d'*assistants personnalisés*, de véritables *professeurs particuliers* pour nos enfants, toujours bienveillants.
+
 * Le *secteur de la santé* également très présent : 
 
     ** *Assistant médical personnalisé* backé par l'IA / l'IA Gen
@@ -548,7 +550,5 @@ image:20240523_Viva-Tech_SeamlessExpressive_01.jpg[width=800]
 * *NVidia* est présent (et mis en avant) un peu partout... +
 image:20240523_Viva-Tech_NVidia-AWS_01.jpg[width=800]
 
-
-aide scolaire
 
 
