@@ -501,7 +501,7 @@ video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
 
 == Synthèse et avis sur le salon
 
-* De l'IA, surtout de l'IA générative, presque partout
+* De l'*IA*, surtout de l'*IA générative*, presque *partout*
 
 * Le *secteur du luxe* très représenté et vraiment à la pointe : +
 image:20240523_Viva-Tech_luxe_01.jpg[width=800]
@@ -514,8 +514,9 @@ image:20240523_Viva-Tech_luxe_02.jpg[width=800]
     image:20240523_Viva-Tech_luxe_05.jpg[width=800]
 
 * Le *secteur de la publicité* et de la *création graphique* / visuelle associée également très représenté
-    ** *Omi*, chez *Meta*, un 3D generative AI tool permettant de créer des assets pour le marketing, sans compétence technique : +
-    video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
+    ** *Omi*, chez *Meta*, un 3D generative AI tool permettant de créer des assets pour le marketing, sans compétence technique : 
++
+video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
     ** *AdCreative.ai* : qui permet la création de visuels / d'images via l'IA Gen "in seconds" +
     https://www.adcreative.ai/ 
 
@@ -527,15 +528,16 @@ image:20240523_Viva-Tech_luxe_02.jpg[width=800]
 
     ** cabine consultation mobile pouvant être présente dans les lieux en ayant le plus besoin ("déserts médicaux")
 
-* l'écologie / le *numérique responsable* via la recherche d'une meilleure performance énergétique
+* l'écologie / le *numérique responsable* via la recherche d'une *meilleure performance énergétique*
     ** Exemple avec les processeurs Ampère proposant un très bon ratio performance / watts consommés
 
 * Problématiques de *sécurité* présentes : 
-    ** SLM souvent présent pour disposer d'une solution tournant localement sur portable
+    ** SLM souvent présent pour disposer d'une solution *tournant localement sur portable*
+    ** De plus, les *1eres attaques à la supply chain* apparaissent du côté de l'IA Gen avec des *modèles corrompus*
 
 [NOTE]
 ====
-* L'un des "graals" du moment, l'une des tendances à mon avis durable, est la création d'agent IA *personnalisés* pour chaque utilisateur.
+* L'un des "graals" du moment, l'une des tendances à mon avis durable, est la création d'agent IA, d'*assistants personnalisés* pour chaque utilisateur.
 ====
 
 * Maintenant que l'IA est capable de "bien parler", on cherche à lui donner *"le bon ton"*, à *rajouter de l'émotion* dans ce qu'elle dit +
@@ -547,6 +549,6 @@ image:20240523_Viva-Tech_SeamlessExpressive_01.jpg[width=800]
 image:20240523_Viva-Tech_NVidia-AWS_01.jpg[width=800]
 
 
-
+aide scolaire
 
 
