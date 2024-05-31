@@ -335,6 +335,8 @@ image:20240524_Viva-Tech_Tech-Rocks_08.jpg[width=800]
 * Intelligence is not a linear scale on which you can just measure if something is more intelligent or less intelligent. +
 It's a collection of skills and a capacity to acquire new skills quickly.
 
+* Conseil de Yann aux étudiants en informatique aujourd'hui : ne choisissez pas de vous spécialiser dans les *LLM*, *ils ne sont PAS le futur*, d'ici 5 à 10 ans, il est probable que nous soyons passés à autre chose.
+
 * Yann : *JEPA*, *Joint Embedding Predictive Architecture*, est une technique *NON générative* représentant la prochaine génération de système IA et la vision de Yann LECUN d'une "AMI" (Advanced Machine Intelligence)
     ** JEPA va permettent de chercher / prédire la séquence d'actions permettant d'arriver au prochain état représentant mon objectif (à "t + 1")
     ** C'est un objectif à 5 ou 10 ans
@@ -416,7 +418,8 @@ image:20240523_Viva-Tech_Inetum_05.jpg[width=800]
 
 * *Ampere* sur le stand de *Scaleway*
     ** échange avec Gary Peak, sales director (gpaek@amperecomputing.com) et xxx
-* Ils développent un CPU avec un très bon rapport puissance / watts consommés
+* Ils développent un CPU sur base ARM avec un très bon rapport puissance / watts consommés
+    ** Ce CPU n'est PAS fait pour l'entraînement des modèles d'IA MAIS pour l'*inférence*.
 * Ce type de CPU est disponible chez tous les hyperscaleurs ainsi que d'autres hébergeurs (dont Scaleway bien sûr !)
 * Pour accéder à ces CPU sur Azure, il faut utiliser des Dpsv5 +
 image:20240524_Viva-Tech_Ampere_01.jpg[width=800]
