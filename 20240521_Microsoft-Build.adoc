@@ -72,4 +72,63 @@ image:20240521_Microsoft-Build_02.jpg[]
 
 * Vector search disponible sur Cosmos DB
 
+== 2024/06/04 - REX sur Microsoft Build (par Microsoft)
+
+* Azure Cobalt : des CPU très efficaces pour certaines tâches de l'IA, et très peu consommateurs en énergie
+
+* Copilot dans Azure : +
+image:20240604_Microsoft-Build-REX_01.jpg[]
+
+* Exemple de plusieurs Copilot spécifiques créés par différents clients de Microsoft : Clarence, Groupama
+    ** Groupama : Copilot vocal développé
+    ** Des Copilot sur tenant Azure en contrat entreprise
+
+* *GPT-4o* : 
+    ** Multimodal input and output
+    ** real-time
+    ** Safe by design
+
+* *modèle Phi-3* : +
+image:20240604_Microsoft-Build-REX_02.jpg[]
+    ** open source
+    ** entraîné comme on éduque un enfant
+    ** sur des corpus de données plus petit
+    ** moins puissant qu'un GPT-4 MAIS bien suffisant pour bien des usages
+    ** ET SURTOUT, parfaitement adapté à un déploiement sur mobile
+
+* Microsoft Copilot :
+
+.La Copilot Stack
+image:20240604_Microsoft-Build-REX_06.jpg[]
+
+    ** Maintenant, on peut avoir un *Copilot d'équipe* +
+    image:20240604_Microsoft-Build-REX_03.jpg[]
+
+* Mise en avant du Low Code avec Copilot Studio
+    ** Destiné au Low code developer, qui va pouvoir créer son application avec Copilot Studio et PowerBI SANS avoir besoin de passer par une équipe de dev +
+    image:20240604_Microsoft-Build-REX_04.jpg[]
+
+* De plus en plus en va "montrer" son écran à l'IA qui va analyser ce qu'il y a dessus (multimodal) pour nous conseiller / aider
+
+* "moins 12x sur le prix et x6 sur la vitesse"
+
+* *Secure Future Initiative* (SFI)
+    ** On devient plus restrictif sur la sécurité
+    ** les VMs ne seront plus exposées par défaut sur Internet
+    ** L'authentification ne sera plus en login / mdp par défaut (à vérifier)
+
+* *Built-in security and safety system* +
+image:20240604_Microsoft-Build-REX_05.jpg[]
+    ** basé sur les éléments de sécurité : Microsoft Purview, Azure AI Content Safety, HiddenLayer Model Scanner, Monitoring avec Microsoft Defender
+    ** Au final une *chaîne de défense de bout en bout* (*Secure by design*)
+    ** A laquelle on peut ajouter Prompt Shield pour analyser le prompt et vérifier qu'il ne contient pas des éléments interdits, toxiques, etc. (fonction de mon usage)
+
+* Les évènements Microsoft : Build puis 6 mois plus tard Ignite
+    ** et il y a également le Club Azure Insiders +
+    image:20240604_Microsoft-Build-REX_07.jpg[]
+    
+    ** 13/06 Data & IA sur MS Build : aka.ms/ClubData
+
+
+
 

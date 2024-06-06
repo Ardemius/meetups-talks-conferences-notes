@@ -132,7 +132,7 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
         *** Donc une notion proche de celle des conteneurs.
 
 * Repenser le *réseau étendu dans une perspective Cloud*, un concept auquel Gartner a donné le nom de *Secure Access Service Edge*, ou *SASE* (prononcer sassy).
-    ** Dans une architecture SASE, les services Cloud gèrent l’authentification et plus largement toute la sécurité du réseau, et une *couche d’abstraction logicielle permet de gérer l’infrastructure réseau* : le *SD-WAN*, *Software-Defined Wide Area Network*. Les services de SD-WAN permettent d’agréger plusieurs types d’infrastructures d’un ou plusieurs fournisseurs (MPLS, fibre, SDSL, 4G…) et de gérer ainsi des réseaux complexes de manière centralisée, industrialisée et simple.
+    ** Dans une architecture SASE, les services Cloud gèrent l'authentification et plus largement toute la sécurité du réseau, et une *couche d'abstraction logicielle permet de gérer l'infrastructure réseau* : le *SD-WAN*, *Software-Defined Wide Area Network*. Les services de SD-WAN permettent d'agréger plusieurs types d'infrastructures d'un ou plusieurs fournisseurs (MPLS, fibre, SDSL, 4G…) et de gérer ainsi des réseaux complexes de manière centralisée, industrialisée et simple.
 
 * *Plateformes Back*
     ** *MACH* est un acronyme qui signifie Microservices (ou Modules-based), API-first, Cloud native et Headless.
@@ -146,10 +146,10 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 * *REST vs GraphQL*
 
     ** REST : 
-        *** différents points d’accès (endpoints) selon les données que le producteur d’API va mettre à disposition
+        *** différents points d'accès (endpoints) selon les données que le producteur d'API va mettre à disposition
         *** Erreurs et validation des données : Dans une API REST, le serveur renvoie généralement des codes d'erreur HTTP pour indiquer les échecs, comme 404 pour "non trouvé" ou 500 pour "erreur de serveur".
     ** GraphQL : 
-        *** un seul point d’accès permet d’accéder à l’ensemble de la donnée, et c’est le consommateur qui choisira celle qu’il souhaite récupérer.
+        *** un seul point d'accès permet d'accéder à l'ensemble de la donnée, et c'est le consommateur qui choisira celle qu'il souhaite récupérer.
         *** Erreurs et validation des données : Dans une API GraphQL, le serveur peut renvoyer des messages d'erreur détaillés avec les données, ce qui facilite la gestion et le débogage des problèmes par le client.
     ** Conclusion : *GraphQL* peut être un bon choix pour construire des API qui doivent être *flexibles* et *personnalisables*, tandis que *REST* peut être un bon choix pour les API qui suivent un *design plus standard et établi*.
 
@@ -171,11 +171,11 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 * *FinOps*
     ** Avec le Cloud, il devient possible de ventiler le coût de chaque service, à la seconde près, en fonction des produits business
     ** MAIS cela ne peut être fait qu'après la *labellisation des ressources Cloud*
-        *** Ce plan d’étiquetage des ressources est la pierre angulaire de la démarche FinOps
+        *** Ce plan d'étiquetage des ressources est la pierre angulaire de la démarche FinOps
 
 * *Transformation des CCoE (Cloud Center of Excellence) en CC4E (Cloud Center FOR Excellence)*
     ** Pour diffuser plus largement le savoir et le savoir-faire cloud au sein des entreprises, transformation des CCoE en CC4E (dans cette optique d'acculturation)
-    ** Les débats sur le cloud souverain et le cloud de confiance ont mis en évidence des besoins, et finalement donné naissance à une *nouvelle forme de cloud*, où les hyperscalers deviennent fournisseurs d'infrastructures de cloud sans en assurer le run (par exemple S3NS, la co-entreprise managée par Thalès, qui s’appuie sur les technologies de Google Cloud).
+    ** Les débats sur le cloud souverain et le cloud de confiance ont mis en évidence des besoins, et finalement donné naissance à une *nouvelle forme de cloud*, où les hyperscalers deviennent fournisseurs d'infrastructures de cloud sans en assurer le run (par exemple S3NS, la co-entreprise managée par Thalès, qui s'appuie sur les technologies de Google Cloud).
 
 * *La sécurité et le Cloud*
 
@@ -183,9 +183,9 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 
     ** émergence de la *Security as Code* : 
         *** politique de sécurité as code : +
-        Par exemple, l’interdiction globale de rendre publique n'importe quel bucket appartenant à l'organisation (via Google Organization Policies, AWS Security Control Policies ou encore Azure Security Policies).
-        *** règles de configuration des ressources d’infrastructure cloud as code : inspectent les scripts IaC : +
-        Ce sont les règles de bonne configuration de chaque produit cloud qui sont évaluées avant le déploiement et le stoppent si une non conformité a été détectée (exemples d’outils : Checkov, KICS, Spectral, tfsec…).
+        Par exemple, l'interdiction globale de rendre publique n'importe quel bucket appartenant à l'organisation (via Google Organization Policies, AWS Security Control Policies ou encore Azure Security Policies).
+        *** règles de configuration des ressources d'infrastructure cloud as code : inspectent les scripts IaC : +
+        Ce sont les règles de bonne configuration de chaque produit cloud qui sont évaluées avant le déploiement et le stoppent si une non conformité a été détectée (exemples d'outils : Checkov, KICS, Spectral, tfsec…).
 
 * *Data* : in my repo about Data
 
