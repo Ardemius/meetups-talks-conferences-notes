@@ -44,6 +44,8 @@ image:20240522_Viva-Tech_Tech-Rocks_00b.jpg[width=800]
 .Planning des sessions Tech Rocks
 image:20240522_Viva-Tech_Tech-Rocks_00a.jpg[width=800]
 
+    * Voir également https://vivatechnology.com/cto-program
+
 .Le Hall 1 de Viva Tech
 image:20240522_Viva-Tech_Tech-Rocks_00c.jpg[width=800]
 
@@ -504,8 +506,19 @@ video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
 
 == Synthèse et avis sur le salon
 
+* Quelques chiffres sur le salon lui-même : 
+
+	* 165 000 visiteurs (+10% par rapport à 2023) de plus de 160 pays, contre 140 000 pour le CES Las Vegas
+		** le plus gros évènement tech d'Europe et peut-être du monde
+	* 13 500 startups (+20% par rapport à 2023)
+	* 2 800 exposants
+    * 450 conférenciers
+	* 37% de contenu sur l'IA
+    * Et toujours des personnalités de tous les domaines : politiques, économiques, technologiques, industriels, sportives etc.
+        ** Yann LeCun, Elon Musk, Bernard Arnault, Agnès Pannier-Runacher, les soeurs Williams, etc.
+
 * De l'*IA*, surtout de l'*IA générative*, presque *partout* et d'ici peu, des *assistants PERSONNALISES* (c'est vraiment le concept clé) dans toutes les poches (via nos smartphones)
-    ** On assiste vraiment à la diffusion de l'IA générative chez chacun et chacun via ces assistants personnalisés qui vous comprennent, là où auparavant c'était à nous de nous "adapter à eux / à la technologie"
+    ** On assiste vraiment à la diffusion de l'IA générative chez chacun et chacune via ces assistants personnalisés qui vous comprennent, là où auparavant c'était à nous de nous "adapter à eux / à la technologie"
         *** Le mot de François Bitouzet, directeur général de VivaTech : +
         "Aujourd'hui, la technologie va parler votre langue, alors qu'auparavant c'était vous qui deviez vous adapter à la technologie"
 
@@ -556,5 +569,7 @@ image:20240523_Viva-Tech_SeamlessExpressive_01.jpg[width=800]
 * *NVidia* est présent (et mis en avant) un peu partout... +
 image:20240523_Viva-Tech_NVidia-AWS_01.jpg[width=800]
 
+=== Ressources et autres REX sur le salon
 
+* https://www.micropole.com/a-la-une/viva-tech-2024-restitution/
 
