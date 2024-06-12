@@ -484,7 +484,7 @@ image:20240523_Viva-Tech_La-Poste_01.jpg[width=800]
 +
 video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
 
-* *Software Republic* : association regroupant Renault, orange, Dassault system, JC Decaux, ST microélectronic, Atos, tout un ensemble de grosses sociétés qui s'associent avec des sociétés plus petites pour réaliser des projets très concrets. Ici une initiative d'*Open Innovation* : une cabine de santé mobile (*U1st Vision*) pouvant réaliser des tests assez profonds avec pour vocation d'être déployée dans les lieux où les médecins manquent le plus (déserts médicaux)
+* *Software République* : association regroupant Renault, orange, Dassault system, JC Decaux, ST microélectronic, Atos, tout un ensemble de grosses sociétés qui s'associent avec des sociétés plus petites pour réaliser des projets très concrets. Ici une initiative d'*Open Innovation* : une cabine de santé mobile (*U1st Vision*) pouvant réaliser des tests assez profonds avec pour vocation d'être déployée dans les lieux où les médecins manquent le plus (déserts médicaux)
     ** il s'agit d'un véhicule électrique reposant sur le socle de la nouvelle game utilitaire FlexEvan de Renault +
     image:20240524_Viva-Tech_Renault_02.jpg[width=800]
     image:20240524_Viva-Tech_Renault_03.jpg[width=800]
@@ -545,7 +545,8 @@ video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
 
     ** *Assistant médical personnalisé* backé par l'IA / l'IA Gen
         *** Voir la solution EVIDEN chez IBM : un *assistant personnalisé*, fonctionnant en local du fait des données sensibles associées
-            **** Cette problématique de sécurité / confidentialité des données dans le cadre de l'IA Gen revient de plus en plus souvent : il faut être capable de *faire tourner les modèles "en local"* (on the edge) pour *garantir la sécurité des données* en évitant autant que possible tout transfert de ces dernières.
+            **** Cette problématique de sécurité / confidentialité des données dans le cadre de l'IA Gen revient de plus en plus souvent : il faut être capable de *faire tourner les modèles "en local"* (on edge) pour *garantir la sécurité des données* en évitant autant que possible tout transfert de ces dernières.
+            **** Voir la brève https://www.linkedin.com/posts/eviden_vivatech2024-u1stvision-smartmobility-activity-7199405131333787648-9B3z/
 
     ** cabine consultation mobile pouvant être présente dans les lieux en ayant le plus besoin ("déserts médicaux")
 
@@ -561,7 +562,8 @@ video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
 * L'un des "graals" du moment, l'une des tendances à mon avis durable, est la création d'agent IA, d'*assistants personnalisés* pour chaque utilisateur.
 ====
 
-* Maintenant que l'IA est capable de "bien parler", on cherche à lui donner *"le bon ton"*, à *rajouter de l'émotion* dans ce qu'elle dit +
+* Maintenant que l'IA est capable de "bien parler", on cherche à lui donner *"le bon ton"*, à *rajouter de l'émotion* dans ce qu'elle dit. +
+-> L'IA se veut de plus en plus *anthropomorphique*. +
 image:20240523_Viva-Tech_SeamlessExpressive_01.jpg[width=800]
 
     ** Ce que l'on a également vu dans la dernière conf OpenAI et lors de la Google I/O
