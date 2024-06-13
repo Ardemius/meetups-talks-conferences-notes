@@ -66,36 +66,36 @@ Programme :
 Intro par Eric Charbonnier, CTO Data & IA Microsoft
 
 .La Microsoft Intelligent Data Platform
-image:20240116_Microsoft_Data-Innovation-Day_01.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_01.jpg[width=800]
 
 * Retour sur la dernière MS Build avec de nouveau un *Fabric* mis très en avant : +
-image:20240116_Microsoft_Data-Innovation-Day_02.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_02.jpg[width=800]
 
 * From Fabric to a "Fabric store" : donner la possibilité à chacun de se créer son propre workflow Fabric
     ** *Microsoft Fabric Workload Development Kit* +
-    image:20240116_Microsoft_Data-Innovation-Day_03.jpg[]
+    image:20240116_Microsoft_Data-Innovation-Day_03.jpg[width=800]
 
 * Microsoft rappelle son fort partenariat avec *Databricks*, dont il utilise le format "Delta Parquet" (*Delta lake format*)
     ** ET grande annonce de build : le format *Iceberg* est maintenant également supporté +
-    image:20240116_Microsoft_Data-Innovation-Day_04.jpg[]
+    image:20240116_Microsoft_Data-Innovation-Day_04.jpg[width=800]
 * ET le partenariat de Microsoft avec *Snowflake* a été renforcé : +
-image:20240116_Microsoft_Data-Innovation-Day_05.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_05.jpg[width=800]
     ** Il ne sera plus nécessaire de dupliquer de la Data entre Fabric et Snowflake
 
 * Comme vu dans les précédentes conf MS, les *Copilot* sont maintenant présents dans tous les produits Fabric : +
-image:20240116_Microsoft_Data-Innovation-Day_06.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_06.jpg[width=800]
     ** et génération automatique du code SQL associé à la question en NLP de l'utilisateur +
     image:20240116_Microsoft_Data-Innovation-Day_07.jpg[]
 
 * Compliqué de bâtir aujourd'hui une *solution Temps Réel*, qui implique de nombreuses technologies : +
-image:20240116_Microsoft_Data-Innovation-Day_08.jpg[]
-image:20240116_Microsoft_Data-Innovation-Day_09.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_08.jpg[width=800]
+image:20240116_Microsoft_Data-Innovation-Day_09.jpg[width=800]
 
 * Avec Microsoft Fabric, on va pouvoir créer en quelques minutes une solution d'analyse en TR +
-image:20240116_Microsoft_Data-Innovation-Day_10.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_10.jpg[width=800]
 
 *DEMO* : récupération d'infos en TR des panneaux solaires installés sur le toit de la maison du speaker 😉 +
-image:20240116_Microsoft_Data-Innovation-Day_11.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_11.jpg[width=800]
 
 * Nouveauté : détection automatique d'anomalies (à l'aide du langage KQL)
 
@@ -107,18 +107,18 @@ Présentation de Nicolas SAVIDES, *NVidia*, Microsoft Alliance Manager, EMEA
     * Mais comme tout le monde n'a pas forcément envie de retourner coder sur des couches basses, NVidia a développé de nombreux frameworks.
 
 * Il y a des cas où l'on ne peut pas faire se servir d'un modèle via un appel API, il faudra le faire tourner chez soi : +
-image:20240116_Microsoft_Data-Innovation-Day_12.jpg[]
-image:20240116_Microsoft_Data-Innovation-Day_13.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_12.jpg[width=800]
+image:20240116_Microsoft_Data-Innovation-Day_13.jpg[width=800]
 
 * NIM : NVidia Inference Microservices
 
-image:20240116_Microsoft_Data-Innovation-Day_14.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_14.jpg[width=800]
 
 -> NVidia met maintenant très en avant son expertise en conseil pour déployer des stacks IA sur son matériel ET sa plateforme logicielle (*NVidia AI Entreprise*) +
-image:20240116_Microsoft_Data-Innovation-Day_15.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_15.jpg[width=800]
 
 L'idée de Nvidia est de *vous aider à passer le plus rapidement possible en PROD* avec vos pipelines d'IA et avec le meilleur ROI : +
-image:20240116_Microsoft_Data-Innovation-Day_16.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_16.jpg[width=800]
 
 * L'idée des NIM est de garder une liberté complète sur son mode de déploiement
 
@@ -134,16 +134,17 @@ image:20240116_Microsoft_Data-Innovation-Day_16.jpg[]
 * *Model Catalog* dans Azure : le meilleur catalogue de foundation models sur Azure
 
 * Nouveauté : mise à disposition du *SLM Phi-3* en Model as a Service
-image:20240116_Microsoft_Data-Innovation-Day_17.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_17.jpg[width=800]
     ** Phi-3 medium 14 Mds de paramètres
     ** Phi-3 sera le modèle derrière la nouvelle gamme de PC Microsoft
 
 * *Assistants API* : Azure OpenAI Service +
-image:20240116_Microsoft_Data-Innovation-Day_18.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_18.jpg[width=800]
     ** Les Assistants API viennent aider les développeurs en leur fournissant un set d'API que l'on va pouvoir très facilement connecter à nos solutions
 
 image:20240116_Microsoft_Data-Innovation-Day_19.jpg[]
 image:20240116_Microsoft_Data-Innovation-Day_20.jpg[]
+
 * L'assistant via le "code interpreter" va lui-même chercher comment interprêter le fichier donné 
 
 * Eric : *Phi-3*, la plus petite version, ~2 Mds de paramètres, a été installée sur son PC
@@ -156,10 +157,10 @@ Open AI : the evolution of LLMs
 * talk de Katia G Guzman, solution Architect chez Open AI
 
 .Evolution de GPT-3 à GPT-4 : beaucoup plus de use cases de disponibles
-image:20240116_Microsoft_Data-Innovation-Day_22.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_22.jpg[width=800]
 
 .Et avec GPT-4o on ajoute la voix, l'image et la video
-image:20240116_Microsoft_Data-Innovation-Day_23.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_23.jpg[width=800]
 
 * GPT-4o : a step towards natural human-computer interaction
     ** avec une demo bluffante : 
@@ -169,22 +170,22 @@ image:20240116_Microsoft_Data-Innovation-Day_23.jpg[]
         *** On aura accès aux fonctionnalités de cette démo d'ici quelques semaines
 
 * Benchmark provenant de la *Chatbot Arena* : "LLM 6" +
-image:20240116_Microsoft_Data-Innovation-Day_24.jpg[]
-    ** GPT-4o correspond ici à "I'm also a good..."
+image:20240116_Microsoft_Data-Innovation-Day_24.jpg[width=800]
+    ** GPT-4o correspond ici à "I'm also a good GPT2 chatbot" et est de loin le meilleur
     ** il est meilleur que GPT-4 turbo dans presque tous les cas ET il est moins cher
 
 * "*GPT-4o* à comparer à l'intelligence d'un *enfant de 5 ans*"
     ** Katia : *on vise un niveau PHD* a plutôt court terme : *on raisonne ici en mois*
 
 * Katia confirme que les prix de l'usage des modèles vont continuer de baisser +
-image:20240116_Microsoft_Data-Innovation-Day_25.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_25.jpg[width=800]
 
 * Orientation vers la *customisation des modèles* : une version fine-tunée d'un GPT-3.5 turbo pourra obtenir de meilleurs résultats qu'un GPT-4 +
-image:20240116_Microsoft_Data-Innovation-Day_26.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_26.jpg[width=800]
 
 * *Développement de la multimodalité* : 
-image:20240116_Microsoft_Data-Innovation-Day_27.jpg[]
-image:20240116_Microsoft_Data-Innovation-Day_28.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_27.jpg[width=800]
+image:20240116_Microsoft_Data-Innovation-Day_28.jpg[width=800]
     ** pour le moment pour GPT-4o, l'output vers l'audio et la vidéo n'est pas encore dispo dans l'API
 
 * Katia : 
