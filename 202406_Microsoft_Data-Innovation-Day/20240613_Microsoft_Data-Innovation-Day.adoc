@@ -1,0 +1,202 @@
+= 2024/01/16 - Microsoft - Data & IA Innovation Day
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Agenda
+
+* Voir Microsoft Event : https://msevents.microsoft.com/event?id=59699372
+
+Vous avez été plus de 500 à vous inscrire à la première en janvier. Comme l'actualité dans l'IA et l'analytique est très riche ces derniers temps, nous vous invitons le 13 juin à une nouvelle journée de présentation et de démonstrations. A quelques jours des Jeux Olympiques notre devise est « Altius Citius Fortius ». 
+
+Cette devise nous la déclinerons toute la journée, et spécialement le matin lors de la keynote afin de vous informer des dernières nouveautés de nos offres Data & IA intégrées dans nos services ces derniers mois. 
+
+L'après-midi sera consacrée à des sessions workshops Analytics et IA durant lesquelles vous aurez l'opportunité de prendre en main nos technologies avec nos experts partenaires. 
+
+Altius, plus vite avec la présentation des dernières annonces de l'évènement « Microsoft Build » et de la « FabCon » de Las Vegas. Nous reviendrons sur les dernières nouveautés de Microsoft Fabric, que ce soient des annonces autour de la sécurité, de l'intégration des sources de données, et bien évidement des dernières surprises qui seront annoncées fin mai. 
+
+Citius, plus haut avec une présentation par notre partenaire Nvidia de DGX Cloud dans Azure permettant de développer vos propres modèles d'IA générative. 
+
+Fortius, plus fort avec des zooms sur les toutes dernières annonces de Microsoft dans le domaine de l'IA. Les IA génératives sont maintenant disponibles depuis plus d'un an dans Azure. Ce sera aussi l'occasion de parler industrialisation de ces solutions via la pratique LLMOps.
+
+Programme : 
+
+    * 09:30 AM - 10:00 AM : Accueil & Café
+    * 10:00 AM - 12:00 PM : Plénière innovation animée par Eric Charbonnier, CTO Data & AI, Microsoft France
+    * 12:00 PM - 01:30 PM : Déjeuner & Networking
+    * 02:00 PM - 05:00 PM : Ateliers & Demo (4 tracks) +
+    image:20240116_Microsoft_Data-Innovation-Day_00.jpg[]
+    * 05:00 PM - 06:00 PM : Cocktail & Networking
+
+== Intro
+
+Intro par Eric Charbonnier, CTO Data & IA Microsoft
+
+.La Microsoft Intelligent Data Platform
+image:20240116_Microsoft_Data-Innovation-Day_01.jpg[]
+
+* Retour sur la dernière MS Build avec de nouveau un *Fabric* mis très en avant : +
+image:20240116_Microsoft_Data-Innovation-Day_02.jpg[]
+
+* From Fabric to a "Fabric store" : donner la possibilité à chacun de se créer son propre workflow Fabric
+    ** *Microsoft Fabric Workload Development Kit* +
+    image:20240116_Microsoft_Data-Innovation-Day_03.jpg[]
+
+* Microsoft rappelle son fort partenariat avec *Databricks*, dont il utilise le format "Delta Parquet" (*Delta lake format*)
+    ** ET grande annonce de build : le format *Iceberg* est maintenant également supporté +
+    image:20240116_Microsoft_Data-Innovation-Day_04.jpg[]
+* ET le partenariat de Microsoft avec *Snowflake* a été renforcé : +
+image:20240116_Microsoft_Data-Innovation-Day_05.jpg[]
+    ** Il ne sera plus nécessaire de dupliquer de la Data entre Fabric et Snowflake
+
+* Comme vu dans les précédentes conf MS, les *Copilot* sont maintenant présents dans tous les produits Fabric : +
+image:20240116_Microsoft_Data-Innovation-Day_06.jpg[]
+    ** et génération automatique du code SQL associé à la question en NLP de l'utilisateur +
+    image:20240116_Microsoft_Data-Innovation-Day_07.jpg[]
+
+* Compliqué de bâtir aujourd'hui une *solution Temps Réel*, qui implique de nombreuses technologies : +
+image:20240116_Microsoft_Data-Innovation-Day_08.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_09.jpg[]
+
+* Avec Microsoft Fabric, on va pouvoir créer en quelques minutes une solution d'analyse en TR +
+image:20240116_Microsoft_Data-Innovation-Day_10.jpg[]
+
+*DEMO* : récupération d'infos en TR des panneaux solaires installés sur le toit de la maison du speaker 😉 +
+image:20240116_Microsoft_Data-Innovation-Day_11.jpg[]
+
+* Nouveauté : détection automatique d'anomalies (à l'aide du langage KQL)
+
+Présentation de Nicolas SAVIDES, *NVidia*, Microsoft Alliance Manager, EMEA
+
+    * La *valeur de NVidia* est avant tout dans notre *plateforme logicielle*
+        ** plus que dans notre hardware -> je n'aurais jamais cru que c'était à ce point
+    * NVidia a plus d'ingénieurs logiciels que hardware
+    * Mais comme tout le monde n'a pas forcément envie de retourner coder sur des couches basses, NVidia a développé de nombreux frameworks.
+
+* Il y a des cas où l'on ne peut pas faire se servir d'un modèle via un appel API, il faudra le faire tourner chez soi : +
+image:20240116_Microsoft_Data-Innovation-Day_12.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_13.jpg[]
+
+* NIM : NVidia Inference Microservices
+
+image:20240116_Microsoft_Data-Innovation-Day_14.jpg[]
+
+-> NVidia met maintenant très en avant son expertise en conseil pour déployer des stacks IA sur son matériel ET sa plateforme logicielle (*NVidia AI Entreprise*) +
+image:20240116_Microsoft_Data-Innovation-Day_15.jpg[]
+
+L'idée de Nvidia est de *vous aider à passer le plus rapidement possible en PROD* avec vos pipelines d'IA et avec le meilleur ROI : +
+image:20240116_Microsoft_Data-Innovation-Day_16.jpg[]
+
+* L'idée des NIM est de garder une liberté complète sur son mode de déploiement
+
+* DGX Cloud : une version managée NVidia dans le tenant NVidia.
+    ** problématique quant à la transmission / récupération des données : comment récupérer les données du client final ?
+        *** C'est la problématique actuelle de NVidia : comment par exemple récupérer les données dans Fabric ?
+
+* *Azure AI Studio* est la tour de contrôle de l'IA Microsoft pour le développement d'applications : 
+    ** API and model choice
+    ** complete AI toolchain
+    ** xxx
+
+* *Model Catalog* dans Azure : le meilleur catalogue de foundation models sur Azure
+
+* Nouveauté : mise à disposition du *SLM Phi-3* en Model as a Service
+image:20240116_Microsoft_Data-Innovation-Day_17.jpg[]
+    ** Phi-3 medium 14 Mds de paramètres
+    ** Phi-3 sera le modèle derrière la nouvelle gamme de PC Microsoft
+
+* *Assistants API* : Azure OpenAI Service +
+image:20240116_Microsoft_Data-Innovation-Day_18.jpg[]
+    ** Les Assistants API viennent aider les développeurs en leur fournissant un set d'API que l'on va pouvoir très facilement connecter à nos solutions
+
+image:20240116_Microsoft_Data-Innovation-Day_19.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_20.jpg[]
+* L'assistant via le "code interpreter" va lui-même chercher comment interprêter le fichier donné 
+
+* Eric : *Phi-3*, la plus petite version, ~2 Mds de paramètres, a été installée sur son PC
+    ** et son PC n'a pas de GPU
+    ** exemple, qui prend 700Mo de mémoire (à vérifier) et a consommé 50% de CPU, le tout en déconnecté : +
+    image:20240116_Microsoft_Data-Innovation-Day_21.jpg[]
+
+Open AI : the evolution of LLMs
+
+* talk de Katia G Guzman, solution Architect chez Open AI
+
+.Evolution de GPT-3 à GPT-4 : beaucoup plus de use cases de disponibles
+image:20240116_Microsoft_Data-Innovation-Day_22.jpg[]
+
+.Et avec GPT-4o on ajoute la voix, l'image et la video
+image:20240116_Microsoft_Data-Innovation-Day_23.jpg[]
+
+* GPT-4o : a step towards natural human-computer interaction
+    ** avec une demo bluffante : 
+        *** modèle multimodal par défaut : *audio et vidéo*
+        *** réponse en *Temps Réel*
+        *** une conversation "naturelle" -> on revient sur l'orientation *anthropomorphique* de l'IA de nos jours
+        *** On aura accès aux fonctionnalités de cette démo d'ici quelques semaines
+
+* Benchmark provenant de la *Chatbot Arena* : "LLM 6" +
+image:20240116_Microsoft_Data-Innovation-Day_24.jpg[]
+    ** GPT-4o correspond ici à "I'm also a good..."
+    ** il est meilleur que GPT-4 turbo dans presque tous les cas ET il est moins cher
+
+* "*GPT-4o* à comparer à l'intelligence d'un *enfant de 5 ans*"
+    ** Katia : *on vise un niveau PHD* a plutôt court terme : *on raisonne ici en mois*
+
+* Katia confirme que les prix de l'usage des modèles vont continuer de baisser +
+image:20240116_Microsoft_Data-Innovation-Day_25.jpg[]
+
+* Orientation vers la *customisation des modèles* : une version fine-tunée d'un GPT-3.5 turbo pourra obtenir de meilleurs résultats qu'un GPT-4 +
+image:20240116_Microsoft_Data-Innovation-Day_26.jpg[]
+
+* *Développement de la multimodalité* : 
+image:20240116_Microsoft_Data-Innovation-Day_27.jpg[]
+image:20240116_Microsoft_Data-Innovation-Day_28.jpg[]
+    ** pour le moment pour GPT-4o, l'output vers l'audio et la vidéo n'est pas encore dispo dans l'API
+
+* Katia : 
+    ** "Don't build for what is available today but for what is coming"
+        *** On est bien d'accord...
+    ** "Don't let cost or latency be a blocker"
+
+
+
+
+
+
+
+
+
