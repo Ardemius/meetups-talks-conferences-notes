@@ -58,44 +58,44 @@ Programme :
     * 10:00 AM - 12:00 PM : Plénière innovation animée par Eric Charbonnier, CTO Data & AI, Microsoft France
     * 12:00 PM - 01:30 PM : Déjeuner & Networking
     * 02:00 PM - 05:00 PM : Ateliers & Demo (4 tracks) +
-    image:20240116_Microsoft_Data-Innovation-Day_00.jpg[]
+    image:20240613_Microsoft_Data-Innovation-Day_00.jpg[]
     * 05:00 PM - 06:00 PM : Cocktail & Networking
 
-== Intro
+== Keynotes du matin
 
 Intro par Eric Charbonnier, CTO Data & IA Microsoft
 
 .La Microsoft Intelligent Data Platform
-image:20240116_Microsoft_Data-Innovation-Day_01.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_01.jpg[width=800]
 
 * Retour sur la dernière MS Build avec de nouveau un *Fabric* mis très en avant : +
-image:20240116_Microsoft_Data-Innovation-Day_02.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_02.jpg[width=800]
 
 * From Fabric to a "Fabric store" : donner la possibilité à chacun de se créer son propre workflow Fabric
     ** *Microsoft Fabric Workload Development Kit* +
-    image:20240116_Microsoft_Data-Innovation-Day_03.jpg[width=800]
+    image:20240613_Microsoft_Data-Innovation-Day_03.jpg[width=800]
 
 * Microsoft rappelle son fort partenariat avec *Databricks*, dont il utilise le format "Delta Parquet" (*Delta lake format*)
     ** ET grande annonce de build : le format *Iceberg* est maintenant également supporté +
-    image:20240116_Microsoft_Data-Innovation-Day_04.jpg[width=800]
+    image:20240613_Microsoft_Data-Innovation-Day_04.jpg[width=800]
 * ET le partenariat de Microsoft avec *Snowflake* a été renforcé : +
-image:20240116_Microsoft_Data-Innovation-Day_05.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_05.jpg[width=800]
     ** Il ne sera plus nécessaire de dupliquer de la Data entre Fabric et Snowflake
 
 * Comme vu dans les précédentes conf MS, les *Copilot* sont maintenant présents dans tous les produits Fabric : +
-image:20240116_Microsoft_Data-Innovation-Day_06.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_06.jpg[width=800]
     ** et génération automatique du code SQL associé à la question en NLP de l'utilisateur +
-    image:20240116_Microsoft_Data-Innovation-Day_07.jpg[]
+    image:20240613_Microsoft_Data-Innovation-Day_07.jpg[]
 
 * Compliqué de bâtir aujourd'hui une *solution Temps Réel*, qui implique de nombreuses technologies : +
-image:20240116_Microsoft_Data-Innovation-Day_08.jpg[width=800]
-image:20240116_Microsoft_Data-Innovation-Day_09.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_08.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_09.jpg[width=800]
 
 * Avec Microsoft Fabric, on va pouvoir créer en quelques minutes une solution d'analyse en TR +
-image:20240116_Microsoft_Data-Innovation-Day_10.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_10.jpg[width=800]
 
 *DEMO* : récupération d'infos en TR des panneaux solaires installés sur le toit de la maison du speaker 😉 +
-image:20240116_Microsoft_Data-Innovation-Day_11.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_11.jpg[width=800]
 
 * Nouveauté : détection automatique d'anomalies (à l'aide du langage KQL)
 
@@ -107,18 +107,18 @@ Présentation de Nicolas SAVIDES, *NVidia*, Microsoft Alliance Manager, EMEA
     * Mais comme tout le monde n'a pas forcément envie de retourner coder sur des couches basses, NVidia a développé de nombreux frameworks.
 
 * Il y a des cas où l'on ne peut pas faire se servir d'un modèle via un appel API, il faudra le faire tourner chez soi : +
-image:20240116_Microsoft_Data-Innovation-Day_12.jpg[width=800]
-image:20240116_Microsoft_Data-Innovation-Day_13.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_12.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_13.jpg[width=800]
 
 * NIM : NVidia Inference Microservices
 
-image:20240116_Microsoft_Data-Innovation-Day_14.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_14.jpg[width=800]
 
 -> NVidia met maintenant très en avant son expertise en conseil pour déployer des stacks IA sur son matériel ET sa plateforme logicielle (*NVidia AI Entreprise*) +
-image:20240116_Microsoft_Data-Innovation-Day_15.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_15.jpg[width=800]
 
 L'idée de Nvidia est de *vous aider à passer le plus rapidement possible en PROD* avec vos pipelines d'IA et avec le meilleur ROI : +
-image:20240116_Microsoft_Data-Innovation-Day_16.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_16.jpg[width=800]
 
 * L'idée des NIM est de garder une liberté complète sur son mode de déploiement
 
@@ -134,33 +134,33 @@ image:20240116_Microsoft_Data-Innovation-Day_16.jpg[width=800]
 * *Model Catalog* dans Azure : le meilleur catalogue de foundation models sur Azure
 
 * Nouveauté : mise à disposition du *SLM Phi-3* en Model as a Service
-image:20240116_Microsoft_Data-Innovation-Day_17.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_17.jpg[width=800]
     ** Phi-3 medium 14 Mds de paramètres
     ** Phi-3 sera le modèle derrière la nouvelle gamme de PC Microsoft
 
 * *Assistants API* : Azure OpenAI Service +
-image:20240116_Microsoft_Data-Innovation-Day_18.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_18.jpg[width=800]
     ** Les Assistants API viennent aider les développeurs en leur fournissant un set d'API que l'on va pouvoir très facilement connecter à nos solutions
 
-image:20240116_Microsoft_Data-Innovation-Day_19.jpg[]
-image:20240116_Microsoft_Data-Innovation-Day_20.jpg[]
+image:20240613_Microsoft_Data-Innovation-Day_19.jpg[]
+image:20240613_Microsoft_Data-Innovation-Day_20.jpg[]
 
 * L'assistant via le "code interpreter" va lui-même chercher comment interprêter le fichier donné 
 
 * Eric : *Phi-3*, la plus petite version, ~2 Mds de paramètres, a été installée sur son PC
     ** et son PC n'a pas de GPU
     ** exemple, qui prend 700Mo de mémoire (à vérifier) et a consommé 50% de CPU, le tout en déconnecté : +
-    image:20240116_Microsoft_Data-Innovation-Day_21.jpg[]
+    image:20240613_Microsoft_Data-Innovation-Day_21.jpg[]
 
 Open AI : the evolution of LLMs
 
 * talk de Katia G Guzman, solution Architect chez Open AI
 
 .Evolution de GPT-3 à GPT-4 : beaucoup plus de use cases de disponibles
-image:20240116_Microsoft_Data-Innovation-Day_22.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_22.jpg[width=800]
 
 .Et avec GPT-4o on ajoute la voix, l'image et la video
-image:20240116_Microsoft_Data-Innovation-Day_23.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_23.jpg[width=800]
 
 * GPT-4o : a step towards natural human-computer interaction
     ** avec une demo bluffante : 
@@ -170,7 +170,7 @@ image:20240116_Microsoft_Data-Innovation-Day_23.jpg[width=800]
         *** On aura accès aux fonctionnalités de cette démo d'ici quelques semaines
 
 * Benchmark provenant de la *Chatbot Arena* : "LLM 6" +
-image:20240116_Microsoft_Data-Innovation-Day_24.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_24.jpg[width=800]
     ** GPT-4o correspond ici à "I'm also a good GPT2 chatbot" et est de loin le meilleur
     ** il est meilleur que GPT-4 turbo dans presque tous les cas ET il est moins cher
 
@@ -178,14 +178,14 @@ image:20240116_Microsoft_Data-Innovation-Day_24.jpg[width=800]
     ** Katia : *on vise un niveau PHD* a plutôt court terme : *on raisonne ici en mois*
 
 * Katia confirme que les prix de l'usage des modèles vont continuer de baisser +
-image:20240116_Microsoft_Data-Innovation-Day_25.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_25.jpg[width=800]
 
 * Orientation vers la *customisation des modèles* : une version fine-tunée d'un GPT-3.5 turbo pourra obtenir de meilleurs résultats qu'un GPT-4 +
-image:20240116_Microsoft_Data-Innovation-Day_26.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_26.jpg[width=800]
 
 * *Développement de la multimodalité* : 
-image:20240116_Microsoft_Data-Innovation-Day_27.jpg[width=800]
-image:20240116_Microsoft_Data-Innovation-Day_28.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_27.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_28.jpg[width=800]
     ** pour le moment pour GPT-4o, l'output vers l'audio et la vidéo n'est pas encore dispo dans l'API
 
 * Katia : 
@@ -193,6 +193,258 @@ image:20240116_Microsoft_Data-Innovation-Day_28.jpg[width=800]
         *** On est bien d'accord...
     ** "Don't let cost or latency be a blocker"
 
+== Atelier 3 : Pratiques avancées de l'IA Générative
+
+NIVEAU AVANCÉ - PARTENAIRE CELLENZA
+
+PROGRAMME
+
+    * *Retour (Rapide) sur les nouveautés "AI" de la build* : Azure Al Studio, modèles GPT-4 et phi-3, évolutions de systèmes de sécurisation du contenu.
+    * Prompt Management : Maîtriser un long prompt.
+    * *Function calling* : Appeler une API avec un LLM (et démontrer de la conso de data relationnelle dans cette API ?).
+    * *Web browsing* : intégration d'une recherche web.
+    * *RAG vs in context* : Est-ce cost efficient d'avoir plus de token.
+    * *Evaluation des LLMs* : Outils et méthodologie.
+    * *Monitoring* : Suivi de l'utilisation des LLMs: coût par utilisateur, par appel et mise en place de seuils (Quotas).
+    * *Scalabilité et Gouvernance* : Comment utiliser l'APIM pour suivre, load balancer et gérer les quotas.
+
+Intervenants : 
+
+    * Nicolas ROBERT : Technical Officer Cloud AI solutions chez Cellenza, MVP Microsoft AI
+    * xxx
+
+NOTES :
+
+* Cellenza "partenaire de l'année" de Microsoft sur l'IA
+    ** Cellenza est apte à faire passer des certifications pour le compte de Microsoft
+
+*NOUVEAUTES DE LA BUILD*
+
+image:20240613_Microsoft_Data-Innovation-Day_29.jpg[width=800]
+
+* Explosion de l'Azure AI Studio qui devient "Generally available" : cet outil a pour vocation d'être LE point d'entrée de tous les projets à base d'IA de Microsoft
+    ** possibilité de faire de l'évaluation de modèle : est-ce que le modèle répond pour de la vraie donnée ? Est-ce qu'il n'hallucine pas ?
+        *** on va pouvoir faire de l'évaluation manuelle, automatisée, et manuelle / aidée par l'IA (dernier point à creuser)
+
+.Les nouveautés d'Azure AI Studio 
+image:20240613_Microsoft_Data-Innovation-Day_30.jpg[width=800]
+
+    * MaaS : Microsoft as a Service
+
+image:20240613_Microsoft_Data-Innovation-Day_31.jpg[width=800]
+
+.GPT-4o : nouveau modèle
+image:20240613_Microsoft_Data-Innovation-Day_32.jpg[width=800]
+
+    * plus rapide et moins cher qu'un GPT-4 Turbo
+    * attention ! Nicolas explique que suivant les cas de figures, GPT-4 Turbo donnait des résultats de meilleurs qualité
+    * GPT-4o n'utilise PLUS de système d'OCR, et donne de très bons résultats d'analyse d'images : +
+    image:20240613_Microsoft_Data-Innovation-Day_33.jpg[width=800]
+    * ET *GPT-4o est disponible depuis 2 jours en Europe via la région Suède !*
+
+.Phi-3 et les SLM qui se développent
+image:20240613_Microsoft_Data-Innovation-Day_34.jpg[width=800]
+
+    * Nicolas : aujourd'hui, la plupart de nos missions impliquent des LLM, mais c'est pas dit que ce soit toujours le cas fin 2024 (passage aux SLM ?)
+
+*PROMPTING*
+
+image:20240613_Microsoft_Data-Innovation-Day_35.jpg[width=800]
+
+.Les problèmes avec les contextes longs
+image:20240613_Microsoft_Data-Innovation-Day_36.jpg[width=800]
+
+    * La performance des LLM dans les tâches peut diminuer avec l'augmentation des informations bruyantes dans l'invite
+    * Les LLM capturent mieux les informations pertinentes situées au début ou à la fin du prompt, mais leur performance diminue si ces informations se trouvent au milieu de longs contextes
+
+.Les solutions possibles à ces problèmes
+image:20240613_Microsoft_Data-Innovation-Day_37.jpg[width=800]
+
+    * LLMLingua : projet développé par Microsoft, réduit la longueur des prompts pour les LLMs en utilisant une méthodologie grossière à fine. Il utilise un petit modèle de langue bien entraîné, tel que GPT-2-small ou LLaMA-7B, pour détecter les tokens non importants dans le prompt, permettant une compression efficace.
+
+.Comment fonctionne LLMLingua
+image:20240613_Microsoft_Data-Innovation-Day_38.jpg[width=800]
+
+    * papier de recherche : https://arxiv.org/pdf/2310.06839
+
+* Thomas : question sur Mamba est les modèles sélectifs : plutôt 1 modèle sélectif que 2 modèles basés sur du Transformer pour sélectionner les tokens à conserver ?
+    ** Le speaker n'était pas au courant de l'existence des modèles Mamba
+
+* Azure AI Search : supporte nativement du reranking de chunks via un 2nd modèle dédié
+
+.Exemple d'usage de LLMLingua
+image:20240613_Microsoft_Data-Innovation-Day_39.jpg[width=800]
+
+    * On peut le tester soi-même sur Hugging Face : https://huggingface.co/spaces/microsoft/llmlingua-2
+
+.Conclusion quand à l'intérêt et l'usage de LLMLingua : 
+image:20240613_Microsoft_Data-Innovation-Day_40.jpg[width=800]
+
+*FUNCTION CALLING*
+
+* La technologie derrière les *agents* des pipelines d'IA
+
+.Définition du Function calling
+image:20240613_Microsoft_Data-Innovation-Day_41.jpg[width=800]
+
+* Essentiellement, l'appel de fonction permet aux LLMs d'interagir de manière transparente avec des outils et des APIs externes.
+    ** Voir https://cookbook.openai.com/examples/how_to_call_functions_with_chat_models
+
+.Comment cela fonctionne
+image:20240613_Microsoft_Data-Innovation-Day_42.jpg[width=800]
+
+* Thomas : dans le cas de plusieurs Tools, comment gérer le chevauchement des tools ? 
+    ** "Utilise ce tool pour répondre à des questions sur les voitures ?"
+    ** "Utilise ce tool pour répondre à des questions sur les moteurs ?"
+    ** REX Cellenza : pas de magie, tout est dans le prompt... 
+        *** MAIS on peut essayer une approche "Chain of Thoughts" où on vient itérer sur les résultats "à chaque passage" : 
+            **** 1er passage j'ai utilisé l'outil A et les résultats étaient pas tops, donc je REESSAYE
+            **** 2e passage, cette fois je vais utiliser l'outil B et vais obtenir de nouveaux résultats, suivant si bons ou pas, je continue.
+            **** Et ainsi de suite...
+    
+*WEB BROWSING*
+
+* Tous les LLMs sont entraînés sur des corpus de données avec des dates de cut-off : +
+image:20240613_Microsoft_Data-Innovation-Day_43.jpg[width=800]
+
+* Pour pallier ce problème, on donne accès à la recherche web au modèle : +
+image:20240613_Microsoft_Data-Innovation-Day_44.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_45.jpg[width=800]
+
+* Pour s'interfacer avec Google Search et obtenir des SERP, on peut utiliser *Serper* : +
+image:20240613_Microsoft_Data-Innovation-Day_46.jpg[width=800]
+
+    ** "Search Engine Results Pages (also known as "SERPs" or "SERP") are Google's response to a user's search query"
+    ** Serper permet de spécifier les sites sur lesquels les recherches vont être effectuées
+    ** Mais attention, cela veut dire qu'on va ouvrir le LLM à des données non vérifiées venant de l'extérieur.
+        *** Il va donc falloir vérifier ces data récupérées (avec un couche de content safety et des prompts de sécurité ? "Si tu ne trouves pas d'infos, n'en invente pas", etc.)
+
+* Question : comment choisir entre les résultats venant de la recherche documentaire et ceux venant de la recherche web ?
+    ** Dans l'exemple donné, *aucun reranking n'a été effectué*
+    ** MAIS Cellenza a déjà travaillé sur des projets où le reranking était nécessaire et réalisé par une brique dédiée pour sélectionner / reranker les résultats provenant des 2 types de recherches
+
+.Défis RESOLUS par les longs contextes
+image:20240613_Microsoft_Data-Innovation-Day_47.jpg[width=800]
+
+.Défis RESTANT malgré les longs contextes
+image:20240613_Microsoft_Data-Innovation-Day_48.jpg[width=800]
+
+*EVALUATION D'UN LLM*
+
+.Pourquoi devons-nous évaluer un LLM ?
+image:20240613_Microsoft_Data-Innovation-Day_49.jpg[width=800]
+
+    * L'évaluation des LLM consiste à mesurer systématiquement leur performance, fiabilité et efficacité pour informer les décisions sur leur utilisation.
+
+.Comment définir une métrique d'évaluation ?
+image:20240613_Microsoft_Data-Innovation-Day_50.jpg[width=800]
+
+    * Une métrique d'évaluation des LLM évalue une application de LLM en fonction des tâches pour lesquelles elle a été conçue (sachant qu'une application de LLM peut simplement être le LLM lui-même)
+
+Le calcul des scores et les 2 grands types de métriques :
+
+.Les métriques SANS dépendances d'IA (scoreurs statistiques)
+image:20240613_Microsoft_Data-Innovation-Day_51.jpg[width=800]
+
+.Les métriques AVEC dépendances d'IA (LLM-Evals)
+image:20240613_Microsoft_Data-Innovation-Day_52.jpg[]
+
+    * Et l'évaluation va être menée par un 2nd LLM
+    * on retrouve ici le classique "donne un score entre 1 et 5"
+
+.Exemple de prompt (G-Eval)
+image:20240613_Microsoft_Data-Innovation-Day_53.jpg[width=800]
+
+.Exemple de code (G-Eval) avec DeepEval
+image:20240613_Microsoft_Data-Innovation-Day_54.jpg[width=800]
+
+    * DeepEval est un framework d'évaluation open source pour les LLMs.
+
+.Conclusion sur les  méthodes d'évaluation des LLMs
+image:20240613_Microsoft_Data-Innovation-Day_55.jpg[width=800]
+
+*MONITORING et GOUVERNANCE*
+
+.LLM Monitoring
+image:20240613_Microsoft_Data-Innovation-Day_56.jpg[width=800]
+
+.Solution : Azure OpenAI Monitor
+image:20240613_Microsoft_Data-Innovation-Day_57.jpg[width=800]
+
+    * Attention ! Ce graphe est PAR RESSOURCE, et non par use case.
+        ** Si plusieurs use cases utilisent la même ressource, impossible de savoir qui utilise quoi
+
+.Solution : tracker la consommation de tokens
+image:20240613_Microsoft_Data-Innovation-Day_58.jpg[width=800]
+
+    * ajout d'un flag "*token_usage*" : relié à l'utilisateur
+
+.Stream_options qui marche pas encore sur Azure (à vérifier) donc usage de la librairie tiktoken
+image:20240613_Microsoft_Data-Innovation-Day_59.jpg[width=800]
+
+Observer davantage avec *Azure APIM* : +
+image:20240613_Microsoft_Data-Innovation-Day_60.jpg[width=800]
+
+* Avantage : l'APIM permet de sécuriser la gestion de mes clés d'API
+    ** Plutôt que de voir les clés d'API en dur dans le code...
+    ** La clé qui va être donnée par l'APIM au client est une clé de l'APIM (*clé de  souscription de l'APIM*) et PAS une clé d'API de mon service
+
+.Exemple d'usage d'APIM
+image:20240613_Microsoft_Data-Innovation-Day_61.jpg[width=800]
+
+.Configuration de l'APIM pour avoir le monitoring (les logs)
+image:20240613_Microsoft_Data-Innovation-Day_62.jpg[width=800]
+
+.Mise en place de la nouvelle policy "azure-openai-emit-token-metric"
+image:20240613_Microsoft_Data-Innovation-Day_63.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_64.jpg[width=800]
+
+.Subscription ID de l'APIM à aller chercher dans les custom dimensions
+image:20240613_Microsoft_Data-Innovation-Day_65.jpg[width=800]
+image:20240613_Microsoft_Data-Innovation-Day_66.jpg[width=800]
+
+    * Toute la donnée précédente est rebalancée dans un *Log Analytics workspace*
+
+.Dépasser les limitations de tokens
+image:20240613_Microsoft_Data-Innovation-Day_67.jpg[width=800]
+
+    * load balancer ? Pas le job natif d'un APIM
+        ** Passer par un API Gateway ? l'API Gateway n'est PAS multi-regions
+        ** Utiliser Front Door ? xxx
+        ** Mais on va pouvoir implémenter un comportement de load balancer dans l'APIM
+
+    * APIM Premium : 1 instance, c'est ~2500€ / mois
+        ** Si on passe en niveau "développeur" ça chute à 50€ / mois MAIS on n'a plus de SLA...
+
+    * utilisation des *backend pools d'APIM* : 
+        ** Round robin natif par défaut
+
+        ** Exemple de la configuration "avant" les backend pools : +
+        image:20240613_Microsoft_Data-Innovation-Day_68.jpg[width=800]
+        image:20240613_Microsoft_Data-Innovation-Day_69.jpg[width=800]
+        ** "je définis des variables qui me permettent de récupérer dans ma conf les différents backends possibles"
+        ** Code 429 : j'ai atteint les quotas d'OpenAI
+
+        ** Et maintenant AVEC les backend pools : +
+        image:20240613_Microsoft_Data-Innovation-Day_70.jpg[width=800]
+
+.Définiton d'un backend pool avec les services qui seront utilisés
+image:20240613_Microsoft_Data-Innovation-Day_71.jpg[width=800]
+
+Application de quotas : maîtriser la consommation de ses utilisateurs en termes de token +
+image:20240613_Microsoft_Data-Innovation-Day_72.jpg[width=800]
+
+*FINE TUNING (PEFT)*
+
+* *PEFT* : Parameter Efficient Fine Tuning
+
+.Un plus petit modèle bien fine-tuné peut être plus performant qu'un plus gros modèle
+image:20240613_Microsoft_Data-Innovation-Day_73.jpg[width=800]
+
+.LoRA : Low-Rank Adaptation (LoRA)
+image:20240613_Microsoft_Data-Innovation-Day_74.jpg[width=800]
+
+    * Fine-tuner le modèle en ajoutant de nouveaux paramètres susceptibles d'être entraînés
 
 
 
