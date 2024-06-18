@@ -1,0 +1,180 @@
+= 2024/06/18 - Webinar Packming : REX par Octo sur 18 mois d'usage de GitHub Copilot
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== 2024/06/18 - Retour d'expérience après 18 mois d'utilisation de Github Copilot chez OCTO Technology
+
+.abstract
+--
+La GenAI a un réel impact sur la productivité des développeurs tout au long du cycle de développement avec la génération de code, le refactoring, les tests et bien plus encore. Les assistants de co...
+
+To join the Livestorm live event, just click on XXX
+
+La GenAI a un réel impact sur la productivité des développeurs tout au long du cycle de développement avec la génération de code, le refactoring, les tests et bien plus encore. Les assistants de code IA s'améliorent très vite, leur avenir n'a jamais été aussi prometteur.
+
+Cependant, utilisés "out of the box" ces outils n'ont pas la compréhension contextuelle nécessaire pour garantir l'alignement avec vos normes de codage et de qualité. Des stratégies ou des outils complémentaires doivent accompagner leur déploiement dans les équipes. Les gains sont variables en fonction de la maturité des développeurs et développeuses, et de la manière dont ces outils sont utilisés.
+
+Après 18 mois d'utilisation de Github Copilot chez OCTO Technology, quels sont les apprentissages clés ? Soufiane Keli partagera son retour d'expérience, ses astuces et ses conseils pour maximiser les bénéfices pour vos équipes.
+
+Arthur, CPO @Packmind
+--
+
+* REX de *Soufiane Keli*, architecte platforme et VP Software Engineering chez OCTO Technology et Arthur Magne, CPO et co-fondateur de Packmind +
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_01.jpg[]
+
+* Arthur : annonce de *l'intégration Packmind et GitHub Copilot* +
+https://www.packmind.com/supercharge-ai-coding-assistants/
+
+* Soufiane : au final, seul 25% des personnes ont demandé la licence *GitHub Copilot* au bout des 2 mois gratuits. +
+-> Ce n'est donc *PAS (du tout) une ruée vers l'or...* +
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_02.jpg[]
+    ** du côté des détracteurs, il y a ceux qui ne connaissent pas "suffisamment" bien l'outil, et ceux qui le connaissent mais ne souhaitent pas s'en servir
+        *** Soufiane : l'outil est encore en évolution continue, il faut se méfier d'une mauvaise 1ere impression et retester plus tard
+        *** "L'IA va nous remplacer, donc on veut même pas tester"
+        *** Problème craft : "l'IA c'est de la production de masse, moi je suis un artisan qui fait de la qualité"
+
+* MAIS *70% des personnes qui utilisent l'outil en sont TRES satisfaits*
+    ** -> Quand on utilise l'outil, on aime ! (très souvent)
+    ** Soufiane : autour de 100 users aujourd'hui, du junior au senior
+
+* C'est un outil pour faire à faible coût des choses à faibles valeur ajoutée, avec certains *points forts* : + 
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_03.jpg[]
+
+    ** *compréhension de code*
+        *** Comme pour la compréhension d'une Proc Stock SQL de plusieurs centaines de lignes 👍
+        *** est "OK" pour un *refactoring "simple"*
+
+    ** *génération de code*
+        *** LE cas d'usage phare : marche extrêmement bien pour la *génération de données de test* : on accélère énormément cette phase "très pénible"
+            **** Attention ! L'outil génère énormément de tests "passant" (de type A = B égale vrai) +
+            -> Il faut repasser sur ces tests pour ne garder que ceux qui sont réellement pertinents
+
+    ** *apprentissage*
+
+* Et des *points faibles* : +
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_04.jpg[]
+
+    ** Les 2 plus gros problèmes : 
+        *** Copilot *ne sait pas "faire" une application* : c'est *trop gros* pour lui
+        *** Idem pour le refactoring d'une application : trop gros, nécessite trop de "raisonnement"
+
+    ** *Copilot n'a "pas de mémoire"* : le lendemain, il a oublié sur quoi il a travaillé la veille
+    
+    ** Est-ce que je suis prêt à *payer 10$ pour lui envoyer "tout le code"* ? 
+        *** et potentiellement plusieurs fois
+
+* L'apport de Copilot en fonction du type de profil : +
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_05.jpg[]
+
+    ** l'apport, la vraie *valeur ajoutée* est sur le *"niveau intermédiaire"*
+    ** les jeunes consultants, en tout cas chez Octo, sont très critiques du code généré
+
+* Soufiane reparle de la *problématique de l'augmentation du code churn* (+40% en 1 an)
+    ** Cf la dernière étude de GitClear sur GitHub Copilot
+
+* Comment Octo a mesuré le *ROI de Copilot ?*
+
+    ** *qualitatif mais NON quantitatif* : très dur de mesurer de manière quantitative les gains
+        *** il faudrait faire les choses 2 fois, avec et sans Copilot
+        *** donc *impossible de mesurer de manière scientifique les gains*
+
+        *** Soufiane : une étude a été faite au bout de 3 mois, 6 mois, 9 mois : "ça t'a apporté quoi ?"
+
+    ** Soufiane : Après, *une licence Copilot coûte "2 kebabs"...* Pourquoi s'en priver ? 😉
+        *** C'est un argument sur lequel tout le monde s'accorde
+
+* Soufiane, la *performance* se mesure avec *les 4 indicateurs de Accelerate* de DORA (la pratique chez Octo) : 
+
+    ** *Deployment Frequency* (DF) : Deployment Frequency is a metric representing how often an organization successfully releases to production
+    ** *Lead Time for Changes* (LTC) : Lead Time for Changes is the time it takes for a commit to be implemented into production
+    ** *Time to Restore Service* : 
+    ** *Change Failure Rate* (CFR) : the Change Failure Rate represents the percentage of deployments causing a failure in production.
+
+    ** MAIS, il est important de garder en tête qu'il faut *"mesurer" sur le DELIVERY*, et non sur le DEVELOPMENT
+        *** développer plus si on génère plus de tickets de support que l'on ne peut pas traiter, cela ne sert à rien
+
+* *Comment déployer ?* (Le change management est une étape indispensable)
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_06.jpg[]
+
+    ** Ce sont plutôt le réseau Octo et les communautés de pratiques qui expliquent comment utiliser l'outil
+    ** Et il faut l'aval du client pour pouvoir utiiser l'outil
+        *** ET *l'outil scanne tout ce qui est ouvert*, y compris un *fichier de conf avec des clés d'API*... +
+        -> Il y a donc quelques guidelines à mettre en place et à communiquer
+    
+    ** Echanges sur l'outil entre les Octo via un Mattermost
+
+* GenAI et Craft ?
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_07.jpg[]
+
+    ** "On a jamais vu un ticket Jira ou un fichier Word en PROD, c'est du code qui part en PROD" (Alberto Brandolini) +
+    "It's developer (mis)understanding not expert knowledge that gets released in production"
+
+* Arthur Magne : 
+    ** l'intelligence de l'IA est limitée par les data d'entrée
+        *** si on a des mauvaises pratiques dans la base de code, l'IA va par défaut s'en inspirer
+
+    ** *l'IA est une "personne supplémentaire" dans l'équipe*, à laquelle il va falloir communiquer les pratiques de l'équipe
+        *** D'où Packmind et son intégration avec GitHub Copilot +
+        image:20240618_Octo-Packmind_REX-GitHub-Copilot_08.jpg[] {lb}
+        image:20240618_Octo-Packmind_REX-GitHub-Copilot_09.jpg[]
+        *** Packmind permet de facilement valider "humainement" les pratiques proposées par l'IA puis permet la diffusion de ces pratiques au sein de l'équipe
+            **** Via le fichier "packmind.md" contenant les bonnes pratiques de développement convenues dans l'équipe, fichier qui va progressivement être mis à jour / complété par l'équipe.
+
+* Soufiane : l'IA n'est PAS un "game changer" pour votre développement informatique
+    ** "Si déjà on ne maîtrise pas le code et les 4 indicateurs / *metrics DORA*, l'IA ne va pas changer grand-chose"
+
+.Packmind et BDD en juillet 2024
+image:20240618_Octo-Packmind_REX-GitHub-Copilot_10.jpg[]
+
+Contacts : 
+
+    * https://octo.com/contact
+    * arthur.magne@packmind.com
+    * Tous les webinars Packmind et leurs replays : https://app.livestorm.co/packmind/
+
+
+
+
+
+
+
+
+
+
+
+
+

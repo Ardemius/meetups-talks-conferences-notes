@@ -199,6 +199,9 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 Thomas - Gregor Hohpe : The Architect Elevator : +
 https://architectelevator.com/
 
-== 2024/05/28 - 12@13 Softeam : Nomad comme alternative à Kubernetes
+
+
+
+
 
 

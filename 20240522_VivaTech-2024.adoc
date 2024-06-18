@@ -1,8 +1,8 @@
 = 2024/05/22 à 24 - Viva Tech 2024
-Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
-ifdef::env-github[width=800]
+ifdef::env-github[]
 :status:
 :outfilesuffix: .adoc
 :caution-caption: :fire:
@@ -10,7 +10,7 @@ ifdef::env-github[width=800]
 :note-caption: :paperclip:
 :tip-caption: :bulb:
 :warning-caption: :warning:
-endif::[width=800]
+endif::[]
 :imagesdir: ./images
 :resourcesdir: ./resources
 :source-highlighter: highlightjs
@@ -34,7 +34,7 @@ endif::[width=800]
 // To turn off ALL captions
 // :caption:
 
-toc::[width=800]
+toc::[]
 
 == Sessions CTO - Communauté Tech Rocks - Exec Arena
 
