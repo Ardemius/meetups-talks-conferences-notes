@@ -1,0 +1,300 @@
+= 2024/11/07 - ai-PULSE conference
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* ai-PULSE organisée par Scaleway et backed par Xavier NIEL
+
+* URL : https://www.ai-pulse.eu/
+    ** Agenda : https://www.ai-pulse.eu/agenda
+
+== Keynote
+
+* Intro et blague par Xavier Niel (avec une IA qui ne le comprenait pas "please speak english" probablement dû au bruit de la salle) 
+
+* Présentation des news par Aude Durand (Deputy CEO, iliad Group) et Damien Lucas (CEO, Scaleway)
+
+    ** Scaleway : mise à disposition d'un *Environmental Footprint Calculator*
+    ** Scaleway : mise à disposition de nouvelles *Generative APIs*
+    ** Scaleway : *Moshi as a Service*, open source voici model que l'on peut lancer en 1 clic
+    ** Lancement d'un computer quantique (un vrai et pas une émulation) chez Scaleway, grâce au partenariat avec Quandela
+
+* Interview / échange à distance avec *Mickael DELL* (le fondateur de Dell)
+
+* Interview avec *Renée James*, Chairman and CEO, Ampere Computing
+    ** anciennement au board de Intel, Renée a fondé Ampere en 2017
+    ** "il y a 12 compagnies qui ont essayé de faire la même chose que nous, et elle ont toutes échoué, elles ont fermé, et beaucoup d'argent a été consommé là-dedans *MAIS c'est ainsi que l'innovation se fait*"
+    ** "we loose sight of what we can do with the RIGHT people" et par moment 20 ou 25 personnes bien choisies font tellement plus qu'une armée...
+        *** Et il faut laisser la place, oser des idées nouvelles
+
+* Interview de *Bryan Catanzaro*, VP, Applied Deep Learning Research, NVIDIA et *Jean-Baptiste Kempf*, CTO, Scaleway
+    ** Bryan est la personne qui est à l'initiation avec Jensen du basculement de NVidia dans l'IA, le reste "is history" 😉
+        *** Voir ce petit article sur LinkedIN où Bryan explique à quel point Jensen a rapidement repositionné NVidia : +
+        https://www.linkedin.com/posts/bryancatanzaro_how-bryan-catanzaro-jump-started-nvidias-activity-7113201361713823744-JJP-/ +
+        "I didn't actually convince Jensen, instead I just explained deep learning to him. He instantly formed his own *conviction* and pivoted NVIDIA to be an AI company. It was inspiring to watch and I still sometimes can't believe I got to be there to witness NVIDIA's transformation."
+        *** Une fois encore on revient sur ce concept que j'apprécie tout particulièrement : *la conviction* que doit selon moi toujours avoir une direction.
+
+    ** on va vers des clusters of 100 000 de GPUs (actuellement, on est plutôt sur des 10 000 de GPUs)
+
+* Interview de *Renen Hallak*, Founder and CEO, VAST Data Inc.
+
+* Présentation de kyutai par Patrick Perez, CEO, Kyutai +
+image:20141107_ai-PULSE-conference_01.jpg[]
+
+    ** Kyutai est un open source AI LAB largement financé par Xavier Niel, Eric Schmidt et xxx
+
+    ** Moshi est apparemment une création de Kyutai +
+    image:20141107_ai-PULSE-conference_02.jpg[]
+        *** multimodal foundation model
+        *** exemple d'interaction vocale entre 2 IA sur la base d'une image (poisson dans l'océan)
+    
+    * *Limits of cascading voice AIs* et Moshi vision on that point : +
+    image:20141107_ai-PULSE-conference_03.jpg[]
+    image:20141107_ai-PULSE-conference_04.jpg[]
+    image:20141107_ai-PULSE-conference_05.jpg[]
+
+== 14h00 - 14h30 : Building Speech AI Applications with NVIDIA Riva
+
+* Founders café
+* Speakers : 
+    ** Javier Figueroa Sr. Solutions Architect NVIDIA
+    ** Meriem Bendris Senior Deep Learning Solutions Architect NVIDIA
+
+.Abstract
+====
+Speech AI technologies, including Automatic Speech Recognition (ASR) and Text-to-Speech (TTS), enables personalized, human-level customers experience through applications like Virtual Assistants, Contact Center Agent Assistance, and digital avatars. In this session, we will address the common challenges and demonstrate how to build speech AI pipelines using NVIDIA Riva.
+====
+
+* Le talk présente le service NVidia ASR (Automatic Speech Recognition) : +
+https://docs.nvidia.com/deeplearning/riva/user-guide/docs/asr/asr-overview.html
+
+image:20141107_ai-PULSE-conference_06.jpg[]
+image:20141107_ai-PULSE-conference_07.jpg[]
+image:20141107_ai-PULSE-conference_08.jpg[]
+
+* plusieurs customisations possibles : 
+    ** on peut modifier certains phonème côté client, pour par exemple entendre "tomèto" et non "tomato"
+
+* NVidia est vraiment en train de mettre en place tout un écosystème, comme le montre NIM (NVidia Inference Microservices) +
+image:20141107_ai-PULSE-conference_09.jpg[]
+    ** le but est de pouvoir expérimenter un modèle absolument n'importe où
+
+== 15h00 - 16h00 : Leveraging AI agents and efficient LLM inference on COP-ARM
+
+* Founders café
+* Speaker : Victor Jakubiuk Head of AI Ampere Computing
+
+.Abstract
+====
+The Head of AI at Ampere, Victor Jakubiuk, shares insights on the techniques used by Ampere's AI software engineers in optimizing models such as llama.cpp to deliver excellent LLM inference performance on Ampere's Cloud Native Processors. The team behind Ampere Optimized AI Frameworks (AIO) delivered massive performance improvements over the model's vanilla version, making it possible to deploy solely on Ampere CPUs without a need for dedicated accelerators.
+
+The workshop will include setting up the demo of an AI agent running on a small parameter version of a Llama 3.2 model.
+====
+
+.Agenda
+image:20141107_ai-PULSE-conference_10.jpg[]
+
+* Pour de l'inference, vous n'avez pas besoin de GPU, des CPU suffisent
+    ** et c'est "toute la différence" avec l'entraînement qui lui nécessite des GPUs
+
+.The evolution of Artificial Intelligence
+image:20141107_ai-PULSE-conference_11.jpg[]
+image:20141107_ai-PULSE-conference_12.jpg[]
+
+* De plus en plus de puissance est requise (FLOP), surtout depuis l'arrivée de la GenAI
+* MAIS on commence à percevoir une petite baisse dans l'augmentation de ce besoin de ressources
+ 
+.AI Training vs Inference
+image:20141107_ai-PULSE-conference_13.jpg[]
+
+    * 85% des AI workloads sont de l'inférence, soit dans un data center, soit edge
+
+.AI Agents
+image:20141107_ai-PULSE-conference_14.jpg[]
+
+    * Agent : you want software to take actions on your behalf
+    * un exemple donné par Victor : https://www.lampi.ai/
+
+{lb}
+
+* AI agents are autonomous systems that perform assigned tasks while *adjusting to the changes in their environment* : +
+image:20141107_ai-PULSE-conference_15.jpg[]
+
+.Working of an AI agent (🔥⚠ slide super important !)
+image:20141107_ai-PULSE-conference_16.jpg[]
+
+* agent : must interact with the external environment
+* la plus grande partie d'un AI agent n'a pas besoin de GPUs, des CPUs sont beaucoup plus adaptés
+    ** Les GPU sont davantage pour un Midjourney et de la génération d'images
+* Un grand nombre des composants derrière cette macro architecture sont en fait des SLM (spécifiques à un domaine) et non de grands "general purpose LLM"
+
+.Domain specific / foundation / Frontier AI LLM models
+image:20141107_ai-PULSE-conference_17.jpg[]
+
+.AI optimization trends
+image:20141107_ai-PULSE-conference_18.jpg[]
+
+* En moins de 10 moins, on a divisé par presque 10 le nombre de paramètres tout en améliorant les performances (passage de Llama 2 70B à Llama 3 8B) +
+image:20141107_ai-PULSE-conference_19.jpg[]
+
+.Right sizing
+image:20141107_ai-PULSE-conference_20.jpg[]
+
+.Scaleway COP-ARM instances for AI
+image:20141107_ai-PULSE-conference_21.jpg[]
+image:20141107_ai-PULSE-conference_22.jpg[]
+
+.Ampere Optimized AI Software Stack
+image:20141107_ai-PULSE-conference_23.jpg[]
+
+* Llama 3 8B running on Ampere "GPU free" : +
+image:20141107_ai-PULSE-conference_24.jpg[]
+
+    ** comparaison entre Ampere et une infra avec 15 CPU et un accelerator A10 (GPUs)
+    ** Ampere *GPU-Free* is class *leading for small batch and low latency* applications
+
+*DEMO*
+
+image:20141107_ai-PULSE-conference_25.jpg[]
+image:20141107_ai-PULSE-conference_26.jpg[]
+
+* Victor préférerait que ces nouvelles architecture soient appelées "compute-optimized" plutôt que "cost-optimized"
+
+* Voir le github d'AmpereComputing : https://github.com/amperecomputing/
+
+.Ampere AI GPU Free inference at work : use cases
+image:20141107_ai-PULSE-conference_27.jpg[]
+
+    * lampi.ai tourne sur les CPU Ampere
+    * voir https://amperecomputing.com/case-studies
+
+-> les coûts d'Ampere semblent réellement BAS !
+
+.Resources
+image:20141107_ai-PULSE-conference_28.jpg[]
+
+== 16h05 - 16h35 : Building sustainable AI infrastructure: quantum, open and modular systems
+
+* Central Room
+* Speakers : 
+    ** Jean Senellart Chief Product Officer Quandela
+    ** Jean-Marie Verdun Sr Distinguished Technologist HPE
+    ** Raúl Álvarez European Market Development Manager Open Compute Project Foundation
+    ** Albane Bruyas Chief Operations Officer & Chief Compliance Officer Scaleway
+    ** James Coomer Senior Vice President for Products DDN
+
+.Abstract
+====
+Join experts from HPE, OCP, and Quandela as they examine the cutting-edge technologies that are redefining AI hardware. This session will cover advancements in quantum computing for AI, the role of open platforms in enhancing flexibility and interoperability, and the modular systems that are enabling more scalable and energy-efficient AI clusters. The discussion will highlight both recent achievements and the challenges ahead, offering insights into what the next 12 to 24 months—and beyond—hold for AI infrastructure, with a focus on sustainability and technological efficiency.
+====
+
+* The promize of quantum computing is NOT to take energy (ato joule)
+    ** "jusqu'à la demande du résultat"
+    ** tout n'est pas encore clair, mais il y a clairement un sujet de consommation d'énergie derrière le quantum computing
+
+* Une info qui revient souvent : *Air cooling is not suffisent anymore* (pour refroidir un rack moderne)
+    ** Il faut trouver un remplaçant : liquid cooling ? off cooling ?
+    ** grosse problématique actuelle sur le refroidissement des data centers
+
+== 16h40 - 17h10 : Hands-On Integration: Simulating Embedding Models for Structured Data
+
+* Creativity Room
+* Speaker : Alexandre Pasquiou Co-Founder & Chief Scientist Officer Neuralk-AI
+
+.Abstract
+====
+Join us for an engaging, hands-on workshop, "Simulating Embedding Models for Structured Data" hosted by Neuralk-AI. In this session, we'll explore the challenges companies face when integrating embeddings models for structured data and guide you through a simulated workflow using a practical use case. Participants will follow along on their own devices (or a Jupyter notebook will be projected on screen), learning key steps like data preparation, feature extraction, model integration, and results presentation. The workshop concludes with an open discussion, allowing for feedback and insights on how these techniques can be applied to real-world projects. This is an excellent opportunity for those looking to deepen their understanding of embedding models and their applications.
+====
+
+* Neuralk-AI : travaille sur la *transformation de données STRUCTUREES en vecteurs*
+
+* https://github.com/neuralk-ai/workshop_AI_pulse
+
+== 17h15 - 17h45 : Agentic AI powered by Generative APIs: Building high-precision function calling on open-weight LLMs
+
+* Workshop room
+* Speaker : Guillaume Calmettes MLOps Engineer Scaleway
+
+.Abstract
+====
+After a quick rundown on agentic patterns and what they unlock, we’ll jump right into demos, tackling key skills like generating consistent structured outputs using JSON Schema. You’ll learn practical tricks for leveraging function calling to integrate LLMs smoothly into your tool ecosystem. Plus, we’ll go beyond text, adding Vision for richer, more versatile applications. Join us to see how you can build smarter, more adaptable AI solutions with open-weight LLMs at the core.
+====
+
+* Il existe principalement 4 "agentic patterns", nous allons ici parler du Function Calling +
+image:20141107_ai-PULSE-conference_29.jpg[]
+image:20141107_ai-PULSE-conference_30.jpg[]
+
+* "generating structured data from unstructured inputs is one of the core use case for AI applications" +
+image:20141107_ai-PULSE-conference_31.jpg[]
+
+* On a souvent eu des problèmes de stabilité quant à la génération d'un JSON en output : +
+image:20141107_ai-PULSE-conference_32.jpg[]
+    ** on le voit dans l'exemple de gauche, une partie du contenu n'a pas été formatée en JSON
+
+* AUJOURD'HUI, on peut "forcer" le format de sortie du LLM : +
+image:20141107_ai-PULSE-conference_33.jpg[]
+    ** we can constrain which tokens can be produced next
+
+* Function calling is one of the 4 agentic patterns : +
+image:20141107_ai-PULSE-conference_34.jpg[]
+
+    ** Function calling relies on structured outputs
+    ** *LLM can't directly query* (it can't itself make a request) or modify external data. +
+    The basic idea is to describe tools (functions & signatures) so taht LLMs can generate proper structured output to invoke those external APIs.
+
+* How can you do that ? With *Scaleway Generative APIs* !
+    ** which are a drop-in replacement of the OpenAI API : +
+    image:20141107_ai-PULSE-conference_35.jpg[]
+    image:20141107_ai-PULSE-conference_36.jpg[]
+    ** pour le moment c'est gratuit MAIS avec des limites (quota sur le débit en RPM)
+    ** uniquement pour des use cases de type : 
+        *** Instruct
+        *** Vision
+        *** Embeddings
+    ** Le function calling n'est assuré QUE pour les modèles derrière Instruct et Vision
+    ** Generative API is "just" an endpoint compatible with OpenAI API
+
+DEMO
+
+image:20141107_ai-PULSE-conference_37.jpg[]
+image:20141107_ai-PULSE-conference_38.jpg[]
+
+* Les résultats sont vraiment très encourageants, avec encore quelques erreurs dans l'extraction d'informations des images (surtout quand c'est mal écrit !)
+
+NOTE: Contacter Guillaume Calmettes par mail (gCalmettes@scaleway.com) et lui demander de nous envoyer le support et le code de la démo
+
+
+

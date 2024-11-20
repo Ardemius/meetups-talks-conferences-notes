@@ -72,6 +72,9 @@ image:20240417_Devoxx-France_03.jpg[]
 
 * OpenTelemetry
 * Renovate / Dependabot
+    ** *Dependabot* : Automated dependency updates built into GitHub. +
+    You can use Dependabot to alert you when your repository is using a software dependency with a known vulnerability.
+    ** *Renovate* usually performs these steps: Cloning the repository. Scanning package files to extract dependencies. Looking up registries to check for updates. Applying any grouping rules defined.
 * Temporal : orchestrateur de workflows opensource
 
 * Toujours Springboot

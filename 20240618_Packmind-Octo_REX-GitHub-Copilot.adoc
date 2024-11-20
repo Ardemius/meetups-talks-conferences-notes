@@ -131,7 +131,7 @@ image:20240618_Octo-Packmind_REX-GitHub-Copilot_05.jpg[]
 image:20240618_Octo-Packmind_REX-GitHub-Copilot_06.jpg[]
 
     ** Ce sont plutôt le réseau Octo et les communautés de pratiques qui expliquent comment utiliser l'outil
-    ** Et il faut l'aval du client pour pouvoir utiiser l'outil
+    ** Et il faut l'aval du client pour pouvoir utiliser l'outil
         *** ET *l'outil scanne tout ce qui est ouvert*, y compris un *fichier de conf avec des clés d'API*... +
         -> Il y a donc quelques guidelines à mettre en place et à communiquer
     

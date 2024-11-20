@@ -484,7 +484,10 @@ image:20240523_Viva-Tech_La-Poste_01.jpg[width=800]
 +
 video::20240523_Viva-Tech_La-Poste_02.mp4[width=800]
 
-* *Software République* : association regroupant Renault, orange, Dassault system, JC Decaux, ST microélectronic, Atos, tout un ensemble de grosses sociétés qui s'associent avec des sociétés plus petites pour réaliser des projets très concrets. Ici une initiative d'*Open Innovation* : une cabine de santé mobile (*U1st Vision*) pouvant réaliser des tests assez profonds avec pour vocation d'être déployée dans les lieux où les médecins manquent le plus (déserts médicaux)
+* *Software République* : association regroupant Renault, orange, Dassault system, JC Decaux, ST microélectronic, Atos (via Eviden), tout un ensemble de grosses sociétés qui s'associent avec des sociétés plus petites pour réaliser des projets très concrets. +
+image:20240524_Viva-Tech_Software-Republique_01.png[width=600] +
+Ici une initiative d'*Open Innovation* : une cabine de santé mobile (*U1st Vision*) pouvant réaliser des tests assez profonds avec pour vocation d'être déployée dans les lieux où les médecins manquent le plus (déserts médicaux)
+    ** Pour plus de détails, voir https://www.bfmtv.com/tech/evenements/vivatech/vivatech-2024-un-camion-connecte-pour-resoudre-les-problemes-de-deserts-medicaux_AV-202405230491.html
     ** il s'agit d'un véhicule électrique reposant sur le socle de la nouvelle game utilitaire FlexEvan de Renault +
     image:20240524_Viva-Tech_Renault_02.jpg[width=800]
     image:20240524_Viva-Tech_Renault_03.jpg[width=800]
@@ -544,11 +547,11 @@ video::20240523_Viva-Tech_Omi-Meta_01.mp4[width=800]
 * Le *secteur de la santé* également très présent : 
 
     ** *Assistant médical personnalisé* backé par l'IA / l'IA Gen
-        *** Voir la solution EVIDEN chez IBM : un *assistant personnalisé*, fonctionnant en local du fait des données sensibles associées
+        *** La société Eviden (appartient au groupe Atos) a créé cet *assistant personnalisé*, fonctionnant en local du fait des données sensibles associées
             **** Cette problématique de sécurité / confidentialité des données dans le cadre de l'IA Gen revient de plus en plus souvent : il faut être capable de *faire tourner les modèles "en local"* (on edge) pour *garantir la sécurité des données* en évitant autant que possible tout transfert de ces dernières.
             **** Voir la brève https://www.linkedin.com/posts/eviden_vivatech2024-u1stvision-smartmobility-activity-7199405131333787648-9B3z/
 
-    ** cabine consultation mobile pouvant être présente dans les lieux en ayant le plus besoin ("déserts médicaux")
+    ** Véhicule de consultation mobile, *U1st Vision*, pouvant être présente dans les lieux en ayant le plus besoin ("déserts médicaux")
 
 * l'écologie / le *numérique responsable* via la recherche d'une *meilleure performance énergétique*
     ** Exemple avec les processeurs Ampère proposant un très bon ratio performance / watts consommés
@@ -574,4 +577,8 @@ image:20240523_Viva-Tech_NVidia-AWS_01.jpg[width=800]
 === Ressources et autres REX sur le salon
 
 * https://www.micropole.com/a-la-une/viva-tech-2024-restitution/
+* Le "BIGRecap" #42 d'Emmanuel VIVIER du Hub Institute et ces 72 annonces "spéciale VIVATECH" : +
+https://www.linkedin.com/pulse/ia-g%C3%A9n%C3%A9rative-le-bigrecap-42-des-72-annonces-sp%C3%A9ciale-emmanuel-vivier-evdte/
+    ** Toujours du Hub Institute, voir également son Rapport global sur VivaTech 2024: +
+    https://www.hubinstitute.com/rapport-vivatech-2024?
 
