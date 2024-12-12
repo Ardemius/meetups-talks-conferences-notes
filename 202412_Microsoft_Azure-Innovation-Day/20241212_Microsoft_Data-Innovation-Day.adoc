@@ -1,0 +1,409 @@
+= 2024/12/12 - Microsoft - IA Innovation Day
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Présentation de la conférence et agenda
+
+* Voir Microsoft Event : https://msevents.microsoft.com/event?id=1841669047
+
+Appliquez les dernières innovations pour la transformation de l'IA
+
+Rejoignez-nous pour l'Azure Innovation Day à Paris le 12 décembre 2024 et plongez dans le monde de la technologie et de l'IA. Cet événement unique et gratuit d'une journée vous permettra de :
+
+    * Découvrir des solutions : explorez les derniers outils et technologies qui aident à moderniser et à gérer des applications intelligentes.
+    * Protéger les données : apprenez à protéger vos données avec des mesures de sécurité avancées.
+    * Accélérer la productivité : trouvez des solutions innovantes pour augmenter votre productivité.
+    * Développer votre réseau : échangez avec des leaders de l'industrie, des partenaires et vos pairs pour élargir votre communauté et vos opportunités commerciales.
+    * Apprenez ce que vous devez savoir sur la transformation de l'IA
+
+Restez à la pointe des innovations d'aujourd'hui en vous connectant avec des professionnels et des leaders de l'industrie. Découvrez les dernières avancées en matière d'IA et rencontrez des experts Microsoft qui vous accompagneront dans votre parcours de transformation de l'IA. Immergez-vous dans des Hands-on Labs conçus pour vous aider à développer les domaines d'expertise de votre choix.
+
+Tirez le meilleur parti de votre partenariat avec Microsoft à l'ère de l'IA
+
+Les partenaires de Microsoft jouent un rôle déterminant dans l'avenir de l'IA. Lors de l'Azure Innovation Day, vous participerez à un Hands-on Labs co-organisé avec des partenaires spécialisés de Microsoft.
+
+Au programme de la journée :
+
+    * 09:30 AM - 10:15 AM - Accueil & Café
+    * 10:30 AM - 12:00 PM - Keynote
+    * 12:00 PM - 01:00 PM - Déjeuner & Networking
+    * 01:00 PM - 02:00 PM - Introduction et théorie aux Hands-on Labs
+    * 02:00 PM - 05:00 PM - Hands-on Labs
+    * 05:00 PM - 07:30 PM - Cocktail & Networking
+
+Inscrivez-vous dès aujourd'hui car les places sont limitées !
+
+Votre inscription vous donnera accès à la Keynote ainsi qu'à un seul Hands-on Lab.
+
+Veuillez sélectionner dans le formulaire jusqu'à 3 Hands-on Labs pour lesquels vous avez un fort intérêt, nous vous indiquerons le jour de l'événement celui qui vous a été attribué.
+
+Hands-on Labs :
+
+    * (Re)prenez le contrôle de vos échanges applicatifs et de votre parc API grâce à Azure Integration Services !
+        ** Dans ce Hands-on-Lab vous découvrirez les grands principes de l'intégration (iPaaS) et des services Azure Integration Services. Vous apprendrez à construire une plateforme serverless optimisée pour l'accélération de vos intégrations, la modernisation de vos systèmes via l'APIfication (API-first approach), tout en répondant à des enjeux métiers concrets
+        ** Hands-on-Lab animé par Cellenza et Microsoft
+
+    * Créez une expérience personnalisée pour vos développeurs avec le Platform Engineering
+        ** Découvrez les secrets du Platform Engineering : comprendre les principes fondamentaux du Platform Engineering; mettre en place des infrastructures robustes et évolutives; automatiser les processus de déploiement pour gagner en efficacité; intégrer des outils de sécurité avancés pour protéger vos projets.
+        ** Hands-on-Lab animé par Talan et Microsoft
+
+    * 3) Tirez parti de vos données en temps réel à l'ère de l'IA avec Microsoft Fabric
+        ** Découvrez comment tirer parti de vos données en temps réel pour un site e-commerce simulé dans ce Hands-on Lab immersif. À partir des données de trafic web, vous apprendrez à analyser et prédire les ventes grâce à Microsoft Fabric et à l'architecture en médaillon. En utilisant Kusto Query Language (KQL), Eventstream et OneLake, vous créerez des visualisations dynamiques et mettrez en place des alertes proactives pour optimiser votre stratégie d'entreprise.
+        ** Hands-on-Lab animé par Expertime et Microsoft
+
+    * 2) Cloud adaptatif : unifiez l'hybride, le multicloud et la périphérie (edge) avec Azure Arc
+        ** Azure Arc peut transformer votre approche de la gestion des ressources informatiques, qu'elles soient sur site, dans le cloud ou à la périphérie. Vous apprendrez à unifier la gestion de vos environnements hybrides et multicloud, tout en exploitant les capacités de l'edge computing pour améliorer la performance et la résilience de vos applications.
+        ** Hands-on-Lab animé par Avanade et Microsoft
+
+    * 1) Créez vos copilotes personnalisés avec Azure OpenAI Service
+        ** Dans ce Hands-on-Lab, explorez les conseils et les cas d'utilisation proposés par des experts pour une utilisation efficace et éthique des LLMs dans vos projets d'intelligence artificielle. Le Hands-on-Lab couvrira tous les aspects du cycle de vie d'une application d'IA Générative de la sélection du modèle jusqu'à sa production.
+        ** Hands-on-Lab animé par Onepoint et Microsoft
+
+    * Etes-vous prêt à intégrer l'IA dans vos infrastructures ?
+        ** Ce Hands-on lab vous expliquera comment l'intelligence artificielle peut transformer vos infrastructures IT et comment optimiser vos opérations. Vous découvrirez les dernières avancées en matière d'IA et comment les intégrer efficacement dans votre environnement existant.
+        ** Hands-on-Lab animé par Capgemini et Microsoft
+
+Ma prio pour les ateliers : 
+
+    1. Créez vos copilotes personnalisés avec Azure OpenAI Service
+    2. Cloud adaptatif : unifiez l'hybride, le multicloud et la périphérie (edge) avec Azure Arc
+    3. Tirez parti de vos données en temps réel à l'ère de l'IA avec Microsoft Fabric
+
+== Keynotes du matin
+
+Intro par Xavier PERRET, Directeur Cloud Azure, Microsoft France
+
+.Scaling laws
+image:20241212_Microsoft-AI-Innovation-day_01.jpg[]
+
+Points essentiels du moments : 
+
+    * L'interaction multi-modal est devenue la norme : +
+    image:20241212_Microsoft-AI-Innovation-day_02.jpg[]
+
+    * les capacités de raisonnement des modèles
+
+    * émergence des agents : "building an agentic world"
+        ** personal, organizational, business, cross-org agents
+
+.La différence entre Copilot et Agent pour Microsoft
+image:20241212_Microsoft-AI-Innovation-day_03.jpg[]
+
+.Copilot is the UI for Agents
+image:20241212_Microsoft-AI-Innovation-day_04.jpg[]
+
+* Importance de la *sécurité* : +
+image:20241212_Microsoft-AI-Innovation-day_05.jpg[]
+    ** partie non visible : "monitor & detect threats"
+
+* *Sustainable* by design +
+image:20241212_Microsoft-AI-Innovation-day_06.jpg[]
+    ** Le coût environnemental de GPT-4 a été divisé par 12 depuis son lancement
+    ** Plusieurs chiffres sont donnés par Xavier, le point a pris un peu de temps, on voit que c'est un sujet important pour Microsoft. +
+    C'est au minimum l'impression qu'ils veulent donner : réutilisation de l'eau pour le cooling des DC, limiter le béton dans la construction des DC.
+
+=== Interview de Elhadi Boucharab, CTO de TotalEnergies Digital Factory
+
+* Digital Factory de TotalEnergies : 300 tech sur 25 squads
+
+* Elhadi : nouveau retour comme quoi Kubernetes c'est compliqué et qu'on est bien content d'avoir des services managés qui l'encapsule et en simplifie la gestion (Azure Container Services avec l'AKS & co)
+
+=== Présentation de Eric GRENON, CTO Digital & App Inno at Microsoft France
+
+* La Copilot & AI Stack (sur Azure évidemment) : +
+image:20241212_Microsoft-AI-Innovation-day_07.jpg[]
+    ** "Cloud to edge"
+
+* 1) *Copilot Studio* : 100 000 entreprises qui l'utilisent déjà pour amener le low code dans les mains des utilisateurs
+image:20241212_Microsoft-AI-Innovation-day_08.jpg[]
+
+* Copilot Studio : *Autonomous Agent* +
+image:20241212_Microsoft-AI-Innovation-day_09.jpg[]
+    ** Au final, dans l'exemple donné, c'est bien un humain qui va "valider" l'action finale
+
+* 2) *GitHub* : the AI-powered developer platform
+    ** 79 000 000 de lignes de codes qui ont été ACCEPTEES en 2024
+    ** GitHub est également le repo pour le low code et les data scientists
+
+    ** *GitHub Copilot* : une adoption globale qui se confirme partout
+        *** 70 000+ entreprises l'ont adopté
+
+        *** GitHub Copilot for VS Code : 
+            **** *Multi-file editing*
+            image:20241212_Microsoft-AI-Innovation-day_10.jpg[]
+            **** *multi-model selection* : de plus en plus la possibilité de choisir son modèle pour les différents use cases (à date, pas encore possible pour tous)
+            **** *Code review*
+
+    ** GitHub Advanced Security : *Copilot Autofix*
+    image:20241212_Microsoft-AI-Innovation-day_11.jpg[]
+
+    ** ET maintenant *GitHub Copilot est également disponible sur Azure* +
+    image:20241212_Microsoft-AI-Innovation-day_12.jpg[]
+    image:20241212_Microsoft-AI-Innovation-day_13.jpg[]
+
+[NOTE]
+====
+Creuser Azure Developer CLI (tout ce qui est accessible via la commande `azd`)
+====
+
+IMPORTANT: TOUTES les applications Azure vont être REFAITE à l'aide de l'IA +
+(vraiment TOUTES ? A vérifier !)
+
+.AI application platform
+image:20241212_Microsoft-AI-Innovation-day_14.jpg[]
+
+* Consommer l'AI Gen : *Semantic Kernel* +
+https://learn.microsoft.com/en-us/semantic-kernel/overview/
+
+* GenAI gateway in Azure API Management avec *Azure APIM* +
+image:20241212_Microsoft-AI-Innovation-day_15.jpg[]
+* Azure Container Apps : dynamic sessions (du sandboxing si j'ai bien compris)
+
+.Ressources AI Azure
+image:20241212_Microsoft-AI-Innovation-day_16.jpg[]
+
+=== Présentation de Eric CHARBONNIER, Azure CTO Data & IA at Microsoft
+
+* Azure AI Foundry (renommage de Azure AI Studio) +
+image:20241212_Microsoft-AI-Innovation-day_17.jpg[]
+
+    ** *Azure AI Search* pour du RAG +
+    image:20241212_Microsoft-AI-Innovation-day_18.jpg[]
+        *** query retraduite par un SLM
+        *** partie reranking revue pour accélérer l'obtention de la réponse
+        *** De manière générale la solution a été *revue en profondeur*
+
+    ** Azure AI Content Safety
+
+    ** *Azure AI Content Understanding* +
+    image:20241212_Microsoft-AI-Innovation-day_19.jpg[]
+        *** extraction des metadata des sources pour sortir un contenu structuré de sources semi (ou non ?) structurées
+
+    ** Azure AI Foundry SDK : unified toolchain for AI development application
+        *** Tout ce que j'ai spécifié dans AI foundry va être accessible depuis mon code via le "Project Connection String" +
+        image:20241212_Microsoft-AI-Innovation-day_20.jpg[]
+
+    ** Télémétrie (traces & co) accessible depuis l'AI Foundry
+    image:20241212_Microsoft-AI-Innovation-day_21.jpg[]
+    image:20241212_Microsoft-AI-Innovation-day_22.jpg[]
+
+* *Fabric* comme solution d'analytics de Microsoft
+    ** du "sans couture" (ou presque) *entre de l'OLTP et de l'OLAP* 
+
+=== Présentation des briques d'infra par Baptiste OHANES, CTO / Cloud Solution Architect on Azure
+
+* Objectif de Microsoft cf Baptiste : flouter la différence entre software et hardware
+
+.Le hardware de Microsoft
+image:20241212_Microsoft-AI-Innovation-day_23.jpg[]
+
+* *Azure Maia* : puce AI accelerator purpose-built for the Microsoft Cloud
+
+* *Fibre creuse* : fibre optique dont le noyau est rempli d'un gaz inerte, ce qui va permettre de baisser la latence et "réduire les pertes" (?)
+    ** Intérêt : connecter les 60+ régions globales d'Azure
+    
+    ** Pourquoi ? Car le cloud d'aujourd'hui est *protéiforme et distribué*
+    image:20241212_Microsoft-AI-Innovation-day_24.jpg[]
+
+* et pour gérer cette problématique de distribution, Microsoft a sorti *Azure ARC* +
+image:20241212_Microsoft-AI-Innovation-day_25.jpg[]
+    ** l'idée (formulation à vérifier) : cloud protéiforme OK, mais *Azure ARC va permettre de considérer que les ressources tierces sont en fait des ressources Azure*
+
+* *Azure Local* (qui remplace tous les anciens Azure Stack Edge, HCI, Hub) : Cloud infrastructure for distributed locations, enabled by Azure ARC
+image:20241212_Microsoft-AI-Innovation-day_26.jpg[]
+    ** va s'appuyer sur *Microsoft Defender for Cloud*
+    ** va s'appuyer sur *Azure EntraID*
+    ** Azure Local mis très en avant par Microsoft
+
+* Sécurité : *Confidential computing* avec du chiffrement *at rest*, *at transit* ET, nouveauté, *chiffrement à l'usage*, quand vos données sont en mémoire
+image:20241212_Microsoft-AI-Innovation-day_27.jpg[]
+    ** concept "d'enclave" et 3 types d'enclaves : +
+    image:20241212_Microsoft-AI-Innovation-day_28.jpg[]
+        *** enclave au niveau du process
+        *** enclave au niveau de la VM
+        *** enclave au niveau du GPU : pour *faire de l'IA confidential*
+
+    ** *Azure Confidential Clean Rooms*
+
+    ** Principe du Confidential computing : *vous gardez le contrôle de vos données de A à Z* en conservant les clés de chiffrement côté client (A VERIFIER / A CREUSER) +
+    image:20241212_Microsoft-AI-Innovation-day_29.jpg[]
+
+== Workshop : Créez vos copilotes personnalisés avec Azure OpenAI Service
+
+* Dans ce Hands-on-Lab, explorez les conseils et les cas d'utilisation proposés par des experts pour une utilisation efficace et éthique des LLMs dans vos projets d'intelligence artificielle. Le Hands-on-Lab couvrira tous les aspects du cycle de vie d'une application d'IA Générative de la sélection du modèle jusqu'à sa production.
+* Hands-on-Lab animé par Onepoint et Microsoft
+
+.use case OnePoint déployés courant 2024
+image:20241212_Microsoft-AI-Innovation-day_30.jpg[]
+
+* A date, l'IA gen permet de réaliser des tâches dans l'entreprise, mais pas encore remplacer des "fonctions" entières.
+
+-> Tendance IA 2025 : les *Agents IA*
+
+* 2024 : arrivée de modèles nativement multi-modaux, c'est à dire entraînés avec des données AUTRES que du texte
+
+.L'évolution de l'IA
+image:20241212_Microsoft-AI-Innovation-day_31.jpg[]
+
+* Définition d'un *Agent IA* : un modèle avec une *capacité d'action* +
+image:20241212_Microsoft-AI-Innovation-day_32.jpg[]
+
+* Exemple de use case avec agent IA : 
+image:20241212_Microsoft-AI-Innovation-day_33.jpg[]
+
+.Plus d'efficacité et de valeur avec les agents
+image:20241212_Microsoft-AI-Innovation-day_34.jpg[]
+
+* Fonctionnement d'un agent : +
+image:20241212_Microsoft-AI-Innovation-day_35.jpg[]
+image:20241212_Microsoft-AI-Innovation-day_36.jpg[]
+    ** 4 considérations principales
+        *** connaissance
+        *** actions
+        *** sécurité
+        *** évaluation
+
+.Azure AI Foundry
+image:20241212_Microsoft-AI-Innovation-day_37.jpg[]
+
+* Les agents sont la combinaison de : 
+    ** compréhension (LLM)
+    ** perception (multimodale)
+    ** action (agents)
+
+image:20241212_Microsoft-AI-Innovation-day_38.jpg[]
+
+REX 1 : Exemple de use case déjà déployé
+
+.Une plateforme d'assistants
+image:20241212_Microsoft-AI-Innovation-day_39.jpg[]
+
+.Architecture de la solution
+image:20241212_Microsoft-AI-Innovation-day_40.jpg[]
+
+    * base de connaissance sur Azure AI Search
+    * pour de la *donnée chaude* : *Faiss* et Azure Blob Storage
+    * LLM d'OpenAI
+        ** mais sur des use cases de ce type, le modèle n'est pas le plus important, c'est un peu "la dernière question à se poser"
+
+.Les problèmes associés à la solution
+image:20241212_Microsoft-AI-Innovation-day_41.jpg[]
+
+1. *problèmes de performances* : on teste, on vérifie que ça fonctionne PUIS on passe à des PTU pour réserver des ressources
+4. Attention ! *Front Web chatbot* c'est le 4
+    ** Pour l'*évaluation des résultats*, il va falloir *trouver des jeux de données de test* (des séries de questions / réponses)
+
+* Sur le marché, les *méthodes de chunking* sont le sujet sur lequel on investit le plus.
+* Le sujet du *GraphRAG* est en pleine hype (une fois de plus)
+
+* En termes d'évaluation : 
+    ** Qualité : avec de l'humain
+    ** Quantité : LLM as a judge
+
+REX 2 : industrialisation : accélérer et automatiser la retrodocumentation
+
+image:20241212_Microsoft-AI-Innovation-day_42.jpg[]
+image:20241212_Microsoft-AI-Innovation-day_43.jpg[]
+
+* Résultat généré par l'outil : +
+image:20241212_Microsoft-AI-Innovation-day_44.jpg[]
+image:20241212_Microsoft-AI-Innovation-day_45.jpg[]
+
+* -> A terme, on n'aura même plus besoin de générer ce type de doc (DA) car on pourra utiliser GitHub Copilot pour poser des questions directement sur le code.
+    ** Néanmoins, cette cible reste vraiment "la théorie", nous n'y sommes pas encore
+    ** Et certaines populations dans l'entreprise vont avoir besoin d'un document "standardisé" avec certaines sections spécifiques (matrice de flux, télémétrie, etc.)
+
+*WORKSHOP*
+
+.Les étapes du workshop
+image:20241212_Microsoft-AI-Innovation-day_46.jpg[]
+
+.Ressources pour le lab
+image:20241212_Microsoft-AI-Innovation-day_47.jpg[]
+
+* repo GitHub : https://github.com/FranckGaillard/Azure-Innovation-Day---December-12-2024
+* instructions du lab : link:./workshop/Lab-Azure-Innovation-Day_20241212.pdf[]
+
+.Fiche mémo sur l'art du prompt
+image:20241212_Microsoft-AI-Innovation-day_48.jpg[]
+
+* Principe d'auto-évaluation : demander à l'IA de ré-évaluer et améliorer son propre travail
+    ** Prompt : [instruction] + [auto-évalue toi] + [améliore] + ...
+    ** Ex : Explique la physique quantique. Comment pourrais-tu améliorer cela ? Ton explication est-elle claire ? Applique tes conseils
+
+.Intégration des données : RAG vs fine-tuning
+image:20241212_Microsoft-AI-Innovation-day_49.jpg[]
+
+.Embeddings : définition et usage
+image:20241212_Microsoft-AI-Innovation-day_50.jpg[]
+
+.Préparation d'une base vectorielle
+image:20241212_Microsoft-AI-Innovation-day_51.jpg[]
+
+.Intégration des données dans un RAG
+image:20241212_Microsoft-AI-Innovation-day_52.jpg[]
+
+* Définition du *fine-tuning* (et petit mot sur les *LoRA*) : +
+image:20241212_Microsoft-AI-Innovation-day_53.jpg[]
+
+* Et les principales raisons pour personnaliser un modèle : +
+image:20241212_Microsoft-AI-Innovation-day_54.jpg[]
+
+* Les *4 moyens d'améliorer les résultats d'un modèle* : 
+image:20241212_Microsoft-AI-Innovation-day_55.jpg[]
+
+    1. prompt engineering
+    2. RAG
+    3. fine-tuning
+    4. pre-training
+
+* Les principaux paramètres intervenant dans le fine-tuning : +
+image:20241212_Microsoft-AI-Innovation-day_56.jpg[]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
