@@ -1,0 +1,234 @@
+= 2025/03/26 - 30 : JChateau
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Jeudi
+
+image:20250327_JChateau_agenda.jpg[]
+
+== Vendredi
+
+image:20250328_JChateau_agenda.jpg[]
+
+=== 1ere session : Sécurité et SCA
+
+* Full title : Open source 3rd party library vulnerabilities (SCA security) (UBI POM SCAN CVE SBOM)
+* Talk animé par David
+
+* David nous a présenté les évolutions en matière de sécurité qui ont eu lieu dans sa société sur à la "prise de conscience" amenée par la faille ayant ciblé Log4J
+    ** Avec cette faille, il y a eu une prise de conscience de la direction MAIS il faut "faire quelque chose mais pour 0 budget..."
+* Comme 0 budget, David a employé pour son stage de 3 mois un étudiant d'une école de cybersécurité de Lyon ("Guardia" ?)
+
+.Rappels : SCA et SAST
+[NOTE]
+====
+* *SCA* - Software Composition Analysis : recherche les vulnérabilités dans les bibliothèques tierces et les composants open source. 
+* *SAST* - Static Application Security Testing : SAST analyse le code source d'une application à la recherche de vulnérabilités de sécurité dans le code propriétaire
+====
+
+* SBOM is now mandatory when you deliver to US government
+
+* "Ines" : SLSA et GUAC (de guacamole) comme frameworks de sécurité
+    ** https://security.googleblog.com/2022/10/announcing-guac-great-pairing-with-slsa.html
+    ** *GUAC* : Graph for Understanding Artifact Composition
+    ** *SLSA* - Supply-chain Levels for Software Artifacts, or SLSA ("salsa") : It's a security framework, a checklist of standards and controls to prevent tampering, improve integrity, and secure packages and infrastructure.
+
+=== 2e session : code review
+
+* Talk animé par Jean Christophe
+
+Plan du talk : 
+
+    * expected outcome
+        ** Team training / onboarding new team members (especially remote ones, because reviews are required, it is a good time to ask questions to your peers)
+        ** Communication
+        ** readable code
+        ** protect the team from external pressure : code review should be a mandatory step, written and validated as being part of the team workflow and so guaranteeing that it will be done even when there is pressure ("you are to deliver NOW so skip the code review...")
+    * DO / DONT
+        ** Do we need the code / tests
+        ** code review vs CI outcomes (do not review what the CI can do automatically)
+        ** Having intents in the PR description or design document (what is important vs what is not)
+    * Anything else / best practices
+        ** When ? Hard to find time to do the review / takes time
+        ** Who is doing the code review / Does pair programming require code review
+        ** Depends on the type of project (open source, etc.) / who are the stakeholders
+        ** code review is important in team diversity / providing good feedbacks
+        ** depends on the PR purpose (bug fix, new feature, etc.)
+        ** early feedbacks on the code (even before the PR is a draft / pipeline is green) especially for projects with few doc / tests and tech debt
+        ** having a checklist
+
+* les métriques permettant de mesurer l'intérêt et les résultats d'une code review sont difficiles à trouver
+
+=== 3e session : techniques for people that present or train
+
+talk animé par Daniel
+
+* Des branches différentes sur Git pour chaque étape de la prez, dès lors qu'il est question de code
+
+* Pour les workshops, les participants n'installent JAMAIS l'environnement prérequis. +
+La seule solution est de leur fournir, avec des solutions comme gitpod.io ou mieux maintenant *GitHub Codespaces*
+    ** GitPod : il suffit de taper "https://gitpod.io/" devant l'URL de votre repo pour créer un nouvel environnement sur GitPod
+        *** il y a un free tier sur GitPod
+        *** le téléchargement des dépendances du projet passe par le backbone d'Internet (AWS apparemment pour GitPod) et PAS par Internet directement (ce qui peut prendre un temps pas possible quand on présente...)
+        *** Apparemment GitPod repose sur les *Dev Containers* (A VERIFIER, Dec Containers : "juste" un container qui contient son environnement de travail ???)
+
+* Dans un repo GitHub, on peut remplacer le .com par un .dev OU appuyer sur "." pour lancer un Visual Studio Code dans le browser sur le repo
+
+* Commande "mcs", comme "mcs search" : TO BE COMPLETED
+
+.Les notes de Daniel
+====
+1. Zoom is really cool$
+    a. Laser pointer$
+    b. Excellent diagramming and collaboration$
+2. Zooming in Mac OSX$
+    There is one on linux$
+3. IntelliJ-$
+    a. Increase Code Selection$
+    b. Presentation Helper$
+4. Presentify$
+5. Using Git for Workshops~$
+a. Use either branching or tags as gates for your workshop$
+6. Using Asciidoctor + Reveal JS V$
+7. Asciidoctor or Presentation Softwares
+8. Using Gitpod.io or Codespaces$
+9. Your ideas here
+
+{sb}
+
+* Google Slides:$
+* laser$
+* Tools to Interact with your page$
+====
+
+== Samedi
+
+image:20250329_JChateau_agenda.jpg[]
+
+=== 1ere session : Digital Sovereignty
+
+Animé par Gerd
+
+* in Germany there is SCS (Sovereign Cloud Stack - Open Stack)
+
+* When the tech is shiny, it's in US, when it's old, it's in Europe, when it's data (meaning you don't want to do it), it's in India...
+
+=== 2e session : Java notebooks and playground
+
+Animé par Cay
+
+* *jbang* : pour scripter ou installer des choses en Java
+* Notebooks can run locally or share e.g. at https://colab.research.google.com/
+
+* Jupyter Java Anywhere: (https://github.com/jupyter-java/anywhere) :
+
+[source,ruby]
+----
+require 'asciidoctor'
+
+puts Asciidoctor.convert_file 'mysample.adoc', to_file: false
+----
+
+[source,bash]
+----
+!pip install jbang # change to pip3 if pip command not found
+import jbang
+jbang exec("trust add https://github.com/jupyter-java")
+print(jbang.exec("install-kernel@jupyter-java -- java 21 -- enable-preview").stdout)
+----
+
+* Example graph :
+
+[source,java]
+----
+%maven org.knowm.xchart:xchart:3.5.2
+
+import org.knowm.xchart .*;
+import java.util.stream .*;
+double[] xData = IntStream.range(0, 100).asDoubleStream().map(1-> 2 * Math.PI * 1/ 100) toArray();
+double[] yData= DoubleStream.of(xData).map(x -> Math.sin(x) + Math.cos(2 * x)).toArray();
+XYChart chart = QuickChart.getChart("Sample Chart", "x", "y", "y(x)", xData, yData);
+BitmapEncoder.getBufferedImage(chart)
+----
+
+* Java Jupyter support is not on par with Python
+* multiple incompatible Java "kernels" : IJava, JJava, Ganymede, Rapaio
+* Numpy equivalent ? Maybe tablesaw ? DFLib ?
+* Matplotlib equivalent ? Maybe charts ? ECharts Java ? chart-fx ?
+* *JTaccuino* is a JavaFX app with Jshell cells
+* IntelliJ supports (embeds ?) Jupyter Notebooks (A VERIFIER)
+
+Beyond Notebooks ?
+
+    * Jupyter notebooks are not perfect
+    * poor code completion, error reporting
+    * out of order execution
+    * no debugger
+    * Verbose JSON code format, hard to diff
+        ** donc difficile 
+    * Experimental *jnotebook* renders JShell files to HTML
+
+*Java playground* : https://dev.java/playground
+
+    * is the playground there to write programs or to write scripts ?
+
+.Tetris en Java : 
+image:20250329_JChateau_01.jpg[width=1000]
+
+=== 3e session : GitHub Actions : tips and tricks
+
+Animé par Andres
+
+* You can run many of the GitHub Actions with gitea.com (https://about.gitea.com/)
+    ** gitea.com is based on ACT, see https://gitea.com/gitea/act
+    ** et pour avoir une implémentation en Europe, on peut utiliser https://codeberg.org
+
+[WARNING]
+====
+* On parle bien de Gitea et non Gitee qui est le clone chinois de GitHub
+* Il faut bien utiliser gitea.com et PAS gitea.org qui est un site de phishing... 😓
+====
+
+* *JReleaser* (repo disponible sur GitHub) pour la définition de *"reusable workflows"* pour nos GitHub Actions.
+    ** JReleaser a été développé par Andres
+    ** Ces reusable workflows devraient contenir la partie "commune" à vos autres workflows
+
+* *GitHub Summary* pour avoir un résumé lors de l'exécution d'une action
+
+* GitHub t'offre gratuitement l'accès aux 3 grandes plateformes (Linux, Windows et MacOS) pour exécuter tes GitHub Actions.
+
+

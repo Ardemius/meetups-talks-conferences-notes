@@ -1,4 +1,4 @@
-= 2024/12/12 - Microsoft - IA Innovation Day
+= 2024/12/12 - Microsoft - Azure Innovation Day
 Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
 // Handling GitHub admonition blocks icons
 ifndef::env-github[:icons: font]
@@ -357,6 +357,8 @@ image:20241212_Microsoft-AI-Innovation-day_47.jpg[]
 
 * repo GitHub : https://github.com/FranckGaillard/Azure-Innovation-Day---December-12-2024
 * instructions du lab : link:./workshop/Lab-Azure-Innovation-Day_20241212.pdf[]
+* slides de présentation du lab "Build a multi-tasking assistant with Azure OpenAI" : +
+link:./workshop/20241212_Microsoft-GenAI_Build-a-multitasking-assistant-with-Azure-OpenAI.pdf[]
 
 .Fiche mémo sur l'art du prompt
 image:20241212_Microsoft-AI-Innovation-day_48.jpg[]

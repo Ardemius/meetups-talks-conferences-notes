@@ -63,6 +63,9 @@ Pour info, cela fait 17 ans qu'il travaille chez Red Hat. +
 Un exemple de plus qu'il est possible de progresser SANS devenir "manager" 😉 +
 (et si vous prenez son collègue *Clément Escoffier* côté Quarkus / Kubernetes chez Red Hat, c'est *"Principal Engineer"* 😉 )
 
+* 2025/02/11 - https://www.developing.dev/p/the-path-to-managing-managers : bon schéma détaillant le "niveau" de chaque poste (IC3, IC4, M1, M2, etc.) des branches Contributeur Individuel et Manager : +
+image:niveaux-roles-contributeur-individuel-manager.jpg[]
+
 == 2022/06/28 - Artisan Développeur : Interview de Thomas PIERRAIN, DDD et microservices
 
 Thomas PIERRAIN est VP of engineering chez Agicap, et est un ancien archi de la SGCIB
@@ -84,7 +87,7 @@ Thomas PIERRAIN est VP of engineering chez Agicap, et est un ancien archi de la 
 	** en gros, modular monolith : on crée des modules indépendants pour chaque feature
 	** This combined the advantages of a monolith, such a single test and deployment pipeline, with the advantages of microservices, such as code modularity and decoupling.
 +
--> Il faut bien se dire que les microservices nécessitent une grande maturité d'équipeS (oui, au pluriel) surtout côté de la chaîne de CI/CdD
+-> Il faut bien se dire que les microservices nécessitent une grande maturité d'équipeS (oui, au pluriel) surtout côté de la chaîne de CI/CD
 
 2. *DDD* pour une meilleure séparation et un meilleur contrôle de la logique métier
 	** le concept clé : les *bounded contexts*
@@ -189,7 +192,7 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 
 * *Data* : in my repo about Data
 
-== 2023/12/15 - 12@13 Softeam - Le rôle de l'architecte est-il compatible avec un projet Agile ?
+== 2023/12/15 - 12@13 Softeam : Le rôle de l'architecte est-il compatible avec un projet Agile ?
 
 [12:28] LOPES SILVA Ricardo - ressources d'architecture données par un participant (Abdallah ?) : 
     
@@ -199,9 +202,30 @@ De son côté, un *projet* est un effort temporaire qui a pour but de répondre 
 Thomas - Gregor Hohpe : The Architect Elevator : +
 https://architectelevator.com/
 
+== 2025/02/11 - 12@13 Softeam : Constituer un backlog avec l'IA 
 
+Présenté par Johnny DOMIN
 
+.Une User Story decrit le QUOI, pas le COMMENT
+image:20250211_backlog-IA_01.jpg[]
 
+* Pourquoi choisir l'IA pour constituer un backlog ? + 
+image:20250211_backlog-IA_02.jpg[] 
+image:20250211_backlog-IA_03.jpg[] 
+image:20250211_backlog-IA_04.jpg[] 
 
+* Construction du prompt avec l'IA : +
+image:20250211_backlog-IA_05.jpg[] 
+image:20250211_backlog-IA_06.jpg[] 
+image:20250211_backlog-IA_07.jpg[] 
+image:20250211_backlog-IA_08.jpg[] 
 
+* Explication des critères et tests : +
+image:20250211_backlog-IA_09.jpg[] 
+
+Conseils des participants quant au prompting : 
+
+    * "je rajoute à la fin des prompts de pas proposer des choses en plus ou alors de les mettre à part / je lui demande aussi s'il a des questions à me poser avant de répondre"
+
+* Comparaison entre ChatGPT et DeepSeek sur ce sujet : ChatGPT donne de meilleurs résultats, DeepSeek restant très "light"
 

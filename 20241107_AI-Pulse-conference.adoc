@@ -250,7 +250,7 @@ Join us for an engaging, hands-on workshop, "Simulating Embedding Models for Str
 
 .Abstract
 ====
-After a quick rundown on agentic patterns and what they unlock, we’ll jump right into demos, tackling key skills like generating consistent structured outputs using JSON Schema. You’ll learn practical tricks for leveraging function calling to integrate LLMs smoothly into your tool ecosystem. Plus, we’ll go beyond text, adding Vision for richer, more versatile applications. Join us to see how you can build smarter, more adaptable AI solutions with open-weight LLMs at the core.
+After a quick rundown on agentic patterns and what they unlock, we'll jump right into demos, tackling key skills like generating consistent structured outputs using JSON Schema. You'll learn practical tricks for leveraging function calling to integrate LLMs smoothly into your tool ecosystem. Plus, we'll go beyond text, adding Vision for richer, more versatile applications. Join us to see how you can build smarter, more adaptable AI solutions with open-weight LLMs at the core.
 ====
 
 * Il existe principalement 4 "agentic patterns", nous allons ici parler du Function Calling +
@@ -295,6 +295,12 @@ image:20141107_ai-PULSE-conference_38.jpg[]
 * Les résultats sont vraiment très encourageants, avec encore quelques erreurs dans l'extraction d'informations des images (surtout quand c'est mal écrit !)
 
 NOTE: Contacter Guillaume Calmettes par mail (gCalmettes@scaleway.com) et lui demander de nous envoyer le support et le code de la démo
+
+Ressources : 
+
+    * Mail "Workshop material - Generative APIs" reçu le 2024/11/07 avec toutes les ressources du workshop : +
+    Voici le lien vers le document présenté : link:{resourcesdir}/20241219_ai-PULSE_Agentic-AI-powered-by-Generative-APIs.pdf[]
+
 
 
 
