@@ -68,7 +68,7 @@ image:20250416_Devoxx-France_01.jpg[width=1000]
     * les dizaines du numéro de salle indiquent si celle-ci est à gauche ou à droite de l'étage
 
 * On a pu voir de très beaux stands cette année, très en accord avec le thème du salon : +
-image:20250416_Devoxx-France_54.jpg[]
+image:20250416_Devoxx-France_54.jpg[width=600]
 
 
 == Mon Top des talks
@@ -77,6 +77,9 @@ image:20250416_Devoxx-France_54.jpg[]
 == Buzz words & Technos qui ont le vent en poupe
 
 * *De l'IA, de l'IA, de l'IA*, et cette année nous sommes passés de la découverte à la mise en place de pipeline plus évolués : toujours de RAG, mais aussi de "l'agentic" qui explose avec tout le MCP qui va avec 😉
+
+* Pour les assistants AI, on assiste à la *fin de la code completion*, de plus en plus "boudée", et qui est en train de définitivement laisser la place à un *usage de l'assistant via le chat*. +
+On change donc de paradigme, le pilote devient l'assistant AI, et le développeur va maintenant "chatter" avec ce dernier pour lui expliquer ce dont il a besoin. Et au final, c'est l'assistant AI qui va maintenant modifier le code source.
 
 * Eh bien on reparle quand même un peu "des bases" avec *notre bon vieux Git* 🙂 +
 Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, commandes avancées / guide de survie, etc.)

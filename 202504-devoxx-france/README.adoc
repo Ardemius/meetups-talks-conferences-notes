@@ -574,6 +574,38 @@ Je vous propose alors de voir ensemble comment, grâce à l'opérateur "NVIDIA G
 Après cette session, mes équipes de devs pourront enfin avoir du GPU dans leurs conteneurs !
 ====
 
+* Slides du talk : https://presentations.verchere.fr/GPU_Containers_Devoxxfr_2025
+    ** Très bon slides, très bons schémas
+    ** Et après avoir suivi la conf, on peut vraiment dire qu'il était obligatoire de disposer de bons schémas pour expliquer la procédure pour accéder à ces sacrés GPUs... 😅
+
+* Pour activer le GPU côté Dev : + 
+image:20250416_Devoxx-France_55.jpg[]
+
+    ** Environnement de démo : Apps Python, Streamlit + Pytorch + Diffusers + StableDiffusion
+
+* Et côté OPS : +
+image:20250416_Devoxx-France_56.jpg[]
+
+    ** Besoins : 
+        *** 1 Cluster Kubernetes (of course)
+        *** 1 ou plusieurs nodes avec carte GPU
+    ** Environnement de démo : 
+        *** Cluster OVHCloud MKS, v1.32 (🎵)
+        *** Nodes avec 1 GPU "H100" (prêté pour la démo par NVidia, et Rémi le coupera vite après car ça coûte un bras... 😅)
+
+* Il faut *patcher containerd* pour que les containers sur le noeud puissent accéder au GPU : +
+image:20250416_Devoxx-France_57.jpg[]
+
+* Liste des pods / composants requis pour accéder au GPU... 😱🤪🤯
+image:20250416_Devoxx-France_58.jpg[]
+
+    ** Tout ceci s'apparente quand même à un ensemble de "hacks" avec certaines libertés quant à la sécurité qui laissent songeur (le pod qui accède au host...)
+
+* *Partage du GPU* : 
+    ** Stratégie du *Time Slicing* : attention à la mémoire et aux erreurs "CUDA out of memory"
+
+Conclusion : conf destinée avant tout aux OPS, très technique, décrivant les nombreuses opérations à réaliser pour arriver à ses fins (et ce n'est vraiment pas pour tout le monde 😅)
+
 == JOUR 2 : JEUDI 17/04
 
 === 09:00 -> 09:25 - Keynote - Amphi bleu : Langage, IA et propagande : la guerre des récits a déjà commencé
