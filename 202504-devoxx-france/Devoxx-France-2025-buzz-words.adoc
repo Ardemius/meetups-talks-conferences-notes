@@ -72,9 +72,13 @@ image:20250416_Devoxx-France_01.jpg[width=1000]
 
 == Buzz words & Technos qui ont le vent en poupe
 
-* Eh bien on reparle quand même un peu "des bases" avec notre bon vieux Git 🙂 +
+* *De l'IA, de l'IA, de l'IA*, et cette année nous sommes passés de la découverte à la mise en place de pipeline plus évolués : toujours de RAG, mais aussi de "l'agentic" qui explose avec tout le MCP qui va avec 😉
+
+* Eh bien on reparle quand même un peu "des bases" avec *notre bon vieux Git* 🙂 +
 Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, commandes avancées / guide de survie, etc.)
-* Beaucoup de références au platform engineering
+
+* Beaucoup de références au *platform engineering*
+* "Passer du monolithe ou *modulithe*" : j'aime beaucoup ce terme de "modulithe" 👍
 
 == Technos dont on parle moins (ou plus !)
 

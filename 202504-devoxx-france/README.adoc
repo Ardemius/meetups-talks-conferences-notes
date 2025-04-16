@@ -194,6 +194,100 @@ Infrastructure as code, découpage des équipes (Conway), modularisation, archit
 Le but n'est pas de donner "LA" méthode mais notre expérience avec ses succès et ses échecs.
 ====
 
+* 1er besoin : *plus de services (plus de développements), plus vite !* +
+image:20250416_Devoxx-France_09.jpg[]
+    ** donc migration de techno
+
+* 2e besoin / problème : *difficulté avec l'architecture monolithique* +
+image:20250416_Devoxx-France_10.jpg[]
+
+* 3e besoin / problème : *pas assez d'OPS !* 
+    ** Donc migration dans le Cloud +
+    image:20250416_Devoxx-France_11.jpg[]
+    ** et à ce niveau les coûts ont explosés et ont dû être optimisés
+        *** ils étaient sur Oracle avec le Cloud, passage à Aurora sur AWS, ce qui avec les licences étaients très très cher... +
+        -> Donc, ils sont passés à Postgre
+
+* 4e problématique : *besoin de renforts* pour une très grosse demande de croissance de la direction
+    ** et comme tout le monde difficultés à recruter, pas assez d'ITs sur le marché (situation post-covid)
+    ** Donc, on "soigne" le recrutement, la formation, les possibilités d'évolution (avec autre chose comme horizon qu'un poste de "manager") +
+    image:20250416_Devoxx-France_12.jpg[]
+
+* 5e problématique : *on devient trop nombreux pour 1 seule équipe*
+    ** on cherche à créer de nouvelles équipes et à *aligner Business, équipe et appli* (et on utilise le *DDD* pour ça, à grand renfort de *Bounded Context*) +
+    image:20250416_Devoxx-France_13.jpg[]
+    image:20250416_Devoxx-France_14.jpg[]
+
+    ** Bonne taille d'une équipe, rappel de la loi de Miller (7 personnes + ou - 2 dans l'équipe) et de la double pizza team max en réunion (5 à 8 personnes max)
+
+* 6e problématique : découpage du domaine et des applications +
+image:20250416_Devoxx-France_15.jpg[]
+image:20250416_Devoxx-France_16.jpg[]
+    ** bienfait du découpage pour rendre les choses "moins grosses" et ne pas décourager les équipes devant la masse de chose à devoir absolument connaître
+
+* *composition type d'une équipe* : +
+image:20250416_Devoxx-France_17.jpg[]
+    ** Recherche d'internalisation des anciens développeurs
+    ** problématique des changements de poste (un bon dev ne devient pas forcément un bon "autre chose")
+
+* *Modularisation du monolithe* : +
+image:20250416_Devoxx-France_18.jpg[]
+    ** attention au découpage, et aux tensions qui peuvent en découler (quand une entité appartient à plusieurs domaines)
+
+* *Modularisation via les FaaS d'AWS*
+image:20250416_Devoxx-France_19.jpg[]
+    ** très important : besoin d'autonomie des équipes dev quant à l'infra pour la mise en place des Lambdas.
+
+* *Modularisation via les containers* +
+image:20250416_Devoxx-France_20.jpg[]
+
+* Mais attention : on modularise mais en cherchant à *limiter la duplication* +
+image:20250416_Devoxx-France_21.jpg[]
+    ** Usage de Gradle (on ressort le "convention over configuration") +
+    image:20250416_Devoxx-France_22.jpg[]
+
+* *Baisse de qualité constatée* -> on fait *plus de tests*
+    ** problématique du niveau de connaissance des équipes (sur les tests et la façon de les faire)
+    ** attention quand on chercher à tester un système "trop grand"
+
+* *Plus de communication* également : +
+image:20250416_Devoxx-France_23.jpg[]
+    ** attention, la task force ne doit pas durer dans le temps, sinon cela devient une équipe à part entière
+
+* *Monorepo* : attention tout le monde voit tout et peut tout modifier +
+image:20250416_Devoxx-France_24.jpg[]
+    ** conseil : chercher à limiter le nombre de versions
+
+* La direction demande de nouveau 7 nouveaux projets pour hier...
+    ** Comment avancer à la fois sur la modularisation et les nouveaux sujets ?
+        *** Prioriser
+        *** Helicopter view
+        *** *Cost of delay* : quel impact en €€€ si on décale cette évolution d'1 mois ?
+
+* Autres conseils : *ne PAS réinventer la roue* +
+image:20250416_Devoxx-France_25.jpg[]
+    ** *Golden path* : chemin "unique" pour aller jusqu'à la prod
+
+* *Ne pas réinventer l'UI* non plus
+    ** il faut réussir à montrer à l'utilisateur qu'on avance, petit à petit
+        *** l'idée est de montrer qu'on s'améliore "en continu", et non en "big bang"
+            **** cette série de petites améliorations donne de la visu aux utilisateurs
+
+* Pas d'équipe d'archi "hors sol" et déconnectées de la réalité : +
+image:20250416_Devoxx-France_26.jpg[]
+    ** faire du *SMS* : *Steal Modify Simplify*
+        *** l'idée est d'aller chercher les infos et solutiosn dans les équipes
+
+* En conclusion : +
+image:20250416_Devoxx-France_27.jpg[]
+image:20250416_Devoxx-France_28.jpg[]
+
+    ** côté Archi : archi hexa, contract testing
+    * équipe pluridisplinaire de MOINS DE 10 PERSONNES (ils insistent beaucoup dessus)
+    * ne pas avoir QUE le monilithe ou que le Cloud : monolithique + Cloud / Lambda + container, c'est mieux !
+    * Passer du monolithe ou *"modulithe"*
+    * Soyez PRAGMATIQUES ! 
+
 === 11:35 -> 12:20 - Conference - Maillot : Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser
 
 Présenté par : 
