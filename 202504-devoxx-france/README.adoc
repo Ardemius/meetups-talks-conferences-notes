@@ -327,25 +327,67 @@ Mais les LLM sont loin d'être parfaits :
 Nous répondrons ensemble à ces questions et dévoilerons les mystères des LLMs !
 ====
 
+.Les use cases des LLM
+image:20250416_Devoxx-France_29.jpg[]
+
+* jusqu'à fin 2024 : l'AI était un copilot
+* 2025 : on change de paradigme, le pilote devient l'AI, et on chat avec elle pour lui expliquer ce dont on a besoin
+    ** Cela devient une voiture sans volant à laquelle on dit "où on veut aller"
+
+* GPT-4 is rumored to have been trained on ~13 trillion tokens (trillion à l'anglaise ici)
+    ** rappel : 4 tokens ~ 3 mots
+
+How does *tokenization* work ? +
+Most common algorithms:
+
+    * *BPE* (Byte-Pair Encoding) used by GPTs +
+    image:20250416_Devoxx-France_30.jpg[]
+        ** Gemini a un vocabulaire plus large que ceux des GPT d'OpenAI, d'où l'usage de moins de tokens, d'où un coût moindre (A VERIFIER)
+
+    * *WordPiece*, used by BERT
+    * *Unigram*, often used in SentencePiece
+    * *SentencePiece*, used by Gemini & Gemma
+
+Some require *pre-tokenization*, or don't offer *reversible tokenization*.
+
+.Exemple de tokenization
+image:20250416_Devoxx-France_31.jpg[]
+
+* Par défaut, un modèle peut ne pas répondre à notre question (et proposer d'autres questions par exemple). +
+-> Dans ce cas, on peut entraîner le modèle avec des exemples pour "donner l'exemple d'une réponse" (Instruction fine tuning) +
+image:20250416_Devoxx-France_32.jpg[]
+
+* *How do LLMs know when to stop generating tokens ?*
+image:20250416_Devoxx-France_33.jpg[]
+    ** max output tokens count
+    ** ou on place une séquence de fin de génération : <|endoftext|> or <end_of_turn>
+
+* *How is generated the next token ?* +
+image:20250416_Devoxx-France_34.jpg[]
+    ** Voir le très bon site "Transformer Explainer" : https://poloclub.github.io/transformer-explainer/
+
+* Les hyperparamètres permettant d'influer sur la génération du prochain token :
+
+.Top K
+image:20250416_Devoxx-France_35.jpg[]
+.Top P
+image:20250416_Devoxx-France_36.jpg[]
+.Température
+image:20250416_Devoxx-France_37.jpg[]
+
+* Mais même avec une température à 0, on ne peut pas garantir que l'on va devenir 100% déterministe : +
+image:20250416_Devoxx-France_38.jpg[]
+
+* "LLMs are very bad at knowing if they are wrong (a deterministic problem), but very
+good at knowing if they would probably be wrong (a probabilistic problem)."
+
+* plutôt que de parler d'"hallucinations", on devrait parler de *"confabulations"* : le remplacement d'un "trou" de savoir qu'on a pas
+
+* Cross-linguistic concepts : +
+image:20250416_Devoxx-France_39.jpg[]
+    ** Voir les excellents articles d'Anthropic sur le sujet : www.anthropic.com/research/tracing-thoughts-language-model
+
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
-
-=== 12:35 -> 12:50 - quickie - Paris 143 : Maîtriser les Tests de Code Asynchrone
-
-.Yifang dong - Murex
-====
-Software engineer enjoys reading and writing code, solving problems with constraints and trade-offs. I believe that software craftsmanship can make me a better developer.
-====
-
-.abstract
-====
-Nous savons tous que les tests sont essentiels pour la qualité du code. Mais lorsqu'il s'agit de code asynchrone, les choses se compliquent
-
-Venez et apprenez des astuces afin d'éviter les maux de tête liés aux tests instables et améliorer la couverture de test de votre système.
-
-Au cours de cette présentation, vous découvrirez comment CountDownLatch et CompletableFuture peuvent vous aider à tester des opérations asynchrones. Acquérez une meilleure compréhension de l'écriture de tests d'intégration solides. De plus, explorez l'art du refactoring pour simplifier les tests en séparant la logique métier des requêtes asynchrones.
-
-Ne manquez pas cette opportunité de perfectionner vos compétences en matière de tests et de vous assurer que vos tests restent fiables.
-====
 
 === 13:30 -> 14:15 - Conference - Maillot : Créer des Applications Intelligentes avec Quarkus et LangChain4j
 
@@ -365,6 +407,10 @@ Clement Escoffier (@clementplop) is a distinguished engineer at Red Hat and co-l
 Dans le contexte dynamique de l'intelligence artificielle, intégrer des (grands) modèles de langage (LLM/SLM) dans les applications est devenu une priorité pour les développeurs. Bien que de nombreuses bibliothèques facilitent cette intégration, elles négligent souvent les exigences propres aux applications d'entreprise. Une intégration réussie dépasse la simple interaction et doit inclure la gestion des métriques, la tolérance aux pannes, l'audit, et l'extensibilité.
 Cette présentation montre comment la combinaison de Quarkus et de LangChain4j permet de créer des applications intelligentes répondant aux contraintes des entreprises. En partant des principes fondamentaux, nous vous guiderons pour transformer une application Quarkus de base afin de répondre aux standards des applications d'entreprise. Découvrez comment intégrer l'observabilité, les mécanismes de résilience, l'audit, et l'implementation du RAG, les garde-corps, assurant ainsi une intégration complète des LLMs dans vos applications.
 ====
+
+TO BE COMPLETED
+
+
 
 === 14:35 -> 15:20 - Conference - 242 AB : Toward transparent LLM: test, observe and evaluate your RAG assisted chatbot
 
@@ -583,6 +629,7 @@ PS : Si j'ai convaincu mon manager, pourquoi pas vous ?
 === 17:50 -> 18:20 - Tools-in-Action - Paris 143 : {Cloud || Container} Development Environment
 
 .Jean-Philippe Baconnais - Zenika
+====
 **Consultant @Zenika Nantes**
 
 Plongé dans le développement avec l'éco-système Java, curieux de nature, j'aime découvrir et expérimenter de nouvelles technos back end ou front end et les partager autour de moi.
@@ -610,6 +657,7 @@ Mais attends…🤔 C'est quoi un CDE ? Le D et le E, pour “Development Enviro
 Quels sont les impacts et les différences en termes de performances, de sécurité et de coût ?
 Nous vous présenterons en détail les deux approches : les CDE Container avec des outils comme DevContainer et les CDE Cloud comme IDX et Cloud Workstation. Puis, grâce à des démos pratiques, nous montrerons que ces deux approches font désormais partie du starker kit des développeurs et développeuses d'aujourd'hui.
 ====
+
 
 == JOUR 3 : VENDREDI 18/04
 
