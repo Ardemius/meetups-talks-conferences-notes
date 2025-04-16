@@ -408,8 +408,39 @@ Dans le contexte dynamique de l'intelligence artificielle, intégrer des (grands
 Cette présentation montre comment la combinaison de Quarkus et de LangChain4j permet de créer des applications intelligentes répondant aux contraintes des entreprises. En partant des principes fondamentaux, nous vous guiderons pour transformer une application Quarkus de base afin de répondre aux standards des applications d'entreprise. Découvrez comment intégrer l'observabilité, les mécanismes de résilience, l'audit, et l'implementation du RAG, les garde-corps, assurant ainsi une intégration complète des LLMs dans vos applications.
 ====
 
-TO BE COMPLETED
+* Quelques précisions sur les modèles qui raisonnent : +
+image:20250416_Devoxx-France_40.jpg[]
 
+* Le *contexte* ayant une taille fixe, il faut par moment penser à le *purger*, ce qui n'est pas fait facile, l'information supprimée pouvant être de grande valeur.
+    ** Une solution : *compression sémantique*
+
+* Chaque modèle a SON algo de tokenization, et c'est très compliqué de savoir à l'avance combien on va consommer
+    ** on ne peut le savoir qu'après coup via le modèle lui-même
+
+* Langchain4J n'a plus de LangChain que le nom
+    ** Java et Python ayant des différences fondamentales dans leur approche, convertir "de façon iso" Langchain Python vers Langchain4J ne fonctionne pas
+        *** Ce qui était très bien en Python ne l'est plus en Java
+
+* Même principe pour "Quarkus Langchain4J" qui va permettre d'intégrer Langchain4J à Quarkus : +
+image:20250416_Devoxx-France_41.jpg[]
+image:20250416_Devoxx-France_42.jpg[]
+
+* Dès lors qu'on utilise du *Function calling*, il y aura des *guardrails* à mettre en place : +
+image:20250416_Devoxx-France_43.jpg[]
+
+* 4 types de output pour nos guardrails : +
+image:20250416_Devoxx-France_44.jpg[]
+
+* Et maintenant avec le *MCP* : +
+image:20250416_Devoxx-France_45.jpg[]
+
+    ** MCP : Standardize the communication between an Al Infused application and the environment
+        ***  For local interactions -> regular function calling
+        *** For all remote interactions -> MCP
+
+    ** MCP : Very useful to enhance a desktop Al-infused application
+        *** Give access to system resources
+        *** Command line
 
 
 === 14:35 -> 15:20 - Conference - 242 AB : Toward transparent LLM: test, observe and evaluate your RAG assisted chatbot
