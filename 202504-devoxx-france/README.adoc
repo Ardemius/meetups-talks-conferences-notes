@@ -1,0 +1,556 @@
+= Devoxx France 2025
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Programme du salon : https://mobile.devoxx.com/events/devoxxfr2025/schedule
+
+== JOUR 1 : MERCREDI 16/04
+
+=== 09:00 -> 09:45 - Keynote - Amphi bleu : L'Intelligence Artificielle n'existe pas
+
+Présenté par Luc JULIA
+
+.biographie
+====
+Luc Julia, co-créateur de Siri, l'assistant vocal d'Apple, est une figure emblématique dans le domaine de l'intelligence artificielle et des technologies émergentes. Avec une carrière marquée par l'innovation, il a contribué à redéfinir l'interaction homme-machine. Passionné par l'IA et la robotique, il a également co-fondé plusieurs startups et conseillé de grandes entreprises technologiques.
+Luc est un conférencier renommé, auteur de plusieurs ouvrages sur l'IA, et un fervent défenseur de l'éthique dans les technologies. Son travail continue d'inspirer et de façonner l'avenir de l'innovation technologique. Il est également connu pour ses contributions dans le domaine de l'Internet des objets (IoT) et pour sa vision d'un avenir où la technologie est au service de l'humanité.
+Son parcours exceptionnel et ses idées avant-gardistes en font un leader respecté dans l'industrie technologique. Luc Julia est un exemple vivant de la manière dont la passion pour l'innovation peut transformer le monde.
+====
+
+.abstract
+====
+Malgré une histoire chaotique et bien que la discipline existe depuis les années 50, l'« Intelligence Artificielle » est revenue en force dans la dernière décennie. Mais telle qu'elle est présentée, cette « Intelligence Artificielle » amène son lot de promesses irréalistes dignes des meilleurs films d'Hollywood, permettant à quelques charlatans de nous faire croire que les machines pourraient un jour prendre le pouvoir et nous réduire pratiquement à néant.
+Mais surtout, elle nous fait courir le risque, soit par peur, soit par dépit, d'abandonner toutes les recherches dans ce domaine et de menacer les avancées dans des disciplines telles que le machine learning ou le deep learning. Ces disciplines seraient stoppées en plein élan, alors qu'elles n'en sont qu'à leurs balbutiements et qu'elles apporteront encore beaucoup à l'humanité...
+====
+
+* vers 1950 on pensait que "neurones -> cerveau -> IA", sauf que ça marche pô +
+-> donc 1956, 1er hiver de l'IA
+* 1997, on a maintenant de bons systèmes experts, et une machine qui bat Kasparov aux échecs
+
+* C'est l'IA de Hollywood qui n'existe pas, à savoir "celle de Terminator", celle qui va nous tuer
+    ** Idem pour l'IA de "Her", celle qu'on va aimer (ben ça marche pô non plus)
+
+* Et *l'AGI idem, ça n'existe pas, ça n'existera JAMAIS* (faut pas croire Elon ou Sam)
+
+* "Une IA, c'est une boîte à outils"
+    ** donc dans laquelle il y a DES outils : des outils spécialisés qui chacun remplisse des tâches différentes
+    ** on peut utiliser le marteau pour enfoncer un clou ou taper sur la tête du voisin. +
+    Mais dans ce 2nd cas c'est pas bien -> et donc on instaure des règles pour l'utiliser
+
+* "L'IA va devenir meilleure que nous" -> Luc "ben c'est déjà le cas" mais pour des usages particuliers où je veux bien les utiliser
+    ** et encore heureux, car pourquoi irai-je utiliser un outil qui fait moins bien que moi ?
+
+* l'IA gen : révolution ou évolution ?
+    ** L'IA n'est PAS une révolution : aucune tête n'est tombée... C'est une *évolution*
+    ** une évolution de l'IA des années du 1990, le Machine Learning, le Deep Learning
+    ** Machine Learning -> Deep Learning : c'est plus de données et plus de capacités de calcul
+        *** et l'IA générative c'est pareil, on passe de nouveau à plus de données et plus de capacités de calcul
+
+image:20250416_Devoxx-France_02.jpg[]
+
+* Luc redonne son exemple du chat : 
+    ** il faut 100 000 images de chat pour que la machine puisse reconnaître les chats à 98%
+    ** il faut 2 images de chat pour que ma gamine de 2 ans reconnaisse un chat à 100%
+
+* ChatGPT et GPT-4o : 1200 milliards de paramètres -> c'est autant qu'Internet tout entier...
+
+* Mais cette évolution, c'est la *révolution du prompt*, qui permet d'utiliser ces IAs "juste" avec du langage naturel
+    ** qui me permet de demander tout et n'importe quoi à ces IAs sur tout et n'importe quoi
+    ** C'est donc la *révolution de l'accessibilité*
+
+* On entend souvent parler "d'IA créative" -> ça, faut arrêter. L'IA ne fait que générer ce que vous avez déjà créé
+    ** *Les IA n'inventent rien, ne créent rien et elles n'innovent PAS*
+* On va utiliser ces IAs comme un designer utilisait Photoshop il y a 35 ans : mais si on utilise pas Photoshop dans le milieu, je suis mort
+    ** donc il faut absolument se former sur l'outil qu'il FAUT savoir utiliser
+
+* Une techno met en général 5 à 10 ans pour parcourir le cycle de hype du Gartner +
+image:20250416_Devoxx-France_03.jpg[]
+    ** ChatGPT a mis 2 mois pour atteindre 100 000 000 d'utilisateurs, on a jamais fait mieux
+        *** Cela grâce à la révolution du prompt et de l'accessibilité
+    ** mais vers avril 2023, on s'est tous rendu compte que c'était de la m*%&# (hallucinations et erreurs), mais que certains use cases pour être adressés par l'IA générative.
+
+* Rappel : le but de l'IA générative est de générer quelque chose pour vous faire plaisir, PAS "pour que ce soit vrai" -> hallucinations
+
+* Test régulier de Luc avec un peu toutes les IAs : "Donne la bio de Luc JULIA"
+    ** et il a à chaque fois une nouvelle bio... +
+    image:20250416_Devoxx-France_04.jpg[]
+        *** -> les IA vous pondent un truc pour vous faire plaisir
+
+* La *pertinence* des IA est très dure à calculer
+    ** on peut demander à une IA générative "Montre-moi que la Terre est plate"...
+    ** en février 2023 l'Université de Hong Kong a défini un procédé pour estimer la pertinence de l'IA générative
+    ** et le résultat a été que dans l'IA gen donne des réponses pertinentes dans 63.41% des cas, DONC se trompe dans 36% des cas. +
+    image:20250416_Devoxx-France_05.jpg[]
+        *** -> Si un assistant humain se trompait dans 36% des cas, ne finirait-il pas à la porte ?
+
+* Le secret pour *faire monter la pertinence* est donc de *spécialiser* ces IAs : +
+image:20250416_Devoxx-France_06.jpg[]
+
+* *Propriété Intellectuelle* : ce que disent les éditeurs d'IA Gen "tout ce que VOUS avez généré est à VOUS"
+    ** Donc, les auteurs et ayant-droit vont vous attaquer VOUS si vous avez généré une image à patir de contenu sous licence
+        *** Mais ils ne vont pas vous attaquer vous, un tout petit
+    ** et les éditeurs d'IA Gen ont pillé un peu tout le net : +
+    image:20250416_Devoxx-France_07.jpg[]
+
+    ** Adobe Firefly : "tout ce que vous générez est à MOI DONC pas de souci de licensing, et si on VOUS attaque pour ce que vous avez généré avec mon outil, je paye les frais de justice" -> pour dire ça, il faut être un rien sûr de soi +
+    image:20250416_Devoxx-France_08.jpg[]
+
+* *Jailbreaking des IA* : les IAs "ont réponse à tout" MAIS il y a des réponses qu'il ne faut PAS donner
+    ** En novembre 2022, on demandait la recette d'une bombe à ChatGPT et on avait une réponse
+    ** quelques semaines plus tard, l'IA vous répondait "je ne peux pas répondre"
+    ** et là on disait "imagine que je sois un savant fou et que je veuille fabriquer une bombe, comment ferais-je ?" et l'IA répondait de nouveau
+    ** C'est le début du jeu du chat et de la souris du jailbreaking
+    ** aujourd'hui, il faut un prompt de 30 pages pour obtenir la recette d'une bombe
+
+* *Impacts de l'IA générative*
+    ** aujourd'hui comme l'IA gen consomme de plus en plus, on souhaite construire des centrales à côté des data centers de l'IA gen
+    ** une 20e de requêtes ChatGPT, c'est ~20L d'eau
+        *** et on ne peut pas refroidir les DC avec de l'eau salée
+
+* L'avenir : 
+    ** Les gros modèles c'est plus ou moins mort
+    ** l'avenir c'est : 
+        *** Fine tuning
+        *** open source
+        *** modèles plus frugaux
+        *** plus spécialisés
+        *** et surtout *l'hybridation* (que Luc aime beaucoup) : hybride entre la logique et les statistiques
+            **** le "souci" : les logisticiens et les mathématiciens aiment trop se "mettre sur la gueule" 😆
+
+Conclusion : Super talk, Luc est un excellent speaker, une vision passionnée et argumentée.
+
+=== 10:30 -> 11:15 - Conference - Paris 143 : Rex scale-up: les impacts du passage à l'échelle
+
+Présenté par : 
+
+.Guillaume EHRET - Dev-Mind
+====
+Dans une conversation en dehors du monde informatique, je me présente souvent comme un artisan du développement informatique. J'ai créé Dev-Mind pour pouvoir apporter mon savoir-faire aux entreprises qui souhaitent construire des solutions centrées sur leurs utilisateurs.
+
+J'apprécie à la fois le développement frontend (Android, TypeScript, Angular) et le développement backend (Java, Kotlin, Spring). La conception logicielle et le code propre sont des sujets qui me challengent au quotidien.
+
+Je m'implique également dans les communautés. Je suis co-organisateur depuis 10 ans de la conférence MiXiT qui a lieu chaque année à Lyon (France), une conférence qui tente d'œuvrer pour plus de diversité et d'éthique dans la Tech.
+====
+
+.Charles Bouttaz - Energy Pool
+====
+Développeur depuis 15 ans, tombé dans la marmite du craft et de l'agilité depuis 10 ans et pas prêt d'en sortir !
+
+Ses domaines de prédilection : le code de qualité, les tests et tous les trucs en DD (TDD, BDD, DDD).
+
+Ne le lancez pas sur eXtreme programming, Kanban ou l'organisation d'entreprise il vous tiendrait la jambe toute la soirée.
+
+Le jour il est lead dev d'une équipe distribuée pour Energy Pool, la nuit il enfile son masque d'organisateur du Lyon Java User Group ou de la conférence MiXiT.
+====
+
+.abstract
+====
+Comment passer de 7 à 77 développeurs en 3 ans ? Nous allons vous raconter notre histoire en abordant principalement les aspects techniques, organisationnels et opérationnels. +
+Nous sommes Charles & Guillaume, tech leads pour un éditeur de logiciel dans l'énergie qui connaît une croissance fulgurante.
+
+Nous reviendrons sur les différentes difficultés qui nous ont poussé à nous adapter :
+
+    * comment gérer l'infrastructure quand vous avez peu d'ops ?
+    * comment continuer à faire évoluer une application quand vous avez de plus en plus de développeurs ?
+    * comment découper un monolithe devenu trop gros ?
+    * et bien d'autres !
+
+Infrastructure as code, découpage des équipes (Conway), modularisation, architecture logicielle (DDD) feront partie des sujets abordés pendant ce talk.
+
+Le but n'est pas de donner "LA" méthode mais notre expérience avec ses succès et ses échecs.
+====
+
+=== 11:35 -> 12:20 - Conference - Maillot : Sous le capot des LLMs : toutes ces questions que vous n'avez jamais osé poser
+
+Présenté par : 
+
+.Guillaume Laforge - Google
+====
+Guillaume Laforge est développeur advocate chez Google Cloud où il se focalise autour des sujets d'IA générative, de solutions serverless, d'architecture distribuée et d'automatisation des APIs. Guillaume est également Java Champion, un des membres fondateurs du podcast Les Cast Codeurs et est le co-fondateur du langage de programmation Apache Groovy.
+====
+
+.Didier Girard - SFEIR
+====
+Didier Girard is a technology expert. He obtained a PhD in the field of AI and is recognized in the field of cloud and IS architecture.
+He currently holds the position of Managing Director of SFEIR and WENVISION. SFEIR is a company specialized in building modern information systems, while WENVISION is a technology strategy consulting firm.
+====
+
+.abstract
+====
+Les LLMs ont pris d'assaut le monde au travers des chatbots, de la génération de contenu. Pourtant, ils restent énigmatiques.
+
+Cette présentation plongera dans les recoins cachés des LLMs qui laissent les développeurs perplexes. Il est temps de poser ces questions que vous n'avez jamais osé poser sur leurs mystères !
+
+Voici quelques questions auxquelles nous répondrons :
+
+    * Pourquoi les LLM crachent des tokens au lieu de mots ? D'où viennent ces tokens ?
+    * Pourquoi ne sont-ils pas toujours très intelligents en mathématiques ?
+    * La différence entre un modèle "fondamental" / "pré-entraîné" et un modèle "fine-tuné" ?
+    * Comment un modèle sait-il quand il a fini de répondre à votre question ?
+    * Comment les hyperparamètres (température, top-p, top-k) affectent ils le choix des tokens ?
+    * Saviez vous que les LLMs parlent le Base64 ?
+
+Mais les LLM sont loin d'être parfaits :
+
+    * Quid des hallucinations ?
+    * Qu'est-ce que la “reversal curse” qui fait que les LLM ignorent certains faits d'un point de vue différent ?
+    * Les LLMs sont ils déterministes à basse température ? En tout cas, ils sont influençables.
+
+Nous répondrons ensemble à ces questions et dévoilerons les mystères des LLMs !
+====
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 12:35 -> 12:50 - quickie - Paris 143 : Maîtriser les Tests de Code Asynchrone
+
+.Yifang dong - Murex
+====
+Software engineer enjoys reading and writing code, solving problems with constraints and trade-offs. I believe that software craftsmanship can make me a better developer.
+====
+
+.abstract
+====
+Nous savons tous que les tests sont essentiels pour la qualité du code. Mais lorsqu'il s'agit de code asynchrone, les choses se compliquent
+
+Venez et apprenez des astuces afin d'éviter les maux de tête liés aux tests instables et améliorer la couverture de test de votre système.
+
+Au cours de cette présentation, vous découvrirez comment CountDownLatch et CompletableFuture peuvent vous aider à tester des opérations asynchrones. Acquérez une meilleure compréhension de l'écriture de tests d'intégration solides. De plus, explorez l'art du refactoring pour simplifier les tests en séparant la logique métier des requêtes asynchrones.
+
+Ne manquez pas cette opportunité de perfectionner vos compétences en matière de tests et de vous assurer que vos tests restent fiables.
+====
+
+=== 13:30 -> 14:15 - Conference - Maillot : Créer des Applications Intelligentes avec Quarkus et LangChain4j
+
+.Zineb Bendhiba - Red Hat
+====
+Hi, I'm Zineb Bendhiba, a Principal Software Engineer at Red Hat. I work on the Apache Camel project, making open-source integration smoother. I love using Java and Quarkus to build cool things. Open source is my jam—it's all about innovating and contributing to something bigger.
+Avatar speaker Clement Escoffier
+====
+
+.Clement Escoffier - Red Hat
+====
+Clement Escoffier (@clementplop) is a distinguished engineer at Red Hat and co-lead of the Quarkus project. He is a Java Champion. Before joining Red Hat, Clement had several professional lives, from academic positions to management. He contributed to projects and products, touching many domains and technologies such as OSGi, mobile, continuous delivery, and DevOps. Clement has always been interested in software engineering, distributed systems, and event-driven architecture. He recently focused on Reactive Systems, Cloud-Native applications, and Kubernetes. Clement contributed to many open-source projects, such as Apache Felix, Eclipse Vert.x, SmallRye, Mutiny, and Quarkus. He also authored the "Reactive Systems in Java" book.
+====
+
+.abstract
+====
+Dans le contexte dynamique de l'intelligence artificielle, intégrer des (grands) modèles de langage (LLM/SLM) dans les applications est devenu une priorité pour les développeurs. Bien que de nombreuses bibliothèques facilitent cette intégration, elles négligent souvent les exigences propres aux applications d'entreprise. Une intégration réussie dépasse la simple interaction et doit inclure la gestion des métriques, la tolérance aux pannes, l'audit, et l'extensibilité.
+Cette présentation montre comment la combinaison de Quarkus et de LangChain4j permet de créer des applications intelligentes répondant aux contraintes des entreprises. En partant des principes fondamentaux, nous vous guiderons pour transformer une application Quarkus de base afin de répondre aux standards des applications d'entreprise. Découvrez comment intégrer l'observabilité, les mécanismes de résilience, l'audit, et l'implementation du RAG, les garde-corps, assurant ainsi une intégration complète des LLMs dans vos applications.
+====
+
+=== 14:35 -> 15:20 - Conference - 242 AB : Toward transparent LLM: test, observe and evaluate your RAG assisted chatbot
+
+.Mario Fusco - Red Hat
+====
+Mario is a senior principal software engineer at Red Hat working as Drools project lead. He has a huge experience as Java developer having been involved in (and often leading) many enterprise level projects in several industries ranging from media companies to the financial sector. Among his interests there are also functional programming and Domain Specific Languages. By leveraging these 2 passions he created the open source library lambdaj with the purposes of providing an internal Java DSL for manipulating collections and allowing a bit of functional programming in Java. He is also a Java Champion, the JUG Milano coordinator a frequent speaker and the co-author of "Modern Java in Action" published by Manning.
+====
+
+.Dimitrios Kafetzis - Red Hat
+====
+Software engineer and 3d printing enthusiast currently working on master thesis at NCSR Demokritos on Data Science.
+====
+
+.abstract
+====
+Checking the correctness of an application with an exhaustive suite of unit and integration tests is a natural task for any respectable software developer. Such a test suite also comes with other advantages like documenting the expected behavior of the application and enabling a fast feedback loop. This is all relatively straightforward when the components of your software are entirely deterministic, but how can you achieve something similar when a key part of it has a probabilistic nature?
+
+This probabilistic nature makes it even more important to observe and collect real user inputs from production to better understand user needs and automate the evaluation of your LLM-infused application.
+
+This talk will show in practice how to test an LLM-infused application with a mix of deterministic assertions and an LLM-as-a-judge approach. It will also demonstrate how LangChain4j 1.0 allows us to extensively observe the behavior of this application, and create a dataset out of the collected traces. Finally this dataset will be used in an evaluation framework through which assessing the performance of our RAG assisted LLM chatbot on both its retrieval and generation stages.
+====
+
+=== 15:30 -> 16:25 - Conference - Maillot : Quand l'IA fait le tri de manière industrialisée (LA POSTE 🙂)
+
+.Carmen Piciorus - La Poste - BSCC
+====
+Après plusieurs années de développement, et quelques années dédiés à la protection de la messagerie laposte.net, j'intègre à présent une équipe au service des projets du SI de la branche Services Courrier – Colis de La Poste. Passionnée par la cybersécurité, je me suis dédiée à faciliter la communication entre les développeurs et la sécurité pour aider aux développement des applications sécurisées et cyber-résilientes dans le cloud. Présidente de l'association à but non lucratif Signal Spam, je contribue à la lutte contre le spam et le phishing et à la protection des utilisateurs contre les arnaques transmises par mail.
+====
+
+.Nicolas Payneau - Thales
+====
+Après avoir commencé sur la vague du MDA/MDE à mes débuts en 2008, j'ai accumulé 14 ans d'expérience dans le dev Fullstack ainsi que sur le devops. Aujourd'hui, j'ai la chance de pouvoir alterner entre différents rôles comme architecte logiciel, Lead dev ou encore MLOps chez Thales. Fin 2019, le domaine de l'IA me fait de l'œil et me voilà maintenant embarqué dans l'ensemble du flow qui compose ce vaste domaine. Mon quotidien aujourd'hui, mettre en production de manière le plus automatisé possible, des modèles d'IA de computer vision en s'assurant que le réentrainement de ces derniers améliore les performances métier de la production.
+====
+
+.Guillaume LEBLONDEL - La poste
+====
+Je suis Guillaume Leblondel, Product Owner spécialisé en Intelligence Artificielle au sein de la Direction du Système d'Information et des Offres (DSI-O) de La Poste. Je suis en charge de la gestion de projets innovants visant à améliorer l'efficacité opérationnelle et à offrir des solutions technologiques avancées pour améliorer nos systèmes logistiques.
+====
+
+.abstract
+====
+L'IA fait le tri dans vos mails, dans vos agendas et aussi dans vos … colis et lettres. Avec plus de 50 millions d'objets triés par jour et des contraintes de temps de détections inférieures à 500ms, La Poste a réussi à industrialiser l'IA afin de réduire le tri manuel de 20% à 5%.
+Pour réussir, La Poste en partenariat avec Thales, a développé une plateforme dédiée à la gestion des données et des modèles d'IA. Cette plateforme assure l'évolutivité, l'orchestration, et la performance des modèles de computer vision, déployés en Egde dans les centres de tri et en "Datacenter".
+Avec plus de 30 modèles d'IA, les défis comme reconnaitre une adresse destinataire sur un pli noir ou s'assurer que l'IA ne mélange pas les informations destinataire/expéditeur ont conduit l'équipe à créer des pipelines d'entrainement, d'évaluation et de déploiement des modèles.
+Après 5 ans d'IA en production, ce talk sera l'occasion de partager les solutions mises en place pour répondre aux contraintes de performance, de résilience ou encore d'approvisionnement de GPU sur des infrastructures IAAS et PAAS.
+====
+
+=== 17:00 -> 17:30 - Tools-in-Action - Maillot : "Ca marche dans mon .devcontainer!"
+
+.Carmen Piciorus - La Poste - BSCC
+====
+Après plusieurs années de développement, et quelques années dédiés à la protection de la messagerie laposte.net, j'intègre à présent une équipe au service des projets du SI de la branche Services Courrier – Colis de La Poste. Passionnée par la cybersécurité, je me suis dédiée à faciliter la communication entre les développeurs et la sécurité pour aider aux développement des applications sécurisées et cyber-résilientes dans le cloud. Présidente de l'association à but non lucratif Signal Spam, je contribue à la lutte contre le spam et le phishing et à la protection des utilisateurs contre les arnaques transmises par mail.
+====
+
+.Benoit Moussaud - Microsoft
+====
+Avec plus de 20 ans d'expérience en informatique d'entreprise, du développement à l'architecture globale d'applications d'entreprise complexes, mon domaine de prédilection est l'automatisation sous toutes ses formes: coté Dev en étant impliqué dans le projet open source Ant, l'intégration et le déploiement continue (CI /CD), les pratique DevOps appliquées non seulement aux application legacy mais aussi les applications cloud natives modernes. Les outils ne sont pas une fin: le processus humain est aussi essentiel : Agilité, Continuous Delivery et DevOps sont des méthodes et des pratiques. Intervenant dans de nombreuses conférences européennes (France, Suisse, Espagne, Belgique et Italie).
+====
+
+.abstract
+====
+Configurer son environnement de développement peut être soit un plaisir (au début), soit une corvée (si cela se répète trop souvent).
+Il est généralement nécessaire de passer par un fichier README.md ou une page Wiki, de suivre les instructions (dans le bon ordre) en copiant-collant des commandes plus ou moins correctes et à jour (installation d'outils, synchronisation de référentiels) pour pouvoir lancer un build qui se termine par un succès et enfin l'application. Quel effort ! Surtout s'il faut recommencer avec le projet d'à côté en espérant qu'il n'y ait pas de conflit.
+Le projet devcontainer (https://containers.dev) offre une solution à ce problème : il permet de définir l'environnement de développement as code et de l'instancier automatiquement.
+Dans cette présentation axée sur la démonstration, nous verrons quels sont les prérequis, les différents concepts clés et comment plonger facilement dans le monde merveilleux des containers de développement.
+====
+
+=== 17:50 -> 18:20 - Tools-in-Action - Neuilly 153 : Du GPU dans mes conteneurs !
+
+.Rémi Verchère - Accenture
+====
+D'abord chez les Devs sur des solutions embarquées, j'ai au fur et à mesure de mes postes basculé chez les Ops sur des solutions d'infrastructure diverses et variées. 
+
+Pendant plus de 10 ans j'ai donc bossé avec les Devs et les Ops, affichant une volonté de proposer des choix autour des solutions Open Source.
+
+Je suis maintenant consultant depuis plusieurs années, et apporte aux entreprises mon savoir-faire sur des sujets d'automatisation, observabilité et cloud native infrastructure, en tant qu'Ops au service des Devs.
+====
+
+.abstract
+====
+Après avoir validé le POC du dernier projet IA, à grands coups de requêtes vers OpenAI, la DSI met le holà, impossible d'envoyer des informations de l'entreprise à un service tiers, on va gérer nos LLMs sur nos propres clusters Kubernetes !
+
+Cela demande par contre d'avoir des GPUs (sic) pour que ce soit performant, accessibles aux applications conteneurisées, mais alors comment ça marche ?! Et puis les GPUs c'est cher, c'est rare, comment les utiliser au mieux sans exploser les budgets ?
+
+Je vous propose alors de voir ensemble comment, grâce à l'opérateur "NVIDIA GPU Operator" on peut accéder à ces fameux GPUs : installation, configuration, interaction avec l'hôte et gestion des modules noyau, mais surtout les contraintes et divers modes de partage de ressources (time-slicing, mig), et d'autres add-ons sympa comme le "node-feature-discovery" pour utiliser au mieux les ressources, le tout en mode pas-à-pas.
+
+Après cette session, mes équipes de devs pourront enfin avoir du GPU dans leurs conteneurs !
+====
+
+== JOUR 2 : JEUDI 17/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Langage, IA et propagande : la guerre des récits a déjà commencé
+
+.Elodie Mielczareck
+====
+Elodie Mielczareck est sémiolinguiste (sémiologue pour le grand public). Elle est spécialisée dans le langage verbal (sémantique) et le langage non verbal (body language). Elle conseille également les dirigeants d'entreprise et accompagne certaines agences de communication et relations publiques internationales, notamment sur la question de la Raison d'être.
+
+Très régulièrement sollicitée par les médias, Elodie Mielczareck décrypte les tendances sociétales de fond, ainsi que les dynamiques comportementales de nos représentants politiques et autres célébrités. Elle est également conférencière et auteure. Elodie a publié plusieurs ouvrages grands publics et publie régulièrement des articles (notamment dans la revue scientifique The Conversation).
+====
+
+.abstract
+====
+Les mots façonnent notre réel : ils construisent, manipulent, imposent, en un mot, ils performent ! Jamais neutre, toujours engagé, le langage devient un algorithme, calibré, biaisé, orienté. On parle souvent des politiciens et des communicants, mais les vrais maîtres du langage ne sont-ils pas devenus les codeurs et ingénieurs de notre époque? Comment les mots peuvent-ils encore avoir un sens à l'heure de Netflix et ChatGPT ? Voici les quelques questions qui seront soulevées lors de ce Keynote
+====
+
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : La territorialisation des infrastructures comme levier de pouvoir
+
+.Ophélie Coelho
+====
+Ophélie Coelho est une chercheuse indépendante, autrice et conférencière, spécialisée dans la géopolitique du numérique. Elle est doctorante associée au Centre Internet et Société du CNRS et du laboratoire Carism (Panthéon-Assas).
+En 2023, elle publie "Géopolitique du numérique : l'impérialisme à pas de géants" aux Éditions de l'Atelier, où elle analyse la redistribution des pouvoirs entre acteurs étatiques et privés, ainsi que l'influence croissante des multinationales technologiques dans les relations internationales
+====
+
+.abstract
+====
+Alors que des investissements massifs sont annoncés pour le développement de l'IA, que représentent les infrastructures de données comme levier de pouvoir géopolitique ? Nous verrons dans cette keynote comment les acteurs de la tech et leurs Etats d'origine mettent en place des mécanismes de dépendances, qu'ils peuvent ensuite instrumentaliser pour orienter les relations internationales et les normes.
+====
+    
+=== 11:35 -> 12:20 - conference - Neuilly 251 : Building full-stack AI agents: From project generation to code execution
+
+.Stephan Janssen - Devoxx
+====
+As an organizer of Devoxx Belgium, I am passionate about conducting research and development (R&D) that leads to new features in Devoxx-related applications like the CFP web app. In recent years, I have been exploring and experimenting with cutting-edge technologies such as large language models (LLMs), convolutional neural networks (CNNs), and other artificial intelligence (AI) tools. Recently I've been working on the DevoxxGenie IntelliJ plugin which allows you to talk to LLM's both locally and remotely. 
+====
+
+.abstract
+====
+We'll delve into proven architectural patterns for building production-ready AI agents, moving beyond basic prompt engineering to focus on the essential components of robust systems. These include multi-phase reasoning with distinct planning and execution stages, structured prompt management with version control, and the adoption of incremental development practices. Through real-world code examples, we'll demonstrate how these patterns enable the creation of maintainable and reliable agents. This talk is perfect for developers and architects aiming to implement AI systems capable of consistently handling complex workflows. As part of the session, I'll showcase a live demo where AI agents generate and deploy a fully functional web application using prompts alone.
+====
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 13:00 -> 13:15 - quicky - Maillot : 👨‍💻 TDD et IA 🤖
+
+.Benoit Prioux - Alan
+====
+Après 12 ans chez Lectra, éditeur de logiciel basé à Bordeaux, je suis maintenant Senior Software Engineer chez [Alan](https://alan.com/) depuis 4 ans.
+
+Développeur Java, Kotlin et plus récemment Python, je suis passionné par tout ce qui finit en DD : TDD, BDD, DDD, ...
+====
+
+.abstract
+====
+Ces dernières années, l'intelligence artificielle a révolutionné notre manière d'aborder le développement logiciel.
+Vous avez peut-être déjà entendu dire : "Super, avec Copilot, plus besoin d'écrire des tests, il peut les générer pour moi."
+Mais est-ce vraiment compatible avec le Test Driven Development (TDD) ? 🤔
+
+Dans cette conférence, nous explorerons comment l'IA peut être intégrée efficacement dans votre boucle de développement (🔴 - 🟢 - 🔄).
+À travers des exemples concrets, nous verrons comment utiliser des outils basés sur l'IA pour améliorer et accélérer le processus de développement, tout en respectant les principes fondamentaux du TDD. 🚀
+Que vous soyez sceptique ou curieux, venez découvrir comment l'IA peut devenir votre meilleur allié. 🤝
+====
+
+=== 13:30 -> 14:15 - Conference - Neuilly 252AB : Vibe testing
+
+.Yann HELLEBOID - ORANGE
+====
+Tombé dans la marmite de l'informatique à 10 ans, Yann n'en est jamais ressorti. Après des études de génie logiciel, il démarre avec la meilleure école, à savoir le temps réel embarqué puis monte progressivement vers l'informatique scientifique puis le web. Enfin, la découverte du test logiciel est déterminante et il en fait sa spécialité depuis un bon paquet d'années maintenant mais toujours avec du code dedans !
+Pilote de la transformation du test chez Orange avec 2 révolutions : l'automatisation il y a 10 ans et l'arrivée de l'IA depuis peu.
+====
+
+.abstract
+====
+L'IA peut-elle être un bon assistant pour les tests ?
+Il y a des évolutions et des révolutions. Les métiers du test ont connu leur première révolution il y a 10 ans avec l'automatisation. Nous sommes aujourd'hui à l'aube d'une nouvelle révolution avec l'arrivé de l'IA générative. Ce talk vous propose un panorama de ce que l'IA permet de faire dans le domaine du test logiciel avec des exemples concrets de la conception du prompt à la vérification de leur bon fonctionnement.
+En live, à partir de prompts et du code, je génèrerai une stratégie de test, des tests automatisés : fonctionnels, de sécurité, de performance et d'accessibilité
+et essayerai de trouver des bugs sur une vraie application, plus qu'à demander au LLM de faire aussi le café !
+====
+
+=== 14:35 -> 15:20 - Conference - Paris 242AB : Explaining the Unexplainable: Python Tools for AI Transparency using Captum
+
+.David vonThenen - DigitalOcean
+====
+David is a Senior AI/ML Engineer at DigitalOcean, where he's dedicated to empowering developers to build, scale, and deploy AI/ML models in production environments. He brings deep expertise in building and training models for applications like NLP, data visualization, and real-time analytics. His mission is to help users build, train, and deploy AI models efficiently, making advanced machine learning accessible to developers of all levels.
+
+Prior to DigitalOcean, he developed advanced conversational AI solutions and drove AI platform growth, specializing in NLP. David frequently shares his insights at industry conferences and workshops, offering hands-on guidance for implementing AI/ML in cloud environments. David's experience includes Kubernetes, VMware virtualization, backup/recovery solutions, and hardware storage adaptor firmware/drivers.
+====
+
+.abstract
+====
+Artificial Intelligence often operates as a “black box,” leaving developers and stakeholders unsure how decisions are made. Explainable AI (XAI) addresses this challenge by providing tools to interpret and visualize AI model behavior, helping to build trust and transparency in AI systems. This session will focus on Captum, one of the leading Python libraries that makes black-box models interpretable.
+
+Attendees will explore the fundamentals of XAI, learn how to integrate these libraries into their workflows, and discover techniques for generating feature attributions, decision-path visualizations, and scenario-specific insights. By the end of the session, participants will be equipped to apply XAI techniques to their own projects, gaining actionable insights into model behavior. A live demo will showcase the application of Captum to a trained model, providing clarity on how to debug, explain, and optimize real-world AI systems.
+====
+
+=== 17:00 -> 17:30 - Tools-in-Action - Amphi Bleu : Gitflow c'est bien, Gitbutler c'est mieux !
+
+.Yann-Thomas Le Moigne - Apside
+====
+Développeur informatique passionné par les technologies JavaScript, Angular, Svelte, Java, Spring et Quarkus.
+
+Je suis curieux et j'aime beaucoup ce qui peut me faciliter la vie. C'est pourquoi je propose de partager mon expérience sur certains outils de développement.
+
+Je suis également Sapeur Pompier Volontaire depuis un peu plus de 10 ans.
+====
+
+.Lilian Forget - Apside
+====
+Développeur depuis toujours (depuis le BASIC des années 80), passionné de technologies, de formation industrielle (Assembler Motorola et C++), Freelance pendant 15 ans (clients lourds et bases de données pour Windows en C#, SQL...).
+
+Désormais Chef de Projets pour Apside depuis 2018, j'apporte une vision technique et Agile en faisant le pont entre métiers et professionnels du développement.
+====
+
+.abstract
+====
+Ah, GitFlow. Ce bon vieux workflow, pilier de nos stratégies de développement, mais aussi source de migraines collectives. Et si on vous disait qu'il y a du nouveau dans la façon de faire ?
+
+GitButler débarque, et il n'est pas là pour plier le linge mais pour révolutionner votre gestion de versions !
+
+Dans cette présentation à deux voix, un développeur et un manager s'associent pour vous raconter, avec humour et pragmatisme, pourquoi GitFlow a besoin d'un coup de jeune et comment GitButler change la donne. Moins de frictions, plus d'efficacité, et un workflow qui s'adapte enfin à vos vrais besoins.
+
+Au programme : un peu de théorie, et du live coding. On vous promet un moment instructif, qui vous donnera envie de repenser vos stratégies et d'enfiler, vous aussi, le costume de GitButler !
+
+PS : Si j'ai convaincu mon manager, pourquoi pas vous ?
+====
+
+=== 17:50 -> 18:20 - Tools-in-Action - Paris 143 : {Cloud || Container} Development Environment
+
+.Jean-Philippe Baconnais - Zenika
+**Consultant @Zenika Nantes**
+
+Plongé dans le développement avec l'éco-système Java, curieux de nature, j'aime découvrir et expérimenter de nouvelles technos back end ou front end et les partager autour de moi.
+
+Dév ZenikaNantes
+
+#GitLabHeroes 🦊 | Community Hero @Gitpod | ⛅ Google Cloud Champion
+
+Co-orga HumanTalks Nantes | Meetup GitLab France
+
+http://nantes.community | http://jeanphi-baconnais.gitlab.io
+====
+
+.Benjamin Bourgeois - Zenika
+====
+Software Engineer - Interested in software & web development, cloud, artificial intelligence, and web3
+====
+
+.abstract
+====
+Imaginez un environnement de développement qui s'adapte instantanément à votre projet, réduisant la configuration de votre poste de travail. C'est la promesse à laquelle répondent les CDEs. Arrivés dans l'écosystème tech depuis plus d'une dizaine d'années, ils permettent de s'affranchir des contraintes matérielles et de booster l'efficacité des développeurs. La "Developer eXperience" est significativement améliorée grâce à leurs atouts : contrôle, simplicité, puissance et collaboration à grande échelle.
+
+Mais attends…🤔 C'est quoi un CDE ? Le D et le E, pour “Development Environment”, mais le C ? Cloud ou Container ? Les deux ! 
+
+Quels sont les impacts et les différences en termes de performances, de sécurité et de coût ?
+Nous vous présenterons en détail les deux approches : les CDE Container avec des outils comme DevContainer et les CDE Cloud comme IDX et Cloud Workstation. Puis, grâce à des démos pratiques, nous montrerons que ces deux approches font désormais partie du starker kit des développeurs et développeuses d'aujourd'hui.
+====
+
+== JOUR 3 : VENDREDI 18/04
+
+
+
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : Cybersécurité et cyberdéfense : un sujet géopolitique
+
+
+
+=== 11:35 -> 12:20 - Conférence - Paris 141 : L'IA et qualité de code : Comment ça marche l'IA Generative ? LLM, RAG sous le capot
+
+
+
+=== 12:35 -> 12:50 - quicky - Neuilly 153 : C'est une bonne situation ça, Staff Engineer ? 😉
+
+
+
+=== 13:00 -> 13:15 - quicky - Paris 143 : Comment orchestrer l'IA générative pour qu'elle code à votre place le front-end d'une page en moins de 2min.
+
+
+
+=== 15:40 -> 16:25 - Conférence - Maillot : J'ai terminé les 9 Advents of Code : Leçons Apprises
+
+
+
+=== 17:00 -> 17:30 - Conférence - Paris 242AB : Apache Lucene : de l'indexation textuelle à l'intelligence artificielle
+
+
+
+=== Cloture : les Cast Codeurs
+
+* C'est Midjourney et plus Dall-E qui a été utilisé pour toutes les images de ce Devoxx France
+
+
+
+
+
+

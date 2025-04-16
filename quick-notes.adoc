@@ -229,3 +229,15 @@ Conseils des participants quant au prompting :
 
 * Comparaison entre ChatGPT et DeepSeek sur ce sujet : ChatGPT donne de meilleurs résultats, DeepSeek restant très "light"
 
+== 2025/03/27 - Artisan Développeur : Découvrir le flux tiré (Agile - Kanban)
+
+* Interview de Dimitri BAELI (fondateur Tech Rocks)
+
+* Dimitri présente le flux tiré en Kanban : 
+    ** il faut FINIR une tâche avant d'en commencer une nouvelle (cad attendre qu'un slot se libère)
+    ** le flux tiré c'est "commencer par finir", on tire le flux plutôt que de "pousser" de nouvelles tâches
+
+* Autres infos sur le flux tiré (voir https://medium.com/just-tech-it-now/flux-pouss%C3%A9-vs-flux-tir%C3%A9-a4836bf5f0b9)
+
+    ** La notion de flux tiré provient de Toyota, à travers son “Toyota Production System”
+    ** Le flux tiré consiste en un tirage de cartes de gauche à droite dans notre Kanban par les personnes intervenant le plus à droite du kanban.
