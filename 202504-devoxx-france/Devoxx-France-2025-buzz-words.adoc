@@ -67,6 +67,10 @@ image:20250416_Devoxx-France_01.jpg[width=1000]
     * Les salles qui commencent par "1" sont au 1er, et par "2" au 2e
     * les dizaines du numéro de salle indiquent si celle-ci est à gauche ou à droite de l'étage
 
+* On a pu voir de très beaux stands cette année, très en accord avec le thème du salon : +
+image:20250416_Devoxx-France_54.jpg[]
+
+
 == Mon Top des talks
 
 
@@ -79,6 +83,54 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 * Beaucoup de références au *platform engineering*
 * "Passer du monolithe ou *modulithe*" : j'aime beaucoup ce terme de "modulithe" 👍
+
+=== Rappels sur le Platform Engineering
+
+* Le Platform Engineering est une discipline nouvelle / émergente (en 2025) qui cherche à structurer l'écosystème DevOps en *réponse aux défis de complexité et d'échelle des infrastructures cloud-native*. 
+
+* Définition et origine : Le Platform Engineering vise à concevoir des plateformes techniques internes (Internal Developer Platforms - IDP) permettant aux équipes de développement de déployer et gérer des applications via des interfaces en libre-service.
+
+* Évolution depuis DevOps :
+    ** Né comme réponse aux limites du DevOps face à la prolifération d'outils hétérogènes et à la fragmentation des processus.
+    ** Gartner prévoit que 80% des grandes organisations adopteront cette approche d'ici 2026.
+
+* Objectif principal :
+    ** Réduire la charge cognitive des développeurs en abstraisant / réduisant la complexité infrastructurelle.
+    ** Standardiser les workflows CI/CD, le provisionnement cloud (IaC) et la gestion des environnements.
+
+[cols="1,2,3", options="header"]
+|===
+| Catégorie        | Outils/Concepts                    | Usage
+
+| Infrastructure   | Terraform, Crossplane, Kubernetes  | Automatisation et orchestration de l'infrastructure
+| Développement    | Backstage, Port                    | Portails développeurs unifiés
+| Sécurité         | Open Policy Agent, Service Meshes  | Politiques de sécurité intégrées (Shift Left)
+| Observabilité    | Prometheus, Grafana, OpenTelemetry | Surveillance des SLA/SLO et analyse des performances
+|===
+
+* Tendance 2025 : Adoption croissante de Golden Paths (workflows prédéfinis) et de AI-Driven Ops pour l'optimisation proactive.
+
+* Défis majeurs
+
+    ** Gouvernance technique :
+        *** Équilibre entre autonomie des équipes et conformité aux standards organisationnels.
+        *** Gestion du dette technique liée aux intégrations d'outils.
+
+    ** Adoption culturelle :
+        *** Résistance au changement et nécessité de formation continue.
+        *** Mesure de la productivité via des métriques comme le DORA (Deployment Frequency, Lead Time).
+
+    ** Sécurité :
+        *** Implémentation de Policy as Code et gestion des identités (IAM) dans des architectures multicloud.
+
+* Bonnes pratiques pour architectes Solutions
+    ** Approche produit : Traiter la plateforme comme un produit interne avec roadmap, feedback utilisateur et documentation.
+    ** Abstraction modulaire : Fournir des couches d'API cohérentes tout en conservant la flexibilité des technologies sous-jacentes.
+    ** Intégration DevSecOps : Automatiser les tests de sécurité dans les pipelines et outils comme Trivy ou Checkov.
+
+* Cas d'usage :
+    ** Scénario multicloud : Utiliser Crossplane pour un contrôle unifié des ressources AWS/Azure/GCP.
+    ** Optimisation des coûts : Coupler Kubecost et des politiques FinOps dans l'IDP.
 
 == Technos dont on parle moins (ou plus !)
 

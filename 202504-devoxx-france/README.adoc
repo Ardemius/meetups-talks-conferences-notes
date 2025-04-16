@@ -442,6 +442,8 @@ image:20250416_Devoxx-France_45.jpg[]
         *** Give access to system resources
         *** Command line
 
+.Ressources du talk
+image:20250416_Devoxx-France_46.jpg[]
 
 === 14:35 -> 15:20 - Conference - 242 AB : Toward transparent LLM: test, observe and evaluate your RAG assisted chatbot
 
@@ -464,30 +466,31 @@ This probabilistic nature makes it even more important to observe and collect re
 This talk will show in practice how to test an LLM-infused application with a mix of deterministic assertions and an LLM-as-a-judge approach. It will also demonstrate how LangChain4j 1.0 allows us to extensively observe the behavior of this application, and create a dataset out of the collected traces. Finally this dataset will be used in an evaluation framework through which assessing the performance of our RAG assisted LLM chatbot on both its retrieval and generation stages.
 ====
 
-=== 15:30 -> 16:25 - Conference - Maillot : Quand l'IA fait le tri de manière industrialisée (LA POSTE 🙂)
+image:20250416_Devoxx-France_47.jpg[]
 
-.Carmen Piciorus - La Poste - BSCC
-====
-Après plusieurs années de développement, et quelques années dédiés à la protection de la messagerie laposte.net, j'intègre à présent une équipe au service des projets du SI de la branche Services Courrier – Colis de La Poste. Passionnée par la cybersécurité, je me suis dédiée à faciliter la communication entre les développeurs et la sécurité pour aider aux développement des applications sécurisées et cyber-résilientes dans le cloud. Présidente de l'association à but non lucratif Signal Spam, je contribue à la lutte contre le spam et le phishing et à la protection des utilisateurs contre les arnaques transmises par mail.
-====
+=== 15:30 -> 16:25 - Stand Microsoft : Présentation des dernières fonctionnalités de GitHub Copilot (dont MCP)
 
-.Nicolas Payneau - Thales
-====
-Après avoir commencé sur la vague du MDA/MDE à mes débuts en 2008, j'ai accumulé 14 ans d'expérience dans le dev Fullstack ainsi que sur le devops. Aujourd'hui, j'ai la chance de pouvoir alterner entre différents rôles comme architecte logiciel, Lead dev ou encore MLOps chez Thales. Fin 2019, le domaine de l'IA me fait de l'œil et me voilà maintenant embarqué dans l'ensemble du flow qui compose ce vaste domaine. Mon quotidien aujourd'hui, mettre en production de manière le plus automatisé possible, des modèles d'IA de computer vision en s'assurant que le réentrainement de ces derniers améliore les performances métier de la production.
-====
+* Echange et demo de la dernière version de GitHub Copilot (version Insider) avec Thomas DXXX de Microsoft
 
-.Guillaume LEBLONDEL - La poste
-====
-Je suis Guillaume Leblondel, Product Owner spécialisé en Intelligence Artificielle au sein de la Direction du Système d'Information et des Offres (DSI-O) de La Poste. Je suis en charge de la gestion de projets innovants visant à améliorer l'efficacité opérationnelle et à offrir des solutions technologiques avancées pour améliorer nos systèmes logistiques.
-====
+* Le mode complétion de GitHub Copilot est définitivement en perte de vitesse
+    ** C'est ce que l'on constatait déjà depuis quelques temps chez tous les autres assistants AI
 
-.abstract
-====
-L'IA fait le tri dans vos mails, dans vos agendas et aussi dans vos … colis et lettres. Avec plus de 50 millions d'objets triés par jour et des contraintes de temps de détections inférieures à 500ms, La Poste a réussi à industrialiser l'IA afin de réduire le tri manuel de 20% à 5%.
-Pour réussir, La Poste en partenariat avec Thales, a développé une plateforme dédiée à la gestion des données et des modèles d'IA. Cette plateforme assure l'évolutivité, l'orchestration, et la performance des modèles de computer vision, déployés en Egde dans les centres de tri et en "Datacenter".
-Avec plus de 30 modèles d'IA, les défis comme reconnaitre une adresse destinataire sur un pli noir ou s'assurer que l'IA ne mélange pas les informations destinataire/expéditeur ont conduit l'équipe à créer des pipelines d'entrainement, d'évaluation et de déploiement des modèles.
-Après 5 ans d'IA en production, ce talk sera l'occasion de partager les solutions mises en place pour répondre aux contraintes de performance, de résilience ou encore d'approvisionnement de GPU sur des infrastructures IAAS et PAAS.
-====
+* C'est le mode "Edit" devient la norme, ainsi que son évolution représentée par le mode "Agent"
+    ** Le dev passe bien maintenant par le "chat" de l'assistant AI pour demander des actions à ce dernier, qui va directement mettre à jour le code source / les fichiers
+
+* GitHub Copilot et Office Copilot sont des projets complètement différents : ils n'ont vraiment QUE le nom en commun
+    ** même l'exécution des modèles de langage sous-jacents à ces 2 solutions diffère : dont d'un point de vue contractuel, ce qui est valable pour l'un ne l'est pas forcément pour l'autre (en fait, ce n'est probablement pas le cas)
+    ** Dans le cas de GitHub Copilot, il n'y aucune garantie que le modèle de langage soit bien exécuté sur la région France d'Azure
+        *** Côté infra, GitHub Copilot fait tourner le modèle sur LEUR Azure Tenant, et le modèle peut se retrouver sur jusqu'à 3 régions différentes si j'ai bien compris
+
+* Actuellement, toute la partie MCP est réellement encore en cours de définition et de développement
+    ** Le niveau de sécurité associé est complètement incompatible avec un usage en PROD
+
+=== 16:45 -> 17:00 - Stand GE Healthcare
+
+* Progiciel d'imagerie médicale
+
+image:20250416_Devoxx-France_48.jpg[]
 
 === 17:00 -> 17:30 - Tools-in-Action - Maillot : "Ca marche dans mon .devcontainer!"
 
@@ -508,6 +511,46 @@ Il est généralement nécessaire de passer par un fichier README.md ou une page
 Le projet devcontainer (https://containers.dev) offre une solution à ce problème : il permet de définir l'environnement de développement as code et de l'instancier automatiquement.
 Dans cette présentation axée sur la démonstration, nous verrons quels sont les prérequis, les différents concepts clés et comment plonger facilement dans le monde merveilleux des containers de développement.
 ====
+
+image:20250416_Devoxx-France_49.jpg[]
+
+* Suite aux limitations de WSL sur Windows, Benoît a découvert *.devcontainer* (Development Containers) : 
+    ** un *environnement complet de dev dans un container*
+    ** contient et permet d'exécuter les applications et outils nécessaires
+
+* *Pourquoi .devcontainer* : "Innovation First !"
+    ** onboarding
+    ** les bons outils
+    ** les bonnes version
+    ** isolation vs système
+    ** contribution (open source)
+
+* *les prérequis pour .devcontainer* : 
+    ** un lanceur de container : le plus connu Docker desktop
+    ** un environnement : VS Code est l'environnement de référence
+    ** l'extension .devcontainer pour VS Code
+
+.Fonctionnement de .devcontainer
+image:20250416_Devoxx-France_50.jpg[]
+
+.fichier de configuration de .devcontainer
+image:20250416_Devoxx-France_51.jpg[]
+
+* Fonction "clone repository in Container volume" pour cloner mon repo et son code source dans un volume du container +
+image:20250416_Devoxx-France_52.jpg[]
+
+* Test de performance avec l'outil Vegeta (pour du micro benchmarking)
+
+* Not the silver bullet :
+    ** pas de support Windows
+    ** pas de suppor des GPU
+    ** pas de private endpoint (via GitHub Codespace) : tout est de l'URL public (HTTPS sécurisé avec TLS mais public malgré tout)
+
+* Solution complémentaire voire alternative : *Azure Dev Box*
+    ** pour avoir des machines de devs sécurisées sur Azure +
+    image:20250416_Devoxx-France_53.jpg[]
+
+Pour l'avenir, ce serait bien d'avoir .devcontainer sur Azure Dev Box, mais c'est pas encore fait !
 
 === 17:50 -> 18:20 - Tools-in-Action - Neuilly 153 : Du GPU dans mes conteneurs !
 
