@@ -44,6 +44,8 @@ IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur http
 * 3 jours, du 16 au 18 avril 2025 à Paris, au Palais des Congrès, porte Maillot
 * Le salon occupe 2 étages du Palais des Congrès, 4500 visiteurs unique par jour.
 
+* Thème du salon : les tribus
+
 .Rappel : les chiffres de Devoxx France 2024
 ====
 En 2024, durant 3 jours, Devoxx France a reçu 4720 personnes différentes exactement : 
@@ -144,6 +146,12 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 
 == Sociétés et personnes rencontrées
+
+* Microsoft (voir les notes de mercredi)
+* Google : échange avec XXX et Guillaume sur le MCP et A2A : +
+image:20250417_Devoxx-France_09.jpg[width=600]
+* GE Healthcare
+* XXX : expérience de relaxation sonore et réalité virtuelle
 
 
 == Synthèse du salon

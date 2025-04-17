@@ -608,6 +608,8 @@ Conclusion : conf destinée avant tout aux OPS, très technique, décrivant les 
 
 == JOUR 2 : JEUDI 17/04
 
+image:20250417_Devoxx-France_01.jpg[]
+
 === 09:00 -> 09:25 - Keynote - Amphi bleu : Langage, IA et propagande : la guerre des récits a déjà commencé
 
 .Elodie Mielczareck
@@ -622,6 +624,36 @@ Très régulièrement sollicitée par les médias, Elodie Mielczareck décrypte 
 Les mots façonnent notre réel : ils construisent, manipulent, imposent, en un mot, ils performent ! Jamais neutre, toujours engagé, le langage devient un algorithme, calibré, biaisé, orienté. On parle souvent des politiciens et des communicants, mais les vrais maîtres du langage ne sont-ils pas devenus les codeurs et ingénieurs de notre époque? Comment les mots peuvent-ils encore avoir un sens à l'heure de Netflix et ChatGPT ? Voici les quelques questions qui seront soulevées lors de ce Keynote
 ====
 
+* le sémiologue détecte le sens (et les manipulations)
+    ** le plus connu : Umberto Ecco (l'auteur du "nom de la Rose") +
+    image:20250417_Devoxx-France_02.jpg[]
+
+* Notion d'UNWELT : raconte les rapports qu'un individu entretient avec son écosystème
+    ** quand le poisson rouge est dans l'océan, son UNWELT est l'eau (et à quel point en a-t-il conscience)
+    ** pour l'humain, le langage est un UNWELT +
+    image:20250417_Devoxx-France_03.jpg[]
+    ** La technologie est également un UNWELT car elle modifie notre rapport au réel
+
+* Concept de "post vérité" qui a été élu "mot de l'année" en 2016 par le dictionnaire d'Oxford
+image:20250417_Devoxx-France_04.jpg[]
+    ** post vérité -> fausse information / fake news
+        *** 2016 : 1ere élection de Donald TRUMP "je vous remercie d'être ici si nombreux sous ce soleil", sauf que le public était éparse et avait plutôt des parapluies...
+
+Les régimes du signe de Jean Baudrillard : +
+image:20250417_Devoxx-France_05.jpg[]
+
+Exemple de d'usage du signe sur le thème du savon de marseille, on l'on commence par "le vrai" / "l'original" fait dans une savonnerie antique à Marseille et où l'on finit avec le Petit Marseillais gel douche...
+
+* niveau -1 : xxx
+* niveau -2 : xxx
+* niveau -3 : le signe simule le réel = il fait semblant
+    ** on a ici "Le Petit Marseillais" gel douche avec parfum vanille ou mangue (même pas lavande) : il n'a plus rien à voir avec le produit original, si ce n'est le nom... 
+* niveau -4 : le signe est un simulacre pur
+
+* Anecdote avec Keanu Reeves qui discutait avec ses enfants ado qui n'avaient PAS vu Matrix : "Mais p'pa, ça tient pas la route ton film, c'est trop bien la matrice, pourquoi on voudrait en sortir..."
+    ** Scène très reprise actuellement de Matrix, la scène du steak : "je sais que ce steak n'existe pas, mais il est saignant, parfait, je l'adore" +
+    Donc on en arrive à aimer le simulacre à la place du réel.
+
 === 09:35 -> 10:00 - Keynote - Amphi bleu : La territorialisation des infrastructures comme levier de pouvoir
 
 .Ophélie Coelho
@@ -634,7 +666,39 @@ En 2023, elle publie "Géopolitique du numérique : l'impérialisme à pas de g�
 ====
 Alors que des investissements massifs sont annoncés pour le développement de l'IA, que représentent les infrastructures de données comme levier de pouvoir géopolitique ? Nous verrons dans cette keynote comment les acteurs de la tech et leurs Etats d'origine mettent en place des mécanismes de dépendances, qu'ils peuvent ensuite instrumentaliser pour orienter les relations internationales et les normes.
 ====
+
+* Il n'y a jamais eu autant de frontières qu'avec un réseau global (comme internet)
+    ** car il est nécessaire de discuter / négocier / s'entendre pour mettre en place toute l'infrastucture obligatoire associée (comme les câbles réseaux sous-marins)
+        *** en 2019, le gouvernement américain avait refusé qu'un câble soit tiré entre Hong Kong et la Californie avec comme propriétaires Google, Meta ET un propriétaire CHINOIS. Ce propriétaire chinois a été vu comme un risque pour la sécurité nationale
+            **** Au final, ce câble a été tiré en 2022 mais SANS le propriétaire chinois
+
+* réflexion sur la couche 7 du modèle OSI (couche application) qui mériterait d'être découpée en sous-blocs (le "device" en 7.5 ?)
     
+* Aujourd'hui, le web et les usages numériques sont très concentrés (en termes technique / d'infrastructure). +
+* Exemple avec l'Afrique : +
+image:20250417_Devoxx-France_06.jpg[]
+image:20250417_Devoxx-France_07.jpg[]
+    ** On voit qu'il y a une différence entre l'Egypte et l'Afrique du Sud, l'Egypte récupère des données MAIS ne la redistribue pas, à l'inverse de l'Afrique du sud.
+
+* Grosse logique "centre <-> périphéries" : une approche du pouvoir fondée sur la dépendance
+    ** Ici la dépendance à des points de passage obligés du réseau, mais il y aussi d'autres points de passage et de concentration : +
+    image:20250417_Devoxx-France_08.jpg[]
+
+* Le media est un point de passage numérique aujourd'hui (comme une marketplace logicielle)
+
+* Google contrôle / possède 32 câbles sous-marins, et est le propriétaire unique de 16 d'entre eux.
+
+* Matrice des pouvoirs pour comparer les plus grosses sociétés / entreprises (Big Tech)
+    ** pouvoir structurel
+        *** Big Tech : multi-sectoriel et très territorial
+    ** pouvoir nodal : capacité d'intermédiation (intermédiaire avec le client final)
+
+* Aujourd'hui montée en puissance des empires étatiques ET des empires privés
+    ** Ces empires privés sont globaux (touchent plusieurs pays) contrairement aux empires étatiques (on n'a pas encore de "gouvernement mondial")
+
+* Pourquoi utiliser AWS et ses 1000 services quand on en utilise seulement 2 qui pourraient être remplacés par des sociétés françaises ou des solutions open source.
+* logique offensive : imposer des noeuds de dépendance aux autres.
+
 === 11:35 -> 12:20 - conference - Neuilly 251 : Building full-stack AI agents: From project generation to code execution
 
 .Stephan Janssen - Devoxx
@@ -646,6 +710,8 @@ As an organizer of Devoxx Belgium, I am passionate about conducting research and
 ====
 We'll delve into proven architectural patterns for building production-ready AI agents, moving beyond basic prompt engineering to focus on the essential components of robust systems. These include multi-phase reasoning with distinct planning and execution stages, structured prompt management with version control, and the adoption of incremental development practices. Through real-world code examples, we'll demonstrate how these patterns enable the creation of maintainable and reliable agents. This talk is perfect for developers and architects aiming to implement AI systems capable of consistently handling complex workflows. As part of the session, I'll showcase a live demo where AI agents generate and deploy a fully functional web application using prompts alone.
 ====
+
+
 
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
@@ -764,14 +830,27 @@ Quels sont les impacts et les différences en termes de performances, de sécuri
 Nous vous présenterons en détail les deux approches : les CDE Container avec des outils comme DevContainer et les CDE Cloud comme IDX et Cloud Workstation. Puis, grâce à des démos pratiques, nous montrerons que ces deux approches font désormais partie du starker kit des développeurs et développeuses d'aujourd'hui.
 ====
 
-
 == JOUR 3 : VENDREDI 18/04
 
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Plongez dans l’Ère Quantique : décryptez et anticipez la révolution à venir
 
+.Fanny Bouton
+====
+Analyste, journaliste et experte en nouvelles technologies depuis plus de 20 ans, elle intervient régulièrement dans les médias et co-produit et anime les podcasts sur le quantique "Quantum" et "Decode Quantum" avec Olivier Ezratty.
+Passionnée d'innovation, elle a lancé dès le début des années 2000 son blog et des soirées "Fanny's Party" dédiés au sujet. Pendant 18 ans, elle a réuni les geeks et vulgarisé les nouvelles technologies et innovations pour aider à la démocratisation des sujets complexes. Elle a animé bon nombre d'émissions comme "Quoi de neuf chez les geeks ?", "World of Fanny", "Follow Fanny", "Tech Away" et a été chroniqueuse pour Direct 8 ou encore GameOne.
+Après avoir accompagné la transformation digitale de grands groupes, à l’acculturation à l’Open Innovation (TF1, Agence Innovation Défense, Dior...) et à l'accompagnement des startups (Station F, HEC entrepreneurs...), elle est rentrée chez OVHcloud en 2020 pour développer le Startup Program puis monter un pôle Quantique et co-fondé l’évènement France Quantum. Promouvoir et aider l'écosystème Français scientifique et technologique à rayonner à l’international est devenu son terrain de jeu favori.
+====
 
-=== 09:35 -> 10:00 - Keynote - Amphi bleu : Cybersécurité et cyberdéfense : un sujet géopolitique
+.abstract
+====
+La prochaine grande révolution industrielle après l’IA s’écrit déjà : l’informatique quantique. Longtemps considérée comme un concept lointain ou purement académique, cette technologie émergente est sur le point de bouleverser en profondeur l’univers du développement logiciel, des algorithmes et de l’architecture des systèmes.
 
+Dans cette session, nous explorerons les notions clés qui rendent l’informatique quantique si puissante, en démystifiant des concepts essentiels tels que le qubit, l’intrication et la superposition. Nous verrons comment ces principes inédits ouvrent des perspectives vertigineuses pour la recherche, la cryptographie, l’optimisation ou encore la simulation.
 
+L’objectif ? Vous donner un premier bagage de connaissances pratiques pour commencer à appréhender ce nouveau paradigme et aborder en toute confiance les outils, plateformes et langages de programmation quantique.
+
+Ce talk s’adresse à tout développeur ou architecte passionné par l’innovation et curieux de comprendre comment la physique quantique est en passe de remodeler l’informatique.
+====
 
 === 11:35 -> 12:20 - Conférence - Paris 141 : L'IA et qualité de code : Comment ça marche l'IA Generative ? LLM, RAG sous le capot
 
