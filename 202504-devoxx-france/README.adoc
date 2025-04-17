@@ -1135,26 +1135,102 @@ Quels sont les impacts et les différences en termes de performances, de sécuri
 Nous vous présenterons en détail les deux approches : les CDE Container avec des outils comme DevContainer et les CDE Cloud comme IDX et Cloud Workstation. Puis, grâce à des démos pratiques, nous montrerons que ces deux approches font désormais partie du starker kit des développeurs et développeuses d'aujourd'hui.
 ====
 
+* CDE à la base = Cloud Development Environment
+    ** mais dans cette prez on va parler des 2 approches : CLoud et Container Development Environment
+
+* *Cloud DE* : services disponibles sur des serveurs distants +
+image:20250417_Devoxx-France_63.jpg[]
+
+    ** connexion via SSH
+    ** permet de travailler avec "une vieille bécane" et juste un navigateur
+
+* *Container DE* : environnement isolé déployable sur n'importe quelle infrastructure
+
+* Une Developer eXperience (DX) améliorée : +
+*Developer Experience* is the activity of studying, improving and optimizing how developers get their work done
+    ** https://theappslab.com/2017/04/04/developer-experience-what-and-why/
+
+CLOUD DEVELOPMENT ENVIRONMENT
+
+DEMO de *Firebase Studio* de Google (anciennement IDX) : +
+image:20250417_Devoxx-France_64.jpg[]
+
+* Configuration de Firebase Studio : via le fichier dev.nix +
+image:20250417_Devoxx-France_65.jpg[]
+
+DEMO de *GitPod* (gitpod.io)
+
+* Configuration via .gitpod.yml : +
+image:20250417_Devoxx-France_66.jpg[]
+
+* En 2025/09, GitPod va changer de fonctionnement : "GitPod va créer sa propre application pour gérer le runner" (??? info à rechercher)
+
+DEMO de DevPod : 100% gratuit 100% open source
+
+* partie provider : on peut choisir de l'hébergement sur toute une série de provider (GCP, Scaleway, etc.)
+* possible de choisir son IDE : VS Code, Cursor, etc.
+* configuration via le fichier devcontainer.json +
+image:20250417_Devoxx-France_67.jpg[]
+
+CONTAINER DEVELOPMENT ENVIRONMENT
+
+* les .devcontainer sont supportés par un grand nombre d'IDE aujourd'hui
+    ** via l'ajout de l'extension .devcontainer (c'est le cas pour VS Code)
+
+* Avantages : 
+    ** Pratiques pour les projets open source ou perso
+    ** Gratuits ou mettent à disposition un usage limité suffisant
+    ** Configuration assez rapide à appréhender
+
+* Les configurations de ces outils :
+image:20250417_Devoxx-France_68.jpg[]
+
+Conseil et preco pour passer en *milieu entreprise* : passer sur *Google Cloud Workstation*
+
+image:20250417_Devoxx-France_69.jpg[]
+
+* ROI de ces outils : 
+    ** calculateur de coût de GitPod : +
+    image:20250417_Devoxx-France_70.jpg[]
+    ** côté Google : +
+    image:20250417_Devoxx-France_71.jpg[]
+
+* -> Au final, *dès lors qu'on a un certain nombre de développeurs*, l'approche est *rentable*
+    ** REX très positifs de L'Oréal, Commerzbank, DZ Bank
+
+* Avantages de ces 2 types de solutions (Cloud et Container DE) : 
+    ** Approche intéressante + GreenIT 
+    ** Améliore la "Developer eXperience"
+    ** Différents outils disponibles et gratuits
+    ** De + en + d'initiatives dans les entreprises dans ce sens
+    ** Plusieurs normes de configuration disponibles
+    ** L'IA intégrée dans ces outils
+
+.Comparaison des solutions par éditeur
+image:20250417_Devoxx-France_72.jpg[]
+
+Slides du talk : https://docs.google.com/presentation/d/e/2PACX-1vQBgNPB7Kj3Tab-w4NwvrLz5676XPuhT52yAXHDNvR6mYBFsDFr19_s2FfeivgEvFTzqqVYFdQgAh4z/pub?slide=id.g32959efb8b4_0_2472
+
 == JOUR 3 : VENDREDI 18/04
 
-=== 09:00 -> 09:25 - Keynote - Amphi bleu : Plongez dans l’Ère Quantique : décryptez et anticipez la révolution à venir
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Plongez dans l'Ère Quantique : décryptez et anticipez la révolution à venir
 
 .Fanny Bouton
 ====
 Analyste, journaliste et experte en nouvelles technologies depuis plus de 20 ans, elle intervient régulièrement dans les médias et co-produit et anime les podcasts sur le quantique "Quantum" et "Decode Quantum" avec Olivier Ezratty.
 Passionnée d'innovation, elle a lancé dès le début des années 2000 son blog et des soirées "Fanny's Party" dédiés au sujet. Pendant 18 ans, elle a réuni les geeks et vulgarisé les nouvelles technologies et innovations pour aider à la démocratisation des sujets complexes. Elle a animé bon nombre d'émissions comme "Quoi de neuf chez les geeks ?", "World of Fanny", "Follow Fanny", "Tech Away" et a été chroniqueuse pour Direct 8 ou encore GameOne.
-Après avoir accompagné la transformation digitale de grands groupes, à l’acculturation à l’Open Innovation (TF1, Agence Innovation Défense, Dior...) et à l'accompagnement des startups (Station F, HEC entrepreneurs...), elle est rentrée chez OVHcloud en 2020 pour développer le Startup Program puis monter un pôle Quantique et co-fondé l’évènement France Quantum. Promouvoir et aider l'écosystème Français scientifique et technologique à rayonner à l’international est devenu son terrain de jeu favori.
+Après avoir accompagné la transformation digitale de grands groupes, à l'acculturation à l'Open Innovation (TF1, Agence Innovation Défense, Dior...) et à l'accompagnement des startups (Station F, HEC entrepreneurs...), elle est rentrée chez OVHcloud en 2020 pour développer le Startup Program puis monter un pôle Quantique et co-fondé l'évènement France Quantum. Promouvoir et aider l'écosystème Français scientifique et technologique à rayonner à l'international est devenu son terrain de jeu favori.
 ====
 
 .abstract
 ====
-La prochaine grande révolution industrielle après l’IA s’écrit déjà : l’informatique quantique. Longtemps considérée comme un concept lointain ou purement académique, cette technologie émergente est sur le point de bouleverser en profondeur l’univers du développement logiciel, des algorithmes et de l’architecture des systèmes.
+La prochaine grande révolution industrielle après l'IA s'écrit déjà : l'informatique quantique. Longtemps considérée comme un concept lointain ou purement académique, cette technologie émergente est sur le point de bouleverser en profondeur l'univers du développement logiciel, des algorithmes et de l'architecture des systèmes.
 
-Dans cette session, nous explorerons les notions clés qui rendent l’informatique quantique si puissante, en démystifiant des concepts essentiels tels que le qubit, l’intrication et la superposition. Nous verrons comment ces principes inédits ouvrent des perspectives vertigineuses pour la recherche, la cryptographie, l’optimisation ou encore la simulation.
+Dans cette session, nous explorerons les notions clés qui rendent l'informatique quantique si puissante, en démystifiant des concepts essentiels tels que le qubit, l'intrication et la superposition. Nous verrons comment ces principes inédits ouvrent des perspectives vertigineuses pour la recherche, la cryptographie, l'optimisation ou encore la simulation.
 
-L’objectif ? Vous donner un premier bagage de connaissances pratiques pour commencer à appréhender ce nouveau paradigme et aborder en toute confiance les outils, plateformes et langages de programmation quantique.
+L'objectif ? Vous donner un premier bagage de connaissances pratiques pour commencer à appréhender ce nouveau paradigme et aborder en toute confiance les outils, plateformes et langages de programmation quantique.
 
-Ce talk s’adresse à tout développeur ou architecte passionné par l’innovation et curieux de comprendre comment la physique quantique est en passe de remodeler l’informatique.
+Ce talk s'adresse à tout développeur ou architecte passionné par l'innovation et curieux de comprendre comment la physique quantique est en passe de remodeler l'informatique.
 ====
 
 === 11:35 -> 12:20 - Conférence - Paris 141 : L'IA et qualité de code : Comment ça marche l'IA Generative ? LLM, RAG sous le capot

@@ -129,6 +129,8 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 * Beaucoup de références au *platform engineering*
 * "Passer du monolithe ou *modulithe*" : j'aime beaucoup ce terme de "modulithe" 👍
 
+. *.devcontainer* qui pousse et se répand comme Container Development Environment
+
 === Rappels sur le Platform Engineering
 
 * Le Platform Engineering est une discipline nouvelle / émergente (en 2025) qui cherche à structurer l'écosystème DevOps en *réponse aux défis de complexité et d'échelle des infrastructures cloud-native*. 
