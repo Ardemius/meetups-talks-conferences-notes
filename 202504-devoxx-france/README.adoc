@@ -803,26 +803,6 @@ A reprendre, cela donne de vraies guidelines pour l'avenir
 
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
-=== 13:00 -> 13:15 - quicky - Maillot : 👨‍💻 TDD et IA 🤖
-
-.Benoit Prioux - Alan
-====
-Après 12 ans chez Lectra, éditeur de logiciel basé à Bordeaux, je suis maintenant Senior Software Engineer chez [Alan](https://alan.com/) depuis 4 ans.
-
-Développeur Java, Kotlin et plus récemment Python, je suis passionné par tout ce qui finit en DD : TDD, BDD, DDD, ...
-====
-
-.abstract
-====
-Ces dernières années, l'intelligence artificielle a révolutionné notre manière d'aborder le développement logiciel.
-Vous avez peut-être déjà entendu dire : "Super, avec Copilot, plus besoin d'écrire des tests, il peut les générer pour moi."
-Mais est-ce vraiment compatible avec le Test Driven Development (TDD) ? 🤔
-
-Dans cette conférence, nous explorerons comment l'IA peut être intégrée efficacement dans votre boucle de développement (🔴 - 🟢 - 🔄).
-À travers des exemples concrets, nous verrons comment utiliser des outils basés sur l'IA pour améliorer et accélérer le processus de développement, tout en respectant les principes fondamentaux du TDD. 🚀
-Que vous soyez sceptique ou curieux, venez découvrir comment l'IA peut devenir votre meilleur allié. 🤝
-====
-
 === 13:30 -> 14:15 - Conference - Neuilly 252AB : Vibe testing
 
 .Yann HELLEBOID - ORANGE
@@ -838,6 +818,83 @@ Il y a des évolutions et des révolutions. Les métiers du test ont connu leur 
 En live, à partir de prompts et du code, je génèrerai une stratégie de test, des tests automatisés : fonctionnels, de sécurité, de performance et d'accessibilité
 et essayerai de trouver des bugs sur une vraie application, plus qu'à demander au LLM de faire aussi le café !
 ====
+
+* Il y a 2 ans avec la sortie de l'IA gen, le monde du test a changé...
+    ** renommage récent du talk de "AI 4 test" en "Vibe testing" pour surfer sur la vague
+
+.comparaison des coûts des LLM effectués par Orange
+image:20250417_Devoxx-France_34.jpg[]
+
+* Pour ces tests, on a demandé après coup à chaque modèle d'évaluer les autres (en plus de l'évaluation humaine)
+* Et *Gemini 2.0 flash* s'en sort super bien : très performant et pas cher
+
+* Normalement pour générer des tests, on ne se base pas sur du code MAIS sur les specs !
+    ** et c'est la même chose pour le TDD : il faut partir des specs
+
+* plateforme d'IA gen Dinootoo GenAI toolbox d'Orange : +
+image:20250417_Devoxx-France_35.jpg[]
+    ** avec sa bibliothèque de prompts
+
+*DEMO (en utilisant GPT-4o)*
+
+* System prompt : +
+image:20250417_Devoxx-France_36.jpg[]
+
+    ** "Tu es un expert en stratégie de test logiciel, spécialisé dans les applications web et les API. +
+    Ton rôle est d'analyser le code source de l'application ainsi que ses spécifications structurées (par exemple, Swagger pour une API), puis de générer un plan de test détaillé et conforme aux standards du format IEEE 29119-3. +
+    Sois précis et méthodique dans l'élaboration du plan, en couvrant tous les aspects critiques de l'application"
+
+* On commence par bâtir une stratégie de test : +
+"Peux-tu me générer un plan de test au format IEEE 29119-3 ?"
+
+* Puis on pase aux tests API : +
+image:20250417_Devoxx-France_37.jpg[]
+
+    ** Peux-tu me générer Les tests fonctionnels de l'api ? +
+    image:20250417_Devoxx-France_38.jpg[]
+    ** Peux-tu me générer Les tests de performance de l'api ?
+    ** Peux-tu me générer Les tests de sécurité de l'api ? +
+    image:20250417_Devoxx-France_39.jpg[]
+
+* prompt : +
+"Tu es un expert dans les applications web et les api. +
+Tu es un expert du test logiciel. +
+Tu dois générer des tests en javascript en utilisant la syntaxe de l'outil playwright. +
+Tu dois générer une large variété de tests incluant les cas nominaux mais aussi les cas d'erreurs et les cas aux limites. +
+Tu dois utiliser les assertions playwright pour vérifier le résultat des tests. +
+La réponse doit commencer par " et finir par ", ne donne aucune explication, que du code."
+
+    ** Cette dernière ligne est très intéressante, car elle permet de "stopper" le LLM (lui dire de se taire) car sinon il est généralement TRES verbeux, et cette longue réponse coûte des tokens et consomme des ressources (carbone, eau, etc.)
+
+* On continue avec les tests Web : 
+
+    ** Peux-tu me générer Les tests fonctionnels web ?
+    ** Peux-tu me générer Les tests d'accessibilité web ?
+    ** Peux-tu me générer Les tests de sécurité web ? +
+    image:20250417_Devoxx-France_40.jpg[]
+
+* Quelques faux positifs dus à l'usage de mauvais identifiants / nom d'utilisateurs (que le LLM a généré de façon aléatoire) : donc une situation normale, facile à corriger
+
+* On peut même lui faire créer les tests sur la base du dessin d'une application : +
+image:20250417_Devoxx-France_41.jpg[]
+
+Conclusion : 
+
+    * Les tests générés sont globalement bons
+    * Il faut peu de temps pour corriger les scripts générés
+    * Combien ça coûte : génération de 80 tests ~50$
+        ** Mais le coût pour la planète n'est sûrement PAS bon 😅
+
+-> Donc l'IA peut effectivement être un TRES bon assistant pour la création de tests 👍
+
+* Et l'IA ne remplace pas le testeur
+* MAIS le testeur IA remplace le testeur non IA
+* l'IA est gourmande
+* l'IA fait gagner du temps A DATE (avant qu'elle ne dégénère car basée sur )
+* la qualité des données d'entrée (specs, prompts) est essentielle
+    ** Yann avait bien bossé son Swagger
+
+Q&A : attention, "tout ceci" marche moins bien sur un TRES gros projet : il faudra découper son projet
 
 === 14:35 -> 15:20 - Conference - Paris 242AB : Explaining the Unexplainable: Python Tools for AI Transparency using Captum
 
