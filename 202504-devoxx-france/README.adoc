@@ -912,6 +912,119 @@ Artificial Intelligence often operates as a “black box,” leaving developers 
 Attendees will explore the fundamentals of XAI, learn how to integrate these libraries into their workflows, and discover techniques for generating feature attributions, decision-path visualizations, and scenario-specific insights. By the end of the session, participants will be equipped to apply XAI techniques to their own projects, gaining actionable insights into model behavior. A live demo will showcase the application of Captum to a trained model, providing clarity on how to debug, explain, and optimize real-world AI systems.
 ====
 
+Agenda : 
+
+    * What is Explainable Al?
+    * Understanding Data Inconsistencies
+    * Dataset Observability and Diagnostics
+    * Demos, Demos, Demos
+    * Adversarial Attacks for Good ... & Bad
+    * Demos, Demos, Demos
+    * Q&A
+
+* Beware of *flawed data* : +
+image:20250417_Devoxx-France_44.jpg[]
+
+* Explainable AI is *building transparency* : +
+image:20250417_Devoxx-France_45.jpg[]
+
+.Data Inconsistencies matter
+image:20250417_Devoxx-France_46.jpg[]
+
+* *Annotation errors* : quand sur un dessin vert on indique qu'il est en fait rouge...
+    ** et David explique que cela arrive apparemment tout le temps dans les data set publics
+
+* *Distribution shifts* : quand on passe par exemple de données d'entraînement réelles à leur version "cartoon" +
+image:20250417_Devoxx-France_47.jpg[]
+
+* *Adversarial samples* : on fait passer une image pour une autre avec un haut niveau de confiance via l'ajout / merge / superposition d'une image invisible par l'humain : +
+image:20250417_Devoxx-France_48.jpg[]
+
+* Quels outils puis-je utiliser pour me protéger ? +
+    ** *Captum* - https://github.com/pytorch/captum
+    ** SHAP - https://github.com/shap/shap
+    ** LIME
+    ** ELI5
+    ** AIX360
+    ** et apparemment tellement d'autres...
+
+* *Captum* is an *open source Python library*
+
+* Analyse de Captum : l'image de droite montre tous les points catégorisés comme étant associés au concept de chien +
+image:20250417_Devoxx-France_49.jpg[]
+
+* Turning insights into action : +
+image:20250417_Devoxx-France_50.jpg[]
+    ** Why Explainable Al?
+        *** Question Rigid Assumptions
+        *** Finding Data Flaws
+        *** Expose Ethical Scenarios
+        *** Adversarial Testing
+    ** Result
+        *** Why Exclude Data
+        *** Fix Problematic Data
+        *** Under Representation
+        *** Fairness
+
+* Et maintenant comment peut-on utiliser ce type d'outils pour attaquer ou se protéger (si on veut dans un état policier ou une dictature) +
+image:20250417_Devoxx-France_51.jpg[]
+    ** Intentional Adversarlal Attacks
+        *** Besides Finding Holes ...
+        *** Disrupting Classification
+            **** Vision
+            **** NLP
+    ** Why?
+        *** Unauthorized Surveillance
+        *** Protect Privacy
+        *** Obfuscation
+
+* Adversarial Strategies : +
+image:20250417_Devoxx-France_52.jpg[]
+image:20250417_Devoxx-France_53.jpg[]
+    ** Here Are Ideas/Concepts in NLP to Disrupt - Be Creative !!
+        *** Encoding/Formatting
+        *** Homophones and Phonetics
+        *** Code Switching
+        *** Low-Resource Languages
+            **** Navajo - "Code Talkers" +
+            Durant la 2nd guerre mondiale, le Navajo est le seul code qui n'a pas été cassé car il s'agit d'un langage sur lequel on avait très peu d'infos. +
+            -> Yann a essayé d'utiliser un modèle pour le comprendre, il faudrait récupérer plus d'infos sur le contexte, mais au final le modèle a répondu qu'il n'y comprenait rien... D'où l'importance de la documentation (accessible) du concept.
+        *** Adversarial Spelling
+        *** Polysemy/Multiple Meanings
+        *** Speaking in Metaphors
+
+* Un exemple de manipulation des sentiments : +
+image:20250417_Devoxx-France_54.jpg[]
+
+* Avec un seul malheureux pixel, on arrive à faire passer un chat pour un chien 😱 : +
+image:20250417_Devoxx-France_55.jpg[]
+
+* Un autre exemple d'adversarial attaque "en vrai" à l'aide d'un simple T-shirt... +
+image:20250417_Devoxx-France_56.jpg[]
+    ** A l'aide de ce T-shirt, on ne reconnaît plus Yann...
+
+Ressources et slides du talk : +
+image:20250417_Devoxx-France_57.jpg[]
+
+    * All Materials/Demos: https://github.com/davidvonthenen/2025-devoxx-france
+    * DigitalOcean AMD Bare Metal GPUs (MI300X) Availability : +
+    https://www.digitalocean.com/blog/now-available-bare-metal-amd-instinct-mi300x-gpus
+    * Continue the Conversation - DigitalOcean Discord +
+    https://discord.com/invite/digitalocean
+
+    * Captum:
+        ** GitHub - https://github.com/pytorch/captum
+        ** Tutorials - https://captum.ai/tutorials/
+    * PyTorch:
+        ** GitHub - https://github.com/pytorch/pytorch
+        ** Tutorials - https://pytorch.org/tutorials/index.html
+
+* Yann a trouvé plusieurs de ses data sets d'exemple sur Kaggle
+
+Conclusion : 
+
+    * Captum peut complètement être utilisé dans le cadre de la mise en place de l'AI Act
+
 === 17:00 -> 17:30 - Tools-in-Action - Amphi Bleu : Gitflow c'est bien, Gitbutler c'est mieux !
 
 .Yann-Thomas Le Moigne - Apside
