@@ -1056,6 +1056,53 @@ Au programme : un peu de théorie, et du live coding. On vous promet un moment i
 PS : Si j'ai convaincu mon manager, pourquoi pas vous ?
 ====
 
+* Git c'est complexe : 82 commandes "usuelles" à connaître (A VERIFIER)
+
+* Le Gitflow se décline également en Github Flow : +
+image:20250417_Devoxx-France_58.jpg[]
+
+* Forces et faiblesses des workflow de type flow : +
+image:20250417_Devoxx-France_59.jpg[]
+
+    ** les gros reproches au flow sont la nécessite d'une bonne connaissance de Git et le besoin de changer de contexte en permanence (changement très régulier de branche)
+
+-> Et *Gitbutler* est la réponse à ces problèmes ! 
+
+* GUI de Gitbutler : +
+image:20250417_Devoxx-France_60.jpg[]
+image:20250417_Devoxx-France_61.jpg[]
+image:20250417_Devoxx-France_62.jpg[]
+
+* Notion la plus important pour commencer avec Gitbutler : *les branches virtuelles* au sein d'un espace Gitbutler
+* Nouvelle branche automatiquement créée : *la branche "workspace"* (permettant d'agréger mes branches)
+    ** C'est cette branche qui va permettre de nous masquer la notion de branche dans Gitbutler
+
+* "Gitbutler permet de faire oublier qu'on travaille avec Git" -> il faut disparaître la notion de branche (A VERIFIER)
+    ** Seule la notion de commit semble conserver
+
+* Notion de "branches dépendantes"
+
+* Outil en beta depuis 1 an "mais à qui on peut quand même donner une change" (et les speakers parlent ici d'un usage en PROD)
+
+* Il y a également un *Gitbutler Flow* : le voir comme une surcouche au-dessus de la notion de PR (A VERIFIER)
+
+* Avantages : 
+    ** Branches légères et flexibles
+    ** Changement de contexte rapide et facile
+    ** Intégration continue simplifiée
+    ** Réduction des conflits de merge
+    ** Peu de connaissances de GIT nécessaires pour être efficace
+
+* Inconvénients : 
+    ** pas du tout fait pour travailler en local : il faut Github ou Gitlab
+        ** Origin obligatoire (GitHub / Gitlab)
+    ** Intégration des hooks limitée
+    ** GitFlow non adapté
+
+* Les technos sous-jacentes à Gitbutler sont *Rust* et *Svelt*
+
+* Il est facile de faire un retour arrière sur d'autres outils
+
 === 17:50 -> 18:20 - Tools-in-Action - Paris 143 : {Cloud || Container} Development Environment
 
 .Jean-Philippe Baconnais - Zenika

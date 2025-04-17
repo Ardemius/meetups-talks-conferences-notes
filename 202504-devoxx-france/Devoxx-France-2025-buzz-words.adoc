@@ -190,12 +190,22 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 * Microsoft (voir les notes de mercredi)
 * Google : échange avec XXX et Guillaume sur le MCP et A2A : +
 image:20250417_Devoxx-France_09.jpg[width=600]
-* GE Healthcare
+* GE Healthcare : solution d'imagerie médicale
 * XXX : expérience de relaxation sonore et réalité virtuelle
 
 == Synthèse du salon
 
-* L'IA ne vous remplacera pas, mais ceux qui l'utisent SANS AUCUN DOUTE
+* *L'IA (surtout générative) est partout*, c'est une nouvelle le grand thème du salon. +
+Et au travers de plusieurs talks, il ressort comme mot d'ordre que *l'IA ne vous remplacera pas, mais ceux qui l'utilisent le feront sans aucun doute*.
+
+* *Le thème de la sécurité est très présent* : elle est tout particulièrement portée par les solutions de "platform engineering" (Gitlab, JFrog, etc.).
+    ** L'analyse des binaires (dépendances, images Docker et maintenant modèles de langages) est entrée dans les moeurs, preuve de plus de maturité dans le milieu
+
+* *Les bébés sont parmi nous* : un vrai rayon de soleil, les ITs osent maintenant venir avec leurs bébés en conf / salon. +
+J'ai croisé plusieurs mamans et papas avec leurs tout petits en porte-bébé, et c'est une belle évolution des mentalités : on se dit maintenant qu'on peut le faire sans essuyer de regards bizarres 🙂
+
+* Le *temps* est comme d'habitude notre *ressource la plus précieuse*, surtout avec l'arrivée de l'IA Gen. +
+Il est extrêmement difficile de suivre le rythme et les annonces du milieu, faire des choix est capital, le "hic" étant que, vu la jeunesse du domaine et sa rapidité d'évolution, bien malin celui qui arrive à être sûr que ses choix sont les bons 😅
 
 == Les polos rouges, jam, photos du salon et autres
 
