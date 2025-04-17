@@ -75,6 +75,7 @@ image:20250416_Devoxx-France_54.jpg[width=600]
 
 == Mon Top des talks
 
+* Stephan Janssen : Building full-stack AI agents: From project generation to code execution
 
 == Buzz words & Technos qui ont le vent en poupe
 

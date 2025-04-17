@@ -711,7 +711,95 @@ As an organizer of Devoxx Belgium, I am passionate about conducting research and
 We'll delve into proven architectural patterns for building production-ready AI agents, moving beyond basic prompt engineering to focus on the essential components of robust systems. These include multi-phase reasoning with distinct planning and execution stages, structured prompt management with version control, and the adoption of incremental development practices. Through real-world code examples, we'll demonstrate how these patterns enable the creation of maintainable and reliable agents. This talk is perfect for developers and architects aiming to implement AI systems capable of consistently handling complex workflows. As part of the session, I'll showcase a live demo where AI agents generate and deploy a fully functional web application using prompts alone.
 ====
 
+@stephanjanssen.be
 
+* we are at a quantum stage : both exiting and frightening at the same time
+
+* Depuis 3 ou 4 mois, Stephan ne développe plus, mais il prompt
+* Stephan utilise Claude (Claude 3.7 Sonnet), avec un abonnement à 20$
+    ** mais il a peut-être stoppé son abonnement pour appeler directemnet l'API de Claude qui est moins chère (A VERIFIER)
+
+image:20250417_Devoxx-France_10.jpg[]
+
+* Stephan nous montre comment son Claude corrige un problème "tout seul" à l'aide des différents tools disponibles (ou qu'il a lui même développé, des MCP serveurs)
+    ** et ce n'était pas possible il y a 3 ou 4 mois
+* Stephan va nous montrer comment faire nous-mêmes ce qui a été fait avec Claude (un agentic system)
+
+.Function calling et accès aux tools
+image:20250417_Devoxx-France_11.jpg[]
+
+    ** Langchain4J ou Spring AI qui permettent d'ouvrir la "boîte de Pandore" des agentic systems
+        *** et ces 2 frameworks sont quasiment du "copy paste" l'un de l'autre cf Stephan : +
+        image:20250417_Devoxx-France_12.jpg[]
+
+.Le workflow entre application et LLM
+image:20250417_Devoxx-France_13.jpg[]
+
+* La définition des tools utilisés par DevoxxGenie : une liste suffisamment fournie pour faire "l'introspection" de son application et donner les infos nécessaires au LLM : +
+image:20250417_Devoxx-France_14.jpg[]
+
+* L'approche il y a 4 mois et la défintion des outils via Langchain4J (Genie est une collection de tools) : +
+image:20250417_Devoxx-France_15.jpg[]
+
+* Problème avec Anthropic et avec les autres aussi : la *limite en tokens per minute* (TPM) +
+image:20250417_Devoxx-France_16.jpg[]
+    ** donc il faut être capable de switcher d'un modèle à l'autre (ne serait que quand un modèle est down)
+
+* Mais ça, c'était "avant", en 2025 on fait du MCP : +
+image:20250417_Devoxx-France_17.jpg[]
+
+* Le MCP peut être appelé localement (STDIO) ou en remote via HTTP SSE : +
+image:20250417_Devoxx-France_18.jpg[]
+    ** et c'est bien actuellement du HTTP et PAS du HTTPS, *la sécurité est bien LE gros point noir du MCP aujourd'hui*
+
+* D'où DevoxxGenie qui vous permettre de faire ce que Claude vous permet déjà de faire : +
+image:20250417_Devoxx-France_19.jpg[]
+image:20250417_Devoxx-France_21.jpg[]
+image:20250417_Devoxx-France_20.jpg[]
+
+* Stephan a créé le filesystem MCP Server : https://www.pulsemcp.com/servers/devoxx-filesystem
+
+* Et il voulait savoir comment le LLM choisissait ses tools : c'était une fonctionnalité absente de Langchain4J qu'il a donc hacké afin de l'ajouter. +
+-> Avec DevoxxGenie on peut donc voir l'échange avec le LLM et les tools qui sont choisis en conséquence : +
+image:20250417_Devoxx-France_21.jpg[]
+image:20250417_Devoxx-France_22.jpg[]
+image:20250417_Devoxx-France_23.jpg[]
+image:20250417_Devoxx-France_24.jpg[]
+
+* Les problèmes du MCP : +
+image:20250417_Devoxx-France_25.jpg[]
+image:20250417_Devoxx-France_26.jpg[]
+    ** pas d'authentication à date MAIS il y a des travaux en cours sur ce point
+
+
+* Etre très prudent avec ce que le MCP peut faire, et ce qui peut être injecté ou fait par erreur : suppression de code, de fichiers, etc.
+* Stephan : soyez prudents quant au nombre de tools qui vous activez : plus il y en a, plus il y aura consommation de tokens
+    ** il faut BIEN les choisir
+    ** et les tools doivent être appelés de la façon la plus explicite possible
+
+* *Agent Orchestration* : le MCP n'est PAS un orchestrateur, il fallait en rajouter un
+image:20250417_Devoxx-France_27.jpg[]
+image:20250417_Devoxx-France_28.jpg[]
+
+* La semaine dernière Google Event (Next Cloud ou je ne sais plus le nom) : *sortie du Agent Development Kit* (ADK) +
+image:20250417_Devoxx-France_29.jpg[]
+image:20250417_Devoxx-France_31.jpg[]
+* ET il y a également eu l'annonce de la sortie de Agent2Agent (A2A) : +
+image:20250417_Devoxx-France_30.jpg[]
+    ** Stephan : 🔥C'EST L'AVENIR POUR 2025 et les agentic systems 🔥
+
+* Exemple d'utilisation : +
+image:20250417_Devoxx-France_32.jpg[]
+
+    ** et Stephan fait vérifier son code par 3 modèles (Claude, Gemini, ChatGPT)
+
+.On voit ici de façon graphique les choix de tools opérés par le LLM
+image:20250417_Devoxx-France_33.jpg[]
+
+* Stephan : AI will not replace your job... but developers using AI will !
+
+*Conclusion* : comme d'habitude, la présentation de Stephan est complètement dingue... 👍 +
+A reprendre, cela donne de vraies guidelines pour l'avenir
 
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
