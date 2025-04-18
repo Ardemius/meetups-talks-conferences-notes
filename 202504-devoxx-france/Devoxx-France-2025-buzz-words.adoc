@@ -196,11 +196,18 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 == Technos dont on parle moins (ou plus !)
 
-* Beaucoup de talks dédiés aux services des grands Cloud providers
+* *Aucun talk* dédié spécifiquement aux services ou nouveaux *services des grands Cloud providers*
+    ** On voit bien la différence avec les années passées
+
+* La *conception* (UML, modélisation, diagrammes de classe et autres) en amont du développement *continue de sombrer*, et c'est un drame... 😭😭😭
+    ** 0 talk sur le sujet, qui disparaît de plus en plus des radars.
+    ** C'est malheureusement la conséquence des travers de notre époque : vouloir aller trop vite (du fait de direction et de métier qui ne comprennent pas assez IT et ses contraintes), de l'Agile mal compris par la plupart qui a envoyé "les specs et ses schémas" à la poubelle (l'Agile n'a jamais voulu "moins" de conception, mais c'est malheureusement le résultat de sa mauvaise compréhension et maîtrise par une majorité des ITs). +
+    La terrible conséquence de tout ceci est une fragilité croissante de l'architecture des développements récents.
 
 == Talk à revoir sur YouTube
 
 * Quand l'IA fait le tri de manière industrialisée : j'ai eu de très bons échos de ce talk donné par nos collègues de La Poste BSCC
+* Manuel Camargo - Theodo Fintech : Apprenez à votre IA à faire du TDD : je n'ai pas pu y assister, mais le sujet de l'IA associée aux tests va fatalement devenir de plus en plus une préoccupation
 
 == Sociétés et personnes rencontrées
 
@@ -208,7 +215,7 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 * Google : échange avec XXX et Guillaume sur le MCP et A2A : +
 image:20250417_Devoxx-France_09.jpg[width=600]
 * GE Healthcare : solution d'imagerie médicale
-* XXX : expérience de relaxation sonore et réalité virtuelle
+* Mooon : expérience de relaxation sonore et réalité virtuelle
 
 == Synthèse du salon
 
