@@ -106,6 +106,7 @@ image:20250416_Devoxx-France_01.jpg[width=1000]
 
 * On a pu voir de très beaux stands cette année, très en accord avec le thème du salon : +
 image:20250416_Devoxx-France_54.jpg[width=600]
+image:20250418_Devoxx-France_12.jpg[width=600]
 
 * Et aussi des choses très fun et... bizarres ! (c'est la revanche des canaris ! 🤣) +
 image:20250417_Devoxx-France_42.jpg[width=300]
@@ -115,6 +116,7 @@ video::20250417_Devoxx-France_43.mp4[width=300]
 == Mon Top des talks
 
 * Stephan Janssen : Building full-stack AI agents: From project generation to code execution
+* Willy Malvault - BpiFrance : Si l'enfer existe, on y trouve des devs qui gérent des clés de chiffrement
 
 == Buzz words & Technos qui ont le vent en poupe
 
@@ -127,9 +129,18 @@ On change donc de paradigme, le pilote devient l'assistant AI, et le développeu
 Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, commandes avancées / guide de survie, etc.)
 
 * Beaucoup de références au *platform engineering*
+* *Métriques DORA* (en lien avec le sujet du platform engineering)
+
 * "Passer du monolithe ou *modulithe*" : j'aime beaucoup ce terme de "modulithe" 👍
 
-. *.devcontainer* qui pousse et se répand comme Container Development Environment
+* *.devcontainer* qui pousse et se répand comme Container Development Environment
+
+* *Tokenization* dans le milieu de la sécurité (thème de fond très présent)
+
+* On se rend bien compte de la démultiplication des technologies à connaître par les dev
+    ** Impossible pour "1 seul humain" : il faut des équipes pluridisciplinaires, des spécialisations et donc de bons parcours de formations !
+
+* *OpenTelemetry* est vraiment couronné comme ZE le standard à connaître dans le domaine de l'observabilité
 
 === Rappels sur le Platform Engineering
 
@@ -185,7 +196,7 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 == Talk à revoir sur YouTube
 
-
+* Quand l'IA fait le tri de manière industrialisée : j'ai eu de très bons échos de ce talk donné par nos collègues de La Poste BSCC
 
 == Sociétés et personnes rencontrées
 

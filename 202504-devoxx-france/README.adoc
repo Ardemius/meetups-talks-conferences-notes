@@ -1347,6 +1347,115 @@ Deux alternatives s'offrent alors à nous :
 Si vous n'utilisez pas la deuxième alternative : venez vite voir ce talk ! Cela pourrait sauver vos données… et les quelques cheveux qu'ils vous reste !
 ====
 
+* WIlly : c'est compliqué de faire du chiffrement, et c'est TRES compliqué de gérer les clés de chiffrement
+
+.Qu'est-ce que le chiffrement ?
+image:20250418_Devoxx-France_13.jpg[]
+
+* DEFINITION (wikipedia) : "Le chiffrement est un procédé de cryptographie grâce auquel on souhaite rendre la compréhension d'un document (resp. d'une information) impossible à toute personne qui n'a pas la clé de chiffrement."
+
+* Protection des données : confidentialité et intégrité
+image:20250418_Devoxx-France_14.jpg[]
+
+* *Fuite de données personnelles* dans les SI pas étanches : +
+image:20250418_Devoxx-France_15.jpg[]
+    ** l'Aeris, derrière le site "Bonjour la fuite" (https://bonjourlafuite.eu.org) est apparemment le "coach" de la CNIL
+
+* L'*espionnage de masse* : 
+image:20250418_Devoxx-France_16.jpg[]
+    ** Cela fait plusieurs années qu'on peut espionner les réseaux télécom aux US (SMS en clair, ...).
+        *** et "on", ça peut être n'importe qui (encore aujourd'hui, ça n'a pas été patché ! 🤯)
+        *** Bon, on pense que c'est surtout la Chine...
+
+* *Parce que c'est la loi* (et de plus en plus de règlementations sortent dans ce domaine) : +
+image:20250418_Devoxx-France_17.jpg[]
+
+*Les pratiques à éviter et les solutions à adopter* 
+
+* *Utiliser des clés statiques*, c'est mal ! +
+image:20250418_Devoxx-France_18.jpg[]
+image:20250418_Devoxx-France_19.jpg[]
+    ** Une clé on peut l'attaquer avec de la cryptanalyse, il faut donc les changes régulièrement -> *rotation de clés*
+        *** Souvent on définit une durée de 1 an pour une rotation de clés
+    ** *Contrôle d'accès*
+    ** *Audit des clés*
+        *** ne plus utiliser des clés AES 128 bits mais passer aux clés 256 bits
+
+* Plus tu as de clés, plus tu as du contrôle d'accès ! +
+image:20250418_Devoxx-France_20.jpg[]
+    ** une clé par service
+    ** MIEUX une clé par utilisateur
+    ** ENCORE MIEUX une clé par objet
+        *** à ce niveau, ça commance à ressembler à du Zero knowledge
+
+* La suite de la hype : +
+image:20250418_Devoxx-France_21.jpg[]
+    ** Chiffrement homomorphe
+    ** Zero knowledge
+    ** tokenization
+
+* Donc on a une belle collection d'exigences ! +
+image:20250418_Devoxx-France_22.jpg[]
+    ** et le tout à gérer par le malheureux développeur !
+
+* Et pour faire tout ça sans trop galérer -> *Key Management Service* (KMS) +
+image:20250418_Devoxx-France_23.jpg[]
+
+    ** On récupère la clé via le KMS lors de *CHAQUE* utilisation
+    ** On isole la logique de gestion de clé dans un service (KMS)
+
+* Règles sur le *stockage des clés* (où ne faut-il PAS les mettre) : +
+image:20250418_Devoxx-France_24.jpg[]
+    ** JAMAIS dans le code ou la config
+    ** JAMAIS dans un fichier, un bucket ou une BDD
+    ** JAMAIS en varenv ou dans le stockage local du navigateur
+    ** MAIS dans la mémoire du processus
+    ** OU dans un gestionnaire spécialiser
+
+* Comment faire dans la pratique : +
+image:20250418_Devoxx-France_25.jpg[]
+
+* Focus sur la *rotation des clés* : +
+image:20250418_Devoxx-France_26.jpg[]
+    ** l'idée : on va chiffrer la *DEK (Data Encryption KEY)* avec une *KEK (Key Encryption KEY)*
+
+* *Key Management Interoperability Protocol* (KMIP) 
+    ** les objets gérés par un service KMIP +
+    image:20250418_Devoxx-France_27.jpg[]
+        *** Clés partagées : Casser une clé sensible en multiples parties, donc un nombre donné de parties (3 / 5 par exemple) sont obligatoires pour utiliser la clé
+    ** les opérations proposées par un KMIP +
+    image:20250418_Devoxx-France_28.jpg[]
+
+* *Stack technologique KMIP* +
+image:20250418_Devoxx-France_29.jpg[]
+    ** spécificité française : utiliser un KMS américain MAIS qui va déléguer la gestion de clés à un KMS hébergé on-premise
+
+* Le *marché du KMS* (entre solutions KMIP et non KMIP) : +
+image:20250418_Devoxx-France_30.jpg[]
+    ** seul 1 solution open source KMIP, OpenKMIP, MAIS de l'avis des développeurs eux-mêmes, ce n'est PAS pour la PROD, QUE pour un POC !
+    ** La solution Thales, CipherTrust Manager, a une très bonne réputation
+    ** Non KMIP : AWS KMS, Azure Keyvault, Google Cloud KMS
+        *** Donc tous les Cloud providers ont des KMS, qui sont souvent TRES securisés, MAIS ne sont pas standardisés (pas KMIP)
+
+* Si on veut un *KMS on-premises* ?
+    ** il doit être haute disponibilité obligatoire : si la solution tombe, bravo, vous avez cryptolocké votre SI... 
+    ** Complexe à opérer : 
+        *** cérémonie d'initialisation
+        *** volumétrie des appels HSM
+            **** utiliser des HSM peut vite être coûteux !
+        *** gestion des opérations / incidents
+
+IMPORTANT: Tout ceci est complexe, il est très important de se faire accompagner !
+
+.Conclusion
+image:20250418_Devoxx-France_31.jpg[]
+
+    * Chiffrez ! Et gérez les clés !
+    * Utilisez un KMS !
+    * FAITES-VOUS ACCOMPAGNER !
+
+-> Très bon talk !
+
 === 11:35 -> 12:20 - Conférence - Paris 242 AB : Démystifions les bases de données vectorielles avec Qdrant
 
 .Bertrand Nau - WeScale
