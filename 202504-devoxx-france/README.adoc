@@ -1878,6 +1878,22 @@ Après plusieurs années de développement, et quelques années dédiés à la p
 Bloquer les accès aux solutions d'intelligence artificielle par peur de fuite de données est-ce vraiment une solution ? A l'ère de l'IA, comment protéger les données confidentielles et le savoir-faire des entreprises ? L'OWASP, l'ANSSI mettent en garde sur les risques de fuite de données sans vraiment fournir les solutions. Dans un monde où les données sont le trésor le plus précieux des entreprises, comment les équipes de cybersécurité vont continuer à assurer la confidentialité des données? A La Poste, on pense qu'il faut plutôt apporter des solutions que de bloquer les accès. Les solutions autour de LLM Guard et Presidio nous aident à anonymiser les données et à en tirer profit des IAs, assurant que les données sensibles restent hors de portée des cybercriminels. LLM Guard permet de rajouter des contrôles sur les prompts d'entrée mais aussi sur les réponses des IAs, en protégeant ainsi contre les attaques type prompt injection et on peut même construire nos propres règles pour compléter. Je vous propose aussi une démo de Presidio sur comment anonymiser les données et comment détecter des données sensibles dans des images générées à partir d'une IA.
 ====
 
+* Catalog CI/CD : permet d'obtenir facilement la documentation sur les composants de la CI/CD +
+image:20250418_Devoxx-France_108.jpg[]
+
+* Pour *améliorer la confiance envers les mainteneurs des projets*, on a l'indication du "petit v bleu" correspondant aux *partenaires GitLab*
+
+* Problématiques : 
+    ** variables dans votre projet de CI/CD : attention aux secrets !
+        *** et même attention aux secrets présents dans l'absolu dans votre CI/CD
+        *** les secrets doivent être stockés dans un Vault
+
+* Supervision des pipelines
+    ** Outil R2Devops : permet de remonter les projets non conformes et d'en comprendre les causes +
+    image:20250418_Devoxx-France_109.jpg[]
+
+* Slides du talk : https://docs.google.com/presentation/d/e/2PACX-1vRree68m84bRTVelUhcY_xUVsbLVJ65l07q-JSHToDQz4725as5LkSu-j-8SFmbMG7RU4cp5XNKP253/pub?slide=id.g3295b13cbc0_0_3618
+
 === Cloture : les Cast Codeurs
 
 
