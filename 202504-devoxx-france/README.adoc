@@ -1898,6 +1898,11 @@ image:20250418_Devoxx-France_108.jpg[]
 
 image:20250418_Devoxx-France_110.jpg[]
 
+* Les talks les mieux notés du salon par type de talk : 
+image:20250418_Devoxx-France_111.jpg[]
+image:20250418_Devoxx-France_112.jpg[]
+image:20250418_Devoxx-France_113.jpg[]
+image:20250418_Devoxx-France_114.jpg[]
 
 
 
