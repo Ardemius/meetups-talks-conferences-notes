@@ -1394,6 +1394,15 @@ image:20250418_Devoxx-France_21.jpg[]
     ** Zero knowledge
     ** tokenization
 
+.Chiffrement vs tokenisation
+[NOTE]
+====
+Le chiffrement et la tokenisation sont deux techniques de sécurisation des données : 
+
+    * Le *chiffrement* brouille les données sensibles, les rendant illisibles sans clé de déchiffrement. 
+    * La *tokenisation* remplace les données sensibles par un substitut non sensible (un token), qui n'a aucune valeur en soi.
+====
+
 * Donc on a une belle collection d'exigences ! +
 image:20250418_Devoxx-France_22.jpg[]
     ** et le tout à gérer par le malheureux développeur !
@@ -1473,6 +1482,119 @@ Au cours de ce talk, vous découvrirez les bases de données vectorielles, leurs
 
 Mon objectif est qu'à la fin de ce talk, vous soyez à l'aise pour parler des bases de données vectorielles. Le but est que vous puissiez faire les bons choix d'algos selon votre besoin métier et peut être même que je vous aurai convaincu de l'utilité de Qdrant.
 ====
+
+* Qu'est-ce qu'un vecteur ? +
+image:20250418_Devoxx-France_32.jpg[]
+    ** C'est un tableau de chiffres
+
+.Vecteur sparse
+[NOTE]
+====
+Un vecteur sparse représente un vecteur de très grande dimension dont la *majorité des composantes sont nulles* (égales à zéro), seules quelques-unes ayant une valeur non nulle.
+
+Caractéristiques principales d'un vecteur sparse :
+
+    * Haute dimensionnalité : Les vecteurs sparses sont souvent utilisés pour représenter des données où chaque dimension correspond à une caractéristique (par exemple, un mot dans un vocabulaire de dizaines de milliers de termes).
+====
+
+* Cas plus avancé : reconnaître une image qui vaut 7 +
+image:20250418_Devoxx-France_33.jpg[]
+    ** 10 layers à mon réseau de neurones (sur la droite de l'image), donc 10 dimensions à mon vecteur, et le "7" a la plus forte probabilité
+
+* Recherche "classique"
+* *Recherche sémantique* +
+image:20250418_Devoxx-France_34.jpg[]
+
+* Embedding : une représentation numérique d'un objet utilisé par les modèles d'intelligence partificielle pour comrnede des donnée de connaissance complexe.
+
+* Qu'est-ce qu'une BDD vectorielle ? + 
+image:20250418_Devoxx-France_35.jpg[]
+    ** son but est de calculer la distance entre les vecteurs (similarité)
+    ** son index va être l'un de ses composants principaux
+
+* Calcul de distance : 
+
+    ** *distance euclidienne* : +
+    image:20250418_Devoxx-France_36.jpg[]
+
+    ** *similarité cosinus* : +
+    image:20250418_Devoxx-France_37.jpg[]
+    image:20250418_Devoxx-France_38.jpg[]
+        *** chaque dimension représente un certain niveau d'abstraction, si des vecteurs partagent les mêmes abstractions, c'est donc qu'ils sont proches
+
+    ** *Produit scalaire* : +
+    image:20250418_Devoxx-France_39.jpg[]
+        *** calcul très récompensé que les vecteurs ont des valeurs très proches sur 1 même dimension
+
+* Comparaison des BDD vect : https://superlinked.com/vector-db-comparison
+
+* *Qdrant* : BDD vect développée en *Rust*
+image:20250418_Devoxx-France_40.jpg[]
+image:20250418_Devoxx-France_41.jpg[]
+    ** On peut avoir plusieurs points pour un même vecteur
+
+* Notion très important de *collection* : ensemble de points ayant la même configuration +
+image:20250418_Devoxx-France_42.jpg[]
+image:20250418_Devoxx-France_43.jpg[]
+
+* *Indexation* et *HNSW* +
+image:20250418_Devoxx-France_44.jpg[]
+    ** l'index HNSW (*Hierarchical Navigable Small Worlds*) est actuellement le plus utilisé
+
+    ** Commençons par le *simple "NSW"*
+    image:20250418_Devoxx-France_45.jpg[]
+        *** ici 1 et 2 sont plus proches que 1 et 3 MAIS ce serait un minimum local car 3 a des fils
+
+    ** Et maintenant passons au *HNSM* qui va travailler par couche : +
+    image:20250418_Devoxx-France_46.jpg[]
+    image:20250418_Devoxx-France_47.jpg[]
+    image:20250418_Devoxx-France_48.jpg[]
+
+*DEMO (en Rust) : création d'un petit moteur de recommandation*
+
+image:20250418_Devoxx-France_49.jpg[]
+image:20250418_Devoxx-France_50.jpg[]
+image:20250418_Devoxx-France_51.jpg[]
+
+*2e DEMO*
+
+image:20250418_Devoxx-France_52.jpg[]
+image:20250418_Devoxx-France_53.jpg[]
+
+.Partie requêtage
+image:20250418_Devoxx-France_54.jpg[]
+
+Utilisation avancée : 
+
+    * *Recherche hybride* : +
+    image:20250418_Devoxx-France_55.jpg[]
+        
+        ** recherche sémantique + autre type de recherche -> et donc besoin de "fusion" des 2 recherches
+        ** 2 calculs de fusion possibles : 
+            *** Reciprocal Rank Fusion : se base sur le classement des points
+            *** Distribution-based Score Fusion : se base sur le score des points
+
+    * *Reranking* : +
+    image:20250418_Devoxx-France_56.jpg[]
+        ** permet de requêter des vecteurs volumineux
+        ** Requêtage en plusieurs étapes
+            *** récupération d'un sous-ensemble depuis une représentation vectorielle imprécise
+            *** réordonnancement des points présélectionnés depuis une autre représentation vectorielle
+        ** Exemple : +
+        image:20250418_Devoxx-France_57.jpg[]
+            *** on commence par limiter à 1000 vecteurs, que l'on va ensuite réordonner
+
+Conclusion : 
+
+    * De nombreux cas d'application
+        ** Recherche sémantique
+        ** RAG
+        ** Moteur de recommandation
+        ** Reconnaissance d'image
+        ** Reconnaissance musicale
+        ** Recherche des lieux les plus proches
+
+    * 🔥 *Sert exclusivement aux recherches par similarité* -> Sinon un Postgre ou un Redis feront très bien l'affaire !
 
 === 13:00 -> 13:15 - quicky - Neuilly 252 AB : Apprenez à votre IA à faire du TDD
 

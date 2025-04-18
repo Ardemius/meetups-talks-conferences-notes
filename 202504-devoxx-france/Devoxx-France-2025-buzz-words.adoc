@@ -142,6 +142,10 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 * *OpenTelemetry* est vraiment couronné comme ZE le standard à connaître dans le domaine de l'observabilité
 
+* la voie du *contributeur individuel* se répand de plus en plus dans les entreprises : de nombreux talks citent ou parlent des rôles de staff engineer, principal engineer, CTO
+
+* On retrouve souvent du *Rust* ici et là, qui montre que le langage continue à gagner en popularité 
+
 === Rappels sur le Platform Engineering
 
 * Le Platform Engineering est une discipline nouvelle / émergente (en 2025) qui cherche à structurer l'écosystème DevOps en *réponse aux défis de complexité et d'échelle des infrastructures cloud-native*. 
