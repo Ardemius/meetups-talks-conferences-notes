@@ -125,6 +125,8 @@ video::20250417_Devoxx-France_43.mp4[width=300]
 * Pour les assistants AI, on assiste à la *fin de la code completion*, de plus en plus "boudée", et qui est en train de définitivement laisser la place à un *usage de l'assistant via le chat*. +
 On change donc de paradigme, le pilote devient l'assistant AI, et le développeur va maintenant "chatter" avec ce dernier pour lui expliquer ce dont il a besoin. Et au final, c'est l'assistant AI qui va maintenant modifier le code source.
 
+* *Langchain4J* en force pour l'IA gen en Java (à la place de Python), aussi bien pour les RAG que les agentic systems
+
 * Eh bien on reparle quand même un peu "des bases" avec *notre bon vieux Git* 🙂 +
 Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, commandes avancées / guide de survie, etc.)
 
@@ -212,10 +214,22 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 == Sociétés et personnes rencontrées
 
 * Microsoft (voir les notes de mercredi)
-* Google : échange avec XXX et Guillaume sur le MCP et A2A : +
+* Google : échange avec XXX et Guillaume Laforge sur le MCP et A2A : +
 image:20250417_Devoxx-France_09.jpg[width=600]
 * GE Healthcare : solution d'imagerie médicale
 * Mooon : expérience de relaxation sonore et réalité virtuelle
+
+* Aerospike : BDD clé / valeur très performante, utilisée par Criteo
+    ** propose une solution de stockage vectorielle depuis peu (en test depuis plus d'1 an, disponible à leur catalogue depuis 3 mois si j'ai bien suivi)
+    ** les vecteurs peuvent être associés au paires clé / valeur de leur solution historique
+    ** la solution vectorielle représente malgré tout une solution complétement différente de l'historique : il s'agit d'un cluster à part
+    ** Business model (on-premises) : pas encore disponible dans leur doc MAIS : 
+        *** on paye le stockage des vecteurs : mais les vecteurs représente un faible volume de stockage (ce n'est pas avec ça que leur offre va être rentable)
+        *** on paye à la puissance de calcul avec une approche capacitaire : VCPU et nombre de requêtes parallèles
+        *** Pour avoir des infos plus précises, pas d'autre moyen que de passer par un point avec un Sale (voir XXX)
+    ** La solution peut être utilisée déployée sur n'importe quel Cloud (y compris européen ou français) ou on-premises
+
+* WeScale : l'une des spin-off de "feu Xebia", spécialisée sur le platform engineering
 
 == Synthèse du salon
 
@@ -236,6 +250,8 @@ Il est extrêmement difficile de suivre le rythme et les annonces du milieu, fai
 
 == Les polos rouges, jam, photos du salon et autres
 
+image:20250418_Devoxx-France_72.jpg[]
+image:20250418_Devoxx-France_73.jpg[]
 
-
+video::20250418_Devoxx-France_74.mp4[]
 

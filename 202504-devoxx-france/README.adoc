@@ -1725,6 +1725,8 @@ Ces deux approches sont-elles vouées à s'opposer ? Ou peut-on les faire travai
 Nous avons testé différentes stratégies et nous vous dévoilerons comment nous avons transformé le build d'une application from scratch en un véritable kata de refactorisation. Au programme : tests de composants, architecture hexagonale et, bien sûr, l'IA générative comme alliée du software crafter.
 ====
 
+CONF PLEINE TROP VITE ! Je n'ai pas pu rentrer, à voir en replay 😅
+
 === 15:40 -> 16:25 - Conférence - Neuilly 252 AB : Agents intelligents, la nouvelle frontière des LLMs
 
 .Guillaume Laforge - Google
@@ -1740,6 +1742,125 @@ Dans cette session, nous commencerons d'abord par définir ce que sont les agent
 
 Agents devoxxiens êtes vous prêts pour la prochaine hype des agents ? Venez la découvrir dans cette session !
 ====
+
+* Guillaume est comiteur sur Langchain4j +
+image:20250418_Devoxx-France_75.jpg[]
+
+* Définition d'un agent : +
+image:20250418_Devoxx-France_76.jpg[]
+
+* Les caractéristiques d'un agent AI : +
+image:20250418_Devoxx-France_77.jpg[]
+
+    ** Think
+    ** Plan
+    ** Act
+    ** Reflect
+
+* Who's planning ? 
+image:20250418_Devoxx-France_78.jpg[]
+image:20250418_Devoxx-France_79.jpg[]
+    ** plus un agent est autonome, moins il est déterministe
+        *** Plus on "drive" un agent, plus on est sûr qu'il va bien atteindre le but prévu
+
+    ** Autonomous
+    ** Prompt-driven : c'est approche "médiane" est peut-être celle à préférer "aujourd'hui"
+    ** external workflow : an external program or workflow drives the LLMs
+
+* Fonctionnement du Function Calling : *le LLM demande à ce qu'on appelle une fonction pour lui* +
+image:20250418_Devoxx-France_80.jpg[]
+
+* *Control flows* : au final, on retrouve des patterns classiques +
+image:20250418_Devoxx-France_81.jpg[]
+
+* *Human in the Loop* : les décisions importants doivent demander la validation (l'action) d'un humain
+
+* *Reflection & self-critique* (et *LLM as judge*) +
+image:20250418_Devoxx-France_82.jpg[]
+
+* Rappels sur le *fonctionnement d'un RAG* : 
+image:20250418_Devoxx-France_83.jpg[]
+
+* Les différents *types de questions* : +
+image:20250418_Devoxx-France_84.jpg[]
+
+* *Pattern RAG Agentic* par Guillaume : +
+image:20250418_Devoxx-France_85.jpg[]
+    ** problématique : comment répondre à plusieurs questions en 1 -> Agentic Assistant
+
+*DEMO*
+
+* AgenticAssistant : +
+image:20250418_Devoxx-France_86.jpg[]
+
+* HistoryGeographyTool : +
+image:20250418_Devoxx-France_87.jpg[]
+
+*DEMO de Short Story AI* (créé par Guillaume pour crée des histoires avec les images à ses enfants) +
+image:20250418_Devoxx-France_88.jpg[]
+
+* URL de l'application : https://short-ai-story.web.app/
+* Voir https://glaforge.dev/posts/2025/01/31/a-genai-agent-with-a-real-workflow/ pour plus de détails
+
+* images avec Imagen 
+* Gemini comme LLM
+* LLM a judge où le model analyse lui-même la pertinence des images ajoutées
+
+* JudgementPromptMessages : +
+image:20250418_Devoxx-France_89.jpg[]
+
+*MCP* : Model Context Protocol -> "Les outils peuvent communiquer selon ce protocole" +
+image:20250418_Devoxx-France_90.jpg[]
+image:20250418_Devoxx-France_91.jpg[]
+
+* Architecture et fonctionnement du protocole MCP : +
+image:20250418_Devoxx-France_92.jpg[]
+    ** Il s'agit d'un protocole plutôt stateful : on initie une connexion avec le serveur qui va ensuite répondre avec les fonctionnalités qu'il propose
+
+* Fonctionnalités du serveur : +
+image:20250418_Devoxx-France_93.jpg[]
+image:20250418_Devoxx-France_94.jpg[]
+image:20250418_Devoxx-France_95.jpg[]
+image:20250418_Devoxx-France_96.jpg[]
+    ** Attention au sampling ! Le serveur pourrait demander au client de lui donner des informations qu'il ne devrait pas ! (ou exécuter des choses qu'il ne devrait pas)
+
+* DEMO et exemple de serveur MCP :
+
+    ** MCP Server : +
+    image:20250418_Devoxx-France_97.jpg[]
+    ** MCP Client : +
+    image:20250418_Devoxx-France_98.jpg[]
+
+* -> Dans MCP, il manque le "S" de sécurité et le "O" de observabilité
+
+* *Annonce* lors de la dernière *Google Next* : 
+
+    ** *ADK* +
+    image:20250418_Devoxx-France_99.jpg[]
+    image:20250418_Devoxx-France_100.jpg[]
+        *** dans les prochaines semaines (sous 1 mois), Java sera le prochain langage supporté par ADK (ou A2A ?) 
+        *** On peut également utilisé un autre agent comme outils
+
+    ** *A2A* : Agent to Agent Protocol +
+    image:20250418_Devoxx-France_101.jpg[]
+    image:20250418_Devoxx-France_102.jpg[]
+    image:20250418_Devoxx-France_103.jpg[]
+    image:20250418_Devoxx-France_104.jpg[]
+
+        *** permet la *discoverabilité des agents*
+        *** rajoute la *sécurité au MCP*
+
+    ** les core components de A2A : +
+    image:20250418_Devoxx-France_105.jpg[]
+        *** Task
+        *** Message
+        *** Part
+        *** Artifact
+    ** -> Voir kweinmeister pour un *exemple complet et complexe d'agent de trading* : https://github.com/kweinmeister/agentic-trading
+
+* Il y a un certain overlap en A2A et MCP : +
+image:20250418_Devoxx-France_106.jpg[]
+    ** les 2 peuvent être utilisés en même temps
 
 === 17:00 -> 17:30 - Conférence - Paris 242AB : Les gardiens des données à l'ère de l'IA
 
