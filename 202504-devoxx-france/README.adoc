@@ -1233,29 +1233,228 @@ L'objectif ? Vous donner un premier bagage de connaissances pratiques pour comme
 Ce talk s'adresse à tout développeur ou architecte passionné par l'innovation et curieux de comprendre comment la physique quantique est en passe de remodeler l'informatique.
 ====
 
-=== 11:35 -> 12:20 - Conférence - Paris 141 : L'IA et qualité de code : Comment ça marche l'IA Generative ? LLM, RAG sous le capot
+* Bon, la "formule 1" du quantique ne sera pas là avant 15 ou 20 ans...
 
+* Ordinateurs quantiques : de 2 à 156 QBits chez les meilleurs (IBM à date)
+* 6 ordinateurs quantiques en France
 
+* L'*ordinateur quantique* est une espèce de *super GPU* permettant d'*accélérer* les calculs d'*optimisation*, de *simulation* et d'accélération de calculs de Machine Learning (A VERIFIER)
 
-=== 12:35 -> 12:50 - quicky - Neuilly 153 : C'est une bonne situation ça, Staff Engineer ? 😉
+* Actuellement, on sait émuler jusqu'à 20 QBits
+    ** A la base cela coûte cher (3000 à 5000€ de l'heure ? A VERIFIER), mais il y aurait des moyens de "tester" pour beaucoup moins (A VERIFIER)
 
+* Sans formation, il y a 30 ans, on était "valable sur le marché" en sortie d'étude environ 15 ans, aujourd'hui, cette durée est passée à 2 ans...
+    ** Dans le quantique, pour se former, il faut un minimum de 9 ans de formation
 
+* Des métiers actuels vont avoir besoin du quantique : 
+    ** installation d'un ordinateur quantique dans un data center : c'est une discussion à commencer dès maintenant en vue d'installer le-dit ordinateur dans 10 15 ans
 
-=== 13:00 -> 13:15 - quicky - Paris 143 : Comment orchestrer l'IA générative pour qu'elle code à votre place le front-end d'une page en moins de 2min.
+* Actuellement, il n'y a *pas assez de boîtes dans le logiciel quantique*
+    ** "on va aller faire du quantique dans le luxe" : si dans quelques années on peut concevoir de nouvelles molécules grâce à l'informatique quantique, on pourra également le faire pour des produits cosmétiques.
 
+* 10 technos quantiques / types d'ordinateurs quantiques existent aujourd'hui : nous en avons 6 types en France ? en Europe ? (à minima en Europe, c'est sûr)
+    ** L'Europe est complètement dans la course du quantique, et ce depuis le début
+    ** Les boîtes européennes recrutent à tour de bras, et il n'y a pas assez d'ingé de formés qui sortent d'école
 
+* Nouvelle conférence France Quantum 2025 le 10 juin 2025 à Station F : https://www.francequantum.fr/
 
-=== 15:40 -> 16:25 - Conférence - Maillot : J'ai terminé les 9 Advents of Code : Leçons Apprises
+* Ressources sur le sujet du quantique : +
+image:20250418_Devoxx-France_01.jpg[]
+    ** Dont le ebook gratuit Understanding Quantum Technologies du Lab Quantique, de *1632 pages* 🤯 (2024)
 
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : Les LLM rêvent-ils de cavaliers électriques ?
 
+.Thibaut Giraud - Monsieur Phi (youtube.com/monsieurphi)
+====
+Thibaut Giraud est docteur en philosophie et créateur de la chaîne de vulgarisation philosophique "Monsieur Phi" sur YouTube. Il porte un intérêt particulier aux LLM auxquels il consacré une dizaine de vidéo-essais et publiera cette année un livre sur le sujet.
+====
 
-=== 17:00 -> 17:30 - Conférence - Paris 242AB : Apache Lucene : de l'indexation textuelle à l'intelligence artificielle
+.abstract
+====
+Les LLM ne *comprennent*-ils rien parce qu'ils ne font que de la prédiction de prochain token ? *Comprendre* est un terme notoirement difficile à comprendre. Pour éclairer ce point, je voudrais discuter d'un usage des LLM très particulier : la génération de coups au jeu d'échecs. Un LLM pourrait-il jouer ne serait-ce qu'une partie entière sans coup illégal ? Des études ont mis en évidence que certains LLM sont capables de faire mieux que cela : ils jouent au niveau d'un bon joueur humain à partir seulement d'un historique de coups dont ils prédisent la suite. Plus intéressant encore : on peut montrer qu'ils se construisent spontanément un modèle interne du jeu. Cet exemple sur un cas précis est instructif pour réfléchir plus généralement à la question de savoir si les LLM ont un modèle du monde. Face à de tels résultats, il semble difficile de maintenir la position selon laquelle les LLM se réduisent à des "perroquets stochastiques".
+====
 
+* On va parler de la notion de compréhension dans les LLM
+    ** Les LLM comme "perroquets stochastique" : Les LLM n'ont pas de modèle du monde... Au final, ils disent toujours n'importe quoi... +
+    image:20250418_Devoxx-France_02.jpg[]
 
+* Thibaut : les perroquets répètent sans comprendre "reductio ad psittacum" +
+image:20250418_Devoxx-France_03.jpg[]
+
+-> Sauf que tout ça, BEN C'EST PÔ VRAI ! 😆
+
+.Prédisez les prochains caractères
+image:20250418_Devoxx-France_04.jpg[]
+
+* Il y a déjà une numérotation incluse dans cette série (de 1 à 19)
+* On arrive à dégager d'autres patterns +
+image:20250418_Devoxx-France_05.jpg[]
+
+* et au final on se rend compte qu'il s'agit de la description d'une partie d'échecs (au format PGN) : +
+image:20250418_Devoxx-France_06.jpg[]
+
+* On pourrait décrire "un" prochain coup juste "légal" comme "h3"
+
+* A ce niveau différents niveaux de compréhension : +
+image:20250418_Devoxx-France_07.jpg[]
+
+* Un très bon joueur d'échec n'aura pas besoin d'avoir un échiquier physiquement devant lui pour se représenter exactement la partie et savoir ce qu'il pourrait jouer au prochain coup (le 19e coup)
+    ** et lui pourra jouer Ng4 ce qui n'est pas "juste légal" et représenté une bien meilleure prédiction que le coup "h3"
+
+-> "Ng4" implique de *comprendre* toute la chaîne de caractères -> de se constuire un modèle de ce qu'elle représente
+
+* Donc, comment des "perroquets stochastiques" pourraient-ils jouer aux échecs ?
+image:20250418_Devoxx-France_08.jpg[]
+
+* Depuis *gpt-3.5-turbo-instruct*, il est faux de dire que les LLM ne savent pas jouer aux échecs (ce qui est très souvent dit par les influenceurs)
+    ** Le modèle jouerait entre 1700 et 1800 ELO, ce qui correspond à un bon joueur d'échecs en club
+
+* Pourquoi uniquement ce modèle en particulier ? +
+image:20250418_Devoxx-France_09.jpg[]
+    ** Car dans les données d'entraînement, OpenAI a mis des parties d'échecs d'un bon niveau
+    ** il faut pouvoir utiliser le modèle en mode *"complétion de texte"* et NON en mode chat
+        *** On peut plus aujourd'hui utiliser un modèle OpenAI en mode "complétion de texte"
+
+-> Et cela montre une certaine forme de compréhension de la part de LLM, qui n'est donc définitivement pas un "perroquet stochastique" : +
+image:20250418_Devoxx-France_10.jpg[]
+image:20250418_Devoxx-France_11.jpg[]
+
+=== 10:30 -> 11:15 - Conférence - Neuilly 151 : Si l'enfer existe, on y trouve des devs qui gérent des clés de chiffrement
+
+.Willy Malvault - BpiFrance
+====
+Architecte sécurité chez Bpifrance depuis 2023, et dans l'IT depuis 2008. Conférencier sur les sujets Architecture, Cloud Native et sécurité. Je suis un adepte de la vulgarisation : un bon résumé, digeste, d'un sujet technique de 20, 40 ou 50 minutes, ça a une valeur inestimable pour moi, dans ce monde Tech où tout évolue si vite !
+
+Organisateur du Snowcamp (Grenoble) et coach tremplins avec CraftsRecords.
+
+Accessoirement improvisateur rookie.
+====
+
+.abstract
+====
+Dans un contexte géopolitique mondial instable et anxiogène, on nous demande de protéger nos données en chiffrant tout, partout et tout le temps… Alors on chiffe !
+
+Et puis les exigences de sécurité arrivent : rotation de clé, chiffrement de clé, contrôle d'accès, audit d'utilisation des clés, stockage des clés sur une solution souveraine. C'est dur !
+Pour couronner le tout, le PO a des idées lumineuses : on va faire de l'accès zero-knowledge ! Et puis de la tokenisation, ou encore du chiffrement homomorphique ! Et on arrive rapidement à devoir gérer des millions de clés pour des milliers d'utilisateurs.
+
+Le temps où l'on pouvait passer une clé de chiffrement en paramètre de configuration d'un service (resp. d'une application) est alors révolu !
+
+Deux alternatives s'offrent alors à nous :
+    
+    1. Laisser des trous de sécurité béants dans nos applications en gérant nos clés comme on peut.
+    2. Automatiser la gestion de clés avec un KMS (Key Management Service) et avec le protocole KMIP, ou solution équivalente.
+
+Si vous n'utilisez pas la deuxième alternative : venez vite voir ce talk ! Cela pourrait sauver vos données… et les quelques cheveux qu'ils vous reste !
+====
+
+=== 11:35 -> 12:20 - Conférence - Paris 242 AB : Démystifions les bases de données vectorielles avec Qdrant
+
+.Bertrand Nau - WeScale
+====
+Développeur depuis 2014, je suis actuellement Cloud Native Dev chez WeScale. Après m'être essayé à plein de langages (kudos à Kotlin et Rust), je me suis progressivement diversifié vers le Cloud et le DevOps.
+
+Passionné par la tech, très touche à tout, j'aime apprendre et partager sur des sujets variés. Mes derniers centres d'intérêt sont l'IA et l'IoT.
+====
+
+.abstract
+====
+On entend fréquemment parler des bases de données vectorielles à cause de l'intérêt suscité par les LLM. L'utilité de ces bases de données ne se limite pourtant pas à ce domaine. En effet, on peut les utiliser pour résoudre tout algo de calcul de similarité: moteurs de recommandation, recherche sémantique, multi-modale, etc.
+
+Au cours de ce talk, vous découvrirez les bases de données vectorielles, leurs use-cases ou encore leurs mécanismes internes, mais aussi l'art de la représentation vectorielle et les différentes méthodes de calcul de distances. Je ferai également un tour d'horizon de l'éco-système, pour me concentrer ensuite sur Qdrant, l'une des solutions les plus populaires. Et comme rien ne vaut un peu de pratique, on le mettra en œuvre pour implémenter un petit moteur de recommandation en Rust.
+
+Mon objectif est qu'à la fin de ce talk, vous soyez à l'aise pour parler des bases de données vectorielles. Le but est que vous puissiez faire les bons choix d'algos selon votre besoin métier et peut être même que je vous aurai convaincu de l'utilité de Qdrant.
+====
+
+=== 13:00 -> 13:15 - quicky - Neuilly 252 AB : Apprenez à votre IA à faire du TDD
+
+.Manuel Camargo - Theodo Fintech
+====
+Manuel est un tech lead spécialisé en FinTech.
+Il a participé à la conception et au développement d'un actif technologique ayant permis le déploiement de 3 plateformes d'octroi de crédit ayant distribué 100M€ à l'économie française depuis le covid.
+Quel a été le secret ? Le software craftsmanship, qui le passionne et qui l'amène aujourd'hui à leader le cursus de formation en refactoring pour les 750 experts de Theodo.
+====
+
+.abstract
+====
+La montée en puissance des assistants de code fournit aux développeurs de toutes nouvelles méthodes pour produire du code. Cependant, le constat est que code généré par les IA n'est pas garanti d'être correct ni de bonne qualité. Comment peut-on profiter du gain de productivité promis par les assistants de code sans compromettre la qualité ? En combinant l'utilisation des assistants de code avec la méthodologie traditionnelle de développement qu'est le TDD.
+Dans ce talk, je présenterai des points de contrôle pour réussir à faire du TDD piloté par l'IA :
+
+    * la mise en place d'un contexte pour avoir des suggestions appropriées
+    * les erreurs types à ne pas faire en prompting
+    * la définition de standards et interfaces pour guider l'assistant et qu'il puisse prendre la main sur le reste
+
+Pour illustrer ces notions, je présenterai un exemple de mise en place d'agent Copilot capable d'assister dans les 3 phases du TDD : testing, coding et refactoring
+====
+
+=== 13:30 -> 14:15 - Conférence - Paris 242 AB : The Era of AAP: Ai Augmented Programming using Modern Java
+
+.Stephan Janssen - Devoxx
+====
+As an organizer of Devoxx Belgium, I am passionate about conducting research and development (R&D) that leads to new features in Devoxx-related applications like the CFP web app. In recent years, I have been exploring and experimenting with cutting-edge technologies such as large language models (LLMs), convolutional neural networks (CNNs), and other artificial intelligence (AI) tools. Recently I've been working on the DevoxxGenie IntelliJ plugin which allows you to talk to LLM's both locally and remotely. 
+====
+
+.abstract
+====
+As we have entered the era of AI-Augmented Programming (AAP), developers stand at the threshold of a profound shift in software creation and maintenance.
+This talk delves into the emerging paradigm where Java and Large Language Models (LLMs) are leveraged to enhance and automate various stages of the development lifecycle.
+
+We'll explore how Java and LLMs are reshaping Integrated Development Environments (IDEs) and transforming developer workflows.
+
+The presentation will showcase the integration of both local LLMs (using llama3.java and jlama) and cloud-based models (such as Claude and ChatGPT) using Jetbrains IDEA. Demonstrating their practical applications in coding assistance, debugging, and even generating entire projects from high-level prompts.
+====
+
+=== 14:35 -> 15:20 - Conférence - Paris 143 : IA Générative, TDD et Architecture Hexagonale : Une Synergie Révolutionnaire ?
+
+.Clément Virieux - Ippon
+====
+Développeur back (et un peu front) depuis 9 ans, j'ai découvert l'univers du Software Craftsmanship il y a 4 ans. Depuis, je m'efforce d'approfondir mes connaissances tout en partageant mes découvertes avec la communauté.
+====
+
+.Florine Chevrier - Ippon
+====
+Développeuse fullstack depuis peu, j'ai découvert l'univers du Software Craftsmanship chez Ippon. Depuis, je continue à enrichir mes compétences et à les transmettre autour de moi.
+====
+
+.abstract
+====
+D'un côté, l'IA : ultra-rapide pour générer du code, mais souvent perfectible en termes de qualité. De l'autre, nous, les software crafters : attachés à la qualité, au clean code et à la maintenabilité.
+
+Ces deux approches sont-elles vouées à s'opposer ? Ou peut-on les faire travailler ensemble pour obtenir le meilleur des deux mondes ?
+
+Nous avons testé différentes stratégies et nous vous dévoilerons comment nous avons transformé le build d'une application from scratch en un véritable kata de refactorisation. Au programme : tests de composants, architecture hexagonale et, bien sûr, l'IA générative comme alliée du software crafter.
+====
+
+=== 15:40 -> 16:25 - Conférence - Neuilly 252 AB : Agents intelligents, la nouvelle frontière des LLMs
+
+.Guillaume Laforge - Google
+====
+Guillaume Laforge est développeur advocate chez Google Cloud où il se focalise autour des sujets d'IA générative, de solutions serverless, d'architecture distribuée et d'automatisation des APIs. Guillaume est également Java Champion, un des membres fondateurs du podcast Les Cast Codeurs et est le co-fondateur du langage de programmation Apache Groovy.
+====
+
+.abstract
+====
+Vous connaissez les Large Language Models sur le bout des doigts ? Vous maîtrisez le Retrieval Augmented Generation pour aider un LLM à chercher dans vos documents ? Il est temps de plonger dans le monde merveilleux des agents intelligents !
+
+Dans cette session, nous commencerons d'abord par définir ce que sont les agents, ou tout du moins ce qui rends un système “agentique”. Nous expliquerons quelles sont les limites des LLMs et de RAG. Ensuite, au travers d'exemples concrets, nous implémenterons différents agents en Java, en utilisant le framework LangChain4j, pour illustrer certains patterns typiques des agents et pour comprendre comment aller plus loin qu'un simple appel à un LLM pour obtenir des réponses qui répondront aux besoins de vos utilisateurs, voire même pour déclencher des actions avec le système environnant. Nous évoquerons également l'importance de Model Context Protocol (MCP) pour étendre les LLMs avec de nouveaux outils.
+
+Agents devoxxiens êtes vous prêts pour la prochaine hype des agents ? Venez la découvrir dans cette session !
+====
+
+=== 17:00 -> 17:30 - Conférence - Paris 242AB : Les gardiens des données à l'ère de l'IA
+
+.Carmen Piciorus - La Poste - BSCC
+====
+Après plusieurs années de développement, et quelques années dédiés à la protection de la messagerie laposte.net, j'intègre à présent une équipe au service des projets du SI de la branche Services Courrier – Colis de La Poste. Passionnée par la cybersécurité, je me suis dédiée à faciliter la communication entre les développeurs et la sécurité pour aider aux développement des applications sécurisées et cyber-résilientes dans le cloud. Présidente de l'association à but non lucratif Signal Spam, je contribue à la lutte contre le spam et le phishing et à la protection des utilisateurs contre les arnaques transmises par mail.
+====
+
+.abstract
+====
+Bloquer les accès aux solutions d'intelligence artificielle par peur de fuite de données est-ce vraiment une solution ? A l'ère de l'IA, comment protéger les données confidentielles et le savoir-faire des entreprises ? L'OWASP, l'ANSSI mettent en garde sur les risques de fuite de données sans vraiment fournir les solutions. Dans un monde où les données sont le trésor le plus précieux des entreprises, comment les équipes de cybersécurité vont continuer à assurer la confidentialité des données? A La Poste, on pense qu'il faut plutôt apporter des solutions que de bloquer les accès. Les solutions autour de LLM Guard et Presidio nous aident à anonymiser les données et à en tirer profit des IAs, assurant que les données sensibles restent hors de portée des cybercriminels. LLM Guard permet de rajouter des contrôles sur les prompts d'entrée mais aussi sur les réponses des IAs, en protégeant ainsi contre les attaques type prompt injection et on peut même construire nos propres règles pour compléter. Je vous propose aussi une démo de Presidio sur comment anonymiser les données et comment détecter des données sensibles dans des images générées à partir d'une IA.
+====
 
 === Cloture : les Cast Codeurs
 
-* C'est Midjourney et plus Dall-E qui a été utilisé pour toutes les images de ce Devoxx France
+
 
 
 
