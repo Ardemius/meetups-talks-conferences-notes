@@ -1617,6 +1617,8 @@ Dans ce talk, je présenterai des points de contrôle pour réussir à faire du 
 Pour illustrer ces notions, je présenterai un exemple de mise en place d'agent Copilot capable d'assister dans les 3 phases du TDD : testing, coding et refactoring
 ====
 
+A VOIR EN REPLAY
+
 === 13:30 -> 14:15 - Conférence - Paris 242 AB : The Era of AAP: Ai Augmented Programming using Modern Java
 
 .Stephan Janssen - Devoxx
@@ -1633,6 +1635,74 @@ We'll explore how Java and LLMs are reshaping Integrated Development Environment
 
 The presentation will showcase the integration of both local LLMs (using llama3.java and jlama) and cloud-based models (such as Claude and ChatGPT) using Jetbrains IDEA. Demonstrating their practical applications in coding assistance, debugging, and even generating entire projects from high-level prompts.
 ====
+
+* Stephan : que le LLM fasse ce qu'il veut dans une *feature branch*, que je puisse *relire* avant de la merger !
+
+* L'innovation dans le domaine des LLM a lieu aujourd'hui en Python, et Java cherche en permanence à raccrocher le train
+
+* Claude Sonnet 3.7 est le meilleure LLM comme Coder Assistant aujourd'hui
+    ** mais cela change toutes les semaines en ce moment... 🤯
+
+* 🔥 If privacy is your concern, do ONLY use on-premises / local models 🔥
+
+* Stephan utilise *Ollama* : +
+image:20250418_Devoxx-France_58.jpg[]
+    ** Toutes ces solutions utilisent *Llama C++*
+
+* *Local LLM* : +
+image:20250418_Devoxx-France_59.jpg[]
+    ** Stephan n'utilise PAS (encore) Llama 4 car ils ont "triché" sur les benchmarks !
+
+* Comparaison des LLM pour le coding : https://livebench.ai +
+image:20250418_Devoxx-France_60.jpg[]
+
+* Les Devoxx buzz words d'il y a 2 ans : +
+image:20250418_Devoxx-France_61.jpg[]
+
+* Aujourd'hui : *Langchain4J* et *Spring AI* +
+image:20250418_Devoxx-France_62.jpg[]
+    ** Langchain4J : RedHat est le principal contributeur de la techno
+    ** et Stephan rappelle que les 2 techno se ressemblent vraiment beaucoup : ils copy / pastent de l'un à l'autre
+        *** et cela permet aux devs de switcher très facilement de l'un à l'autre
+
+* La blague qu'aime bien Stephan : In MCP le "S" est pour "Sécurité"... Sauf qu'il n'y a pas de "S" 🤣 +
+    ** 🔥 donc faire TRES attention quand on utilise aujourd'hui le MCP, la sécurité n'est PAS adressée
+
+* MJI : Modern Java Inference +
+image:20250418_Devoxx-France_63.jpg[]
+    ** Babylon n'est pas encore disponible (pour le support du GPU en Java)
+    ** TornadoVM est encore un projet exploratoire (là aussi pour le support du GPU en Java)
+
+image:20250418_Devoxx-France_64.jpg[]
+
+* *JLama* par Jake Luciani : d'après Stephan, une merveille en termes de codage +
+image:20250418_Devoxx-France_65.jpg[]
+image:20250418_Devoxx-France_66.jpg[]
+    ** Stephan pense que Jake est vraiment un génie
+
+* *DevoxxGenie* est un extension pour IntelliJ
+    ** DevoxxGenie est "full Java", pas une ligne en Python 😉
+
+* *Java Inference Agent* en 1 SEULE classe par Alfonso Peterssen
+    ** Et JLama testé dernièrement avec GraalVM est PLUS RAPIDE que la version Llama C++ ! 🤯
+        *** du fait des avancées de Java (cf plus haut) et de l'exécution native sous-jacente qu'il permet
+        *** le test a été fait avec des CPU et PAS des GPU
+
+* Exemple d'usage de DevoxxGenie : +
+image:20250418_Devoxx-France_67.jpg[]
+
+* *LLM Sharding* : 
+image:20250418_Devoxx-France_68.jpg[]
+image:20250418_Devoxx-France_69.jpg[]
+
+    ** *vLLM* est la techno qu'utilise les "big players" pour le LLM Sharding MAIS cela marche uniquement avec le matériel NVidia (et pas Apple)
+
+* *LLM opportunities* aujourd'hui cf Stephan +
+image:20250418_Devoxx-France_70.jpg[]
+
+* What's next ? *Nouvelle architecture pour les agentic systems* (MCP et A2A) +
+image:20250418_Devoxx-France_71.jpg[]
+    ** Stephan le dit déjà, cette nouvelle architecture derrière les agentic systems sera LE thème de Devoxx Belgium 2025 (MCP et A2A)
 
 === 14:35 -> 15:20 - Conférence - Paris 143 : IA Générative, TDD et Architecture Hexagonale : Une Synergie Révolutionnaire ?
 

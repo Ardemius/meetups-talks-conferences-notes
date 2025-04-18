@@ -219,8 +219,11 @@ image:20250417_Devoxx-France_09.jpg[width=600]
 
 == Synthèse du salon
 
-* *L'IA (surtout générative) est partout*, c'est une nouvelle le grand thème du salon. +
+[WARNING]
+====
+*L'IA (surtout générative) est partout*, c'est une nouvelle le grand thème du salon. +
 Et au travers de plusieurs talks, il ressort comme mot d'ordre que *l'IA ne vous remplacera pas, mais ceux qui l'utilisent le feront sans aucun doute*.
+====
 
 * *Le thème de la sécurité est très présent* : elle est tout particulièrement portée par les solutions de "platform engineering" (Gitlab, JFrog, etc.).
     ** L'analyse des binaires (dépendances, images Docker et maintenant modèles de langages) est entrée dans les moeurs, preuve de plus de maturité dans le milieu
