@@ -242,8 +242,12 @@ image:20250417_Devoxx-France_09.jpg[width=600]
 Et au travers de plusieurs talks, il ressort comme mot d'ordre que *l'IA ne vous remplacera pas, mais ceux qui l'utilisent le feront sans aucun doute*.
 ====
 
-* Avec les sorties des 1ers protocoles dans le domaine de l'IA générative, à savoir les MCP et A2A, on commence à parler d'industrialisation, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mâture).
-    ** En conséquence, je ferai la prévision personnelle suivante pour les mois à venir (et plus) : cette poussée d'industrialisation va aller dans le sens de "plus de Java" dans l'IA générative.
+* Avec les sorties des 1ers protocoles dans le domaine de l'IA générative, à savoir les MCP et A2A, on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mâture).
+    ** En conséquence, je ferai la prévision personnelle suivante pour les mois à venir (et plus) : cette poussée d'industrialisation va aller dans le sens de *"plus de Java" dans l'IA générative*. +
+    En effet, l'écosystème Python est très populaire aujourd'hui dans le milieu de l'IA car très adapté adapté à la recherche, au prototypage rapide, et à l'expérimentation. +
+    Il l'est moins pour un usage plus industriel des applications d'IA générative, et leur passage à l'échelle, des domaines au l'écosystème Java a depuis longtemps fait ses preuves, surtout dans des contextes où la robustesse, la performance, l'observabilité et la conformité sont critiques (en d'autres termes, pour de la PROD 😉)
+    ** On peut voir Python comme le "laboratoire d'innovation" et Java comme "l'usine de production" : l'un permet d'inventer et d'expérimenter rapidement, l'autre d'industrialiser, de fiabiliser et de scaler à grande échelle.
+    (Ce qui me fait dire de façon un rien provocante que Java est la version industrielle et "PROD ready" de Python 😜)
 
 * *Le thème de la sécurité est très présent* : elle est tout particulièrement portée par les solutions de "platform engineering" (Gitlab, JFrog, etc.).
     ** L'analyse des binaires (dépendances, images Docker et maintenant modèles de langages) est entrée dans les moeurs, preuve de plus de maturité dans le milieu
@@ -253,8 +257,6 @@ J'ai croisé plusieurs mamans et papas avec leurs tout petits en porte-bébé, e
 
 * Le *temps* est comme d'habitude notre *ressource la plus précieuse*, surtout avec l'arrivée de l'IA Gen. +
 Il est extrêmement difficile de suivre le rythme et les annonces du milieu, faire des choix est capital, le "hic" étant que, vu la jeunesse du domaine et sa rapidité d'évolution, bien malin celui qui arrive à être sûr que ses choix sont les bons 😅
-
-Java = Python industriel 
 
 == Les polos rouges, jam, photos du salon et autres
 
