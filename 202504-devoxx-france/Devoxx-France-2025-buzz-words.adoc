@@ -34,40 +34,6 @@ endif::[]
 // To turn off ALL captions
 // :caption:
 
-toc::[]// Handling GitHub admonition blocks icons
-ifndef::env-github[:icons: font]
-ifdef::env-github[]
-:status:
-:outfilesuffix: .adoc
-:caution-caption: :fire:
-:important-caption: :exclamation:
-:note-caption: :paperclip:
-:tip-caption: :bulb:
-:warning-caption: :warning:
-endif::[]
-:imagesdir: ./images
-:resourcesdir: ./resources
-:source-highlighter: highlightjs
-:highlightjs-languages: asciidoc
-// We must enable experimental attribute to display Keyboard, button, and menu macros
-:experimental:
-// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
-:lb: pass:[<br> +]
-:sb: pass:[<br>]
-// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
-:toc: macro
-:toclevels: 4
-// To number the sections of the table of contents
-//:sectnums:
-// Add an anchor with hyperlink before the section title
-:sectanchors:
-// To turn off figure caption labels and numbers
-:figure-caption!:
-// Same for examples
-:example-caption!:
-// To turn off ALL captions
-// :caption:
-
 toc::[]
 
 .2025/xx/yy - Vidéos disponibles sur YouTube
@@ -111,7 +77,12 @@ image:20250418_Devoxx-France_12.jpg[width=600]
 * Et aussi des choses très fun et... bizarres ! (c'est la revanche des canaris ! 🤣) +
 image:20250417_Devoxx-France_42.jpg[width=300]
 +
+ifdef::env-github[]
+link:{imagesdir}/20250417_Devoxx-France_43.mp4[]
+endif::[]
+ifdef::env-browser[]
 video::20250417_Devoxx-France_43.mp4[width=300]
+endif::[]
 
 == Mon Top des talks
 
@@ -268,7 +239,13 @@ Il est extrêmement difficile de suivre le rythme et les annonces du milieu, fai
 image:20250418_Devoxx-France_72.jpg[]
 image:20250418_Devoxx-France_73.jpg[]
 
-video::20250418_Devoxx-France_74.mp4[]
+ifdef::env-github[]
+link:{imagesdir}/20250417_Devoxx-France_43.mp4[]
+endif::[]
+ifdef::env-browser[]
+video::20250418_Devoxx-France_74.mp4[width=800]
+endif::[]
+
 
 == Article / REX pour communication Softeam
 
