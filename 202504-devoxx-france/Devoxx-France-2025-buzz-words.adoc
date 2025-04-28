@@ -120,7 +120,7 @@ video::20250417_Devoxx-France_43.mp4[width=300]
 
 == Buzz words & Technos qui ont le vent en poupe
 
-* *De l'IA, de l'IA, de l'IA*, et cette année nous sommes passés de la découverte à la mise en place de pipeline plus évolués : toujours de RAG, mais aussi de "l'agentic" qui explose avec tout le *MCP* qui va avec 😉
+* *De l'IA, de l'IA, de l'IA*, et cette année nous sommes passés de la découverte à la mise en place de pipelines plus évolués : toujours des RAG, mais aussi de "l'agentic" qui explose avec tout le *MCP* qui va avec 😉
     ** D'ailleurs, pour la petite histoire, le *protocole MCP (Model Context Protocol)* a été annoncé par Anthropic le jour de l'ouverture du CFP de Devoxx France, le 2024/11/25. +
     Pour peu qu'on prépare son sujet pour le CFP avec un rien d'avance, il était donc très peu probable de pouvoir parler du MCP dans son talk, or plusieurs talks en parlaient déjà (Stephan Janssen, Guillaume Laforge, Julien Dubois, etc.), d'où des speakers qui ont adapté leur contenu après coup, ce qui montre bien l'engouement pour le sujet.
     ** Même chose pour le *protocole Agent2Agent (A2A)* de Google, donc le 2nd protocole à sortir dans le domaine de l'IA gen après le MCP : sorti le 2025/04/09, plusieurs talks en parlaient déjà, et c'était un sujet de discussion bien présent sur les stands.
@@ -216,13 +216,13 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 == Sociétés et personnes rencontrées
 
-* Microsoft (voir les notes de mercredi)
-* Google : échange avec XXX et Guillaume Laforge sur le MCP et A2A : +
+* *Microsoft* (voir les notes de mercredi)
+* *Google* : échange avec XXX et Guillaume Laforge sur le MCP et A2A : +
 image:20250417_Devoxx-France_09.jpg[width=600]
-* GE Healthcare : solution d'imagerie médicale
-* Mooon : expérience de relaxation sonore et réalité virtuelle
+* *GE Healthcare* : solution d'imagerie médicale
+* *Moooon / SBC* (https://www.moooon.fr/) : expérience de relaxation sonore et réalité virtuelle
 
-* Aerospike : BDD clé / valeur très performante, utilisée par Criteo
+* *Aerospike* : BDD clé / valeur très performante, utilisée par Criteo
     ** propose une solution de stockage vectorielle depuis peu (en test depuis plus d'1 an, disponible à leur catalogue depuis 3 mois si j'ai bien suivi)
     ** les vecteurs peuvent être associés au paires clé / valeur de leur solution historique
     ** la solution vectorielle représente malgré tout une solution complétement différente de l'historique : il s'agit d'un cluster à part
@@ -232,7 +232,7 @@ image:20250417_Devoxx-France_09.jpg[width=600]
         *** Pour avoir des infos plus précises, pas d'autre moyen que de passer par un point avec un Sale (voir XXX)
     ** La solution peut être utilisée déployée sur n'importe quel Cloud (y compris européen ou français) ou on-premises
 
-* WeScale : l'une des spin-off de "feu Xebia", spécialisée sur le platform engineering
+* *WeScale* : l'une des spin-off de "feu Xebia", spécialisée sur le platform engineering
 
 == Synthèse du salon
 
@@ -242,12 +242,17 @@ image:20250417_Devoxx-France_09.jpg[width=600]
 Et au travers de plusieurs talks, il ressort comme mot d'ordre que *l'IA ne vous remplacera pas, mais ceux qui l'utilisent le feront sans aucun doute*.
 ====
 
-* Avec les sorties des 1ers protocoles dans le domaine de l'IA générative, à savoir les MCP et A2A, on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mâture).
+* Avec les sorties des *1ers protocoles dans le domaine de l'IA générative*, à savoir les MCP et A2A, on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mature).
+
     ** En conséquence, je ferai la prévision personnelle suivante pour les mois à venir (et plus) : cette poussée d'industrialisation va aller dans le sens de *"plus de Java" dans l'IA générative*. +
     En effet, l'écosystème Python est très populaire aujourd'hui dans le milieu de l'IA car très adapté adapté à la recherche, au prototypage rapide, et à l'expérimentation. +
     Il l'est moins pour un usage plus industriel des applications d'IA générative, et leur passage à l'échelle, des domaines au l'écosystème Java a depuis longtemps fait ses preuves, surtout dans des contextes où la robustesse, la performance, l'observabilité et la conformité sont critiques (en d'autres termes, pour de la PROD 😉)
     ** On peut voir Python comme le "laboratoire d'innovation" et Java comme "l'usine de production" : l'un permet d'inventer et d'expérimenter rapidement, l'autre d'industrialiser, de fiabiliser et de scaler à grande échelle.
     (Ce qui me fait dire de façon un rien provocante que Java est la version industrielle et "PROD ready" de Python 😜)
+
+* Pour les assistants AI, on assiste à la *fin de la code completion*, de plus en plus "boudée", et qui est en train de définitivement laisser la place à un *usage de l'assistant via le chat*. +
+On change donc de paradigme, le pilote devient l'assistant AI, et le développeur va maintenant "chatter" avec ce dernier pour lui expliquer ce dont il a besoin. Et au final, c'est l'assistant AI qui va maintenant modifier le code source.
+    ** Quand cela ne va pas plus loin avec le très à la mode "vibe coding" où l'on accepte sans même chercher à les relire les propositions de l'assistant...
 
 * *Le thème de la sécurité est très présent* : elle est tout particulièrement portée par les solutions de "platform engineering" (Gitlab, JFrog, etc.).
     ** L'analyse des binaires (dépendances, images Docker et maintenant modèles de langages) est entrée dans les moeurs, preuve de plus de maturité dans le milieu
@@ -264,4 +269,44 @@ image:20250418_Devoxx-France_72.jpg[]
 image:20250418_Devoxx-France_73.jpg[]
 
 video::20250418_Devoxx-France_74.mp4[]
+
+== Article / REX pour communication Softeam
+
+Du 16 au 18 avril 2025, Devoxx France a une nouvelle fois transformé le Palais des Congrès de Paris en véritable fourmilière de l'innovation. Pendant trois jours, plus de 4 500 visiteurs quotidiens se sont croisés sur deux étages de conférences, d'ateliers, de stands, et surtout d'échanges passionnés. Notre expert, Thomas Schwender, qui était sur place les 3 jours, nous livre son REX du salon placé sous le signe des "tribus".
+
+=== IA générative : toujours la hype et de premiers signes d'industrialisation
+
+C'était sûr et cela s'est confirmé, L'IA générative était "LE" sujet hype du salon, comme l'année passée.
+Mais avec cette année de plus, nous sommes passés de la découverte de la technologie à la mise en place de pipelines plus évolués : on parle bien sûr toujours de RAG, mais aussi d'agents aux workflows plus complexes.
+
+Et avec les sorties des *1ers protocoles* du domaine, à savoir les MCP (Model Context Protocol) et A2A (Agent2Agent), on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mature).
+A ce niveau, je me risquerai à faire une petite prévision pour les mois à venir (et plus) : cette poussée d'industrialisation va aller dans le sens de *"plus de Java" dans l'IA générative*.
+En effet, l'écosystème Python est très populaire aujourd'hui dans le milieu de l'IA car très adapté adapté à la recherche, au prototypage rapide et à l'expérimentation.
+Il l'est moins pour un usage plus industriel des applications d'IA générative et leur passage à l'échelle, des domaines au l'écosystème Java a depuis longtemps fait ses preuves, surtout dans des contextes où la robustesse, la performance, l'observabilité sont critiques (en d'autres termes, pour de la PROD 😉)
+On peut voir Python comme le "laboratoire d'innovation" et Java comme "l'usine de production" : l'un permet d'inventer et d'expérimenter rapidement, l'autre d'industrialiser, de fiabiliser et de scaler à grande échelle.
+
+Toujours du coté de l'écosystème Java, on note la très bonne forme de *LangChain4J* qui continue de se développer 👍
+
+Concernant les assistants AI, on assiste (déjà !) à un passage de relais : *la code completion* directement dans l'IDE, où l'Assistant AI est le "copilote" du développeur, laisse de plus en plus la place à un *usage de l'assistant AI via le chat* par le développeur, où c'est "l'assistant qui code" et le développeur qui lui donne ses besoins et le guide. +
+On change donc de paradigme : *le "pilote"*, le "codeur" *devient l'assistant AI*, et le développeur va maintenant "chatter" avec ce dernier pour lui expliquer ce dont il a besoin.
+
+=== D'autres technos qui ont le vent en poupe (liste non exhaustive 😉)
+
+* *Le thème de la sécurité était très présent* : les solutions de *platform engineering* (Gitlab, JFrog, etc.) le mettait très en avant.
+L'analyse des binaires (dépendances, images Docker et maintenant modèles de langages) est entrée dans les moeurs, preuve de plus de maturité dans le milieu.
+
+* *.devcontainer* qui pousse et dont l'adoption grandit comme Container Development Environment (CDE).
+
+* *OpenTelemetry* est vraiment couronné comme LE standard à connaître dans le domaine de l'observabilité.
+
+* On retrouve souvent du *Rust* ici et là, qui montre que le langage continue à gagner en popularité.
+
+=== Talk préféré
+
+_"Building full-stack AI agents: From project generation to code execution"_ par Stephan Janssen
+
+En plus d'être un javaiste passionné, Stephan est vraiment un très bon conférencier, il sait faire passer des messages et une fois encore son talk était vraiment inspirant.
+Il a détaillé les dernières avancées du domaine de l'IA générative, tout particulièrement dans l'écosystème Java (mais pas que) et a présenté sa propre mise en pratique au travers de son projet "Devoxx Genie", un AI Code Assistant full Java sous forme de plugin pour IntelliJ.
+Le produit est très impressionnant et donne le vertige, surtout quand on se dit que d'ici peu il sera suivi par d'autres du même type, d'où de gros changements à venir dans notre approche du développement 🤯
+
 

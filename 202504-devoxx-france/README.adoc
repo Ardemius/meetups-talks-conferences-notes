@@ -801,6 +801,11 @@ image:20250417_Devoxx-France_33.jpg[]
 *Conclusion* : comme d'habitude, la présentation de Stephan est complètement dingue... 👍 +
 A reprendre, cela donne de vraies guidelines pour l'avenir
 
+Ressources : 
+
+    * Repo GitHub de Devoxx Genie : https://github.com/devoxx/DevoxxGenieIDEAPlugin
+    * Le "presque même talk" donné par Stephan 3 semaines avant aux Voxxed Days Bucharest : https://www.youtube.com/watch?v=ZRNx9ZOoxsg
+
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
 === 13:30 -> 14:15 - Conference - Neuilly 252AB : Vibe testing
