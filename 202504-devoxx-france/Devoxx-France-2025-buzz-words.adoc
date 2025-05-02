@@ -256,7 +256,7 @@ Du 16 au 18 avril 2025, Devoxx France a une nouvelle fois transformé le Palais 
 C'était sûr et cela s'est confirmé, L'IA générative était "LE" sujet hype du salon, comme l'année passée.
 Mais avec cette année de plus, nous sommes passés de la découverte de la technologie à la mise en place de pipelines plus évolués : on parle bien sûr toujours de RAG, mais aussi d'agents aux workflows plus complexes.
 
-Et avec les sorties des *1ers protocoles* du domaine, à savoir les MCP (Model Context Protocol) et A2A (Agent2Agent), on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mature).
+Et avec les sorties des *1ers protocoles* du domaine, à savoir les MCP d'Anthropic (Model Context Protocol) et A2A de Google (Agent2Agent), on commence à parler d'*industrialisation*, d'où un domaine qui doucement commence à gagner en maturité (🔥je dis bien "commence à" ! Nous sommes encore *LOIN* d'un domaine mature).
 A ce niveau, je me risquerai à faire une petite prévision pour les mois à venir (et plus) : cette poussée d'industrialisation va aller dans le sens de *"plus de Java" dans l'IA générative*.
 En effet, l'écosystème Python est très populaire aujourd'hui dans le milieu de l'IA car très adapté adapté à la recherche, au prototypage rapide et à l'expérimentation.
 Il l'est moins pour un usage plus industriel des applications d'IA générative et leur passage à l'échelle, des domaines au l'écosystème Java a depuis longtemps fait ses preuves, surtout dans des contextes où la robustesse, la performance, l'observabilité sont critiques (en d'autres termes, pour de la PROD 😉)
