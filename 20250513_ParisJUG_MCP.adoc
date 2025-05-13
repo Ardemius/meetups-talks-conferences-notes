@@ -1,0 +1,105 @@
+= 2025/05/13 - soirée Podman
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Soirée Model Context Protocol (MCP) et Secure Systems Development Lifecycle (SSDLC) avec GitLab
+
+=== 19h30 : MCP en action - Connecter les IA aux systèmes d'entreprise
+
+Présenté par Zineb Bendhiba, Principal Software Engineer chez Red Hat (travaille sur Camel et Quarkus)
+
+.Abstract
+====
+L'intelligence artificielle progresse rapidement, mais un défi persiste : connecter efficacement les agents d'IA aux systèmes où résident les données. Chaque nouvelle source de données requiert une intégration spécifique, limitant la scalabilité et la pertinence des modèles.
+
+Le Model Context Protocol (MCP) répond à ce problème en définissant un standard ouvert pour relier les assistants d'IA aux systèmes d'entreprise – des bases de données aux outils métiers en passant par les environnements de développement.
+
+Dans ce talk, je vous proposerai une exploration de MCP à travers Wanaku, un serveur MCP open source basé sur Quarkus et Apache Camel, développé au sein de mon équipe pour simplifier ces intégrations. Je partagerai notre retour d'expérience sur son développement, les défis rencontrés et les enseignements tirés, tout en montrant comment MCP, combiné à des technologies Java modernes, permet de connecter les IA aux données d'entreprise de façon fluide et sécurisée.
+
+Rejoignez-moi pour découvrir comment ce protocole ouvre la voie à des systèmes d'IA plus connectés et plus intelligents !
+====
+
+.Wanaku.ai
+image:20250513_ParisJUG_01.jpg[]
+
+* Tout de suite, disclaimer de Zineb : ce n'est pas encore à utiliser en PROD !
+
+* Jusqu'à avant MCP les fonctions étaient *hard codées dans l'application* : +
+image:20250513_ParisJUG_02.jpg[]
+
+    ** Donc ces fonctions vont rester dans notre agent IA et on ne va donc pas pouvoir les utiliser ailleurs
+
+* Et maintenant, avec le MCP (Model Context Protocol) : +
+image:20250513_ParisJUG_03.jpg[]
+
+* MCP : "l'USB des LLM"
+
+* Un 3e transport vient de sortir : Streamable HTTP (en plus de stdio et SSE)
+
+.Liens entre LangChain, LangChain4J et Quarkus
+image:20250513_ParisJUG_04.jpg[]
+
+* Agent et MCP Servers : +
+image:20250513_ParisJUG_05.jpg[]
+
+* Guardrails avec leurs retry et reprompt : +
+image:20250513_ParisJUG_06.jpg[]
+image:20250513_ParisJUG_07.jpg[]
+
+=== 21h00 : DevSecOps avec GitLab
+
+Animé par Salahddine Aberkan
+
+.Abstract
+====
+Qui n'a jamais été confronté à la complexité d'un cycle de développement logiciel fragmenté ? De la planification au déploiement en production, les équipes jonglent entre de multiples outils, sacrifiant souvent la sécurité au profit de la vélocité ou inversement. Dans un contexte où les vulnérabilités se multiplient et où les standards de gouvernance se renforcent, comment garantir à la fois agilité, qualité et conformité sans ralentir l'innovation ?
+
+Durant cette session, nous explorerons comment GitLab révolutionne l'approche DevSecOps en offrant une plateforme unique couvrant l'intégralité du cycle de développement. Nous découvrirons également, comment l'intelligence artificielle avec GitLab Duo, au-delà de la simple génération de code, devient un véritable accélérateur de productivité dans GitLab : assistance contextuelle pour les développeurs, détection proactive des vulnérabilités, analyse des causes premières, et bien plus encore.
+====
+
+* *Shift left* : ramener la sécurité au plus tôt du côté du développement 
+
+* *GitLab flow* : le workflow "bonne pratique" prôné par GitLab : +
+image:20250513_ParisJUG_08.jpg[]
+
+* Central Evaluation Framework de GitLab : plus de 100 000 tournent tous les jours pour déterminer quel est le meilleur à utiliser en fonction du use case +
+image:20250513_ParisJUG_09.jpg[]
+
+
+
+
+
