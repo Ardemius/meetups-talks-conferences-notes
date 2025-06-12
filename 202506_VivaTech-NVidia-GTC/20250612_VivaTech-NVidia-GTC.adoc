@@ -1,0 +1,197 @@
+= 2025/06/12 - VivaTech 2025 & NVidia GTC
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== 2025/06/11 - NVidia GTC
+
+=== Keynote de Jensen HUANG
+
+image:20250611_NVidia-GTC-Keynote-Jensen_01.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_02.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_03.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_04.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_05.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_06.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_07.jpg[]
+image:20250611_NVidia-GTC-Keynote-Jensen_08.jpg[]
+
+* Informatique quantique
+* Jensen utilise ChatGPT, Gemini Pro et Perplexity comme Search Engine (Jensen aime beaucoup Perplexity)
+* Avant une question donnait lieu à quelques centaines de tokens, maintenant c'est plus de 10 000x plus, raison pour laquelle on a besoin du nouveau hardware Hopper
+* IA : 4e révolution indus
+* Données synthétiques
+* robotisation et voiture autonome
+* "les robots sont difficiles à programmer" seules les plus grosses entreprises peuvent en avoir, jusqu'à maintenant : on vous met à dispo un moyen simple et consistant de les programmer
+
+=== Salon GTC
+
+image:20250612_NVidia-GTC_01.jpg[]
+image:20250612_NVidia-GTC_02.jpg[]
+image:20250612_NVidia-GTC_03.jpg[]
+image:20250612_NVidia-GTC_04.jpg[]
+image:20250612_NVidia-GTC_05.jpg[]
+image:20250612_NVidia-GTC_06.jpg[]
+image:20250612_NVidia-GTC_07.jpg[]
+image:20250612_NVidia-GTC_08.jpg[]
+image:20250612_NVidia-GTC_09.jpg[]
+image:20250612_NVidia-GTC_10.jpg[]
+image:20250612_NVidia-GTC_11.jpg[]
+image:20250612_NVidia-GTC_12.jpg[]
+image:20250612_NVidia-GTC_13.jpg[]
+
+* Salon GTC très intéressant, avec plusieurs stands très "tech" qui l'année passée était à VivaTech (comme AI21 Labs par exemple)
+* Google avait un stand à la GTC, mais pas à VivaTech
+* On voit à quel point le hardware est mis en avant, ce qui correspond bien au métier 1er de NVidia et au discours de Jensen
+
+== 2025/06/12 - VivaTech 2025
+
+* De retour à Viva Tech : +
+image:20250612_vivatech_02.jpg[]
+
+.Plan du salon (le GTC NVidia est dans un autre bâtiment, le pavillon 7)
+image:20250612_vivatech_01.jpg[]
+
+* Stand La Poste
+	** Présentation de Talk de Docaposte : +
+	image:20250612_vivatech_03.jpg[]
+
+	** Présentation de Minitalk : un nouveau Talk "léger" +
+	image:20250612_vivatech_04.jpg[]
+		*** "minitalk" a vocation à être vendu, contrairement à Talk qui reste a vocation purement interne
+		*** "minitalk" se présente comme un webcomponent que l'on peut intégrer dans n'importe quel site
+
+* Stand Ivado Labs : +
+image:20250612_vivatech_05.jpg[]
+
+video::20250612_vivatech_06.mp4[]
+
+image:20250612_vivatech_07.jpg[]
+
+video::20250612_vivatech_08.mp4[]
+
+* La poussette automatique : +
+image:20250612_vivatech_09.jpg[]
+
+video::20250612_vivatech_10.mp4[]
+
+* La future voiture des sapeurs-pompiers avec drone intégré : +
+image:20250612_vivatech_11.jpg[]
+
+* La bouteille de Cognac "personnalisée" de Hennessy... +
+image:20250612_vivatech_13.jpg[]
+
+* Bras robot imprimé 3D :
+
+video::20250612_vivatech_14.mp4[]
+
+* Venez gagner une peluche sur le stand de Tencent : +
+image:20250612_vivatech_15.jpg[]
+
+* Le stand de La Poste : +
+image:20250612_vivatech_16.jpg[]
+
+=== Tech Leaders Summit - The Autonomous Coder: How is Agentic AI Revolutionizing Software Development?
+
+* Speakers :  
+	** Stéphane Bout : France Leader & Senior Partner,  QuantumBlack, AI by McKinsey
+	** Eiso Kant Co-Founder & CTO Poolside
+	** Devina Pasta CEO Software, Siemens Mobility
+
+.abstract
+--
+The realm of software creation is undergoing a profound shift, moving beyond code suggestions into an era where AI can autonomously plan, execute, and even self-correct complex programming tasks accross the entire development lifecycle - from automated code generation and intelligent debugging to enhanced testing and streamlined processes. But as AI takes on more complex roles, it also brings up new questions: How will agentic AI redefine efficiency and innovation in software? And what new ways of working together will emerge between humans and AI as we build the next generation of applications?
+--
+
+Advices from Devina : 
+
+	* don't only focus on the model, do experiment but focus on your context
+	* What kind of skills do your employees need ? 
+		** Be humble : our capacity to develop is now outpaced by the technology
+	* plan for the increasing capabilities of AI to reach human capabilities
+
+=== Tech Leaders Summit - Scientific AI: The Next Frontier for R&D and Engineering
+
+Speaker : David Champagne Senior Partner McKinsey & Company
+
+*Scientific AI* is revolutionizing R&D by accelerating discovery and creating new hypotheses to investigate. Trained on scientific data and powered by AI agents, these models enhance every stage of research—from simulations and lab work to real-world applications—across fields from drug discovery to aerospace engineering. By combining open and proprietary data with expertise, Scientific AI breaks down traditional research silos and unlocks cross-disciplinary insights. To harness the full potential of this competitive advantage, organizations will need to align business and science goals, invest in digital infrastructure, and build agile, multidisciplinary teams.
+
+image:20250612_vivatech_tech-leaders-summit_01.jpg[]
+image:20250612_vivatech_tech-leaders-summit_02.jpg[]
+
+.Impact de l'IA Gen sur la recherche en biologie
+image:20250612_vivatech_tech-leaders-summit_03.jpg[]
+
+=== Tech Leaders Summit - AI Beyond Scale: Building Competitive and Sustainable Ecosystems
+
+* Speakers : 
+	** Dowson Tong Senior Executive Vice President Tencent
+	** Karen Tso Anchor CNBC
+	** Bruno Zerbib Chief Technology & Innovation Officer Orange
+
+As AI advances, the focus is shifting from technical capabilities to real-world impact. Forward-looking leaders are embracing deep learning and agentic AI to unlock new value and long-term competitiveness—while embedding trust, responsibility and frugal innovation. The next phase of AI goes beyond efficiency to enable meaningful transformation. This session explores how telco and tech players can foster open innovation through connected platforms, intelligent tools and adaptive ecosystems to apply AI for smarter operations and more sustainable growth.
+
+* *Trust* is going to be the *main concern of agentic AI*
+	** Agentic AI "je te donne 2 semaines pour me trouver un billet d'avion pour Paris et voici les infos de ma CB pour acheter le billet" +
+	-> Dans ce cas, il va falloir qu'on trust l'IA afin qu'elle achète le billet à notre place
+
+=== Tech Leaders Summit - AI Gets to Work: Enterprise Transformation Through Automation
+
+* Speakers : 
+	** Stéphane Bout France Leader & Senior Partner QuantumBlack, AI by McKinsey
+	** Octave Klaba Founder and Chairman OVHcloud
+	** Michael Park SVP, Global Partner Ecosystem and Channels ServiceNow
+
+=== Echange avec la startup LinkUp
+
+image:20250612_vivatech_12.jpg[]
+
+* Linkup est une startup française créée il y a un peu plus d'1 an avec locaux sur Paris
+* Linkup édite un moteur de recherche spécialement designé pour les LLM
+* LinkUp est opéré en France par des équipes françaises
+* Sa stack technologique repose sur un hébergement sur Azure en France
+	** des services de conteneurisation sur Azure : LinkUp a développé son propre moteur de recherche qui est déployé via image / container sur Azure
+* LinkUp peut également réaliser l'indexation de données d'entreprise
+* Politique par défaut : aucune donnée cliente n'est réutilisée pour entraîner leur modèle
+
+* Coordonnées de leur CTO : 
+	** Denis CHARRIER : denis@linkup.so
+	** 06 95 30 91 69
+
+
+
+
+
