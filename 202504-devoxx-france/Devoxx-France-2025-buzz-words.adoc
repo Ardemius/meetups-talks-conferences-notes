@@ -36,9 +36,8 @@ endif::[]
 
 toc::[]
 
-.2025/xx/yy - Vidéos disponibles sur YouTube
-IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur sur https://www.youtube.com/channel/UCsVPQfo5RZErDL41LoWvk0A[chaîne YouTube de Devoxx France].
-
+.2025/05/13 - Vidéos disponibles sur YouTube
+IMPORTANT: Les vidéos des conférences seront bientôt disponibles sur https://www.youtube.com/playlist?list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-[chaîne YouTube de Devoxx France].
 
 == Informations générales sur le salon
 
@@ -182,7 +181,10 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 
 == Talk à revoir sur YouTube
 
-* Quand l'IA fait le tri de manière industrialisée : j'ai eu de très bons échos de ce talk donné par nos collègues de La Poste BSCC
+* Quand l'IA fait le tri de manière industrialisée : https://www.youtube.com/watch?v=b6CJCMQUXc0&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-
+    ** j'ai eu de très bons échos de ce talk donné par nos collègues de La Poste BSCC
+    ** Par Carmen Piciorus (La Poste - BSCC), Nicolas Payneau (Thales), Guillaume LEBLONDEL (La Poste)
+* "Intelligent Agents, the New Frontier of LLMs" par Guillaume Laforge (Google) : https://www.youtube.com/watch?v=Yv7NX4cDxuI&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-
 * Manuel Camargo - Theodo Fintech : Apprenez à votre IA à faire du TDD : je n'ai pas pu y assister, mais le sujet de l'IA associée aux tests va fatalement devenir de plus en plus une préoccupation
 
 == Sociétés et personnes rencontrées

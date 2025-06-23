@@ -57,6 +57,8 @@ image:20250611_NVidia-GTC-Keynote-Jensen_08.jpg[]
 * robotisation et voiture autonome
 * "les robots sont difficiles à programmer" seules les plus grosses entreprises peuvent en avoir, jusqu'à maintenant : on vous met à dispo un moyen simple et consistant de les programmer
 
+* Jensen Huang (NVIDIA) et Arthur Mensch (Mistral AI) ont annoncé hier la plateforme *Mistral Compute* : 18 000 GPU Blackwell installés dans un datacenter puissant (40 à 100 MW) en Essonne, dès 2026.
+
 === Salon GTC
 
 image:20250612_NVidia-GTC_01.jpg[]
@@ -88,6 +90,9 @@ image:20250612_vivatech_01.jpg[]
 * Stand La Poste
 	** Présentation de Talk de Docaposte : +
 	image:20250612_vivatech_03.jpg[]
+
+		*** caractéristiques de Talk : modèle Qwen3-235B-A22B sur 2 H100 et leurs 80 Go de VRAM
+			**** caractéristiques à vérifier !
 
 	** Présentation de Minitalk : un nouveau Talk "léger" +
 	image:20250612_vivatech_04.jpg[]
@@ -191,7 +196,9 @@ image:20250612_vivatech_12.jpg[]
 	** Denis CHARRIER : denis@linkup.so
 	** 06 95 30 91 69
 
+=== Conclusion
 
+* L'enjeu crucial réside dans les usages plus que dans les modèles : intégrer l'IA dans les produits et former rapidement les équipes devient urgent et stratégique pour toutes les entreprises.
 
 
 

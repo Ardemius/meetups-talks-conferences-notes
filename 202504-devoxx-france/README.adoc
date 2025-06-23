@@ -1909,8 +1909,69 @@ image:20250418_Devoxx-France_112.jpg[]
 image:20250418_Devoxx-France_113.jpg[]
 image:20250418_Devoxx-France_114.jpg[]
 
+=== Talks vu en replay
 
+==== Intelligent Agents, the New Frontier of LLMs
 
+* Talk donné par Guillaume LAFORGE (Google) : +
+image:202506_AI-Agents-guillaume-laforge_01.jpg[]
+* URL du talk : https://www.youtube.com/watch?v=Yv7NX4cDxuI&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-&index=122
 
+* Guillaume est committer sur *LangChain4J*
+
+* Définition d'un agent IA : +
+image:202506_AI-Agents-guillaume-laforge_02.jpg[]
+    ** "An agent is a service that *talks to an AI model* to *perform a goal-based operation* using the *tools* and *context* it has." +
+    -> Une définition *"pragmatique"* de ce qu'est un agent
+
+* Les caractéristiques principales d'un agent IA : +
+image:202506_AI-Agents-guillaume-laforge_03.jpg[]
+
+    ** *THINK* : Analyze user's prompt & data, system prompt, to define a goal to reach
+    ** *PLAN* : Check available tools, define the strategy to realize the requested goal
+    ** *ACT* : RAG searches, API calls, code execution, invoke other agents, request human's help
+    ** *REFLECT* : Evaluate & loop over the output, to fix errors, to suggest improvements
+
+.Autre définition d'un agent IA que l'on trouve fréquemment
+[NOTE]
+====
+"Un *agent IA* est une entité logicielle capable de *percevoir son environnement* et d'*agir de manière autonome* pour atteindre des *objectifs spécifiques*."
+
+-> Les caractéristiques clés d'un agent IA : *autonomie*, *perception*, *interaction*, *poursuite d'objectif*
+====
+
+* Focus sur l'étape *PLAN* : 3 grandes possibilités et les risques associés +
+image:202506_AI-Agents-guillaume-laforge_04.jpg[width=400] image:202506_AI-Agents-guillaume-laforge_05.jpg[width=400] 
+
+    ** *Autonomous* : The agent decides on its own
+    ** *Prompt-driven* : The plan is described explicitly & given in the prompt
+    ** *External workflow* : An external program or workflow drives the LLMs
+
+* Patterns de design d'un Agent : 
+
+    ** *Function calling* : +
+    image:202506_AI-Agents-guillaume-laforge_06.jpg[] 
++
+IMPORTANT: Attention ! *Ce n'est PAS le modèle qui appelle lui-même les outils* / tools, en fait il demande à l'application (notre chatbot) de les appeler  pour lui.
+
+        *** Et pour l'utilisateur, tous les appels à ces outils sont transparents
+
+    ** *Human In The Loop* : +
+    image:202506_AI-Agents-guillaume-laforge_07.jpg[] 
+
+    ** *React Pattern* & *LLM-as-Judge* : +
+    image:202506_AI-Agents-guillaume-laforge_08.jpg[] 
+
+* Agentic RAG : 
+
+    ** Quelques rappels sur les RAG : +
+    image:202506_AI-Agents-guillaume-laforge_09.jpg[] 
+
+    ** Certaines questions sont plus compliquées que d'autres ! +
+    -> Un "classique" : une question qui en contient plusieurs +
+    image:202506_AI-Agents-guillaume-laforge_10.jpg[] 
+
+    ** Et pour répondre à ce type de questions, on va pouvoir passer à un workflow plus complexe, nos *Agentic RAG* : +
+    image:202506_AI-Agents-guillaume-laforge_11.jpg[] 
 
 
