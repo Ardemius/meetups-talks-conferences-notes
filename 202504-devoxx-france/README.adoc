@@ -1962,7 +1962,7 @@ IMPORTANT: Attention ! *Ce n'est PAS le modèle qui appelle lui-même les outils
     ** *React Pattern* & *LLM-as-Judge* : +
     image:202506_AI-Agents-guillaume-laforge_08.jpg[] 
 
-* Agentic RAG : 
+* *Agentic RAG* : 
 
     ** Quelques rappels sur les RAG : +
     image:202506_AI-Agents-guillaume-laforge_09.jpg[] 
@@ -1973,5 +1973,28 @@ IMPORTANT: Attention ! *Ce n'est PAS le modèle qui appelle lui-même les outils
 
     ** Et pour répondre à ce type de questions, on va pouvoir passer à un workflow plus complexe, nos *Agentic RAG* : +
     image:202506_AI-Agents-guillaume-laforge_11.jpg[] 
+
+* *MCP* : Model Context Protocol +
+image:202506_AI-Agents-guillaume-laforge_12.jpg[width=400] image:202506_AI-Agents-guillaume-laforge_13.jpg[width=400] 
+
+    ** STDIO ou HTTP SSE : +
+    image:202506_AI-Agents-guillaume-laforge_14.jpg[] 
+        *** Protocole plutôt stateful
+
+    ** Tools, ressources, prompts : +
+    image:202506_AI-Agents-guillaume-laforge_15.jpg[] 
+    image:202506_AI-Agents-guillaume-laforge_16.jpg[] 
+    image:202506_AI-Agents-guillaume-laforge_17.jpg[] 
+
+    ** Mais actuellement, encore des trous dans la raquette en matière de *sécurité* et d'*observabilité* : 
+    image:202506_AI-Agents-guillaume-laforge_18.jpg[] 
+
+* *ADK* : Google's Agent Development Kit +
+image:202506_AI-Agents-guillaume-laforge_19.jpg[] 
+image:202506_AI-Agents-guillaume-laforge_20.jpg[] 
+image:202506_AI-Agents-guillaume-laforge_21.jpg[] 
+
+* *A2A* : Agent 2 Agent : +
+image:202506_AI-Agents-guillaume-laforge_22.jpg[] 
 
 
