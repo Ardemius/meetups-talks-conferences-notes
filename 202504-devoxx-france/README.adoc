@@ -1918,6 +1918,7 @@ image:202506_AI-Agents-guillaume-laforge_01.jpg[]
 * URL du talk : https://www.youtube.com/watch?v=Yv7NX4cDxuI&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-&index=122
 
 * Guillaume est committer sur *LangChain4J*
+    ** et Java va être le langage de programmation de tout le code montré ici
 
 * Définition d'un agent IA : +
 image:202506_AI-Agents-guillaume-laforge_02.jpg[]
@@ -1943,58 +1944,470 @@ image:202506_AI-Agents-guillaume-laforge_03.jpg[]
 * Focus sur l'étape *PLAN* : 3 grandes possibilités et les risques associés +
 image:202506_AI-Agents-guillaume-laforge_04.jpg[width=400] image:202506_AI-Agents-guillaume-laforge_05.jpg[width=400] 
 
-    ** *Autonomous* : The agent decides on its own
-    ** *Prompt-driven* : The plan is described explicitly & given in the prompt
+    ** *Autonomous* : The agent decides on its own 
+        *** -> C'est donc directement le LLM au sein de l'agent qui va décider des étapes qu'il va suivre
+    ** *Prompt-driven* : The plan is described explicitly & given in the prompt 
+        *** -> Là c'est "nous" qui allons donner à l'agent les grandes étapes à suivre, mais ce dernier reste autonome sur comment les implémenter. +
+        C'est donc du "semi-autonome"
     ** *External workflow* : An external program or workflow drives the LLMs
+        *** Ici la tâche de l'agent est vraiment déterministe, on sait ce qui doit être fait et donc on peut précisément définir le workflow (via du code ou un outils de workflow par exemple) et le donner à l'agent. +
+        L'agent n'est plus du tout autonome à ce niveau.
+
+    ** Plus l'agent est autonome, plus les risques d'erreurs et d'hallucinations sont grands. +
+    Par exemple, via du Function Calling L'agent peut appeler la bonne fonction, mais lui donner des paramètres aberrants...
+    ** Plus le plan est "figé", moins l'agent va pouvoir s'adapter à un imprévu ce qui va impliquer des mises à jours "humaines" et donc moins d'autonomie
 
 * Patterns de design d'un Agent : 
 
     ** *Function calling* : +
     image:202506_AI-Agents-guillaume-laforge_06.jpg[] 
 +
-IMPORTANT: Attention ! *Ce n'est PAS le modèle qui appelle lui-même les outils* / tools, en fait il demande à l'application (notre chatbot) de les appeler  pour lui.
+IMPORTANT: Attention ! *Ce n'est PAS le modèle qui appelle lui-même les outils* / tools, en fait il demande à l'application (notre chatbot) de les appeler pour lui.
 
         *** Et pour l'utilisateur, tous les appels à ces outils sont transparents
 
-    ** *Human In The Loop* : +
+    ** Control flows : différents flux de contrôles permettent d'organiser les tâches composants le plan précédemment défini +
+    image:202506_AI-Agents-guillaume-laforge_23.jpg[] 
+
+    ** *Human In The Loop* : Plusieurs opérations sensibles (comme un paiement bancaire) doivent bloquer l'exécution de l'agent et demander une validation humaine  +
     image:202506_AI-Agents-guillaume-laforge_07.jpg[] 
 
     ** *React Pattern* & *LLM-as-Judge* : +
     image:202506_AI-Agents-guillaume-laforge_08.jpg[] 
+            *** *Act* : l'agent va générer du code
+            *** *Observe* : que l'on va pouvoir observer
+            *** *Thought* : et critiquer, via un autre LLM si besoin (LLM-as-Judge)
 
 * *Agentic RAG* : 
 
-    ** Quelques rappels sur les RAG : +
+    ** Quelques *rappels sur les RAG* : +
     image:202506_AI-Agents-guillaume-laforge_09.jpg[] 
+        *** Quand les *vecteurs sont proches*, c'est qu'ils sont *sémantiquement liés* : donc il y a des chances que notre chunk corresponde bien à la question de l'utilisateur
 
-    ** Certaines questions sont plus compliquées que d'autres ! +
-    -> Un "classique" : une question qui en contient plusieurs +
+    ** Certaines questions sont *plus compliquées* que d'autres ! +
+    Il y a une échelle de complexité des questions. +
+    -> Un "classique" : *une question qui en contient plusieurs* +
     image:202506_AI-Agents-guillaume-laforge_10.jpg[] 
+        *** *Un RAG classique n'est pas adapté à ce type de question*, car il va transformer la question et toutes ses "sous-questions" en 1 seul vecteur, donc mélanger plusieurs concepts dans une même question. +
+        La vectorisation de ce mélange va s'apparenter à une "moyenne de vecteurs" que l'on va avoir du mal à matcher avec les éléments (chunks) de notre base vectorielle. +
+        On ne va donc probablement pas réussir à récupérer les chunks les plus pertinents et le contexte fourni à notre LLM ne sera pas le meilleur.
 
-    ** Et pour répondre à ce type de questions, on va pouvoir passer à un workflow plus complexe, nos *Agentic RAG* : +
+    ** Pour répondre à ce type de questions, il est préférable d'utiliser une approche dite *Agentic RAG*. +
+    l'Agentic RAG implique plus d'étapes qu'un RAG classique, la 1ere étant de demander à un 1er LLM d'identifier les différents sujets composant la question : +
     image:202506_AI-Agents-guillaume-laforge_11.jpg[] 
 
-* *MCP* : Model Context Protocol +
+    * *DEMO d'Agentic RAG :*
++
+[TIP]
+====
+Le code ci-dessous via du Deep Dive "From naive to advanced RAG: the complete guide" donné par Guillaume et Cedrick LUNVEN (Datastax) lors de Devoxx Belgique en 2024/10.
+
+Vous le retrouverez intégralement dans ce repo GitHub : https://github.com/datastaxdevs/conference-2024-devoxx +
+Et plus précisément ici : https://github.com/datastaxdevs/conference-2024-devoxx/blob/main/devoxx-rag-naive-to-advanced/src/test/java/devoxx/rag/_4_advanced_rag_query/_49_agentic_RAG.java
+====
++
+[source, java]
+----
+package devoxx.rag._4_advanced_rag_query;
+
+import dev.langchain4j.agent.tool.Tool;
+import dev.langchain4j.rag.content.retriever.EmbeddingStoreContentRetriever;
+import dev.langchain4j.service.AiServices;
+import dev.langchain4j.service.Result;
+import dev.langchain4j.service.SystemMessage;
+import devoxx.rag.AbstractDevoxxTest;
+import org.junit.jupiter.api.Test;
+
+import static com.datastax.astra.internal.utils.AnsiUtils.*;
+import static devoxx.rag._3_advanced_rag_ingestion._37_hypothetical_questions_embedding.getEmbeddingStore;
+
+public class _49_agentic_RAG extends AbstractDevoxxTest {
+
+    @Test
+    public void agenticRAG() {
+
+        AgenticAssistant assistant = AiServices.builder(AgenticAssistant.class)
+            .chatLanguageModel(getChatLanguageModel(MODEL_GEMINI_PRO))
+            .tools(new HistoryGeographyTool()) // Ici on l'accès à un outil d'histoire-géographie
+            .build();
+
+        String report = assistant.chat(
+            "Write a report about the population of Berlin, its geographic situation, and its historical origins"
+        );
+
+        System.out.println(magenta("\n>>> FINAL RESPONSE REPORT:\n"));
+        System.out.println(cyan(report));
+    }
+
+    interface AgenticAssistant { // et ici on a notre plan "prompt-driven"
+        @SystemMessage("""
+            You are a knowledgeable history and geography assistant.
+            Your role is to write reports about a particular location or event,
+            focusing on the key topics asked by the user.
+            
+            Think step by step:
+            1) Identify the key topics the user is interested
+            2) For each topic, devise a list of questions corresponding to those topics
+            3) Search those questions in the database
+            4) Collect all those answers together, and create the final report.
+            """)
+        String chat(String userMessage);
+    }
+
+    class HistoryGeographyTool extends AbstractDevoxxTest {
+
+        interface TopicAssistant {
+            @SystemMessage("""
+                You are a knowledgeable history and geography assistant who knows how to succinctly summarize a topic.
+                Summarize the information for the topic asked by the user.
+                """)
+            Result<String> report(String subTopic);
+        }
+
+        @Tool("Search information in the database")
+        TopicReport searchInformationInDatabase(String query) {
+            System.out.println(magenta(">>> Invoking `searchInformation` tool with query: ") + query);
+
+            TopicAssistant topicAssistant = AiServices.builder(TopicAssistant.class)
+                .chatLanguageModel(getChatLanguageModel(MODEL_GEMINI_PRO))
+                .contentRetriever(EmbeddingStoreContentRetriever.builder()
+                    .embeddingStore(getEmbeddingStore())
+                    .embeddingModel(getEmbeddingModel(MODEL_EMBEDDING_TEXT))
+                    .build())
+                .build();
+
+            Result<String> reportResult = topicAssistant.report(query);
+
+            reportResult.sources().forEach(content -> {
+                System.out.println(cyan("- Source: ") + content.textSegment().text());
+            });
+            System.out.println(yellow("\n-> Topic report: ") + reportResult.content().replaceAll("\\n", "\n"));
+
+            return new TopicReport(query, reportResult.content());
+        }
+    }
+
+    record TopicReport(String topic, String report) {}
+}
+----
+
+        ** Résultat de l'exécution de ce code : +
+        image:202506_AI-Agents-guillaume-laforge_24.jpg[]
+
+        ** C'est nous qui donnons le plan à l'Agentic RAG via le system prompt de l'AgenticAssistant.
+            **** -> Donc un plan "prompt-driven"
+
+    * *DEMO : agent pour générer des histoires de science-fiction*
+
+        ** URL de l'application : https://short-ai-story.web.app/
+        ** Repo de l'application : https://github.com/glaforge/short-genai-stories
+            **** Le code source de l'application est représenté par la classe `ExplicitStoryGeneratorAgent` : +
+            https://github.com/glaforge/short-genai-stories/blob/main/fictionStoryAgent/src/main/java/storygen/ExplicitStoryGeneratorAgent.java
+        ** Chaque jour, génération d'une histoire de 5 chapitres illustrés : +
+        image:202506_AI-Agents-guillaume-laforge_25.jpg[width=600]
+
+        ** Architecture : +
+        image:202506_AI-Agents-guillaume-laforge_26.jpg[]
+            *** Pour cette application, on sait très bien ce que l'on veut (une histoire de 5 chapitres illustrés), donc *le plan / workflow est stricte* et *donné via le code* : 
++
+[source, java]
+----
+public static void main(String[] args) throws IOException, ExecutionException, InterruptedException {
+    System.setProperty("org.slf4j.simpleLogger.logFile", "System.out");
+    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "info");
+
+    StoryType storyType = StoryType.randomStoryType();
+    System.out.println("Story type: " + yellow(storyType.name()));
+    Story story = prepareStory(storyType.explanation);
+
+    System.out.println(blue(story.title) + "\n");
+    story.chapters().forEach(chapter -> {
+        System.out.println(green(chapter.chapterTitle) + "\n");
+        System.out.println(chapter.chapterContent + "\n");
+    });
+
+    List<Story.Chapter> newChaptersWithImages = story.chapters.stream().parallel().map(chapter -> {
+        System.out.println("Generating images for: " + green(chapter.chapterTitle) + "\n");
+
+        String imagePrompt = prepareImagePromptForChapter(chapter);
+        System.out.println("Image prompt: " + yellow(imagePrompt));
+
+        List<String> imagesForChapter = generateImages(imagePrompt);
+        imagesForChapter.forEach(imageUrl -> System.out.println(green(" - " + imageUrl)));
+
+        String bestImage = pickBestImageForChapter(chapter.chapterContent, imagesForChapter);
+        System.out.println("Best image: " + yellow(bestImage));
+
+        String moreLegibleChapter = improveChapterLegibility(chapter.chapterContent);
+        System.out.println("Update chapter's content: " + green(chapter.chapterTitle) + "\n\n" + moreLegibleChapter);
+
+        return new Story.Chapter(chapter.chapterTitle, moreLegibleChapter, bestImage);
+    }).toList();
+
+    Story newStoryWithImages = new Story(story.title, newChaptersWithImages);
+
+    Timestamp timestamp = saveToFirestore(newStoryWithImages);
+    System.out.println("Saved in Firestore at: " + timestamp);
+}
+----
+
+        *** application déployée sur GCP
+        *** trigger avec Google Cloud Scheduler
+        *** le LLM utilisé appartient à la famille de modèles Gemini
+        *** Imagen 3 est le modèle utilisé pour la génération d'images
+        *** Il est intéressant de noter que Guillaume utilise des *structured output* pour garantir le format des réponses du LLM (qui respecteront obligatoirement un schéma donné) : 
++
+[source, java]
+----
+// Le format de la sortie générée par le LLM
+record Story(
+    @Description("The title of the story")
+    String title,
+    @Description("The chapters of the story")
+    List<Chapter> chapters) {
+    record Chapter(
+        @Description("The title of the chapter")
+        String chapterTitle,
+        @Description("The content of the chapter")
+        String chapterContent,
+        @Description("The Google Cloud Storage URI of the image that represents the content of the chapter")
+        String gcsURI) {
+    }
+}
+
+// [...]
+
+// Bon, dans les faits, notre structured output est plutôt défini ici... Et on aurait pu passer le record Story en paramètre plutôt que tout redéfinir 😆
+private static Story prepareStory(String storyType) {
+
+    var chatModel = CHAT_MODEL_BUILDER.get()
+        .temperature(1.5f)
+        .responseSchema(Schema.newBuilder() // ici nous venons définir le format que va devoir respecter la génération du LLM
+            .setType(Type.OBJECT)
+            .putProperties("title", Schema.newBuilder()
+                .setDescription("The title of the story")
+                .setType(Type.STRING)
+                .build())
+            .putProperties("chapters", Schema.newBuilder()
+                .setDescription("The list of 5 chapters")
+                .setType(Type.ARRAY)
+                .setItems(Schema.newBuilder()
+                    .setDescription("A chapter with a title, and its content")
+                    .setType(Type.OBJECT)
+                    .putProperties("chapterTitle", Schema.newBuilder()
+                        .setType(Type.STRING)
+                        .setDescription("The title of the chapter")
+                        .build())
+                    .putProperties("chapterContent", Schema.newBuilder()
+                        .setType(Type.STRING)
+                        .setDescription("The content of the chapter, made of 20 sentences")
+                        .build())
+                    .addAllRequired(List.of("chapterTitle", "chapterContent"))
+                    .build())
+                .build())
+            .addAllRequired(List.of("title", "chapters"))
+            .build())
+        .build();
+    
+    // [...]
+}
+----
++
+[NOTE]
+====
+Pour plus d'infos sur les structured output, voir : 
+    
+    * https://cloud.google.com/vertex-ai/generative-ai/docs/multimodal/control-generated-output
+    * le lab "Gemini in Java with Vertex AI and LangChain4j" de Google : https://codelabs.developers.google.com/codelabs/gemini-java-developers#6
+====
+
+        *** Comme Imagen génère 4 images par demande, je vais demander au LLM laquelle de ces images est le plus pertinente par rapport à l'histoire, donc le pattern "LLM-as-Judge"
+        *** "Text enhance" : dernière passe sur le résultat pour vérifier la cohérence du texte, le formattage en paragraphe, etc.
+        *** Au final l'histoire complète est persistée dans la BDD Firestore
+
+* *MCP* : *Model Context Protocol* +
 image:202506_AI-Agents-guillaume-laforge_12.jpg[width=400] image:202506_AI-Agents-guillaume-laforge_13.jpg[width=400] 
 
-    ** STDIO ou HTTP SSE : +
-    image:202506_AI-Agents-guillaume-laforge_14.jpg[] 
-        *** Protocole plutôt stateful
+    ** MCP est un protocole (donc un *standard*, une *norme*) qui définit *comment les agents IA vont se connecter et communiquer avec des outils externes* (un "tool" comme la recherche en base de données "searchInformationInDatabase" vue plus haut) vont être appelés.
++
+IMPORTANT: Ce protocole a été sorti en 2024/11, il est donc encore *JEUNE* !
 
-    ** Tools, ressources, prompts : +
-    image:202506_AI-Agents-guillaume-laforge_15.jpg[] 
-    image:202506_AI-Agents-guillaume-laforge_16.jpg[] 
-    image:202506_AI-Agents-guillaume-laforge_17.jpg[] 
+    ** 3 éléments principaux : 
+        *** *MCP Host* : notre application, pouvant potentiellement faire appel à plusieurs MCP client, locaux au Host
+        *** *MCP Client*
+        *** *MCP Server* : on peut appeler 2 types de Server selon 2 protocoles différents : +
+        image:202506_AI-Agents-guillaume-laforge_14.jpg[] 
+            **** *STDIO* : le MCP Server va tourner en local sur le Host, et généralement accéder à des ressources locales. +
+            -> Mais il pourrait également tout à fait accéder à des ressources remote.
+            **** *HTTP SSE* (Server-Sent Event) : le MCP Server va alors tourner sur une autre machine que le MCP Host, et généralement accéder à des ressources remote.
+        
+    ** MCP est un *protocole stateful* : on initialise une connexion à partir du Client auprès du Server +
+    image:202506_AI-Agents-guillaume-laforge_27.jpg[] 
 
-    ** Mais actuellement, encore des trous dans la raquette en matière de *sécurité* et d'*observabilité* : 
+    ** Requêtes possibles entre MCP Client et MCP Server : 
+        *** *tools* +
+        image:202506_AI-Agents-guillaume-laforge_15.jpg[] 
+        *** *ressources* +
+        image:202506_AI-Agents-guillaume-laforge_16.jpg[] 
+        *** *prompts* : un MCP Server peut aussi exposer des prompts, car pour interargir avec un tools, un prompt spécifique, bien travaillé, pourrait mieux fonctionner que le prompt que vous ou le LLM auriez écrit +
+        image:202506_AI-Agents-guillaume-laforge_17.jpg[] 
+        *** *notifications* : pour savoir où le server en est dans l'exécution d'une tache prenant un certain temps +
+        image:202506_AI-Agents-guillaume-laforge_28.jpg[] 
+        *** *LLM sampling* : cas où le MCP server a besoin de générer quelque MAIS n'a pas lui-même accès à un LLM. + 
+        Il peut alors demander au client d'utiliser son LLM pour générer un résultat à lui renvoyer. +
+        image:202506_AI-Agents-guillaume-laforge_29.jpg[] 
++
+[WARNING]
+====
+Et dans ce dernier cas de LLM sampling on met un gros warning en termes de sécurité : +
+Il faut vraiment *avoir confiance dans le MCP Server*, et être sûr qu'il ne va pas générer quelque chose qui n'a rien à voir avec notre demande, car il va utiliser NOS tokens et NOTRE clé d'API -> *on paye pour lui...*
+====
+
+    ** Le MCP est toujours sujet à des "trous dans la raquette" en matière de *sécurité* et d'*observabilité* + 
+    -> Il ne faut donc pas encore l'utiliser en PROD !
     image:202506_AI-Agents-guillaume-laforge_18.jpg[] 
+        *** On note quand même des améliorations : depuis fin mars une nouvelle version de la spécification du MCP rajoute de l'authentification
+
+*DEMO : MCP server avec le Java MCP SDK, et MCP Client avec LangChain4J*
+
+    * La démo de Guillaume correspond à ce qu'il explique dans l'article suivant de son blog "MCP Client and Server with the Java MCP SDK and LangChain4j" : +
+    https://glaforge.dev/posts/2025/04/04/mcp-client-and-server-with-java-mcp-sdk-and-langchain4j/
+
+    * Voici la principale partie du *MCP Server*, qui va exposer un tool "weather-forecast" : 
++
+[source, java]
+----
+McpServerFeatures.SyncToolSpecification syncToolSpecification =
+    new McpServerFeatures.SyncToolSpecification(
+        new McpSchema.Tool("weather-forecast", // déclaration de notre tool
+            "gives today's weather forecast for a given location",
+            """
+            {
+              "type": "object",
+              "properties": {
+                "location": {
+                  "type": "string"
+                }
+              },
+              "required": ["location"]
+            }
+            """
+        ),
+        (mcpSyncServerExchange, stringObjectMap) -> {
+            // définition de la lambda function appelée quand le tool est invoqué
+            // Ici, on renvoie un objet JSON contenant "location" et "forecast" (en dur dans l'exemple, mais normalement il faudrait appeler Météo France 😉)
+            return new McpSchema.CallToolResult( 
+                List.of(new McpSchema.TextContent("""
+                    {
+                        "location": "Paris",
+                        "forecast": "Nice and sunny weather, with clear blue sky, and temperature of 17°C."
+                    }
+                    """
+                )), false);
+        }
+    );
+
+syncServer.addTool(syncToolSpecification);  // au final, on ajoute le tool au serveur
+----
+
+    * Côté MCP Client, l'essentiel est ici : 
++
+[source, java]
+----
+public static void main(String[] args) throws IOException {
+
+        try (
+            VertexAiGeminiChatModel model = VertexAiGeminiChatModel.builder()
+            .project(System.getenv("GCP_PROJECT_ID"))
+            .location(System.getenv("GCP_LOCATION"))
+//          .modelName("gemini-2.0-flash-lite-001")
+            .modelName("gemini-2.5-flash-preview-04-17")
+            .build();
+
+        McpTransport transport = new HttpMcpTransport.Builder()
+            .sseUrl("http://0.0.0.0:45450/sse")
+//          .logRequests(true)
+//          .logResponses(true)
+            .build()) {
+
+        McpClient mcpClient = new DefaultMcpClient.Builder()
+            .transport(transport)
+            .build();
+
+        ToolProvider toolProvider = McpToolProvider.builder()
+            .mcpClients(List.of(mcpClient))
+            .build();
+            
+        System.out.println(blue("LIST TOOLS"));
+        mcpClient.listTools().forEach(System.out::println);
+
+        interface WeatherAssistant {
+//          @SystemMessage("""
+//              If the user asks about the weather forecast for a particular location,
+//              use the 'weather-forecast' tool.
+//              Otherwise, respond with your internal knowledge.
+//              """)
+
+            String request(String message);
+        }
+
+        // Ici je définis mon assistant IA avec LangChain4J
+        WeatherAssistant meteo = AiServices.builder(WeatherAssistant.class)
+            .chatLanguageModel(model)
+            .toolProvider(toolProvider) // et je lui indique d'aller récupérer tous les tools exposés par ce "tool provider"
+                                        // le toolProvider orchestre la découverte et l'exécution des tools en passant par un ou plusieurs MCP Client, configurés pour communiquer avec un ou plusieurs MCP Server
+            .build();
+
+        System.out.println(blue("RESPONSE"));
+
+        List.of(
+            "Hello!",
+            "What's the weather like in Paris today?"
+        ).forEach((String q) -> {
+            System.out.println("User: " + cyan(q));
+            System.out.println("AI: "+ green(meteo.request(q)));
+        });
+
+        }
+    }
+----
+
+    * On lance le MCP Server, puis le MCP Client et on obtient : +
+        ** MCP Client : image:202506_AI-Agents-guillaume-laforge_30.jpg[] 
+        ** MCP Server : image:202506_AI-Agents-guillaume-laforge_31.jpg[]
+        ** On voit bien que notre question "what's the weather like in Paris today?" côté client a déclenché une invocation du serveur avec le paramètre "location=Paris"
+
+Côté Google, il y a 2 grosses annonce lors de la dernière Google Next (2025/04/09 au 11) : +
+*ADK* (Agent Development Kit) et *A2A* (Agent 2 Agent protocol)
 
 * *ADK* : Google's Agent Development Kit +
 image:202506_AI-Agents-guillaume-laforge_19.jpg[] 
+    ** Framework open source "code first" créé par Google
+    ** supporte Gemini ou n'importe quel autre modèle via LiteLLM (un équivalent de Ollama)
+    ** déployable n'importe où : on-premises ou dans le Cloud
+
 image:202506_AI-Agents-guillaume-laforge_20.jpg[] 
 image:202506_AI-Agents-guillaume-laforge_21.jpg[] 
+
+    ** Le streaming bi-directionnel est déjà disponible : on peut voix, images, texte
+    ** Comme langages supportés on Python et Java. +
+    -> On voit bien que Google pousse également l'adoption du langage Java pour l'IA gen 😉
+
+*DEMO d'ADK avec l'application Travel Helper Agent de Mete Atamel (lui aussi Developer Advocate chez Google)*
+
+    * Repo GitHub de Travel-Helper : https://github.com/meteatamel/adk-demos
+    * Interface : +
+    image:202506_AI-Agents-guillaume-laforge_32.jpg[] 
+    image:202506_AI-Agents-guillaume-laforge_33.jpg[] 
+    * L'application propose une synthèse de tous les outils qu'elle a dû appeler : +
+    image:202506_AI-Agents-guillaume-laforge_34.jpg[] 
 
 * *A2A* : Agent 2 Agent : +
 image:202506_AI-Agents-guillaume-laforge_22.jpg[] 
 
+[TIP]
+====
+Au final, un bon schéma pour illustrer les différents rôles de MCP et A2A : +
+image:20250613_MCP-A2A_01.jpg[]
+====
 
