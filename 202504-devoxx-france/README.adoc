@@ -2402,8 +2402,39 @@ image:202506_AI-Agents-guillaume-laforge_21.jpg[]
     * L'application propose une synthèse de tous les outils qu'elle a dû appeler : +
     image:202506_AI-Agents-guillaume-laforge_34.jpg[] 
 
-* *A2A* : Agent 2 Agent : +
+* *A2A* : Agent 2 Agent protocol : +
 image:202506_AI-Agents-guillaume-laforge_22.jpg[] 
+    ** l'idée est de standardiser la façon dont des agents ou systèmes multi-agents vont échanger entre eux, quels que soient leur hébergement et les frameworks qu'ils utilisent
+    
+    ** Le protocol A2A complémente le protocol MCP : 
+        *** Contrairement à MCP, A2A traite la sécurité, tout particulièrement l'authentification
+    
+    ** A2A permet le *discovery des agents* (analogue au service discovery de nos microservices) : +
+    image:202506_AI-Agents-guillaume-laforge_35.jpg[]
+        *** Un agent est décrit à l'aide d'une *agent card* à une URL spécifique, en l'occurrence une `/.well-known/` URI
+    ** Exemple d'agent card : +
+    image:202506_AI-Agents-guillaume-laforge_36.jpg[]
+    image:202506_AI-Agents-guillaume-laforge_37.jpg[]
+        *** Contrairement aux fonctions avec schémas de MCP, avec A2A on définit des *skills* pour indiquer ce que les agents sont capables de faire, de prendre en entrée ou en sortie, etc.
+
+    ** Les principaux composants de A2A : +
+    image:202506_AI-Agents-guillaume-laforge_38.jpg[]
+        *** *task* : avec des ID et des lifecycle pour définir si la tache a commencé ou est terminée, etc.
+        *** *message* : les agents vont communiquer avec messages, eux-mêmes constitués de *parts*
+        *** *part* : du texte, un fichier multimedia, des données (comme du JSON)
+        *** *artifact* : l'artifact est ce qui retourné par une task, et est également constitué de parts.
+
+[NOTE]
+====
+Pour un *exemple d'utilisation un peu plus complexe de ADK et A2A*, vous pouvez jeter à un oeil à cette démo d'un *agent de trading* de Karl Weinmeister, un collègue de Guillaume (eh oui, encore un autre developer advocate 😉) : +
+https://github.com/kweinmeister/agentic-trading/tree/main
+====
+
+* il y a de l'overlap entre A2A et MCP, MAIS : +
+image:202506_AI-Agents-guillaume-laforge_39.jpg[]
+    ** on peut utiliser les 2 ensemble, c'est même fait pour
+    ** A2A est plus poussé côté sécurité (mais reste "nouveau")
+    ** MCP se concentre sur la description des outils, là où A2A se concentre sur la façon dont les agents doivent discuter entre eux
 
 [TIP]
 ====
