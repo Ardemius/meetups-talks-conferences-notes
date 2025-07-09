@@ -241,3 +241,13 @@ Conseils des participants quant au prompting :
 
     ** La notion de flux tiré provient de Toyota, à travers son “Toyota Production System”
     ** Le flux tiré consiste en un tirage de cartes de gauche à droite dans notre Kanban par les personnes intervenant le plus à droite du kanban.
+
+== 2025/07/01 - 12@13 Softeam : Méthodes de design Lean & Agile : Design Sprint, Design Thinking et Lean UX
+
+* Présenté par Johnny DOMIN
+
+image:20250701_design-sprint-design-thinking-lean-ux_01.jpg[]
+
+
+
+

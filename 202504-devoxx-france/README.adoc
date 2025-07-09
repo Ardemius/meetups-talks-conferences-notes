@@ -1911,7 +1911,7 @@ image:20250418_Devoxx-France_114.jpg[]
 
 === Talks vu en replay
 
-==== Intelligent Agents, the New Frontier of LLMs
+==== Intelligent Agents, the New Frontier of LLMs (Guillaume LAFORGE)
 
 * Talk donné par Guillaume LAFORGE (Google) : +
 image:202506_AI-Agents-guillaume-laforge_01.jpg[]
@@ -2441,4 +2441,132 @@ image:202506_AI-Agents-guillaume-laforge_39.jpg[]
 Au final, un bon schéma pour illustrer les différents rôles de MCP et A2A : +
 image:20250613_MCP-A2A_01.jpg[]
 ====
+
+==== DuckDB, the duck that revolutionized the Datalake (Vincent Heuschling)
+
+* Talk donné par Vincent Heuschling
+* URL du talk : https://www.youtube.com/watch?v=4sajC5LsVqc
+
+* data lake (lake house), *medallion architecture*, ETL et ELT : +
+image:202507_duckdb-vincent-heuschling_01.jpg[]
+
+    ** *Gold layer* qui est parfois également appelé *semantic layer*
+    ** Ce qui va nous intéresser avec DuckDB : comment fait-on ses transformations au sein du data lake ?
+
+* DuckDB s'est initialement penché sur le *processus analytique* : +
+image:202507_duckdb-vincent-heuschling_02.jpg[]
+    1. J'ai une question
+    2. je vais aller collecter de la donnée à droite à gauche (API publiques, data set, BDD dans l'organisation, etc.)
+    3. je vais explorer ces données
+    4. je vais modéliser ces données
+    5. je vais les charger dans une base de données
+    6. et au final, je vais faire du reporting dessus
+
+* Les outils utilisés pour cela étaient principalement les offres des Cloud providers : 
+    ** Google BigQuery
+    ** Snowflake
+    ** Databricks
+    ** AWS
+    ** Microsoft Fabric
+* Mais aussi toute la stack Python, notamment avec les librairies comme *Python pandas* et l'usage de *DataFrame*
+    ** Un gros écueil : les DataFrame sont monothreadés +
+    -> Il était donc très difficile de récupérer des 100aines de Go de data...
+        *** Quand confronté à cette problématique de passage à l'échelle des data, il était courant de basculer sur les offres des Cloud Providers pour pouvoir des choses plus ambitieuses (par exemple avec du Spark sur Databricks)
+
+* DuckDB : In process analytical fast database
+    ** 🔥 Attention ! Ce n'est *PAS un database server*
+        *** On ne va PAS pouvoir brancher 50 utilisateurs qui vont faire des requêtes en parallèle ou transformer la data en parallèle sur le même jeu de données...
+        *** C'est un *moteur de BDD* qui va pemettre de créer *in-memory* une BDD que vous allez utiliser pour faire des transformations ou faire des analyses dessus
+        *** Et ce n'est PAS une BDD transactionnelle (PAS de transaction), c'est *uniquement pour de l'usage analytique*.
+
+* Les caractéristiques de DuckDB : 
+
+    ** juste un `pip install duckdb` et on lance la commande `duckdb` et vous avez votre DuckDB
+    ** portable, marche de très nombreux environnements
+        *** peut même marcher directemnet dans le navigateur grâce à Wasm (donc marche aussi sur votre portable)
+    ** de nombreuses features
+    ** extensible
+        *** et vous pouvez coder votre propre extension (en C++)
+    ** très rapide : il n'y a pas de moteur SQL qui travaille plus vite que DuckDB aujourd'hui MAIS uniquement sur des volumes de data d'une taille proche de la mémoire (du fait de la création de BDD *in-memory*)
+    ** gratuit
+    ** soutenu par *DuckDB Labs*, société faisant du service au-dessus du produit
+    ** ET la société *MotherDuck* propose une offre hébergée de DuckDB si vous voulez faire du warehousing dans le Cloud avec DuckDB
+
+NOTE: La solution a décollé depuis 2020 2022
+
+* Analogie : on peut voir DuckDB comme *le SQLite de l'analytics* +
+image:202507_duckdb-vincent-heuschling_03.jpg[]
+
+* DuckDB utilise un format de colonnes *columnar* et un moteur d'exécution vectorisé (*Vectorized*)
+
+.Exécution "Vectorized" (Vectorisée) : définition de Perplexity
+[NOTE]
+====
+DuckDB utilise un moteur d'exécution vectorisé, conçu pour exploiter au maximum les *architectures CPU modernes* et la *hiérarchie des caches*.
+
+Principes de l'exécution vectorisée : 
+
+    * *Traitement par vecteurs* : Au lieu de traiter les données ligne par ligne, les opérateurs du moteur manipulent des blocs de données (vecteurs) contenant un nombre fixe de lignes (par défaut, 2048 tuples par vecteur).
+
+    * *Optimisation CPU* : Le traitement par vecteurs permet de tirer parti de l'auto-vectorisation des compilateurs modernes, qui traduisent les opérations sur vecteurs en instructions SIMD (Single Instruction, Multiple Data), accélérant considérablement les calculs.
+
+    * *Réduction de l'overhead* : En traitant un bloc de valeurs à la fois, le moteur réduit le coût des boucles et des appels de fonction, ce qui améliore la performance globale, notamment pour les requêtes analytiques complexes.
+
+    * *Gestion mémoire efficace* : Les vecteurs sont dimensionnés pour tenir dans le cache L1/L2 du CPU, maximisant ainsi le débit et minimisant les accès mémoire lents.
+
+Fonctionnement interne : 
+
+    * *Format interne Vector* : Les données sont représentées en mémoire sous forme de “Vector”, chacun stockant des valeurs d'un seul type. Un ensemble de vecteurs forme un “DataChunk”, qui circule à travers les opérateurs du plan d'exécution.
+
+    * *Pipeline d'exécution* : Les DataChunks sont poussés de manière séquentielle à travers l'arbre des opérateurs, chaque opérateur appliquant sa logique sur l'ensemble du vecteur avant de passer au suivant.
+====
+
+* Performances et ressources
+    ** aggrégation simple sur 200M de lignes (fichier parquet) : 
+        *** DuckDB : 1.5 sec
+        *** Postgre : 15 sec
+        *** Google BigQuery / Snowflake : 3 sec (du fait de la latence dûe au Cloud)
+
+* DuckDB permet une *forte compression de données* (du fait principalement de son format columnar). +
+Pour des fichiers CSV, la compression peut être de l'ordre de 4x : +
+image:202507_duckdb-vincent-heuschling_04.jpg[]
+
+* Exemple de réalisation avec DuckDB par la boîte de Vincent, avec de fortes contraintes de souveraineté (données de santé) et de budget : +
+image:202507_duckdb-vincent-heuschling_05.jpg[]
+image:202507_duckdb-vincent-heuschling_06.jpg[]
+
+    ** Dans cet exemple, le stockage S3 utilisé est chez nos amis de *CleverCloud* (donc il s'agit en fait du stockage objet Cellar de CleverCloud, qui est compatible avec AWS S3)
+
+DEMO
+
+* New York City Bikes : données sur 6 ou 7 ans des vélos en libre service sur la ville de New York (~170M de lignes): +
+image:202507_duckdb-vincent-heuschling_07.jpg[]
+
+* Usage basique de DuckDB : +
+image:202507_duckdb-vincent-heuschling_08.jpg[]
+image:202507_duckdb-vincent-heuschling_09.jpg[]
+
+    ** Avec `duckdb -ui ../data/bike.db` on peut utiliser l'interface graphique développée par MotherDuck. +
+    -> Plus besoin de passer par un Jupyter Notebook
+    ** Cette interface est une extension qui tourne à l'intérieur de notre instance DuckDB
+
+* Et via le *WASM Shell*, je peux accéder à un DuckDB qui tourne directement dans le navigateur : https://shell.duckdb.org/ +
+image:202507_duckdb-vincent-heuschling_10.jpg[]
+image:202507_duckdb-vincent-heuschling_11.jpg[]
+
+* Pour de *l'ingestion de fichiers* maintenant : +
+image:202507_duckdb-vincent-heuschling_12.jpg[]
+
+* Transformation en fichier parquet : +
+image:202507_duckdb-vincent-heuschling_13.jpg[]
+
+* Connexion à un stockage compatible S3 : +
+image:202507_duckdb-vincent-heuschling_14.jpg[]
+
+[TIP]
+====
+Vincent conseille le *notebook Marimo*.
+-> Apparemment meilleur que Jupyter car permet d'être réactif, quand vous modifiez une cellule, il va recalculer toutes les cellules qui sont dépendants de cette cellule)
+====
+
 
