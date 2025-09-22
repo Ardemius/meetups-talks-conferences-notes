@@ -34,7 +34,7 @@ Présentation technique de la solution de *Data Analytics Indexima* durant la r�
 == Abstract
 
 Indexima est une boîte que je suis depuis plusieurs années, et qui propose une solution très performante en sortie de data lake, pour accélérer certains types de traitements. +
-Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, un peu comme un cube OLAP derrière le lake (les données chargées dans Indexima vont faire l'objet de pré-traitements).
+Pour donner quelques billes, la solution joue le rôle d'un datamart in memory, un peu comme un cube OLAP derrière le lake (les données chargées dans Indexima vont faire l'objet de prétraitements).
 
 Rapide définition d'Indexima par son co-fondateur Emmanuel DUBOIS : +
 Indexima créé des cubes (datamart) automatiquement, à la volée, via un algo de machine learning.
