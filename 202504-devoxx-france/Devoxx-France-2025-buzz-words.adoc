@@ -184,6 +184,7 @@ Plusieurs conf en lien avec notre SCM préféré 🥰 (GitButler, GitOps, comman
 * Quand l'IA fait le tri de manière industrialisée : https://www.youtube.com/watch?v=b6CJCMQUXc0&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-
     ** j'ai eu de très bons échos de ce talk donné par nos collègues de La Poste BSCC
     ** Par Carmen Piciorus (La Poste - BSCC), Nicolas Payneau (Thales), Guillaume LEBLONDEL (La Poste)
+    ** 2025/11/07 : fantastique talk, impliquant des drivers NVidia et CUDA, de l'IA supervisées (donc PAS des LLM), des GPU, du serveur d'inférence Triton de NVidia (open source fait en C++)
 * "Intelligent Agents, the New Frontier of LLMs" par Guillaume Laforge (Google) : https://www.youtube.com/watch?v=Yv7NX4cDxuI&list=PLTbQvx84FrATiYy0se8yoHJHicXtmDbB-
 * Manuel Camargo - Theodo Fintech : Apprenez à votre IA à faire du TDD : je n'ai pas pu y assister, mais le sujet de l'IA associée aux tests va fatalement devenir de plus en plus une préoccupation
 

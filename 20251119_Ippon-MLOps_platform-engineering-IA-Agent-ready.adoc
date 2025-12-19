@@ -1,0 +1,98 @@
+= 2025/11/19 - Ippon & MLOps MeetUp : Platform Engineering, mode d'emploi pour devenir IA Agent ready
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+* IppEvents Paris
+* Inscription via le groupe MLOps Paris : https://www.meetup.com/fr-FR/mlops-paris/events/311883986/
+
+== Abstract
+
+*De l'agent IA générateur de code à un système fiable en production : retour d'expérience technique et organisationnel.*
+
+Comment transformer un prototype d'agent IA générateur de code en un système robuste, scalable et prêt pour la production ? Dans ce talk, Julide Yilmaz (Ippon - https://www.linkedin.com/in/julide-yilmaz-92ba508b/) revient sur le parcours concret d'une mission d'industrialisation, depuis le cadrage initial jusqu'à la livraison finale. +
+Nous présenterons une vision innovante d'une plateforme IA où chaque domaine - data, développement et cloud - développe ses propres agents intelligents, systèmes multi-agents et solutions RAG pour renforcer et optimiser leurs plateformes respectives.
+
+À travers de la présentation, vous découvrirez :
+
+* *L'importance d'une équipe multidisciplinaire* pour aborder les défis techniques, organisationnels et métiers.
+* *Le déroulé de la mission* : comment passer du cadrage à la livraison, en intégrant les contraintes réelles de scalabilité, d'évaluation et de sécurité.
+* *L'architecture de l'agent IA* : choix du framework, infrastructure cloud, et architecture logicielle mise en place.
+* *Le workflow de l'agent* : comment organiser la collaboration entre développeurs et ingénieurs IA pour construire le system prompt et le workflow de l'agent.
+* *L'évaluation des résultats* : utilisation d'un LLM comme juge pour valider la qualité et la fiabilité des outputs.
+* *Les perspectives d'avenir* : comment envisager la plateformisation de ces solutions pour une adoption à plus grande échelle. Cette approche décentralisée permet une meilleure spécialisation tout en maintenant une cohérence globale, offrant ainsi de nouvelles perspectives pour l'intégration de l'IA dans nos écosystèmes technologiques.
+
+-> Inscription via le groupe MLOps Paris : https://www.meetup.com/fr-FR/mlops-paris/events/311883986/
+
+== Notes
+
+image:20251119_Ippon-MLOps_platform-engineering-IA-Agent-ready_01.jpg[]
+
+* Ce projet est un MVP qui a été développé en 3 mois
+
+* Approche *Discovery to Delivery* : +
+image:20251119_Ippon-MLOps_platform-engineering-IA-Agent-ready_02.jpg[]
+    ** phase de Discovery de 2 mois (A VERIFIER)
+
+* Architecture logicielle : ensemble de microservices chacun hébergé sur son pod
+* Stack logicielle : 
+    ** Python
+    ** FastAPI
+    ** LiteLLM
+    ** Architecture hexagonale
+    ** LangGraph : essayé mais pas retenu car LiteLLM était au final suffisant
+    ** Essai de la librairie SmallAgent de HuggingFace : prometteur mais pas stable, pas retenu
+    ** Infra sur AWS
+        ** Kubernetes
+        ** Amazon EKS
+        ** Amazon Bedrock
+        ** Foundation models : ceux d'Amazon (Titan et Nova)
+        ** Mistral
+        ** Au final Claude 4 est le modèle qui a été retenu
+        ** Le choix de ces modèles vient de l'expérience de l'équipe (et pas d'une étude spécifique)
+
+* Workflow microservice générateur de règles : +
+image:20251119_Ippon-MLOps_platform-engineering-IA-Agent-ready_03.jpg[]
+
+* Mise en place de la plateformisation : 
+image:20251119_Ippon-MLOps_platform-engineering-IA-Agent-ready_04.jpg[]
+image:20251119_Ippon-MLOps_platform-engineering-IA-Agent-ready_05.jpg[]
+
+== Q&A
+
+* Coût de la génération d'une règle : ~1$
+    ** Bedrocks ne fait payer que les tokens in et out
+
