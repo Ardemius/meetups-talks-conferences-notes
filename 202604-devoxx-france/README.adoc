@@ -1,0 +1,1219 @@
+= Devoxx France 2026
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Programme et agenda du salon : https://mobile.devoxx.com/events/devoxxfr2025/schedule
+
+== JOUR 1 : MERCREDI 22/04
+
+image:20260422_Devoxx-France_001.jpg[]
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : L'IA au service du bien commun : Agir avec raison dans l'incertain
+
+Présenté par Laurence Devillers
+
+.biographie
+====
+Laurence Devillers, professeure en intelligence artificielle à Sorbonne-Université et chercheuse au CNRS au sein du laboratoire interdisciplinaire des sciences du numérique (LISN), dirige la chaire HUMAAINE dédiée à l'interaction affective et éthique entre humains et machines.Ses recherches portent sur l'interaction sociale homme-machine, la détection des émotions, le dialogue oral, la robotique affective et les questions éthiques liées à l'IA.Présidente de la fondation Blaise Pascal pour la médiation scientifique en mathématiques et informatique, elle a siégé dans plusieurs comités d'éthique du numérique, nationaux et internationaux, ainsi qu'à l'AFNOR.Auteur de plus de 200 publications scientifiques (h-index Google : 47), elle a également publié plusieurs ouvrages grand public, dont :Des robots et des hommes (2017)Les robots émotionnels (2020)IA, Ange ou Démon ? (2025)Savoir Vivre avec l'IA (à paraître en 2026)Ainsi qu'une pièce de théâtre : Qui a hacké Garoutzia ? (2023)
+====
+
+.abstract
+====
+La présentation défend une IA outil de progrès, ni neutre ni consciente, mais amplificatrice des capacités humaines. Employée avec discernement et accompagnée d'éducation critique, elle peut soigner, anticiper, personnaliser et libérer du temps créatif, faisant de l'humain l'acteur central d'un futur orienté vers le bien commun.
+====
+
+.Description
+====
+« Agir avec raison dans l'incertain » disait Blaise Pascal. L'IA n'est ni un ange ni un démon : elle est un outil puissant qui amplifie nos capacités et reflète nos choix. Elle ne ressent rien, ne comprend pas, n'est pas neutre, mais s'intègre de plus en plus à nos vies.
+Lorsqu'elle est utilisée avec discernement, elle devient un levier majeur pour :
+
+    * Soigner mieux et comprendre le monde plus finement.
+    * Anticiper les crises et éclairer des décisions complexes.
+    * Personnaliser l'éducation et libérer du temps pour la création et l'échange.
+
+Cette co-évolution avec la machine est une source de progrès si nous en restons les acteurs. Ici, l'éducation devient clé : comprendre ses limites, ses biais et ses forces permet de préserver notre esprit critique et de rester maîtres de nos choix.
+L'IA, bien utilisée, n'éteint pas l'humain : elle le rend plus agile, curieux et solidaire. Elle nous rappelle que le futur n'est pas écrit par les machines, mais par ceux qui savent les mettre au service du bien commun.
+====
+
+* 1er mythe : "l'IA est arrivée en 2022"
+    ** perdu, 1946...
+
+* Chronologie : 
+    ** prémisses
+    ** 2010 : GPU
+    ** 2017 : Transformers et "Attention is All you need"
+    ** 2026 : IA Agentique qui agit au quotidien à notre place
+
+* l'IA n'a pas aujourd'hui d'*intuition*
+
+* 1 requête ChatGPT coûte 10x plus qu'1 requête Google
+
+* l'IA n'est pas neutre, il ne fait que combiner les données qu'elle possède
+
+* Entraîner GPT 4 a coûté 100 M$
+
+
+=== 09:35 -> 10:00 - Keynote - Amphi Bleu : Les échecs à l'ère de l'intelligence artificielle
+
+Présenté par : Laurent Fressinet
+
+.Biographie
+====
+Laurent Fressinet est l'un des grands maîtres français les plus marquants de sa génération.Grand maître international depuis 2000, il remporte à deux reprises le championnat de France (2010, 2014) et devient le recordman de sélections en équipe de France.De 2013 à 2022, il fait partie de l'équipe de préparation de Magnus Carlsen et contribue à l'ensemble de ses cinq titres de champion du monde, une expérience unique au plus haut niveau.Parallèlement, Laurent Fressinet s'investit dans la transmission de son expertise,accompagnant de jeunes talents comme Marc'Andria Maurizzi, champion de France 2025. Il est également directeur France de chess24 de 2019 à 2022, œuvrant à la diffusion de la culture échiquéenne.
+====
+
+.abstract
+====
+Le texte explore l'impact de l'IA sur les échecs, vue par un grand maître témoin de son évolution. Il montre comment l'IA a transformé la préparation, la stratégie et l'esthétique du jeu, révélant de nouvelles formes de créativité et de collaboration entre intelligence humaine et artificielle.
+====
+
+.Description
+====
+À l'ère de l'intelligence artificielle, le jeu d'échecs a connu une transformation sans précédent.
+Longtemps symbole du raisonnement humain et de la créativité, il est devenu un laboratoire privilégié pour observer la rencontre entre l'homme et la machine.
+En tant que grand maître international, ayant traversé l'époque pré-informatique, puis celle des moteurs classiques, jusqu'à l'avènement des réseaux neuronaux comme AlphaZero, je proposerai un regard de l'intérieur sur cette révolution.
+Comment l'IA a-t-elle bouleversé :
+
+    * la préparation des joueurs,
+    * la compréhension stratégique,
+    * et même l'esthétique du jeu ?
+
+Que nous a-t-elle appris sur les échecs… et sur nous-mêmes ?
+Loin d'avoir « tué » la créativité humaine, l'IA a au contraire ouvert de nouveaux horizons, redéfini l'apprentissage et posé des questions essentielles sur la collaboration entre intelligence humaine et artificielle, bien au-delà de l'échiquier.
+====
+
+* 1989 : Kasparov "Ridiculous ! Never shall I be beatean by a machine"
+    ** et Deep Blue arriva
+* 2019 : Kasparov "Ma défaite contre Deep Blue était une victoire pour l'humanité"
+
+* Voir la série Queen of Chess sur Netflix
+
+* 2017 : match historique AlphaZero vs Stockfish +
+image:20260422_Devoxx-France_002.jpg[]
+    ** AlphaZero 28 victooires, 72 nulles, 0 défaite
+    ** "AlphaZero apprend tout seul et a domnié Stockfish !"
+
+* Magnus Carlsen vs ChatGPT : en 53 coups, l'IA s'incline face au quintuple champion du monde d'échecs
+
+
+=== 10:30 -> 11:15 - Conference - Paris 143 : Mesurer l'immesurable : Comment évaluer les systèmes à base d'IA générative ?
+
+Présenté par : Erin Pacquetet
+
+.Biographie
+====
+Erin Pacquetet est data scientist senior chez SCIAM, où elle conçoit et industrialise des solutions d'IA autour du NLP, des LLM et des chatbots RAG pour des cas d'usage concrets en entreprise. Passionnée par le lien entre linguistique et informatique pour des solutions créatives aux problèmes réels, elle transforme avec expertise des problématiques produits en architectures IA robustes, évaluables et accessibles aux équipes dev comme aux métiers.Elle possède une expertise approfondie couvrant la conception et optimisation de prompts, la gestion avancée des pipelines de données, l'évaluation rigoureuse des modèles, ainsi que l'intégration et la mise en production de solutions IA industrielles.Parallèlement, elle reste active en recherche scientifique et en outreach, notamment sur des sujets comme l'analyse des modèles IA, l'intégration pragmatique de l'IA en dev, et l'interaction humain-machine via le langage, qu'elle partage régulièrement en meetups et conférences depuis plusieurs années.
+====
+
+.abstract
+====
+Cette session explore l'évaluation des applications d'IA générative, entre créativité et fiabilité. Elle présente les limites des métriques classiques, l'usage du “LLM-as-a-judge”, l'importance du jugement humain et du suivi continu. Un cas de chatbot RAG illustre un pipeline d'évaluation complet et reproductible.
+====
+
+.Description
+====
+Les IA génératives révolutionnent la création d'applications, ouvrant des usages variés : assistants, génération de contenu, recherche augmentée, et facilitant des tâches complexes. Mais un défi majeur subsiste : évaluer précisément des produits basés sur des modèles à la fois créatifs et imprévisibles.
+Cette session explore ce paradoxe : exploiter les LLM tout en maîtrisant l'évaluation de leurs résultats. Nous verrons comment ajuster critères et méthodes pour évaluer exactitude technique, cohérence et pertinence métier. Au programme : limites des métriques classiques, évaluation automatisée via “LLM-as-a-judge” (et ses biais), importance de l'évaluation humaine, et suivi continu pour détecter dérives et effets secondaires.
+Nous analyserons le cas d'un chatbot RAG, où créativité linguistique et exigence de vérité s'opposent. L'évaluation, équilibre de factualité et fluidité, contrôle la précision sans maîtriser la question posée. Ce cas concret nous servira de fil rouge pour voir comment implémenter un pipeline d'évaluation complet et reproductible.
+Cette session offre des repères et outils pour évaluer méthodiquement les systèmes génératifs et en faire un atout stratégique en IA.
+====
+
+image:20260422_Devoxx-France_003.jpg[]
+
+* "Est-ce qu'on est *SÛRS* que ça marche bien ?"
+    ** Comment est-ce qu'on arrive à faire confiance au système ?
+    ** c'est quoi "bien" ?
+
+* Evaluer des outils avec des LLMs est et restera toujours difficile : +
+image:20260422_Devoxx-France_004.jpg[]
+image:20260422_Devoxx-France_005.jpg[]
+
+* Trade-offs et équilibre à trouver : +
+image:20260422_Devoxx-France_006.jpg[]
+image:20260422_Devoxx-France_007.jpg[]
+image:20260422_Devoxx-France_008.jpg[]
+
+* Pipeline d'évaluation : +
+image:20260422_Devoxx-France_009.jpg[]
+
+    ** Evaluation : 
+        1. simuler des inputs
+        2. générer des outputs
+        3. évaluer les outputs
+
+* *SIMULER* : 3 scénarios à tester :
+
+    ** cas *idéal* : +
+    image:20260422_Devoxx-France_010.jpg[]
+
+    ** cas *réaliste* : +
+    image:20260422_Devoxx-France_011.jpg[]
+
+    ** cas *adverse* : +
+    image:20260422_Devoxx-France_012.jpg[]
+        *** cas malveillant avec prompt injection, jailbreak, extraction de données et autres
+
+* *EVALUER LES OUTPUTS*
+
+    ** 2 aspects : qualité de l'output et qualité opérationnelle : +
+    image:20260422_Devoxx-France_013.jpg[]
+
+    ** 2 agents pour notre produit : +
+    image:20260422_Devoxx-France_014.jpg[]
+        ** Agent de tri : décide si la question est valide
+        ** RAG
+
+    ** Agent de tri : output contraint : +
+    image:20260422_Devoxx-France_015.jpg[]
+    image:20260422_Devoxx-France_016.jpg[]
+        *** l'essentiel : la constitution d'un *dataset d'évaluation*
+
+        *** 3e étape : vérification de l'évaluation et score
+        image:20260422_Devoxx-France_017.jpg[]
+
+    ** Agent RAG : output libre : +
+    image:20260422_Devoxx-France_018.jpg[]
+        *** 4 grands axes à une "bonne" réponse : correcte / pertinente / complète / sécuritaire
+        *** mais pas que ! sympathique / réponse courte
+        image:20260422_Devoxx-France_019.jpg[]
+
+    ** Ecrivons une réponse ensemble : 
+        *** pas mal mais malgré tout trop long : +
+        image:20260422_Devoxx-France_020.jpg[]
+        *** une autre bonne version plus courte : +
+        image:20260422_Devoxx-France_021.jpg[]
+        *** en fait, il peut y avoir *PLUSIEURS bonnes réponses* pour une même question, c'est toute la difficulté
+
+    ** Synthèse sur les output libres : +
+    image:20260422_Devoxx-France_022.jpg[]
+        *** C'est là que le *dataset d'évaluation* est crucial +
+        image:20260422_Devoxx-France_023.jpg[]
+
+* *Comment bien évaluer nos outputs ?*
+
+    ** les *métriques* : +
+    image:20260422_Devoxx-France_024.jpg[]
+        *** *déterministes*
+        *** *sémantiques*
+        *** *probabilistes* : les plus utilisées
+            **** LLM-as-a-judge
+            **** gère une grande variété d'inputs
+        *** *humain*
+
+    ** focus sur les métriques probabilistes : +
+    image:20260422_Devoxx-France_025.jpg[]
+    image:20260422_Devoxx-France_026.jpg[]
+    image:20260422_Devoxx-France_027.jpg[]
+
+    ** Alignement humain : +
+    image:20260422_Devoxx-France_028.jpg[]
+
+    ** Evaluation : +
+    image:20260422_Devoxx-France_029.jpg[]
+        *** Dataset
+        *** métriques principales
+        *** métriques secondaires
+
+* *Pour résumé* : évaluation en 3 étapes +
+image:20260422_Devoxx-France_030.jpg[]
+
+* *Feuille de route* : comment construire notre dataset d'évaluation +
+image:20260422_Devoxx-France_031.jpg[]
+    ** l'évaluation suit le produit pendant TOUTE LA VIE du produit
+    ** la PROD va également venir informer notre dataset
+        *** le dataset peut donc être considéré comme "vivant"
+
+=== 11:35 -> 12:20 - Conference - Neuilly 151 : Dev agentique : Stitch et Jules dans l'Antigravité de la constellation Gemini
+
+Présenté par : Guillaume Laforge
+
+.Biographie
+====
+Guillaume Laforge est Developer Advocate chez Google. Il se focalise sur le thème de l'IA générative depuis 3 ans. Il contribue aux projets open source LangChain4j et ADK (Agent Development Kit) pour aider les développeurs Java à créer des applications utilisant l'IA, les LLMs et les agents.Vous le connaissez aussi peut-être parce qu'il est Java Champion. Il a co-créé le langage de programmation Apache Groovy. Et il est également un des membres fondateurs du podcast Les Cast Codeurs.
+====
+
+.abstract
+====
+Présentation des nouveaux outils IA de Google : Antigravity (IDE à agents autonomes), Stitch (concepteur d'interfaces avec IA), Jules (agent GitHub automatisé) et Gemini CLI (assistant polyvalent). Le talk montre comment les exploiter efficacement et collaborer avec ces “agents” pour améliorer productivité et gestion des tâches.
+====
+
+.Description
+====
+Hein, quoi ? Et bien Google a lancé différents outils de dev IA. L'objectif de ce talk est de décrypter ces nouveaux outils "agentiques" pour savoir où et quand les utiliser.
+
+Nous explorerons Antigravity, un nouvel IDE dont la vue principale est un tableau de bord d'agents de codage. Vous planifiez et reviewez le travail des agents autonomes exécutant les tâches. Bien sûr, vous pouvez à tout moment repasser en mode IDE avec les complétions habituelles.
+
+Nous découvrirons Stitch, un outil qui coinçoit des UIs mobiles et web, exportables pour "vibe coder" un premier proto directement avec Google AI Studio (ou autre).
+
+Place à Jules, un agent qui vit dans le cloud et travaille sur GitHub. Confiez lui les tâches ingrates (bugs, MàJ de tests) : il travaillera en arrière-plan et vous enverra une PR !
+
+Enfin, Gemini CLI qui mets l'IA dans votre terminal. Mais pas seulement pour du code : un véritable couteau suisse pour toutes vos tâches !
+
+Rejoignez-moi pour voir comment ces outils fonctionnent. Vous repartirez en sachant comment tirer parti de ces nouveaux outils, et surtout, comment devenir un excellent chef pour vos nouveaux stagiaires agentiques !
+====
+
+
+* Quels outils Google utiliser pour quoi ? +
+image:20260422_Devoxx-France_032.jpg[]
+
+* *Google AI Studio* : +
+image:20260422_Devoxx-France_033.jpg[]
+    ** Pour du Vibe coding tout en n'autorisant que certains utilisateurs
+
+* *Google Stitch* : +
+image:20260422_Devoxx-France_034.jpg[]
+    ** utilise le nouveau standard "DESIGN.md"
+
+* *Gemini CLI* : +
+image:20260422_Devoxx-France_035.jpg[]
+    ** Coding agent *harness* CLI for Gemini
+
+* Exemple de Skills : +
+image:20260422_Devoxx-France_036.jpg[]
+
+* Super outil (Skills) de Sketchnoting : +
+image:20260422_Devoxx-France_037.jpg[]
+image:20260422_Devoxx-France_038.jpg[]
+
+* *Google Antigravity* : +
+image:20260422_Devoxx-France_039.jpg[]
+    ** Browser intégré
+
+* Jules : outil asynchrone dans le Cloud qui s'intègre avec GitHub +
+image:20260422_Devoxx-France_040.jpg[]
+    ** nouvelle notion de continuous AI : des agents vont proactivement regarder le code
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 13:30 -> 16:30 - Deep Dive - Neuilly 251 : Standards et agents IA : un tour d'horizon de MCP, A2A, ADK et plus encore
+
+Guillaume LAFORGE
+
+.Emmanuel Bernard
+====
+Emmanuel est Java Champion, Senior Distinguished Engineer et Chief Architect Application Services et Middleware chez Red Hat qu'il a quitté récemment. Son travail est Open Source. Il est connu pour ses contributions et sa direction des projets Quarkus, Hibernate ainsi qu'à ses contributions aux standards Java.Il parle régulièrement dans des conférences et JUGs notamment JavaOne, Red Hat Summit et Devoxx. Il est l'hôte de plusieurs podcasts et notamment Les Cast Codeurs.Vous pouvez le suivre sur BlueSky à @emmanuelbernard.com ou X à @emmanuelbernard.#kafka #quarkus #debezium #infinispan #hibernate-orm #hibernate-search #hibernate-validator #hibernate-ogm #ceylon #JPA #bean-validation #lescastcodeurs
+====
+
+.abstract
+====
+Cette session propose un deep dive sur les protocoles clés des agents IA (MCP, A2A, ACP) et leurs frameworks associés (ADK, Arc, Quarkus, LangChain4j). À travers démos et constructions d'agents, elle explique leur rôle, leur fonctionnement et leur importance pour concevoir des systèmes multi-agents interopérables.
+====
+
+.Description
+====
+Les fondations des agents IA reposent sur une poignée de protocoles communs que vous devez maîtriser pour tirer le meilleur parti de votre LLM et de votre framework agentique. C'est pourquoi il est important de les comprendre. Certains gagnent du terrain, d'autres non.
+
+Dans ce deep dive, nous explorerons l'écosystème en vous présentant ces standards et en nous concentrant sur les plus importants. Connaître certains frameworks est également utile pour démarrer plus rapidement. Bienvenue aux protocoles MCP, A2A, ACP, et aux frameworks ADK, Arc, Quarkus, LangChain4j !
+
+Après un aperçu des principaux standards et protocoles, nous commencerons par construire un agent, d'abord sans protocole, puis en ajoutant des interactions MCP. Nous construirons après un système multi-agents et multi-technos (ADK, Quarkus et LangChain4j) via A2A.
+
+Vous apprendrez ce que font ces protocoles et comment ils fonctionnent, mais aussi pourquoi ils sont importants, avec des parcours détaillés et des démos en direct tout au long de la session.
+
+Si vous avez du mal à comprendre tous les détails des protocoles autour des agents IA, cette session est faite pour vous !
+====
+
+* Rappel : définition d'un agent : +
+image:20260422_Devoxx-France_041.jpg[]
+    ** Agent IA = LLM + memory + planning + tool use
+
+* Key characteristics & phases of AI agents +
+image:20260422_Devoxx-France_042.jpg[]
+
+* Mieux vaut des agents plus simples et plus "centré / spécialisé" sur un sujet
+    ** et mieux vaut plusieurs petits agents (plus simples et plus spécialisés) qu'un seul "gros agent"
+
+* Dans ce talk, on va se focaliser sur les "AI Agent progrm"
+
+* Une pléthore d'agents et de protocoles : +
+image:20260422_Devoxx-France_043.jpg[]
+
+* le protolole ACP permet de plugger un agent de code dans un IDE
+
+image:20260422_Devoxx-France_044.jpg[]
+image:20260422_Devoxx-France_045.jpg[]
+
+* AAIF : extention de la Linux Foundation +
+image:20260422_Devoxx-France_046.jpg[]
+
+* Pour ajouter un interface grahique aux agents : MCP-UI, A2UI +
+image:20260422_Devoxx-France_047.jpg[]
+
+Aujourd'hui, on va se concentrer sur MCP et A2A
+
+* En termes de performance, Java éclate Python (et les alternatives) pour l'IA
+    ** Sauf en termes de mémoire où il consomme un rien plus
+
+*Model Context Protocol*
+
+* An open protocol that defines a standardized way to provide *tools* (functions) & *context* to your LLMs
+    ** Voir https://modelcontextprotocol.io
+
+image:20260422_Devoxx-France_048.jpg[]
+image:20260422_Devoxx-France_049.jpg[]
+
+* Fonctionnement des MCP hosts, clients, servers : +
+image:20260422_Devoxx-France_050.jpg[]
+
+Les primitives du protocol MCP : +
+image:20260422_Devoxx-France_051.jpg[]
+
+* Petit outils très utile : Mcp Inspector +
+image:20260422_Devoxx-France_052.jpg[]
+    ** va expliquer tout ce qui "passe" par le MCP
+
+* Dans la spec MCP, chaque server MCP doit avoir son client MCP
+
+* *Phase d'initialisation* : +
+image:20260422_Devoxx-France_053.jpg[]
+    ** C'est durant cette phase qu'on définit quelles "capabilities" sont disponibles (les Tools tout le temps, mais il faut activer les prompts, resources, etc.)
+
+*TOOLS*
+
+* Tools : +
+image:20260422_Devoxx-France_054.jpg[]
+image:20260422_Devoxx-France_055.jpg[]
+image:20260422_Devoxx-France_056.jpg[]
+
+    ** pas de gestion du versioning des tools dans le MCP à date
+
+* Côté sécurité : "officiellement" la spec dit qu'on va utiliser OAuth 2.1
+    ** plein de gens utilise "API Key" MAIS ce n'est pas dans la SPEC...
+
+* Code pour l'appel des Tools avec ADK : 
+image:20260422_Devoxx-France_057.jpg[]
+
+* Code pour l'appel des Tools avec Langchain4J : 
+image:20260422_Devoxx-France_058.jpg[]
+image:20260422_Devoxx-France_059.jpg[]
+    ** Emmanuel : je vous recommande les objets typés (ce que permet Langchain4J)
+
+* Code pour l'appel des Tools MCP SDK Client officiel : 
+image:20260422_Devoxx-France_060.jpg[]
+
+* On peut également le faire côté serveur, avec Micronaut (ou Quarkus, c'est quasiment le même code, aux imports prêt) ici : 
+image:20260422_Devoxx-France_061.jpg[]
+
+*RESOURCES*
+
+image:20260422_Devoxx-France_062.jpg[]
+image:20260422_Devoxx-France_063.jpg[]
+
+* les "resources" sont vraiment "codées en dur"
+* Les "resourceTemplate" sont xxx
+    ** les resourceTemplate sont arrivés APRES les tools et étaient peut-être pensés pour les remplacer  
+        *** Ou pour être plus précis, pour que les Tools ne soient plus utilisés pour accéder à des choses qui s'apparentent par nature à des "ressources"
+    ** les resources sont pour les clients et PAS pour le LLM
+
+* Les "resources" n'ont pas vraiment décollées face aux "tools"
+
+*PROMPTS*
+
+image:20260422_Devoxx-France_064.jpg[]
+image:20260422_Devoxx-France_065.jpg[]
+
+*SAMPLING*
+
+image:20260422_Devoxx-France_066.jpg[]
+image:20260422_Devoxx-France_066b.jpg[]
+
+*ROOTS*
+
+image:20260422_Devoxx-France_067.jpg[]
+* pour qu'un serveur MCP pour accéder à vos fichiers locaux
+
+*ELICITATION*
+
+image:20260422_Devoxx-France_068.jpg[]
+image:20260422_Devoxx-France_069.jpg[]
+
+* Elicitation permet au serveur MCP de demander plus d'infos au client
+
+*Notion de "PROGRESS"* pour des actions qui prennent du temps
+
+image:20260422_Devoxx-France_070.jpg[]
+
+*MCP support in various tools*
+
+image:20260422_Devoxx-France_071.jpg[]
+
+*Agent 2 Agent (A2A) Protocol*
+
+* What is A2A really ? +
+image:20260422_Devoxx-France_072.jpg[]
+
+* *Why use A2A ?* +
+image:20260422_Devoxx-France_073.jpg[]
+    ** *Technical interoperability* : pour pouvoir utiliser plusieurs agents pour des tâches distinctes (et ainsi éviter des prompts trop "énormes")
+    ** *Complex workflows*
+    ** *Secure and opaque* : pas de partage de la mémoire, pas de partage du contexte, etc.
+        *** On peut modifier un agent sans impacter le reste du système
+
+* *Pour faire quoi ?*
+image:20260422_Devoxx-France_074.jpg[]
+    ** Advanced apps
+    ** Expose Silos
+    ** Ecosystem
+
+* *Découvrir un agent* : Agent Card 1.0
+image:20260422_Devoxx-France_075.jpg[]
+    ** OpenAPI 3 utilisé pour la partie sécurité
+image:20260422_Devoxx-France_076.jpg[]
+image:20260422_Devoxx-France_077.jpg[]
+
+* A2A : a message based state machine +
+image:20260422_Devoxx-France_078.jpg[]
+    ** A2A discute avec des messages
+
+* What is a message : +
+image:20260422_Devoxx-France_079.jpg[]
+    ** Attention, A2A mélange parfois les notions de "client / user" et "agent / server" (A VERIFIER)
+
+* Le cycle de vie d'une tâche dans A2A : +
+image:20260422_Devoxx-France_080.jpg[]
+
+image:20260422_Devoxx-France_081.jpg[]
+
+* 3 transports : +
+image:20260422_Devoxx-France_082.jpg[]
+    ** jSON-RPC 2.0
+    ** gRPS
+    ** HTTP & JSON / REST
+    ** Les 3 sont capables de faire streaming (par SSE)
+
+*DEMO A2A*
+
+image:20260422_Devoxx-France_083.jpg[]
+
+image:20260422_Devoxx-France_084.jpg[]
+
+*Quand utiliser MCP ou A2A ?*
+
+image:20260422_Devoxx-France_085.jpg[]
+
+    * "A2A quand on a une interaction de haut niveau et qu'on a plusieurs tours avant d'envoyer la réponse"
+    * Dans A2A, l'isolation de contexte est vraiment bien réalisée
+    * La spec de A2A est vraiment bien écrite
+        ** Celle de MCP est beaucoup plus "itérative"
+
+Slides du talk : https://gist.github.com/glaforge/5bc05f5803848f8cfd6768afb922e56a
+
+=== 17:00 -> 17:30 - Tools-in-Action - Amphi Bleu : Stop à la dette documentaire : Industrialisez vos ADRs et READMEs avec Spec-kit
+
+.Alexandre Guillemot - WeScale
+====
+Je suis Tech Lead / Architecte backend, à l'interface entre code, infra et organisation. Après avoir mené des projets structurants et accompagné des équipes dans la réduction de la dette technique, je me concentre aujourd'hui sur des missions SRE et Platform Engineering. J'y développe des approches Platform-as-a-Service : automatisation, self-service, observabilité et fiabilité au quotidien. Je m'intéresse particulièrement aux compromis pragmatiques qui font passer une plateforme de “bonne idée” à “produit interne adopté”. J'aime partager des retours d'expérience, patterns et anti-patterns.
+====
+
+.Axel Chauvin - WeScale
+====
+Senior Engineer chez WeScale, j'ai débuté mon parcours dans l'ingénierie de la donnée en travaillant sur des problématiques de Machine Learning appliquées à des gros volumes de données. Porté par cette culture de la data et la découverte de Scala , j'ai naturellement évolué vers le développement Backend au sein d'architectures Cloud Native. Ces expériences ont forgé chez moi une réelle appétence pour la robustesse des systèmes et la qualité logicielle.Aujourd'hui, je suis de près les nouveaux outils apportés par l'IA pour simplifier le quotidien du développeur, que ce soit sur les aspects opérationnels ou fonctionnels, avec la volonté constante de concevoir des solutions aussi fiables qu'élégantes.
+====
+
+.abstract
+====
+Cette session montre comment la documentation, souvent négligée, peut devenir un pilier d'agilité grâce à GitHub Spec-kit. En live, on apprend à standardiser la structure documentaire, automatiser la discipline via la CI et améliorer l'expérience développeur pour transformer de simples bonnes intentions en pratiques durables et protectrices.
+====
+
+.Description
+====
+On a tous hérité d'un projet sans trace du "pourquoi" derrière les choix d'architecture. Sachants partis, doc inexistante : chaque modification devient un risque. Résultat : le Time-To-Market s'effondre et l'onboarding devient un calvaire.
+La documentation n'est pas un luxe, c'est l'assurance-vie de votre agilité. Mais comment transformer les "bonnes résolutions" en réalité durable sous la pression du delivery ?
+Dans ce Tools-in-Action, implémentons GitHub Spec-kit en live. Pas de slides, uniquement du concret. Partons d'un dossier vide pour construire le socle d'un projet robuste :
+
+    * Standardisation : Bootstrap d'une structure documentaire cohérente (Clean Arch + docs/) pilotée par le code.
+    * Discipline automatisée : Configurer Spec-kit pour que votre CI devienne le garant du patrimoine technique (blocage de PR sans ADR, validation de structure).
+    * Focus DevEx : Réduire la charge cognitive des équipes en automatisant la conformité.
+
+Venez découvrir comment transformer des intentions fragiles en garde-fous concrets pour protéger la valeur de vos produits.
+====
+
+* Règle d'Or (Constitution, Principe III) : +
+"Toute modification de logique métier dans `src/application` ou `src/domain` DOIT être accompagnée d'un nouveau fichier `.md` dans `docs/adrs/`"
+
+image:20260422_Devoxx-France_086.jpg[]
+image:20260422_Devoxx-France_087.jpg[]
+image:20260422_Devoxx-France_088.jpg[]
+image:20260422_Devoxx-France_089.jpg[]
+image:20260422_Devoxx-France_090.jpg[]
+image:20260422_Devoxx-France_091.jpg[]
+image:20260422_Devoxx-France_092.jpg[]
+image:20260422_Devoxx-France_093.jpg[]
+image:20260422_Devoxx-France_094.jpg[]
+image:20260422_Devoxx-France_095.jpg[]
+image:20260422_Devoxx-France_096.jpg[]
+image:20260422_Devoxx-France_097.jpg[]
+image:20260422_Devoxx-France_098.jpg[]
+
+Slides du Talk : 
+
+    * https://github.com/AlexandreGuil/devoxx-2026-spec-kit
+    * https://github.com/AlexandreGuil/devoxx-2026-spec-kit/blob/4386d17b36b7a2f447608d86e585403c71abcada/docs/TECHNICAL-REFERENCE.md
+
+=== 17:50 -> 18:20 - Tools-In-Action - Amphi Bleu : Spécialisez vos Agents avec les Skills
+
+.Tug Grall - GitHub
+====
+Tugdual "Tug" Grall est Solutions Engineer chez GitHub, où il accompagne les développeurs dans l'adoption de GitHub, des pratiques DevOps et DevSecOps, ainsi que lees technologies d'IA pour le développement, et tout particulièrement CopilotAvant de rejoindre GitHub, "Tug" a occupé divers rôles, notamment : Developer Relations chez Redis, Directeur du Product Management chez Red Hat, Technical Evangelist chez MapR, MongoDB, et Couchbase, CTO chez eXo Platform, Product Manager et Développeur sur la plateforme JavaEE d'Oracle. Il est également co-fondateur du Nantes JUG, qui réunit depuis 2008 les développeurs et architectes de la région nantaise lors de rencontres mensuelles. Dans ses temps libres, lorsque la météo le permet, Tug travaille sur le site [windr.org](https://windr.org), qui combine ses deux passions : le développement et le windsurf!
+====
+
+.abstract
+====
+La session présente Agent Skills, un standard permettant de spécialiser les outils d'IA comme Copilot grâce à des skills regroupant instructions et ressources contextuelles. À travers des démos live, les participants apprendront à créer et partager ces skills pour transformer une IA généraliste en véritable assistant métier adaptable et collaboratif.
+====
+
+.Description
+====
+Les outils de développement IA, comme GitHub Copilot, sont puissants mais restent généralistes. Comment leur transmettre vos standard et vos connaissances métier sans répéter les mêmes instructions à chaque conversation ?
+
+Agent Skills est un nouveau standard qui répond à ce défi. Un "Skill" est un dossier regroupant des instructions, des scripts et des ressources que l'agent charge automatiquement selon le contexte pour spécialiser son comportement sur des tâches précises.
+
+Tugdual partage avec vous les clés pour créer, utiliser et partager vos propres skills, à travers des démos live issues de son expérience de développeur (Windr.org) et de spécialiste IA/Copilot chez GitHub.
+
+Dans cette session, nous allons :
+
+    * Découvrir le standard Agent Skills et son principe de "progressive disclosure" (divulgation progressive du contexte).
+    * Implémenter ensemble deux skills concrets lors de démos live focalisées sur le développement logiciel.
+    * Explorer l'écosystème : portabilité entre agents (Copilot, Claude, etc.), ressources communautaires et bonnes pratiques.
+
+Transformez votre IA généraliste en un véritable assistant spécialisé.
+====
+
+* 4 couches de customisation : +
+image:20260422_Devoxx-France_099.jpg[]
+
+* dans ce talk on va se concentrer sur les Skills : +
+image:20260422_Devoxx-France_100.jpg[]
+    ** le SKILL.md est l'élément essentiel (le seul obligatoire)
+
+* Anatomy du SKILL.md +
+image:20260422_Devoxx-France_101.jpg[]
+
+* Progressive Disclosure : +
+image:20260422_Devoxx-France_102.jpg[]
+
+* L'écosystème des Skills ne cesse de se développer, avec de nombreuses ressources et Skills déjà disponibles : +
+image:20260422_Devoxx-France_103.jpg[]
+
+* Tug est également passé de l'IDE à la CLI (ligne de commande), avec le chat sur la droite
+    ** et Tug travaille maintenant énormément avec la voix
+    ** Tug : "c'est vraiment très rare que je travaille sur mon éditeur de texte"
+
+* DEMO : +
+image:20260422_Devoxx-France_104.jpg[]
+
+* Voir skills.sh (créé par Vercel) pour accéder à son Skill-creator
+    ** Toujours commencer par rechercher une Skill déjà existante
+
+* Les Skills sont installables via `npx` ou `gh`
+
+* Tug conseille également Awesome GitHub Copilot
+
+* Tug : ne mettez pas non plus des centaines de Skills dans votre contexte : activez-les et désactivez-les au besoin.
+
+* Lisez vraiment le site : https://agentskills.io
+    ** et Utilisez le *skill-creator* +
+    image:20260422_Devoxx-France_105.jpg[]
+
+== JOUR 2 : JEUDI 24/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : Le développeur face à l'IA : du prototypage rapide à la fin des intermédiaires ?
+
+Présenté par Nicolas Grenié
+
+.biographie
+====
+Nicolas Grenié is a Developer Advocate at Typeform with a passion for programming and community engagement. With past experience at Red Hat and as a startup co-founder, Nicolas contributes to the developer community through blog posts and live coding sessions on Youtube. At Typeform, he helps developers create meaningful interactions using the platform, showcasing a blend of technical expertise and a lively personality.
+====
+
+.abstract
+====
+La conférence explore comment l'IA bouleverse le développement logiciel : création accélérée, prototypage instantané et nouvelles dynamiques d'équipe. À partir d'expériences concrètes, elle interroge l'évolution des rôles, des workflows et du métier d'ingénieur, offrant un retour pragmatique sur une transformation déjà à l'œuvre dans les équipes produit.
+====
+
+.Description
+====
+Les outils d'IA ont profondément changé la manière dont on développe des logiciels. Ce qui demandait des semaines peut aujourd'hui prendre quelques heures. Une idée devient un prototype fonctionnel avant même d'être totalement formalisée.
+Cette accélération, avec moins d'étapes et moins d'intermédiaires, pose de vraies questions :
+
+    * Est-ce que cela signifie que les Product Managers vont finir par coder seuls ?
+    * Si tout le monde peut lancer un micro-SaaS, est-ce qu'on doit tous le faire ?
+
+Dans cette conférence, Nicolas partage des retours très concrets issus de nombreux projets construits avec l'IA comme coéquipier : des prototypes abandonnés, des démos internes, des produits lancés trop tôt ou juste à temps. Ce qui était au départ un hobby devient progressivement une nouvelle manière d'organiser le travail des équipes au quotidien.
+
+Au programme :
+    
+    * Le rôle de l'ingénieur aujourd'hui.
+    * L'évolution des workflows et la place du prototypage.
+    * Les impacts concrets pour les équipes produit.
+
+Un talk ancré dans la pratique, l'expérience de terrain et le feedback réel, pensé pour des développeurs qui veulent comprendre ce qui est en train de changer, sans discours marketing.
+====
+
+* Nicolas : cela fait plus d'1 an que je n'écris plus de code...
+* Avec les outils d'IA, on devient des ingénieurs avec un *esprit produit*
+* Le vibecoding, c'est le strava du dev : tu shippes pour *T'ENTRAINER* pour te faire la main avant la PROD.
+
+* Vibe coding : *processus itératif* plutôt que "prompt one shot"
+
+* Exemple d'application vibe codée par Nicolas : "guitar hero pour piano à 5 touches pour enfant"
+image:20260423_Devoxx-France_001.jpg[]
+
+* Vibe coding : attention à l'abandon des utilisateurs quand on passe d'une idée à une autre
+
+."L'IA, c'est mon stagiaire"
+image:20260423_Devoxx-France_002.jpg[]
+
+* Mais il faut toujours TOUT relire ("être dans le jugement")
+
+* Si tu peux vibe coder, sâche que ton PM le peut aussi
+* Or, les PMs galèrent à montrer leurs idées
+    ** Figma est trop intimidant
+    ** dans l'absolu, "c'est compliqué tout ça"
+
+image:20260423_Devoxx-France_003.jpg[]
+
+* Aujourd'hui, on a pu donner Lovable, Bolt (et Claude Code est en train d'être pris en main) aux PMs : on leur donne le pouvoir d'expérimenter
+* Il est très important de *connecter son design system* à ces systèmes
+
+* *Skills* : le *savoir d'équipe*, packagé +
+image:20260423_Devoxx-France_003b.jpg[]
+
+* Le vibe coding ce n'est pas pour construire des startups, c'est pour faire des "reps" (pour s'entraîner avant de créer les "vraies appli de PROD")
+
+=== 09:35 -> 10:00 - Keynote - Amphi Bleu : L'IA sur le terrain : l'humain au cœur de la valeur
+
+Présenté par : Marjory Canonne
+
+.Biographie
+====
+Marjory Canonne est la fondatrice de Spinalia, société de conseil spécialisée en data et intelligence artificielle. Reconnue pour son approche pragmatique et responsable, elle accompagne principalement les PME et les collectivités du Grand Est dans l'intégration concrète de ces technologies, au plus près des réalités opérationnelles.Un parcours stratégique et opérationnel Son parcours est marqué par des responsabilités de haut niveau, notamment au sein de la Gendarmerie nationale où elle a créé et dirigé un Datalab innovant. Elle a piloté de nombreux projets complexes, en France et à l'international, développant une solide expertise en :Management d'équipes pluridisciplinaires.Conduite du changement.Pilotage de projets IA à forte valeur ajoutée.Engagements et Influence Entrepreneure engagée, elle s'investit activement dans l'écosystème :Ambassadrice des Vosges®.Membre de l'Observatoire de la Maturité Data et IA des Entreprises.Marraine de l'association Elles Bougent.Ses interventions invitent à dépasser les effets de mode pour construire une IA utile, éthique et durable, au service de la décision humaine et de la performance collective.
+====
+
+.abstract
+====
+L'exposé défend une IA ancrée dans l'humain et le terrain : elle réussit lorsqu'elle répond à des besoins réels et implique les métiers dès le départ. À partir d'exemples concrets, il montre que l'IA est un levier de transformation locale, où la valeur prime sur la technologie.
+====
+
+.Description
+====
+On présente souvent l'intelligence artificielle comme une révolution technologique. Pourtant, je suis convaincue qu'elle n'apporte de la valeur qu'à travers deux piliers : l'humain et le terrain.
+
+Mon parcours, de la Gendarmerie nationale aux PME vosgiennes, m'a appris que l'IA échoue quand elle est une fin en soi. Elle réussit lorsqu'elle part des besoins réels et embarque les métiers dès le départ. Co-construite avec les équipes, elle devient un levier de transformation, même pour les petites structures.
+
+À travers des exemples vécus (démolition et appels d'offre, gendarmerie et planning, menuiserie, distribution automobile ou immobilier), je montrerai que l'IA est une opportunité de repenser durablement ses processus.
+Mon message est simple : l'IA ne se gagne pas derrière un écran, elle se construit dans les territoires. Alors que les LLMs deviennent des commodités, les vraies avancées se situent dans les outils. L'enjeu, c'est la valeur et le coût, pas la tech. Le futur de l'IA n'est pas à coder : il est à vivre, ensemble, sur le terrain.
+====
+
+* Toujours le même constat par Marjory : les clients, patrons, décideurs, veulent de l'IA et encore plus des agents MAIS sans savoir pour faire quoi...
+
+* Malgré le mythe très / trop présent : NON, l'IA ne "sait pas tout"
+
+* Ce qui marche vraiment aujourd'hui en entreprise (malgré tout le buzz sur les agents) :
+    ** les RAG
+    ** les IA générative simple et ciblée
+    ** et il faut avant tout que ce soit *structurant*
+
+* Vibe coding :
+    ** la tendance se voit de plus en plus dans des PME
+        *** des users métier, pas des ITs, à l'aide de Lovable / Cursor & co, se font leurs propres outils
+    ** en partant du besoin, cela permet de *prototyper vite*
+
+    ** MAIS il faut ensuite bien structurer les choses : architecture / sécurité / accompagnement du changement
+        *** avec de "vrais" experts
+
+* "Les ESN vont devoir changer leur business"
+    ** patron d'entreprise : pourquoi j'irais payer un IT 1000€ pour une modif mineure quand je peux le faire moi-même
+    ** un exemple : *audit d'applications vibe codées*
+
+Q&A : 
+
+    * impact RSE : allez jeter un oeil au site compar:IA du gouvernement : https://comparia.beta.gouv.fr/
+        ** Gaffe au "on va faire 10x plus de proto" et n'en garder qu'un au final. Donc jeter les 9 autres...
+
+
+=== 10:30 -> 11:15 - Keynote - Amphi Bleu : Les design patterns agentiques dont vous êtes le héros
+
+Présenté par : 
+
+.Guillaume Laforge - Google
+====
+Guillaume Laforge est Developer Advocate chez Google. Il se focalise sur le thème de l'IA générative depuis 3 ans. Il contribue aux projets open source LangChain4j et ADK (Agent Development Kit) pour aider les développeurs Java à créer des applications utilisant l'IA, les LLMs et les agents.Vous le connaissez aussi peut-être parce qu'il est Java Champion. Il a co-créé le langage de programmation Apache Groovy. Et il est également un des membres fondateurs du podcast Les Cast Codeurs.
+====
+
+.abstract
+====
+Cette session propose un voyage concret au cœur des systèmes multi-agents : au-delà des démos simples, elle explore les patterns de coordination, le routage et la collaboration d'essaims d'agents. Avec LangChain4j et l'ADK for Java, l'objectif est d'apprendre à concevoir, combiner et piloter efficacement des architectures agentiques robustes.
+====
+
+.Description
+====
+Y en a marre des intros sur les agents IA, on va passer la seconde ! Il est temps de plonger dans le dur, loin des démos “hello world”.
+
+Pour construire vos systèmes multi-agents, vous commencez souvent par assembler des briques classiques : des flux séquentiels, parallèles ou des boucles. La base, quoi ! Mais c'est en combinant ces composants qu'on crée des patterns vraiment puissants, comme les boucles de réflexion ou les duos critique/reviewer.
+
+Mais pour atteindre la véritable « IA-llumination », il va falloir faire des choix : quel pattern de routage adopter ? Comment piloter un essaim d'agents pour qu'ils collaborent sans partir dans tous les sens ? Et si on poussait encore plus loin ? Avec MCP et l'A2A, on peut désormais imaginer tout un écosystème d'agents distants qui communiquent entre eux. Bref, tout ça et plus encore, mais avec des bouts de code dedans !
+
+En tant que committer sur LangChain4j et ADK for Java (Agent Development Kit), je vous propose de vous guider dans cette aventure « agentique ». Mon but : vous donner les clés pour choisir les bonnes abstractions et éviter les impasses techniques sur votre parcours.
+====
+
+* Rappel : définition d'un agent +
+image:20260423_Devoxx-France_004.jpg[]
+    ** memory, tools, plan, boucle
+    ** les problématiques : 
+        *** context engineering
+        *** tool management : trop d'outils à gérer
+        *** évoluation (la cible du schéma)
+        *** Et quand on fait communiquer entre eux des agents : problématique d'orchestration
+        *** harness engineering : comment on implémente la boucle qui appelle toute la plomberie de l'agent
+
+* Après le prompt engineering, le context engineering, le buzz word maintenant est le *harness engineering*
+
+*PATTERNS*
+
+*Programmatic Planning* +
+image:20260423_Devoxx-France_005.jpg[]
+
+    * souvent la planification est très déterministe et ne nécessite PAS un agent et peut se faire avec des solutions plus classiques et PAS IA
+    * DEMO d'un Deep Research Agent avec Javelit déployée sur CLoud Run (Google)
+    * Ici, 3 agents successifs et c'est tout : quand on peut faire un plan déterministe, surtout on le fait +
+    image:20260423_Devoxx-France_006.jpg[]
+
+*RAG* +
+image:20260423_Devoxx-France_007.jpg[]
+
+*Progressive Disclosure* +
+image:20260423_Devoxx-France_008.jpg[]
+
+    * ce pattern m'est en avant les fameuses Skills
+        ** qui permettent de réduire les coûts en tokens en ne donnant que nom et brève description (que le "frontmatter") et pas "tout le Skill" (d'où le "progressive disclosure") +
+        image:20260423_Devoxx-France_009.jpg[]
+        ** on peut utiliser des milliers de Skills quand il est tout de suite compliqué de faire tourner quelques dizaines de Tools
+
+    * DEMO avec Antigravity sur VS Code : +
+    image:20260423_Devoxx-France_010.jpg[]
+    image:20260423_Devoxx-France_011.jpg[]
+
+*Hierarchical Agent Decomposition* +
+image:20260423_Devoxx-France_012.jpg[]
+
+    * Plutôt qu'un gros agent monolithique (marche pas très bien), on vient orchestrer de multiples agents plus spécialisés
+    * DEMO de l'application de génération de résumé / BD de voyages (une ancienne de Guillaume qu'il avait déjà présentée) +
+    image:20260423_Devoxx-France_013.jpg[]
+
+
+*LLM-as-Judge* +
+image:20260423_Devoxx-France_014.jpg[]
+
+    * DEMO : summarization evaluation +
+    image:20260423_Devoxx-France_015.jpg[]
+    image:20260423_Devoxx-France_016.jpg[]
+    image:20260423_Devoxx-France_017.jpg[]
+    * Code ici "pas terrible" (3x passage de "article"), à refactorer : +
+    image:20260423_Devoxx-France_018.jpg[] 
+
+*GOAP : Goal Oriented Action Planning* +
+image:20260423_Devoxx-France_019.jpg[] 
+    ** Vient du jeu vidéo, puis du framework "mBabel"
+    ** chemin d'ordonnancement des agents pour qu'ils atteignent l'objectif
+        *** présent dans Langchain4J et pas (encore ?) dans la version Python
+        image:20260423_Devoxx-France_020.jpg[] 
+        image:20260423_Devoxx-France_021.jpg[] 
+        image:20260423_Devoxx-France_022.jpg[] 
+        image:20260423_Devoxx-France_023.jpg[] 
+        image:20260423_Devoxx-France_024.jpg[] 
+
+*Ralph Wiggum & the feedback loop* : "agent tu boucles tant que t'as pas réussi"
+image:20260423_Devoxx-France_025.jpg[] 
+
+    * les Coding Agent font au final la même chose avec le code ("pourquoi j'ai eu cette stack trace ?! Vas-y je dois trouver la réponse !") : +
+    image:20260423_Devoxx-France_026.jpg[]
+    * 2 façons de faire : agent monolithique ou orchestration d'agents
+    image:20260423_Devoxx-France_027.jpg[] 
+        ** Code pour l'orchestration d'agents : +
+        image:20260423_Devoxx-France_028.jpg[] 
+        image:20260423_Devoxx-France_029.jpg[] 
+
+Conclusion : +
+image:20260423_Devoxx-France_030.jpg[] 
+
+    * d'autres patterns sur le blog de Guillaume
+
+
+=== 11:35 -> 12:20 - Conférence - Neuilly 252AB : L'Agentic Coding, nouveau territoire du Platform Engineering
+
+Présenté par : 
+
+.Yankı Sesyılmaz
+====
+I am Senior Software Engineer with several years of experience in back-end development and large-scale platforms. Currently, focused on scaling AI initiatives across the organization, with a strong emphasis on reliability, developer experience and actionable observability.
+====
+
+.Julien Tanay
+====
+I'm a Developer Experience specialist with 10+ years of xp in diverse industries. I'm thriving to offers Doctolib's Tech organization the best tools to create the future of healthcare
+====
+
+.abstract
+====
+Ce talk de Doctolib présente la création d'une plateforme IA collaborative pour 600 ingénieurs, au-delà du simple taux d'adoption. Il aborde l'agentic coding, l'expérience développeur, une architecture de plugins extensible, les métriques pertinentes et les défis réels rencontrés par les équipes plateforme.
+====
+
+.Description
+====
+100% d'adoption des outils IA de code par nos 600 ingénieurs. Mission accomplie ? Pas tout à fait. Aujourd'hui, les organisations techniques doivent répondre aux problématiques liées à l'agentic coding et soigner l'expérience développeur, qui se trouve profondément transformée.
+
+En tant que Staff SRE et Senior Software Engineer dans l'équipe AI Scaling chez Doctolib, nous allons vous raconter comment nous avons construit une plateforme IA ouverte aux contributions.
+
+Ce talk s'adresse aux engineering managers, tech leads et équipes plateforme qui ont déployé des outils IA pour les ingénieurs. Vous apprendrez :
+Les sujets identifiés avec nos utilisateur-ices comme potentiels candidats à la plateforme, et les réponses apportées
+Les services et outils concrets de cette plateforme, notamment les principes d'une architecture de plugins extensible par les équipes métier
+Quelles métriques suivre au-delà du taux d'adoption
+
+Nous partagerons aussi nos échecs et les réalités d'une adoption qui reste inégale.
+
+Ce n'est pas un talk sur l'IA, mais bien sur les nouveaux challenges des équipes plateforme à l'heure du développement assisté par des agents IA.
+====
+
+SALLE COMPLETE alors qu'on venait à peine de sortir de l'autre talk 😭
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 13:30 -> 14:15 - Conference - Amphi Bleu : The Hive : coder un monolithe modulaire prêt pour les microservices
+
+.Thomas PIERRAIN
+====
+Tout nouveau VP of Tech chez Shodo après avoir été VP of Engineering dans une scale up européenne (Agicap) pendant 4 ans. Également co-organisateur du meetup DDD FR et Speaker international (mais avec un accent de m...). Malgré une certaine passion pour le développement logiciel (écoles XP, Flow/Kanban & DDD), le product management, l'architecture ainsi que pour le travail en équipe, Thomas ne désespère pas de trouver un autre moyen d'expression ou sa créativité sera -il l'espère- un peu plus reconnue.Après s'être essayé en vain à la musique, au Tai-Chi-Chuan, à la cuisine, au poker-live et à la philosophie… Thomas le sait : un jour il sera astrophysicien ou même publicitaire (d'ailleurs il offrira -20% sur l'esprit de la forêt lors de son prochain talk).
+====
+
+.Julien Topçu
+====
+Julien est un CTO et Coach Socio-Technique avec plus de 15 ans d'expérience. Son expertise réside dans l'aide aux entreprises afin de définir des organisations permettant de construire des systèmes à forte valeur métier, notamment au moyen du Domain-Driven Design et Team Topologies. Julien se concentre sur l'alignement de l'organisation, de l'architecture et des pratiques logicielles avec le métier. En tant que membre de la fondation OWASP, il promeut activement les bonnes pratiques en matière de sécurité applicatives. Speaker international, Julien aime partager ses connaissances avec la communauté. Fondateur de CraftsRecords, il aide les membres de notre communauté à se lancer dans le monde des conférences
+====
+
+.abstract
+====
+Ce talk présente comment le pattern Hive permet de transformer un monolithe spaghetti en monolithe modulaire, prêt à être découpé en microservices grâce à l'architecture hexagonale et au vertical slicing, illustré par du live coding allant de l'existant legacy à l'extraction d'un module en microservice.
+====
+
+.Description
+====
+Après une décennie, notre industrie s'est rendu compte que des microservices mal conçus peuvent très facilement se transformer en un monolithe distribué, encore plus problématique que le monolithe spaghetti qu'il était censé corriger. Pour répondre à ce problème, le concept de monolithe modulaire apparaît aujourd'hui comme une alternative intéressante.
+
+Cependant, dans cette approche de monolithe modulaire, la difficulté réside plus que jamais dans la capacité à le découper efficacement sans créer de modules trop fortement couplés. Si cette étape est mal gérée, il peut devenir impossible de le scinder ultérieurement en plusieurs services, lorsque cela s'avèrera indispensable.
+
+Le pattern de la ruche (The Hive) permet construction d'un monolithe modulaire prêt pour pour être découpé en microservices en combinant plusieurs architectures hexagonales au concept du vertical slicing.
+
+Lors de cette session de live coding, nous partirons d'une situation de monolithe spaghetti legacy, que nous ferons évoluer étape par étape vers un monolithe modulaire basé sur le pattern Hive, avant de conclure par une démonstration d'extraction et de transformation d'un module en microservice séparé.
+====
+
+* Rappels architecture hexagonale : +
+image:20260423_Devoxx-France_032.jpg[] 
+
+* Dans le cas de notre Dolorean, le domaine métier est devenu avec temps un BBOM (Big Ball of Mud) : +
+image:20260423_Devoxx-France_033.jpg[] 
+
+* On va chercher à réorganiser tout ça : voici la cible +
+image:20260423_Devoxx-France_034.jpg[] 
+
+* Dans un 1er temps, on part vers un Modular Monolith
+
+* Et pour cela, commençons par faire du Vertical Slicing, où chaque module a "tout ce dont il a besoin" : +
+image:20260423_Devoxx-France_035.jpg[] 
+    ** et on fait ça car on se souvient qu'il faut éviter les "microservices" qui partagent une même BDD...
+    ** chaque module ne peut toucher qu'à sa table
+    ** et surtout pas de Foreigh Key ! (sinon on va galérer plus tard pour la suite de notre refactoring)
+
+NOTE: Julien et Thomas conseillent *Flyway* (an open-source database-migration tool)
+
+* Pour faciliter la future découpe de nos 1er "nouveaux modules" : +
+image:20260423_Devoxx-France_036.jpg[] 
+
+* *inproc* adapter pour passer d'un modèle à un autre côté infra
+image:20260423_Devoxx-France_037.jpg[] 
+    ** Cela joue un peu le rôle de *ACL* (Anti Corruption Layer)
+
+* A ce niveau, on a un bon monolithe modulaire, avec des modules "sécables" à tout moment (the Hive)
+
+* On continue notre refonte vers une architecture microservices : +
+image:20260423_Devoxx-France_038.jpg[] 
+    ** il faut qu'en cible les modules puissent s'appeler en HTTP plutôt qu'en direct
+
+Conclusion sur ce problème de surcharge du réacteur : +
+image:20260423_Devoxx-France_039.jpg[] 
+
+    * The Hive est un pattern avec scaling vertical et horizontal
+    * 3 principes forts : 
+        ** vertical slicing
+        ** inproc ports & adapters
+        ** network ready (faciliter le passage en "vrais" microservices sur HTTP)
+
+Slides du talk : https://gitlab.com/beyondxscratch/hive-pattern
+
+=== 14:35 -> 15:20 - Conference - Amphi Bleu : Tests end-to-end d'API générés par IA : un retour d'expérience en refonte legacy
+
+.Cyrille MARTRAIRE
+====
+Cyrille est CTO co-fondateur d'Arolla, un cabinet de conseil qui rassemble une centaine d'enthousiastes de l'ingénierie logicielle moderne (Software Craft). Il est le fondateur de la communauté Paris Software Crafters, qui compte aujourd'hui plus de 4200 membres, et est l'auteur de deux livres : "Living Documentation", chez Addison-Wesley et "Software Craft" chez Dunod. Cyrille est orateur régulier dans des conférences en Europe et au-delà.Avec plus de 20 ans d'expérience en développement logiciel, Cyrille intervient toujours comme formateur et en conseil en architecture et en conception, avec l'aide de Domain-Driven Design et avec une vraie curiosité pour tous les métiers, de la finance à la logistique ou au médical.
+====
+
+.Olivier Penhoat
+====
+Passionné par le développement web et les architectures IT, expérimenté dans le management et le coaching d'équipes agiles, capable de réaliser une plateforme numérique depuis la phase de Think, au Build, Devops et Run.CTO résolument craftsman, capable d'élaborer et porter une véritable vision produit dans des contextes à fort enjeu stratégique.Dans mon terrain de jeu préféré on trouve souvent :JavaScript, TypeScript, NodeJS, React, VueJS, Nuxt, Jest, REST, GraphQL, Docker, Redis, MongoDb, ReactJS, Zsh, Portainer, Traefik, Google CloudExpériences :2024 : Consultant chez Arolla2021 : Director of Developer eXperience chez Niji2015 : CTO Branche Numérique du Groupe La Poste, fondateur d'Okapi2013 : Consultant chez Octo Technology2009 : Consultant formateur chez Valtech Training2008 : Responsable du pôle Usine Logicielle chez LCL2005 : Responsable BeL chez Crédit Agricole SA2001 : Chef de projets Solutions Technologiques chez Entenial2000 : Chef de projets techniques chez MDEO Zentropy1999 : Consultant iNet chez Cetal Conseil1996 : Chef de projets Banque à Distance chez CCF1994 : Ingénieur chez Isthme / Stéria
+====
+
+.abstract
+====
+Cette session présente un retour d'expérience sur l'usage de l'IA pour générer automatiquement des tests end-to-end lors d'une refonte d'API critiques. Elle détaille un workflow d'agents MCP, la comparaison de JSON volumineux et l'évolution du rôle développeur vers la conception de prompts et l'optimisation des coûts IA.
+====
+
+.Description
+====
+Les refontes legacy restent particulièrement périlleuses, même en 2026. Que peut apporter l'IA ?
+
+Dans cette session, nous partageons un retour d'expérience concret d'un projet de génération de tests end-to-end par IA, pour sécuriser une refonte d'API complexes qui portent 500 M€ de chiffre d'affaires annuel.
+
+Nous montrerons comment nous avons conçu un workflow IA (agents avec MCP) pour régénérer de façon fiable et répétable des tests d'API permettant de comparer des JSON complexes de plus de 200 Ko.
+
+Avec une petite démo, nous montrerons comment le rôle de dev évolue vers le design de prompts qui génèrent des prompts qui génèrent du code, l'intérêt d'être exigeant dans les règles de qualité de code, et comment les sub-tasks avec chacune son contexte peuvent réduire les coûts IA dans la durée.
+====
+
+image:20260423_Devoxx-France_040.jpg[] 
+image:20260423_Devoxx-France_041.jpg[] 
+image:20260423_Devoxx-France_042.jpg[] 
+image:20260423_Devoxx-France_043.jpg[] 
+
+* Techno retenues : Cline et Claude
+    ** Cline donne vraiment de bons résultats
+        *** mais coûte cher...
+
+* DEMO et live coding compliqué à suivre (voir le replay)
+
+* Comment transférer cette nouvelle façon de faire aux devs et aux QA ?
+
+* Bonne interrogation : *I want the AI (NOT me) to know HOW it's done to do it well*.
+
+* Les projets d'aujourd'hui qui utilise l'IA sont *exploratoires*, avec un dimension "surprise"
+    ** Il VA y avoir des surprises, et généralement le management n'aime pas ça...
+
+* On va pouvoir utiliser l'IA pour faire des choses que l'on savait déjà faire MAIS qui étaient beaucoup trop chères à faire
+    ** Comme les tests End to End
+
+=== 17:00 -> 17:30 - Tools-in-Action - Amphi Bleu : Domptez vos Agents : AGENTS.md et Context Engineering pour une IA déterministe
+
+.Benoît FONTAINE
+====
+Fort de 25 ans d'expérience dans l'ingénierie logicielle, j'occupe aujourd'hui le poste d'Architecte Groupe chez Septeo. Mon objectif : poser des fondations techniques robustes pour plus de trente pôles produits, tout en insufflant une culture d'excellence et d'innovation.— Réalisations clés• Mise en place d'un design system transverse (Flutter, React, Vue, Angular) documenté via Storybook & Widgetbook, garantissant cohérence UX/UI et accélération des livraisons.• Conception du « Septeo SaaSter Kit », starter full-stack cloud-native intégrant CI/CD, observabilité et sécurité shift-left, adopté par plusieurs équipes produits.• Mentoring et accompagnement d'équipes pluridisciplinaires pour relever des défis complexes, de l'architecture micro-services à l'event-driven.— ADN professionnel• Architecte-pédagogue : transformer la complexité en savoir partagé grâce au Software Craftsmanship et à un management exigeant mais bienveillant.• Leader fédérateur : créer un environnement où chaque développeur devient acteur de l'architecture et garant de la qualité.• Catalyseur d'innovation : adopter les technologies offrant un avantage business réel et mesurable.Ma promesse : allier vision d'architecte, leadership humain et exécution pragmatique pour créer des produits durables et des équipes qui excellent.
+====
+
+.abstract
+====
+Présentation du Context Engineering avec le standard AGENTS.md : structuration des assistants IA en partenaires fiables via configuration avancée, définition de personas, gestion des limites et commandes, TDD/BDD assisté et mémoire conversationnelle, pour garantir qualité, respect des standards et éviter la dégradation du contexte sur projets complexes
+====
+
+.Description
+====
+Alors que la plupart des développeurs se contentent de prompts isolés, comment transformer vos assistants (Claude, Cursor, etc) en véritables partenaires d'ingénierie fiables ? La réponse réside dans la standardisation du contexte.
+
+Dans cette session, nous dépasserons le simple "prompt engineering" pour explorer le Context Engineering via le standard AGENTS.md. Je vous montrerai comment j'ai transformé ce fichier de configuration en véritable "cerveau" du projet.
+
+Nous verrons concrètement :
+• L'anatomie d'un AGENTS.md performant : Définir des personas, des limites (boundaries) et des commandes exécutables pour stopper les hallucinations.
+• Le workflow TDD/BDD assisté : Comment structurer des User Stories qui forcent l'agent à écrire les tests avant le code (Red-Green-Refactor), garantissant ainsi la qualité et le respect des principes SOLID.
+• La gestion de la mémoire : Une approche technique pour gérer l'historique de conversation et éviter le "context rot" (dégradation du contexte) sur les tâches longues.
+
+Passez d'une IA qui "suggère du code" à une IA qui respecte vos standards d'architecture et vos exigences métier.
+====
+
+=== 17:50 -> 18:20 - Tools-in-Action - Amphi Bleu : ClaudeCode.proTips(30, minutes=30).run()
+
+.Erwan GEREEC
+====
+Engineering Manager at Doctolib, I've been passionate about tech and new technologies for many years. I love sharing my discoveries, exploring new tools, and building POCs to continuously learn. Driven by curiosity, I enjoy turning experimentation into concrete, inspiring solutions for my teams.
+====
+
+.abstract
+====
+Cette session propose 30 astuces concrètes pour exploiter pleinement Claude Code comme copilote de développement. Elle couvre prompting, refactoring, debug, tests, APIs, gestion du contexte et UI, afin d'améliorer la productivité et faire de Claude Code un outil indispensable pour tout développeur, débutant ou confirmé.
+====
+
+.Description
+====
+30 minutes, 30 astuces. 1 mission : transformer votre manière de travailler avec Claude Code et vous faire gagner en productivité.
+
+Claude Code est devenu bien plus qu'un simple générateur de code : c'est un co-pilote capable d'écrire, refactorer, déboguer et même anticiper vos besoins. Mais sa vraie puissance se révèle quand on connaît les bons tips & tricks pour en tirer le maximum.
+
+Dans cette session, nous passerons en revue une série de bonnes pratiques et astuces concrètes pour booster votre efficacité et faire de Claude Code un outil indispensable dans votre boîte à outils de développeur :
+• Prompting efficace & patterns réutilisables
+• Debug, génération de tests & refactoring intelligent
+• APIs, documentation & gestion du contexte
+• UI tips, slash commands & astuces cachées
+
+Que vous découvriez Claude Code ou que vous l'utilisiez déjà au quotidien, vous repartirez avec une vraie boîte à outils de tips et de hacks pour coder plus vite, mieux et avec plus de confiance !
+====
+
+== JOUR 3 : VENDREDI 24/04
+
+=== 09:00 -> 09:25 - Keynote - Amphi bleu : L'IA au défi de la condition humaine
+
+.Jean-Gabriel Ganascia
+====
+Ingénieur et philosophe de formation initiale, Jean-Gabriel Ganascia est présentement, professeur émérite d'informatique à Sorbonne Université, EurAI fellow, membre honoraire de l'institut universitaire de France et chercheur au LIP6. Ses travaux actuels portent sur l'intelligence artificielle, les humanités numériques, l'éthique computationnelle, la détection d'Infox et l'éthique du numérique. Au cours de sa carrière, il a publié plus de 500 articles dans des actes de conférences, des revues et des livres. Outre ses publications scientifiques, il a fait paraître une douzaine d'ouvrages destinés au grand public dont le dernier, « L'IA expliquée aux humains » a paru en septembre 2024 aux éditions du Seuil.Il est aussi président du comité d'éthique de France Travail et président du comité d'orientation du CHEC (Cycle des Hautes Études de la Culture). Enfin, il a été président du comité d'éthique du CNRS (COMETS) de 2016 à 2021.
+====
+
+.abstract
+====
+La présentation interroge les promesses d'une IA libérant l'humain de l'effort : confort, immortalité, conscience numérique. En confrontant ces visions aux aspirations humaines et aux sociétés passées, elle questionne leur vraisemblance et explore d'autres voies de réalisation de soi, en deçà du fantasme d'un « nirvana numérique ».
+====
+
+.Description
+====
+Les approches philosophiques traditionnelles conditionnent la plénitude, la sérénité et le bonheur à un travail sur soi, à une ascèse et à un effort long et douloureux. L'IA semble nous offrir tout cela à moindre coût, presque gratuitement.
+Les promesses du futur :
+Une vie de paresse facilitée par l'automatisation.
+Un allongement quasiment infini de l'existence et la fin des maladies.
+La survie au-delà de nos corps biologiques, au cœur de processeurs informatiques ou sur des corps d'emprunt.
+Nous passerons en revue ces annonces en nous demandant si elles sont vraisemblables et si elles comblent réellement les aspirations humaines. L'ennui ne nous guettera-t-il pas ?
+En mettant en regard la condition humaine des sociétés passées avec la nôtre, à l'heure du numérique, nous examinerons les nouvelles possibilités de réalisation de soi qui s'offrent désormais à chacun, en tant qu'individus, en deçà du "nirvana numérique".
+====
+
+=== 09:35 -> 10:00 - Keynote - Amphi bleu : La course à l'IA : La France risque-t-elle de devenir un "territoire servant"?
+
+.Loup Cellard
+====
+Dr. Loup Cellard est chercheur postdoctoral CNRS au sein de l'Observatoire surl'impact environnemental de l'intelligence artificielle (LISN, Université Paris-Saclay/ENS).Avec un ancrage disciplinaire dans la sociologie et l'anthropologie des techniques, ses travaux actuels portent sur les implications environnementales des infrastructures du numérique. Ses études ont été citées par les ONG Algorithm Watch et Data & Society. Loup a présenté ses travaux à des décideurs politiques tels que l'équipe du mécanisme de conseil scientifique de l'UE, ainsi qu'à la Commission française d'accès aux documents administratifs.De par le passé, il a travaillé dans la coopérative Datactivist sur des projets de recherche-action visant à expliquer les systèmes algorithmiques de l'Etat.Il est également membre du médialab de Sciences Po et co-rédacteur en chef de Tèque, une revue de critique des technologies (Audimat éditions).
+====
+
+.abstract
+====
+La conférence analyse l'afflux d'investissements étrangers dans les infrastructures IA et ses tensions : perte de souveraineté, concurrence pour l'électricité avec d'autres secteurs clés. À partir d'exemples de data centers, elle interroge les bénéfices réels pour les territoires et le risque d'une France « territoire servant » de la course à l'IA.
+====
+
+.Description
+====
+En 2025, le Sommet pour l'action sur l'IA a attiré des capitaux étrangers massifs dans les infrastructures de calcul. Parallèlement, la Commission de régulation de l'énergie a identifié soixante sites « clés en mains » pour faciliter l'approvisionnement électrique des data centers.
+Ces évolutions soulèvent deux problématiques majeures :
+La souveraineté en question : Les investissements étrangers entrent en contradiction avec les ambitions d'autonomie affichées par l'État et les collectivités.
+Les conflits d'usages : Les pré-réservations d'électricité sont si importantes qu'elles menacent d'autres secteurs critiques comme l'industrie ou la santé.
+Le retour à une géopolitique dure ne doit pas imposer des projets au nom de la souveraineté sans que les territoires puissent statuer sur leurs modalités d'implantation.
+Axes de réflexion :
+Quelles opportunités réelles pour les territoires accueillant ces infrastructures ?
+Comment éviter que la France ne devienne un « territoire servant », sacrifié sur l'autel de la course à l'IA ?
+Nous répondrons à ces questions à travers l'analyse d'exemples concrets d'implantations de data centers.
+====
+
+=== 10:30 -> 11:15 - Conférence - Amphi Bleu : APIs, contextes et prompts : la nouvelle stack du développeur web
+
+.Olivier Leplus
+====
+Developer Advocate @AWS et Google Developer Expert Web
+====
+
+.Yohan Lasorsa
+====
+Passionné d'open-source et d'artisanat logiciel, le web est le terrain de jeu ultime pour Yohan. Expert en ingénierie full-stack et amateur de projets DIY, il aime repousser les limites de JavaScript et partager ses connaissances avec les autres. Yohan est également Google Developer Expert (GDE) pour Angular, un speaker et formateur international accompli, ainsi que mainteneur et contributeur actif sur de nombreux projets open-source.
+====
+
+.abstract
+====
+En 2026, le métier de développeur web évolue avec l'intégration massive d'outils IA, d'APIs et de copilotes. Ce talk explore, via une démo concrète, comment ces technologies transforment la création et la mise en production de fonctionnalités, en questionnant la place de l'humain et les nouveaux défis du métier.
+====
+
+.Description
+====
+En 2026, le métier de développeur web change. Entre les Web AI APIs (Prompt API, Summarizer API, …), le fichier LLMs.txt, les outils comme Context7 pour toujours disposer de la bonne documentation, Gemini dans votre navigateur pour débugger votre code avec de l'IA, et même les Chrome DevTools qui intègrent désormais un serveur MCP, une nouvelle stack s'impose.
+
+Mais dans ce nouveau paysage, des questions se posent :
+Est-ce qu'un dev web écrit encore du code aujourd'hui ?
+Quelle est la place de l'humain au milieu de tous ces agents ?
+Et est-ce qu'un jour NPM installera enfin ce qu'on lui demande, sans télécharger la terre entière au passage ?
+
+Entre copilotes dans le navigateur, APIs de contexte partagé et documentation générative, le métier ne disparaît pas: il change. Dans ce talk, nous suivrons la naissance d'une feature jusqu'à sa mise en production, en montrant comment ces outils transforment le quotidien d'un dev web pour le meilleur... mais aussi le pire 😅. Une démo concrète pour explorer ce que signifie coder en 2026, avec les pièges à éviter (qui a dit "vibe-coding?").
+
+Parce que l'IA, c'est pas que pour celles et ceux qui font du Python — mais aussi pour les devs web.
+====
+
+=== 11:35 -> 12:20 - Conférence - Neuilly 252 AB : Votre second cerveau IA sans perdre votre âme
+
+.Sandrine BOITEAU
+====
+Sandrine Boiteau est Ingénieur EPF et Directrice Orga & Produit chez WEnvision. Ancienne directrice de départements IT, elle s'appuie sur une double expertise en Ingénierie des Systèmes (Agilité à l'échelle, DevOps, Product Operating Models) et en Ingénierie du Changement (Spirale Dynamique, Transformation culturelle).Fondatrice de "Mon Assistant IA", elle propose une approche rigoureuse et systémique de l'industrialisation des Agents IA. Sa différenciation ? Appliquer la rigueur de l'ingénierie à la complexité humaine et organisationnelle pour transformer l'IA en un véritable partenaire intellectuel, lucide et souverain.
+====
+
+.abstract
+====
+Présentation d'une approche pour transformer la veille personnelle en véritable infrastructure de connaissance : un « second cerveau » local basé sur Markdown, Git et IA. L'auteur y détaille son système Antigravity en 12 étapes, où l'IA agit comme contrôleur mental pour passer de la synthèse à la réflexion stratégique.
+====
+
+.Description
+====
+Pendant 15 ans, j'ai consommé une quantité astronomique de contenu sans jamais pouvoir le retrouver. Ce n'était pas un problème de volume, mais de VOLATILITÉ : l'information consommée devenait immédiatement du savoir mort.
+Et si l'IA servait au contraire à arrêter l'hémorragie pour transformer votre veille en une véritable infrastructure de connaissance ?
+Dans cette session, je ne vous vendrai pas un nouvel outil SaaS. Je vous ouvrirai le capot de mon propre second cerveau : une architecture locale souveraine (Markdown, Git) où l'IA ne sert pas à répondre à ma place, mais à devenir mon "Contrôleur Aérien" mental.
+Découvrez comment j'ai automatisé avec Antigravity ma digestion de savoir en 12 étapes pour passer de la simple synthèse à la critique stratégique. Ne soyez plus l'utilisateur d'un outil, devenez l'architecte de votre propre pensée.
+====
+
+=== ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
+
+=== 13:30 -> 16:30 - Deep Dive - Neuilly 251 : Serveurs MCP : bonnes pratiques, choix de conception et leurs conséquences
+
+.Horacio Gonzalez
+====
+Malgré ce que son accent espagnol bien prononcé peut suggérer, Horacio est arrivé en France il y a plus d'une vingtaine d'années. Passionné d'informatique, dans laquelle il est tombé depuis tout petit, il a découvert le développement web en 1997 et depuis il n'a pas arrêté de bosser autour.Horacio est VP de DevRel chez Clever Cloud. Il est cofondateur du FinistDevs, et des Rdv des Speakers.Passionné par le développement web et tout ce qui gravite autour des composants web et des standards web, Horacio aime aussi discuter de Kubernetes, AI et le cloud en général.
+====
+
+.abstract
+====
+Cette session approfondie sur le Model Context Protocol (MCP) analyse, à partir de cas réels, les choix de conception impactant sécurité, flexibilité et expérience développeur. Démos, discussions et bonnes pratiques permettront de concevoir des serveurs MCP efficaces et sûrs, adaptés aux usages réels des LLM et agents.
+====
+
+.Description
+====
+Le Model Context Protocol (MCP) s'est imposé comme le lien entre les LLMs et les outils, API et données qu'ils utilisent. Mais faire tourner un serveur MCP n'est que le début. Les vrais problèmes apparaissent avec les choix de conception : serveur générique ou spécifique au domaine, accès ouvert ou contrôlé, flexibilité ou sécurité.
+Dans ce Deep Dive de 3 h, nous irons bien au-delà d'une simple introduction. À partir de projets réels, nous analyserons ce qui fonctionne, ce qui casse, et pourquoi. Démos approfondies, discussions d'architecture et exemples concrets serviront à montrer comment ces choix impactent directement l'expérience développeur, les performances, la consommation de tokens et la sécurité.
+Nous ferons aussi le parallèle avec les débuts des API REST et les erreurs que beaucoup d'équipes ont déjà commises à l'époque — avec une différence majeure aujourd'hui : les LLM et les agents n'observent plus les systèmes, ils agissent dessus.
+À l'issue de la session, vous repartirez avec un cadre mental clair et des bonnes pratiques concrètes pour concevoir des serveurs MCP plus sûrs, plus efficaces et réellement exploitables en production.
+====
+
+
+=== 17:45 -> 18:30 - Clôture : Les Cast Codeurs sans casque, sans écran mais avec de la joie
+
+
+
+=== Talks vu en replay
+
+
+
