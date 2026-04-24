@@ -1,0 +1,371 @@
+= 2026/03/11 - Microsoft - AI Tour
+Thomas SCHWENDER <icon:github[] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+Salon Microsoft AI Tour Paris Expo Porte de Versailles
+
+== Description et agenda de la journée
+
+* URL de l'évènement : https://aitour.microsoft.com/flow/microsoft/paris26/landingpage/page/cityhome
+
+* Mon agenda : +
+image:20260311_Microsoft_AI_tour_01.jpg[]
+    ** https://aitour.microsoft.com/flow/microsoft/paris26/agenda/page/agenda?locale=fr_FR
+
+== 09:00 AM - 09:45 AM : Build AI factories for agentic and physical intelligence with NVIDIA and Microsoft Azure
+
+* URL du talk : https://aitour.microsoft.com/flow/microsoft/paris26/sessioncatalog/page/sessioncatalog/session/1762868726911001Rk7T
+* Speaker : Nicolas Savides, Microsoft Alliance, Manager EMEA, NVIDIA
+
+.Abstract
+----
+Organizations looking to transform enterprise operations and manufacturing with AI need a full-stack platform that delivers intelligence at scale. NVIDIA and Microsoft Azure enable the next generation of AI factories—integrating agentic and physical intelligence to unlock new capabilities, accelerate innovation, and drive operational efficiency. This session will delve into what it takes to build and deploy these AI factories at scale and provide an overview of how the NVIDIA accelerated computing platform on Microsoft Azure can help rapidly build, optimize, and deploy AI solutions for breakthrough customer experiences and smarter operations.
+----
+
+== Sécurisation des agents et applications d'IA sur Microsoft Foundry à l'échelle
+
+, Sr Solution Engineer Secure AI, Microsoft
+, AI Cloud Solution Architect, Microsoft
+
+.Abstract
+----
+As organizations rapidly build AI and innovation accelerates, so do the risks. Deep dive to learn how to safeguard AI agents across their lifecycle by managing identity, data access, posture, and applying governance at scale.
+----
+
+* Risques quand à l'usage des modèles quand on veut scaler : +
+image:20260311_Microsoft_AI_tour_02.jpg[]
+
+* nouveau cycle "from code to runtime" appliqué à l'IA quand on veut scaler
+image:20260311_Microsoft_AI_tour_03.jpg[]
+
+* Qu'est-ce qui change avec les agents ?
+image:20260311_Microsoft_AI_tour_04.jpg[]
+
+*SECTION : Manage Agent sprawl & resource access*
+
+* Foundry Control Plane comme Signe Entry Point sur la vision de notre Système Multi Agents
+    ** Avec les agents, plus que les seules entrées et sorties, on va également contrôler l'usage des Tools
+    ** Possibilité de créer des Evaluations des Agents (ce que Philippe PAIOLA m'a également montré au stand Microsoft Foundry)
+
+image:20260311_Microsoft_AI_tour_06.jpg[]
+
+* Nouvel outil *Agent Entra ID* : +
+image:20260311_Microsoft_AI_tour_07.jpg[]
+image:20260311_Microsoft_AI_tour_08.jpg[]
+    ** Il faut pouvoir gérer l'identité de l'Agent comme n'importe quelle autre identité
+
+* Nouvelles *Conditional Access Policies* spécifiques aux Agents : +
+image:20260311_Microsoft_AI_tour_09.jpg[]
+    ** On peut par exemple empêcher la génération de tokens par un Agent détecté comme à risque
+
+*SECTION : Protect againts AI Therats*
+
+* Get visibility across AI assets / Manage posture and reduce risks / Defend against AI specific threats : +
+image:20260311_Microsoft_AI_tour_10.jpg[]
+
+* Strengthen your *AI Security Posture* from build to runtime : +
+image:20260311_Microsoft_AI_tour_11.jpg[]
+
+* Microsoft Foundry : Manage posture for AI agents / Microsoft Defender : Protect AI agents againts threats
+image:20260311_Microsoft_AI_tour_12.jpg[]
+image:20260311_Microsoft_AI_tour_13.jpg[]
+    ** Toutes les infos trouvées par Defender vont remonter dans Foundry Control Plane
+
+*SECTION : Data leakage & oversharing*
+
+image:20260311_Microsoft_AI_tour_14.jpg[]
+
+* Ces sujets sont traités par la solution *Microsoft Purview* : +
+image:20260311_Microsoft_AI_tour_15.jpg[]
+image:20260311_Microsoft_AI_tour_16.jpg[]
+image:20260311_Microsoft_AI_tour_17.jpg[]
+
+*CONCLUSION*
+
+* Tryptique sécu autour de Entra ID / Defender / Purview : +
+image:20260311_Microsoft_AI_tour_18.jpg[]
+    
+    ** Control Plane s'intègre avec les 3 outils
+
+Slides de la présentation : https://aka.ms/MicrosoftAITour/BRK483
+
+== Automatisez la sélection des modèles avec Microsoft Foundry Model Router
+
+.Abstract
+--
+As 85% of enterprises adopt multi-model AI, developers face complexity in selecting, deploying, & managing the right models. Microsoft Foundry's model router automates model selection across performance, cost, and latency-- reducing overhead, speeding deployment, and enabling scalable AI operations.
+--
+
+*Foundry Model Router* pour du routage dynamique de modèles : +
+image:20260311_Microsoft_AI_tour_19.jpg[]
+image:20260311_Microsoft_AI_tour_20.jpg[]
+image:20260311_Microsoft_AI_tour_21.jpg[]
+
+* Model Router permet d'adapter le choix du modèles en fonction de certains paramètres (PARTIE A INVESTIGUER)
+    ** Face à une requête "simple / courte" Model Router va utiliser un modèle rapide plutôt qu'un modèle thinking (non nécessaire ici)
+    ** Cf François Xavier KIM (speaker Microsoft), on peut "aider" le choix fait par Model Router via du System Prompt
+
+* L'impact de Model Router sur les perf semble faible
+
+* Fiche technique de Model Router : + 
+image:20260311_Microsoft_AI_tour_22.jpg[]
+
+* Avantages du Model Router : +
+image:20260311_Microsoft_AI_tour_23.jpg[]
+
+* A date, le Model Router ne sert *que pour de la Chat Completion*
+    ** Mais c'est un bon outil pour chercher à *optimiser les coûts*
+
+== Créer et lancer rapidement des agents IA avec Microsoft Foundry et le Kit d'outils IA
+
+Speaker : Julien DUBOIS
+
+.Abstract
+--
+Build & ship AI agents fast with Microsoft Foundry Models and Azure. Prototype with open models, scale with Foundry models, & streamline workflows with AI Toolkit in VS Code. Experiment with models & prompts, evaluate agent responses, & move from prototype to cloud with cutting-edge developer tools.
+Session topic: Innovate with Azure AI apps and agents
+--
+
+.Programme
+image:20260311_Microsoft_AI_tour_24.jpg[]
+
+* Applications modernes ET ("plus") applications intelligentes : +
+image:20260311_Microsoft_AI_tour_25.jpg[]
+
+* Cycle de vie du développement de l'IA générative : +
+image:20260311_Microsoft_AI_tour_26.jpg[]
+
+* Usage de *AI Toolkit for Visual Studio Code* : +
+image:20260311_Microsoft_AI_tour_27.jpg[]
+image:20260311_Microsoft_AI_tour_28.jpg[]
+    ** Permet également d'utiliser des modèles hébergés localement
+
+*2) Agent Builder pour créer un agent*
+
+image:20260311_Microsoft_AI_tour_29.jpg[]
+
+Ressources du Talk : 
+
+    * Repo Github : https://github.com/microsoft/aitour26-BRK441-Build-and-launch-AI-agents-fast-with-Microsoft-Foundry-and-the-AI-Toolkit
+    * Slides : https://aka.ms/AAxryus
+
+== Outils d'IA pour la gestion de l'infrastructure
+
+* Speakers : 
+    ** Baptiste Ohanes : CTO Azure Infrastructure
+    ** Lucile Jeanneret : Solution Engineer AI
+
+.Abstract
+--
+Explore how to use Azure Copilot and agentic AI to manage cloud infrastructure. We'll break down its architecture, orchestration logic, VS Code integration, and how it uses LLMs to detect issues and automate remediation before they escalate.
+--
+
+* Fonctionnement des outils d'IA chez Microsoft en lien avec Azure : +
+image:20260311_Microsoft_AI_tour_30.jpg[]
+
+* site reliability engineering agent : SRE Agent
+
+* Agent pour agir sur l'infrastructure :
+    ** Analyser les erreurs
+    ** Analyser le code en conséquence 
+    ** Création d'issue dans GitHub
+    ** Proposition de correction 
+    ** Création de bilan suite à erreur / incident 
+
+image:20260311_Microsoft_AI_tour_31.jpg[]
+image:20260311_Microsoft_AI_tour_32.jpg[]
+image:20260311_Microsoft_AI_tour_33.jpg[]
+
+Maintenant pour du troubleshooting interactif avec l'agent qui la main sur notre épaule : Azure Copilot
+
+Les communautés Microsoft : +
+image:20260311_Microsoft_AI_tour_34.jpg[]
+
+Microsoft agent 365 : contrôles de sécurité et de gouvernance
+
+Avant 2028 le nombre d'agents va dépasser le nombre d'employés 
+image:20260311_Microsoft_AI_tour_35.jpg[]
+
+nouvelles attaques propres à l'IA : +
+image:20260311_Microsoft_AI_tour_36.jpg[]
+
+== Microsoft Agent 365 Contrôles de sécurité et de gouvernance
+
+.Abstract
+--
+Confidently activate and secure your AI agent estate with Microsoft Agent 365 capabilities. These capabilities help your IT teams manage AI access and agent sprawl, prevent data oversharing and leaks, defend against AI threats and vulnerabilities, and comply with AI regulations.
+--
+
+Microsoft Agent 365 : le control plane des agents
+Actuellement en Early Access (on peut demander l'accès via le programme Frontier de MS)
+
+Ecosystem agent 365 : +
+image:20260311_Microsoft_AI_tour_37.jpg[]
+
+3 rôles couverts : +
+image:20260311_Microsoft_AI_tour_38.jpg[]
+
+*1) Identité et accès réseau*
+
+Journée type des équipes en charge : +
+image:20260311_Microsoft_AI_tour_39.jpg[]
+
+Étendre et adapter les protections des identités aux agents (du fait de leur prolifération) : +
+image:20260311_Microsoft_AI_tour_40.jpg[]
+
+Entra agent ID : +
+image:20260311_Microsoft_AI_tour_41.jpg[]
+
+Pour qu'on puisse donner une identité à tous les agents
+
+Identité des agents : Agent ID est un nouveau modèle au sein d'Entra ID
+image:20260311_Microsoft_AI_tour_42.jpg[]
+
+Ce modèle a un blueprint (template) : +
+image:20260311_Microsoft_AI_tour_43.jpg[]
+
+Quand on coupe le blueprint (pb de secu), tous les agents en découlant sont stoppés 
+
+Agent 365 : le registre des agents (toujours en early adopter)
+image:20260311_Microsoft_AI_tour_44.jpg[]
+image:20260311_Microsoft_AI_tour_45.jpg[]
+
+*2) sécurité et conformité des données*
+
+Création d'une Conditional Access Policy "block agents with high risks"
+image:20260311_Microsoft_AI_tour_46.jpg[]
+
+Vue Identity Protection : +
+image:20260311_Microsoft_AI_tour_47.jpg[]
+
+A maintenant une section dédiée aux agents
+
+*3) partie SecOps*
+
+image:20260311_Microsoft_AI_tour_48.jpg[]
+
+Usage de Microsoft Defender : +
+image:20260311_Microsoft_AI_tour_49.jpg[]
+
+Conclusion : il va vraiment falloir gérer l'explosion des agents 
+Rejoignez-nous le programme Frontier
+
+Slides : https://aka.ms/microsoftaitour/brk481
+
+== Concevoir des agents IA prêts pour un usage en entreprise avec Microsoft Foundry
+
+Speaker : Julien DUBOIS (suite de sa précédente conf de la journée)
+
+.abstract
+--
+Learn how to build, deploy and manage AI agents using Microsoft Foundry Agent Service and the latest SDKs. This session walks through real-world agent workflows, multi-agent orchestration, interoperability with open protocols and best practices to make your agents ready for production.
+--
+
+image:20260311_Microsoft_AI_tour_50.jpg[]
+
+Foundry agent service : +
+image:20260311_Microsoft_AI_tour_51.jpg[]
+
+Nouveau portail Foundry a des fonctionnalités sur les agents (surtout leur workflow) que nja pas l'ancien 
+
+Présence d'un Model Leaderboard (tout nouveau) : +
+image:20260311_Microsoft_AI_tour_52.jpg[]
+
+Playground pour jouer avec les agents : +
+image:20260311_Microsoft_AI_tour_53.jpg[]
+
+Évaluation des agents
+
+Foundry agent service : +
+image:20260311_Microsoft_AI_tour_54.jpg[]
+
+Microsoft Agent Framework : semantic kernel + autogen
+
+IA Microsoft Agent Framework : +
+image:20260311_Microsoft_AI_tour_55.jpg[]
+
+Dans Foundry TOUT reste dans Foundry et ne sort PAS
+
+Agent Framework et Foundry : runtime partagé 
+image:20260311_Microsoft_AI_tour_56.jpg[]
+
+Slides et repo : https://github.com/microsoft/aitour26-BRK445-building-enterprise-ready-ai-agents-with-microsoft-foundry
+
+
+== Echanges avec les experts Microsoft
+
+* *Stand Security Copilot* : 
+
+    ** Plusieurs nouveaux agents de dispo
+    ** modèle de facturation capacitaire et non pay as you go : on réserve des SLU pour les agents par heure
+        *** conseil du solution architecture MS : les SLU non utilisés étant perdus, on peut configurer des Logic Apps pour désalouer des SLU dans la journée et donc définir des "slots de fonctionnement" dans la journée (par exemple 8h 17h)
+    ** on peut configurer un dépassement possible des SLU définis pour les agents
+        ** Jusqu'à juillet 2026, le solution m'a expliqué que ce dépassement était gratuit !
+            *** donc on peut en profiter pour bien tester ces nouveaux agents
+    ** il existe (encore !) un nouveau portail spécifiquement pour toute cette partie Security Copilot...
+
+* *Stand Microsoft Foundry* :
+
+    * C'était Philippe PAIOLA qui tenait le stand !
+    * phpaiola@microsoft.com
+        ** Il m'a dit de ne pas hésiter à le contacter dans le cadre du projet
+        ** Si on fait intervenir Philippe, il faut prévenir l'équipoe de compte Microsoft de notre côté (Baptiste)
+
+== Communautés Microsoft et formations sur l'IA
+
+* Get Started skilling with *AI on Microsoft Learn*. +
+Build AI skills, connect with the community, earn Microsoft credentials, learn from experts, and take the Cloud skills Challenge : +
+https://aka.ms/LearnAtAITour (https://learn.microsoft.com/en-us/ai/microsoft-ai-days/)
+
+* Tous les liens des différentes *communautés techniques Microsoft* : https://linktr.ee/msdevfr
+    ** L'équipe *Developer Relations* de *Microsoft France* : https://twitter.com/msdev_fr
+
+== Conclusion
+
+* Entra ID est souvent mis en avant
+    ** et est associé aujourd'hui à des traitements applicatifs, comme des contrôles basés sur l'Agent ID
+        *** Ces contrôles devraient se trouver dans Foundry, pas Entra ID (c'est souvent une équipe infra qui gère l'Entra ID, donc c'est problématique qu'il y ait de "l'applicatif" qui lui soit associé)
+
+
+
+
+
+
+
+
+
+

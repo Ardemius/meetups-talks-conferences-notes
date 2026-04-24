@@ -249,7 +249,7 @@ Devenir Data-driven, utiliser la data comme avantage compétitif et exploiter la
 
 Durant cette session, venez découvrir:
 - Ce qu'apporte le Data Mesh et son implémentation grâce à MongoDB
-- Les contraintes qu'imposent le respect de la souveraineté des données dans une stratégie de datamesh
+- Les contraintes qu'imposent le respect de la souveraineté des données dans une stratégie de data mesh
 - Les réponses que MongoDB peut apporter pour bénéficier des bienfaits du Data Mesh, tout en étant respectueux des enjeux de souveraineté des données
 ----
 

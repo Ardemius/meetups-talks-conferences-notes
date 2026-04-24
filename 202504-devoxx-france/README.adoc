@@ -1753,6 +1753,7 @@ image:20250418_Devoxx-France_75.jpg[]
 
 * Définition d'un agent : +
 image:20250418_Devoxx-France_76.jpg[]
+    ** "An agent is a service that talks to an Al model to perform a goal-based operation using the tools and context it has."
 
 * Les caractéristiques d'un agent AI : +
 image:20250418_Devoxx-France_77.jpg[]

@@ -1,0 +1,124 @@
+= 2026/01/13 - Paris JUG : soirée Academy 2026 (successeur des Young Blood)
+Thomas SCHWENDER <icon:github[width=800] https://github.com/Ardemius/[GitHub] / icon:twitter[role="aqua"] https://twitter.com/thomasschwender[@thomasschwender]>
+// Handling GitHub admonition blocks icons
+ifndef::env-github[:icons: font]
+ifdef::env-github[width=800]
+:status:
+:outfilesuffix: .adoc
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[width=800]
+:imagesdir: ./images
+:resourcesdir: ./resources
+:source-highlighter: highlightjs
+:highlightjs-languages: asciidoc
+// We must enable experimental attribute to display Keyboard, button, and menu macros
+:experimental:
+// Next 2 ones are to handle line breaks in some particular elements (list, footnotes, etc.)
+:lb: pass:[<br> +]
+:sb: pass:[<br>]
+// check https://github.com/Ardemius/personal-wiki/wiki/AsciiDoctor-tips for tips on table of content in GitHub
+:toc: macro
+:toclevels: 4
+// To number the sections of the table of contents
+//:sectnums:
+// Add an anchor with hyperlink before the section title
+:sectanchors:
+// To turn off figure caption labels and numbers
+:figure-caption!:
+// Same for examples
+//:example-caption!:
+// To turn off ALL captions
+// :caption:
+
+toc::[]
+
+== Soirée Academy 2026 du Paris JUG
+
+* URL de l'évènement : https://www.parisjug.org/events/2026/01-13-parisjug-academy/
+
+=== 19h30 à 19h50 : Quand les tests de performance deviennent un critère d'acceptance
+
+.Abstract
+--
+Dans un cycle de déploiement continu, la réussite des tests fonctionnels ne suffit plus à garantir la qualité d'une version. Ces tests vérifient que le logiciel fait ce qu'il doit faire, mais pas comment il le fait en conditions réelles. Les tests de performance viennent compléter cette approche en mesurant la rapidité, la stabilité et la robustesse du système sous contrainte.
+
+Intégrés à la chaîne CI/CD, ils s'exécutent automatiquement après les tests unitaires et fonctionnels. Ils évaluent des indicateurs tels que le temps de réponse moyen, le taux d'erreur, la consommation mémoire ou le nombre de requêtes par seconde. Si l'un de ces seuils, par exemple un temps de réponse supérieur à 5%, est dépassé, la build est automatiquement rejetée. Cette intégration transforme les tests de performance en critère d'acceptance, au même titre que la validité fonctionnelle.
+
+En reproduisant des scénarios proches de la charge et des conditions de production, ces tests permettent d'identifier précocement des problèmes homogènes à la production : contention de ressources, fuites mémoire, goulots d'étranglement réseau ou régressions de performance invisibles en test unitaire. Ainsi, les tests de performance deviennent un complément naturel aux tests fonctionnels et un garde-fou essentiel pour garantir la qualité, la stabilité et la durabilité du logiciel à chaque livraison.
+
+Par Amal Chaieb
+--
+
+=== 19h50 à 20h10 : Spring AI with Docker model runner and Debugging
+
+.Abstract
+--
+L'objectif de cette présentation est de montrer comment développer facilement une application Spring AI avec des Docker model runners, et comment la déboguer dans IntelliJ tout en exécutant les services localement sous forme de conteneurs.
+
+Par Sreenu doosari
+--
+
+Talk très sympa et dynamique.
+
+* Sreenu nous a fait une démo en "pur local", sans même besoin d'Internet
+
+* "Docker Model" semble mieux tourner que Ollama
+
+.Ressources
+image:20260113_ParisJUG_academy-2026_01.jpg[]
+
+=== 20h10 à 20h30 : CVE en hausse : comment maintenir un produit sûr sans Security Officer
+
+.Abstract
+--
+Avec plus de 40 000 CVE publiées en 2024 (soit +38% par rapport à 2023), la question n'est plus « comment éviter toutes les vulnérabilités », mais « comment organiser la veille et la correction dans une équipe où la sécurité n'est pas centralisée ? ». Ce talk propose un retour d'expérience concret sur la mise en place d'un process horizontal de gestion des vulnérabilités des dépendances : détection continue, analyse, partage de la responsabilité et documentation des décisions.
+
+Par Chloé Delphis
+--
+
+* Usage de *OWASP Dependency-Check* qui vient comparer les dépendances aux CVE dans la NVD (National Vulnerability Database)
+    ** Attention, la NVD est TRES sollicitée donc lente, pas très stable, avec des rate limits
+        *** Donc pas pratique du tout à intégrer dans un pipeline...
+    ** Solution : créer un miroir de la NVD : +
+    image:20260113_ParisJUG_academy-2026_02.jpg[]
+
+* Report Dependency-Check : +
+image:20260113_ParisJUG_academy-2026_03.jpg[]
+
+=== 20h50 à 21h10 : Clean Code Matters
+
+.Abstract
+--
+Bien que très répandu dans le monde de la programmation, le Clean Code est souvent à tort considéré comme facultatif ou comme un simple “nice to have”. Le but de cette présentation est de sensibiliser au Clean Code et à ses concepts fondamentaux, en montrant qu'il s'agit d'une véritable nécessité pour un code lisible et maintenable.
+
+Par Marc Lecanu
+--
+
+=== 21h10 à 21h30 : Un dojo de code
+
+.Abstract
+--
+Présentation et organisation d'un coding dojo
+
+Par Christelle Prut
+--
+
+=== 21h30 à 21h50 : Construire des agents IA en Kotlin avec Koog
+
+.Abstract
+--
+Koog est le framework open-source de JetBrains, conçu pour créer des agents d'IA en Kotlin, il est compatible avec la JVM, Android/iOS et JS/WASM. Dans cette présentation, je montrerai comment fonctionne Koog, comment structurer un agent avec la DSL avec l'intégration des outils externes, et comment l'orchestrer pour gérer des scénarios complexes. La présentation sera illustrée par une démo.
+
+Par Latfi Ghassane
+--
+
+=== Vote du public
+
+* Victoire de "Construire des agents IA en Kotlin avec Koog" avec 25%, mais c'était serré 😉
+
+
+

@@ -84,12 +84,29 @@ image:20260422_Devoxx-France_buzz_01.jpg[width=1000]
 
 * Harness engineering
 
+* Context engineering
+    ** optimisation du contexte : compaction
+
+* Git worktree
+
+* Doctolib : licences Claude Code pour tous les ITs
+
+* Claude Code en force
+    ** et des astuces sur comment l'utiliser (preuve de son adoption)
+
+* De plus en plus de codage à l'oral
+    ** Super whisper sur Mac, où /voice d'Anthropic
+
+* Les Skills
+    ** et le skill-creator d'Anthropic qui revient très régulièrement
 
 == Technos dont on parle moins (ou plus !)
 
 
 == Talk à revoir sur YouTube
 
+* Top 10 Event-Driven Architecture Pitfalls
+    ** Victor Rentea est apparemment un show man et un expert technique
 
 == Sociétés et personnes rencontrées
 
@@ -110,6 +127,9 @@ image:20260422_Devoxx-France_buzz_02.jpg[]
 * Karby vous dit bonjour ! +
 image:20260423_Devoxx-France_buzz_01.jpg[]
 image:20260423_Devoxx-France_buzz_02.jpg[]
+
+* La photo des polos rouges : 
+image:20260424_Devoxx-France_buzz_01.jpg[]
 
 == Article / REX pour communication Softeam
 

@@ -1058,6 +1058,67 @@ Nous verrons concrètement :
 Passez d'une IA qui "suggère du code" à une IA qui respecte vos standards d'architecture et vos exigences métier.
 ====
 
+* 80% des problèmes que l'on constate avec son agent de codage viennent d'un souci de Context Engineering
+
+* Modèle : Sonnet Medium
+
+image:20260423_Devoxx-France_044.jpg[] 
+image:20260423_Devoxx-France_045.jpg[] 
+
+* Lost in the Middle : perte de perf de 30% pour ce "qui est au milieu"
+
+* Beaucoup plus surprenant, "plus les fichiers sont clairs et bien formés" plus le modèle s'y perd ??? (car tout se "ressemble trop" ? A VERIFIER !)
+    ** Auto-compaction de Claude Code se déclenche vers les 83% +
+    C'est comme si l'alarme incendit se déclenchait uniquement une fois le toit déjà effondré
+
+* Commande "/context" sur Claude Code pour avoir une visu du contexte
+
+* 1ere choses à faire : rajouter des éléments de contexte : AGENTS.md et CLAUDE.md +
+image:20260423_Devoxx-France_046.jpg[] 
+    ** et bizarrement, plus vos fichiers sont "propriétaires" (et non open source) plus les fichiers AGENTS.md et CLAUDE.md sont importants.
+
+* Architecture 3-tiers de contexte : +
+image:20260423_Devoxx-France_047.jpg[] 
+
+    ** TIER 1 : Constitution - hot-memary
+        ** AGENTS.md racine + CLAUDE.md Maplatour
+        ** Invariants globaux : architecture, violations interdites, commandes de vérification
+
+    ** TIER 2 : Agents et contextes scopés
+        *** frontend/CLAUDE.md et backend/CLAUDE.md
+        *** chargé à la demande quand l'agent touche la couche
+
+    ** TIER 3 : knowledge base - cold memory
+        *** specs en BDD (Gherkin), ADR, diagrammes de séquences, docs d'API
+        *** pointés par les fichiers des tiers 1 et 2, jamais injectés automatiquement
+        *** l'agent les lit uniquement s'il en a besoin
+
+* Le goulet d'étranglement est passé de la rédaction de code à la revue de code
+
+image:20260423_Devoxx-France_048.jpg[] 
+
+La méthode en 5 points : +
+image:20260423_Devoxx-France_049.jpg[] 
+
+----
+1. Créez votre CLAUDE.md / AGENTS.md dès le jour 1
+Naing de 200 Egnes - chequo Egno consemme du centexte à chaquo
+messaga
+
+2. Un prompt = une tâche = une couche
+Nommez les fichéers cibles - no lalssez pas Pagert deviner le périmbtre
+
+3. Compactez à 60 % de la fenêtre
+Ne dépassoz jamals 80 % - Fauto-compaction à 83,6% arrive trop tard
+
+4. Documentez avant de /clear
+LTtistortqu git est votre mémoire - faites écrire le plan avant do réinitialiser
+
+5. Applíquez ces ratios à vos systèmes RAG en production
+Mémes príncipes : system prompt ** CLAUDE.md, retrieval ·· Indexation,
+surearization (compact
+----
+
 === 17:50 -> 18:20 - Tools-in-Action - Amphi Bleu : ClaudeCode.proTips(30, minutes=30).run()
 
 .Erwan GEREEC
@@ -1085,6 +1146,123 @@ Dans cette session, nous passerons en revue une série de bonnes pratiques et as
 Que vous découvriez Claude Code ou que vous l'utilisiez déjà au quotidien, vous repartirez avec une vraie boîte à outils de tips et de hacks pour coder plus vite, mieux et avec plus de confiance !
 ====
 
+* 1) Pour que Claude Code se mette bien automatiquement à jour, prenez l'install officielle
+image:20260423_Devoxx-France_050.jpg[] 
+    ** On peut vérifier sa version avec /doctor (où un truc comme ça)
+
+* Suivre les comptes ClaudeDev et ClaudeCodeLog sur X pour être tenu au courant des dernières nouveautés
+
+* 2) Customize ton Claude Code : +
+image:20260423_Devoxx-France_051.jpg[] 
+
+* 3) Passez en full screen : +
+image:20260423_Devoxx-France_052.jpg[] 
+    ** et éliminez le "bruit" (tous les "thinking") avec la commande /focus
+
+* 4) nommez la session avec un /rename : +
+image:20260423_Devoxx-France_053.jpg[] 
+
+* 5) pour pouvoir la récupérer avec /resume +
+image:20260423_Devoxx-France_054.jpg[] 
+    ** session par défaut conservée 30 jours (paramétrable)
+
+* 6) quand on début, training facile avec /xxx +
+image:20260423_Devoxx-France_055.jpg[] 
+
+* 7) Accélérez votre saisie avec "!" et "@" +
+image:20260423_Devoxx-France_056.jpg[] 
+
+* 8) quand on démarre une session, conseil, démarrez de la racine : +
+image:20260423_Devoxx-France_057.jpg[] 
+
+* 9) quand on démarre un projet, /init pour générer son premier CLAUDE.md +
+image:20260423_Devoxx-France_058.jpg[] 
+    ** Ce fichier est relu à chaque session
+
+* 10) Combinez CLAUDE.md et mémoire automatique +
+image:20260423_Devoxx-France_059.jpg[] 
+    ** Conseil : pas plus de 300 lignes dans le CLAUDE.md
+    ** Mémoire automatique mise à dispo depuis 3 semaines par Anthropic
+
+* 11) Maîtrisez la gestion du contexte +
+image:20260423_Devoxx-France_060.jpg[] 
+
+* 12) Utilisez /clear à chaque changement de tâche
+image:20260423_Devoxx-France_061.jpg[] 
+    ** Cela évite de faire un /compact à la place (ce qui n'est PAS la même chose)
+
+* 13) Utilisez /context pour diagnostiquer +
+image:20260423_Devoxx-France_062.jpg[] 
+    ** Pour vérifier si tous ses MCP ne pourrissent pas trop le contexte...
+
+* 14) Structurez vos prompts efficacement +
+image:20260423_Devoxx-France_063.jpg[] 
+
+* 15) Commencez d'abord en mode Plan
+image:20260423_Devoxx-France_064.jpg[] 
+    ** et surtout CHALLENGEZ le plan (avant de passer en mode edit)
+
+* 16) Utilisez un modèle IA adapté à votre besoin
+image:20260423_Devoxx-France_065.jpg[] 
+    ** ne restez pas tout le temps sur le dernier Opus... (et ça coûte moins cher !)
+    ** /modelOpusPlan : Opus en Plan et Sonnet en mode Edit (tout ça automatiquement)
+
+* 17) Ajustez l'effort du modèle avec /effort
+image:20260423_Devoxx-France_066.jpg[] 
+    ** l'effort contrôle la profondeur de raisonnement du modèle
+
+* 18) Maîtrisez les raccourcis Escape et Double Escape +
+image:20260423_Devoxx-France_067.jpg[] 
+    ** pour restaurer un checkpoint
+
+* 19) Glissez vos screenshots dans Claude Code +
+image:20260423_Devoxx-France_068.jpg[] 
+image:20260423_Devoxx-France_069.jpg[] 
+    ** il faut en ABUSER !
+
+* 20) Utilisez /fork pour tenter une autre approche +
+image:20260423_Devoxx-France_070.jpg[] 
+    ** Pour tester d'autres implémentations
+
+* 21) Posez des questions hors du contexte avec /btw ("by the way") +
+image:20260423_Devoxx-France_071.jpg[] 
+
+* 22) Inspectez et maîtrisez les sorties +
+image:20260423_Devoxx-France_072.jpg[] 
+
+* 23) Qualité continue avec /review et /simplify +
+image:20260423_Devoxx-France_073.jpg[] 
+    ** pour lancer une review en local sur sa machine
+    ** /simplify : Claude Code lance 3 agents en parallèle qui doivent se mettre d'accord et fournir un plan
+        *** et on peut fournir un "focus" aux agents
+
+* 24) /insights pour analyser vos habitudes +
+image:20260423_Devoxx-France_074.jpg[] 
+    ** vous allez avoir un rapport de votre usage de Claude Code
+    ** C'est une MINE d'OR
+
+* 25) automatisez des actions avec les /hooks +
+image:20260423_Devoxx-France_075.jpg[] 
+    ** 20 évènements supportés aujourd'hui auxquels on peut se brancher
+
+* 26) Exemple à l'ouverture d'une session Claude (suite du 25) +
+image:20260423_Devoxx-France_076.jpg[] 
+
+* 27) automatisez avec /loop et /schedule +
+image:20260423_Devoxx-France_077.jpg[] 
+    ** /schedule dans le Cloud d'Anthropic
+
+* 28) *Créer votre propres Skills* +
+image:20260423_Devoxx-France_078.jpg[] 
+
+* 29) /mcp : soyez sélectifs ! +
+image:20260423_Devoxx-France_079.jpg[] 
+    ** celui de Datadog, de Sentry, etc.
+    ** MAIS faite attention A LEUR NOMBRE ! N'activez *QUE les MCP dont vous avez besoin !*
+
+* 30) /sticker pour commander des stickers à Anthropic ! 😁 +
+image:20260423_Devoxx-France_080.jpg[] 
+
 == JOUR 3 : VENDREDI 24/04
 
 === 09:00 -> 09:25 - Keynote - Amphi bleu : L'IA au défi de la condition humaine
@@ -1110,6 +1288,9 @@ Nous passerons en revue ces annonces en nous demandant si elles sont vraisemblab
 En mettant en regard la condition humaine des sociétés passées avec la nôtre, à l'heure du numérique, nous examinerons les nouvelles possibilités de réalisation de soi qui s'offrent désormais à chacun, en tant qu'individus, en deçà du "nirvana numérique".
 ====
 
+* Talk sur le droit à la paresse (de Paul Lafargue)
+* Après l'âge de bronze, du fer, etc, de l'information, on entre dans l'âge de la falsification...
+
 === 09:35 -> 10:00 - Keynote - Amphi bleu : La course à l'IA : La France risque-t-elle de devenir un "territoire servant"?
 
 .Loup Cellard
@@ -1134,6 +1315,24 @@ Quelles opportunités réelles pour les territoires accueillant ces infrastructu
 Comment éviter que la France ne devienne un « territoire servant », sacrifié sur l'autel de la course à l'IA ?
 Nous répondrons à ces questions à travers l'analyse d'exemples concrets d'implantations de data centers.
 ====
+
+image:20260424_Devoxx-France_001.jpg[]
+
+* l'industrie des data centers est plutôt opaque, on a du mal à trouver des infos
+
+* En France, on a Marseille et Bordeaux comme Hub où arrivent des câbles sous-marins d'échange de data +
+Ces lieux sont également des zones d'implantation de data centers.
+
+    ** Marseile : l'historique, câble pour l'Europe et l'Asie +
+    image:20260424_Devoxx-France_002.jpg[]
+
+    ** Bordeaux : Hub plus récent, pour Amérique et Royaume-Uni
+
+* Attention à l'implantation de sociétés américaines dans ces hub, comme avec Digital Realty qui va construire le 6e data centers du Hub numérique de Marseille.
+    ** Voir l'article https://www.franceinfo.fr/internet/marseille-les-data-centers-gagnent-du-terrain_7683841.html
+
+* L'implantation de ces data centers pose des questions d'occupation du sol (le foncier) et de partage de l'énergie
+    ** "À Marseille, c'est la métropole qui valide l'implantation d'un data center. Mais pour cet élu de la mairie, la ville est arrivée à saturation."
 
 === 10:30 -> 11:15 - Conférence - Amphi Bleu : APIs, contextes et prompts : la nouvelle stack du développeur web
 
@@ -1166,6 +1365,72 @@ Entre copilotes dans le navigateur, APIs de contexte partagé et documentation g
 Parce que l'IA, c'est pas que pour celles et ceux qui font du Python — mais aussi pour les devs web.
 ====
 
+*Coding web apps with AI*
+
+* la question n'est plus de savoir si les agents vont arriver à créer ma web app MAIS vont-elles y arriver comme je le veux
+    ** Eh bien tout ceci est une histoire de SKILL.md +
+    image:20260424_Devoxx-France_003.jpg[]
+    image:20260424_Devoxx-France_006.jpg[]
+
+    ** DEMO +
+    image:20260424_Devoxx-France_004.jpg[]
+        *** "résouds la 1ere issue de mon GitHub"
+
+    ** AGENTS.md : le contexte qui contrairement aux SKILLS va être chargé *tout le temps*
+    image:20260424_Devoxx-France_005.jpg[]
+
+    ** De nouveau usage de skill-creator d'Anthropic
+
+    ** Serveur MCP publié récemment par Google pour donner accès aux DevTools de Chrome : +
+    image:20260424_Devoxx-France_007.jpg[]
+        *** il y a des Tools pour tout ce que sont capable de faire les DevTools de Chrome
+
+    ** Dans les DevTools maintenant on a dans les settings la section "AI Innovation" pour accéder à l'IA directement dans les DevToos de Chrome
+
+*Avoir l'IA directement dans son site* (dans son Chrome)
+
+* plusieurs APIs dispo côté Google si j'ai bien compris : +
+image:20260424_Devoxx-France_008.jpg[]
+
+* Summarize : +
+image:20260424_Devoxx-France_009.jpg[]
+    ** Gemini Nano est le modèle qui va executé vos prompts dans le navigateur, mais qui doit être au préalable téléchargé (4 Go)
+
+* Correction orthographique : +
+image:20260424_Devoxx-France_010.jpg[]
+
+* tout tourne dans Chrome ! Grâve à ces nouvelles AI APIs +
+image:20260424_Devoxx-France_011.jpg[]
+
+*upgrading your website for the AI era*
+
+* 1ere étape : llms.txt
+    ** et llms-full.txt
+
+.Perplexity : llms.txt et llms-full.txt
+[NOTE]
+====
+* *llms.txt* sert surtout de guide synthétique pour les modèles de langage : il expose les pages, sections ou ressources les plus importantes d'un site, dans un format simple souvent en Markdown, afin d'aider une IA à comprendre rapidement le contenu utile sans tout crawler. Il ne remplace pas robots.txt ni les sitemaps ; il les complète en se concentrant sur la sélection et la lisibilité pour les LLM.
+
+* *llms-full.txt* va plus loin : il vise à fournir une version beaucoup plus riche, parfois quasi complète, du contenu ou de la documentation, pour donner plus de contexte à l'IA. C'est particulièrement utile pour des sites de documentation technique, des knowledge bases, des SDK ou des projets où l'on veut maximiser la précision de compréhension par un assistant IA.
+====
+
+* WebMCP
+    ** attention, highly experimental
+
+.Perplexity : WebMCP
+[NOTE]
+====
+WebMCP serves to let a website expose its own browser-side actions as structured tools that an AI agent can discover and invoke directly inside the page, instead of the agent having to guess from the DOM or scrape the interface. In practice, it makes live web workflows faster, more reliable, and better aligned with the user's current session and page state.
+
+How it differs from MCP : 
+
+    * MCP is mainly for connecting agents to external tools, services, and backend logic.
+    * WebMCP is for exposing web UI capabilities directly from the page the user is viewing, with the browser session, cookies, and page state already availabl
+====
+
+* Repo GitHub du Talk : https://github.com/sinedied/web-ai-talk
+
 === 11:35 -> 12:20 - Conférence - Neuilly 252 AB : Votre second cerveau IA sans perdre votre âme
 
 .Sandrine BOITEAU
@@ -1185,6 +1450,95 @@ Et si l'IA servait au contraire à arrêter l'hémorragie pour transformer votre
 Dans cette session, je ne vous vendrai pas un nouvel outil SaaS. Je vous ouvrirai le capot de mon propre second cerveau : une architecture locale souveraine (Markdown, Git) où l'IA ne sert pas à répondre à ma place, mais à devenir mon "Contrôleur Aérien" mental.
 Découvrez comment j'ai automatisé avec Antigravity ma digestion de savoir en 12 étapes pour passer de la simple synthèse à la critique stratégique. Ne soyez plus l'utilisateur d'un outil, devenez l'architecte de votre propre pensée.
 ====
+
+* la promesse du talk : se créer sa tour de contrôle cognitive
+
+image:20260424_Devoxx-France_012.jpg[]
+image:20260424_Devoxx-France_013.jpg[]
+
+*Agenda du Talk* +
+image:20260424_Devoxx-France_014.jpg[]
+
+*ACTE I*
+
+* La *courbe de l'ennui* : Au bout d'1h on ne retient que 40%
+
+* PKM "Personal Knowledge Management", le 2nd cerveau : *externaliser sa mémoire pour libérer sa pensée*
+
+* Le cousin de "trop d'infos tue l'info" est "trop d'outils tue l'outil"
+image:20260424_Devoxx-France_016.jpg[]
+
+*ACTE II*
+
+* FOBO (Fear of Better Options) / FOMO (Fear of Missing Out) : fixez-vous sur un outil, pas grave si c'est pas le meilleur
+    ** on ne doit pas gaspiller son temps à chercher un nouvel outil, il faut plutôt PRATIQUER
+
+* Input sélectionnés à la main (pas d'accès donné à la boîte mail !)
+
+* L'architecture du 2nd cerveau de Sandrine +
+image:20260424_Devoxx-France_018.jpg[]
+
+* Comment charger son identité ? +
+image:20260424_Devoxx-France_016.jpg[]
+    ** nourrissez-le avec un max d'infos sur vous (posts, articles, etc.)
+
+* Comment éviter les clichés par l'IA ? +
+image:20260424_Devoxx-France_020.jpg[]
+    ** "méthode Anti-Médiocrité" : pas de "A" ou de "M" en "bon" français, cette faute vient de l'anglais 
+
+* Quels outputs de veille : +
+image:20260424_Devoxx-France_021.jpg[]
+
+* Méthode PARA ("Organiser pour agir") de Thiago dans son livre 2nd cerveau : +
+image:20260424_Devoxx-France_022.jpg[]
+    ** Projects
+    ** Areas
+    ** Resources
+    ** Archives
+
+* l'évolution du produit "2nd cerveau" : +
+image:20260424_Devoxx-France_023.jpg[]
+
+    ** Google Antigravity utilisé en mode gratuit par Sandrine
+
+* Quels outils ? quels modèles ? Quel abonnement ? +
+image:20260424_Devoxx-France_024.jpg[]
+
+    ** Attention ! Le switching peut être "dangereux" (expérience de fichier corrompu de Sandrine)
+
+* Sécurité : +
+image:20260424_Devoxx-France_025.jpg[]
+    ** pas de données PRO dans ce 2nd cerveau
+    ** attention aux URLs malveillantes
+
+* Audit de sécurité +
+image:20260424_Devoxx-France_026.jpg[]
+
+* Le but n'est pas de tout savoir MAIS de *savoir où trouver ce que vous ne savez pas encore*
+
+* Hot, xxx, Cold : archivage de la connaissance +
+image:20260424_Devoxx-France_027.jpg[]
+
+*Acte III*
+
+* Biomimétisme cognitif : +
+image:20260424_Devoxx-France_028.jpg[]
+
+* L'euphorie et l'ivresse : "l'abus d'IA est dangereux pour la santé, à consommer avec modération"
+
+* 1060 fichiers .md dans le 2nd cerveau MAIS que 5 articles d'écrits...
+
+* Attention au syndrome du rangement ! Plus de temps à ranger qu'autre chose +
+image:20260424_Devoxx-France_029.jpg[]
+    ** un 2nd cerveau IA n'apprend pas à votre place
+
+
+* Essayez de rester le plus simple possible, pas trop d'étapes dans votre workflow (nombre réduits d'agents si possible) : +
+image:20260424_Devoxx-France_030.jpg[]
+
+* Ressources : +
+    ** Starter Kit de Sandrine pour son 2nd cerveau : https://github.com/saboiteau/SecondBrain-Starter-Kit
+    ** Slides du talk : https://github.com/saboiteau/Mes-Conferences/blob/main/docs/slides/2026_V12_SBOITEAU_2ND-CERVEAU_DEVOXX.pdf
 
 === ------------------------ 12:20 -> 13:30 : LUNCH ------------------------
 
@@ -1208,10 +1562,294 @@ Nous ferons aussi le parallèle avec les débuts des API REST et les erreurs que
 À l'issue de la session, vous repartirez avec un cadre mental clair et des bonnes pratiques concrètes pour concevoir des serveurs MCP plus sûrs, plus efficaces et réellement exploitables en production.
 ====
 
+* Agenda de la journée : +
+image:20260424_Devoxx-France_032.jpg[]
+
+*PART I : c'est quoi un serveur MCP*
+
+* Historique : 
+
+    1. 2023 - ChatGPT : Smart conversation -> from chatbots to agents +
+    image:20260424_Devoxx-France_033.jpg[]
+
+    2. 2024 - Tools use : LLMs can do things +
+    image:20260424_Devoxx-France_034.jpg[]
+
+    3. 2025 - agents autonomes : LLMs that plan and execute
+
+    4. 2026 : Agents are everywhere +
+    image:20260424_Devoxx-France_035.jpg[]
+
+* The agent landscape today : +
+image:20260424_Devoxx-France_036.jpg[]
+
+* La question clé aujourd'hui : comment ces agents vont pouvoir accéder aux data ?
+    ** Comment le faire de façon secure ?
+
+* The connectivity problem : +
+image:20260424_Devoxx-France_037.jpg[]
+image:20260424_Devoxx-France_038.jpg[]
+
+* 2024/11 - sortie de MCP : *LLMs intelligence isn't the bottleneck, connectivity is* +
+image:20260424_Devoxx-France_039.jpg[]
+
+* Le MCP crée un langage commun pour se connecter à tout un ensemble de data sources +
+image:20260424_Devoxx-France_040.jpg[]
+
+* Ca marche, c'est cool MAIS ce n'est pas prêt pour l'entreprise et la PROD +
+image:20260424_Devoxx-France_041.jpg[]
+    ** On a déjà vu ça : MCP in 2026 is where REST was in 2008
+
+* La dernière fois (avec REST), il nous a fallu 10 ans pour apprendre que : +
+image:20260424_Devoxx-France_042.jpg[]
+    ** aujourd'hui, on n'a plus 10 ans pour apprendre les bonnes pratiques, l'information ne va plus à la même vitesse qu'à l'époque
+
+* Comment un serveur MCP fonctionne : +
+image:20260424_Devoxx-France_043.jpg[]
+
+* Maintenant avec les MCP Clients : +
+image:20260424_Devoxx-France_044.jpg[]
+    ** Rappel : 1 MCP Client pour 1 MCP Server
+    ** l'app (AI Powered App) joue le rôle de harnais / harness
+
+* Separations of concerns
+image:20260424_Devoxx-France_045.jpg[]
+
+* Les modes de communication : stdio (local) et Streamable HTTP (remote)
+image:20260424_Devoxx-France_046.jpg[]
+
+* The real problem with transport : +
+image:20260424_Devoxx-France_047.jpg[]
+
+* Current MCP specification : +
+image:20260424_Devoxx-France_048.jpg[]
+
+* 3 "main" primitives exposed by MCP Servers +
+image:20260424_Devoxx-France_049.jpg[]
+
+* Que sont les *Tools* ? +
+image:20260424_Devoxx-France_050.jpg[]
+image:20260424_Devoxx-France_051.jpg[]
+
+* *Resources* : +
+image:20260424_Devoxx-France_052.jpg[]
+
+* *Prompts* : +
+image:20260424_Devoxx-France_053.jpg[]
+    ** Intérêt des prompts : rendre la sortie prédictible
+
+* Les autres primitives : +
+image:20260424_Devoxx-France_054.jpg[]
+
+* A minimal MCP example (5 petites lignes) : +
+image:20260424_Devoxx-France_055.jpg[]
+image:20260424_Devoxx-France_056.jpg[]
+
+    ** 5 petites lignes, donc pourquoi 3h de talk ?! +
+    -> Les problèmes de sécu...
+
+    ** Scale : +
+    image:20260424_Devoxx-France_057.jpg[]
+
+    ** Cloud-hosted MCP is the default : +
+    image:20260424_Devoxx-France_058.jpg[]
+        *** avec l'authentification et tout ce qu'il faut
+
+    ** MCP Apps : +
+    image:20260424_Devoxx-France_059.jpg[]
+
+    ** et toutes les problématiques de sécurité : +
+    image:20260424_Devoxx-France_060.jpg[]
+
+* l'outillage du MCP gagne en mâturité : registries, gateways rising +
+image:20260424_Devoxx-France_061.jpg[]
+
+* Petite histoire d'un cauchemar avec le MCP de 2024 : +
+image:20260424_Devoxx-France_062.jpg[]
+image:20260424_Devoxx-France_063.jpg[]
+image:20260424_Devoxx-France_064.jpg[]
+image:20260424_Devoxx-France_065.jpg[]
+
+* 1er problème : le LLM ne comprenait pas le modèle de BDD
+* 3e problème : +
+image:20260424_Devoxx-France_066.jpg[]
+* 4e problème : +
+image:20260424_Devoxx-France_067.jpg[]
+* Et un jour... +
+image:20260424_Devoxx-France_068.jpg[]
+    ** le LLM fait un UPDATE TABLE et on perd toute la BDD...
+
+* Le server MCP "officiel" de PostgreSQL était BEAUCOUP trop simple et PAS sécurisé
+image:20260424_Devoxx-France_069.jpg[]
+    ** Any SQL, no validation, no allowlist, no read-only flag
+
+* MCP Servers : APIs for LLMs +
+image:20260424_Devoxx-France_070.jpg[]
+
+* DONC Horacia s'est dit qu'il fallait rebuild tout ça. +
+Les *Design Principles* du rebuild : +
+image:20260424_Devoxx-France_071.jpg[]
+
+* Tool : search_monsters_by_type +
+image:20260424_Devoxx-France_072.jpg[]
+
+* Prompt : analyse_monster_weakness +
+image:20260424_Devoxx-France_073.jpg[]
+    ** l'idée : ne réfléchis pas trop LLM (c'est là que tu hallucines), fais simplement ce que je te dis !
+
+* Et là, plus d'ALTER TABLE foireux : +
+image:20260424_Devoxx-France_074.jpg[]
+
+* Ses règles de conduite (son framework) pour API design discipline in MCP : +
+image:20260424_Devoxx-France_075.jpg[]
+    ** Ce qu'il faut suivre pour faire plaisir à son RSSI...
+
+* La V1 d'Horacio correspondait au 1er niveau de ses Design Principles
+
+*PART II (des Design Principles) : SHAPED*
+
+* What "Shape" means : +
+image:20260424_Devoxx-France_076.jpg[]
+    ** une API classique, c'est l'équivalent des Tools (plutôt que des Resources ou des Prompts)
+    ** Si on ne filtre pas la sortie, tout partie dans un LLM sur la côte Ouest des Etats-Unis (et ça ne rassure pas forcément, surtout pour un usage PRO)
+
+* Les 7 primitives "revisited" : +
+image:20260424_Devoxx-France_077.jpg[]
+
+* Tools revisited +
+image:20260424_Devoxx-France_078.jpg[]
+* Resources : +
+image:20260424_Devoxx-France_079.jpg[]
+    ** Resources -> pour éviter les suppositions foireuses du LLM, permet de créer le contexte
+    ** Les resources pour ancrer le LLM dans la réalité : +
+    image:20260424_Devoxx-France_080.jpg[]
+    ** Les avantages : éviter les hallucinations, réduire les coûts +
+    image:20260424_Devoxx-France_081.jpg[]
+
+* Prompts : the workflow primitive
+    ** what servers guide the LLM to do
+    ** the server ships the playbook, not just the atoms
+
+* The Multi-Stup problem : +
+image:20260424_Devoxx-France_082.jpg[]
+    ** *L'improvisation ne permet pas la répétabilité*
+    ** il faut empêcher le LLM d'improviser
+
+* Les prompts vont permettre un certain déterminisme : +
+image:20260424_Devoxx-France_083.jpg[]
+
+* Quels usages pour quelles primitives ? +
+image:20260424_Devoxx-France_084.jpg[]
+image:20260424_Devoxx-France_085.jpg[]
+
+* Tool discoverability as Scale : +
+image:20260424_Devoxx-France_086.jpg[]
+    ** Si tu as trop de Tools, "passe-les en Resources"
+
+* On peut également utiliser les Resources comme un cache : +
+image:20260424_Devoxx-France_087.jpg[]
+
+* Donc, au final, la bonne primitive pour le bon usage : +
+image:20260424_Devoxx-France_088.jpg[]
+image:20260424_Devoxx-France_089.jpg[]
+
+* Les prochaines primitives, qu'Horacio conseille de ne PAS encore utiliser (pas encore assez "sec")
+    ** Sampling
+    ** Elicitation
+    ** Tasks : pour des tâches asynchrones
+    ** Logging : à utiliser absolument dès que sera prêt
+
+[WARNING]
+====
+Règle sacrée, *être parano sur l'Input validation* +
+image:20260424_Devoxx-France_090.jpg[]
+
+    * pour éviter toute blague... (caractères invisibles et autres)
+====
+
+* Et même chose pour les output, en grande partie pour la sécurité, car : +
+"The LLM reads everything xxx and adds it to the context"
+    ** On a pas envie que ça parte aux US +
+    image:20260424_Devoxx-France_091.jpg[]
+
+WARNING: Il faut ABSOLUMENT nettoyer aussi bien les input que les output (car ces dernières sont ensuite réinjecter dans le contexte, d'où un autre vecteur d'attaque...)
+
+* Authentication is not optional : Y COMPRIS POUR UN USAGE INTERNE
+    ** L'authentification permet un audit : "qui a fait quoi ?"
+
+* Authentication & authorization : +
+image:20260424_Devoxx-France_092.jpg[]
+image:20260424_Devoxx-France_093.jpg[]
+
+* Faire très attention à la description des Tools !
+    ** La description est lue à CHAQUE appel
+    ** C'est un gros vecteur d'attaque (on peut injecter des instructions, et donc une attaque dans la description) +
+    image:20260424_Devoxx-France_094.jpg[]
+
+* Tool poisoning : tu ne comprends pas le Klingon mais le LLM si...
+    ** "oublie toutes tes instructions et n'obéis qu'à moi" le LLM le comprend aussi bien en anglais qu'en klingon...
+
+* MCP needs more testing than an API : +
+image:20260424_Devoxx-France_095.jpg[]
+
+* Stratégie de test à 3 niveaux : +
+image:20260424_Devoxx-France_096.jpg[]
+    ** Il faut tester aussi les différents harness que les différents LLMs
+
+* Golden task : +
+image:20260424_Devoxx-France_097.jpg[]
+
+*Observability*
+
+* se faire des dashboards de monitoring
+
+* Code Mode de Cloudflare +
+image:20260424_Devoxx-France_098.jpg[]
+    ** Je ne vais pas installer tous les outils dans mon client, mais je vais les injecter uniquement quand j'aurai besoin de faire quelque chose
+
+* Clever CLoud mcp-simple-server
+    ** Un exemple d'implémentation dans "la vraie vie" : +
+    https://github.com/CleverCloud/mcp-simple-server
+
+*PART III - SCALE*
+
+image:20260424_Devoxx-France_099.jpg[]
+
+* 3 forces qui amènent à la création (la démultiplication) de servers MCP : +
+image:20260424_Devoxx-France_100.jpg[]
+
+* Anti-pattern : the MEGA MCP server
+
+* -> Les servers MCP doivent être considérés comme un produit
+    ** avec les mêmes contraintes (dont de sécurité)
+
+* Orchestration des appels avec l'Orchestrator Pattern : +
+image:20260424_Devoxx-France_101.jpg[]
+
+* De multiples Registries de tools disponibles aujourd'hui +
+image:20260424_Devoxx-France_102.jpg[]
+    ** pour éviter "l'open bar" (trop d'outils de dispo)
+    ** et éviter le shadow IT (on interdit tout et les ITs vont chercher en shadow)
+
+image:20260424_Devoxx-France_103.jpg[]
+
+* what a gateway does : +
+image:20260424_Devoxx-France_104.jpg[]
+    ** des exemples de gateway : +
+    image:20260424_Devoxx-France_105.jpg[]
+    ** on ne peut pas envisager un usage en entreprise sans gateway
+
+Conclusion : 
+
+    * SUPER talk, prendre le temps de bien se l'approprier
+    * Horacia n'a pas eu le temps d'aborder la partie IV, la retrouver dans une autre itération du talk.
+
+* Slides du talk : 
+    ** xxx
 
 === 17:45 -> 18:30 - Clôture : Les Cast Codeurs sans casque, sans écran mais avec de la joie
 
-
+image:20260424_Devoxx-France_106.jpg[]
 
 === Talks vu en replay
 
